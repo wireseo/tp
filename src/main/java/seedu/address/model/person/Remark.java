@@ -10,6 +10,10 @@ public class Remark {
     public static final String MESSAGE_CONSTRAINTS = "";
     public final String value;
 
+
+    /**
+     * Creates a Remark object with given string.
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;
