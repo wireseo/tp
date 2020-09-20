@@ -13,11 +13,14 @@ import seedu.address.model.person.Remark;
  */
 public class RemarkCommandParser implements Parser {
 
+    /**
+     * Parses string into a RemarkCommand
+     */
     public RemarkCommand parse(String args) throws ParseException {
-        final Prefix PREFIX_REMARK = new Prefix("/r");
+        final Prefix PrefixRemark = new Prefix("/r");
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                PREFIX_REMARK);
+                PrefixRemark);
 
         Index index;
         try {
@@ -27,7 +30,7 @@ public class RemarkCommandParser implements Parser {
                     RemarkCommand.MESSAGE_USAGE), ive);
         }
 
-        Remark remark = new Remark(argMultimap.getValue(PREFIX_REMARK).orElse(""));
+        Remark remark = new Remark(argMultimap.getValue(PrefixRemark).orElse(""));
 
         return new RemarkCommand(index, remark);
     }
