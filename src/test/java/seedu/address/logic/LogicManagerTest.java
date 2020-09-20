@@ -1,5 +1,5 @@
 package seedu.address.logic;
-
+/*
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
@@ -31,7 +31,7 @@ import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.PersonBuilder;
-
+*/
 public class LogicManagerTest {
     /*
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
