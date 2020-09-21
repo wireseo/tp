@@ -38,15 +38,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Wu Peirong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/peironggg.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/peironggg)]
+[[portfolio](team/peironggg.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: API + Student Features
 
 ### Eryn Seo
 
@@ -56,7 +56,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/wireseo.md)]
 
 * Role: Developer
-* Responsibilities: UI + Consultations
+* Responsibilities: UI + Consultations Features
 
 ### Wiline Tan
 
@@ -66,4 +66,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/wilinetan.md)]
 
 * Role: Developer
-* Responsibilities: Mission and Quest Features
+* Responsibilities: Mission + Quest Features
