@@ -57,3 +57,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI + Consultations
+
+### Wiline Tan
+
+<img src="images/wilinetan.png" width="200px">
+
+[[github](http://github.com/wilinetan)]
+[[portfolio](team/wilinetan.md)]
+
+* Role: Developer
+* Responsibilities: Mission and Quest Features
