@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Eryn Seo's Project Portfolio Page
+title: Wu Peirong's Project Portfolio Page
 ---
 
 ## Project: JARVIS
