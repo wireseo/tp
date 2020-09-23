@@ -38,6 +38,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
+### Associate Professor Damith Chatura Rajapakse
+
+* Role: Lecturer, Tutor
+
 ### Wu Peirong
 
 <img src="images/peironggg.png" width="200px">
@@ -67,3 +71,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Mission + Quest Features
+
+### Ng Zhen Teng
+
+<img src="images/ngzhenteng.png" width="200px">
+
+[[github](http://github.com/ngzhenteng)]
+[[portfolio](team/ngzhenteng.md)]
+
+* Role: Developer
+* Responsibilities: Student Information Retrieval Features
+
