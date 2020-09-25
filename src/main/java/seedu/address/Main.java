@@ -19,9 +19,15 @@ import javafx.application.Application;
  * to be the entry point of the application, we avoid this issue.
  */
 public class Main {
+    /**
+     * The main method of the entrypoint.
+     * @param args
+     */
     public static void main(String[] args) {
         Application.launch(MainApp.class, args);
-//        Scraper scraper = new Scraper();
-//        scraper.get();
+        /*
+        Scraper scraper = new Scraper();
+        scraper.get();
+        */
     }
 }

@@ -1,4 +1,5 @@
 package seedu.address.scraper;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,16 +9,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
+
 
 public class Scraper {
-    WebDriver driver;
+    private WebDriver driver;
 
+    /**
+     * The scraper constructor to initialize a new scraper instance.
+     */
     public Scraper() {
         // Setup headless browser
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
+        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200", "--ignore-certificate-errors");
         driver = new ChromeDriver(options);
     }
 
