@@ -241,7 +241,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: the only tool to keep tutor todos and responsibilities in check 
+**Value proposition**: the only tool to keep tutor todos and responsibilities in check
 
 
 ### User stories
