@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
+import seedu.address.commons.exceptions.OsNotSupportedException;
 
 public class Scraper {
     private WebDriver driver;
@@ -17,9 +17,21 @@ public class Scraper {
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public Scraper() {
+    public Scraper() throws OsNotSupportedException {
+        // Grab current os name
+        final String operatingSystem = System.getProperty("os.name").toUpperCase();
+        // Set chrome driver path according to os
+        if (operatingSystem.contains("WIN")) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver.exe");
+        } else if (operatingSystem.contains("MAC")) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver_mac");
+        } else if (operatingSystem.contains("NUX")) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver_linux");
+        } else {
+            throw new OsNotSupportedException(operatingSystem);
+        }
+
         // Setup headless browser
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200", "--ignore-certificate-errors");
         driver = new ChromeDriver(options);
