@@ -1,6 +1,7 @@
 package seedu.address;
 
 import javafx.application.Application;
+import seedu.address.scraper.Scraper;
 
 /**
  * The main entry point to the application.
@@ -21,5 +22,7 @@ import javafx.application.Application;
 public class Main {
     public static void main(String[] args) {
         Application.launch(MainApp.class, args);
+//        Scraper scraper = new Scraper();
+//        scraper.get();
     }
 }
