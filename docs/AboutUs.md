@@ -9,34 +9,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Associate Professor Damith Chatura Rajapakse
 
-<img src="images/johndoe.png" width="200px">
-
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
+* Role: Lecturer, Tutor
 
 ### Wu Peirong
 
@@ -67,3 +42,23 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Mission + Quest Features
+
+### Ng Zhen Teng
+
+<img src="images/ngzhenteng.png" width="200px">
+
+[[github](http://github.com/ngzhenteng)]
+[[portfolio](team/ngzhenteng.md)]
+
+* Role: Developer
+* Responsibilities: Student Information Retrieval Features
+
+### Lim Jun Jie
+
+<img src="images/asuraxsoul.png" width="200px">
+
+[[github](http://github.com/asuraxsoul)]
+[[portfolio](team/asuraxsoul.md)]
+
+* Role: Developer
+* Responsibilities: Tutor Task + Save/Load data Features
