@@ -6,32 +6,32 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 * Quick start
 * Features
-    * Viewing help : help   
-    * Adding information: add   
-      * Adding Todos :  -t   
-      * Adding Events : -e   
-      * Adding Deadlines : -d   
-      * Adding Consultations : -c   
-      * Adding Mastery Checks : -mc   
-  * Editing information: edit
-    * Marking Tasks as Done : -t
-    * Editing Student Information : -s
-  * Deleting information: delete
-    * Deleting Tasks (Todos, Events, Deadlines) : -t
-    * Deleting Consultations: -c
-    * Deleting Mastery Checks: -mc
-  * Vewing information: view
-    * Viewing Student Information: -s
-    * Viewing Consultation requests of a student : -s -cr
-    * Viewing Consultation sessions: -c, -cp, -cu
-    * Viewing Mastery Check sessions: -mc, mcp, -mcu
-    * Viewing ungraded missions and quests: -u
-    * Viewing deadline for missions: -m
-    * Viewing deadline for quests: -q
-    * Viewing deadline for both missions and quests: -b
-    * Viewing deadline for specific mission/quest by id: -i
-    * Viewing Tasks (Todos, Events, Deadlines) : -t
-  * Exiting the program : exit
+    * Viewing help: `help`   
+    * Adding information: `add`   
+      * Adding Todos: `-t`   
+      * Adding Events: `-e`   
+      * Adding Deadlines: `-d`   
+      * Adding Consultations: `-c`   
+      * Adding Mastery Checks: `-mc`   
+  * Editing information: `edit`
+    * Marking Tasks as Done: `-t`
+    * Editing Student Information: `-s`
+  * Deleting information: `delete`
+    * Deleting Tasks (Todos, Events, Deadlines): `-t`
+    * Deleting Consultations: `-c`
+    * Deleting Mastery Checks: `-mc`
+  * Vewing information: `view`
+    * Viewing Student Information: `-s`
+    * Viewing Consultation requests of a student: `-s -c`
+    * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
+    * Viewing Mastery Check sessions: `-mc`, `mcp`, `-mcu`
+    * Viewing ungraded missions and quests: `-u`
+    * Viewing deadline for missions: `-m`
+    * Viewing deadline for quests: `-q`
+    * Viewing deadline for both missions and quests: `-b`
+    * Viewing deadline for specific mission/quest by id: `-i`
+    * Viewing Tasks (Todos, Events, Deadlines): `-t`
+  * Exiting the program: `exit`
   * Saving the data
 * FAQ
 * Command summary
@@ -52,9 +52,9 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
    Some example commands you can try:
    `view -s:  Lists all students. `
    `view -s John Doe: Lists information about a student named John Doe.`
-   `add -t TaskName : Adds a task named TaskName.`
-   `edit -t TaskName : Marks the task named TaskName as Done.`
-   `exit : Exits the app.`
+   `add -t TaskName: Adds a task named TaskName.`
+   `edit -t TaskName: Marks the task named TaskName as Done.`
+   `exit: Exits the app.`
 
 1.  Refer to the Features below for details of each command.
 --------------------------------------------------------------------------------------------------------------------
@@ -268,9 +268,7 @@ Examples:
 
 ### 6. Exiting the program : `exit`
 Exits the program.
-<br>**Format: exit**
-Example:
-* `exit`
+<br>**Format: `exit`**
 
 ### 7. Saving the data
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -307,7 +305,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -s | view -s (NAME) |
-|-s -cr | view -s -c (NAME) |
+|-s -c | view -s -c (NAME) |
 | -c | view -c (NAME) <br>E.g. view -c / view -c John Doe |
 | -cp | view -cp (NAME) <br>E.g. view -cp, view -cp John Doe |
 | -cu | view -cu (NAME) <br>E.g. view -cu / view -cu John Doe |
@@ -324,9 +322,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 ### Exit
 | Format, Examples |
 | ---------------- |
-| exit |
+| `exit` |
 
 ### Help
 | Format, Examples |
 | ---------------- |
-| help |
+| `help` |
