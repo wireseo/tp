@@ -22,7 +22,6 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     * Deleting Mastery Checks: `-mc`
   * Vewing information: `view`
     * Viewing Student Information: `-s`
-    * Viewing Consultation requests of a student: `-s -c`
     * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
     * Viewing Mastery Check sessions: `-mc`, `mcp`, `-mcu`
     * Viewing ungraded missions and quests: `-u`
@@ -190,75 +189,71 @@ Shows a list of all students under the tutor in JARVIS.
 Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all details(contact information, consultation requests and studio participation marks) of a specific student.
 <br>**Format: view -s**
 
-#### 5-2. Viewing all consultation requests of a student: `view -s -c (NAME)`
-Shows student consultation slots.
-<br>**Format: view -s -c (NAME)**
-
-#### 5-3. Viewing all consultation sessions: `view -c (NAME)`
+#### 5-2. Viewing all consultation sessions: `view -c (NAME)`
 Shows all confirmed consultation sessions, both past and upcoming. If a student name is entered after the command, it shows consultation sessions confirmed with the specific student.
 <br>**Format: view -c (NAME)**
 Examples:
 * `view -c`
 * `view -c John Doe`
 
-#### 5-4. Viewing past consultation sessions: `view -cp (NAME)`
+#### 5-3. Viewing past consultation sessions: `view -cp (NAME)`
 Shows all past consultation sessions. If a student name is entered after the command, it shows past consultation sessions with the specific student.
 <br>**Format: view -cp (NAME)**
 Examples:
 * `view -cp`
 * `view -cp John Doe`
 
-#### 5-5. Viewing upcoming consultation sessions: `view -cu (NAME)`
+#### 5-4. Viewing upcoming consultation sessions: `view -cu (NAME)`
 Shows all upcoming consultation sessions. If a student name is entered after the command, it shows upcoming consultation sessions with the specific student.
 <br>**Format: view -cu (NAME)**
 Examples:
 * `view -cu`
 * `view -cu John Doe`
 
-#### 5-6. Viewing all Mastery Check sessions: `view -mc (NAME)`
+#### 5-5. Viewing all Mastery Check sessions: `view -mc (NAME)`
 Shows all confirmed MC sessions, both past and upcoming. If a student name is entered after the command, it shows sessions confirmed with the specific student.
 <br>**Format: view -mc (NAME)**
 Examples:
 * `view -mc`
 * `view -mc John Doe`
 
-#### 5-7. Viewing past Mastery Check sessions: `view -mcp (NAME)`
+#### 5-6. Viewing past Mastery Check sessions: `view -mcp (NAME)`
 Shows all past MC sessions. If a student name is entered after the command, it shows past sessions with the specific student.
 <br>**Format: view -mcp (NAME)**
 Examples:
 * `view -mcp`
 * `view -mcp John Doe`
 
-#### 5-8. Viewing upcoming Mastery Check sessions: `view -mcu (NAME)`
+#### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu (NAME)`
 Shows all upcoming MC sessions. If a student name is entered after the command, it shows upcoming sessions with the specific student.
 <br>**Format: view -mcu (NAME)**
 Examples:
 * `view -mcu`
 * `view -mcu John Doe`* `
 
-#### 5-9. Viewing ungraded missions and quests: `view -u`
+#### 5-8. Viewing ungraded missions and quests: `view -u`
 Shows all the tutor’s ungraded missions and quests.
 <br>**Format: `view -u`**
 
-#### 5-10. Viewing deadline for missions: `view -m`
+#### 5-9. Viewing deadline for missions: `view -m`
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
 
-#### 5-11. Viewing deadline for quests: `view -q`
+#### 5-10. Viewing deadline for quests: `view -q`
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
-#### 5-12. Viewing deadline for both missions and quests: `view -b`
+#### 5-11. Viewing deadline for both missions and quests: `view -b`
 Shows the deadline for current mission(s) and quest(s).
 <br>**Format: `view -b`**
 
-#### 5-13. Viewing deadline for any specific mission or quest by their id: `view -i (ID_OF_MISSION/QUEST)`
+#### 5-12. Viewing deadline for any specific mission or quest by their id: `view -i (ID_OF_MISSION/QUEST)`
 Shows the deadline for the specific mission or quest.
 <br>**Format: `view -i (ID_OF_MISSION/QUEST)`**
 Examples:
 * `view -i 1`
 
-#### 5-14. Viewing Tasks: `view -t`
+#### 5-13. Viewing Tasks: `view -t`
 Shows a list of tasks (todos, events, deadlines). If an additional tag (-t, -e, -d) is specified, the category of task corresponding to the additional tag will be shown.
 <br>**Format: view -t
 <br>          view -t -t / view -t -e / view -t -d**
