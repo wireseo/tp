@@ -6,32 +6,32 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 * Quick start
 * Features
-  * Viewing help : help
-  * Adding information: add
-    * Adding Todos :  -t
-    * Adding Events : -e
-    * Adding Deadlines : -d
-    * Adding Consultations : -c
-    * Adding Mastery Checks : -mc
-  * Editing information: edit
-    * Marking Tasks as Done : -t
-    * Editing Student Information : -s
-  * Deleting information: delete
-    * Deleting Tasks (Todos, Events, Deadlines) : -t
-    * Deleting Consultations: -c
-    * Deleting Mastery Checks: -mc
-  * Vewing information: view
-    * Viewing Student Information: -s
-    * Viewing Consultation requests of a student : -s -cr
-    * Viewing Consultation sessions: -c, -cp, -cu
-    * Viewing Mastery Check sessions: -mc, mcp, -mcu
-    * Viewing ungraded missions and quests: -u
-    * Viewing deadline for missions: -m
-    * Viewing deadline for quests: -q
-    * Viewing deadline for both missions and quests: -b
-    * Viewing deadline for specific mission/quest by id: -i
-    * Viewing Tasks (Todos, Events, Deadlines) : -t
-  * Exiting the program : exit
+    * Viewing help: `help`   
+    * Adding information: `add`   
+      * Adding Todos: `-t`   
+      * Adding Events: `-e`   
+      * Adding Deadlines: `-d`   
+      * Adding Consultations: `-c`   
+      * Adding Mastery Checks: `-mc`   
+  * Editing information: `edit`
+    * Marking Tasks as Done: `-t`
+    * Editing Student Information: `-s`
+  * Deleting information: `delete`
+    * Deleting Tasks (Todos, Events, Deadlines): `-t`
+    * Deleting Consultations: `-c`
+    * Deleting Mastery Checks: `-mc`
+  * Vewing information: `view`
+    * Viewing Student Information: `-s`
+    * Viewing Consultation requests of a student: `-s -c`
+    * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
+    * Viewing Mastery Check sessions: `-mc`, `mcp`, `-mcu`
+    * Viewing ungraded missions and quests: `-u`
+    * Viewing deadline for missions: `-m`
+    * Viewing deadline for quests: `-q`
+    * Viewing deadline for both missions and quests: `-b`
+    * Viewing deadline for specific mission/quest by id: `-i`
+    * Viewing Tasks (Todos, Events, Deadlines): `-t`
+  * Exiting the program: `exit`
   * Saving the data
 * FAQ
 * Command summary
@@ -52,9 +52,9 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
    Some example commands you can try:
    `view -s:  Lists all students. `
    `view -s John Doe: Lists information about a student named John Doe.`
-   `add -t TaskName : Adds a task named TaskName.`
-   `edit -t TaskName : Marks the task named TaskName as Done.`
-   `exit : Exits the app.`
+   `add -t TaskName: Adds a task named TaskName.`
+   `edit -t TaskName: Marks the task named TaskName as Done.`
+   `exit: Exits the app.`
 
 1.  Refer to the Features below for details of each command.
 --------------------------------------------------------------------------------------------------------------------
@@ -87,12 +87,12 @@ Students’ names that are under the Avenger using JARVIS will be fetched automa
 
 </div>
 
-### Viewing help : `help`
+### 1. Viewing help : `help`
 
 Shows a message explaining how to access the help page.
 <br>**Format: `help`**
 
-### Adding Information: `add`
+### 2. Adding Information: `add`
 
 #### 2-1. Adding Todos: `add -t`
 Adds a  simple todo with a todo description.
@@ -129,7 +129,7 @@ Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
-### Editing Information: edit
+### 3. Editing Information: edit
 #### 3-1. Editing Student Information: `edit -s`
 <br>**Format: edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE**
 Examples:
@@ -149,7 +149,7 @@ Examples:
 * `edit -t -e
    → 2`
 
-### Deleting Information: `delete`
+### 4. Deleting Information: `delete`
 #### 4-1. Deleting Tasks: `delete -t`
 Shows a list of tasks (todos, events, deadlines) with id numbers. If an additional tag (-t, -e, -d) is specified, the category of task corresponding to the additional tag will be shown. Then, it deletes the task (todo, event, deadline) based on the task id specified.
 <br> **Format: delete -t
@@ -182,7 +182,7 @@ Examples:
 * `delete -mc John Doe
    → 2`
 
-### Viewing Information: `view `
+### 5. Viewing Information: `view `
 Shows a list of all students under the tutor in JARVIS.
 <br>**Format: `view`**
 
@@ -238,25 +238,25 @@ Examples:
 
 #### 5-9. Viewing ungraded missions and quests: `view -u`
 Shows all the tutor’s ungraded missions and quests.
-<br>**Format: view -u**
+<br>**Format: `view -u`**
 
 #### 5-10. Viewing deadline for missions: `view -m`
-View the deadline for the current mission(s).
-<br>**Format: view -m**
+Shows the deadline for the current mission(s).
+<br>**Format: `view -m`**
 
 #### 5-11. Viewing deadline for quests: `view -q`
 Shows the deadline for the current quest(s).
-<br>**Format: view -q**
+<br>**Format: `view -q`**
 
 #### 5-12. Viewing deadline for both missions and quests: `view -b`
 Shows the deadline for current mission(s) and quest(s).
-<br>**Format: view -b**
+<br>**Format: `view -b`**
 
-#### 5-13. Viewing deadline for any specific mission or quest by their id: `view -i`
+#### 5-13. Viewing deadline for any specific mission or quest by their id: `view -i (ID_OF_MISSION/QUEST)`
 Shows the deadline for the specific mission or quest.
-<br>**Format: view -i ID_OF_MISSION/QUEST**
+<br>**Format: `view -i (ID_OF_MISSION/QUEST)`**
 Examples:
-* `view -i 123456`
+* `view -i 1`
 
 #### 5-14. Viewing Tasks: `view -t`
 Shows a list of tasks (todos, events, deadlines). If an additional tag (-t, -e, -d) is specified, the category of task corresponding to the additional tag will be shown.
@@ -266,13 +266,11 @@ Examples:
 * `view -t`
 * `view -t -d`
 
-### Exiting the program : `exit`
+### 6. Exiting the program : `exit`
 Exits the program.
-<br>**Format: exit**
-Example:
-* `exit`
+<br>**Format: `exit`**
 
-### Saving the data
+### 7. Saving the data
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### FAQ
@@ -307,26 +305,26 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -s | view -s (NAME) |
-|-s -cr | view -s -c (NAME) |
+|-s -c | view -s -c (NAME) |
 | -c | view -c (NAME) <br>E.g. view -c / view -c John Doe |
 | -cp | view -cp (NAME) <br>E.g. view -cp, view -cp John Doe |
 | -cu | view -cu (NAME) <br>E.g. view -cu / view -cu John Doe |
 | -mc | view -mc (NAME) <br>E.g. view -mc / view -mc John Doe |
 | -mcp | view -mcp (NAME) <br>E.g. view -mcp / view -mcp John Doe |
 | -mcu | view -mcu (NAME) <br>E.g. view -mcu / view -mcu John Doe |
--u |view -u |
--m | view -m |
--q | view -q |
--b | view -b |
--i | View -i ID_OF_MISSION/QUEST <br>E.g. view -i 123456
--t | view -t <br>E.g. view -t <br>view -t -d <br>E.g. view -t -d|
+| -u | `view -u` |
+| -m | `view -m` |
+| -q | `view -q` |
+| -b | `view -b` |
+| -i | `view -i (ID_OF_MISSION/QUEST)` <br>E.g. `view -i 1` |
+| -t | view -t <br>E.g. view -t <br>view -t -d <br>E.g. view -t -d |
 
 ### Exit
 | Format, Examples |
 | ---------------- |
-| exit |
+| `exit` |
 
 ### Help
 | Format, Examples |
 | ---------------- |
-| help |
+| `help` |
