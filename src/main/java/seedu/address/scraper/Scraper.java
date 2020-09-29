@@ -10,14 +10,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seedu.address.commons.exceptions.OsNotSupportedException;
+import seedu.address.storage.Storage;
 
 public class Scraper {
     private WebDriver driver;
+    private Storage storage;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public Scraper() throws OsNotSupportedException {
+    public Scraper(Storage storage) throws OsNotSupportedException {
+        this.storage = storage;
+
         // Grab current os name
         final String operatingSystem = System.getProperty("os.name").toUpperCase();
         // Set chrome driver path according to os

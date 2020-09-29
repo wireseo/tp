@@ -7,9 +7,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 
 /**
  * Manages storage of AddressBook data in local storage.
@@ -19,14 +17,18 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
+    private UserLoginStorage userLoginStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code AddressBookStorage}, {@code UserPrefStorage}
+     * and {@code UserLoginStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage,
+                          UserLoginStorage userLoginStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.userLoginStorage = userLoginStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -45,7 +47,6 @@ public class StorageManager implements Storage {
     public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
-
 
     // ================ AddressBook methods ==============================
 
@@ -76,4 +77,19 @@ public class StorageManager implements Storage {
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
 
+    // ================ UserLogin methods ==============================
+    @Override
+    public Path getUserLoginFilePath() {
+        return userLoginStorage.getUserLoginFilePath();
+    }
+
+    @Override
+    public Optional<UserLogin> readUserLogin() throws DataConversionException, IOException {
+        return userLoginStorage.readUserLogin();
+    }
+
+    @Override
+    public void saveUserLogin(ReadOnlyUserLogin userLogin) throws IOException {
+        userLoginStorage.saveUserLogin(userLogin);
+    }
 }
