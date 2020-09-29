@@ -20,13 +20,18 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserLogin;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.scraper.Scraper;
+import seedu.address.scraper.ScraperManager;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonUserLoginStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.UserLoginStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -36,10 +41,11 @@ import seedu.address.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(0, 6, 0, true);
+    public static final Version VERSION = new Version(0, 7, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
+    protected Scraper scraper;
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
@@ -56,16 +62,60 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
+
+        UserLoginStorage userLoginStorage = new JsonUserLoginStorage(config.getUserLoginDetails());
+        UserLogin userLogin = initLogin(userLoginStorage);
+
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, userLoginStorage);
 
         initLogging(config);
+
+        // Add a initScraperManager to
+        scraper = new ScraperManager(userLogin);
 
         model = initModelManager(storage, userPrefs);
 
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
+    }
+
+    /**
+     * Returns a UserLogin object corresponding to the data stored.
+     * @param storage The place where UserLogin data is stored
+     * @return A UserLogin object
+     */
+    private UserLogin initLogin(UserLoginStorage storage) {
+        Path loginFilePath = storage.getUserLoginFilePath();
+        logger.info("Using login file : " + loginFilePath);
+
+        UserLogin initializedLogin;
+        try {
+            Optional<UserLogin> loginOptional = storage.readUserLogin();
+
+            if (loginOptional.isEmpty()) {
+                logger.warning("Please edit username and password details and restart again.");
+            }
+            initializedLogin = loginOptional.orElse(new UserLogin());
+
+        } catch (DataConversionException e) {
+            logger.warning("UserLogin file at " + loginFilePath + " is not in the correct format. "
+                    + "Asking user to edit login information and restart again.");
+            initializedLogin = new UserLogin();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with empty login information");
+            initializedLogin = new UserLogin();
+        }
+
+        //Update login file in case it was missing to begin with or there are new/unused fields
+        try {
+            storage.saveUserLogin(initializedLogin);
+        } catch (IOException e) {
+            logger.warning("Failed to save login file : " + StringUtil.getDetails(e));
+        }
+
+        return initializedLogin;
     }
 
     /**

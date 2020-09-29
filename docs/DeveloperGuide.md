@@ -7,6 +7,25 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Introduction**
+
+###Purpose
+The purpose of this document is to cover the multi-level design architecture of JARVIS, so that the intended audience
+of this document can understand the relationship between components that make up JARVIS.
+
+###Audience
+This developer guide is for anyone who wants to understand the internal software architecture of JARVIS.
+The following groups of people are the intended audience:
+* JARVIS developers: anyone who wish to upgrade JARVIS to support more functions.
+* CS1101S Avengers: tutors of CS1101S who wants to improve their efficiency and productivity.
+
+###JARVIS Overview
+JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI). JARVIS in general helps to organise and simplify
+CS1101S tutors' administrative tasks.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
@@ -249,13 +268,18 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                     | So that I …​                                                |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | can refer to instructions when I forget how to use the App             |
-| `* * *`  | user                                       | edit a student                 | can keep the contact details of all my students updated                |                                                  |
-| `* * *`  | user                                       | view my students automatically | can know who to contact                                                |
-| `* * *`  | user                                       | list all unmarked assignments  | will not miss out on marking any overdue missions or quests            |
-| `* *`    | user with a crowded calendar               | add consultations              | keep track of my schedule easily                                       |
-| `* *`    | user                                       | list my consultations          | be reminded of my schedule                                             |
+| -------- | ------------------------------------------ | ------------------------------   | ----------------------------------------------------------- |
+| `* * *`  | new user                                   | see usage instructions           | can refer to instructions when I forget how to use the App. |
+| `* * *`  | user                                       | edit a student                   | can keep the contact details of all my students updated.    |                                                  |
+| `* * *`  | user                                       | view my students automatically   | can know who to contact.                                    |
+| `* * *`  | user                                       | list all unmarked assignments    | will not miss out on marking any overdue missions or quests.|
+| `* * *`  | user                                       | view the deadline of missions or quests  | know when I can start marking them.                 |
+| `* *`    | user with a crowded calendar               | add consultations                | keep track of my schedule easily.                           |
+| `* *`    | user                                       | list my consultations            | be reminded of my schedule.                                 |
+| `* *`    | user                                       | view deadlines for missions and quests | can schedule when to mark them.                       |
+| `* *`    | user                                       | add my own tasks                 | can be consolidate all TA and non-TA scheduling into Jarvis.| 
+| `* *`    | user                                       | list my own tasks                | can have an overview of all my tasks.                       | 
+| `* *`    | user                                       | mark my tasks as done            | can keep track of complete and incomplete tasks.            |
 
 *{More to be added}*
 
@@ -263,43 +287,471 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `JARVIS` and the **Actor** is the `CS1101S tutor`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: UC1 - View consultation sessions**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to view consultations.
+2.  Jarvis shows a list of all consultations.
 
     Use case ends.
 
 **Extensions**
 
+* 1a. The user enters a name with the command.
+
+    * 1a1. Jarvis shows the list of consultation sessions belonging to the student.
+
+      Use case ends.
+
+* 1b. The user enters an invalid name with any command.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 1c. The user requests to view only past sessions.
+
+    * 1c1. Jarvis shows the list of all past consultation sessions.
+
+      Use case ends.
+
+* 1d. The user requests to view only past sessions with a name.
+
+    * 1d1. Jarvis shows the list of all past consultation sessions belonging to the student.
+
+      Use case ends.
+
+* 1e. The user requests to view only future sessions.
+
+    * 1e1. Jarvis shows the list of all future consultation sessions.
+
+      Use case ends.
+
+* 1f. The user requests to view only future sessions with a name.
+
+    * 1f1. Jarvis shows the list of all future consultation sessions belonging to the student.
+
+      Use case ends.
+
+<br>**Use case: UC2 - View Mastery Check (MC) sessions**
+
+**MSS**
+
+1.  User requests to view MC sessions.
+2.  Jarvis shows a list of all MC sessions.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user enters a name with the command.
+
+    * 1a1. Jarvis shows the list of MC sessions belonging to the student.
+
+      Use case ends.
+
+* 1b. The user enters an invalid name with any command.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 1c. The user requests to view only past sessions.
+
+    * 1c1. Jarvis shows the list of all past MC sessions.
+
+      Use case ends.
+
+* 1d. The user requests to view only past sessions with a name.
+
+    * 1d1. Jarvis shows the list of all past MC sessions belonging to the student.
+
+      Use case ends.
+
+* 1e. The user requests to view only future sessions.
+
+    * 1e1. Jarvis shows the list of all future MC sessions.
+
+      Use case ends.
+
+* 1f. The user requests to view only future sessions with a name.
+
+    * 1f1. Jarvis shows the list of all future MC sessions belonging to the student.
+
+      Use case ends.
+
+
+<br>**Use case: UC3 - Delete a consultation session**
+
+**MSS**
+
+1. User requests to delete a consultation session.
+2. Jarvis shows a list of consultation sessions with id numbers.
+3. User requests to delete consultation session with id number.
+4. Jarvis deletes the consultation session.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user enters a name with the command.
+
+    * 1a1. Jarvis shows the list of consultation sessions belonging to the student.
+
+      Use case resumes at step 3.
+
+* 1b. The user enters an invalid name with the command.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
 * 2a. The list is empty.
 
-  Use case ends.
+      Use case ends.
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. Jarvis shows an error message.
 
       Use case resumes at step 2.
 
-*{More to be added}*
+
+<br>**Use case: UC4 - Delete a Mastery Check (MC) session**
+
+**MSS**
+
+1. User requests to delete a MC session.
+2. Jarvis shows a list of MC sessions with id numbers.
+3. User requests to delete MC session with id number.
+4. Jarvis deletes the MC session.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user enters a name with the command.
+
+    * 1a1. Jarvis shows the list of MC sessions belonging to the student.
+
+      Use case resumes at step 3.
+
+* 1b. The user enters an invalid name with the command.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+      Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Jarvis shows an error message.
+
+      Use case resumes at step 2.
+
+
+<br>**Use case: UC5 - Add a consultation session**
+
+**MSS**
+
+1. User requests to add a Consultation session.
+2. Jarvis adds a Consultation session for the student at the specified date and time.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user enters an invalid date or time.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 1b. The user enters a nonexistent name.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+<br>**Use case: UC6 - Add a Mastery Check (MC) session**
+
+**MSS**
+
+1. User requests to add a MC session.
+2. Jarvis adds a MC session for the student at the specified date and time.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user enters an invalid date or time.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 1b. The user enters a nonexistent name.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+<br>**Use case: UC7 - Add a personal todo task**
+
+**MSS**
+
+1. User requests to add a personal todo task.
+2. Jarvis adds a personal todo task with description.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The user enters an invalid command.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 1b. The user did not enter a description.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+<br>**Use case: UC8 - Add a personal event task**
+
+**MSS**
+
+1. User requests to add a personal event task at the specified time and date.
+2. Jarvis adds a personal event task at the specified time and date.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The user enters an invalid command.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1b. The user did not enter a description.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1c. The user enters an invalid date or time.
+
+    * 1c1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+<br>**Use case: UC9 - Add a personal deadline task**
+
+**MSS**
+
+1. User requests to add a personal deadline task at the specified time and date.
+2. Jarvis adds a personal deadline task at the specified time and date.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The user enters an invalid command.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1b. The user did not enter a description.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1c. The user enters an invalid date or time.
+
+    * 1c1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+<br>**Use case: UC10 - Delete a personal task**
+
+**MSS**
+
+1. User requests to delete a personal task.
+2. Jarvis shows a list of tasks with id numbers.
+3. User requests to delete the task with id number.
+4. Jarvis deletes the task.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user knows that he wants to delete a todo task from todo list.
+
+    * 1a1. Jarvis shows the list of todos.
+
+      Use case resumes at step 3.
+
+* 1b. The user knows that he wants to delete an event task from event list.
+
+    * 1b1. Jarvis shows the list of events.
+
+      Use case resumes at step 3.
+      
+* 1c. The user knows that he wants to delete a deadline task from deadline list.
+
+    * 1c1. Jarvis shows the list of deadlines.
+
+      Use case resumes at step 3.
+
+* 1d. The user enters an invalid command.
+
+    * 1d1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+      Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Jarvis shows an error message.
+
+      Use case resumes at step 2.
+
+
+<br>**Use case: UC11 - View personal tasks**
+
+**MSS**
+
+1.  User requests to view his personal tasks.
+2.  Jarvis shows a list of tasks.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user only wants to view todo tasks.
+
+    * 1a1. Jarvis shows todo task list.
+
+      Use case ends.
+      
+* 1b. The user only wants to view event tasks.
+
+    * 1a1. Jarvis shows event task list.
+
+      Use case ends.
+      
+* 1c. The user only wants to view deadline tasks.
+
+    * 1a1. Jarvis shows deadline task list.
+
+      Use case ends.
+      
+* 1d. The user enters an invalid command.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+<br>**Use case: UC12 - Mark a personal task as done**
+
+**MSS**
+
+1. User requests to mark a personal task as done.
+2. Jarvis shows a list of tasks with id numbers.
+3. User requests to mark the task with id number as done.
+4. Jarvis marks the task as done.
+
+**Extensions**
+
+* 1a. The user knows that he wants to mark a todo task from todo list as done.
+
+    * 1a1. Jarvis shows the list of todos.
+
+      Use case resumes at step 3.
+
+* 1b. The user knows that he wants to mark an event task from event list as done.
+
+    * 1b1. Jarvis shows the list of events.
+
+      Use case resumes at step 3.
+      
+* 1c. The user knows that he wants to mark a deadline task from deadline list as done.
+
+    * 1c1. Jarvis shows the list of deadlines.
+
+      Use case resumes at step 3.
+
+* 1d. The user enters an invalid command.
+
+    * 1d1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+      Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Jarvis shows an error message.
+
+      Use case resumes at step 2.
+
+
+<br>**Use case: UC13 - Closes the Jarvis program**
+
+**MSS**
+
+1. The user finishes using Jarvis program.
+2. The user proceeds to close the program.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user forgets to close the program.
+
+    * 1a1. Jarvis continues to run.
+
+    Use case ends.
+      
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+1.  Should work on _mainstream Operating System_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. The system should be backward compatible with data produced by earlier versions of the system.
+5. The system should work on both 32-bit and 64-bit environments.
+6. The system should respond within one second.
+7. For now, the product is not required to handle the printing of reports.
+8. The application should not use copyrighted images anywhere in the UI.
+9.  Should be easy for the user to migrate all information in Jarvis onto a separate computer.
 
-*{More to be added}*
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Mainstream Desktop Operating System**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Mastery Check**: Type of special consultation that is recorded and graded in the CS1101S module.
 
 --------------------------------------------------------------------------------------------------------------------
 
