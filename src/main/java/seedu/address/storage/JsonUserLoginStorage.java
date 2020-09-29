@@ -8,7 +8,6 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyUserLogin;
 import seedu.address.model.UserLogin;
-import seedu.address.model.UserPrefs;
 
 
 public class JsonUserLoginStorage implements UserLoginStorage {
@@ -28,11 +27,6 @@ public class JsonUserLoginStorage implements UserLoginStorage {
         return readUserLogin(filePath);
     }
 
-    @Override
-    public void saveUserLogin(ReadOnlyUserLogin userLoginDetails) throws IOException {
-        JsonUtil.saveJsonFile(userLoginDetails, filePath);
-    }
-
     /**
      * Similar to {@link #readUserLogin()}
      * @param loginFilePath location of the data. Cannot be null.
@@ -40,5 +34,10 @@ public class JsonUserLoginStorage implements UserLoginStorage {
      */
     public Optional<UserLogin> readUserLogin(Path loginFilePath) throws DataConversionException {
         return JsonUtil.readJsonFile(loginFilePath, UserLogin.class);
+    }
+
+    @Override
+    public void saveUserLogin(ReadOnlyUserLogin userLoginDetails) throws IOException {
+        JsonUtil.saveJsonFile(userLoginDetails, filePath);
     }
 }

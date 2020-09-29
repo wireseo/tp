@@ -21,9 +21,9 @@ public interface UserLoginStorage {
     /**
      * Returns UserLogin data from storage.
      *   Returns {@code Optional.empty()} if storage file is not found.
+     * @return A UserLogin Optional describing the login formation read.
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
-     * @return
      */
     Optional<UserLogin> readUserLogin() throws DataConversionException, IOException;
 
