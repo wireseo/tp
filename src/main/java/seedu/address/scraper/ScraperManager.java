@@ -1,4 +1,5 @@
 package seedu.address.scraper;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,17 +11,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seedu.address.commons.exceptions.OsNotSupportedException;
+import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 
 public class ScraperManager implements Scraper {
     private WebDriver driver;
     private UserLogin loginInfo;
+    private Model model;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public ScraperManager(UserLogin loginInfo) throws OsNotSupportedException {
+    public ScraperManager(UserLogin loginInfo, Model model) throws OsNotSupportedException {
         this.loginInfo = loginInfo;
+        this.model = model;
 
         // Grab current os name
         final String operatingSystem = System.getProperty("os.name").toUpperCase();
@@ -63,6 +67,7 @@ public class ScraperManager implements Scraper {
             List<WebElement> missionTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
             // Grab deadlines
             for (WebElement title : missionTitles) {
+                // Add mission to ModelController here
                 System.out.println(title.getText());
             }
 

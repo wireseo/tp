@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.mission.Mission;
+import seedu.address.model.mission.MissionList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -16,6 +18,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
 
+    private final MissionList missions;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -25,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        missions = new MissionList();
     }
 
     public AddressBook() {}
@@ -54,6 +59,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setMissions(newData.getMissionList());
     }
 
     //// person-level operations
@@ -104,6 +110,19 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Mission> getMissionList() {
+        return this.missions.asObservableList();
+    }
+
+    public void addMission(Mission mission) {
+        this.missions.add(mission);
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions.setMissions(missions);
     }
 
     @Override
