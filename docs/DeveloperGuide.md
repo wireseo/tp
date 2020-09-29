@@ -7,6 +7,25 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Introduction**
+
+###Purpose
+The purpose of this document is to cover the multi-level design architecture of JARVIS, so that the intended audience
+of this document can understand the relationship between components that make up JARVIS.
+
+###Audience
+This developer guide is for anyone who wants to understand the internal software architecture of JARVIS.
+The following groups of people are the intended audience:
+* JARVIS developers: anyone who wish to upgrade JARVIS to support more functions.
+* CS1101S Avengers: tutors of CS1101S who wants to improve their efficiency and productivity.
+
+###JARVIS Overview
+JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI). JARVIS in general helps to organise and simplify
+CS1101S tutors' administrative tasks.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
@@ -249,16 +268,18 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                     | So that I …​                                                |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | can refer to instructions when I forget how to use the App             |
-| `* * *`  | user                                       | edit a student                 | can keep the contact details of all my students updated                |                                                  |
-| `* * *`  | user                                       | view my students automatically | can know who to contact                                                |
-| `* * *`  | user                                       | list all unmarked assignments  | will not miss out on marking any overdue missions or quests            |
-| `* * *`  | user                                       | view the deadline of missions or quests  | know when I can start marking them                           |
-| `* *`    | user with a crowded calendar               | add consultations              | keep track of my schedule easily                                       |
-| `* *`    | user                                       | list my consultations          | be reminded of my schedule                                             |
-| `* *`    | user                                       | view deadlines for missions and quests | can schedule when to mark them                                 |
-| `* *`    | user                                       | add my own tasks               | can be consolidate all TA and non-TA scheduling into Jarvis.           | 
+| -------- | ------------------------------------------ | ------------------------------   | ----------------------------------------------------------- |
+| `* * *`  | new user                                   | see usage instructions           | can refer to instructions when I forget how to use the App. |
+| `* * *`  | user                                       | edit a student                   | can keep the contact details of all my students updated.    |                                                  |
+| `* * *`  | user                                       | view my students automatically   | can know who to contact.                                    |
+| `* * *`  | user                                       | list all unmarked assignments    | will not miss out on marking any overdue missions or quests.|
+| `* * *`  | user                                       | view the deadline of missions or quests  | know when I can start marking them.                 |
+| `* *`    | user with a crowded calendar               | add consultations                | keep track of my schedule easily.                           |
+| `* *`    | user                                       | list my consultations            | be reminded of my schedule.                                 |
+| `* *`    | user                                       | view deadlines for missions and quests | can schedule when to mark them.                       |
+| `* *`    | user                                       | add my own tasks                 | can be consolidate all TA and non-TA scheduling into Jarvis.| 
+| `* *`    | user                                       | list my own tasks                | can have an overview of all my tasks.                       | 
+| `* *`    | user                                       | mark my tasks as done            | can keep track of complete and incomplete tasks.            |
 
 *{More to be added}*
 
@@ -266,7 +287,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `JARVIS` and the **Actor** is the `CS1101S tutor`, unless specified otherwise)
 
-**Use case: View consultation sessions**
+**Use case: UC1 - View consultation sessions**
 
 **MSS**
 
@@ -314,7 +335,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: View Mastery Check (MC) sessions**
+**Use case: UC2 - View Mastery Check (MC) sessions**
 
 **MSS**
 
@@ -362,7 +383,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Delete a consultation session**
+**Use case: UC3 - Delete a consultation session**
 
 **MSS**
 
@@ -398,7 +419,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Delete a Mastery Check (MC) session**
+**Use case: UC4 - Delete a Mastery Check (MC) session**
 
 **MSS**
 
@@ -434,7 +455,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Add a consultation session**
+**Use case: UC5 - Add a consultation session**
 
 **MSS**
 
@@ -458,7 +479,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Add a Mastery Check (MC) session**
+**Use case: UC6 - Add a Mastery Check (MC) session**
 
 **MSS**
 
@@ -480,6 +501,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. Jarvis shows an error message.
 
       Use case ends.
+
+
+**Use case: UC7 - Add a personal task**
+
+**MSS**
+
+1. User requests to add a MC session.
+2. Jarvis adds a MC session for the student at the specified date and time.
+
+    Use case ends.
+
+**Extensions**
 
 
 *{More to be added}*

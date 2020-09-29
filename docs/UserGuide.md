@@ -14,10 +14,10 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
       * Adding Consultations: `-c`   
       * Adding Mastery Checks: `-mc`   
   * Editing information: `edit`
-    * Marking Tasks as Done: `-t`
+    * Marking Tasks as Done: `-t`, `-tt`, `-te`, `td`
     * Editing Student Information: `-s`
   * Deleting information: `delete`
-    * Deleting Tasks (Todos, Events, Deadlines): `-t`
+    * Deleting Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
     * Deleting Consultations: `-c`
     * Deleting Mastery Checks: `-mc`
   * Vewing information: `view`
@@ -29,7 +29,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     * Viewing deadline for quests: `-q`
     * Viewing deadline for both missions and quests: `-b`
     * Viewing deadline for specific mission/quest by id: `-i`
-    * Viewing Tasks (Todos, Events, Deadlines): `-t`
+    * Viewing Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
   * Exiting the program: `exit`
   * Saving the data
 * FAQ
@@ -51,8 +51,8 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
    Some example commands you can try:
    * `view -s:  Lists all students. `
    * `view -s John Doe: Lists information about a student named John Doe.`
-   * `add -t TaskName : Adds a task named TaskName.`
-   * `edit -t TaskName : Marks the task named TaskName as Done.`
+   * `add -t DESCRIPTION : Adds a todo task with specified description.`
+   * `edit -t TASK_ID : Marks the task referenced by Task_ID as Done.`
    * `exit : Exits the app.`
 
 1.  Refer to the Features below for details of each command.
@@ -140,29 +140,21 @@ information which corresponds to that tag. tags together with the updated inform
 * `edit -s Mary Jane t/maryjane132 s/3`
 
 #### 3-2. Marking Tasks as Done: `edit -t`
-Shows a list of tasks (todos, events, deadlines) with id numbers. If an additional tag (-t, -e, -d) is specified, the category of task corresponding to the additional tag will be shown. Then, it marks the task (todo, event, deadline) as done based on the task id specified.
-<br>**Format: 
-<br>edit -t → TASKID
-<br>edit -t -t / edit -t -e / edit -t -d → TASKID**
+Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can specify the `TASK_ID` to mark that particular task as done.
+<br>**Format: `edit -t / -tt / -te / -td → TASK_ID`**
 
 Examples:
 * `edit -t → 3`
-* `edit -t -e → 2`
+* `edit -te → 2`
 
 ### 4. Deleting Information: `delete`
 #### 4-1. Deleting Tasks: `delete -t`
-Shows a list of tasks (todos, events, deadlines) with id numbers. If an additional tag (-t, -e, -d) is specified, the category of task corresponding to the additional tag will be shown. Then, it deletes the task (todo, event, deadline) based on the task id specified.
-<br> **Format: delete -t
-<br>           → TASKID
-<br>           delete -t -t / delete -t -e / delete -t -d
-<br>           → TASKID**
+Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can sepcify the `TASK_ID` to delete that particular task.
+<br> **Format:`delete -t / -tt / -te / -td → TASK_ID`**
 
 Examples:
-* `delete -t
-   → 3`
-* `delete -t -d
-   → 2`
-
+* `delete -t → 3`
+* `delete -td → 2`
 
 #### 4-2 Deleting Consultations: `delete -c`
 Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
@@ -177,8 +169,7 @@ Examples:
 Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: delete -mc [NAME]**
 Examples:
-* `delete -mc
-   → 3`
+* `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
 
@@ -264,12 +255,11 @@ Shows the deadline for the specific mission or quest.
 * `view -i 1`
 
 #### 5-13. Viewing Tasks: `view -t`
-Shows a list of tasks (todos, events, deadlines). If an additional tag (-t, -e, -d) is specified, the category of task corresponding to the additional tag will be shown.
-<br>**Format: `view -t`
-<br>          `view -t -t / view -t -e / view -t -d`**
+Shows a list of tasks (todos, events, deadlines). If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively.
+<br>**Format: `view -t / -tt / -te / -td`**
 <br>Examples:
 * `view -t`
-* `view -t -d`
+* `view -td`
 
 ### 6. Exiting the program : `exit`
 Exits the program.
@@ -299,14 +289,14 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
-| -t | edit -t → TASKID <br>E.g. edit -t → 3 <br>edit -t -e → TASKID <br>E.g. edit -t -e → 2 |
+| -t | edit -t / -tt / -te / -td → TASK_ID |
 
 ### Delete
 | Tag | Format, Examples |
 | --- | ---------------- |
-| -t | delete -t  → TASKID <br>e.g. delete -t → 3 <br>delete -t -d → TASKID <br>e.g. delete -t -d → 2 |
-| -c | delete -c NAME <br>e.g. delete -c → 3 / delete -c John Doe → 2 |
-| -mc | delete -mc NAME <br>e.g. delete -mc → 3 / delete -mc John Doe → 2 |
+| -t | delete -t / -tt / -te / -td → TASK_ID <br>E.g. delete -tt → 3 / delete -t → 3 |
+| -c | delete -c NAME <br>E.g. delete -c → 3 / delete -c John Doe → 2 |
+| -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
 
 ### View
 | Tag | Format, Examples |
@@ -319,12 +309,12 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | -mc | view -mc NAME <br>E.g. view -mc / view -mc John Doe |
 | -mcp | view -mcp NAME <br>E.g. view -mcp / view -mcp John Doe |
 | -mcu | view -mcu NAME <br>E.g. view -mcu / view -mcu John Doe |
--u |view -u |
--m | view -m |
--q | view -q |
--b | view -b |
--i | View -i ID_OF_MISSION/QUEST <br>E.g. view -i 123456
--t | view -t <br>E.g. view -t <br>view -t -d <br>E.g. view -t -d|
+| -u |view -u |
+| -m | view -m |
+| -q | view -q |
+| -b | view -b |
+| -i | view -i ID_OF_MISSION/QUEST <br>E.g. view -i 123456 |
+| -t | view -t / -tt / -te / -td |
 
 ### Exit
 | Format, Examples |
