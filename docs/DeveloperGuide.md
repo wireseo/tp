@@ -334,8 +334,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-
-**Use case: UC2 - View Mastery Check (MC) sessions**
+<br>**Use case: UC2 - View Mastery Check (MC) sessions**
 
 **MSS**
 
@@ -383,7 +382,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC3 - Delete a consultation session**
+<br>**Use case: UC3 - Delete a consultation session**
 
 **MSS**
 
@@ -419,7 +418,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: UC4 - Delete a Mastery Check (MC) session**
+<br>**Use case: UC4 - Delete a Mastery Check (MC) session**
 
 **MSS**
 
@@ -455,7 +454,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: UC5 - Add a consultation session**
+<br>**Use case: UC5 - Add a consultation session**
 
 **MSS**
 
@@ -479,7 +478,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC6 - Add a Mastery Check (MC) session**
+<br>**Use case: UC6 - Add a Mastery Check (MC) session**
 
 **MSS**
 
@@ -503,7 +502,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC7 - Add a personal todo task**
+<br>**Use case: UC7 - Add a personal todo task**
 
 **MSS**
 
@@ -527,7 +526,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC8 - Add a personal event task**
+<br>**Use case: UC8 - Add a personal event task**
 
 **MSS**
 
@@ -557,7 +556,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC9 - Add a personal deadline task**
+<br>**Use case: UC9 - Add a personal deadline task**
 
 **MSS**
 
@@ -587,7 +586,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC10 - Delete a personal task**
+<br>**Use case: UC10 - Delete a personal task**
 
 **MSS**
 
@@ -635,7 +634,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: UC11 - View personal tasks**
+<br>**Use case: UC11 - View personal tasks**
 
 **MSS**
 
@@ -671,7 +670,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC12 - Mark a personal task as done**
+<br>**Use case: UC12 - Mark a personal task as done**
 
 **MSS**
 
@@ -717,7 +716,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: UC13 - Closes the Jarvis program**
+<br>**Use case: UC13 - Closes the Jarvis program**
 
 **MSS**
 
@@ -734,12 +733,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
       
-      
-*{More to be added}*
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream Operating System_ as long as it has Java `11` or above installed.
+1.  Should work on _mainstream Operating System_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The system should be backward compatible with data produced by earlier versions of the system.
@@ -749,7 +746,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 8. The application should not use copyrighted images anywhere in the UI.
 9.  Should be easy for the user to migrate all information in Jarvis onto a separate computer.
 
-*{More to be added}*
 
 ### Glossary
 
