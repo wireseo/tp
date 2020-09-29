@@ -12,14 +12,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.model.UserLogin;
 
-public class Scraper {
+public class ScraperManager implements Scraper {
     private WebDriver driver;
     private UserLogin loginInfo;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public Scraper(UserLogin loginInfo) throws OsNotSupportedException {
+    public ScraperManager(UserLogin loginInfo) throws OsNotSupportedException {
         this.loginInfo = loginInfo;
 
         // Grab current os name

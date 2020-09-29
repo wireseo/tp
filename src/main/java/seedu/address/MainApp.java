@@ -15,9 +15,16 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.*;
+import seedu.address.model.AddressBook;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserLogin;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.scraper.Scraper;
+import seedu.address.scraper.ScraperManager;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserLoginStorage;
@@ -64,8 +71,8 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        scraper = new Scraper(userLogin);
-        scraper.get();
+        // Add a initScraperManager to
+        scraper = new ScraperManager(userLogin);
 
         model = initModelManager(storage, userPrefs);
 

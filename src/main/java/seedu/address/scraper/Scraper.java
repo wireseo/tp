@@ -1,2 +1,4 @@
-package seedu.address.scraper;public interface Scraper {
+package seedu.address.scraper;
+
+public interface Scraper {
 }
