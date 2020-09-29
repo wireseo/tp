@@ -503,18 +503,238 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC7 - Add a personal task**
+**Use case: UC7 - Add a personal todo task**
 
 **MSS**
 
-1. User requests to add a MC session.
-2. Jarvis adds a MC session for the student at the specified date and time.
+1. User requests to add a personal todo task.
+2. Jarvis adds a personal todo task with description.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The user enters an invalid command.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 1b. The user did not enter a description.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+**Use case: UC8 - Add a personal event task**
+
+**MSS**
+
+1. User requests to add a personal event task at the specified time and date.
+2. Jarvis adds a personal event task at the specified time and date.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The user enters an invalid command.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1b. The user did not enter a description.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1c. The user enters an invalid date or time.
+
+    * 1c1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+**Use case: UC9 - Add a personal deadline task**
+
+**MSS**
+
+1. User requests to add a personal deadline task at the specified time and date.
+2. Jarvis adds a personal deadline task at the specified time and date.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The user enters an invalid command.
+
+    * 1a1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1b. The user did not enter a description.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+      
+* 1c. The user enters an invalid date or time.
+
+    * 1c1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+**Use case: UC10 - Delete a personal task**
+
+**MSS**
+
+1. User requests to delete a personal task.
+2. Jarvis shows a list of tasks with id numbers.
+3. User requests to delete the task with id number.
+4. Jarvis deletes the task.
 
     Use case ends.
 
 **Extensions**
 
+* 1a. The user knows that he wants to delete a todo task from todo list.
 
+    * 1a1. Jarvis shows the list of todos.
+
+      Use case resumes at step 3.
+
+* 1b. The user knows that he wants to delete an event task from event list.
+
+    * 1b1. Jarvis shows the list of events.
+
+      Use case resumes at step 3.
+      
+* 1c. The user knows that he wants to delete a deadline task from deadline list.
+
+    * 1c1. Jarvis shows the list of deadlines.
+
+      Use case resumes at step 3.
+
+* 1d. The user enters an invalid command.
+
+    * 1d1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+      Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Jarvis shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use case: UC11 - View personal tasks**
+
+**MSS**
+
+1.  User requests to view his personal tasks.
+2.  Jarvis shows a list of tasks.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user only wants to view todo tasks.
+
+    * 1a1. Jarvis shows todo task list.
+
+      Use case ends.
+      
+* 1b. The user only wants to view event tasks.
+
+    * 1a1. Jarvis shows event task list.
+
+      Use case ends.
+      
+* 1c. The user only wants to view deadline tasks.
+
+    * 1a1. Jarvis shows deadline task list.
+
+      Use case ends.
+      
+* 1d. The user enters an invalid command.
+
+    * 1b1. Jarvis shows an error message.
+
+      Use case ends.
+
+
+**Use case: UC12 - Mark a personal task as done**
+
+**MSS**
+
+1. User requests to mark a personal task as done.
+2. Jarvis shows a list of tasks with id numbers.
+3. User requests to mark the task with id number as done.
+4. Jarvis marks the task as done.
+
+**Extensions**
+
+* 1a. The user knows that he wants to mark a todo task from todo list as done.
+
+    * 1a1. Jarvis shows the list of todos.
+
+      Use case resumes at step 3.
+
+* 1b. The user knows that he wants to mark an event task from event list as done.
+
+    * 1b1. Jarvis shows the list of events.
+
+      Use case resumes at step 3.
+      
+* 1c. The user knows that he wants to mark a deadline task from deadline list as done.
+
+    * 1c1. Jarvis shows the list of deadlines.
+
+      Use case resumes at step 3.
+
+* 1d. The user enters an invalid command.
+
+    * 1d1. Jarvis shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+      Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Jarvis shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use case: UC13 - Closes the Jarvis program**
+
+**MSS**
+
+1. The user finishes using Jarvis program.
+2. The user proceeds to close the program.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user forgets to close the program.
+
+    * 1a1. Jarvis continues to run.
+
+    Use case ends.
+      
+      
 *{More to be added}*
 
 ### Non-Functional Requirements
