@@ -97,35 +97,35 @@ Shows a message explaining how to access the help page.
 #### 2-1. Adding Todos: `add -t`
 Adds a  simple todo with a todo description.
 <br>**Format: `add -t DESCRIPTION`**
-Examples:
+<br>Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
 #### 2-2. Adding Events: `add -e`
 Adds an event with an event description to attend at a specific date and time.
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
-Examples:
+<br>Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
 
 #### 2-3. Adding Deadlines: `add -d`
 Adds a deadline with an deadline description to complete by a specific date and time.
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
-Examples:
+<br>Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
 
 #### 2-4. Adding Consultations: `add -c`
 Adds a consultation session with a student at a specific date and time.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
-Examples:
+<br>Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
 #### 2-5. Adding Mastery Checks: `add -mc`
 Adds a Mastery Check session with a student at a specific date and time.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
-Examples:
+<br>Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
@@ -142,8 +142,7 @@ information which corresponds to that tag. tags together with the updated inform
 #### 3-2. Marking Tasks as Done: `edit -t`
 Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can specify the `TASK_ID` to mark that particular task as done.
 <br>**Format: `edit -t / -tt / -te / -td → TASK_ID`**
-
-Examples:
+<br>Examples:
 * `edit -t → 3`
 * `edit -te → 2`
 
@@ -151,15 +150,14 @@ Examples:
 #### 4-1. Deleting Tasks: `delete -t`
 Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can sepcify the `TASK_ID` to delete that particular task.
 <br> **Format:`delete -t / -tt / -te / -td → TASK_ID`**
-
-Examples:
+<br>Examples:
 * `delete -t → 3`
 * `delete -td → 2`
 
 #### 4-2 Deleting Consultations: `delete -c`
 Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: delete -c [NAME]**
-Examples:
+<br>Examples:
 * `delete -c
    → 3`
 * `delete -c John Doe
@@ -168,7 +166,7 @@ Examples:
 #### 4-3. Deleting Mastery Checks: `delete -mc`
 Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: delete -mc [NAME]**
-Examples:
+<br>Examples:
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
