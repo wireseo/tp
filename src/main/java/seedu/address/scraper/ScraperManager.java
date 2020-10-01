@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
+import seedu.address.model.mission.Mission;
 
 public class ScraperManager implements Scraper {
     private WebDriver driver;
@@ -45,7 +46,7 @@ public class ScraperManager implements Scraper {
         driver = new ChromeDriver(options);
     }
 
-    public void get() {
+    public void getMissions() {
         // Navigate to address
         driver.get("https://sourceacademy.nus.edu.sg/login");
 
@@ -65,10 +66,11 @@ public class ScraperManager implements Scraper {
             driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
 
             List<WebElement> missionTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
-            // Grab deadlines
-            for (WebElement title : missionTitles) {
+            List<WebElement> missionDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
+
+            for (int i = 0; i < missionTitles.size(); i++) {
                 // Add mission to ModelController here
-                System.out.println(title.getText());
+                model.addMission(new Mission(missionTitles.get(i).getText(), missionDeadlines.get(i).getText()));
             }
 
             driver.quit();

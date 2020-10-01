@@ -74,6 +74,7 @@ public class MainApp extends Application {
         model = initModelManager(storage, userPrefs);
 
         scraper = new ScraperManager(userLogin, model);
+        scraper.getMissions();
 
         logic = new LogicManager(model, storage);
 
