@@ -47,6 +47,11 @@ public class ScraperManager implements Scraper {
     }
 
     public void getMissions() {
+        // Check if login information is empty
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         // Navigate to address
         driver.get("https://sourceacademy.nus.edu.sg/login");
 
