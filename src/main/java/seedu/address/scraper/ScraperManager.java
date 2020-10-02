@@ -1,4 +1,5 @@
 package seedu.address.scraper;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,17 +11,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seedu.address.commons.exceptions.OsNotSupportedException;
+import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
+import seedu.address.model.mission.Mission;
 
 public class ScraperManager implements Scraper {
     private WebDriver driver;
     private UserLogin loginInfo;
+    private Model model;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public ScraperManager(UserLogin loginInfo) throws OsNotSupportedException {
+    public ScraperManager(UserLogin loginInfo, Model model) throws OsNotSupportedException {
         this.loginInfo = loginInfo;
+        this.model = model;
 
         // Grab current os name
         final String operatingSystem = System.getProperty("os.name").toUpperCase();
@@ -41,7 +46,12 @@ public class ScraperManager implements Scraper {
         driver = new ChromeDriver(options);
     }
 
-    public void get() {
+    public void getMissions() {
+        // Check if login information is empty
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         // Navigate to address
         driver.get("https://sourceacademy.nus.edu.sg/login");
 
@@ -61,9 +71,11 @@ public class ScraperManager implements Scraper {
             driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
 
             List<WebElement> missionTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
-            // Grab deadlines
-            for (WebElement title : missionTitles) {
-                System.out.println(title.getText());
+            List<WebElement> missionDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
+
+            for (int i = 0; i < missionTitles.size(); i++) {
+                // Add mission to ModelController here
+                model.addMission(new Mission(missionTitles.get(i).getText(), missionDeadlines.get(i).getText()));
             }
 
             driver.quit();

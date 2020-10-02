@@ -3,9 +3,9 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 public class UserLogin implements ReadOnlyUserLogin {
-    private String username = null;
+    private String username = "";
 
-    private String password = null;
+    private String password = "";
 
     /**
      * Creates a {@code UserLogin} with default values.
@@ -42,5 +42,9 @@ public class UserLogin implements ReadOnlyUserLogin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEmpty() {
+        return this.username.isEmpty() || this.password.isEmpty();
     }
 }

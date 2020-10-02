@@ -71,10 +71,11 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        // Add a initScraperManager to
-        scraper = new ScraperManager(userLogin);
-
         model = initModelManager(storage, userPrefs);
+
+        scraper = new ScraperManager(userLogin, model);
+        // Add a scraper init method here
+        scraper.getMissions();
 
         logic = new LogicManager(model, storage);
 
