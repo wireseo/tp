@@ -246,7 +246,7 @@ Shows the deadline for the current quest(s).
 Shows the deadline for current mission(s) and quest(s).
 <br>**Format: `view -b`**
 
-#### 5-12. Viewing deadline for any specific mission or quest by their id: `view -i (ID_OF_MISSION/QUEST)`
+#### 5-12. Viewing deadline for any specific mission or quest by their id: `view -i`
 Shows the deadline for the specific mission or quest.
 <br>**Format: `view -i ID_OF_MISSION/QUEST`**
 <br>Examples:
