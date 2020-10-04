@@ -12,13 +12,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
-//    /* View Command options */
-//    public static final CommandOption UNGRADED_MISSION_QUEST = new CommandOption("-u");
-//    public static final CommandOption MISSION_DEADLINE = new CommandOption("-m");
-//    public static final CommandOption QUEST_DEADLINE = new CommandOption("-q");
-//    public static final CommandOption MISSION_AND_QUEST_DEADLINE = new CommandOption("-b");
-//    public static final CommandOption SPECIFIC_MISSION_QUEST_DEADLINE = new CommandOption("-i");
-
     /* View Command options */
     public static final String UNGRADED_MISSION_QUEST = "-u";
     public static final String MISSION_DEADLINE = "-m";

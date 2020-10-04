@@ -1,7 +1,5 @@
 package seedu.address.model.mission;
 
-import seedu.address.model.person.Person;
-
 public class Mission {
     private final String title;
     private final String deadline;

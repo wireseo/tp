@@ -1,15 +1,11 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
+
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.UNGRADED_MISSION_QUEST;
-import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.MISSION_AND_QUEST_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.SPECIFIC_MISSION_QUEST_DEADLINE;
 
 public class ViewCommandParser implements Parser<ViewCommand> {
     /**

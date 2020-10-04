@@ -9,8 +9,6 @@ public abstract class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
 
-//    public static final String MESSAGE_SUCCESS = "Listed all persons";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists information according to the command inputted.\n"
             + "view -s: View Student information\n"
             + "view -c / view -cp / view -cu: View Consultation sessions\n"
