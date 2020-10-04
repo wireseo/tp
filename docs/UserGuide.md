@@ -6,13 +6,13 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 * Quick start
 * Features
-    * Viewing help: `help`   
-    * Adding information: `add`   
-      * Adding Todos: `-t`   
-      * Adding Events: `-e`   
-      * Adding Deadlines: `-d`   
-      * Adding Consultations: `-c`   
-      * Adding Mastery Checks: `-mc`   
+    * Viewing help: `help`
+    * Adding information: `add`
+      * Adding Todos: `-t`
+      * Adding Events: `-e`
+      * Adding Deadlines: `-d`
+      * Adding Consultations: `-c`
+      * Adding Mastery Checks: `-mc`
   * Editing information: `edit`
     * Marking Tasks as Done: `-t`, `-tt`, `-te`, `td`
     * Editing Student Information: `-s`

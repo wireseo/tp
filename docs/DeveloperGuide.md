@@ -277,8 +277,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user with a crowded calendar               | add consultations                | keep track of my schedule easily.                           |
 | `* *`    | user                                       | list my consultations            | be reminded of my schedule.                                 |
 | `* *`    | user                                       | view deadlines for missions and quests | can schedule when to mark them.                       |
-| `* *`    | user                                       | add my own tasks                 | can be consolidate all TA and non-TA scheduling into Jarvis.| 
-| `* *`    | user                                       | list my own tasks                | can have an overview of all my tasks.                       | 
+| `* *`    | user                                       | add my own tasks                 | can be consolidate all TA and non-TA scheduling into Jarvis.|
+| `* *`    | user                                       | list my own tasks                | can have an overview of all my tasks.                       |
 | `* *`    | user                                       | mark my tasks as done            | can keep track of complete and incomplete tasks.            |
 
 *{More to be added}*
@@ -510,7 +510,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Jarvis adds a personal todo task with description.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. The user enters an invalid command.
@@ -534,7 +534,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Jarvis adds a personal event task at the specified time and date.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. The user enters an invalid command.
@@ -542,13 +542,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Jarvis shows an error message.
 
       Use case ends.
-      
+
 * 1b. The user did not enter a description.
 
     * 1b1. Jarvis shows an error message.
 
       Use case ends.
-      
+
 * 1c. The user enters an invalid date or time.
 
     * 1c1. Jarvis shows an error message.
@@ -564,7 +564,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Jarvis adds a personal deadline task at the specified time and date.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. The user enters an invalid command.
@@ -572,13 +572,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Jarvis shows an error message.
 
       Use case ends.
-      
+
 * 1b. The user did not enter a description.
 
     * 1b1. Jarvis shows an error message.
 
       Use case ends.
-      
+
 * 1c. The user enters an invalid date or time.
 
     * 1c1. Jarvis shows an error message.
@@ -610,7 +610,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. Jarvis shows the list of events.
 
       Use case resumes at step 3.
-      
+
 * 1c. The user knows that he wants to delete a deadline task from deadline list.
 
     * 1c1. Jarvis shows the list of deadlines.
@@ -650,19 +650,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Jarvis shows todo task list.
 
       Use case ends.
-      
+
 * 1b. The user only wants to view event tasks.
 
     * 1a1. Jarvis shows event task list.
 
       Use case ends.
-      
+
 * 1c. The user only wants to view deadline tasks.
 
     * 1a1. Jarvis shows deadline task list.
 
       Use case ends.
-      
+
 * 1d. The user enters an invalid command.
 
     * 1b1. Jarvis shows an error message.
@@ -692,7 +692,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. Jarvis shows the list of events.
 
       Use case resumes at step 3.
-      
+
 * 1c. The user knows that he wants to mark a deadline task from deadline list as done.
 
     * 1c1. Jarvis shows the list of deadlines.
@@ -732,7 +732,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Jarvis continues to run.
 
     Use case ends.
-      
+
 
 ### Non-Functional Requirements
 
