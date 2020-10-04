@@ -150,6 +150,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateMissionsList(Predicate<Mission> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addMission(Mission mission) {
             throw new AssertionError("This method should not be called.");
         }
