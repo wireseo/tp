@@ -121,6 +121,12 @@ public class ModelManager implements Model {
         addressBook.addMission(mission);
     }
 
+    @Override
+    public void updateMissionsList(Predicate<Mission> predicate) {
+        requireNonNull(predicate);
+        filteredMissions.setPredicate(predicate);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -136,12 +142,6 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
-    }
-
-    @Override
-    public void updateMissionsList(Predicate<Mission> predicate) {
-        requireNonNull(predicate);
-        filteredMissions.setPredicate(predicate);
     }
 
     @Override

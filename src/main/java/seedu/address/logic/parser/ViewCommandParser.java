@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.flag.Flag;
 
 public class ViewCommandParser implements Parser<ViewCommand> {
     /**
@@ -20,14 +21,13 @@ public class ViewCommandParser implements Parser<ViewCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-        String viewCommandOption = nameKeywords[0];
+        Flag commandFlag = ParserUtil.parseFlag(trimmedArgs);
 
         // switch command to return the respective view commands
-        switch(viewCommandOption) {
+        switch(commandFlag.getFlag()) {
         case MISSION_DEADLINE:
             return new ViewMissionDeadlineCommand();
-
+        // add the other cases here
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
