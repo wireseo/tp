@@ -15,6 +15,7 @@ public class ViewMissionDeadlineCommand extends ViewCommand {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateMissionsList(PREDICATE_SHOW_ALL_MISSIONS);
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

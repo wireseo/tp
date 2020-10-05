@@ -9,6 +9,7 @@ import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
 import seedu.address.logic.commands.ViewOneStudentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
 
 public class ViewCommandParser implements Parser<ViewCommand> {
@@ -24,6 +25,8 @@ public class ViewCommandParser implements Parser<ViewCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
 
+
+        Flag commandFlag = ParserUtil.parseFlag(trimmedArgs);
         // split the string trimmedArgs with regex of one or more whitespace characters.
         String[] nameKeywords = trimmedArgs.split("\\s+");
         String viewCommandOption = nameKeywords[0];
@@ -35,7 +38,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         }
 
         // switch command to return the respective view commands
-        switch(viewCommandOption) {
+        switch(commandFlag.getFlag()) {
         case MISSION_DEADLINE:
             return new ViewMissionDeadlineCommand();
 
@@ -47,6 +50,8 @@ public class ViewCommandParser implements Parser<ViewCommand> {
                 return new ViewAllStudentsCommand();
             }
 
+        // add the other cases here
+  
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }

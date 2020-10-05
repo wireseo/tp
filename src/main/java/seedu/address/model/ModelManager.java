@@ -122,6 +122,11 @@ public class ModelManager implements Model {
     }
 
     //=========== Filtered Student List Accessors =============================================================
+    @Override
+    public void updateMissionsList(Predicate<Mission> predicate) {
+        requireNonNull(predicate);
+        filteredMissions.setPredicate(predicate);
+    }
 
     /**
      * Returns an unmodifiable view of the list of {@code Student} backed by the internal list of
@@ -136,12 +141,6 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Student> predicate) {
         requireNonNull(predicate);
         filteredStudents.setPredicate(predicate);
-    }
-
-    @Override
-    public void updateMissionsList(Predicate<Mission> predicate) {
-        requireNonNull(predicate);
-        filteredMissions.setPredicate(predicate);
     }
 
     @Override

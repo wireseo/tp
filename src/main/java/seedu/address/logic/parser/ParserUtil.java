@@ -9,6 +9,8 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
@@ -120,5 +122,18 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses flag arguments and return the flags.
+     * @param flag The String arguments to be parsed
+     */
+    public static Flag parseFlag(String flag) throws ParseException {
+        requireNonNull(flag);
+        String trimmedFlag = flag.trim();
+        if (!Flag.isValidFlag(trimmedFlag)) {
+            throw new ParseException(Flag.MESSAGE_CONSTRAINTS);
+        }
+        return new Flag(trimmedFlag);
     }
 }
