@@ -108,13 +108,6 @@ public class MainApp extends Application {
             initializedLogin = new UserLogin();
         }
 
-        //Update login file in case it was missing to begin with or there are new/unused fields
-        try {
-            storage.saveUserLogin(initializedLogin);
-        } catch (IOException e) {
-            logger.warning("Failed to save login file : " + StringUtil.getDetails(e));
-        }
-
         return initializedLogin;
     }
 
