@@ -246,13 +246,19 @@ Shows the deadline for the current quest(s).
 Shows the deadline for current mission(s) and quest(s).
 <br>**Format: `view -b`**
 
-#### 5-12. Viewing deadline for any specific mission or quest by their id: `view -i`
+#### 5-12. Viewing deadline for a specific mission or quest by their id: `view -i`
 Shows the deadline for the specific mission or quest.
 <br>**Format: `view -i ID_OF_MISSION/QUEST`**
 <br>Examples:
 * `view -i 1`
 
-#### 5-13. Viewing Tasks: `view -t`
+#### 5-13. Viewing studio participation marks of a specific student.
+Shows the studio participation marks of a student.
+<br>**Format: `view -p [Name]`
+<br>Examples:
+* `view -p John Doe`
+
+#### 5-14. Viewing Tasks: `view -t`
 Shows a list of tasks (todos, events, deadlines). If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively.
 <br>**Format: `view -t / -tt / -te / -td`**
 <br>Examples:

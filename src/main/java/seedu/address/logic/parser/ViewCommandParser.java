@@ -2,10 +2,14 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 
+import seedu.address.logic.commands.ViewAllStudentsCommand;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
+import seedu.address.logic.commands.ViewOneStudentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.student.Name;
 
 public class ViewCommandParser implements Parser<ViewCommand> {
     /**
@@ -20,13 +24,28 @@ public class ViewCommandParser implements Parser<ViewCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
 
+        // split the string trimmedArgs with regex of one or more whitespace characters.
         String[] nameKeywords = trimmedArgs.split("\\s+");
         String viewCommandOption = nameKeywords[0];
+        boolean argsHasAdditionalParams = nameKeywords.length > 1;
+        // potential bug with studentName being initialized as empty string
+        String studentName = "";
+        if (argsHasAdditionalParams) {
+            studentName = nameKeywords[1] + " " + nameKeywords[2];
+        }
 
         // switch command to return the respective view commands
         switch(viewCommandOption) {
         case MISSION_DEADLINE:
             return new ViewMissionDeadlineCommand();
+
+        case VIEW_STUDENT:
+            if (argsHasAdditionalParams) {
+                Name name = new Name(studentName);
+                return new ViewOneStudentCommand(name);
+            } else {
+                return new ViewAllStudentsCommand();
+            }
 
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));

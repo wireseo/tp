@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**
@@ -19,7 +20,7 @@ public abstract class ViewCommand extends Command {
             + "view -i: View deadline for specific mission/quest by id\n"
             + "view -t / view -tt / view -te / view -td: View Tasks(Todos, Events, Deadlines)\n";
 
-    public abstract CommandResult execute(Model model);
+    public abstract CommandResult execute(Model model) throws CommandException;
 
 }
 
