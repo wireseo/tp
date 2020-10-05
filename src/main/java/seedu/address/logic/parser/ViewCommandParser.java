@@ -51,7 +51,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             }
 
         // add the other cases here
-  
+
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
