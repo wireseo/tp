@@ -7,6 +7,9 @@ import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
 
+/**
+ * Flag class encapsulates the flags, eg: -m, etc, that will appear after a command.
+ */
 public class Flag {
     public static final String MESSAGE_CONSTRAINTS = "Flag provided is invalid";
     private static final Set<String> VALID_FLAGS = ImmutableSet.of(MISSION_DEADLINE, QUEST_DEADLINE);

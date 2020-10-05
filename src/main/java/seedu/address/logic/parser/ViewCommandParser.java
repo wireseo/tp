@@ -24,7 +24,6 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         Flag commandFlag = ParserUtil.parseFlag(trimmedArgs);
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
-        String viewCommandOption = nameKeywords[0];
 
         // switch command to return the respective view commands
         switch(commandFlag.getFlag()) {
