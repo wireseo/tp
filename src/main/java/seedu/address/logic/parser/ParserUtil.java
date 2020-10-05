@@ -124,7 +124,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses flag arguments and return the flags.
+     * Parses a string containing a flag such as "-s" and return the Flag object which matches it.
      * @param flag The String arguments to be parsed
      */
     public static Flag parseFlag(String flag) throws ParseException {
