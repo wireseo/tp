@@ -6,6 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE_TIME;
+import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
+import static seedu.address.logic.parser.CliSyntax.TASK_EVENT_TIME;
+import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -32,6 +37,16 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
+
+    public static final String MESSAGE_TASK_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
+            + "Parameters: \n"
+            + TASK_TODO + "DESCRIPTION "
+            + "\nor\n"
+            + TASK_EVENT + "DESCRIPTION "
+            + TASK_EVENT_TIME + "YYYY-MM-DD HHMM"
+            + "\nor\n"
+            + TASK_DEADLINE + "DESCRIPTION "
+            + TASK_DEADLINE_TIME + "YYYY-MM-DD HHMM";
 
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the address book";
