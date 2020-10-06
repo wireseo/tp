@@ -1,10 +1,10 @@
 package seedu.address.model;
 
-import seedu.address.model.student.Student;
-
 import java.sql.Time;
 import java.util.Objects;
 import java.util.Optional;
+
+import seedu.address.model.student.Student;
 
 /**
  * Represents a Consultation that contains information relating to general consultations.

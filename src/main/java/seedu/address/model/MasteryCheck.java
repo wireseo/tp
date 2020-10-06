@@ -1,8 +1,8 @@
 package seedu.address.model;
 
-import seedu.address.model.student.Student;
-
 import java.sql.Time;
+
+import seedu.address.model.student.Student;
 
 public class MasteryCheck extends Consultation {
 
