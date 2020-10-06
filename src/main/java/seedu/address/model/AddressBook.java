@@ -9,6 +9,9 @@ import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.UniqueStudentsList;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Todo;
+import seedu.address.model.task.UniqueTasksList;
 
 /**
  * Wraps all data at the address-book level
@@ -20,6 +23,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final MissionList missions;
 
+    private final UniqueTasksList tasks;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -30,6 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniqueStudentsList();
         missions = new MissionList();
+        tasks = new UniqueTasksList();
     }
 
     public AddressBook() {}
@@ -137,4 +143,18 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return persons.hashCode();
     }
+
+    // Tasks
+    /**
+     * Returns true if a todo with the same identity as {@code todo} exists in the address book.
+     */
+    public boolean hasTodo(Todo todo) {
+        requireNonNull(todo);
+        return tasks.contains(todo);
+    }
+
+    public void addTodo(Todo todo) {
+        this.tasks.add(todo);
+    }
+
 }

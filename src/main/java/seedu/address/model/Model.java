@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Todo;
 
 /**
  * The API of the Model component.
@@ -62,6 +63,11 @@ public interface Model {
     boolean hasPerson(Student student);
 
     /**
+     * Returns true if a todo with the same identity as {@code todo} exists in the address book.
+     */
+    boolean hasTodo(Todo todo);
+
+    /**
      * Deletes the given student.
      * The student must exist in the address book.
      */
@@ -72,6 +78,12 @@ public interface Model {
      * {@code student} must not already exist in the address book.
      */
     void addPerson(Student student);
+
+    /**
+     * Adds the given todo.
+     * {@code todo} must not already exist in the address book.
+     */
+    void addTodo(Todo todo);
 
     /**
      * Replaces the given student {@code target} with {@code editedStudent}.

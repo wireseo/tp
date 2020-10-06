@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Todo;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -160,6 +161,18 @@ public class ModelManager implements Model {
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredStudents.equals(other.filteredStudents);
+    }
+
+    //======== Task ============================================================================================
+    @Override
+    public boolean hasTodo(Todo todo) {
+        requireNonNull(todo);
+        return addressBook.hasTodo(todo);
+    }
+
+    @Override
+    public void addTodo(Todo todo) {
+        addressBook.addTodo(todo);
     }
 
 }

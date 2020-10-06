@@ -44,14 +44,27 @@ public class AddCommandParser implements Parser<AddCommand> {
         // split the string trimmedArgs with regex of one or more whitespace characters.
         String[] nameKeywords = trimmedArgs.split("\\s+");
         Flag commandFlag = ParserUtil.parseFlag(nameKeywords[0]);
-        boolean argsHasAdditionalParams = nameKeywords.length > 1;
+        int length = nameKeywords.length;
+        boolean taskHasDescription = length > 1;
 
-        // switch command to return the respective view commands
+        if(!taskHasDescription &&
+                (commandFlag.getFlag().equals(TASK_TODO) || commandFlag.getFlag().equals(TASK_EVENT) ||
+                        commandFlag.getFlag().equals(TASK_DEADLINE))) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DESCRIPTION));
+        }
+
+        // switch command to return the respective add commands
         switch (commandFlag.getFlag()) {
         case TASK_TODO:
-            Todo todo = new Todo(nameKeywords[0]);
-            return new AddCommand(todo);
+            String description = nameKeywords[1];
+            for (int i = 2; i < length; i++) {
+                description = description + " " + nameKeywords[i];
+            }
 
+            Todo todo = new Todo(description);
+            return new AddCommand(todo);
+/*
         case TASK_EVENT:
             if (!argsHasAdditionalParams) {
                 throw new ParseException(
@@ -67,6 +80,7 @@ public class AddCommandParser implements Parser<AddCommand> {
             } else {
                 return new AddDeadlineCommand();
             }
+            */
 
         default:
             ArgumentMultimap argMultimap =

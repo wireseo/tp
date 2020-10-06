@@ -15,6 +15,7 @@ import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Todo;
 
 /**
  * Adds a student to the address book.
@@ -22,6 +23,10 @@ import seedu.address.model.student.Student;
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
+    public static final String TO_ADD_STUDENT = "S";
+    public static final String TO_ADD_TODO = "T";
+    public static final String TO_ADD_EVENT = "E";
+    public static final String TO_ADD_DEADLINE = "D";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a student to the address book. "
             + "Parameters: "
@@ -37,21 +42,26 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
+    public static final String MESSAGE_SUCCESS = "New student added: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in jarvis";
+    public static final String MESSAGE_INVALID_TO_ADD_TYPE = "This object to add is unidentifiable";
+    public static final String MESSAGE_DUPLICATE_TODO = "This todo already exists in jarvis";
+    public static final String MESSAGE_SUCCESS_TASK = "New task added: %1$s";
+
 
     public static final String MESSAGE_TASK_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
             + "Parameters: \n"
-            + TASK_TODO + "DESCRIPTION "
+            + TASK_TODO + " DESCRIPTION "
             + "\nor\n"
-            + TASK_EVENT + "DESCRIPTION "
-            + TASK_EVENT_TIME + "YYYY-MM-DD HHMM"
+            + TASK_EVENT + " DESCRIPTION "
+            + TASK_EVENT_TIME + " YYYY-MM-DD HHMM"
             + "\nor\n"
-            + TASK_DEADLINE + "DESCRIPTION "
-            + TASK_DEADLINE_TIME + "YYYY-MM-DD HHMM";
+            + TASK_DEADLINE + " DESCRIPTION "
+            + TASK_DEADLINE_TIME + " YYYY-MM-DD HHMM";
+    public static final String MESSAGE_INVALID_DESCRIPTION = "Please include task DESCRIPTION";
 
-    public static final String MESSAGE_SUCCESS = "New student added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the address book";
-
-    private final Student toAdd;
+    private final Object toAdd;
+    private final String toAddType;
 
     /**
      * Creates an AddCommand to add the specified {@code Student}
@@ -59,18 +69,44 @@ public class AddCommand extends Command {
     public AddCommand(Student student) {
         requireNonNull(student);
         toAdd = student;
+        toAddType = TO_ADD_STUDENT;
+    }
+
+    /**
+     * Creates an AddCommand to add the specified {@code Todo}
+     */
+    public AddCommand(Todo todo) {
+        requireNonNull(todo);
+        toAdd = todo;
+        toAddType = TO_ADD_TODO;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
+        switch(toAddType) {
+        case TO_ADD_STUDENT:
+            Student toAddStudent = (Student)toAdd;
+            if (model.hasPerson(toAddStudent)) {
+                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            }
 
-        model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            model.addPerson(toAddStudent);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAddStudent));
+
+        case TO_ADD_TODO:
+            Todo toAddTodo = (Todo)toAdd;
+            if (model.hasTodo(toAddTodo)) {
+                throw new CommandException(MESSAGE_DUPLICATE_TODO);
+            }
+
+            model.addTodo(toAddTodo);
+            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddTodo));
+
+        default:
+            throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);
+        }
     }
 
     @Override
