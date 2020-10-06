@@ -18,7 +18,8 @@ public class Consultation {
     private String minutes;
 
     /**
-     * Creates a {@code Consultation} with the given parameters. {@code lengthOfMeeting} and {@code notes} may be null.
+     * Creates a {@code Consultation} with the given parameters.
+     * {@code lengthOfMeeting}, {@code placeOfMeeting} and {@code notes} may be null.
      * @param student student that has requested the consultation
      * @param dateAndTime date and time of the consultation
      * @param lengthOfMeeting the length of the consultation in minutes; may be null
