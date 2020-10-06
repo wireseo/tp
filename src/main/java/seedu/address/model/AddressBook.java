@@ -9,6 +9,10 @@ import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.UniqueStudentsList;
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Event;
+import seedu.address.model.task.Todo;
+import seedu.address.model.task.UniqueTasksList;
 
 /**
  * Wraps all data at the address-book level
@@ -20,6 +24,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final MissionList missions;
 
+    private final UniqueTasksList tasks;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -30,6 +36,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniqueStudentsList();
         missions = new MissionList();
+        tasks = new UniqueTasksList();
     }
 
     public AddressBook() {}
@@ -137,4 +144,55 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return persons.hashCode();
     }
+
+    //======================== Tasks ==========================================================================
+    /**
+     * Returns true if a todo with the same identity as {@code todo} exists in the address book.
+     */
+    public boolean hasTodo(Todo todo) {
+        requireNonNull(todo);
+        return tasks.contains(todo);
+    }
+
+    /**
+     * Adds a todo to the address book.
+     * The todo must not already exist in the address book.
+     */
+    public void addTodo(Todo todo) {
+        this.tasks.add(todo);
+    }
+
+    /**
+     * Returns true if a event with the same identity as {@code event} exists in the address book.
+     */
+    public boolean hasEvent(Event event) {
+        requireNonNull(event);
+        return tasks.contains(event);
+    }
+
+    /**
+     * Adds an event to the address book.
+     * The event must not already exist in the address book.
+     */
+    public void addEvent(Event event) {
+        this.tasks.add(event);
+    }
+
+    /**
+     * Returns true if a deadline with the same identity as {@code deadline} exists in the address book.
+     */
+    public boolean hasDeadline(Deadline deadline) {
+        requireNonNull(deadline);
+        return tasks.contains(deadline);
+    }
+
+    /**
+     * Adds a deadline to the address book.
+     * The deadline must not already exist in the address book.
+     */
+    public void addDeadline(Deadline deadline) {
+        this.tasks.add(deadline);
+    }
+
+
 }

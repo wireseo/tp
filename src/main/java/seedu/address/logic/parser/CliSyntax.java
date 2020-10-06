@@ -20,4 +20,11 @@ public class CliSyntax {
     public static final String SPECIFIC_MISSION_QUEST_DEADLINE = "-i";
     public static final String VIEW_STUDENT = "-s";
 
+    /* Add Command flags */
+    public static final String TASK_TODO = "-t";
+    public static final String TASK_EVENT = "-e";
+    public static final String TASK_DEADLINE = "-d";
+    public static final String TASK_DATE = "d/";
+    public static final String TASK_TIME = "t/";
+
 }
