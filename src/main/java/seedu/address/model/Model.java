@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
 import seedu.address.model.task.Todo;
 
@@ -69,9 +70,14 @@ public interface Model {
     boolean hasTodo(Todo todo);
 
     /**
-     * REturns true if an event with the same identity as {@code todo} exists in the address book.
+     * Returns true if an event with the same identity as {@code event} exists in the address book.
      */
     boolean hasEvent(Event event);
+
+    /**
+     * Returns true if a deadline with the same identity as {@code deadline} exists in the address book.
+     */
+    boolean hasDeadline(Deadline deadline);
 
     /**
      * Deletes the given student.
@@ -96,6 +102,12 @@ public interface Model {
      * {@code event} must not already exist in the address book.
      */
     void addEvent(Event event);
+
+    /**
+     * Adds the given deadline.
+     * {@code deadline} must not already exist in the address book.
+     */
+    void addDeadline(Deadline deadline);
 
     /**
      * Replaces the given student {@code target} with {@code editedStudent}.

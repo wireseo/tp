@@ -47,7 +47,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in jarvis";
     public static final String MESSAGE_INVALID_TO_ADD_TYPE = "This object to add is unidentifiable";
-    public static final String MESSAGE_DUPLICATE_TODO = "This todo already exists in jarvis";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in jarvis";
     public static final String MESSAGE_SUCCESS_TASK = "New task added: %1$s";
 
 
@@ -119,7 +119,7 @@ public class AddCommand extends Command {
         case TO_ADD_TODO:
             Todo toAddTodo = (Todo)toAdd;
             if (model.hasTodo(toAddTodo)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TODO);
+                throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
 
             model.addTodo(toAddTodo);
@@ -128,7 +128,7 @@ public class AddCommand extends Command {
         case TO_ADD_EVENT:
             Event toAddEvent = (Event)toAdd;
             if (model.hasEvent(toAddEvent)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TODO);
+                throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
 
             model.addEvent(toAddEvent);
@@ -136,12 +136,12 @@ public class AddCommand extends Command {
 
         case TO_ADD_DEADLINE:
             Deadline toAddDeadline = (Deadline)toAdd;
-            if (model.hasEvent(toAddE)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TODO);
+            if (model.hasDeadline(toAddDeadline)) {
+                throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
 
-            model.addEvent(toAddEvent);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddEvent));
+            model.addDeadline(toAddDeadline);
+            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddDeadline));
 
         default:
             throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);
