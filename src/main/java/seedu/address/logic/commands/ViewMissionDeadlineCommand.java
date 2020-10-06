@@ -5,6 +5,9 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MISSIONS;
 
 import seedu.address.model.Model;
 
+/**
+ * Lists all mission deadlines.
+ */
 public class ViewMissionDeadlineCommand extends ViewCommand {
     public static final String MESSAGE_SUCCESS = "Listed all mission deadlines";
 
