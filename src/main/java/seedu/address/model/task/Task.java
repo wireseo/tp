@@ -1,7 +1,7 @@
 package seedu.address.model.task;
 
 public abstract class Task {
-    private static int taskNum = 0;
+    private static int taskNum = 1;
 
     public abstract String generateTaskId();
 

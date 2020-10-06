@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.TASK_DAY;
 import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
@@ -47,6 +46,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         // split the string trimmedArgs with regex of one or more whitespace characters.
         String[] nameKeywords = trimmedArgs.split("\\s+");
         Flag commandFlag = ParserUtil.parseFlag(nameKeywords[0]);
+
         int length = nameKeywords.length;
         boolean taskHasDescription = length > 1;
 
@@ -60,61 +60,17 @@ public class AddCommandParser implements Parser<AddCommand> {
         // switch command to return the respective add commands
         switch (commandFlag.getFlag()) {
         case TASK_TODO:
-            String description = nameKeywords[1];
-            for (int i = 2; i < length; i++) {
-                description = description + " " + nameKeywords[i];
-            }
-
-            Todo todo = new Todo(description);
+            Todo todo = TaskCommandParser.parseTodo(nameKeywords, length);
             return new AddCommand(todo);
 
         case TASK_EVENT:
-            boolean hasTimePrefix = false;
-            int timePrefixLocation = -1;
-            for (int i = 2; i < length; i++) {
-                if (nameKeywords[i].equals(TASK_DAY)) {
-                    hasTimePrefix = true;
-                    timePrefixLocation = i;
-                }
-            }
-
-            if (!hasTimePrefix) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_TIME));
-            }
-
-            String eventDescription = nameKeywords[1];
-            for (int i = 2; i < timePrefixLocation; i++) {
-                eventDescription = eventDescription + " " + nameKeywords[i];
-            }
-
-            String eventDeadline = nameKeywords[timePrefixLocation + 1];
-            Event event = new Event(eventDescription, eventDeadline);
+            Event event = TaskCommandParser.parseEvent(nameKeywords, length);
             return new AddCommand(event);
 
         case TASK_DEADLINE:
-            boolean hasTimePrefixD = false;
-            int timePrefixLocationD = -1;
-            for (int i = 2; i < length; i++) {
-                if (nameKeywords[i].equals(TASK_DAY)) {
-                    hasTimePrefixD = true;
-                    timePrefixLocationD = i;
-                }
-            }
-
-            if (!hasTimePrefixD) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_TIME));
-            }
-
-            String deadlineDescription = nameKeywords[1];
-            for (int i = 2; i < timePrefixLocationD; i++) {
-                deadlineDescription = deadlineDescription + " " + nameKeywords[i];
-            }
-
-            String deadlineDeadline = nameKeywords[timePrefixLocationD + 1];
-            Deadline deadline = new Deadline(deadlineDescription, deadlineDeadline);
+            Deadline deadline = TaskCommandParser.parseDeadline(nameKeywords, length);
             return new AddCommand(deadline);
+
 
         default:
             ArgumentMultimap argMultimap =

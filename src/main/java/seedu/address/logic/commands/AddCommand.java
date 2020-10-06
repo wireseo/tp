@@ -7,12 +7,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.TASK_DAY;
+import static seedu.address.logic.parser.CliSyntax.TASK_DATE;
 import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
+import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
@@ -56,12 +56,17 @@ public class AddCommand extends Command {
             + TASK_TODO + " DESCRIPTION "
             + "\nor\n"
             + TASK_EVENT + " DESCRIPTION "
-            + TASK_DAY + " YYYY-MM-DD"
+            + TASK_DATE + " YYYY-MM-DD "
+            + TASK_TIME + " HH:MM"
             + "\nor\n"
             + TASK_DEADLINE + " DESCRIPTION "
-            + CliSyntax.TASK_DAY + " YYYY-MM-DD";
+            + TASK_DATE + " YYYY-MM-DD "
+            + TASK_TIME + " HH:MM";
+
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include task DESCRIPTION";
-    public static final String MESSAGE_MISSING_TIME = "Please include task TIME in YYYY-MM-DD";
+    public static final String MESSAGE_WRONG_DATETIME_ORDER = "The date and time order is wrong";
+    public static final String MESSAGE_MISSING_DATE = "Please include task DATE in YYYY-MM-DD";
+    public static final String MESSAGE_MISSING_TIME = "Please include task TIME in HH:MM";
 
     private final Object toAdd;
     private final String toAddType;

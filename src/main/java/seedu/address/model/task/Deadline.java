@@ -4,12 +4,14 @@ public class Deadline extends Task {
 
     private final String taskId;
     private final String description;
-    private final String deadline;
+    private final String date;
+    private final String time;
 
-    public Deadline(String description, String deadline) {
+    public Deadline(String description, String date, String time) {
         this.taskId = generateTaskId();
         this.description = description;
-        this.deadline = deadline;
+        this.date = date;
+        this.time = time;
     }
 
     public String getTaskId() {
@@ -20,8 +22,12 @@ public class Deadline extends Task {
         return description;
     }
 
-    public String getDeadline() {
-        return deadline;
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     /**
@@ -57,8 +63,11 @@ public class Deadline extends Task {
                 .append(getTaskId())
                 .append("] ")
                 .append(getDescription())
-                .append(" by ")
-                .append(getDeadline());
+                .append(" BY")
+                .append(" Date: ")
+                .append(getDate())
+                .append(" Time: ")
+                .append(getTime());
 
         return builder.toString();
     }
