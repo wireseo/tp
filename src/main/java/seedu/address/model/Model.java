@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Event;
 import seedu.address.model.task.Todo;
 
 /**
@@ -68,6 +69,11 @@ public interface Model {
     boolean hasTodo(Todo todo);
 
     /**
+     * REturns true if an event with the same identity as {@code todo} exists in the address book.
+     */
+    boolean hasEvent(Event event);
+
+    /**
      * Deletes the given student.
      * The student must exist in the address book.
      */
@@ -84,6 +90,12 @@ public interface Model {
      * {@code todo} must not already exist in the address book.
      */
     void addTodo(Todo todo);
+
+    /**
+     * Adds the given event.
+     * {@code event} must not already exist in the address book.
+     */
+    void addEvent(Event event);
 
     /**
      * Replaces the given student {@code target} with {@code editedStudent}.

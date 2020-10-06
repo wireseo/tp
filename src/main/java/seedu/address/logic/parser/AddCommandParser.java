@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.TASK_DAY;
 import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
@@ -22,6 +23,8 @@ import seedu.address.model.student.Name;
 import seedu.address.model.student.Phone;
 import seedu.address.model.student.Student;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Event;
 import seedu.address.model.task.Todo;
 
 /**
@@ -51,7 +54,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 (commandFlag.getFlag().equals(TASK_TODO) || commandFlag.getFlag().equals(TASK_EVENT) ||
                         commandFlag.getFlag().equals(TASK_DEADLINE))) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DESCRIPTION));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
         }
 
         // switch command to return the respective add commands
@@ -64,23 +67,54 @@ public class AddCommandParser implements Parser<AddCommand> {
 
             Todo todo = new Todo(description);
             return new AddCommand(todo);
-/*
+
         case TASK_EVENT:
-            if (!argsHasAdditionalParams) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_TASK_USAGE));
-            } else {
-                return new AddEventCommand();
+            boolean hasTimePrefix = false;
+            int timePrefixLocation = -1;
+            for (int i = 2; i < length; i++) {
+                if (nameKeywords[i].equals(TASK_DAY)) {
+                    hasTimePrefix = true;
+                    timePrefixLocation = i;
+                }
             }
 
-        case TASK_DEADLINE:
-            if (!argsHasAdditionalParams) {
+            if (!hasTimePrefix) {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_TASK_USAGE));
-            } else {
-                return new AddDeadlineCommand();
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_TIME));
             }
-            */
+
+            String eventDescription = nameKeywords[1];
+            for (int i = 2; i < timePrefixLocation; i++) {
+                eventDescription = eventDescription + " " + nameKeywords[i];
+            }
+
+            String eventDeadline = nameKeywords[timePrefixLocation + 1];
+            Event event = new Event(eventDescription, eventDeadline);
+            return new AddCommand(event);
+
+        case TASK_DEADLINE:
+            boolean hasTimePrefixD = false;
+            int timePrefixLocationD = -1;
+            for (int i = 2; i < length; i++) {
+                if (nameKeywords[i].equals(TASK_DAY)) {
+                    hasTimePrefixD = true;
+                    timePrefixLocationD = i;
+                }
+            }
+
+            if (!hasTimePrefixD) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_TIME));
+            }
+
+            String deadlineDescription = nameKeywords[1];
+            for (int i = 2; i < timePrefixLocationD; i++) {
+                deadlineDescription = deadlineDescription + " " + nameKeywords[i];
+            }
+
+            String deadlineDeadline = nameKeywords[timePrefixLocationD + 1];
+            Deadline deadline = new Deadline(deadlineDescription, deadlineDeadline);
+            return new AddCommand(deadline);
 
         default:
             ArgumentMultimap argMultimap =

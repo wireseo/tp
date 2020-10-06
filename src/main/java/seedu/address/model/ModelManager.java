@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Event;
 import seedu.address.model.task.Todo;
 
 /**
@@ -163,7 +164,7 @@ public class ModelManager implements Model {
                 && filteredStudents.equals(other.filteredStudents);
     }
 
-    //======== Task ============================================================================================
+    //============================== Task ====================================================================
     @Override
     public boolean hasTodo(Todo todo) {
         requireNonNull(todo);
@@ -173,6 +174,17 @@ public class ModelManager implements Model {
     @Override
     public void addTodo(Todo todo) {
         addressBook.addTodo(todo);
+    }
+
+    @Override
+    public boolean hasEvent(Event event) {
+        requireNonNull(event);
+        return addressBook.hasEvent(event);
+    }
+
+    @Override
+    public void addEvent(Event event) {
+        addressBook.addEvent(event);
     }
 
 }

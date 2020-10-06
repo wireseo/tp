@@ -7,14 +7,16 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE_TIME;
+import static seedu.address.logic.parser.CliSyntax.TASK_DAY;
 import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
-import static seedu.address.logic.parser.CliSyntax.TASK_EVENT_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Event;
 import seedu.address.model.task.Todo;
 
 /**
@@ -54,11 +56,12 @@ public class AddCommand extends Command {
             + TASK_TODO + " DESCRIPTION "
             + "\nor\n"
             + TASK_EVENT + " DESCRIPTION "
-            + TASK_EVENT_TIME + " YYYY-MM-DD HHMM"
+            + TASK_DAY + " YYYY-MM-DD"
             + "\nor\n"
             + TASK_DEADLINE + " DESCRIPTION "
-            + TASK_DEADLINE_TIME + " YYYY-MM-DD HHMM";
-    public static final String MESSAGE_INVALID_DESCRIPTION = "Please include task DESCRIPTION";
+            + CliSyntax.TASK_DAY + " YYYY-MM-DD";
+    public static final String MESSAGE_MISSING_DESCRIPTION = "Please include task DESCRIPTION";
+    public static final String MESSAGE_MISSING_TIME = "Please include task TIME in YYYY-MM-DD";
 
     private final Object toAdd;
     private final String toAddType;
@@ -79,6 +82,24 @@ public class AddCommand extends Command {
         requireNonNull(todo);
         toAdd = todo;
         toAddType = TO_ADD_TODO;
+    }
+
+    /**
+     * Creates an AddCommand to add the specified {@code Event}
+     */
+    public AddCommand(Event event) {
+        requireNonNull(event);
+        toAdd = event;
+        toAddType = TO_ADD_EVENT;
+    }
+
+    /**
+     * Creates an AddCommand to add the specified {@code Deadline}
+     */
+    public AddCommand(Deadline deadline) {
+        requireNonNull(deadline);
+        toAdd = deadline;
+        toAddType = TO_ADD_DEADLINE;
     }
 
     @Override
@@ -103,6 +124,24 @@ public class AddCommand extends Command {
 
             model.addTodo(toAddTodo);
             return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddTodo));
+
+        case TO_ADD_EVENT:
+            Event toAddEvent = (Event)toAdd;
+            if (model.hasEvent(toAddEvent)) {
+                throw new CommandException(MESSAGE_DUPLICATE_TODO);
+            }
+
+            model.addEvent(toAddEvent);
+            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddEvent));
+
+        case TO_ADD_DEADLINE:
+            Deadline toAddDeadline = (Deadline)toAdd;
+            if (model.hasEvent(toAddE)) {
+                throw new CommandException(MESSAGE_DUPLICATE_TODO);
+            }
+
+            model.addEvent(toAddEvent);
+            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddEvent));
 
         default:
             throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);

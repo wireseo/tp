@@ -9,6 +9,7 @@ import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.UniqueStudentsList;
+import seedu.address.model.task.Event;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.Todo;
 import seedu.address.model.task.UniqueTasksList;
@@ -144,7 +145,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.hashCode();
     }
 
-    // Tasks
+    //======================== Tasks ==========================================================================
     /**
      * Returns true if a todo with the same identity as {@code todo} exists in the address book.
      */
@@ -153,8 +154,28 @@ public class AddressBook implements ReadOnlyAddressBook {
         return tasks.contains(todo);
     }
 
+    /**
+     * Adds a todo to the address book.
+     * The todo must not already exist in the address book.
+     */
     public void addTodo(Todo todo) {
         this.tasks.add(todo);
+    }
+
+    /**
+     * Returns true if a event with the same identity as {@code event} exists in the address book.
+     */
+    public boolean hasEvent(Event event) {
+        requireNonNull(event);
+        return tasks.contains(event);
+    }
+
+    /**
+     * Adds a event to the address book.
+     * The event must not already exist in the address book.
+     */
+    public void addEvent(Event event) {
+        this.tasks.add(event);
     }
 
 }
