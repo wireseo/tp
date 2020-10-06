@@ -1,10 +1,17 @@
 package seedu.address.model.task;
 
+/**
+ * Represents a Todo task.
+ */
 public class Todo extends Task {
 
     private final String taskId;
     private final String description;
 
+    /**
+     * Creates a Todo object that only has taskId and description attributes.
+     * @param description
+     */
     public Todo(String description) {
         this.taskId = generateTaskId();
         this.description = description;
@@ -18,6 +25,9 @@ public class Todo extends Task {
         return description;
     }
 
+    /**
+     * Returns a unique task id.
+     */
     public String generateTaskId() {
         int taskNum = Task.getTaskNum();
         Task.taskNumInc();

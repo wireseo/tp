@@ -1,5 +1,8 @@
 package seedu.address.model.task;
 
+/**
+ * Represents a Deadline task.
+ */
 public class Deadline extends Task {
 
     private final String taskId;
@@ -7,6 +10,12 @@ public class Deadline extends Task {
     private final String date;
     private final String time;
 
+    /**
+     * Creates a Deadeline object that has taskId, description, date and time attributes.
+     * @param description
+     * @param date
+     * @param time
+     */
     public Deadline(String description, String date, String time) {
         this.taskId = generateTaskId();
         this.description = description;

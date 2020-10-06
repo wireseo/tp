@@ -1,5 +1,8 @@
 package seedu.address.model.task;
 
+/**
+ * Represents an Event task.
+ */
 public class Event extends Task {
 
     private final String taskId;
@@ -7,6 +10,12 @@ public class Event extends Task {
     private final String date;
     private final String time;
 
+    /**
+     * Creates an Event object that has taskId, description, date and time attributes.
+     * @param description
+     * @param date
+     * @param time
+     */
     public Event(String description, String date, String time) {
         this.taskId = generateTaskId();
         this.description = description;

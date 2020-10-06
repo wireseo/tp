@@ -50,9 +50,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         int length = nameKeywords.length;
         boolean taskHasDescription = length > 1;
 
-        if(!taskHasDescription &&
-                (commandFlag.getFlag().equals(TASK_TODO) || commandFlag.getFlag().equals(TASK_EVENT) ||
-                        commandFlag.getFlag().equals(TASK_DEADLINE))) {
+        if (!taskHasDescription
+                && (commandFlag.getFlag().equals(TASK_TODO) || commandFlag.getFlag().equals(TASK_EVENT)
+                || commandFlag.getFlag().equals(TASK_DEADLINE))) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
         }
@@ -74,7 +74,8 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         default:
             ArgumentMultimap argMultimap =
-                    ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                    ArgumentTokenizer.tokenize(args,
+                            PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
 
             if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                     || !argMultimap.getPreamble().isEmpty()) {

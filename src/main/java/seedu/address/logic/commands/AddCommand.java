@@ -6,8 +6,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.TASK_DATE;
+import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
@@ -81,6 +81,7 @@ public class AddCommand extends Command {
         toAddType = TO_ADD_STUDENT;
     }
 
+
     /**
      * Creates an AddCommand to add the specified {@code Todo}
      */
@@ -114,7 +115,7 @@ public class AddCommand extends Command {
 
         switch(toAddType) {
         case TO_ADD_STUDENT:
-            Student toAddStudent = (Student)toAdd;
+            Student toAddStudent = (Student) toAdd;
             if (model.hasPerson(toAddStudent)) {
                 throw new CommandException(MESSAGE_DUPLICATE_PERSON);
             }
@@ -123,7 +124,7 @@ public class AddCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAddStudent));
 
         case TO_ADD_TODO:
-            Todo toAddTodo = (Todo)toAdd;
+            Todo toAddTodo = (Todo) toAdd;
             if (model.hasTodo(toAddTodo)) {
                 throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
@@ -132,7 +133,7 @@ public class AddCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo));
 
         case TO_ADD_EVENT:
-            Event toAddEvent = (Event)toAdd;
+            Event toAddEvent = (Event) toAdd;
             if (model.hasEvent(toAddEvent)) {
                 throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
@@ -141,7 +142,7 @@ public class AddCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent));
 
         case TO_ADD_DEADLINE:
-            Deadline toAddDeadline = (Deadline)toAdd;
+            Deadline toAddDeadline = (Deadline) toAdd;
             if (model.hasDeadline(toAddDeadline)) {
                 throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
