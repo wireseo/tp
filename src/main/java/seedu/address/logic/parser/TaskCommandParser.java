@@ -14,6 +14,7 @@ import seedu.address.model.task.Todo;
  * Parses input add task arguments and creates a new Specified Task object
  */
 public class TaskCommandParser {
+
     /**
      * Takes in user input parameters and creates a Todo.
      * Returns a todo task.

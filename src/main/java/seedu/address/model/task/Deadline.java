@@ -36,7 +36,7 @@ public class Deadline extends Task {
     public String generateTaskId() {
         int taskNum = Task.getTaskNum();
         Task.taskNumInc();
-        return "E" + taskNum;
+        return "D" + taskNum;
     }
 
     /**
@@ -64,9 +64,9 @@ public class Deadline extends Task {
                 .append("] ")
                 .append(getDescription())
                 .append(" BY")
-                .append(" Date: ")
+                .append(" date: ")
                 .append(getDate())
-                .append(" Time: ")
+                .append(" time: ")
                 .append(getTime());
 
         return builder.toString();

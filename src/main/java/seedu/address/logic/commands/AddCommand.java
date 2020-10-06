@@ -48,8 +48,9 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in jarvis";
     public static final String MESSAGE_INVALID_TO_ADD_TYPE = "This object to add is unidentifiable";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in jarvis";
-    public static final String MESSAGE_SUCCESS_TASK = "New task added: %1$s";
-
+    public static final String MESSAGE_SUCCESS_TODO = "New todo added: %1$s";
+    public static final String MESSAGE_SUCCESS_EVENT = "New event added: %1$s";
+    public static final String MESSAGE_SUCCESS_DEADLINE = "New deadline added: %1$s";
 
     public static final String MESSAGE_TASK_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
             + "Parameters: \n"
@@ -128,7 +129,7 @@ public class AddCommand extends Command {
             }
 
             model.addTodo(toAddTodo);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddTodo));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo));
 
         case TO_ADD_EVENT:
             Event toAddEvent = (Event)toAdd;
@@ -137,7 +138,7 @@ public class AddCommand extends Command {
             }
 
             model.addEvent(toAddEvent);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddEvent));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent));
 
         case TO_ADD_DEADLINE:
             Deadline toAddDeadline = (Deadline)toAdd;
@@ -146,7 +147,7 @@ public class AddCommand extends Command {
             }
 
             model.addDeadline(toAddDeadline);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_TASK, toAddDeadline));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline));
 
         default:
             throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);

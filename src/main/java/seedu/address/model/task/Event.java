@@ -64,9 +64,9 @@ public class Event extends Task {
                 .append("] ")
                 .append(getDescription())
                 .append(" AT")
-                .append(" Date: ")
+                .append(" date: ")
                 .append(getDate())
-                .append(" Time: ")
+                .append(" time: ")
                 .append(getTime());
 
         return builder.toString();
