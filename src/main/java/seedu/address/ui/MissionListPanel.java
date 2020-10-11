@@ -30,7 +30,7 @@ public class MissionListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Student} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Mission} using a {@code MissionCard}.
      */
     class MissionListViewCell extends ListCell<Mission> {
         @Override
