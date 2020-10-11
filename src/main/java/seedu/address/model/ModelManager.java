@@ -124,11 +124,20 @@ public class ModelManager implements Model {
         addressBook.addMission(mission);
     }
 
-    //=========== Filtered Student List Accessors =============================================================
+    //=========== Filtered Mission List Accessors =============================================================
     @Override
     public void updateMissionsList(Predicate<Mission> predicate) {
         requireNonNull(predicate);
         filteredMissions.setPredicate(predicate);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Mission} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Mission> getFilteredMissionList() {
+        return filteredMissions;
     }
 
     /**

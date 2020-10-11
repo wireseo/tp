@@ -132,6 +132,9 @@ public interface Model {
      */
     void updateMissionsList(Predicate<Mission> predicate);
 
+    /** Returns an unmodifiable view of the filtered mission list */
+    ObservableList<Mission> getFilteredMissionList();
+
     /**
      * Adds the given mission.
      * @param mission The mission to be added
