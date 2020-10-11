@@ -11,7 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.mission.Mission;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of missions.
  */
 public class MissionListPanel extends UiPart<Region> {
     private static final String FXML = "MissionListPanel.fxml";
@@ -21,7 +21,7 @@ public class MissionListPanel extends UiPart<Region> {
     private ListView<Mission> missionListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code MissionListPanel} with the given {@code ObservableList}.
      */
     public MissionListPanel(ObservableList<Mission> missionList) {
         super(FXML);

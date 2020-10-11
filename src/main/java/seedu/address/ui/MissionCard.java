@@ -34,7 +34,7 @@ public class MissionCard extends UiPart<Region> {
     private Label deadline;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Mission} and index to display.
+     * Creates a {@code MissionCard} with the given {@code Mission} and index to display.
      */
     public MissionCard(Mission mission, int displayedIndex) {
         super(FXML);
