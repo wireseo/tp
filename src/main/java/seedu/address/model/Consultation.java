@@ -1,7 +1,6 @@
 package seedu.address.model;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -12,7 +11,7 @@ import seedu.address.model.student.Student;
  */
 public class Consultation {
     private Student student;
-    private Date dateAndTime;
+    private LocalDate dateAndTime;
     private Optional<Integer> lengthOfMeeting;
     private Optional<String> placeOfMeeting;
     private Optional<String> notes;
@@ -27,7 +26,7 @@ public class Consultation {
      * @param placeOfMeeting place of meeting; may be a zoom link or any indicator for a meeting room at NUS
      * @param notes any notes relevant to the consultation; may be null
      */
-    public Consultation(Student student, Date dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
+    public Consultation(Student student, LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
         this.student = student;
         this.dateAndTime = dateAndTime;
         this.lengthOfMeeting = Optional.of(lengthOfMeeting);
@@ -40,7 +39,7 @@ public class Consultation {
         return student;
     }
 
-    public Date getDateAndTime() {
+    public LocalDate getDateAndTime() {
         return dateAndTime;
     }
 
@@ -64,7 +63,7 @@ public class Consultation {
         this.student = student;
     }
 
-    public void setDateAndTime(Date dateAndTime) {
+    public void setDateAndTime(LocalDate dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 
