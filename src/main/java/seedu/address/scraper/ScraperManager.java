@@ -1,5 +1,7 @@
 package seedu.address.scraper;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
-import seedu.address.logic.LogicManager;
 import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 import seedu.address.model.mission.Mission;
@@ -27,7 +28,7 @@ import seedu.address.model.student.Phone;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
 
-import static java.util.Objects.requireNonNull;
+
 
 public class ScraperManager implements Scraper {
 
