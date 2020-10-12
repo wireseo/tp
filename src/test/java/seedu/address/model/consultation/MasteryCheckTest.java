@@ -4,12 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import seedu.address.model.MasteryCheck;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
 
-import java.time.LocalDate;
 
 public class MasteryCheckTest {
 

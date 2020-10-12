@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 // TODO: import consultations from testutil as well
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Consultation;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
 
-import java.time.LocalDate;
 
 
 public class ConsultationTest {
