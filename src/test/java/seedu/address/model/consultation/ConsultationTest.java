@@ -1,31 +1,33 @@
 package seedu.address.model.consultation;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+// TODO: import consultations from testutil as well
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.Consultation;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
-// TODO: import consultations from testutil as well
 
 public class ConsultationTest {
 
     // TODO: Naming constraints
 
-    Consultation normalConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
+    private Consultation normalConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
             "COM2", "");
-    Consultation consultationVariant1 = new Consultation(LocalDate.parse("2020-01-08"), 100,
+    private Consultation consultationVariant1 = new Consultation(LocalDate.parse("2020-01-08"), 100,
             "COM2", "");
-    Consultation consultationVariant2 = new Consultation(LocalDate.parse("2020-01-09"), 120,
+    private Consultation consultationVariant2 = new Consultation(LocalDate.parse("2020-01-09"), 120,
             "COM2", "");
-    Consultation consultationVariant3 = new Consultation(LocalDate.parse("2020-01-08"), 120,
+    private Consultation consultationVariant3 = new Consultation(LocalDate.parse("2020-01-08"), 120,
             "COM3", "");
 
-    Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
+    private Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
             null, null);
 
     // TODO: Erase this?

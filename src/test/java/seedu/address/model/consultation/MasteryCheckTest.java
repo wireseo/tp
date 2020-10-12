@@ -1,32 +1,28 @@
 package seedu.address.model.consultation;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+
 import org.junit.jupiter.api.Test;
-import seedu.address.model.Consultation;
 import seedu.address.model.MasteryCheck;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
-
 public class MasteryCheckTest {
 
     // TODO: Naming constraints
 
-    MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
+    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
             "COM2", "");
-    MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 100,
+    private  MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 100,
             "COM2", "");
-    MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-09"), 120,
+    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-09"), 120,
             "COM2", "");
-    MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
+    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
             "COM3", "");
-
-    Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
-            null, null);
 
     // TODO: Erase this?
     @Test
