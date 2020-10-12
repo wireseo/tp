@@ -11,7 +11,7 @@ import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Version;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.commons.exceptions.OsNotSupportedException;
+import seedu.address.commons.exceptions.ScraperParsingException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
@@ -208,10 +208,13 @@ public class MainApp extends Application {
         return initializedPrefs;
     }
 
-    protected void initScraper(UserLogin userLogin, Model model) throws OsNotSupportedException {
+    protected void initScraper(UserLogin userLogin, Model model) throws ScraperParsingException {
         logger.info("Starting scraper to scrape SourceAcademy");
         scraper = new ScraperManager(userLogin, model);
+        scraper.authenticate();
         scraper.getMissions();
+        scraper.getStudents();
+        scraper.shutDown();
     }
 
     @Override
