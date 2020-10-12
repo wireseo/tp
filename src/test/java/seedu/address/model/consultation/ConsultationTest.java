@@ -16,12 +16,17 @@ public class ConsultationTest {
 
     // TODO: Naming constraints
 
-    Consultation normalConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120, "COM2", "");
-    Consultation consultationVariant1 = new Consultation(LocalDate.parse("2020-01-08"), 100, "COM2", "");
-    Consultation consultationVariant2 = new Consultation(LocalDate.parse("2020-01-09"), 120, "COM2", "");
-    Consultation consultationVariant3 = new Consultation(LocalDate.parse("2020-01-08"), 120, "COM3", "");
+    Consultation normalConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
+            "COM2", "");
+    Consultation consultationVariant1 = new Consultation(LocalDate.parse("2020-01-08"), 100,
+            "COM2", "");
+    Consultation consultationVariant2 = new Consultation(LocalDate.parse("2020-01-09"), 120,
+            "COM2", "");
+    Consultation consultationVariant3 = new Consultation(LocalDate.parse("2020-01-08"), 120,
+            "COM3", "");
 
-    Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120, null, null);
+    Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
+            null, null);
 
     // TODO: Erase this?
     @Test

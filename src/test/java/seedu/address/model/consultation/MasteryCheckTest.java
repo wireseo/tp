@@ -16,12 +16,17 @@ public class MasteryCheckTest {
 
     // TODO: Naming constraints
 
-    MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120, "COM2", "");
-    MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 100, "COM2", "");
-    MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-09"), 120, "COM2", "");
-    MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120, "COM3", "");
+    MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
+            "COM2", "");
+    MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 100,
+            "COM2", "");
+    MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-09"), 120,
+            "COM2", "");
+    MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
+            "COM3", "");
 
-    Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120, null, null);
+    Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
+            null, null);
 
     // TODO: Erase this?
     @Test
