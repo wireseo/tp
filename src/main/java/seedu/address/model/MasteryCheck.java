@@ -24,7 +24,7 @@ public class MasteryCheck extends Consultation {
 
     public MasteryCheck setMark(int mark) {
         this.mark = mark;
-        return null;
+        return this;
     }
 
     /**
