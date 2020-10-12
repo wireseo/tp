@@ -15,13 +15,7 @@ import static seedu.address.logic.parser.CliSyntax.UNGRADED_MISSION_QUEST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 import static seedu.address.testutil.Assert.assertThrows;
 
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
-
-import com.google.common.collect.ImmutableSet;
-
-import seedu.address.model.student.Name;
 
 class FlagTest {
 
@@ -43,7 +37,6 @@ class FlagTest {
         assertTrue(MISSION_DEADLINE.equals(new Flag(MISSION_DEADLINE).getFlag()));
 
         // flag creation will not accept invalid flags.
-        String RandomFlag = "RandomFlag";
         assertThrows(IllegalArgumentException.class, () -> new Flag("RandomFlag").getFlag());
     }
 

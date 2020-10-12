@@ -1,13 +1,12 @@
 package seedu.address.model.mission;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalMissions.TEST_MISSION;
 import static seedu.address.testutil.TypicalMissions.TEST_MISSION_COPY;
 import static seedu.address.testutil.TypicalMissions.TEST_MISSION_DEADLINE;
 import static seedu.address.testutil.TypicalMissions.TEST_MISSION_DIFF;
 import static seedu.address.testutil.TypicalMissions.TEST_MISSION_TITLE;
-import static seedu.address.testutil.TypicalStudents.ALICE;
-import static seedu.address.testutil.TypicalStudents.BOB;
 
 import org.junit.jupiter.api.Test;
 

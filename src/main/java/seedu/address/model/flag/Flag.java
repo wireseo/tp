@@ -29,6 +29,10 @@ public class Flag {
 
     public final String flag;
 
+    /**
+     * Creates a Flag object.
+     * @param flag must not be null or invalid.
+     */
     public Flag(String flag) {
         requireNonNull(flag);
         checkArgument(isValidFlag(flag), MESSAGE_CONSTRAINTS);
