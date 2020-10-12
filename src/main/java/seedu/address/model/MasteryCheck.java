@@ -31,7 +31,7 @@ public class MasteryCheck extends Consultation {
      * Creates a {@code MasteryCheck} with a full mark with the given parameters. {@code lengthOfMeeting} and
      * {@code notes} may be null.
      */
-    public MasteryCheck fullMarkMC(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
+    public static MasteryCheck createFullMarkMC(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
         return new MasteryCheck(dateAndTime, lengthOfMeeting, placeOfMeeting, notes).setMark(1);
     }
 
@@ -39,7 +39,7 @@ public class MasteryCheck extends Consultation {
      * Creates a {@code MasteryCheck} with zero marks with the given parameters. {@code lengthOfMeeting} and
      * {@code notes} may be null.
      */
-    public MasteryCheck zeroMarkMC(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
+    public static MasteryCheck createZeroMarkMC(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
         return new MasteryCheck(dateAndTime, lengthOfMeeting, placeOfMeeting, notes).setMark(0);
     }
 
