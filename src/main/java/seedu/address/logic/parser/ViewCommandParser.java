@@ -32,10 +32,15 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         Flag commandFlag = ParserUtil.parseFlag(nameKeywords[0]);
         boolean argsHasAdditionalParams = nameKeywords.length > 1;
         // potential bug with studentName being initialized as empty string
-        String studentName = "";
+        StringBuilder studentNameBuilder = new StringBuilder();
+        int lastNameComponentIndex = 0;
         if (argsHasAdditionalParams) {
-            studentName = nameKeywords[1] + " " + nameKeywords[2];
+            lastNameComponentIndex = nameKeywords.length;
         }
+        for (int i = 1; i < lastNameComponentIndex; i++) {
+            studentNameBuilder.append(nameKeywords[i]).append(" ");
+        }
+        String studentName = studentNameBuilder.toString().trim();
 
         // switch command to return the respective view commands
         switch(commandFlag.getFlag()) {
