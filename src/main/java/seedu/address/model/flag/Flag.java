@@ -1,5 +1,7 @@
 package seedu.address.model.flag;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.logic.parser.CliSyntax.MISSION_AND_QUEST_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
@@ -27,7 +29,13 @@ public class Flag {
 
     public final String flag;
 
+    /**
+     * Creates a Flag object.
+     * @param flag must not be null or invalid.
+     */
     public Flag(String flag) {
+        requireNonNull(flag);
+        checkArgument(isValidFlag(flag), MESSAGE_CONSTRAINTS);
         this.flag = flag;
     }
 
