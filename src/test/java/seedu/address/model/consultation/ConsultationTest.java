@@ -48,10 +48,10 @@ public class ConsultationTest {
     @Test
     public void conflictsWith() {
         // same dateandtime -> returns true
-        assertTrue(normalConsultation.equals(consultationVariant1));
+        assertTrue(normalConsultation.conflictsWith(consultationVariant1));
 
         // different dateandtime -> returns false
-        assertFalse(normalConsultation.equals(consultationVariant2));
+        assertFalse(normalConsultation.conflictsWith(consultationVariant2));
 
     }
 }
