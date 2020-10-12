@@ -1,8 +1,10 @@
 package seedu.address.scraper;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,14 +13,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seedu.address.commons.exceptions.OsNotSupportedException;
+import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.student.Address;
+import seedu.address.model.student.Email;
+import seedu.address.model.student.Name;
+import seedu.address.model.student.Phone;
+import seedu.address.model.student.Student;
 
 public class ScraperManager implements Scraper {
+    private static final String FILTER_KEY = "STUDIO JOURNAL";
     private WebDriver driver;
     private UserLogin loginInfo;
     private Model model;
+    private boolean isAuthenticated;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
@@ -26,6 +36,7 @@ public class ScraperManager implements Scraper {
     public ScraperManager(UserLogin loginInfo, Model model) throws OsNotSupportedException {
         this.loginInfo = loginInfo;
         this.model = model;
+        this.isAuthenticated = false;
 
         // Grab current os name
         final String operatingSystem = System.getProperty("os.name").toUpperCase();
@@ -46,9 +57,13 @@ public class ScraperManager implements Scraper {
         driver = new ChromeDriver(options);
     }
 
-    public void getMissions() {
-        // Check if login information is empty
-        if (loginInfo.isEmpty()) {
+    /**
+     * Authenticates the user with their supplied emails and password.
+     * @throws WrongLoginDetailsException
+     */
+    public void authenticate() throws WrongLoginDetailsException {
+        // Check if authenticated or login information is empty
+        if (isAuthenticated || loginInfo.isEmpty()) {
             return;
         }
 
@@ -66,22 +81,52 @@ public class ScraperManager implements Scraper {
 
             WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
-
-            // Grab mission titles
-            driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
-
-            List<WebElement> missionTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
-            List<WebElement> missionDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
-
-            for (int i = 0; i < missionTitles.size(); i++) {
-                // Add mission to ModelController here
-                model.addMission(new Mission(missionTitles.get(i).getText(), missionDeadlines.get(i).getText()));
-            }
-
-            driver.quit();
-
         } catch (Exception e) {
-            System.out.println(e);
+            throw new WrongLoginDetailsException();
         }
+        this.isAuthenticated = true;
+    }
+
+    public void getMissions() throws WrongLoginDetailsException {
+        if (!isAuthenticated) {
+            authenticate();
+        }
+        // Grab mission titles
+        driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
+
+        List<WebElement> missionTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
+        List<WebElement> missionDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
+
+        for (int i = 0; i < missionTitles.size(); i++) {
+            // Add mission to ModelController here
+            model.addMission(new Mission(missionTitles.get(i).getText(), missionDeadlines.get(i).getText()));
+        }
+    }
+
+    public void getStudents() throws WrongLoginDetailsException {
+        if (!isAuthenticated) {
+            authenticate();
+        }
+        // Navigate to grading page
+        driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
+
+        // Filter by Studio Journal
+        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(FILTER_KEY + Keys.ENTER);
+
+        // Get all student names
+        List<WebElement> studentNames = driver.findElements(By.xpath("//div[@col-id='studentName']"));
+        studentNames.remove(0);
+
+        // Add student names to ModelController here
+        for (WebElement name : studentNames) {
+            model.addPerson(new Student(new Name(name.getText()), new Phone("999"), new Email("student@gmail.com"),
+                    new Address("Test drive"), new HashSet<>()));
+        }
+    }
+
+    public void shutDown() {
+        driver.quit();
     }
 }
