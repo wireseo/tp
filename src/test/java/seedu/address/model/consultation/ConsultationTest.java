@@ -28,15 +28,6 @@ public class ConsultationTest {
     private Consultation consultationVariant3 = new Consultation(LocalDate.parse("2020-01-08"), 120,
             "COM3", "");
 
-    private Consultation nullConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
-            null, null);
-
-    // TODO: Erase this?
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Student student = new StudentBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> student.getTags().remove(0));
-    }
 
     @Test
     public void equals() {
@@ -52,8 +43,8 @@ public class ConsultationTest {
         // different length of meeting -> returns false
         assertFalse(normalConsultation.equals(consultationVariant1));
 
-        // same date, same length of meeting, different place of meeting -> returns true
-        assertTrue(normalConsultation.equals(consultationVariant3));
+        // same date, same length of meeting, different place of meeting -> returns false
+        assertFalse(normalConsultation.equals(consultationVariant3));
 
     }
 
