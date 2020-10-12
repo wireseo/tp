@@ -23,7 +23,7 @@ public class Flag {
     public static final String MESSAGE_CONSTRAINTS = "Flag provided is invalid";
     private static final Set<String> VALID_FLAGS = ImmutableSet.of(MISSION_DEADLINE, QUEST_DEADLINE,
             UNGRADED_MISSION_QUEST, MISSION_AND_QUEST_DEADLINE, SPECIFIC_MISSION_QUEST_DEADLINE, VIEW_STUDENT,
-            "-s Alex Yeoh", TASK_TODO, TASK_EVENT, TASK_DEADLINE, TASK_DATE, TASK_TIME);
+            TASK_TODO, TASK_EVENT, TASK_DEADLINE, TASK_DATE, TASK_TIME);
 
     public final String flag;
 

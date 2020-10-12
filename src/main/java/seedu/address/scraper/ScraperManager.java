@@ -1,7 +1,10 @@
 package seedu.address.scraper;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.HashSet;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
@@ -22,9 +26,14 @@ import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Phone;
 import seedu.address.model.student.Student;
+import seedu.address.model.student.exceptions.DuplicateStudentException;
+
+
 
 public class ScraperManager implements Scraper {
+
     private static final String FILTER_KEY = "STUDIO JOURNAL";
+    private final Logger logger = LogsCenter.getLogger(ScraperManager.class);
     private WebDriver driver;
     private UserLogin loginInfo;
     private Model model;
@@ -34,6 +43,8 @@ public class ScraperManager implements Scraper {
      * The scraper constructor to initialize a new scraper instance.
      */
     public ScraperManager(UserLogin loginInfo, Model model) throws OsNotSupportedException {
+        requireNonNull(loginInfo);
+        requireNonNull(model);
         this.loginInfo = loginInfo;
         this.model = model;
         this.isAuthenticated = false;
@@ -121,8 +132,15 @@ public class ScraperManager implements Scraper {
 
         // Add student names to ModelController here
         for (WebElement name : studentNames) {
-            model.addPerson(new Student(new Name(name.getText()), new Phone("999"), new Email("student@gmail.com"),
-                    new Address("Test drive"), new HashSet<>()));
+            try {
+                model.addPerson(new Student(new Name(name.getText()), new Phone("999"), new Email("student@gmail.com"),
+                        new Address("Test drive"), new HashSet<>()));
+            } catch (DuplicateStudentException dse) {
+                // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
+                // tries to fetch the same students on startup to add them to the addressbook.
+                logger.info("ScraperManager tried adding a student which existed in addressbook.json");
+            }
+
         }
     }
 
