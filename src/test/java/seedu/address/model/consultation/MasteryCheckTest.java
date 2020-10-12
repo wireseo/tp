@@ -7,6 +7,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.MasteryCheck;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
@@ -16,14 +17,10 @@ public class MasteryCheckTest {
 
     // TODO: Naming constraints
 
-    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
-            "COM2", "");
-    private  MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 100,
-            "COM2", "");
-    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-09"), 120,
-            "COM2", "");
-    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120,
-            "COM3", "");
+    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120, "COM2", "");
+    private  MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 100, "COM2", "");
+    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-09"), 120, "COM2", "");
+    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDate.parse("2020-01-08"), 120, "COM3", "");
 
     // TODO: Erase this?
     @Test
