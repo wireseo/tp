@@ -27,6 +27,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
 
 
         // split the string trimmedArgs with regex of one or more whitespace characters.
+        // result will be as such: {-s, Alex, Yeoh}
         String[] nameKeywords = trimmedArgs.split("\\s+");
         Flag commandFlag = ParserUtil.parseFlag(nameKeywords[0]);
         boolean argsHasAdditionalParams = nameKeywords.length > 1;

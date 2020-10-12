@@ -14,6 +14,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
@@ -193,4 +194,21 @@ public class ParserUtilTest {
 
         assertEquals(expectedTagSet, actualTagSet);
     }
+
+    @Test
+    public void parseFlag_invalidFlag_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseFlag(" "));
+    }
+
+    @Test
+    public void parseFlag_validFlagInCommand_success() throws ParseException {
+        Flag viewStudentFlag = new Flag("-s");
+        Flag resultFlagOne = ParserUtil.parseFlag("-s");
+        assertEquals(viewStudentFlag.flag, resultFlagOne.flag);
+
+        Flag viewMissionDeadlineFlag = new Flag("-m");
+        Flag resultFlagTwo = ParserUtil.parseFlag("-m");
+        assertEquals(viewMissionDeadlineFlag.flag, resultFlagTwo.flag);
+    }
+
 }

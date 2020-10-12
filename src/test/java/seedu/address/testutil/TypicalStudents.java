@@ -47,6 +47,8 @@ public class TypicalStudents {
             .withEmail("stefan@example.com").withAddress("little india").build();
     public static final Student IDA = new StudentBuilder().withName("Ida Mueller").withPhone("8482131")
             .withEmail("hans@example.com").withAddress("chicago ave").build();
+    public static final Student DIMITRI = new StudentBuilder().withName("Dimitri Hacker").withPhone("91129312")
+            .withEmail("dimitrihacker@example.com").withAddress("moscow").build();
 
     // Manually added - Student's details found in {@code CommandTestUtil}
     public static final Student AMY = new StudentBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)

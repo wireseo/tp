@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -22,14 +24,18 @@ public class ViewOneStudentCommand extends ViewCommand {
      * @param name of the student to be viewed.
      */
     public ViewOneStudentCommand(Name name) {
+        requireNonNull(name);
         this.name = name;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         model.updateFilteredPersonList(student -> student.getName().equals(name));
         ObservableList<Student> filteredResult = model.getFilteredPersonList();
         if (filteredResult.size() == 0) {
+            // reset the list to show all persons
+            model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_STUDENTS);
             throw new CommandException(Messages.MESSAGE_STUDENT_NAME_NOT_FOUND);
         } else {
             return new CommandResult(String.format(MESSAGE_SUCCESS, name));
