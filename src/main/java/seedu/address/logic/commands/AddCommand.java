@@ -129,6 +129,9 @@ public class AddCommand extends Command {
             }
 
             model.addTodo(toAddTodo);
+
+            //Temp storage to be removed -> for better visualization
+            ViewTaskListCommand.add(toAddTodo);
             return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo));
 
         case TO_ADD_EVENT:
@@ -138,6 +141,9 @@ public class AddCommand extends Command {
             }
 
             model.addEvent(toAddEvent);
+
+            //Temp storage to be removed -> for better visualization
+            ViewTaskListCommand.add(toAddEvent);
             return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent));
 
         case TO_ADD_DEADLINE:
@@ -147,6 +153,9 @@ public class AddCommand extends Command {
             }
 
             model.addDeadline(toAddDeadline);
+
+            //Temp storage to be removed -> for better visualization
+            ViewTaskListCommand.add(toAddDeadline);
             return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline));
 
         default:
