@@ -14,14 +14,14 @@ public class MasteryCheckTest {
 
     // TODO: Naming constraints
 
-    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
-            8,13,10), 120, "COM2", "");
-    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
-            8,13,10),100, "COM2", "");
-    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
-            8,13,10), 120, "COM2", "");
-    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
-            8,13,10), 120, "COM3", "");
+    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020, 1,
+            8, 13, 10), 120, "COM2", "");
+    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020, 1,
+            8, 13, 10),100, "COM2", "");
+    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020, 1,
+            8, 13, 10), 120, "COM2", "");
+    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020, 1,
+            8, 13, 10), 120, "COM3", "");
 
     @Test
     public void equals() {
