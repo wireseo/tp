@@ -63,7 +63,6 @@ public class AddCommand extends Command {
             + TASK_DEADLINE + " DESCRIPTION "
             + TASK_DATE + " YYYY-MM-DD "
             + TASK_TIME + " HH:MM";
-
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include task DESCRIPTION";
     public static final String MESSAGE_MISSING_DATE = "Please include task DATE and TIME d/YYYY-MM-DD t/HH:MM";
     public static final String MESSAGE_WRONG_DATETIME_FORMAT = "The date time format is wrong. Correct format: "
