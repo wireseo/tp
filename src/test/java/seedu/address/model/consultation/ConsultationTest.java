@@ -17,7 +17,7 @@ public class ConsultationTest {
     // TODO: Naming constraints
     private Consultation normalConsultation = new Consultation(LocalDateTime.of(2020, 01, 8,
             13, 10), 120, "COM2", "");
-    private Consultation consultationVariant1 = new Consultation(LocalDateTime.of(2020, 01, 9,
+    private Consultation consultationVariant1 = new Consultation(LocalDateTime.of(2020, 01, 8,
             13, 10), 100, "COM2", "");
     private Consultation consultationVariant2 = new Consultation(LocalDateTime.of(2020, 01, 9,
             13, 10), 120, "COM2", "");
