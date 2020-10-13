@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 // TODO: import consultations from testutil as well
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +17,13 @@ public class ConsultationTest {
 
     // TODO: Naming constraints
 
-    private Consultation normalConsultation = new Consultation(LocalDate.parse("2020-01-08"), 120,
+    private Consultation normalConsultation = new Consultation(LocalDateTime.parse("2020-01-08"), 120,
             "COM2", "");
-    private Consultation consultationVariant1 = new Consultation(LocalDate.parse("2020-01-08"), 100,
+    private Consultation consultationVariant1 = new Consultation(LocalDateTime.parse("2020-01-08"), 100,
             "COM2", "");
-    private Consultation consultationVariant2 = new Consultation(LocalDate.parse("2020-01-09"), 120,
+    private Consultation consultationVariant2 = new Consultation(LocalDateTime.parse("2020-01-09"), 120,
             "COM2", "");
-    private Consultation consultationVariant3 = new Consultation(LocalDate.parse("2020-01-08"), 120,
+    private Consultation consultationVariant3 = new Consultation(LocalDateTime.parse("2020-01-08"), 120,
             "COM3", "");
 
 

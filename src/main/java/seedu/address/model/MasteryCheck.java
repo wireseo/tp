@@ -1,6 +1,6 @@
 package seedu.address.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class MasteryCheck extends Consultation {
@@ -14,7 +14,7 @@ public class MasteryCheck extends Consultation {
      * @param placeOfMeeting  place of meeting; may be a zoom link or any indicator for a meeting room at NUS
      * @param notes           any notes relevant to the consultation; may be null
      */
-    private MasteryCheck(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
+    private MasteryCheck(LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
         super(dateAndTime, lengthOfMeeting, placeOfMeeting, notes);
     }
 
@@ -31,7 +31,7 @@ public class MasteryCheck extends Consultation {
      * Creates a {@code MasteryCheck} with a full mark with the given parameters. {@code lengthOfMeeting} and
      * {@code notes} may be null.
      */
-    public static MasteryCheck createFullMarkMC(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting,
+    public static MasteryCheck createFullMarkMC(LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting,
                                                 String notes) {
         return new MasteryCheck(dateAndTime, lengthOfMeeting, placeOfMeeting, notes).setMark(1);
     }
@@ -40,7 +40,7 @@ public class MasteryCheck extends Consultation {
      * Creates a {@code MasteryCheck} with zero marks with the given parameters. {@code lengthOfMeeting} and
      * {@code notes} may be null.
      */
-    public static MasteryCheck createZeroMarkMC(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting,
+    public static MasteryCheck createZeroMarkMC(LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting,
                                                 String notes) {
         return new MasteryCheck(dateAndTime, lengthOfMeeting, placeOfMeeting, notes).setMark(0);
     }
