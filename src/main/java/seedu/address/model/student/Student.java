@@ -2,11 +2,14 @@ package seedu.address.model.student;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.Consultation;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -25,17 +28,20 @@ public class Student {
     // Field to be used in the future for editing student participation levels
     private ParticipationLevel participationLevel;
     private final Set<Tag> tags = new HashSet<>();
+    private List<Consultation> consultations = new ArrayList<>();;
 
     /**
      * Every field must be present and not null.
      */
-    public Student(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Student(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                   List<Consultation> consultations) {
+        requireAllNonNull(name, phone, email, address, tags, consultations);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.consultations.addAll(consultations);
     }
 
     public Name getName() {
@@ -60,6 +66,14 @@ public class Student {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns an immutable consultation list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public List<Consultation> getConsultations() {
+        return Collections.unmodifiableList(consultations);
     }
 
     /**
@@ -95,13 +109,14 @@ public class Student {
                 && otherStudent.getPhone().equals(getPhone())
                 && otherStudent.getEmail().equals(getEmail())
                 && otherStudent.getAddress().equals(getAddress())
-                && otherStudent.getTags().equals(getTags());
+                && otherStudent.getTags().equals(getTags())
+                && otherStudent.getConsultations().equals(getConsultations());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, consultations);
     }
 
     @Override
@@ -114,6 +129,8 @@ public class Student {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Consultations: ")
+                .append(getConsultations())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
