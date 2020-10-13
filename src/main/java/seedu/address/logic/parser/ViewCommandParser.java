@@ -3,11 +3,13 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
+import static seedu.address.logic.parser.CliSyntax.VIEW_TASK_LIST;
 
 import seedu.address.logic.commands.ViewAllStudentsCommand;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
 import seedu.address.logic.commands.ViewOneStudentCommand;
+import seedu.address.logic.commands.ViewTaskListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
@@ -54,6 +56,9 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             } else {
                 return new ViewAllStudentsCommand();
             }
+
+        case VIEW_TASK_LIST:
+            return new ViewTaskListCommand();
 
         // add the other cases here
 

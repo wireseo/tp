@@ -13,6 +13,7 @@ import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_MISSION_QUEST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
+import static seedu.address.logic.parser.CliSyntax.VIEW_TASK_LIST;
 
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class Flag {
     public static final String MESSAGE_CONSTRAINTS = "Flag provided is invalid";
     private static final Set<String> VALID_FLAGS = ImmutableSet.of(MISSION_DEADLINE, QUEST_DEADLINE,
             UNGRADED_MISSION_QUEST, MISSION_AND_QUEST_DEADLINE, SPECIFIC_MISSION_QUEST_DEADLINE, VIEW_STUDENT,
-            TASK_TODO, TASK_EVENT, TASK_DEADLINE, TASK_DATE, TASK_TIME);
+            TASK_TODO, TASK_EVENT, TASK_DEADLINE, TASK_DATE, TASK_TIME, VIEW_TASK_LIST);
 
     public final String flag;
 
