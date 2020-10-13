@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +14,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
@@ -27,6 +30,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Student> filteredStudents;
     private final FilteredList<Mission> filteredMissions;
+    private final FilteredList<Quest> filteredQuests;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -41,6 +45,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredStudents = new FilteredList<>(this.addressBook.getPersonList());
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
+        filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
     }
 
     public ModelManager() {
@@ -149,6 +154,26 @@ public class ModelManager implements Model {
         return filteredStudents;
     }
 
+    //=========== Quests ===================================================================================
+    @Override
+    public void addQuest(Quest quest) {
+        addressBook.addQuest(quest);
+    }
+    /**
+     * Returns an unmodifiable view of the list of {@code Quest} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Quest> getFilteredQuestList() {
+        return filteredQuests;
+    }
+
+    @Override
+    public void updateQuestsList(Predicate<Quest> predicate) {
+        requireNonNull(predicate);
+        filteredQuests.setPredicate(predicate);
+    }
+
     @Override
     public void updateFilteredPersonList(Predicate<Student> predicate) {
         requireNonNull(predicate);
@@ -206,6 +231,14 @@ public class ModelManager implements Model {
     @Override
     public void addDeadline(Deadline deadline) {
         addressBook.addDeadline(deadline);
+    }
+
+    @Override
+    public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
+        List<Consultation> allConsultations = new ArrayList<Consultation>();
+        addressBook.getPersonList().forEach(student -> student.getConsultations().stream().filter(predicate)
+                .forEach(consultation -> allConsultations.add(consultation)));
+        return allConsultations;
     }
 
 }

@@ -12,8 +12,8 @@ public abstract class ViewCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists information according to the command inputted.\n"
             + "view -s: View Student information\n"
-            + "view -c / view -cp / view -cu: View Consultation sessions\n"
-            + "view -mc / view -mcp / view -mcu: View Mastery Check sessions\n"
+            + "view -c / view -cp / view -cu: View Consultation sessions (cp: past, cu: upcoming only)\n"
+            + "view -mc / view -mcp / view -mcu: View Mastery Check sessions (cp: past, cu: upcoming only)\n"
             + "view -u: View ungraded Missions and Quests\n"
             + "view -m: View deadline for Missions\n"
             + "view -q: View deadline for Quests\n"

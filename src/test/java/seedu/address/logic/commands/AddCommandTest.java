@@ -9,6 +9,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -17,10 +18,12 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.Consultation;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
@@ -154,6 +157,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Quest> getFilteredQuestList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Student> predicate) {
             throw new AssertionError("This method should not be called.");
         }
@@ -164,7 +172,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateQuestsList(Predicate<Quest> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addMission(Mission mission) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addQuest(Quest quest) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -197,6 +220,8 @@ public class AddCommandTest {
         public void addDeadline(Deadline deadline) {
             throw new AssertionError("This method should not be called.");
         }
+
+
     }
 
     /**

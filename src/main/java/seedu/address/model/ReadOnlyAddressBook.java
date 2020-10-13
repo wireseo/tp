@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 
 /**
@@ -20,4 +21,10 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate missions.
      */
     ObservableList<Mission> getMissionList();
+
+    /**
+     * Returns an unmodifiable view of the quest list.
+     * This list will not contain any duplicate quests.
+     */
+    ObservableList<Quest> getQuestList();
 }
