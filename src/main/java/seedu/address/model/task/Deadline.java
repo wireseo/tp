@@ -1,5 +1,7 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -20,7 +22,9 @@ public class Deadline extends Task {
      */
     public Deadline(String description, LocalDateTime dateTime) {
         this.taskId = generateTaskId();
+        requireNonNull(description);
         this.description = description;
+        requireNonNull(dateTime);
         this.dateTime = dateTime;
     }
 
