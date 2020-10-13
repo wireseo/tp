@@ -10,9 +10,8 @@ import seedu.address.logic.commands.ViewAllStudentsCommand;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
 import seedu.address.logic.commands.ViewOneStudentCommand;
-import seedu.address.logic.commands.ViewTaskListCommand;
 import seedu.address.logic.commands.ViewQuestDeadlineCommand;
-
+import seedu.address.logic.commands.ViewTaskListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
