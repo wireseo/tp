@@ -1,6 +1,6 @@
 package seedu.address.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
  * Represents a Consultation that contains information relating to general consultations.
  */
 public class Consultation {
-    private LocalDate dateAndTime;
+    private LocalDateTime dateAndTime;
     private Optional<Integer> lengthOfMeeting;
     private Optional<String> placeOfMeeting;
     private Optional<String> notes;
@@ -23,7 +23,7 @@ public class Consultation {
      * @param placeOfMeeting place of meeting; may be a zoom link or any indicator for a meeting room at NUS
      * @param notes any notes relevant to the consultation; may be null
      */
-    public Consultation(LocalDate dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
+    public Consultation(LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
         this.dateAndTime = dateAndTime;
         this.lengthOfMeeting = Optional.of(lengthOfMeeting);
         this.placeOfMeeting = Optional.of(placeOfMeeting);
@@ -31,7 +31,7 @@ public class Consultation {
         this.minutes = "";
     }
 
-    public LocalDate getDateAndTime() {
+    public LocalDateTime getDateAndTime() {
         return dateAndTime;
     }
 
@@ -51,7 +51,7 @@ public class Consultation {
         return minutes;
     }
 
-    public void setDateAndTime(LocalDate dateAndTime) {
+    public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 

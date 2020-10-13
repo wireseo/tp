@@ -1,6 +1,8 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -23,8 +25,16 @@ public interface Model {
     Predicate<Mission> PREDICATE_SHOW_ALL_MISSIONS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Mission> PREDICATE_SHOW_ALL_QUESTS = unused -> true;
+    Predicate<Consultation> PREDICATE_SHOW_ALL_CONSULTATIONS = unused -> true;
 
+    /** {@code Predicate} that evaluates to true when the consultation has taken place in the past. */
+    Predicate<Consultation> PREDICATE_SHOW_PAST_CONSULTATIONS = unused ->
+            unused.getDateAndTime().isBefore(LocalDateTime.now());
+
+    /** {@code Predicate} that evaluates to true when the consultation will take place in the future. */
+    Predicate<Consultation> PREDICATE_SHOW_UPCOMING_CONSULTATIONS = unused ->
+            unused.getDateAndTime().isAfter(LocalDateTime.now());
+    Predicate<Mission> PREDICATE_SHOW_ALL_QUESTS = unused -> true;
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -136,7 +146,7 @@ public interface Model {
      */
     void updateMissionsList(Predicate<Mission> predicate);
 
-    /** Returns an unmodifiable view of the filtered mission list */
+    /** Returns an unmodifiable view of the filtered mission list. */
     ObservableList<Mission> getFilteredMissionList();
 
     /** Returns an unmodifiable view of the filtered quest list */
@@ -153,6 +163,11 @@ public interface Model {
      * @param mission The mission to be added
      */
     void addMission(Mission mission);
+
+    /**
+     * Returns an unmodifiable view of the filtered consultation list.
+     */
+    List<Consultation> getConsultations(Predicate<Consultation> predicate);
 
     /**
      * Adds the given quest.
