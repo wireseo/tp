@@ -28,10 +28,23 @@ public class Student {
     // Field to be used in the future for editing student participation levels
     private ParticipationLevel participationLevel;
     private final Set<Tag> tags = new HashSet<>();
-    private List<Consultation> consultations = new ArrayList<>();;
+    private List<Consultation> consultations = new ArrayList<>();
+
 
     /**
      * Every field must be present and not null.
+     */
+    public Student(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+    }
+
+    /**
+     * Every field must be present and not null. This constructor contains consultations.
      */
     public Student(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                    List<Consultation> consultations) {
