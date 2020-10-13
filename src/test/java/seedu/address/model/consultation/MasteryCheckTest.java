@@ -3,7 +3,6 @@ package seedu.address.model.consultation;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
@@ -15,14 +14,14 @@ public class MasteryCheckTest {
 
     // TODO: Naming constraints
 
-    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDateTime.parse("2020-01-08"),
-            120, "COM2", "");
-    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDateTime.parse("2020-01-08"),
-            100, "COM2", "");
-    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDateTime.parse("2020-01-09"),
-            120, "COM2", "");
-    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDateTime.parse("2020-01-08"),
-            120, "COM3", "");
+    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
+            8,13,10), 120, "COM2", "");
+    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
+            8,13,10),100, "COM2", "");
+    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
+            8,13,10), 120, "COM2", "");
+    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(LocalDateTime.of(2020,1,
+            8,13,10), 120, "COM3", "");
 
     @Test
     public void equals() {
