@@ -1,13 +1,9 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
+import static seedu.address.logic.parser.CliSyntax.*;
 
-import seedu.address.logic.commands.ViewAllStudentsCommand;
-import seedu.address.logic.commands.ViewCommand;
-import seedu.address.logic.commands.ViewMissionDeadlineCommand;
-import seedu.address.logic.commands.ViewOneStudentCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
@@ -30,22 +26,29 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         // result will be as such: {-s, Alex, Yeoh}
         String[] nameKeywords = trimmedArgs.split("\\s+");
         Flag commandFlag = ParserUtil.parseFlag(nameKeywords[0]);
+
         boolean argsHasAdditionalParams = nameKeywords.length > 1;
         // potential bug with studentName being initialized as empty string
         StringBuilder studentNameBuilder = new StringBuilder();
         int lastNameComponentIndex = 0;
+
         if (argsHasAdditionalParams) {
             lastNameComponentIndex = nameKeywords.length;
         }
+
         for (int i = 1; i < lastNameComponentIndex; i++) {
             studentNameBuilder.append(nameKeywords[i]).append(" ");
         }
+
         String studentName = studentNameBuilder.toString().trim();
 
         // switch command to return the respective view commands
         switch(commandFlag.getFlag()) {
         case MISSION_DEADLINE:
             return new ViewMissionDeadlineCommand();
+
+        case QUEST_DEADLINE:
+            return new ViewQuestDeadlineCommand();
 
         case VIEW_STUDENT:
             if (argsHasAdditionalParams) {

@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 
 /**
@@ -36,6 +37,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of missions */
     ObservableList<Mission> getFilteredMissionList();
+
+    /** Returns an unmodifiable view of the filtered list of quests */
+    ObservableList<Quest> getFilteredQuestList();
 
     /**
      * Returns the user prefs' address book file path.

@@ -15,7 +15,7 @@ public class QuestList {
         internalList.add(toAdd);
     }
 
-    public void setMissions(List<Quest> quests) {
+    public void setQuests(List<Quest> quests) {
         this.internalList.setAll(quests);
     }
 

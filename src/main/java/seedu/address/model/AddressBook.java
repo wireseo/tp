@@ -7,6 +7,8 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
+import seedu.address.model.quest.Quest;
+import seedu.address.model.quest.QuestList;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.UniqueStudentsList;
 import seedu.address.model.task.Deadline;
@@ -24,6 +26,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final MissionList missions;
 
+    private final QuestList quests;
+
     private final UniqueTasksList tasks;
 
     /*
@@ -37,6 +41,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniqueStudentsList();
         missions = new MissionList();
         tasks = new UniqueTasksList();
+        quests = new QuestList();
     }
 
     public AddressBook() {}
@@ -125,12 +130,25 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.missions.asObservableList();
     }
 
+    @Override
+    public ObservableList<Quest> getQuestList() {
+        return this.quests.asObservableList();
+    }
+
     public void addMission(Mission mission) {
         this.missions.add(mission);
     }
 
     public void setMissions(List<Mission> missions) {
         this.missions.setMissions(missions);
+    }
+
+    public void addQuest(Quest quest) {
+        this.quests.add(quest);
+    }
+
+    public void setQuests(List<Quest> quests) {
+        this.quests.setQuests(quests);
     }
 
     @Override
