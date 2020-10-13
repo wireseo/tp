@@ -1,5 +1,9 @@
 package seedu.address.model.task;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 /**
  * Represents a Deadline task.
  */
@@ -7,20 +11,17 @@ public class Deadline extends Task {
 
     private final String taskId;
     private final String description;
-    private final String date;
-    private final String time;
+    private final LocalDateTime dateTime;
 
     /**
      * Creates a Deadeline object that has taskId, description, date and time attributes.
      * @param description
-     * @param date
-     * @param time
+     * @param dateTime
      */
-    public Deadline(String description, String date, String time) {
+    public Deadline(String description, LocalDateTime dateTime) {
         this.taskId = generateTaskId();
         this.description = description;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
     }
 
     public String getTaskId() {
@@ -31,12 +32,8 @@ public class Deadline extends Task {
         return description;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public String getTime() {
-        return time;
+    public String getDateTime() {
+        return dateTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
     }
 
     /**
@@ -72,11 +69,8 @@ public class Deadline extends Task {
                 .append(getTaskId())
                 .append("] ")
                 .append(getDescription())
-                .append(" BY")
-                .append(" date: ")
-                .append(getDate())
-                .append(" time: ")
-                .append(getTime());
+                .append(" by ")
+                .append(getDateTime());
 
         return builder.toString();
     }

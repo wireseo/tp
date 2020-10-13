@@ -4,6 +4,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.TASK_DATE;
 import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.Deadline;
@@ -14,6 +18,8 @@ import seedu.address.model.task.Todo;
  * Parses input add task arguments and creates a new Specified Task object
  */
 public class TaskCommandParser {
+
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
     /**
      * Takes in user input parameters and creates a Todo.
@@ -33,43 +39,17 @@ public class TaskCommandParser {
      * Returns an event task.
      */
     public static Event parseEvent(String[] nameKeywords, int length) throws ParseException {
-        boolean hasDatePrefix = false;
-        boolean hasTimePrefix = false;
-        int datePrefixLocation = -1;
-        int timePrefixLocation = -1;
+        LocalDateTime formattedEventDateTime;
 
-        for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
-                hasDatePrefix = true;
-                datePrefixLocation = i;
-
-            } else if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
-                hasTimePrefix = true;
-                timePrefixLocation = i;
-            }
+        try {
+            formattedEventDateTime = parseTimedTaskTime(nameKeywords, length);
+        } catch(ParseException pe) {
+            throw pe;
         }
 
-        if (datePrefixLocation > timePrefixLocation) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_ORDER));
+        String eventDescription = parseTimedTaskDescription(nameKeywords, length);
 
-        } else if (!hasDatePrefix) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DATE));
-
-        } else if (!hasTimePrefix) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_TIME));
-        }
-
-        String eventDescription = nameKeywords[1];
-        for (int i = 2; i < datePrefixLocation; i++) {
-            eventDescription = eventDescription + " " + nameKeywords[i];
-        }
-
-        String eventDate = nameKeywords[datePrefixLocation].substring(2);
-        String eventTime = nameKeywords[timePrefixLocation].substring(2);
-        return new Event(eventDescription, eventDate, eventTime);
+        return new Event(eventDescription, formattedEventDateTime);
     }
 
     /**
@@ -77,6 +57,49 @@ public class TaskCommandParser {
      * Returns a deadline task.
      */
     public static Deadline parseDeadline(String[] nameKeywords, int length) throws ParseException {
+        LocalDateTime formattedDeadlineDateTime;
+
+        try {
+            formattedDeadlineDateTime = parseTimedTaskTime(nameKeywords, length);
+        } catch(ParseException pe) {
+            throw pe;
+        }
+
+        String deadlineDescription = parseTimedTaskDescription(nameKeywords, length);
+
+        return new Deadline(deadlineDescription, formattedDeadlineDateTime);
+    }
+
+    /**
+     * Parses timed event description
+     * @param nameKeywords
+     * @param length
+     * @return String of description
+     */
+    public static String parseTimedTaskDescription(String[] nameKeywords, int length) {
+        int datePrefixLocation = -1;
+        for (int i = 2; i < length; i++) {
+            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+                datePrefixLocation = i;
+            }
+        }
+
+        String taskDescription = nameKeywords[1];
+        for (int i = 2; i < datePrefixLocation; i++) {
+            taskDescription = taskDescription + " " + nameKeywords[i];
+        }
+
+        return taskDescription;
+    }
+
+    /**
+     * Parses the date time String to LocalDateTime object with checks
+     * @param nameKeywords
+     * @param length
+     * @return LocalDateTime
+     * @throws ParseException
+     */
+    public static LocalDateTime parseTimedTaskTime(String[] nameKeywords, int length) throws ParseException {
         boolean hasDatePrefix = false;
         boolean hasTimePrefix = false;
         int datePrefixLocation = -1;
@@ -86,8 +109,9 @@ public class TaskCommandParser {
             if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
                 hasDatePrefix = true;
                 datePrefixLocation = i;
+            }
 
-            } else if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
+            if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
                 hasTimePrefix = true;
                 timePrefixLocation = i;
             }
@@ -95,24 +119,44 @@ public class TaskCommandParser {
 
         if (datePrefixLocation > timePrefixLocation) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_ORDER));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
 
-        } else if (!hasDatePrefix) {
+        } else if (!hasDatePrefix || !hasTimePrefix) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DATE));
+        }
 
-        } else if (!hasTimePrefix) {
+        LocalDateTime formattedDateTime;
+        try {
+            formattedDateTime = parseDateTimeString(nameKeywords[datePrefixLocation], nameKeywords[timePrefixLocation]);
+
+        } catch (ParseException pe) {
+            throw pe;
+        }
+
+        return formattedDateTime;
+    }
+
+    /**
+     * Formats the datetime String to LocalDateTime object
+     * @param dateString
+     * @param timeString
+     * @return LocalDateTime object
+     * @throws ParseException
+     */
+    public static LocalDateTime parseDateTimeString(String dateString, String timeString)
+            throws ParseException {
+        String taskDateTime = dateString.substring(2) + " " + timeString.substring(2);
+        DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        LocalDateTime formattedEventDateTime;
+
+        try {
+            formattedEventDateTime = LocalDateTime.parse(taskDateTime, dateTimeFormat);
+        } catch (DateTimeParseException e) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_TIME));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
         }
 
-        String eventDescription = nameKeywords[1];
-        for (int i = 2; i < datePrefixLocation; i++) {
-            eventDescription = eventDescription + " " + nameKeywords[i];
-        }
-
-        String deadlineDate = nameKeywords[datePrefixLocation].substring(2);
-        String deadlineTime = nameKeywords[timePrefixLocation].substring(2);
-        return new Deadline(eventDescription, deadlineDate, deadlineTime);
+        return formattedEventDateTime;
     }
 }
