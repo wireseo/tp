@@ -34,9 +34,7 @@ public interface Model {
     /** {@code Predicate} that evaluates to true when the consultation will take place in the future. */
     Predicate<Consultation> PREDICATE_SHOW_UPCOMING_CONSULTATIONS = unused ->
             unused.getDateAndTime().isAfter(LocalDateTime.now());
-    
     Predicate<Mission> PREDICATE_SHOW_ALL_QUESTS = unused -> true;
-
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
