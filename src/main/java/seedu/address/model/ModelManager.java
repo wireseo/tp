@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -206,6 +208,14 @@ public class ModelManager implements Model {
     @Override
     public void addDeadline(Deadline deadline) {
         addressBook.addDeadline(deadline);
+    }
+
+    @Override
+    public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
+        List<Consultation> allConsultations = new ArrayList<Consultation>();
+        addressBook.getPersonList().forEach(student -> student.getConsultations().stream().filter(predicate)
+                .forEach(consultation -> allConsultations.add(consultation)));
+        return allConsultations;
     }
 
 }
