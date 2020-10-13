@@ -9,7 +9,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONSULTATIONS;
 /**
  * View all consultations.
  */
-public class ViewConsultationCommand extends ViewCommand {
+public class ViewConsultationsCommand extends ViewCommand {
     public static final String MESSAGE_RESULT = "";
 
     @Override
