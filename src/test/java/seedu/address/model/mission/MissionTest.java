@@ -43,6 +43,6 @@ class MissionTest {
     @Test
     void testToString() {
         String missionTestToString = TEST_MISSION.getTitle() + " Deadline: " + TEST_MISSION.getDeadline();
-        System.out.println(TEST_MISSION.toString().equals(missionTestToString));
+        assertTrue(TEST_MISSION.toString().equals(missionTestToString));
     }
 }

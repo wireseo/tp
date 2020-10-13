@@ -1,5 +1,11 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 /**
  * Represents an Event task.
  */
@@ -7,20 +13,19 @@ public class Event extends Task {
 
     private final String taskId;
     private final String description;
-    private final String date;
-    private final String time;
+    private final LocalDateTime dateTime;
 
     /**
      * Creates an Event object that has taskId, description, date and time attributes.
      * @param description
-     * @param date
-     * @param time
+     * @param dateTime
      */
-    public Event(String description, String date, String time) {
+    public Event(String description, LocalDateTime dateTime) {
         this.taskId = generateTaskId();
+        requireNonNull(description);
         this.description = description;
-        this.date = date;
-        this.time = time;
+        requireNonNull(dateTime);
+        this.dateTime = dateTime;
     }
 
     public String getTaskId() {
@@ -31,13 +36,10 @@ public class Event extends Task {
         return description;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateTime() {
+        return dateTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
     }
 
-    public String getTime() {
-        return time;
-    }
 
     /**
      * Returns a unique task id.
@@ -72,11 +74,8 @@ public class Event extends Task {
                 .append(getTaskId())
                 .append("] ")
                 .append(getDescription())
-                .append(" AT")
-                .append(" date: ")
-                .append(getDate())
-                .append(" time: ")
-                .append(getTime());
+                .append(" at ")
+                .append(getDateTime());
 
         return builder.toString();
     }

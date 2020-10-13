@@ -14,10 +14,11 @@ public class UniqueTasksList {
      * Adds a mission to the list.
      */
     public void add(Task toAdd) {
+        requireNonNull(toAdd);
         internalList.add(toAdd);
     }
 
-    public void setMissions(List<Task> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.internalList.setAll(tasks);
     }
 

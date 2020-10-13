@@ -1,5 +1,7 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * Represents a Todo task.
  */
@@ -14,6 +16,7 @@ public class Todo extends Task {
      */
     public Todo(String description) {
         this.taskId = generateTaskId();
+        requireNonNull(description);
         this.description = description;
     }
 
