@@ -21,6 +21,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
@@ -154,6 +155,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Quest> getFilteredQuestList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Student> predicate) {
             throw new AssertionError("This method should not be called.");
         }
@@ -164,7 +170,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateQuestsList(Predicate<Quest> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addMission(Mission mission) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addQuest(Quest quest) {
             throw new AssertionError("This method should not be called.");
         }
 

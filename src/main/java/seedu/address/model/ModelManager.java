@@ -152,6 +152,11 @@ public class ModelManager implements Model {
         return filteredStudents;
     }
 
+    //=========== Quests ===================================================================================
+    @Override
+    public void addQuest(Quest quest) {
+        addressBook.addQuest(quest);
+    }
     /**
      * Returns an unmodifiable view of the list of {@code Quest} backed by the internal list of
      * {@code versionedAddressBook}
@@ -159,6 +164,12 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Quest> getFilteredQuestList() {
         return filteredQuests;
+    }
+
+    @Override
+    public void updateQuestsList(Predicate<Quest> predicate) {
+        requireNonNull(predicate);
+        filteredQuests.setPredicate(predicate);
     }
 
     @Override

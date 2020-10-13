@@ -153,4 +153,10 @@ public interface Model {
      * @param mission The mission to be added
      */
     void addMission(Mission mission);
+
+    /**
+     * Adds the given quest.
+     * @param quest The quest to be added
+     */
+    void addQuest(Quest quest);
 }

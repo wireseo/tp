@@ -1,9 +1,15 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.ViewAllStudentsCommand;
+import seedu.address.logic.commands.ViewCommand;
+import seedu.address.logic.commands.ViewMissionDeadlineCommand;
+import seedu.address.logic.commands.ViewOneStudentCommand;
+import seedu.address.logic.commands.ViewQuestDeadlineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
@@ -20,7 +26,6 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
-
 
         // split the string trimmedArgs with regex of one or more whitespace characters.
         // result will be as such: {-s, Alex, Yeoh}
