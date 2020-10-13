@@ -16,11 +16,11 @@ import static seedu.address.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_THIRD;
 
 import org.junit.jupiter.api.Test;
 
-class EventTest {
-    Event eventTest = new Event(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
-    Event eventTestTwo = new Event(TEST_TASK_DESCRIPTION_SECOND, TEST_TASK_DATETIME_SECOND);
-    Event eventTestThree = new Event(TEST_TASK_DESCRIPTION_THIRD, TEST_TASK_DATETIME_THIRD);
-    Event eventTestFour = new Event(TEST_TASK_DESCRIPTION_FOURTH, TEST_TASK_DATETIME_FOURTH);
+public class EventTest {
+    private final Event eventTest = new Event(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
+    private final Event eventTestTwo = new Event(TEST_TASK_DESCRIPTION_SECOND, TEST_TASK_DATETIME_SECOND);
+    private final Event eventTestThree = new Event(TEST_TASK_DESCRIPTION_THIRD, TEST_TASK_DATETIME_THIRD);
+    private final Event eventTestFour = new Event(TEST_TASK_DESCRIPTION_FOURTH, TEST_TASK_DATETIME_FOURTH);
 
     @Test
     public void constructor_null_throwsNullPointerException() {

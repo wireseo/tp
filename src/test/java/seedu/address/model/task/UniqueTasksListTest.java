@@ -47,7 +47,7 @@ class UniqueTasksListTest {
     }
 
     @Test
-    void change_taskList_to_asObservableList() {
+    void changeTaskListTo_asObservableList() {
         assertFalse(taskList.getClass().equals(taskList.asObservableList().getClass()));
     }
 }

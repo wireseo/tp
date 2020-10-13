@@ -1,8 +1,8 @@
 package seedu.address.model.task;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalTasks.FORMATTED_DATETIME_FOUR;
 import static seedu.address.testutil.TypicalTasks.FORMATTED_DATETIME_ONE;
 import static seedu.address.testutil.TypicalTasks.FORMATTED_DATETIME_THREE;
 import static seedu.address.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
@@ -16,11 +16,11 @@ import static seedu.address.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_THIRD;
 
 import org.junit.jupiter.api.Test;
 
-class DeadlineTest {
-    Deadline deadlineTest = new Deadline(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
-    Deadline deadlineTestTwo = new Deadline(TEST_TASK_DESCRIPTION_SECOND, TEST_TASK_DATETIME_SECOND);
-    Deadline deadlineTestThree = new Deadline(TEST_TASK_DESCRIPTION_THIRD, TEST_TASK_DATETIME_THIRD);
-    Deadline deadlineTestFour = new Deadline(TEST_TASK_DESCRIPTION_FOURTH, TEST_TASK_DATETIME_FOURTH);
+public class DeadlineTest {
+    private final Deadline deadlineTest = new Deadline(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
+    private final Deadline deadlineTestTwo = new Deadline(TEST_TASK_DESCRIPTION_SECOND, TEST_TASK_DATETIME_SECOND);
+    private final Deadline deadlineTestThree = new Deadline(TEST_TASK_DESCRIPTION_THIRD, TEST_TASK_DATETIME_THIRD);
+    private final Deadline deadlineTestFour = new Deadline(TEST_TASK_DESCRIPTION_FOURTH, TEST_TASK_DATETIME_FOURTH);
 
     @Test
     public void constructor_null_throwsNullPointerException() {

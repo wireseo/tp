@@ -10,11 +10,11 @@ import static seedu.address.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_THIRD;
 
 import org.junit.jupiter.api.Test;
 
-class TodoTest {
-    Todo todoTest = new Todo(TEST_TASK_DESCRIPTION_FIRST);
-    Todo todoTestTwo = new Todo(TEST_TASK_DESCRIPTION_SECOND);
-    Todo todoTestThree = new Todo(TEST_TASK_DESCRIPTION_THIRD);
-    Todo todoTestFour = new Todo(TEST_TASK_DESCRIPTION_FOURTH);
+public class TodoTest {
+    private final Todo todoTest = new Todo(TEST_TASK_DESCRIPTION_FIRST);
+    private final Todo todoTestTwo = new Todo(TEST_TASK_DESCRIPTION_SECOND);
+    private final Todo todoTestThree = new Todo(TEST_TASK_DESCRIPTION_THIRD);
+    private final Todo todoTestFour = new Todo(TEST_TASK_DESCRIPTION_FOURTH);
 
     @Test
     public void constructor_null_throwsNullPointerException() {

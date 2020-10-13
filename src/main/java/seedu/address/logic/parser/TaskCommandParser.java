@@ -43,7 +43,7 @@ public class TaskCommandParser {
 
         try {
             formattedEventDateTime = parseTimedTaskTime(nameKeywords, length);
-        } catch(ParseException pe) {
+        } catch (ParseException pe) {
             throw pe;
         }
 
@@ -61,7 +61,7 @@ public class TaskCommandParser {
 
         try {
             formattedDeadlineDateTime = parseTimedTaskTime(nameKeywords, length);
-        } catch(ParseException pe) {
+        } catch (ParseException pe) {
             throw pe;
         }
 

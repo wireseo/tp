@@ -46,7 +46,7 @@ class MissionListTest {
     }
 
     @Test
-    void change_missionList_to_asObservableList() {
+    void changeMissionListTo_asObservableList() {
         assertFalse(missionList.getClass().equals(missionList.asObservableList().getClass()));
     }
 }
