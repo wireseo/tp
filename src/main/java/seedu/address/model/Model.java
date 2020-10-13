@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -156,6 +157,6 @@ public interface Model {
     /**
      * Returns an unmodifiable view of the filtered consultation list.
      */
-    void getConsultations(Predicate<Consultation> predicate);
+    List<Consultation> getConsultations(Predicate<Consultation> predicate);
 
 }
