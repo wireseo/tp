@@ -158,6 +158,9 @@ public class AddCommand extends Command {
             ViewTaskListCommand.add(toAddDeadline);
             return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline));
 
+
+            // add the other cases here
+
         default:
             throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);
         }

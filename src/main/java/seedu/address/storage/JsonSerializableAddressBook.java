@@ -25,6 +25,8 @@ class JsonSerializableAddressBook {
 
     private final List<JsonAdaptedMission> missions = new ArrayList<>();
 
+    private final List<JsonAdaptedTask> tasks = new ArrayList<>();
+
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
