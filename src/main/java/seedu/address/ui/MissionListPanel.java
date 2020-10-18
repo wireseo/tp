@@ -4,11 +4,13 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.mission.Mission;
+
 
 /**
  * Panel containing the list of missions.
@@ -25,6 +27,10 @@ public class MissionListPanel extends UiPart<Region> {
      */
     public MissionListPanel(ObservableList<Mission> missionList) {
         super(FXML);
+
+        Label emptyListLabel = new Label("Currently no missions");
+        emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
+        missionListView.setPlaceholder(emptyListLabel);
         missionListView.setItems(missionList);
         missionListView.setCellFactory(listView -> new MissionListViewCell());
     }
