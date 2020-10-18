@@ -1,8 +1,14 @@
 package seedu.address.model.mission;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import seedu.address.model.student.Student;
+
 public class Mission {
     private final String title;
     private final String deadline;
+    private final List<Student> students;
 
     /**
      * Creates a mission object.
@@ -13,6 +19,7 @@ public class Mission {
     public Mission(String title, String deadline) {
         this.title = title;
         this.deadline = deadline;
+        this.students = new ArrayList<Student>();
     }
 
     public String getTitle() {
@@ -21,6 +28,14 @@ public class Mission {
 
     public String getDeadline() {
         return deadline;
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     /**

@@ -21,6 +21,7 @@ import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
@@ -147,6 +148,65 @@ public class ScraperManager implements Scraper {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
                 // tries to fetch the same students on startup to add them to the addressbook.
                 logger.info("ScraperManager tried adding a student which existed in addressbook.json");
+            }
+
+        }
+    }
+
+    public void getQuests() throws WrongLoginDetailsException {
+        if (!isAuthenticated) {
+            authenticate();
+        }
+
+        // Grab quest titles
+        driver.findElement(By.xpath("//a[@href='/academy/quests']")).click();
+
+        List<WebElement> questTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
+        List<WebElement> questDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
+
+        for (int i = 0; i < questTitles.size(); i++) {
+            // Add quest to ModelController here
+            String qTitle = questTitles.get(i).getText();
+            String qDeadline = questDeadlines.get(i).getText();
+            logger.info((i + 1) + "th quest added: " + qTitle);
+            model.addQuest(new Quest(qTitle, qDeadline));
+        }
+        logger.info("Quests addition complete");
+    }
+
+    public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
+        if (!isAuthenticated) {
+            authenticate();
+        }
+        // Navigate to grading page
+        driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
+
+        List<Mission> missions = model.getFilteredMissionList();
+        List<Quest> quests = model.getFilteredQuestList();
+
+        for (Mission mission : missions) {
+            System.out.println("mission: " + mission.getTitle());
+            WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
+            filterBar.clear();
+            filterBar.sendKeys(mission.getTitle() + Keys.ENTER);
+
+            // Get ungraded missions
+            List<WebElement> allStudents = driver.findElement(By.xpath("//div[@class='ag-center-cols-container']"))
+                    .findElements(By.xpath(".//div[@role='row']"));
+
+            for (WebElement student : allStudents) {
+                // Get the graded icon
+                WebElement gradedIcon = student.findElement(By.xpath(".//div[@aria-colindex='7']"))
+                        .findElement(By.xpath(".//span[@icon]"));
+
+                // Add student to mission if mission is not yet graded
+                if (gradedIcon.getAttribute("icon").equals("cross")) {
+                    String studentName = student.findElement(By.xpath(".//div[@aria-colindex='4']")).getText();
+
+                    model.addStudentToMission(studentName, mission);
+                }
             }
 
         }
