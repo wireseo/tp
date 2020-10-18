@@ -25,14 +25,26 @@ public abstract class Task {
 
         if (type.equals(TO_ADD_EVENT)) {
             Event taskEvent = (Event)task;
-            return taskEvent.getDateTime().toString();
+            return taskEvent.getUnformattedDateTime();
 
         } else if (type.equals(TO_ADD_DEADLINE)) {
             Deadline taskDeadline = (Deadline)task;
-            return taskDeadline.getDateTime().toString();
+            return taskDeadline.getUnformattedDateTime();
 
         } else { // all other task types have no date time attributes
             return "-";
+        }
+    }
+
+    private static void setTaskCount(int count) {
+        taskNum = count;
+    }
+
+    public static void compareTaskNum(String taskId) {
+        int taskNum = Integer.parseInt(taskId.substring(1));
+        if (taskNum > Task.getTaskNum()) {
+            Task.setTaskCount(taskNum);
+            Task.taskNumInc();
         }
     }
 
