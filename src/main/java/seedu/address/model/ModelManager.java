@@ -43,7 +43,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredStudents = new FilteredList<>(this.addressBook.getPersonList());
+        filteredStudents = new FilteredList<>(this.addressBook.getStudentList());
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
     }
@@ -102,17 +102,17 @@ public class ModelManager implements Model {
     @Override
     public boolean hasPerson(Student student) {
         requireNonNull(student);
-        return addressBook.hasPerson(student);
+        return addressBook.hasStudent(student);
     }
 
     @Override
     public void deletePerson(Student target) {
-        addressBook.removePerson(target);
+        addressBook.removeStudent(target);
     }
 
     @Override
     public void addPerson(Student student) {
-        addressBook.addPerson(student);
+        addressBook.addStudent(student);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_STUDENTS);
     }
 
@@ -236,7 +236,7 @@ public class ModelManager implements Model {
     @Override
     public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
         List<Consultation> allConsultations = new ArrayList<Consultation>();
-        addressBook.getPersonList().forEach(student -> student.getConsultations().stream().filter(predicate)
+        addressBook.getStudentList().forEach(student -> student.getConsultations().stream().filter(predicate)
                 .forEach(consultation -> allConsultations.add(consultation)));
         return allConsultations;
     }

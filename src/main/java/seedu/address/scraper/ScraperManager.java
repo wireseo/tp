@@ -57,6 +57,7 @@ public class ScraperManager implements Scraper {
         } else if (operatingSystem.contains("MAC")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver_mac");
         } else if (operatingSystem.contains("NUX")) {
+            //what about ubuntu??
             System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome_driver/chromedriver_linux");
         } else {
             throw new OsNotSupportedException(operatingSystem);
@@ -90,6 +91,8 @@ public class ScraperManager implements Scraper {
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();
 
+            // The time out of 5 may need to be adjusted, depending on how we implement the login system
+            // for Jarvis.
             WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
@@ -102,6 +105,7 @@ public class ScraperManager implements Scraper {
         if (!isAuthenticated) {
             authenticate();
         }
+
         // Grab mission titles
         driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
 
@@ -110,8 +114,12 @@ public class ScraperManager implements Scraper {
 
         for (int i = 0; i < missionTitles.size(); i++) {
             // Add mission to ModelController here
-            model.addMission(new Mission(missionTitles.get(i).getText(), missionDeadlines.get(i).getText()));
+            String mTitle = missionTitles.get(i).getText();
+            String mDeadline = missionDeadlines.get(i).getText();
+            logger.info((i + 1) + "th mission added: " + mTitle);
+            model.addMission(new Mission(mTitle, mDeadline));
         }
+        logger.info("Missions addition complete");
     }
 
     public void getStudents() throws WrongLoginDetailsException {
@@ -142,6 +150,15 @@ public class ScraperManager implements Scraper {
             }
 
         }
+    }
+
+    /**
+     * Returns the WebDriver object created by ScraperManager
+     * The returned object is used for testing.
+     * @return
+     */
+    public WebDriver getDriver() {
+        return driver;
     }
 
     public void shutDown() {
