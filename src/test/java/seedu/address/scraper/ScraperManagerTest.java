@@ -12,6 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserLogin;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.mission.Mission;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.TypicalStudents;
 
@@ -20,6 +21,26 @@ public class ScraperManagerTest {
     private static String os = null;
     private String validUsername = "nusstu\\e0406907";
     private String validPassword = "Stinkbomb132!";
+
+    /**
+     * Iterates through the given mission list, checking if the mission title and deadlines
+     * are correctly assigned and not null.
+     * @param missionObservableList an observable list of missions
+     * @return true if the missionList contains missions with non null titles and deadlines
+     */
+    private boolean validateMissions(ObservableList<Mission> missionObservableList) {
+        for (int i = 0; i < missionObservableList.size(); i++) {
+            Mission checkedMission = missionObservableList.get(i);
+            String missionTitle = checkedMission.getTitle();
+            String missionDeadline = checkedMission.getDeadline();
+            if (missionTitle == null || missionDeadline == null) {
+                return false;
+            } else if (missionTitle.length() == 0 || missionDeadline.length() == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     @BeforeAll
     public static void initialize() {
@@ -125,8 +146,6 @@ public class ScraperManagerTest {
     }
 
     // test getMissions
-    // commented out as there is a bug with ScraperManager for retrieving missions
-    /*
     @Test
     public void getMissions_validLoginDetails_missionsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
@@ -136,14 +155,19 @@ public class ScraperManagerTest {
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs());
         ScraperManager scraperManager = new ScraperManager(userLogin, model);
         scraperManager.getMissions();
-        ObservableList<Mission> missionList = model.getAddressBook().getMissionList();
+        ObservableList<Mission> missionObservableList = model.getAddressBook().getMissionList();
 
         // Assumption that there is always at least one mission in the list. however at the end of the semester this
         // test case may fail.
-        System.out.println(missionList.size());
-        Assertions.assertNotEquals(0, missionList.size());
+        System.out.println(missionObservableList.size());
+        int missionCount = missionObservableList.size();
+        if (missionCount == 0) {
+            Assertions.assertTrue(true);
+        } else {
+            Assertions.assertTrue(validateMissions(missionObservableList));
+        }
+
     }
-    */
 
     // test getStudents
     @Test

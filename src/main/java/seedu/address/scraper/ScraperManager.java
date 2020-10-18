@@ -106,7 +106,6 @@ public class ScraperManager implements Scraper {
             authenticate();
         }
 
-        // Whenever Source Academy updates, this method may get affected.
         // Grab mission titles
         driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
 
