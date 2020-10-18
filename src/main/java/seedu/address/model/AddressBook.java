@@ -13,6 +13,7 @@ import seedu.address.model.student.Student;
 import seedu.address.model.student.UniqueStudentsList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
+import seedu.address.model.task.Task;
 import seedu.address.model.task.Todo;
 import seedu.address.model.task.UniqueTasksList;
 
@@ -210,6 +211,11 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addDeadline(Deadline deadline) {
         this.tasks.add(deadline);
+    }
+
+    @Override
+    public ObservableList<Task> getTaskList() {
+        return this.tasks.asObservableList();
     }
 
 
