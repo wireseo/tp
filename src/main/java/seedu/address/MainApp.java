@@ -214,6 +214,8 @@ public class MainApp extends Application {
         scraper.authenticate();
         scraper.getMissions();
         scraper.getStudents();
+        scraper.getQuests();
+        scraper.getUngradedMissionsAndQuests();
         scraper.shutDown();
     }
 
