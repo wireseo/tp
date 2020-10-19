@@ -13,6 +13,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserLogin;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.mission.Mission;
+import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.TypicalStudents;
 
@@ -186,6 +187,51 @@ public class ScraperManagerTest {
         // test case may fail.
         System.out.println(studentList.size());
         Assertions.assertNotEquals(0, studentList.size());
+    }
+
+    /**
+     * Iterates through the given quest list, checking if the quest title and deadlines
+     * are correctly assigned and not null.
+     * @param questObservableList an observable list of quests
+     * @return true if the questList contains missions with non null titles and deadlines
+     */
+    private boolean validateQuests(ObservableList<Quest> questObservableList) {
+        for (int i = 0; i < questObservableList.size(); i++) {
+            Quest checkedQuest = questObservableList.get(i);
+            String questTitle = checkedQuest.getTitle();
+            String questDeadline = checkedQuest.getDeadline();
+            if (questTitle == null || questDeadline == null) {
+                return false;
+            } else if (questTitle.length() == 0 || questDeadline.length() == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // test getQuests
+    @Test
+    public void getQuests_validLoginDetails_questsAddedToModel()
+            throws WrongLoginDetailsException, OsNotSupportedException {
+        UserLogin userLogin = new UserLogin();
+        userLogin.setUsername(validUsername);
+        userLogin.setPassword(validPassword);
+        Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs());
+        ScraperManager scraperManager = new ScraperManager(userLogin, model);
+        scraperManager.getQuests();
+        ObservableList<Quest> questObservableList = model.getAddressBook().getQuestList();
+
+        // Assumption that there is always at least one quest in the list. however at the end of the semester this
+        // test case may fail.
+        System.out.println(questObservableList.size());
+        int questCount = questObservableList.size();
+
+        if (questCount == 0) {
+            Assertions.assertTrue(true);
+        } else {
+            Assertions.assertTrue(validateQuests(questObservableList));
+        }
+
     }
 
 }

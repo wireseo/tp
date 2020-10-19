@@ -187,7 +187,6 @@ public class ScraperManager implements Scraper {
         List<Quest> quests = model.getFilteredQuestList();
 
         for (Mission mission : missions) {
-            System.out.println("mission: " + mission.getTitle());
             WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
             filterBar.clear();
             filterBar.sendKeys(mission.getTitle() + Keys.ENTER);
