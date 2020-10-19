@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private MissionListPanel missionListPanel;
+    private QuestListPanel questListPanel;
     //private TaskListPanel taskListPanel;
 
     @FXML
@@ -53,6 +54,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane taskListPanelPlaceholder;
      */
+
+    @FXML
+    private StackPane questListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -134,6 +138,9 @@ public class MainWindow extends UiPart<Stage> {
 
         missionListPanel = new MissionListPanel(logic.getFilteredMissionList());
         missionListPanelPlaceholder.getChildren().add(missionListPanel.getRoot());
+
+        questListPanel = new QuestListPanel(logic.getFilteredQuestList());
+        questListPanelPlaceholder.getChildren().add(questListPanel.getRoot());
     }
 
     /**

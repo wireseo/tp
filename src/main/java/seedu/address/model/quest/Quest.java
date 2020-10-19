@@ -3,7 +3,6 @@ package seedu.address.model.quest;
 public class Quest {
     private final String title;
     private final String deadline;
-
     /**
      * Creates a Quest object.
      *

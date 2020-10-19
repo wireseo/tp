@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -134,5 +135,11 @@ public class UniqueStudentsList implements Iterable<Student> {
             }
         }
         return true;
+    }
+
+    public Optional<Student> getStudentByName(String name) {
+        Optional<Student> studentToReturn = internalList.stream().filter(student -> student.getName()
+                .fullName.equals(name)).findFirst();
+        return studentToReturn;
     }
 }

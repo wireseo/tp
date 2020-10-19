@@ -164,6 +164,8 @@ public interface Model {
      */
     void addMission(Mission mission);
 
+    void addStudentToMission(String studentName, Mission mission);
+
     /**
      * Returns an unmodifiable view of the filtered consultation list.
      */

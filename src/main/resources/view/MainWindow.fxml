@@ -63,7 +63,15 @@
           <StackPane fx:id="missionListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
 
-<!--
+        <VBox fx:id="questList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+          <Label text="Quest List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>
+          <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+          </padding>
+          <StackPane fx:id="questListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+        <!--
         <VBox fx:id="taskList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
           <Label text="Task List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>
           <padding>
@@ -71,8 +79,8 @@
           </padding>
           <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
--->
-
+        -->
+        
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
