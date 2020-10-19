@@ -1,0 +1,22 @@
+@startuml
+start
+:JARVIS calls getMissions();
+
+
+If () then ([login information does not exist])
+    :Returns;
+
+    else ([login information exists])
+
+
+    If () then ([user is not authenticated])
+    :Calls authenticate();
+
+    else ([user is authenticated])
+        :Authenticates through Luminus;
+        :Navigates to Missions page on SA;
+        :Fetches information of all open missions;
+        endif
+        endif
+stop
+@enduml

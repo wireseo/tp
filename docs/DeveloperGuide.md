@@ -149,6 +149,7 @@ The `Storage` component,
 **API** : [`Scraper.java`](https://github.com/AY2021S1-CS2103T-W11-2/tp/blob/master/src/main/java/seedu/address/scraper/Scraper.java)
 
 The `Scraper` component,
+* reads user login information from the `UserLogin` object passed to it.
 * can scrape `Source Academy`(https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
 * can save the scraped information to `Model`
 
@@ -162,7 +163,16 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Get Missions Feature
+In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
+and interaction of objects between the `ScraperManager` and `Chrome Driver`. 
 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of JARVIS.
+</div>
+
+![Path Diagram of Get Missions](images/GetMissionsPathDiagram.png)
+
+![Sequence Diagram of Get Missions](images/GetMissionsSequenceDiagram.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
