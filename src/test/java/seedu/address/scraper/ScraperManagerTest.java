@@ -1,11 +1,10 @@
 package seedu.address.scraper;
 
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-
-import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
@@ -203,6 +202,17 @@ public class ScraperManagerTest {
         } else {
             Assertions.assertTrue(validateQuests(questObservableList));
         }
+        scraperManager.shutDown();
+    }
+
+    @Test
+    public void startScraping_invalidLoginDetails() throws OsNotSupportedException {
+        Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getUserLogin(), model, TypicalManagers.getStorage());
+
+        Assertions.assertDoesNotThrow(() -> scraperManager.startScraping());
         scraperManager.shutDown();
     }
 

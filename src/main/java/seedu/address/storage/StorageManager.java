@@ -35,12 +35,6 @@ public class StorageManager implements Storage {
         this.userLoginStorage = userLoginStorage;
     }
 
-    /**
-     * Creates an empty StorageManager for testing.
-     */
-    public StorageManager() {
-    }
-
     // ================ UserPrefs methods ==============================
 
     @Override
