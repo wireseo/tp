@@ -1,5 +1,6 @@
 package seedu.address.scraper;
 
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,6 @@ import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.UserLogin;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -20,8 +20,8 @@ import seedu.address.testutil.TypicalStudents;
 public class ScraperManagerTest {
 
     private static String os = null;
-    private String validUsername = "nusstu\\e0406907";
-    private String validPassword = "Stinkbomb132!";
+    private final String validUsername = "nusstu\\e0406907";
+    private final String validPassword = "Stinkbomb132!";
 
     /**
      * Iterates through the given mission list, checking if the mission title and deadlines
@@ -91,11 +91,9 @@ public class ScraperManagerTest {
     @Test
     public void constructor_validLoginDetails_driverInstantiated() throws OsNotSupportedException {
         System.setProperty("os.name", os);
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUsername(validUsername);
-        userLogin.setPassword(validPassword);
         ScraperManager scraperManager = new ScraperManager(
-                TypicalManagers.getUserLogin(), TypicalManagers.getModel(), TypicalManagers.getStorage());
+                TypicalManagers.getPopUserLogin(validUsername, validPassword), TypicalManagers.getModel(),
+                TypicalManagers.getStorage());
         Assertions.assertNotEquals(null, scraperManager.getDriver());
         scraperManager.shutDown();
     }
