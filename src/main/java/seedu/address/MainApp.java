@@ -74,7 +74,7 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        initScraper(userLogin, model);
+        initScraper(userLogin, model, storage);
 
         logic = new LogicManager(model, storage);
 
@@ -208,20 +208,11 @@ public class MainApp extends Application {
         return initializedPrefs;
     }
 
-    protected void initScraper(UserLogin userLogin, Model model) throws ScraperParsingException {
+    protected void initScraper(UserLogin userLogin, Model model, Storage storage)
+            throws ScraperParsingException, IOException {
         logger.info("Starting scraper to scrape SourceAcademy");
-        scraper = new ScraperManager(userLogin, model);
-        scraper.authenticate();
-        scraper.getMissions();
-
-        // Only fetch students if students in addressbook is empty
-        if (!model.hasStudents()) {
-            scraper.getStudents();
-        }
-
-        scraper.getQuests();
-        scraper.getUngradedMissionsAndQuests();
-        scraper.shutDown();
+        scraper = new ScraperManager(userLogin, model, storage);
+        scraper.startScraping();
     }
 
     @Override

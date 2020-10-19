@@ -2,6 +2,7 @@ package seedu.address.scraper;
 
 import static java.util.Objects.requireNonNull;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
@@ -14,7 +15,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -25,10 +25,10 @@ import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
-import seedu.address.model.student.Telegram;
 import seedu.address.model.student.Student;
+import seedu.address.model.student.Telegram;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
-
+import seedu.address.storage.Storage;
 
 
 public class ScraperManager implements Scraper {
@@ -38,16 +38,18 @@ public class ScraperManager implements Scraper {
     private WebDriver driver;
     private UserLogin loginInfo;
     private Model model;
+    private Storage storage;
     private boolean isAuthenticated;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public ScraperManager(UserLogin loginInfo, Model model) throws OsNotSupportedException {
+    public ScraperManager(UserLogin loginInfo, Model model, Storage storage) throws OsNotSupportedException {
         requireNonNull(loginInfo);
         requireNonNull(model);
         this.loginInfo = loginInfo;
         this.model = model;
+        this.storage = storage;
         this.isAuthenticated = false;
 
         // Grab current os name
@@ -70,11 +72,26 @@ public class ScraperManager implements Scraper {
         driver = new ChromeDriver(options);
     }
 
+    public void startScraping() throws WrongLoginDetailsException, IOException {
+        authenticate();
+        getMissions();
+
+        // Only fetch students if students in addressbook is empty
+        if (!model.hasStudents()) {
+            getStudents();
+        }
+
+        getQuests();
+        getUngradedMissionsAndQuests();
+        saveToStorage();
+        shutDown();
+    }
+
     /**
      * Authenticates the user with their supplied emails and password.
      * @throws WrongLoginDetailsException
      */
-    public void authenticate() throws WrongLoginDetailsException {
+    private void authenticate() throws WrongLoginDetailsException {
         // Check if authenticated or login information is empty
         if (isAuthenticated || loginInfo.isEmpty()) {
             return;
@@ -104,7 +121,7 @@ public class ScraperManager implements Scraper {
         this.isAuthenticated = true;
     }
 
-    public void getMissions() throws WrongLoginDetailsException {
+    private void getMissions() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -131,7 +148,7 @@ public class ScraperManager implements Scraper {
         logger.info("Missions addition complete");
     }
 
-    public void getStudents() throws WrongLoginDetailsException {
+    private void getStudents() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -168,7 +185,7 @@ public class ScraperManager implements Scraper {
         }
     }
 
-    public void getQuests() throws WrongLoginDetailsException {
+    private void getQuests() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -193,7 +210,7 @@ public class ScraperManager implements Scraper {
         logger.info("Quests addition complete");
     }
 
-    public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
+    private void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -234,6 +251,15 @@ public class ScraperManager implements Scraper {
         }
     }
 
+    private void saveToStorage() throws IOException {
+        try {
+            storage.saveAddressBook(model.getAddressBook());
+        } catch (IOException e) {
+            throw new IOException("Error saving to addressbook");
+        }
+
+    }
+
     /**
      * Returns the WebDriver object created by ScraperManager
      * The returned object is used for testing.
@@ -243,7 +269,7 @@ public class ScraperManager implements Scraper {
         return driver;
     }
 
-    public void shutDown() {
+    private void shutDown() {
         driver.quit();
     }
 }

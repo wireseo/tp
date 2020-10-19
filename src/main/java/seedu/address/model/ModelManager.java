@@ -134,6 +134,10 @@ public class ModelManager implements Model {
         addressBook.addMission(mission);
     }
 
+    public void addMissions(List<Mission> missions) {
+
+    }
+
     @Override
     public void addStudentToMission(String studentName, Mission mission) {
         addressBook.addStudentToMission(studentName, mission);
