@@ -103,6 +103,10 @@ public class ScraperManager implements Scraper {
     }
 
     public void getMissions() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
@@ -124,6 +128,10 @@ public class ScraperManager implements Scraper {
     }
 
     public void getStudents() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
@@ -154,6 +162,10 @@ public class ScraperManager implements Scraper {
     }
 
     public void getQuests() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
@@ -175,6 +187,10 @@ public class ScraperManager implements Scraper {
     }
 
     public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
