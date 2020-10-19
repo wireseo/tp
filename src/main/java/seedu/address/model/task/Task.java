@@ -24,11 +24,11 @@ public abstract class Task {
         String type = task.getTaskId().substring(0, 1);
 
         if (type.equals(TO_ADD_EVENT)) {
-            Event taskEvent = (Event)task;
+            Event taskEvent = (Event) task;
             return taskEvent.getUnformattedDateTime();
 
         } else if (type.equals(TO_ADD_DEADLINE)) {
-            Deadline taskDeadline = (Deadline)task;
+            Deadline taskDeadline = (Deadline) task;
             return taskDeadline.getUnformattedDateTime();
 
         } else { // all other task types have no date time attributes
@@ -40,6 +40,10 @@ public abstract class Task {
         taskNum = count;
     }
 
+    /**
+     * Compares tasknum from taskid of a task to current tasknum in Task.
+     * @param taskId String
+     */
     public static void compareTaskNum(String taskId) {
         int taskNum = Integer.parseInt(taskId.substring(1));
         if (taskNum > Task.getTaskNum()) {
