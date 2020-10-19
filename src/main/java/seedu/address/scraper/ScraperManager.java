@@ -25,7 +25,7 @@ import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
-import seedu.address.model.student.Phone;
+import seedu.address.model.student.Telegram;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
 
@@ -157,7 +157,7 @@ public class ScraperManager implements Scraper {
         // Add student names to ModelController here
         for (WebElement name : studentNames) {
             try {
-                model.addPerson(new Student(new Name(name.getText()), new Phone("999"), new Email("student@gmail.com"),
+                model.addPerson(new Student(new Name(name.getText()), new Telegram("999"), new Email("student@gmail.com"),
                         new Address("Test drive"), new HashSet<>()));
             } catch (DuplicateStudentException dse) {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager

@@ -81,6 +81,12 @@ public class AddressBookTest {
     }
 
     @Test
+    public void hasPersons_addressBookPopulated_returnsTrue() {
+        addressBook.addStudent(ALICE);
+        assertTrue(addressBook.hasStudents());
+    }
+
+    @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getStudentList().remove(0));
     }
