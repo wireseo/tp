@@ -2,6 +2,7 @@ package seedu.address.scraper;
 
 import static java.util.Objects.requireNonNull;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
@@ -25,10 +26,10 @@ import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
-import seedu.address.model.student.Phone;
 import seedu.address.model.student.Student;
+import seedu.address.model.student.Telegram;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
-
+import seedu.address.storage.Storage;
 
 
 public class ScraperManager implements Scraper {
@@ -38,16 +39,18 @@ public class ScraperManager implements Scraper {
     private WebDriver driver;
     private UserLogin loginInfo;
     private Model model;
+    private Storage storage;
     private boolean isAuthenticated;
 
     /**
      * The scraper constructor to initialize a new scraper instance.
      */
-    public ScraperManager(UserLogin loginInfo, Model model) throws OsNotSupportedException {
+    public ScraperManager(UserLogin loginInfo, Model model, Storage storage) throws OsNotSupportedException {
         requireNonNull(loginInfo);
         requireNonNull(model);
         this.loginInfo = loginInfo;
         this.model = model;
+        this.storage = storage;
         this.isAuthenticated = false;
 
         // Grab current os name
@@ -71,6 +74,26 @@ public class ScraperManager implements Scraper {
     }
 
     /**
+     * Initializes the scraping sequence to parse for information.
+     * @throws WrongLoginDetailsException
+     * @throws IOException
+     */
+    public void startScraping() throws WrongLoginDetailsException, IOException {
+        authenticate();
+        getMissions();
+
+        // Only fetch students if students in addressbook is empty
+        if (!model.hasStudents()) {
+            getStudents();
+        }
+
+        getQuests();
+        getUngradedMissionsAndQuests();
+        saveToStorage();
+        shutDown();
+    }
+
+    /**
      * Authenticates the user with their supplied emails and password.
      * @throws WrongLoginDetailsException
      */
@@ -79,6 +102,8 @@ public class ScraperManager implements Scraper {
         if (isAuthenticated || loginInfo.isEmpty()) {
             return;
         }
+
+        logger.info("Authenticating");
 
         // Navigate to address
         driver.get("https://sourceacademy.nus.edu.sg/login");
@@ -103,9 +128,15 @@ public class ScraperManager implements Scraper {
     }
 
     public void getMissions() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
+
+        logger.info("Getting missions");
 
         // Grab mission titles
         driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
@@ -124,9 +155,16 @@ public class ScraperManager implements Scraper {
     }
 
     public void getStudents() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
+
+        logger.info("Getting students");
+
         // Navigate to grading page
         driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -142,8 +180,8 @@ public class ScraperManager implements Scraper {
         // Add student names to ModelController here
         for (WebElement name : studentNames) {
             try {
-                model.addPerson(new Student(new Name(name.getText()), new Phone("999"), new Email("student@gmail.com"),
-                        new Address("Test drive"), new HashSet<>()));
+                model.addPerson(new Student(new Name(name.getText()), new Telegram("helloworld"),
+                        new Email("student@gmail.com"), new Address("Test drive"), new HashSet<>()));
             } catch (DuplicateStudentException dse) {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
                 // tries to fetch the same students on startup to add them to the addressbook.
@@ -154,6 +192,10 @@ public class ScraperManager implements Scraper {
     }
 
     public void getQuests() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
@@ -175,6 +217,10 @@ public class ScraperManager implements Scraper {
     }
 
     public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
+        if (loginInfo.isEmpty()) {
+            return;
+        }
+
         if (!isAuthenticated) {
             authenticate();
         }
@@ -209,6 +255,15 @@ public class ScraperManager implements Scraper {
             }
 
         }
+    }
+
+    private void saveToStorage() throws IOException {
+        try {
+            storage.saveAddressBook(model.getAddressBook());
+        } catch (IOException e) {
+            throw new IOException("Error saving to addressbook");
+        }
+
     }
 
     /**

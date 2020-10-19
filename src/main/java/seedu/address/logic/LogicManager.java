@@ -39,6 +39,18 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
+    /**
+     * Saves current model to storage.
+     * @throws CommandException
+     */
+    public void saveToStorage() throws CommandException {
+        try {
+            storage.saveAddressBook(model.getAddressBook());
+        } catch (IOException ioe) {
+            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+        }
+    }
+
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -89,5 +101,15 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public boolean hasUsername() {
+        return model.hasUsername();
+    }
+
+    @Override
+    public boolean hasPassword() {
+        return model.hasPassword();
     }
 }

@@ -117,6 +117,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasUsername() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasPassword() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addPerson(Student student) {
             throw new AssertionError("This method should not be called.");
         }
@@ -164,6 +174,11 @@ public class AddCommandTest {
         @Override
         public void updateFilteredPersonList(Predicate<Student> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasStudents() {
+            return false;
         }
 
         @Override

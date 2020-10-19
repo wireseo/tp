@@ -36,6 +36,14 @@ public class UserLogin implements ReadOnlyUserLogin {
         return password;
     }
 
+    public boolean hasUsername() {
+        return !username.isEmpty();
+    }
+
+    public boolean hasPassword() {
+        return !password.isEmpty();
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }

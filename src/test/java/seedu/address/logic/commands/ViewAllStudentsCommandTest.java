@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
+import seedu.address.testutil.TypicalManagers;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ViewAllStudentsCommand.
@@ -23,8 +23,10 @@ public class ViewAllStudentsCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+        expectedModel = new ModelManager(model.getAddressBook(), TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
     }
 
     @Test

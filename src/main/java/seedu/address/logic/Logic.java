@@ -55,4 +55,19 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns whether login.json has username specified.
+     */
+    boolean hasUsername();
+
+    /**
+     * Returns whether login.json has password specified.
+     */
+    boolean hasPassword();
+
+    /**
+     * Saves model to storage
+     */
+    void saveToStorage() throws CommandException;
 }

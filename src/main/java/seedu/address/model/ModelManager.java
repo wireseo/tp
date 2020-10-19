@@ -28,6 +28,7 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final UserLogin userLogin;
     private final UserPrefs userPrefs;
     private final FilteredList<Student> filteredStudents;
     private final FilteredList<Mission> filteredMissions;
@@ -37,7 +38,7 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyUserLogin userLogin) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -45,6 +46,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.userLogin = new UserLogin(userLogin);
         filteredStudents = new FilteredList<>(this.addressBook.getStudentList());
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
@@ -52,7 +54,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new UserLogin());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -88,6 +90,17 @@ public class ModelManager implements Model {
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
+    }
+    //=========== UserLogin ==================================================================================
+
+    @Override
+    public boolean hasUsername() {
+        return userLogin.hasUsername();
+    }
+
+    @Override
+    public boolean hasPassword() {
+        return userLogin.hasPassword();
     }
 
     //=========== AddressBook ================================================================================
@@ -126,10 +139,19 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedStudent);
     }
 
+    @Override
+    public boolean hasStudents() {
+        return addressBook.hasStudents();
+    }
+
     //=========== Missions ===================================================================================
     @Override
     public void addMission(Mission mission) {
         addressBook.addMission(mission);
+    }
+
+    public void addMissions(List<Mission> missions) {
+
     }
 
     @Override

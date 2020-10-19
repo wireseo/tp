@@ -20,6 +20,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyUserLogin;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserLogin;
 import seedu.address.model.UserPrefs;
@@ -72,9 +73,9 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        model = initModelManager(storage, userPrefs);
+        model = initModelManager(storage, userPrefs, userLogin);
 
-        initScraper(userLogin, model);
+        initScraper(userLogin, model, storage);
 
         logic = new LogicManager(model, storage);
 
@@ -116,7 +117,7 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs, ReadOnlyUserLogin userLogin) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         try {
@@ -133,7 +134,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, userLogin);
     }
 
     private void initLogging(Config config) {
@@ -208,15 +209,11 @@ public class MainApp extends Application {
         return initializedPrefs;
     }
 
-    protected void initScraper(UserLogin userLogin, Model model) throws ScraperParsingException {
+    protected void initScraper(UserLogin userLogin, Model model, Storage storage)
+            throws ScraperParsingException, IOException {
         logger.info("Starting scraper to scrape SourceAcademy");
-        scraper = new ScraperManager(userLogin, model);
-        scraper.authenticate();
-        scraper.getMissions();
-        scraper.getStudents();
-        scraper.getQuests();
-        scraper.getUngradedMissionsAndQuests();
-        scraper.shutDown();
+        scraper = new ScraperManager(userLogin, model, storage);
+        scraper.startScraping();
     }
 
     @Override
