@@ -36,6 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private MissionListPanel missionListPanel;
     private QuestListPanel questListPanel;
+    //private TaskListPanel taskListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -48,6 +49,11 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane missionListPanelPlaceholder;
+
+    /*
+    @FXML
+    private StackPane taskListPanelPlaceholder;
+     */
 
     @FXML
     private StackPane questListPanelPlaceholder;
