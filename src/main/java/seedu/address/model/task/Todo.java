@@ -12,11 +12,24 @@ public class Todo extends Task {
 
     /**
      * Creates a Todo object that only has taskId and description attributes.
-     * @param description
+     * For creation of Todo object from CLI jarvis.
+     * @param description of Todo
      */
     public Todo(String description) {
         this.taskId = generateTaskId();
         requireNonNull(description);
+        this.description = description;
+    }
+
+    /**
+     * Creates a Todo object that only has taskId and description attributes.
+     * For creation of Todo object from addressbook.txt data file.
+     * @param taskId of Todo
+     * @param description of Todo
+     */
+    public Todo(String taskId, String description) {
+        this.taskId = taskId;
+        Task.compareTaskNum(taskId);
         this.description = description;
     }
 

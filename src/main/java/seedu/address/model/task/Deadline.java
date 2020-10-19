@@ -1,6 +1,7 @@
 package seedu.address.model.task;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.TaskCommandParser.DATE_FORMAT;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,8 +18,9 @@ public class Deadline extends Task {
 
     /**
      * Creates a Deadeline object that has taskId, description, date and time attributes.
-     * @param description
-     * @param dateTime
+     * For creation of Deadline object from CLI jarvis.
+     * @param description of Deadline
+     * @param dateTime of Deadline
      */
     public Deadline(String description, LocalDateTime dateTime) {
         this.taskId = generateTaskId();
@@ -26,6 +28,21 @@ public class Deadline extends Task {
         this.description = description;
         requireNonNull(dateTime);
         this.dateTime = dateTime;
+    }
+
+    /**
+     * Creates a Deadeline object that has taskId, description, date and time attributes.
+     * For creation of Deadline object from addressbook.txt data file.
+     * @param taskId of Deadline
+     * @param description of Deadline
+     * @param dateTime of Deadline
+     */
+    public Deadline(String taskId, String description, String dateTime) {
+        this.taskId = taskId;
+        Task.compareTaskNum(taskId);
+        this.description = description;
+        DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        this.dateTime = LocalDateTime.parse(dateTime, dateTimeFormat);
     }
 
     public String getTaskId() {
@@ -38,6 +55,10 @@ public class Deadline extends Task {
 
     public String getDateTime() {
         return dateTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
+    }
+
+    public String getUnformattedDateTime() {
+        return dateTime.toString();
     }
 
     /**

@@ -18,6 +18,7 @@ import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
+import seedu.address.model.task.Task;
 import seedu.address.model.task.Todo;
 
 /**
@@ -32,6 +33,7 @@ public class ModelManager implements Model {
     private final FilteredList<Student> filteredStudents;
     private final FilteredList<Mission> filteredMissions;
     private final FilteredList<Quest> filteredQuests;
+    private final FilteredList<Task> filteredTasks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -48,6 +50,7 @@ public class ModelManager implements Model {
         filteredStudents = new FilteredList<>(this.addressBook.getStudentList());
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
+        filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
     }
 
     public ModelManager() {

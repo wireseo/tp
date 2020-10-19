@@ -19,7 +19,7 @@ import seedu.address.model.task.Todo;
  */
 public class TaskCommandParser {
 
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
     /**
      * Takes in user input parameters and creates a Todo.
