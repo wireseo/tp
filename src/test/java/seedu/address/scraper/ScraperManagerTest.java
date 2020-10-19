@@ -1,11 +1,10 @@
 package seedu.address.scraper;
 
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-
-import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
@@ -15,6 +14,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
+import seedu.address.testutil.TypicalManagers;
 import seedu.address.testutil.TypicalStudents;
 
 public class ScraperManagerTest {
@@ -51,7 +51,7 @@ public class ScraperManagerTest {
     @Test
     public void constructor_nullUserLogin_throwsNullPointerException() {
         System.setProperty("os.name", os);
-        Assertions.assertThrows(NullPointerException.class, () -> new ScraperManager(null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new ScraperManager(null, null, null));
     }
 
     @Test
@@ -61,8 +61,9 @@ public class ScraperManagerTest {
         System.setProperty("os.name", os);
         String invalidOsName = "android";
         System.setProperty("os.name", invalidOsName);
-        Assertions.assertThrows(OsNotSupportedException.class, () -> new ScraperManager(new UserLogin(),
-                    new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs()))
+
+        Assertions.assertThrows(OsNotSupportedException.class, () -> new ScraperManager(
+                TypicalManagers.getUserLogin(), TypicalManagers.getModel(), TypicalManagers.getStorage())
         );
     }
 
@@ -93,8 +94,8 @@ public class ScraperManagerTest {
         UserLogin userLogin = new UserLogin();
         userLogin.setUsername(validUsername);
         userLogin.setPassword(validPassword);
-        ScraperManager scraperManager = new ScraperManager(userLogin,
-                new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs()));
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getUserLogin(), TypicalManagers.getModel(), TypicalManagers.getStorage());
         Assertions.assertNotEquals(null, scraperManager.getDriver());
     }
     // find a way to test for linux OSes.
@@ -109,8 +110,8 @@ public class ScraperManagerTest {
         UserLogin userLogin = new UserLogin();
         userLogin.setUsername(" ");
         userLogin.setPassword(validUsername);
-        ScraperManager scraperManager = new ScraperManager(userLogin,
-                new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs()));
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getUserLogin(), TypicalManagers.getModel(), TypicalManagers.getStorage());
         Assertions.assertThrows(WrongLoginDetailsException.class, () -> scraperManager.authenticate());
     }
 
@@ -118,11 +119,9 @@ public class ScraperManagerTest {
     public void authenticate_emptyStringLoginPassword_throwsWrongLoginDetailsException()
             throws OsNotSupportedException {
         System.setProperty("os.name", os);
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUsername(validUsername);
-        userLogin.setPassword(" ");
-        ScraperManager scraperManager = new ScraperManager(userLogin,
-                new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs()));
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getPopUserLogin(validUsername, " "), TypicalManagers.getModel(),
+                TypicalManagers.getStorage());
         Assertions.assertThrows(WrongLoginDetailsException.class, () -> scraperManager.authenticate());
     }
 
@@ -132,11 +131,9 @@ public class ScraperManagerTest {
     public void authenticate_validLoginDetails_loginSuccess()
             throws WrongLoginDetailsException, OsNotSupportedException {
         System.setProperty("os.name", os);
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUsername(validUsername);
-        userLogin.setPassword(validPassword);
-        ScraperManager scraperManager = new ScraperManager(userLogin,
-                new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs()));
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getPopUserLogin(validUsername, validPassword), TypicalManagers.getModel(),
+                TypicalManagers.getStorage());
         scraperManager.authenticate();
         WebDriver webDriver = scraperManager.getDriver();
 
@@ -149,11 +146,9 @@ public class ScraperManagerTest {
     @Test
     public void getMissions_validLoginDetails_missionsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUsername(validUsername);
-        userLogin.setPassword(validPassword);
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs());
-        ScraperManager scraperManager = new ScraperManager(userLogin, model);
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getPopUserLogin(validUsername, validPassword), model, TypicalManagers.getStorage());
         scraperManager.getMissions();
         ObservableList<Mission> missionObservableList = model.getAddressBook().getMissionList();
 
@@ -174,11 +169,9 @@ public class ScraperManagerTest {
     public void getStudents_validLoginDetails_missionsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
         System.setProperty("os.name", os);
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUsername(validUsername);
-        userLogin.setPassword(validPassword);
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs());
-        ScraperManager scraperManager = new ScraperManager(userLogin, model);
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getPopUserLogin(validUsername, validPassword), model, TypicalManagers.getStorage());
         scraperManager.getMissions();
         ObservableList<Student> studentList = model.getAddressBook().getStudentList();
 
@@ -212,11 +205,9 @@ public class ScraperManagerTest {
     @Test
     public void getQuests_validLoginDetails_questsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUsername(validUsername);
-        userLogin.setPassword(validPassword);
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), new UserPrefs());
-        ScraperManager scraperManager = new ScraperManager(userLogin, model);
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getPopUserLogin(validUsername, validPassword), model, TypicalManagers.getStorage());
         scraperManager.getQuests();
         ObservableList<Quest> questObservableList = model.getAddressBook().getQuestList();
 

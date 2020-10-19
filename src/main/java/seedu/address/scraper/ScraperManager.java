@@ -91,7 +91,7 @@ public class ScraperManager implements Scraper {
      * Authenticates the user with their supplied emails and password.
      * @throws WrongLoginDetailsException
      */
-    private void authenticate() throws WrongLoginDetailsException {
+    public void authenticate() throws WrongLoginDetailsException {
         // Check if authenticated or login information is empty
         if (isAuthenticated || loginInfo.isEmpty()) {
             return;
@@ -121,7 +121,7 @@ public class ScraperManager implements Scraper {
         this.isAuthenticated = true;
     }
 
-    private void getMissions() throws WrongLoginDetailsException {
+    public void getMissions() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -148,7 +148,7 @@ public class ScraperManager implements Scraper {
         logger.info("Missions addition complete");
     }
 
-    private void getStudents() throws WrongLoginDetailsException {
+    public void getStudents() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -185,7 +185,7 @@ public class ScraperManager implements Scraper {
         }
     }
 
-    private void getQuests() throws WrongLoginDetailsException {
+    public void getQuests() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -210,7 +210,7 @@ public class ScraperManager implements Scraper {
         logger.info("Quests addition complete");
     }
 
-    private void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
+    public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -269,7 +269,7 @@ public class ScraperManager implements Scraper {
         return driver;
     }
 
-    private void shutDown() {
+    public void shutDown() {
         driver.quit();
     }
 }
