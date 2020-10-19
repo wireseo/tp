@@ -35,6 +35,9 @@ public interface Model {
     Predicate<Consultation> PREDICATE_SHOW_UPCOMING_CONSULTATIONS = unused ->
             unused.getDateAndTime().isAfter(LocalDateTime.now());
     Predicate<Mission> PREDICATE_SHOW_ALL_QUESTS = unused -> true;
+
+    //=========== UserPrefs ==================================================================================
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -65,6 +68,22 @@ public interface Model {
      */
     void setAddressBookFilePath(Path addressBookFilePath);
 
+    //=========== UserPrefs ==================================================================================
+
+    /**
+     * Returns whether the login.json has username specified.
+     * @return a boolean
+     */
+    boolean hasUsername();
+
+    /**
+     * Returns whether the password.json has password specified
+     * @return a boolean
+     */
+    boolean hasPassword();
+
+    //=========== AddressBook ================================================================================
+
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
@@ -79,24 +98,26 @@ public interface Model {
     boolean hasPerson(Student student);
 
     /**
+     * Replaces the given student {@code target} with {@code editedStudent}.
+     * {@code target} must exist in the address book.
+     * The student identity of {@code editedStudent} must not be the same as
+     * another existing student in the address book.
+     */
+    void setPerson(Student target, Student editedStudent);
+
+    /** Returns an unmodifiable view of the filtered student list */
+    ObservableList<Student> getFilteredPersonList();
+
+    /**
+     * Updates the filter of the filtered student list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPersonList(Predicate<Student> predicate);
+
+    /**
      * Returns true if students exist.
      */
     boolean hasStudents();
-
-    /**
-     * Returns true if a todo with the same identity as {@code todo} exists in the address book.
-     */
-    boolean hasTodo(Todo todo);
-
-    /**
-     * Returns true if an event with the same identity as {@code event} exists in the address book.
-     */
-    boolean hasEvent(Event event);
-
-    /**
-     * Returns true if a deadline with the same identity as {@code deadline} exists in the address book.
-     */
-    boolean hasDeadline(Deadline deadline);
 
     /**
      * Deletes the given student.
@@ -109,6 +130,8 @@ public interface Model {
      * {@code student} must not already exist in the address book.
      */
     void addPerson(Student student);
+
+    //============================== Task ====================================================================
 
     /**
      * Adds the given todo.
@@ -129,21 +152,21 @@ public interface Model {
     void addDeadline(Deadline deadline);
 
     /**
-     * Replaces the given student {@code target} with {@code editedStudent}.
-     * {@code target} must exist in the address book.
-     * The student identity of {@code editedStudent} must not be the same as
-     * another existing student in the address book.
+     * Returns true if a todo with the same identity as {@code todo} exists in the address book.
      */
-    void setPerson(Student target, Student editedStudent);
-
-    /** Returns an unmodifiable view of the filtered student list */
-    ObservableList<Student> getFilteredPersonList();
+    boolean hasTodo(Todo todo);
 
     /**
-     * Updates the filter of the filtered student list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
+     * Returns true if an event with the same identity as {@code event} exists in the address book.
      */
-    void updateFilteredPersonList(Predicate<Student> predicate);
+    boolean hasEvent(Event event);
+
+    /**
+     * Returns true if a deadline with the same identity as {@code deadline} exists in the address book.
+     */
+    boolean hasDeadline(Deadline deadline);
+
+    //=========== Filtered Mission List Accessors =============================================================
 
     /**
      * Updates the filter of the filtered mission list to filter by the given {@code predicate}.
@@ -154,14 +177,7 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered mission list. */
     ObservableList<Mission> getFilteredMissionList();
 
-    /** Returns an unmodifiable view of the filtered quest list */
-    ObservableList<Quest> getFilteredQuestList();
-
-    /**
-     * Updates the filter of the filtered quest list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateQuestsList(Predicate<Quest> predicate);
+    //=========== Missions ===================================================================================
 
     /**
      * Adds the given mission.
@@ -176,9 +192,20 @@ public interface Model {
      */
     List<Consultation> getConsultations(Predicate<Consultation> predicate);
 
+    //=========== Quests ===================================================================================
+
     /**
      * Adds the given quest.
      * @param quest The quest to be added
      */
     void addQuest(Quest quest);
+
+    /** Returns an unmodifiable view of the filtered quest list */
+    ObservableList<Quest> getFilteredQuestList();
+
+    /**
+     * Updates the filter of the filtered quest list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateQuestsList(Predicate<Quest> predicate);
 }
