@@ -22,6 +22,7 @@ import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
+import seedu.address.model.task.Task;
 import seedu.address.testutil.StudentBuilder;
 
 public class AddressBookTest {
@@ -113,6 +114,11 @@ public class AddressBookTest {
 
         @Override
         public ObservableList<Quest> getQuestList() {
+            return null;
+        }
+
+        @Override
+        public ObservableList<Task> getTaskList() {
             return null;
         }
     }
