@@ -1,10 +1,11 @@
 package seedu.address.scraper;
 
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
