@@ -123,6 +123,11 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedStudent);
     }
 
+    @Override
+    public boolean hasStudents() {
+        return addressBook.hasStudents();
+    }
+
     //=========== Missions ===================================================================================
     @Override
     public void addMission(Mission mission) {

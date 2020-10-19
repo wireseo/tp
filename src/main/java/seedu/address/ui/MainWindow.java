@@ -170,6 +170,13 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleExit() {
+        try {
+            logic.saveToStorage();
+        } catch (CommandException e) {
+            logger.info("Unable to save to file");
+            resultDisplay.setFeedbackToUser("Unable to save to file");
+        }
+
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);

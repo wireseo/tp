@@ -39,6 +39,14 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
+    public void saveToStorage() throws CommandException {
+        try {
+            storage.saveAddressBook(model.getAddressBook());
+        } catch (IOException ioe) {
+            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+        }
+    }
+
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");

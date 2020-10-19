@@ -99,6 +99,10 @@ public class UniqueStudentsList implements Iterable<Student> {
         internalList.setAll(students);
     }
 
+    public boolean hasStudents() {
+        return !internalList.isEmpty();
+    }
+
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */

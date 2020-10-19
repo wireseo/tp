@@ -213,7 +213,12 @@ public class MainApp extends Application {
         scraper = new ScraperManager(userLogin, model);
         scraper.authenticate();
         scraper.getMissions();
-        scraper.getStudents();
+
+        // Only fetch students if students in addressbook is empty
+        if (!model.hasStudents()) {
+            scraper.getStudents();
+        }
+
         scraper.getQuests();
         scraper.getUngradedMissionsAndQuests();
         scraper.shutDown();

@@ -80,6 +80,8 @@ public class ScraperManager implements Scraper {
             return;
         }
 
+        logger.info("Authenticating");
+
         // Navigate to address
         driver.get("https://sourceacademy.nus.edu.sg/login");
 
@@ -111,6 +113,8 @@ public class ScraperManager implements Scraper {
             authenticate();
         }
 
+        logger.info("Getting missions");
+
         // Grab mission titles
         driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
 
@@ -135,6 +139,9 @@ public class ScraperManager implements Scraper {
         if (!isAuthenticated) {
             authenticate();
         }
+
+        logger.info("Getting students");
+
         // Navigate to grading page
         driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
         WebDriverWait wait = new WebDriverWait(driver, 5);

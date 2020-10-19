@@ -79,6 +79,11 @@ public interface Model {
     boolean hasPerson(Student student);
 
     /**
+     * Returns true if students exist.
+     */
+    boolean hasStudents();
+
+    /**
      * Returns true if a todo with the same identity as {@code todo} exists in the address book.
      */
     boolean hasTodo(Todo todo);

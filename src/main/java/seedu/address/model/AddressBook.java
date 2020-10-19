@@ -116,6 +116,14 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// util methods
 
+    /**
+     * Returns whether student list has students already.
+     * @return a boolean
+     */
+    public boolean hasStudents() {
+        return students.hasStudents();
+    }
+
     @Override
     public String toString() {
         return students.asUnmodifiableObservableList().size() + " persons";
