@@ -28,6 +28,6 @@ public class TypicalManagers {
     }
 
     public static Model getModel() {
-        return new ModelManager(TypicalStudents.getTypicalAddressBook(), getUserPrefs());
+        return new ModelManager(TypicalStudents.getTypicalAddressBook(), getUserPrefs(), getUserLogin());
     }
 }

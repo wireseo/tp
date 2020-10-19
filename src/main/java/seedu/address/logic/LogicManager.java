@@ -39,6 +39,10 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
+    /**
+     * Saves current model to storage.
+     * @throws CommandException
+     */
     public void saveToStorage() throws CommandException {
         try {
             storage.saveAddressBook(model.getAddressBook());

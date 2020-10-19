@@ -15,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -72,6 +73,11 @@ public class ScraperManager implements Scraper {
         driver = new ChromeDriver(options);
     }
 
+    /**
+     * Initializes the scraping sequence to parse for information.
+     * @throws WrongLoginDetailsException
+     * @throws IOException
+     */
     public void startScraping() throws WrongLoginDetailsException, IOException {
         authenticate();
         getMissions();
@@ -174,8 +180,8 @@ public class ScraperManager implements Scraper {
         // Add student names to ModelController here
         for (WebElement name : studentNames) {
             try {
-                model.addPerson(new Student(new Name(name.getText()), new Telegram("999"), new Email("student@gmail.com"),
-                        new Address("Test drive"), new HashSet<>()));
+                model.addPerson(new Student(new Name(name.getText()), new Telegram("helloworld"),
+                        new Email("student@gmail.com"), new Address("Test drive"), new HashSet<>()));
             } catch (DuplicateStudentException dse) {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
                 // tries to fetch the same students on startup to add them to the addressbook.
