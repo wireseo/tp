@@ -123,6 +123,8 @@ public class MainWindow extends UiPart<Stage> {
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+        String loginMessage = getLoginMessage();
+        resultDisplay.setFeedbackToUser(loginMessage);
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -190,6 +192,20 @@ public class MainWindow extends UiPart<Stage> {
 
     public MissionListPanel getMissionListPanel() {
         return missionListPanel;
+    }
+
+    private String getLoginMessage() {
+        StringBuilder sb = new StringBuilder("");
+
+        if (!logic.hasUsername()) {
+            sb.append("Please edit your username and restart to access Sourceacademy.com");
+            sb.append("\n");
+        }
+
+        if (!logic.hasPassword()) {
+            sb.append("Please edit your password and restart to access Sourceacademy.com");
+        }
+        return sb.toString();
     }
 
     /**

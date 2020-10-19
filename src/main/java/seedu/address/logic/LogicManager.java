@@ -98,4 +98,14 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    @Override
+    public boolean hasUsername() {
+        return model.hasUsername();
+    }
+
+    @Override
+    public boolean hasPassword() {
+        return model.hasPassword();
+    }
 }
