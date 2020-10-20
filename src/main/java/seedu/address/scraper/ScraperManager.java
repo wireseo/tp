@@ -138,6 +138,9 @@ public class ScraperManager implements Scraper {
 
         logger.info("Getting missions");
 
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/game")
+                : "Source academy is on wrong page";
+
         // Grab mission titles
         driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
 
