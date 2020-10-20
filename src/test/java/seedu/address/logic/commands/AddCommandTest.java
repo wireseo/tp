@@ -222,6 +222,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasConsultation(Consultation consultation) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addTodo(Todo todo) {
             throw new AssertionError("This method should not be called.");
         }
@@ -237,10 +242,19 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addStudentToMission(String studentName, Mission mission) {
+        public void addConsultation(Consultation consultation) {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public boolean isMissionInList(String title) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean updateMission(String name) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
