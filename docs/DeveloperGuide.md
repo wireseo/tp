@@ -181,29 +181,29 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
  <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
  </div>
 
-### View Command 
+### View Command
 ## Structure of View Command
- 
+
 The follow diagram shows the overview of the ViewComamnd Class Diagram:
- 
+
 ![Sequence Diagram of View Mission Deadlines](images/ViewCommandClassDiagram.png)
- 
-In the `ViewCommand` class, there is also a static message `MESSAGE_USAGE` for when user does not include a second argument since view 
+
+In the `ViewCommand` class, there is also a static message `MESSAGE_USAGE` for when user does not include a second argument since view
 has to take in at least one argument. The message will guide the user on what parameters the `ViewCommand` can take in.
- 
+
 In the `ViewCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
- 
- 
+
+
 ## View Mission Deadlines Feature
 In this section, we will introduce how the `View Mission Deadlines Feature` works. The sequence diagram for the View Mission Deadline Command is shown below:
- 
+
 ![Sequence Diagram of View Mission Deadlines](images/ViewMissionDeadlineSequenceDiagram.png)
- 
+
 The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `ViewCommandParser` object.
-The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be ultimately returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the 
-`ViewMissionDeadlineCommand` object. In this method, it wil use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a 
+The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be ultimately returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
+`ViewMissionDeadlineCommand` object. In this method, it wil use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
 `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
 
 The View Quest Deadlines features work similarly to this as well.
@@ -230,6 +230,31 @@ interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
 * `execute` method then calls `Model`'s `updateFilteredPersonList` method with a predicate which shows all students.
 * A `CommandResult` object is created with the message "Listed all students taught by you" and returned to
  `ViewALlStudentsCommand`.
+* The `CommandResult` object is returned to the caller of `execute`.
+
+
+
+### View Consultations Feature
+Next, we will introduce how the `View Consultations Feature` works. The following is a class diagram for View
+Consultations Commands. There are three variants (view all consultations, view past consultations, view future
+  consultations) but they all share the same logic.
+
+![Class Diagram of the three View Consultations Commands](images/ViewConsultationsClassDiagram.png)
+* The abstract class `ViewCommand` extends from the abstract class `Command`
+* Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` extend
+from the abstract class `ViewCommand`
+* Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` take in a
+Model object for the execute method, as such both have a dependency on Model.
+
+
+Now we will go into how the `View Consultations Feature` works, the following is a sequence diagram modelling the
+interaction between `ViewConsultationsCommand`, `Model` and `CommandResult`.
+![Sequence Diagram of a general View Consultation](images/ViewConsultationsSequenceDiagram.png)
+
+* The `ViewConsultationsCommand`'s`execute` method is first called with a model passed as an argument.
+* `execute` method then calls `Model`'s `getConsultations` method with a predicate which shows all consultations of all students.
+* A `CommandResult` object is created with the message "Listed all consultations: " and returned to
+ `viewAllConsultationsCommand`.
 * The `CommandResult` object is returned to the caller of `execute`.
 
 --------------------------------------------------------------------------------------------------------------------
