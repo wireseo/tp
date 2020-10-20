@@ -244,4 +244,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.tasks.asObservableList();
     }
 
+    public boolean isMissionInList(String name) {
+        return this.missions.isMissionInList(name);
+    }
+
+    public boolean updateMission(String name) {
+        return this.missions.updateMission(name);
+    }
+
 }

@@ -148,6 +148,11 @@ public class ScraperManager implements Scraper {
             // Add mission to ModelController here
             String mTitle = missionTitles.get(i).getText();
             String mDeadline = missionDeadlines.get(i).getText();
+
+            // Do not add missions that are not yet opened
+            if (mDeadline.contains("Opens at")) {
+                continue;
+            }
             logger.info((i + 1) + "th mission added: " + mTitle);
             model.addMission(new Mission(mTitle, mDeadline));
         }
@@ -201,6 +206,9 @@ public class ScraperManager implements Scraper {
             authenticate();
         }
 
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/game")
+                : "Source academy is on wrong page";
+
         // Grab quest titles
         driver.findElement(By.xpath("//a[@href='/academy/quests']")).click();
 
@@ -211,6 +219,12 @@ public class ScraperManager implements Scraper {
             // Add quest to ModelController here
             String qTitle = questTitles.get(i).getText();
             String qDeadline = questDeadlines.get(i).getText();
+
+            // Do not add quests that are not yet opened
+            if (qDeadline.contains("Opens at")) {
+                continue;
+            }
+
             logger.info((i + 1) + "th quest added: " + qTitle);
             model.addQuest(new Quest(qTitle, qDeadline));
         }
@@ -225,37 +239,17 @@ public class ScraperManager implements Scraper {
         if (!isAuthenticated) {
             authenticate();
         }
+
+        logger.info("Getting ungraded missions and quests");
+
         // Navigate to grading page
         driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
-        List<Mission> missions = model.getFilteredMissionList();
-        List<Quest> quests = model.getFilteredQuestList();
+        // WIP
 
-        for (Mission mission : missions) {
-            WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
-            filterBar.clear();
-            filterBar.sendKeys(mission.getTitle() + Keys.ENTER);
-
-            // Get ungraded missions
-            List<WebElement> allStudents = driver.findElement(By.xpath("//div[@class='ag-center-cols-container']"))
-                    .findElements(By.xpath(".//div[@role='row']"));
-
-            for (WebElement student : allStudents) {
-                // Get the graded icon
-                WebElement gradedIcon = student.findElement(By.xpath(".//div[@aria-colindex='7']"))
-                        .findElement(By.xpath(".//span[@icon]"));
-
-                // Add student to mission if mission is not yet graded
-                if (gradedIcon.getAttribute("icon").equals("cross")) {
-                    String studentName = student.findElement(By.xpath(".//div[@aria-colindex='4']")).getText();
-
-                    model.addStudentToMission(studentName, mission);
-                }
-            }
-
-        }
+        logger.info("Completed getting ungraded missions and qeusts");
     }
 
     private void saveToStorage() throws IOException {

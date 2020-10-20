@@ -266,4 +266,14 @@ public class ModelManager implements Model {
         return allConsultations;
     }
 
+    @Override
+    public boolean isMissionInList(String title) {
+        return addressBook.isMissionInList(title);
+    }
+
+    @Override
+    public boolean updateMission(String name) {
+        return addressBook.updateMission(name);
+    }
+
 }

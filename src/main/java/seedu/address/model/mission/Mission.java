@@ -14,10 +14,16 @@ public class Mission {
     public Mission(String title, String deadline) {
         this.title = title;
         this.deadline = deadline;
-        this.isGraded = false;
+        this.isGraded = true;
     }
 
-    private Mission(String title, String deadline, boolean isGraded) {
+    /**
+     * Creates a mission object with updated isGraded field.
+     *
+     * @param title
+     * @param deadline
+     */
+    public Mission(String title, String deadline, boolean isGraded) {
         this.title = title;
         this.deadline = deadline;
         this.isGraded = isGraded;

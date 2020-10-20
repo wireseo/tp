@@ -206,4 +206,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateQuestsList(Predicate<Quest> predicate);
+
+    public boolean isMissionInList(String title);
+
+    public boolean updateMission(String name);
 }
