@@ -27,13 +27,15 @@ public class ViewTaskListCommand extends ViewCommand {
         return new CommandResult(String.format(MESSAGE_SUCCESS, list));
     }
 
-    //For temp view of storage
+    //For temp view of storage via the command result feedback box on MainWindow
     private String parseList() {
         String parsedList = "";
         int size = taskList.size();
+
         for (int i = 0; i < size; i++) {
             parsedList = parsedList + taskList.get(i).toString() + "\n";
         }
+
         return parsedList;
     }
 

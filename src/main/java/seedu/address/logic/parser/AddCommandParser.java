@@ -11,8 +11,11 @@ import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import seedu.address.MainApp;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
@@ -30,6 +33,8 @@ import seedu.address.model.task.Todo;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
+
+    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -60,19 +65,23 @@ public class AddCommandParser implements Parser<AddCommand> {
         // switch command to return the respective add commands
         switch (commandFlag.getFlag()) {
         case TASK_TODO:
+            logger.info("AddCommandParser attempts to parse user's newly added todo task");
             Todo todo = TaskCommandParser.parseTodo(nameKeywords, length);
             return new AddCommand(todo);
 
         case TASK_EVENT:
+            logger.info("AddCommandParser attempts to parse user's newly added event task");
             Event event = TaskCommandParser.parseEvent(nameKeywords, length);
             return new AddCommand(event);
 
         case TASK_DEADLINE:
+            logger.info("AddCommandParser attempts to parse user's newly added deadline task");
             Deadline deadline = TaskCommandParser.parseDeadline(nameKeywords, length);
             return new AddCommand(deadline);
 
 
         default:
+            logger.info("AddCommandParser attempts to parse user's newly added student");
             ArgumentMultimap argMultimap =
                     ArgumentTokenizer.tokenize(args,
                             PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
