@@ -154,11 +154,6 @@ public class ModelManager implements Model {
 
     }
 
-    @Override
-    public void addStudentToMission(String studentName, Mission mission) {
-        addressBook.addStudentToMission(studentName, mission);
-    }
-
     //=========== Filtered Mission List Accessors =============================================================
     @Override
     public void updateMissionsList(Predicate<Mission> predicate) {

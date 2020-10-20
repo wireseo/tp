@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #ffffff
+skinparam classAttributeIconSize 0
+hide circle
+
+abstract class "{abstract}\nCommand" {
+    + {abstract} execute(model : Model) : CommandResult
+}
+
+class Model <<Interface>> {
+    + setOrderBook(orderBook : ReadOnlyOrderBook) : void
+    + setReturnOrderBook(returnOrderBook : ReadOnlyReturnOrderBook) : void
+}
+
+Model ..> ReadOnlyAddressBook
+
+class ReadOnlyAddressBook {
+    + getMissionList() : ObservableList<Mission>
+    + getQuestList() : ObservableList<Quest>
+    + getStudentList() : ObservableList<Student>
+}
+
+abstract class "{abstract}\nViewCommand"{
+    /' Methods '/
+    + execute(model : Model) : CommandResult
+}
+
+class ViewCommandParser implements Parser {
+    /' Methods '/
+    + parse(args : String) : ViewCommand
+}
+
+interface Parser<T> <<interface>> {
+    parse(userInput : String) : ViewCommand
+}
+
+class Flag {
+    + getFlag(): String
+    + isValidFlag(): boolean
+}
+
+class ViewXYZCommand
+
+"{abstract}\nViewCommand" <..left ViewCommandParser
+"{abstract}\nViewCommand" ..> Model
+"{abstract}\nViewCommand" --up|> "{abstract}\nCommand"
+ViewCommandParser ..> Flag
+ViewXYZCommand -> "{abstract}\nViewCommand"
+@enduml
