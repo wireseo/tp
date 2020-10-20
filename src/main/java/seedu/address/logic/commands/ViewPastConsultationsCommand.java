@@ -5,8 +5,6 @@ import static seedu.address.model.Model.PREDICATE_SHOW_PAST_CONSULTATIONS;
 
 import java.util.logging.Logger;
 
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ViewCommand;
 import seedu.address.model.Model;
 
 
