@@ -9,12 +9,15 @@ import seedu.address.model.Model;
  * View only past consultations.
  */
 public class ViewUpcomingConsultationsCommand extends ViewCommand {
+    public static final String MESSAGE_SUCCESS = "Listed all upcoming consultations: \n";
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         String result = model.getConsultations(PREDICATE_SHOW_UPCOMING_CONSULTATIONS).toString();
-
-        return new CommandResult(result);
+        if (result.equals("[]")) {
+            result = "";
+        }
+        return new CommandResult(MESSAGE_SUCCESS + result);
     }
 }
