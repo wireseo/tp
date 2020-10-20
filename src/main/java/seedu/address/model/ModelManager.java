@@ -264,6 +264,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasConsultation(Consultation consultation) {
+        requireNonNull(consultation);
+        return addressBook.hasConsultation(consultation);
+    }
+
+    @Override
+    public void addConsultation(Consultation consultation) {
+        addressBook.addConsultation(consultation);
+    }
+
+    @Override
     public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
         List<Consultation> allConsultations = new ArrayList<Consultation>();
         addressBook.getStudentList().forEach(student -> student.getConsultations().stream().filter(predicate)

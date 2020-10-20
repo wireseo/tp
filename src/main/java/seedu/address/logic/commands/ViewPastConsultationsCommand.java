@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.exceptions;
+package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_PAST_CONSULTATIONS;

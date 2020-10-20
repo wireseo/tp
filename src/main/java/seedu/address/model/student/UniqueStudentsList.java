@@ -6,9 +6,12 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.Consultation;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
 import seedu.address.model.student.exceptions.StudentNotFoundException;
 
@@ -39,6 +42,14 @@ public class UniqueStudentsList implements Iterable<Student> {
     }
 
     /**
+     * Returns true if the list contains an equivalent consultation as the given argument.
+     */
+    public boolean containsConsultation(Consultation toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().anyMatch(s -> s.getConsultations().equals(toCheck));
+    }
+
+    /**
      * Adds a student to the list.
      * The student must not already exist in the list.
      */
@@ -49,6 +60,7 @@ public class UniqueStudentsList implements Iterable<Student> {
         }
         internalList.add(toAdd);
     }
+
 
     /**
      * Replaces the student {@code target} in the list with {@code editedStudent}.
