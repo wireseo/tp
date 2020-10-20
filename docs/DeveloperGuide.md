@@ -202,6 +202,38 @@ interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
  `ViewALlStudentsCommand`.
 * The `CommandResult` object is returned to the caller of `execute`.
 
+
+
+### View Tasks Feature
+The View Task features involve viewing 4 categories of tasks which work similarly to the above as well. We can choose
+to:
+* View all `Task` in general,
+* View all `Todo`, 
+* View all `Event`, or 
+* View all `Deadline`.
+
+## Structure of Add Command
+The following diagram shows the overview of AddCommand Class Diagram:
+![Class Diagram of Add Commands](images/ViewStudentsClassDiagram.png)
+
+
+In the AddCommand class
+
+### Add Task Feature
+In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
+`Todo`, `Event` and `Deadline`.
+* `Todo` is a basic simple tasks that is usually not constrained by time; `Event` is
+a task that requires completion at a particular point in time; `Deadline` is a task that requires completion before a
+particular point in time.
+
+The sequence diagram for the Add Task Command is shown below:
+![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
+
+* The `AddCommand`'s`execute` method is first called with a model passed as an argument.
+* `execute` method then calls `AddCommandParser`'s `parse` method with a predicate which parses the task.
+* A `CommandResult` object is created with the message "Task added"" and returned to `AddCommand`.
+* The `CommandResult` object is returned to the caller of `execute`.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
