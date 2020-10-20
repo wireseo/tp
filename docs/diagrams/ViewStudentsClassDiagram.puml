@@ -22,5 +22,4 @@ ViewAllStudentsCommand ..> Model
 ViewOneStudentCommand ..> Model
 ViewOneStudentCommand ..> Name
 
-
 @enduml
