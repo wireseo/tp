@@ -6,6 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.VIEW_TASK_LIST;
 
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.logging.Logger;
+
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.ViewAllStudentsCommand;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.ViewMissionDeadlineCommand;
@@ -17,9 +22,12 @@ import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
 
 public class ViewCommandParser implements Parser<ViewCommand> {
+
+    private final Logger logger = LogsCenter.getLogger(ViewCommandParser.class);
+
     /**
      * Parses the given {@code String} of arguments in the context of the ViewCommand
-     * and returns a ViewCommand object for execution.
+     * and returns a ViewCommand object for execution.M
      * @throws ParseException if the user input does not conform the expected format
      */
     public ViewCommand parse(String args) throws ParseException {
@@ -31,23 +39,19 @@ public class ViewCommandParser implements Parser<ViewCommand> {
 
         // split the string trimmedArgs with regex of one or more whitespace characters.
         // result will be as such: {-s, Alex, Yeoh}
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-        Flag commandFlag = ParserUtil.parseFlag(nameKeywords[0]);
-
-        boolean argsHasAdditionalParams = nameKeywords.length > 1;
-        // potential bug with studentName being initialized as empty string
-        StringBuilder studentNameBuilder = new StringBuilder();
-        int lastNameComponentIndex = 0;
+        String[] inputsAfterCommandType = trimmedArgs.split("\\s+");
+        Flag commandFlag = ParserUtil.parseFlag(inputsAfterCommandType[0]);
+        // Problem is what if additional params here can mean more than just student name?
+        boolean argsHasAdditionalParams = inputsAfterCommandType.length > 1;
+        Optional<Name> optionalStudentName = Optional.empty();
 
         if (argsHasAdditionalParams) {
-            lastNameComponentIndex = nameKeywords.length;
+            logger.info("extra input arguments");
+            String[] nameComponents = Arrays.copyOfRange(inputsAfterCommandType, 1, inputsAfterCommandType.length);
+            Name studentName = ParserUtil.parseName(nameComponents);
+            logger.info("Student name: " + studentName.fullName);
+            optionalStudentName = Optional.of(studentName);
         }
-
-        for (int i = 1; i < lastNameComponentIndex; i++) {
-            studentNameBuilder.append(nameKeywords[i]).append(" ");
-        }
-
-        String studentName = studentNameBuilder.toString().trim();
 
         // switch command to return the respective view commands
         switch(commandFlag.getFlag()) {
@@ -58,8 +62,8 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             return new ViewQuestDeadlineCommand();
 
         case VIEW_STUDENT:
-            if (argsHasAdditionalParams) {
-                Name name = new Name(studentName);
+            if (optionalStudentName.isPresent()) {
+                Name name = optionalStudentName.get();
                 return new ViewOneStudentCommand(name);
             } else {
                 return new ViewAllStudentsCommand();
@@ -75,4 +79,5 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         }
 
     }
+
 }

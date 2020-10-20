@@ -167,7 +167,8 @@ public class ScraperManager implements Scraper {
 
         // Navigate to grading page
         driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        // Note that
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
         // Filter by Studio Journal

@@ -201,15 +201,15 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private String getLoginMessage() {
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
 
         if (!logic.hasUsername()) {
             sb.append("Please edit your username and restart to access Sourceacademy.com");
             sb.append("\n");
-        }
-
-        if (!logic.hasPassword()) {
+        } else if (!logic.hasPassword()) {
             sb.append("Please edit your password and restart to access Sourceacademy.com");
+        } else {
+            sb.append("Welcome to Jarvis! enter 'help' to see the amazing things you can do with me.");
         }
         return sb.toString();
     }
