@@ -152,6 +152,12 @@ public interface Model {
     void addDeadline(Deadline deadline);
 
     /**
+     * Adds the given consultation.
+     * {@code consultation} must not already exist in the address book.
+     */
+    void addConsultation(Consultation consultation);
+
+    /**
      * Returns true if a todo with the same identity as {@code todo} exists in the address book.
      */
     boolean hasTodo(Todo todo);
@@ -165,6 +171,11 @@ public interface Model {
      * Returns true if a deadline with the same identity as {@code deadline} exists in the address book.
      */
     boolean hasDeadline(Deadline deadline);
+
+    /**
+     * Returns true if a consultation with the same identity as {@code consultation} exists in the address book.
+     */
+    boolean hasConsultation(Consultation consultation);
 
     //=========== Filtered Mission List Accessors =============================================================
 

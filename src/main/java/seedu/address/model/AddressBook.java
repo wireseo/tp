@@ -224,6 +224,22 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a consultation with the same identity as {@code deadline} exists in the address book.
+     */
+    public boolean hasConsultation(Consultation consultation) {
+        requireNonNull(consultation);
+        return students.containsConsultation(consultation);
+    }
+
+    /**
+     * Adds a consultation to the address book.
+     * The consultation must not already exist in the address book.
+     */
+    public void addConsultation(Consultation consultation) {
+        //this.students.addConsultation(consultation); TODO: NEED TO IMPLEMENT THIS METHOD!!!
+    }
+
+    /**
      * Returns true if a task with the same identity as {@code task} exists in the address book.
      */
     public boolean hasTask(Task task) {
