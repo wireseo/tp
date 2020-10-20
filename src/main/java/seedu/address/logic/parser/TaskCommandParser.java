@@ -27,6 +27,8 @@ public class TaskCommandParser {
      */
     public static Todo parseTodo(String[] nameKeywords, int length) {
         String description = nameKeywords[1];
+
+        assert length >= 2 : "The task should already contain a description of >= 1 word";
         for (int i = 2; i < length; i++) {
             description = description + " " + nameKeywords[i];
         }
@@ -125,6 +127,11 @@ public class TaskCommandParser {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DATE));
         }
+
+        assert hasDatePrefix : "Date prefix d/ should already be handled properly";
+        assert hasTimePrefix : "Time prefix t/ should already be handled properly";
+        assert datePrefixLocation > 0 : "Date prefix location should already been found correctly";
+        assert timePrefixLocation > 0 : "Time prefix location should already been found correctly";
 
         LocalDateTime formattedDateTime;
         try {
