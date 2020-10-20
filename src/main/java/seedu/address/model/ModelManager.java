@@ -154,11 +154,6 @@ public class ModelManager implements Model {
 
     }
 
-    @Override
-    public void addStudentToMission(String studentName, Mission mission) {
-        addressBook.addStudentToMission(studentName, mission);
-    }
-
     //=========== Filtered Mission List Accessors =============================================================
     @Override
     public void updateMissionsList(Predicate<Mission> predicate) {
@@ -269,6 +264,16 @@ public class ModelManager implements Model {
         addressBook.getStudentList().forEach(student -> student.getConsultations().stream().filter(predicate)
                 .forEach(consultation -> allConsultations.add(consultation)));
         return allConsultations;
+    }
+
+    @Override
+    public boolean isMissionInList(String title) {
+        return addressBook.isMissionInList(title);
+    }
+
+    @Override
+    public boolean updateMission(String name) {
+        return addressBook.updateMission(name);
     }
 
 }

@@ -3,7 +3,6 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.mission.Mission;
@@ -154,17 +153,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.missions.setMissions(missions);
     }
 
-    /**
-     * Adds {@code Student} to the {@code Mission}.
-     * {@code Student} must exist in the address book.
-     */
-    public void addStudentToMission(String studentName, Mission mission) {
-        Optional<Student> student = this.students.getStudentByName(studentName);
-        if (student.isPresent()) {
-            mission.addStudent(student.get());
-        }
-    }
-
     public void addQuest(Quest quest) {
         this.quests.add(quest);
     }
@@ -254,6 +242,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Task> getTaskList() {
         return this.tasks.asObservableList();
+    }
+
+    public boolean isMissionInList(String name) {
+        return this.missions.isMissionInList(name);
+    }
+
+    public boolean updateMission(String name) {
+        return this.missions.updateMission(name);
     }
 
 }

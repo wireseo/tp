@@ -3,6 +3,7 @@ package seedu.address.model.mission;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,5 +34,29 @@ public class MissionList {
 
     public ObservableList<Mission> asObservableList() {
         return internalList;
+    }
+
+    public boolean isMissionInList(String name) {
+        return internalList.stream().anyMatch(mission -> mission.getTitle().equals(name));
+    }
+
+    /**
+     * Updates the mission found to be ungraded
+     *
+     * @param name mission title
+     * @return true if missions was found and updated successfully
+     */
+    public boolean updateMission(String name) {
+        Optional<Mission> missionToUpdate = internalList.stream().filter(mission -> mission.getTitle().equals(name))
+                .findFirst();
+        if (missionToUpdate.isPresent()) {
+            Mission mission = missionToUpdate.get();
+            this.internalList.remove(missionToUpdate.get());
+            mission = mission.setIsGraded(false);
+            this.internalList.add(mission);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

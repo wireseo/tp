@@ -1,14 +1,9 @@
 package seedu.address.model.mission;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import seedu.address.model.student.Student;
-
 public class Mission {
     private final String title;
     private final String deadline;
-    private final List<Student> students;
+    private final boolean isGraded;
 
     /**
      * Creates a mission object.
@@ -19,7 +14,19 @@ public class Mission {
     public Mission(String title, String deadline) {
         this.title = title;
         this.deadline = deadline;
-        this.students = new ArrayList<Student>();
+        this.isGraded = true;
+    }
+
+    /**
+     * Creates a mission object with updated isGraded field.
+     *
+     * @param title
+     * @param deadline
+     */
+    public Mission(String title, String deadline, boolean isGraded) {
+        this.title = title;
+        this.deadline = deadline;
+        this.isGraded = isGraded;
     }
 
     public String getTitle() {
@@ -30,12 +37,12 @@ public class Mission {
         return deadline;
     }
 
-    public void addStudent(Student student) {
-        students.add(student);
+    public boolean getIsGraded() {
+        return isGraded;
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public Mission setIsGraded(boolean isGraded) {
+        return new Mission(title, deadline, isGraded);
     }
 
     /**

@@ -237,10 +237,14 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addStudentToMission(String studentName, Mission mission) {
+        public boolean isMissionInList(String title) {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public boolean updateMission(String name) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
