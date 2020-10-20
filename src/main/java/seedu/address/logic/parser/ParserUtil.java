@@ -61,7 +61,7 @@ public class ParserUtil {
         requireNonNull(nameComponents);
         StringBuilder studentNameBuilder = new StringBuilder();
         int lastNameComponentIndex = nameComponents.length;
-        for (int i = 1; i < lastNameComponentIndex; i++) {
+        for (int i = 0; i < lastNameComponentIndex; i++) {
             studentNameBuilder.append(nameComponents[i]).append(" ");
         }
         String trimmedName = studentNameBuilder.toString().trim();
