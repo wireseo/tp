@@ -1,0 +1,39 @@
+@startuml
+!include style.puml
+
+participant ":AddCommand" as AddCommand SCRAPER_COLOR
+participant ":AddCommandParser" as AddCommandParser SCRAPER_COLOR
+participant ":TaskCommandParser" as TaskCommandParser SCRAPER_COLOR
+participant ":Model" as Model SCRAPER_COLOR
+participant ":CommandResult" as CommandResult SCRAPER_COLOR
+
+[-> AddCommand : execute(model)
+activate ViewAllStudentsCommand
+
+AddCommand -> AddCommandParser
+
+AddCommandParser -> TaskCommandParser : parse(task)
+
+TaskCommandParser -> Model : toAdd(task)
+
+activate Model
+
+Model -> AddCommand
+
+deactivate Model
+
+create CommandResult
+
+AddCommand -> CommandResult : CommandResult("Task added")
+
+activate CommandResult
+
+CommandResult -> AddCommand : command result
+
+deactivate CommandResult
+
+[<-- AddCommand : command result
+
+deactivate AddCommand
+
+@enduml
