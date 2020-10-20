@@ -52,6 +52,26 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String[] nameComponents} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nameComponents} is invalid.
+     */
+    public static Name parseName(String[] nameComponents) throws ParseException {
+        requireNonNull(nameComponents);
+        StringBuilder studentNameBuilder = new StringBuilder();
+        int lastNameComponentIndex = nameComponents.length;
+        for (int i = 1; i < lastNameComponentIndex; i++) {
+            studentNameBuilder.append(nameComponents[i]).append(" ");
+        }
+        String trimmedName = studentNameBuilder.toString().trim();
+        if (!Name.isValidName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new Name(trimmedName);
+    }
+
+    /**
      * Parses a {@code String telegram} into a {@code Telegram}.
      * Leading and trailing whitespaces will be trimmed.
      *
