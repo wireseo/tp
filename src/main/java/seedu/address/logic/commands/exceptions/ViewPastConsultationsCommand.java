@@ -17,9 +17,10 @@ public class ViewPastConsultationsCommand extends ViewCommand {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         String result = model.getConsultations(PREDICATE_SHOW_PAST_CONSULTATIONS).toString();
+        System.out.println(result);
         if (result.equals("[]")) {
             result = "";
         }
-        return new CommandResult(result);
+        return new CommandResult(MESSAGE_SUCCESS + result);
     }
 }

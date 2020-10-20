@@ -18,6 +18,6 @@ public class ViewUpcomingConsultationsCommand extends ViewCommand {
         if (result.equals("[]")) {
             result = "";
         }
-        return new CommandResult(result);
+        return new CommandResult(MESSAGE_SUCCESS + result);
     }
 }
