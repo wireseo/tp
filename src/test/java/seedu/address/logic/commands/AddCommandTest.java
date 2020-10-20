@@ -222,6 +222,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasConsultation(Consultation consultation) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addTodo(Todo todo) {
             throw new AssertionError("This method should not be called.");
         }
@@ -233,6 +238,11 @@ public class AddCommandTest {
 
         @Override
         public void addDeadline(Deadline deadline) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addConsultation(Consultation consultation) {
             throw new AssertionError("This method should not be called.");
         }
 
