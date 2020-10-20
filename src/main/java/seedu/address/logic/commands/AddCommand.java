@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -15,6 +14,7 @@ import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.exceptions.CommandException;
+
 import seedu.address.model.Consultation;
 import seedu.address.model.Model;
 import seedu.address.model.student.Student;
@@ -32,7 +32,7 @@ public class AddCommand extends Command {
     public static final String TO_ADD_TODO = "T";
     public static final String TO_ADD_EVENT = "E";
     public static final String TO_ADD_DEADLINE = "D";
-    private static final String TO_ADD_CONSULTATION = "C";
+    public static final String TO_ADD_CONSULTATION = "C";
 
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a student to the address book. "
@@ -50,7 +50,6 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 
-    @SuppressWarnings("checkstyle:DeclarationOrder")
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in jarvis";
     public static final String MESSAGE_INVALID_TO_ADD_TYPE = "This object to add is unidentifiable";
