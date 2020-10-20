@@ -11,11 +11,15 @@ import seedu.address.model.Model;
  * View only past consultations.
  */
 public class ViewPastConsultationsCommand extends ViewCommand {
+    public static final String MESSAGE_SUCCESS = "Listed all past consultations: \n";
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         String result = model.getConsultations(PREDICATE_SHOW_PAST_CONSULTATIONS).toString();
-
+        if (result.equals("[]")) {
+            result = "";
+        }
         return new CommandResult(result);
     }
 }
