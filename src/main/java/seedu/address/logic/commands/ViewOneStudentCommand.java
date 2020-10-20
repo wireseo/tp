@@ -38,6 +38,7 @@ public class ViewOneStudentCommand extends ViewCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        assert searchedName.fullName.length() > 0 : "The input search string is empty";
         model.updateFilteredPersonList(student ->
                 student.getName().fullName.contains(searchedName.toString())
                 || student.getName().fullName.toLowerCase().contains(searchedName.toString()));

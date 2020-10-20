@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
@@ -31,6 +32,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public ViewCommand parse(String args) throws ParseException {
+        requireNonNull(args);
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
@@ -40,6 +42,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         // split the string trimmedArgs with regex of one or more whitespace characters.
         // result will be as such: {-s, Alex, Yeoh}
         String[] inputsAfterCommandType = trimmedArgs.split("\\s+");
+        assert inputsAfterCommandType.length > 0 : "String array of the arguments is empty";
         Flag commandFlag = ParserUtil.parseFlag(inputsAfterCommandType[0]);
         // Problem is what if additional params here can mean more than just student name?
         boolean argsHasAdditionalParams = inputsAfterCommandType.length > 1;
