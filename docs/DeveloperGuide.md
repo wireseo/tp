@@ -165,7 +165,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Get Missions Feature
 In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
-and interaction of objects between the `ScraperManager` and `Chrome Driver`. 
+and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of JARVIS.
 </div>
@@ -180,10 +180,10 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
 </div>
- 
+
 ### View Students Feature
 Next, we will introduce how the `View Students Feature` works. The following is a class diagram for View Student
- Commands. 
+ Commands.
 
 ![Class Diagram of View Student Commands](images/ViewStudentsClassDiagram.png)
 * The abstract class `ViewCommand` extends from the abstract class `Command`
@@ -192,11 +192,11 @@ Next, we will introduce how the `View Students Feature` works. The following is 
  both have a dependency on Model.
 
 
-Now we will go into how the `View All Students Feature` works, the following is a sequence diagram modelling the 
-interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`. 
+Now we will go into how the `View All Students Feature` works, the following is a sequence diagram modelling the
+interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
 ![Sequence Diagram of View All Students](images/ViewAllStudentsSequenceDiagram.png)
 
-* The `ViewAllStudentsCommand`'s`execute` method is first called with a model passed as an argument. 
+* The `ViewAllStudentsCommand`'s`execute` method is first called with a model passed as an argument.
 * `execute` method then calls `Model`'s `updateFilteredPersonList` method with a predicate which shows all students.
 * A `CommandResult` object is created with the message "Listed all students taught by you" and returned to
  `ViewALlStudentsCommand`.
