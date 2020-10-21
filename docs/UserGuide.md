@@ -59,6 +59,13 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
+**UI Layout**
+<br>
+   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`.
+<br>
+   * Clicking on each tab will give you the information you require for that field.
+
+
 
 <div markdown="block" class="alert alert-info">
 
