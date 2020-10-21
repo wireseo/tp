@@ -6,22 +6,23 @@ title: Developer Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## **Introduction**
 
 ###Purpose
-The purpose of this document is to cover the multi-level design architecture of JARVIS, so that the intended audience
-of this document can understand the relationship between components that make up JARVIS.
+The purpose of this document is to cover the multi-level design architecture of Jarvis, so that the intended audience
+of this document can understand the relationship between components that make up Jarvis.
 
 ###Audience
-This developer guide is for anyone who wants to understand the internal software architecture of JARVIS.
+This developer guide is for anyone who wants to understand the internal software architecture of Jarvis.
 The following groups of people are the intended audience:
-* JARVIS developers: anyone who wish to upgrade JARVIS to support more functions.
+* Jarvis developers: anyone who wish to upgrade Jarvis to support more functions.
 * CS1101S Avengers: tutors of CS1101S who wants to improve their efficiency and productivity.
 
-###JARVIS Overview
-JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
-while still having the benefits of a Graphical User Interface (GUI). JARVIS in general helps to organise and simplify
+###Jarvis Overview
+Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI). Jarvis in general helps to organise and simplify
 CS1101S tutors' administrative tasks.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -31,6 +32,7 @@ CS1101S tutors' administrative tasks.
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## **Design**
 
@@ -77,6 +79,8 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
+<div style="page-break-after: always"></div>
+
 ### UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
@@ -92,6 +96,8 @@ The `UI` component,
 
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
+
+<div style="page-break-after: always"></div>
 
 ### Logic component
 
@@ -113,6 +119,8 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
+<div style="page-break-after: always"></div>
+
 ### Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
@@ -132,6 +140,7 @@ The `Model`,
 
 </div>
 
+<div style="page-break-after: always"></div>
 
 ### Storage component
 
@@ -160,6 +169,8 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always"></div>
+
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -168,7 +179,7 @@ This section describes some noteworthy details on how certain features are imple
 In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of JARVIS.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
 </div>
 
 ![Path Diagram of Get Missions](images/GetMissionsPathDiagram.png)
@@ -181,6 +192,8 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
  <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
  </div>
+
+<div style="page-break-after: always"></div>
 
 ## View Command
 ### Structure of View Command
@@ -265,6 +278,7 @@ students.
  `viewAllConsultationsCommand`.
 * The `CommandResult` object is returned to the caller of `execute`.
 
+<div style="page-break-after: always"></div>
 
 ## Add Command
 ### Structure of Add Command
@@ -272,7 +286,7 @@ The following diagram shows the overview of the AddComand Class Diagram:
 
 ![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
 
-_This Add Command overall structure is similar to that of View Command._
+> This Add Command overall structure is similar to that of **View Command**.
 * Upon parsing user input to the correct `AddCommand` (ie. `AddXYZCommand`) which is done by the `AddCommandParser`, the
 correct `Model` object (eg. `Student`, `Task`) will be added to the corresponding list in `Model` class.
 * Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
@@ -299,7 +313,7 @@ The sequence diagram for the Add Todo Command is shown below:
 
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
 
-_This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`._
+> This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`.
 * The `AddCommand`'s`execute` method is first called with a model passed as an argument.
 * `execute` method then calls `AddCommandParser`'s `hasTodo` method to check if the task is already contained within the
 Model class.
@@ -308,6 +322,7 @@ Model class.
 `SUCCESS` message.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -354,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is `JARVIS` and the **Actor** is the `CS1101S tutor`, unless specified otherwise)
+(For all use cases below, the **System** is `Jarvis` and the **Actor** is the `CS1101S tutor`, unless specified otherwise)
 
 **Use case: UC1 - View consultation sessions**
 
@@ -823,6 +838,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Mastery Check**: Type of special consultation that is recorded and graded in the CS1101S module.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## **Appendix: Instructions for manual testing**
 
