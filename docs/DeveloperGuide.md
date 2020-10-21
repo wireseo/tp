@@ -209,7 +209,7 @@ The View Quest Deadlines features work similarly to this as well.
 
 ### View Students Feature
 Next, we will introduce how the `View Students Feature` works. The following is a class diagram for View Student
- Commands.
+Commands.
 
 ![Class Diagram of View Student Commands](images/ViewStudentsClassDiagram.png)
 * The abstract class `ViewCommand` extends from the abstract class `Command`
