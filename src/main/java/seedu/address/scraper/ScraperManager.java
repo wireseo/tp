@@ -1,13 +1,11 @@
 package seedu.address.scraper;
 
 import static java.util.Objects.requireNonNull;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +14,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -35,7 +32,9 @@ import seedu.address.storage.Storage;
 
 public class ScraperManager implements Scraper {
 
-    private static final String FILTER_KEY = "STUDIO JOURNAL";
+    private static final String STUDENT_FILTER_KEY = "STUDIO JOURNAL";
+    private static final String MISSION_FILTER_KEY = "MISSION";
+    private static final String QUEST_FILTER_KEY = "QUEST";
     private final Logger logger = LogsCenter.getLogger(ScraperManager.class);
     private WebDriver driver;
     private UserLogin loginInfo;
@@ -252,8 +251,12 @@ public class ScraperManager implements Scraper {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
+        // Clear filter bar
+        WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
+        filterBar.clear();
+
         // Filter by Studio Journal
-        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(FILTER_KEY + Keys.ENTER);
+        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(STUDENT_FILTER_KEY + Keys.ENTER);
 
         // Get all student names
         List<WebElement> studentNames = driver.findElements(By.xpath("//div[@col-id='studentName']"));
@@ -302,7 +305,7 @@ public class ScraperManager implements Scraper {
 
     public void getUngradedMissions(WebElement filterBar) {
         filterBar.clear();
-        filterBar.sendKeys("mission" + Keys.ENTER);
+        filterBar.sendKeys(MISSION_FILTER_KEY + Keys.ENTER);
 
         List<WebElement> missionTitles = driver.findElements(By.xpath("//div[@aria-colindex='2']"));
         List<WebElement> gradingIcons = driver.findElements(By.xpath("//div[@aria-colindex='7']"));
@@ -332,7 +335,7 @@ public class ScraperManager implements Scraper {
 
     public void getUngradedQuests(WebElement filterBar) {
         filterBar.clear();
-        filterBar.sendKeys("quest" + Keys.ENTER);
+        filterBar.sendKeys(QUEST_FILTER_KEY + Keys.ENTER);
 
         List<WebElement> questTitles = driver.findElements(By.xpath("//div[@aria-colindex='2']"));
         List<WebElement> gradingIcons = driver.findElements(By.xpath("//div[@aria-colindex='7']"));
