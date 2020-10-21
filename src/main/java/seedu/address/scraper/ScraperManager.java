@@ -372,9 +372,15 @@ public class ScraperManager implements Scraper {
      */
     private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students) throws IOException {
         try {
-            model.setMissions(missions);
-            model.setQuests(quests);
-            model.setStudents(students);
+            if (!missions.isEmpty()) {
+                model.setMissions(missions);
+            }
+            if (!quests.isEmpty()) {
+                model.setQuests(quests);
+            }
+            if (!students.isEmpty()) {
+                model.setStudents(students);
+            }
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException e) {
             throw new IOException("Error saving to addressbook");
