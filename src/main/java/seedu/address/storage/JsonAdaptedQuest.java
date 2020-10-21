@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import seedu.address.model.quest.Quest;
 
 public class JsonAdaptedQuest {
     private final String title;
@@ -14,5 +15,13 @@ public class JsonAdaptedQuest {
     public JsonAdaptedQuest(@JsonProperty("title") String title, @JsonProperty("deadline") String deadline) {
         this.title = title;
         this.deadline = deadline;
+    }
+
+    /**
+     * Converts a given {@code Quest} into this class for Jackson use.
+     */
+    public JsonAdaptedQuest(Quest source) {
+        title = source.getTitle();
+        deadline = source.getDeadline();
     }
 }
