@@ -739,7 +739,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-<br>**Use case: UC12 - Mark a personal task as done**
+<br>**Use case: UC**12 - Mark a personal task as done**
 
 **MSS**
 

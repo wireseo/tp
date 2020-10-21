@@ -248,7 +248,7 @@ Shows the quests that the user has not graded.
 
 #### 5-12. Viewing studio participation marks of a specific student.
 Shows the studio participation marks of a student.
-<br>**Format: `view -p [Name]`
+<br>**Format: `view -p [Name]`**
 <br>Examples:
 * `view -p John Doe`
 

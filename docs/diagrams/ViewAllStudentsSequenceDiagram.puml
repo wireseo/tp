@@ -12,7 +12,7 @@ ViewAllStudentsCommand -> Model : updateFilteredPersonList(PREDICATE_SHOW_ALL_ST
 
 activate Model
 
-Model -> ViewAllStudentsCommand
+Model --> ViewAllStudentsCommand
 
 deactivate Model
 
@@ -22,11 +22,11 @@ ViewAllStudentsCommand -> CommandResult : CommandResult("Listed all students tau
 
 activate CommandResult
 
-CommandResult -> ViewAllStudentsCommand : command result
+CommandResult --> ViewAllStudentsCommand : commandResult
 
 deactivate CommandResult
 
-[<-- ViewAllStudentsCommand : command result
+[<-- ViewAllStudentsCommand : commandResult
 
 deactivate ViewAllStudentsCommand
 
