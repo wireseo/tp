@@ -1,14 +1,11 @@
 package seedu.address.model.student;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
 import seedu.address.model.Consultation;
 import seedu.address.model.tag.Tag;
 
@@ -23,37 +20,30 @@ public class Student {
     private final Telegram telegram;
     private final Email email;
 
-    // Data fields
-    private final Address address;
     // Field to be used in the future for editing student participation levels
     private ParticipationLevel participationLevel;
-    private final Set<Tag> tags = new HashSet<>();
     private List<Consultation> consultations = new ArrayList<>();
 
 
     /**
      * Every field must be present and not null.
      */
-    public Student(Name name, Telegram telegram, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, telegram, email, address, tags);
+    public Student(Name name, Telegram telegram, Email email) {
+        requireAllNonNull(name, telegram, email);
         this.name = name;
         this.telegram = telegram;
         this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
     }
 
     /**
      * Every field must be present and not null. This constructor contains consultations.
      */
-    public Student(Name name, Telegram telegram, Email email, Address address, Set<Tag> tags,
+    public Student(Name name, Telegram telegram, Email email, Set<Tag> tags,
                    List<Consultation> consultations) {
-        requireAllNonNull(name, telegram, email, address, tags, consultations);
+        requireAllNonNull(name, telegram, email, tags, consultations);
         this.name = name;
         this.telegram = telegram;
         this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
         this.consultations.addAll(consultations);
     }
 
@@ -67,18 +57,6 @@ public class Student {
 
     public Email getEmail() {
         return email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
     }
 
     /**
@@ -121,15 +99,13 @@ public class Student {
         return otherStudent.getName().equals(getName())
                 && otherStudent.getTelegram().equals(getTelegram())
                 && otherStudent.getEmail().equals(getEmail())
-                && otherStudent.getAddress().equals(getAddress())
-                && otherStudent.getTags().equals(getTags())
                 && otherStudent.getConsultations().equals(getConsultations());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, telegram, email, address, tags, consultations);
+        return Objects.hash(name, telegram, email, consultations);
     }
 
     @Override
@@ -140,12 +116,9 @@ public class Student {
                 .append(getTelegram())
                 .append(" Email: ")
                 .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
                 .append(" Consultations: ")
                 .append(getConsultations())
                 .append(" Tags: ");
-        getTags().forEach(builder::append);
         return builder.toString();
     }
 

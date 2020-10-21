@@ -10,7 +10,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
-import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Telegram;
@@ -81,21 +80,6 @@ public class ParserUtil {
         requireNonNull(telegram);
         String trimmedPhone = telegram.trim();
         return new Telegram(trimmedPhone);
-    }
-
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
-        }
-        return new Address(trimmedAddress);
     }
 
     /**

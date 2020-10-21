@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -17,7 +16,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Student;
@@ -38,7 +36,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TELEGRAM + "example132 "
@@ -94,10 +91,9 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(studentToEdit.getName());
         Telegram updatedPhone = editPersonDescriptor.getTelegram().orElse(studentToEdit.getTelegram());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(studentToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(studentToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(studentToEdit.getTags());
 
-        return new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Student(updatedName, updatedPhone, updatedEmail, updatedTags);
     }
 
     @Override
@@ -126,7 +122,6 @@ public class EditCommand extends Command {
         private Name name;
         private Telegram telegram;
         private Email email;
-        private Address address;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -139,7 +134,6 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setTelegram(toCopy.telegram);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
 
@@ -147,7 +141,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, telegram, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, telegram, email, tags);
         }
 
         public void setName(Name name) {
@@ -172,14 +166,6 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
         }
 
         /**
@@ -217,7 +203,6 @@ public class EditCommand extends Command {
             return getName().equals(e.getName())
                     && getTelegram().equals(e.getTelegram())
                     && getEmail().equals(e.getEmail())
-                    && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }
     }

@@ -21,7 +21,6 @@ import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
-import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Student;
@@ -118,9 +117,11 @@ public class ScraperManager implements Scraper {
             driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys(
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();
-
-            // The time out of 5 may need to be adjusted, depending on how we implement the login system
-            // for Jarvis.
+            System.out.println(driver.getPageSource());
+            /*
+             The time out of 5 may need to be adjusted, depending on how we implement the login system
+             for Jarvis.
+             */
             WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
@@ -266,7 +267,7 @@ public class ScraperManager implements Scraper {
         for (WebElement name : studentNames) {
             try {
                 students.add(new Student(new Name(name.getText()), new Telegram("helloworld"),
-                        new Email("student@gmail.com"), new Address("Test drive"), new HashSet<>()));
+                        new Email("student@gmail.com"), new HashSet<>()));
             } catch (DuplicateStudentException dse) {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
                 // tries to fetch the same students on startup to add them to the addressbook.
