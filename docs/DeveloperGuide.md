@@ -220,6 +220,7 @@ Commands.
 
 Now we will go into how the `View All Students Feature` works, the following is a sequence diagram modelling the
 interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
+
 ![Sequence Diagram of View All Students](images/ViewAllStudentsSequenceDiagram.png)
 
 * The `ViewAllStudentsCommand`'s`execute` method is first called with a model passed as an argument.
@@ -242,7 +243,7 @@ Consultations Commands. There are three variants (view all consultations, view p
   consultations) but they all share the same logic.
 
 ![Class Diagram of the three View Consultations Commands](images/ViewConsultationsClassDiagram.png)
-* The abstract class `ViewCommand` extends from the abstract class `Command`
+* The abstract class `ViewCommand` extends from the abstract class `Command`.
 * Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` extend
 from the abstract class `ViewCommand`
 * Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` take in a
@@ -251,6 +252,7 @@ Model object for the execute method, as such both have a dependency on Model.
 
 Now we will go into how the `View Consultations Feature` works, the following is a sequence diagram modelling the
 interaction between `ViewConsultationsCommand`, `Model` and `CommandResult`.
+
 ![Sequence Diagram of a general View Consultation](images/ViewConsultationsSequenceDiagram.png)
 
 * The `ViewConsultationsCommand`'s`execute` method is first called with a model passed as an argument.
@@ -259,11 +261,22 @@ interaction between `ViewConsultationsCommand`, `Model` and `CommandResult`.
  `viewAllConsultationsCommand`.
 * The `CommandResult` object is returned to the caller of `execute`.
 
-## Structure of Add Command
-The following diagram shows the overview of AddCommand Class Diagram:
-![Class Diagram of Add Commands](images/AddCommandClassDiagram.png)
 
-In the AddCommand class
+## Add Command
+### Structure of Add Command
+The following diagram shows the overview of the AddComand Class Diagram:
+
+![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
+
+### Add Task Feature
+The following diagram shows the overview of `AddCommand` Class Diagram which has a similar structure as other
+`Commands`:
+
+![Class Diagram of Add Commands](images/AddTaskClassDiagram.png)
+
+* The class `AddCommand` extends from the abstract class `Command`.
+* `AddCommand` class interacts with `Model` and `Task` related classes.
+* `Todo`, `Event` and `Deadline` are classes that extend from from abstract class `Task`.
 
 ### Add Task Feature
 In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
@@ -272,12 +285,17 @@ In this section, we will introduce how the `Add Task Feature` works. We can add 
 a task that requires completion at a particular point in time; `Deadline` is a task that requires completion before a
 particular point in time.
 
-The sequence diagram for the Add Task Command is shown below:
+The sequence diagram for the Add Todo Command is shown below:
+
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
 
+_This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`._
 * The `AddCommand`'s`execute` method is first called with a model passed as an argument.
-* `execute` method then calls `AddCommandParser`'s `parse` method with a predicate which parses the task.
-* A `CommandResult` object is created with the message "Task added"" and returned to `AddCommand`.
+* `execute` method then calls `AddCommandParser`'s `hasTodo` method to check if the task is already contained within the
+Model class.
+* If the task is already contained within the Model class, `AddCommand` will throw an Exception `CommandException`.
+* Else, `AddCommand` will add the new `Task` to the Model class and return a result `CommandResult` containing a
+`SUCCESS` message.
 
 --------------------------------------------------------------------------------------------------------------------
 
