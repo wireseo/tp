@@ -3,7 +3,6 @@ package seedu.address.scraper;
 import static java.util.Objects.requireNonNull;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
@@ -267,7 +266,7 @@ public class ScraperManager implements Scraper {
         for (WebElement name : studentNames) {
             try {
                 students.add(new Student(new Name(name.getText()), new Telegram("helloworld"),
-                        new Email("student@gmail.com"), new HashSet<>()));
+                        new Email("student@gmail.com")));
             } catch (DuplicateStudentException dse) {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
                 // tries to fetch the same students on startup to add them to the addressbook.

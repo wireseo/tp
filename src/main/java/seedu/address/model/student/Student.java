@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import seedu.address.model.Consultation;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Student in the address book.
@@ -38,9 +36,9 @@ public class Student {
     /**
      * Every field must be present and not null. This constructor contains consultations.
      */
-    public Student(Name name, Telegram telegram, Email email, Set<Tag> tags,
+    public Student(Name name, Telegram telegram, Email email,
                    List<Consultation> consultations) {
-        requireAllNonNull(name, telegram, email, tags, consultations);
+        requireAllNonNull(name, telegram, email, consultations);
         this.name = name;
         this.telegram = telegram;
         this.email = email;
@@ -117,8 +115,7 @@ public class Student {
                 .append(" Email: ")
                 .append(getEmail())
                 .append(" Consultations: ")
-                .append(getConsultations())
-                .append(" Tags: ");
+                .append(getConsultations());
         return builder.toString();
     }
 
