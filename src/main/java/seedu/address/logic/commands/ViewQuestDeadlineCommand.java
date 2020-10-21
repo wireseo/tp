@@ -9,12 +9,12 @@ import seedu.address.model.Model;
  * Lists all quest deadlines.
  */
 public class ViewQuestDeadlineCommand extends ViewCommand {
-    public static final String MESSAGE_SUCCESS = "Listed all quest deadlines";
+    public static final String MESSAGE_SUCCESS = "Listed all current quest deadlines";
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateMissionsList(PREDICATE_SHOW_ALL_QUESTS);
+        model.updateQuestsList(PREDICATE_SHOW_ALL_QUESTS);
 
         return new CommandResult(MESSAGE_SUCCESS);
     }

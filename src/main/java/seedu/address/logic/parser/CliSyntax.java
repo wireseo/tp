@@ -13,11 +13,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
     /* View Command flags */
-    public static final String UNGRADED_MISSION_QUEST = "-u";
+    public static final String UNGRADED_MISSION = "-um";
+    public static final String UNGRADED_QUEST = "-uq";
     public static final String MISSION_DEADLINE = "-m";
     public static final String QUEST_DEADLINE = "-q";
-    public static final String MISSION_AND_QUEST_DEADLINE = "-b";
-    public static final String SPECIFIC_MISSION_QUEST_DEADLINE = "-i";
     public static final String VIEW_STUDENT = "-s";
 
     /* Add Command flags */
