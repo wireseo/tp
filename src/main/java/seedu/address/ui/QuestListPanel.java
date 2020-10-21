@@ -29,7 +29,7 @@ public class QuestListPanel extends UiPart<Region> {
     public QuestListPanel(ObservableList<Quest> questList) {
         super(FXML);
 
-        Label emptyListLabel = new Label("Currently no quests");
+        Label emptyListLabel = new Label("No quests");
         emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
         questListView.setPlaceholder(emptyListLabel);
         questListView.setItems(questList);

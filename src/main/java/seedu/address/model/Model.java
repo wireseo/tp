@@ -21,8 +21,8 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Student> PREDICATE_SHOW_ALL_STUDENTS = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Mission> PREDICATE_SHOW_ALL_MISSIONS = unused -> true;
+    /** {@code Predicate} that evaluate to true if mission is ongoing */
+    Predicate<Mission> PREDICATE_SHOW_ALL_MISSIONS = mission -> mission.getDeadline().contains("Due");
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Consultation> PREDICATE_SHOW_ALL_CONSULTATIONS = unused -> true;
@@ -34,7 +34,9 @@ public interface Model {
     /** {@code Predicate} that evaluates to true when the consultation will take place in the future. */
     Predicate<Consultation> PREDICATE_SHOW_UPCOMING_CONSULTATIONS = unused ->
             unused.getDateAndTime().isAfter(LocalDateTime.now());
-    Predicate<Mission> PREDICATE_SHOW_ALL_QUESTS = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true if quest is ongoing */
+    Predicate<Quest> PREDICATE_SHOW_ALL_QUESTS = quest -> quest.getDeadline().contains("Due");
 
     //=========== UserPrefs ==================================================================================
 
@@ -236,7 +238,11 @@ public interface Model {
      */
     void updateQuestsList(Predicate<Quest> predicate);
 
-    public boolean isMissionInList(String title);
+    boolean isMissionInList(String title);
 
-    public boolean updateMission(String name);
+    boolean updateMission(String name);
+
+    boolean isQuestInList(String title);
+
+    boolean updateQuest(String name);
 }

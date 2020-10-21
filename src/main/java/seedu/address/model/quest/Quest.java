@@ -3,6 +3,7 @@ package seedu.address.model.quest;
 public class Quest {
     private final String title;
     private final String deadline;
+    private final boolean isGraded;
     /**
      * Creates a Quest object.
      *
@@ -12,6 +13,20 @@ public class Quest {
     public Quest(String title, String deadline) {
         this.title = title;
         this.deadline = deadline;
+        this.isGraded = true;
+    }
+
+    /**
+     * Creates a quest object with updated isGraded field.
+     *
+     * @param title
+     * @param deadline
+     * @param isGraded
+     */
+    public Quest(String title, String deadline, boolean isGraded) {
+        this.title = title;
+        this.deadline = deadline;
+        this.isGraded = isGraded;
     }
 
     public String getTitle() {
@@ -20,6 +35,14 @@ public class Quest {
 
     public String getDeadline() {
         return deadline;
+    }
+
+    public boolean getIsGraded() {
+        return isGraded;
+    }
+
+    public Quest setIsGraded(boolean isGraded) {
+        return new Quest(title, deadline, isGraded);
     }
 
     /**

@@ -275,7 +275,7 @@ public class ScraperManager implements Scraper {
     }
 
     /**
-     * Fetches the ungraded missions and quests that have just recently passed.
+     * Fetches the ungraded missions that have just recently passed.
      * @throws WrongLoginDetailsException
      */
     public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
@@ -294,9 +294,70 @@ public class ScraperManager implements Scraper {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
-        // WIP
+        WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
+      
+        getUngradedMissions(filterBar);
+        getUngradedQuests(filterBar);
+    }
+  
+    public void getUngradedMissions(WebElement filterBar) {
+        filterBar.clear();
+        filterBar.sendKeys("mission" + Keys.ENTER);
 
-        logger.info("Completed getting ungraded missions and quests");
+        List<WebElement> missionTitles = driver.findElements(By.xpath("//div[@aria-colindex='2']"));
+        List<WebElement> gradingIcons = driver.findElements(By.xpath("//div[@aria-colindex='7']"));
+
+        List<String> ungradedMissions = new ArrayList<>();
+
+        for (int i = 0; i < missionTitles.size(); i++) {
+            WebElement icon = gradingIcons.get(i).findElement(By.xpath("..//span[@icon]"));
+
+            if (icon.getAttribute("icon").equals("cross")
+                    && !ungradedMissions.contains(missionTitles.get(i).getText())) {
+                ungradedMissions.add(missionTitles.get(i).getText());
+            }
+        }
+
+        for (String mTitle : ungradedMissions) {
+            if (model.isMissionInList(mTitle)) {
+                model.updateMission(mTitle);
+            } else {
+                Mission mission = new Mission(mTitle, "Deadline is over", false);
+                model.addMission(mission);
+            }
+        }
+
+        logger.info("Completed getting ungraded missions");
+    }
+
+    public void getUngradedQuests(WebElement filterBar) {
+        filterBar.clear();
+        filterBar.sendKeys("quest" + Keys.ENTER);
+
+        List<WebElement> questTitles = driver.findElements(By.xpath("//div[@aria-colindex='2']"));
+        List<WebElement> gradingIcons = driver.findElements(By.xpath("//div[@aria-colindex='7']"));
+
+        List<String> ungradedQuests = new ArrayList<>();
+
+        for (int i = 0; i < questTitles.size(); i++) {
+            WebElement icon = gradingIcons.get(i).findElement(By.xpath("..//span[@icon]"));
+
+            if (icon.getAttribute("icon").equals("cross")
+                    && !ungradedQuests.contains(questTitles.get(i).getText())) {
+                ungradedQuests.add(questTitles.get(i).getText());
+            }
+        }
+
+        for (String qTitle : ungradedQuests) {
+            if (model.isQuestInList(qTitle)) {
+                model.updateQuest(qTitle);
+            } else {
+                Quest quest = new Quest(qTitle, "Deadline is over", false);
+                model.addQuest(quest);
+            }
+        }
+
+        logger.info("Completed getting ungraded qeusts");
     }
 
     /**

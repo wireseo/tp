@@ -268,4 +268,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.missions.updateMission(name);
     }
 
+    public boolean isQuestInList(String name) {
+        return this.quests.isQuestInList(name);
+    }
+
+    public boolean updateQuest(String name) {
+        return this.quests.updateQuest(name);
+    }
+
 }
