@@ -134,13 +134,14 @@ Adds a Mastery Check session with a student at a specific date and time.
 
 ### 3. Editing Information: `edit`
 
-#### 3-1. Editing Student Information: `edit -s`
+#### 3-1. Editing Student Information: `edit`
+`INDEX` refers to the number beside the student in the student list tab.
 Include tags followed by the updated information such as `t/maryjane132` or `e/e1234222@u.nus.edu` to edit the
-information which corresponds to that tag. tags together with the updated information have to be in the specified order.
-<br>**Format: `edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE`**
+information which corresponds to that tag.
+<br>**Format: `edit -s INDEX t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE`**
 <br>Examples:
-* `edit -s John Doe t/johndoe132 e/e1234567@u.nus.edu`
-* `edit -s Mary Jane t/maryjane132 s/3`
+* `edit 1 t/johndoe132 e/e1234567@u.nus.edu`
+* `edit 2 t/maryjane132 s/3`
 
 #### 3-2. Marking Tasks as Done: `edit -t`
 Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can specify the `TASK_ID` to mark that particular task as done.
