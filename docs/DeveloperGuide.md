@@ -261,7 +261,7 @@ interaction between `ViewConsultationsCommand`, `Model` and `CommandResult`.
 
 ## Structure of Add Command
 The following diagram shows the overview of AddCommand Class Diagram:
-![Class Diagram of Add Commands](images/ViewStudentsClassDiagram.png)
+![Class Diagram of Add Commands](images/AddCommandClassDiagram.png)
 
 In the AddCommand class
 

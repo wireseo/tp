@@ -7,19 +7,21 @@ skinparam classBackgroundColor SCRAPER_COLOR
 abstract class Command {
 CommandResult execute()
 }
-abstract class ViewCommand
-class ViewAllStudentsCommand
-class ViewOneStudentCommand
+
+abstract class AddCommand
+class AddConsultationCommand
+class AddMasteryCheckCommand
+class AddTaskCommand
 interface Model
-class Name
 
-Command <|-- ViewCommand
+Command <|-- AddCommand
 
-ViewCommand <|-- ViewAllStudentsCommand
-ViewCommand <|-- ViewOneStudentCommand
+AddCommand <|-- AddConsultationCommand
+AddCommand <|-- AddMasteryCheckCommand
+AddCommand <|-- AddTaskCommand
 
-ViewAllStudentsCommand ..> Model
-ViewOneStudentCommand ..> Model
-ViewOneStudentCommand ..> Name
+AddConsultationCommand ..> Model
+AddMasteryCheckCommand ..> Model
+AddTaskCommand ..> Model
 
 @enduml
