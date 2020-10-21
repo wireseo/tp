@@ -22,6 +22,7 @@ public class Mission {
      *
      * @param title
      * @param deadline
+     * @param isGraded
      */
     public Mission(String title, String deadline, boolean isGraded) {
         this.title = title;

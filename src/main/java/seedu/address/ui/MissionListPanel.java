@@ -28,7 +28,7 @@ public class MissionListPanel extends UiPart<Region> {
     public MissionListPanel(ObservableList<Mission> missionList) {
         super(FXML);
 
-        Label emptyListLabel = new Label("Currently no missions");
+        Label emptyListLabel = new Label("No missions");
         emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
         missionListView.setPlaceholder(emptyListLabel);
         missionListView.setItems(missionList);

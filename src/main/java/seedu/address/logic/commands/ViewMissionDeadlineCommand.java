@@ -9,7 +9,7 @@ import seedu.address.model.Model;
  * Lists all mission deadlines.
  */
 public class ViewMissionDeadlineCommand extends ViewCommand {
-    public static final String MESSAGE_SUCCESS = "Listed all mission deadlines";
+    public static final String MESSAGE_SUCCESS = "Listed all current mission deadlines";
 
     @Override
     public CommandResult execute(Model model) {
