@@ -27,6 +27,8 @@ class JsonSerializableAddressBook {
 
     private final List<JsonAdaptedMission> missions = new ArrayList<>();
 
+    private final List<JsonAdaptedQuest> quests = new ArrayList<>();
+
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
     /**

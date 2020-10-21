@@ -3,6 +3,7 @@ package seedu.address.scraper;
 import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
@@ -80,16 +81,18 @@ public class ScraperManager implements Scraper {
      */
     public void startScraping() throws WrongLoginDetailsException, IOException {
         authenticate();
-        getMissions();
+        List<Mission> missions = getMissions();
+        List<Quest> quests = getQuests();
+        List<Student> students = new ArrayList<>();
+
+        getUngradedMissionsAndQuests();
 
         // Only fetch students if students in addressbook is empty
         if (!model.hasStudents()) {
-            getStudents();
+            students = getStudents();
         }
 
-        getQuests();
-        getUngradedMissionsAndQuests();
-        saveToStorage();
+        saveToStorage(missions, quests, students);
         shutDown();
     }
 
@@ -127,9 +130,16 @@ public class ScraperManager implements Scraper {
         this.isAuthenticated = true;
     }
 
-    public void getMissions() throws WrongLoginDetailsException {
+    /**
+     * Fetches missions from Sourceacademy and saves them to storage.
+     * @throws WrongLoginDetailsException
+     * @return a list of missions
+     */
+    public List<Mission> getMissions() throws WrongLoginDetailsException {
+        List<Mission> missions = new ArrayList<>();
+
         if (loginInfo.isEmpty()) {
-            return;
+            return missions;
         }
 
         if (!isAuthenticated) {
@@ -138,12 +148,15 @@ public class ScraperManager implements Scraper {
 
         logger.info("Getting missions");
 
-        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/game")
-                : "Source academy is on wrong page";
+        if (!driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/missions")) {
+            // Navigate to missions page
+            driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
+        }
+
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/missions")
+                : "Driver is on wrong page (Missions)";
 
         // Grab mission titles
-        driver.findElement(By.xpath("//a[@href='/academy/missions']")).click();
-
         List<WebElement> missionTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
         List<WebElement> missionDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
 
@@ -157,64 +170,38 @@ public class ScraperManager implements Scraper {
                 continue;
             }
             logger.info((i + 1) + "th mission added: " + mTitle);
-            model.addMission(new Mission(mTitle, mDeadline));
+            missions.add(new Mission(mTitle, mDeadline));
         }
         logger.info("Missions addition complete");
+
+        return missions;
     }
 
-    public void getStudents() throws WrongLoginDetailsException {
+    /**
+     * Fetches quests from Sourceacademy and saves them to storage.
+     * @throws WrongLoginDetailsException
+     * @return returns a list of quests
+     */
+    public List<Quest> getQuests() throws WrongLoginDetailsException {
+        List<Quest> quests = new ArrayList<>();
+
         if (loginInfo.isEmpty()) {
-            return;
+            return quests;
         }
 
         if (!isAuthenticated) {
             authenticate();
         }
 
-        logger.info("Getting students");
-
-        // Navigate to grading page
-        driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
-        // Note that
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
-
-        // Filter by Studio Journal
-        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(FILTER_KEY + Keys.ENTER);
-
-        // Get all student names
-        List<WebElement> studentNames = driver.findElements(By.xpath("//div[@col-id='studentName']"));
-        studentNames.remove(0);
-
-        // Add student names to ModelController here
-        for (WebElement name : studentNames) {
-            try {
-                model.addPerson(new Student(new Name(name.getText()), new Telegram("helloworld"),
-                        new Email("student@gmail.com"), new Address("Test drive"), new HashSet<>()));
-            } catch (DuplicateStudentException dse) {
-                // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
-                // tries to fetch the same students on startup to add them to the addressbook.
-                logger.info("ScraperManager tried adding a student which existed in addressbook.json");
-            }
-
-        }
-    }
-
-    public void getQuests() throws WrongLoginDetailsException {
-        if (loginInfo.isEmpty()) {
-            return;
+        if (!driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/quests")) {
+            // Navigate to quests page
+            driver.findElement(By.xpath("//a[@href='/academy/quests']")).click();
         }
 
-        if (!isAuthenticated) {
-            authenticate();
-        }
-
-        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/game")
-                : "Source academy is on wrong page";
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/quests")
+                : "Driver is on wrong page (Quests)";
 
         // Grab quest titles
-        driver.findElement(By.xpath("//a[@href='/academy/quests']")).click();
-
         List<WebElement> questTitles = driver.findElements(By.xpath("//h4[@class='bp3-heading listing-title']"));
         List<WebElement> questDeadlines = driver.findElements(By.xpath("//div[@class='listing-due-date']"));
 
@@ -229,11 +216,68 @@ public class ScraperManager implements Scraper {
             }
 
             logger.info((i + 1) + "th quest added: " + qTitle);
-            model.addQuest(new Quest(qTitle, qDeadline));
+            quests.add(new Quest(qTitle, qDeadline));
         }
         logger.info("Quests addition complete");
+
+        return quests;
     }
 
+    /**
+     * Fetches students from Sourceacademy and saves them to the model.
+     * @throws WrongLoginDetailsException
+     * @return A list of students
+     */
+    public List<Student> getStudents() throws WrongLoginDetailsException {
+        List<Student> students = new ArrayList<>();
+
+        if (loginInfo.isEmpty()) {
+            return students;
+        }
+
+        if (!isAuthenticated) {
+            authenticate();
+        }
+
+        logger.info("Getting students");
+
+        if (!driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/grading")) {
+            // Navigate to grading page
+            driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
+        }
+
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/grading")
+                : "Driver is on wrong page (Grading)";
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
+
+        // Filter by Studio Journal
+        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(FILTER_KEY + Keys.ENTER);
+
+        // Get all student names
+        List<WebElement> studentNames = driver.findElements(By.xpath("//div[@col-id='studentName']"));
+        studentNames.remove(0);
+
+        // Add student names to ModelController here
+        for (WebElement name : studentNames) {
+            try {
+                students.add(new Student(new Name(name.getText()), new Telegram("helloworld"),
+                        new Email("student@gmail.com"), new Address("Test drive"), new HashSet<>()));
+            } catch (DuplicateStudentException dse) {
+                // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
+                // tries to fetch the same students on startup to add them to the addressbook.
+                logger.info("ScraperManager tried adding a student which existed in addressbook.json");
+            }
+        }
+
+        return students;
+    }
+
+    /**
+     * Fetches the ungraded missions and quests that have just recently passed.
+     * @throws WrongLoginDetailsException
+     */
     public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
         if (loginInfo.isEmpty()) {
             return;
@@ -252,11 +296,21 @@ public class ScraperManager implements Scraper {
 
         // WIP
 
-        logger.info("Completed getting ungraded missions and qeusts");
+        logger.info("Completed getting ungraded missions and quests");
     }
 
-    private void saveToStorage() throws IOException {
+    /**
+     * Saves the model information to storage.
+     * @param missions list of missions to be saved
+     * @param quests list of quests to be saved
+     * @param students list of students to be saved
+     * @throws IOException
+     */
+    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students) throws IOException {
         try {
+            model.setMissions(missions);
+            model.setQuests(quests);
+            model.setStudents(students);
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException e) {
             throw new IOException("Error saving to addressbook");
@@ -267,7 +321,7 @@ public class ScraperManager implements Scraper {
     /**
      * Returns the WebDriver object created by ScraperManager
      * The returned object is used for testing.
-     * @return
+     * @return a webdriver instance
      */
     public WebDriver getDriver() {
         return driver;

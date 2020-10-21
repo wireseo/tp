@@ -7,7 +7,7 @@ public class JsonAdaptedMission {
     private final String deadline;
 
     /**
-     * Constructs a Json-friendly mission object.
+     * Constructs a Json-friendly Mission object.
      * @param title mission's title
      * @param deadline mission's deadline
      */

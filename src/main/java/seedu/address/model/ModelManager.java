@@ -133,6 +133,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setStudents(List<Student> students) {
+        addressBook.setStudents(students);
+    }
+
+    @Override
     public void setPerson(Student target, Student editedStudent) {
         requireAllNonNull(target, editedStudent);
 
@@ -150,8 +155,9 @@ public class ModelManager implements Model {
         addressBook.addMission(mission);
     }
 
-    public void addMissions(List<Mission> missions) {
-
+    @Override
+    public void setMissions(List<Mission> missions) {
+        addressBook.setMissions(missions);
     }
 
     //=========== Filtered Mission List Accessors =============================================================
@@ -184,6 +190,12 @@ public class ModelManager implements Model {
     public void addQuest(Quest quest) {
         addressBook.addQuest(quest);
     }
+
+    @Override
+    public void setQuests(List<Quest> quests) {
+        addressBook.setQuests(quests);
+    }
+
     /**
      * Returns an unmodifiable view of the list of {@code Quest} backed by the internal list of
      * {@code versionedAddressBook}
