@@ -1,15 +1,9 @@
 package seedu.address.testutil;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.Telegram;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.util.SampleDataUtil;
 
 /**
  * A utility class to help with building Student objects.
@@ -17,15 +11,12 @@ import seedu.address.model.util.SampleDataUtil;
 public class StudentBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_TELEGRAM = "85355255";
+    public static final String DEFAULT_TELEGRAM = "example132";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
     private Telegram telegram;
     private Email email;
-    private Address address;
-    private Set<Tag> tags;
 
     /**
      * Creates a {@code StudentBuilder} with the default details.
@@ -34,8 +25,6 @@ public class StudentBuilder {
         name = new Name(DEFAULT_NAME);
         telegram = new Telegram(DEFAULT_TELEGRAM);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
-        tags = new HashSet<>();
     }
 
     /**
@@ -45,8 +34,6 @@ public class StudentBuilder {
         name = studentToCopy.getName();
         telegram = studentToCopy.getTelegram();
         email = studentToCopy.getEmail();
-        address = studentToCopy.getAddress();
-        tags = new HashSet<>(studentToCopy.getTags());
     }
 
     /**
@@ -54,22 +41,6 @@ public class StudentBuilder {
      */
     public StudentBuilder withName(String name) {
         this.name = new Name(name);
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Student} that we are building.
-     */
-    public StudentBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code Student} that we are building.
-     */
-    public StudentBuilder withAddress(String address) {
-        this.address = new Address(address);
         return this;
     }
 
@@ -90,7 +61,7 @@ public class StudentBuilder {
     }
 
     public Student build() {
-        return new Student(name, telegram, email, address, tags);
+        return new Student(name, telegram, email);
     }
 
 }

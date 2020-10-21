@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -24,7 +23,6 @@ import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
-import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Student;
@@ -35,7 +33,9 @@ import seedu.address.storage.Storage;
 
 public class ScraperManager implements Scraper {
 
-    private static final String FILTER_KEY = "STUDIO JOURNAL";
+    private static final String STUDENT_FILTER_KEY = "STUDIO JOURNAL";
+    private static final String MISSION_FILTER_KEY = "MISSION";
+    private static final String QUEST_FILTER_KEY = "QUEST";
     private final Logger logger = LogsCenter.getLogger(ScraperManager.class);
     private WebDriver driver;
     private UserLogin loginInfo;
@@ -119,9 +119,11 @@ public class ScraperManager implements Scraper {
             driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys(
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();
-
-            // The time out of 5 may need to be adjusted, depending on how we implement the login system
-            // for Jarvis.
+            System.out.println(driver.getPageSource());
+            /*
+             The time out of 5 may need to be adjusted, depending on how we implement the login system
+             for Jarvis.
+             */
             WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
@@ -252,8 +254,12 @@ public class ScraperManager implements Scraper {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
+        // Clear filter bar
+        WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
+        filterBar.clear();
+
         // Filter by Studio Journal
-        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(FILTER_KEY + Keys.ENTER);
+        driver.findElement(By.xpath("//input[@id='filterBar']")).sendKeys(STUDENT_FILTER_KEY + Keys.ENTER);
 
         // Get all student names
         List<WebElement> studentNames = driver.findElements(By.xpath("//div[@col-id='studentName']"));
@@ -263,7 +269,7 @@ public class ScraperManager implements Scraper {
         for (WebElement name : studentNames) {
             try {
                 students.add(new Student(new Name(name.getText()), new Telegram("helloworld"),
-                        new Email("student@gmail.com"), new Address("Test drive"), new HashSet<>()));
+                        new Email("student@gmail.com")));
             } catch (DuplicateStudentException dse) {
                 // a DuplicateStudentException is thrown when addressbook.json contains a student and ScraperManager
                 // tries to fetch the same students on startup to add them to the addressbook.
@@ -302,7 +308,7 @@ public class ScraperManager implements Scraper {
 
     public void getUngradedMissions(WebElement filterBar) {
         filterBar.clear();
-        filterBar.sendKeys("mission" + Keys.ENTER);
+        filterBar.sendKeys(MISSION_FILTER_KEY + Keys.ENTER);
 
         List<WebElement> missionTitles = driver.findElements(By.xpath("//div[@aria-colindex='2']"));
         List<WebElement> gradingIcons = driver.findElements(By.xpath("//div[@aria-colindex='7']"));
@@ -332,7 +338,7 @@ public class ScraperManager implements Scraper {
 
     public void getUngradedQuests(WebElement filterBar) {
         filterBar.clear();
-        filterBar.sendKeys("quest" + Keys.ENTER);
+        filterBar.sendKeys(QUEST_FILTER_KEY + Keys.ENTER);
 
         List<WebElement> questTitles = driver.findElements(By.xpath("//div[@aria-colindex='2']"));
         List<WebElement> gradingIcons = driver.findElements(By.xpath("//div[@aria-colindex='7']"));
@@ -369,9 +375,15 @@ public class ScraperManager implements Scraper {
      */
     private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students) throws IOException {
         try {
-            model.setMissions(missions);
-            model.setQuests(quests);
-            model.setStudents(students);
+            if (!missions.isEmpty()) {
+                model.setMissions(missions);
+            }
+            if (!quests.isEmpty()) {
+                model.setQuests(quests);
+            }
+            if (!students.isEmpty()) {
+                model.setStudents(students);
+            }
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException e) {
             throw new IOException("Error saving to addressbook");

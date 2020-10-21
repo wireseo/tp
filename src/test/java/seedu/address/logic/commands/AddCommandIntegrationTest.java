@@ -28,7 +28,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_newPerson_success() {
-        Student validStudent = new StudentBuilder().build();
+        Student validStudent = new StudentBuilder().withName("Henry Chia").build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());
