@@ -255,6 +255,16 @@ public class AddCommandTest {
         public boolean updateMission(String name) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean isQuestInList(String title) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean updateQuest(String name) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

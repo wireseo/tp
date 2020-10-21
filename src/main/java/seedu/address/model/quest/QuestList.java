@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.mission.Mission;
 
 public class QuestList {
     private final ObservableList<Quest> internalList = FXCollections.observableArrayList();
