@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_PAST_CONSULTATIONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_UPCOMING_CONSULTATIONS;
 
 import java.util.logging.Logger;
