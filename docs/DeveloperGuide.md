@@ -181,8 +181,8 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
  <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
  </div>
 
-### View Command
-## Structure of View Command
+## View Command
+### Structure of View Command
 
 The follow diagram shows the overview of the ViewComamnd Class Diagram:
 
@@ -195,8 +195,7 @@ In the `ViewCommandParser` class, under the `parse()` method, we reference the `
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
 
-
-## View Mission Deadlines Feature
+### View Mission Deadlines Feature
 In this section, we will introduce how the `View Mission Deadlines Feature` works. The sequence diagram for the View Mission Deadline Command is shown below:
 
 ![Sequence Diagram of View Mission Deadlines](images/ViewMissionDeadlineSequenceDiagram.png)
@@ -207,9 +206,6 @@ The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This 
 `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
 
 The View Quest Deadlines features work similarly to this as well.
-=======
-<div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
-</div>
 
 ### View Students Feature
 Next, we will introduce how the `View Students Feature` works. The following is a class diagram for View Student
