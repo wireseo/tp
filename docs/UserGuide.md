@@ -70,19 +70,16 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 **Notes about the command format:**<br>
    * Words in UPPER_CASE are the parameters to be supplied by you.
-   <br> e.g. in `add n/NAME`, `NAME` is a parameter which can be used as add n/John Doe.
+   <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
 
    * Items in square brackets are optional.
-   <br> e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or `as n/John Doe`.
+   <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
 
    * Items with …​ after them can be used multiple times including zero times.
    <br> e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
    * Parameters can be in any order.
    <br> e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-   * Commands in parentheses are optional.
-   <br> e.g. if the command specifies `add -c (NAME)`, name is an optional parameter.
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that the user should enter `delete -c` first and then `1` after the prompt has
@@ -162,7 +159,7 @@ Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is spe
 
 #### 4-2 Deleting Consultations: `delete -c`
 Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
-<br>**Format: delete -c [NAME]**
+<br>**Format: `delete -c [NAME]`**
 <br>Examples:
 * `delete -c
    → 3`
@@ -171,16 +168,13 @@ Shows a list of consultations with id numbers which can be entered by the user t
 
 #### 4-3. Deleting Mastery Checks: `delete -mc`
 Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
-<br>**Format: delete -mc [NAME]**
+<br>**Format: `delete -mc [NAME]`**
 <br>Examples:
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
 
 ### 5. Viewing Information: `view `
-Shows a list of all students under the tutor in JARVIS.
-<br>**Format: `view`**
-
 #### 5-1 Viewing a list of all students: `view -s`
 Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all
  details (contact information, consultation requests and studio participation marks) of a specific student.
