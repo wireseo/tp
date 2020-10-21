@@ -322,7 +322,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user                                       | add my own tasks                 | can be consolidate all TA and non-TA scheduling into Jarvis.|
 | `* *`    | user                                       | list my own tasks                | can have an overview of all my tasks.                       |
 | `* *`    | user                                       | mark my tasks as done            | can keep track of complete and incomplete tasks.            |
-
 *{More to be added}*
 
 ### Use cases

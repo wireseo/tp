@@ -40,9 +40,9 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
-1. Download the latest JARVIS.jar from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest _JARVIS.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/se-edu/addressbook-level3/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your JARVIS.
+1. Copy both files to the folder you want to use as the _home folder_ for your JARVIS.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
@@ -59,6 +59,13 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
+**UI Layout**
+<br>
+   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`.
+<br>
+   * Clicking on each tab will give you the information you require for that field.
+
+
 
 <div markdown="block" class="alert alert-info">
 

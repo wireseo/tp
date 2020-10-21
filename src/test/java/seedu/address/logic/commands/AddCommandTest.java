@@ -132,6 +132,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setStudents(List<Student> students) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -187,12 +192,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setQuests(List<Quest> quests) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateQuestsList(Predicate<Quest> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void addMission(Mission mission) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMissions(List<Mission> missions) {
             throw new AssertionError("This method should not be called.");
         }
 

@@ -133,6 +133,12 @@ public interface Model {
      */
     void addPerson(Student student);
 
+    /**
+     * Adds the student list.
+     * @param students
+     */
+    void setStudents(List<Student> students);
+
     //============================== Task ====================================================================
 
     /**
@@ -199,6 +205,12 @@ public interface Model {
     void addMission(Mission mission);
 
     /**
+     * Sets the entire list of missions.
+     * @param missions
+     */
+    void setMissions(List<Mission> missions);
+
+    /**
      * Returns an unmodifiable view of the filtered consultation list.
      */
     List<Consultation> getConsultations(Predicate<Consultation> predicate);
@@ -210,6 +222,12 @@ public interface Model {
      * @param quest The quest to be added
      */
     void addQuest(Quest quest);
+
+    /**
+     * Sets the entire list of quests.
+     * @param quests
+     */
+    void setQuests(List<Quest> quests);
 
     /** Returns an unmodifiable view of the filtered quest list */
     ObservableList<Quest> getFilteredQuestList();
