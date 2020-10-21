@@ -17,7 +17,7 @@ alt !boolean, duplicate object
     create CommandException
     AddCommand -> CommandException : new CommandException(MESSAGE_DUPLICATE_TASK)
     activate CommandException
-    CommandException --> AddCommand : command exception
+    CommandException --> AddCommand : commandException
     deactivate CommandException
 
 else boolean, unique object
@@ -28,7 +28,7 @@ else boolean, unique object
     create CommandResult
     AddCommand -> CommandResult : new CommandResult(MESSAGE_SUCCESS)
     activate CommandResult
-    CommandResult --> AddCommand : command result
+    CommandResult --> AddCommand : commandResult
     deactivate CommandResult
 
 end

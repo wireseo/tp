@@ -1,0 +1,33 @@
+@startuml
+!include style.puml
+
+participant ":ViewConsultationsCommand" as ViewAllStudentsCommand SCRAPER_COLOR
+participant ":Model" as Model SCRAPER_COLOR
+participant ":CommandResult" as CommandResult SCRAPER_COLOR
+
+[-> ViewAllStudentsCommand : execute(model)
+activate ViewAllStudentsCommand
+
+ViewAllStudentsCommand -> Model : updateFilteredPersonList(PREDICATE_SHOW_ALL_STUDENTS)
+
+activate Model
+
+Model --> ViewAllStudentsCommand
+
+deactivate Model
+
+create CommandResult
+
+ViewAllStudentsCommand -> CommandResult : CommandResult("Listed all consultations:")
+
+activate CommandResult
+
+CommandResult --> ViewAllStudentsCommand : commandResult
+
+deactivate CommandResult
+
+[<-- ViewAllStudentsCommand : commandResult
+
+deactivate ViewAllStudentsCommand
+
+@enduml
