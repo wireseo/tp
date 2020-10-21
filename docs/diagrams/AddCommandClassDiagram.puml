@@ -55,7 +55,7 @@ Model ..> ReadOnlyAddressBook
 "{abstract}\nAddCommand" --up|> "{abstract}\nCommand"
 AddCommandParser ..> Flag
 
-AddXYZCommand -right-> "{abstract}\nAddCommand"
+AddXYZCommand -right-|> "{abstract}\nAddCommand"
 AddXYZParser -left-> AddCommandParser
 
 note as N1
