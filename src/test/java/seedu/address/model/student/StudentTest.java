@@ -7,7 +7,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.testutil.TypicalStudents.ALICE;
 import static seedu.address.testutil.TypicalStudents.BOB;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.StudentBuilder;
 
 public class StudentTest {

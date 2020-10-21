@@ -7,8 +7,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
+
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
