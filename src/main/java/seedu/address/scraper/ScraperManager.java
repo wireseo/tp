@@ -295,11 +295,11 @@ public class ScraperManager implements Scraper {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
         WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
-      
+
         getUngradedMissions(filterBar);
         getUngradedQuests(filterBar);
     }
-  
+
     public void getUngradedMissions(WebElement filterBar) {
         filterBar.clear();
         filterBar.sendKeys("mission" + Keys.ENTER);
