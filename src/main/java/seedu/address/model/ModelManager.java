@@ -287,4 +287,14 @@ public class ModelManager implements Model {
         return addressBook.updateMission(name);
     }
 
+    @Override
+    public boolean isQuestInList(String title) {
+        return addressBook.isQuestInList(title);
+    }
+
+    @Override
+    public boolean updateQuest(String name) {
+        return addressBook.updateQuest(name);
+    }
+
 }

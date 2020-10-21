@@ -1,9 +1,11 @@
 package seedu.address.model.quest;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.mission.Mission;
 
 public class QuestList {
     private final ObservableList<Quest> internalList = FXCollections.observableArrayList();
@@ -21,5 +23,29 @@ public class QuestList {
 
     public ObservableList<Quest> asObservableList() {
         return internalList;
+    }
+
+    public boolean isQuestInList(String name) {
+        return internalList.stream().anyMatch(quest -> quest.getTitle().equals(name));
+    }
+
+    /**
+     * Updates the quest found to be ungraded
+     *
+     * @param name quest title
+     * @return true if quest was found and updated successfully
+     */
+    public boolean updateQuest(String name) {
+        Optional<Quest> questToUpdate = internalList.stream().filter(quest -> quest.getTitle().equals(name))
+                .findFirst();
+        if (questToUpdate.isPresent()) {
+            Quest quest = questToUpdate.get();
+            this.internalList.remove(questToUpdate.get());
+            quest = quest.setIsGraded(false);
+            this.internalList.add(quest);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
