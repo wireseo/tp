@@ -1,8 +1,7 @@
 @startuml
-!include style.puml
-skinparam arrowThickness 1.1
-skinparam arrowColor SCRAPER_COLOR
-skinparam classBackgroundColor SCRAPER_COLOR
+skinparam backgroundColor #ffffff
+skinparam classAttributeIconSize 0
+hide circle
 
 abstract class Command {
 CommandResult execute()

@@ -18,6 +18,7 @@ class ReadOnlyAddressBook {
     + getMissionList() : ObservableList<Mission>
     + getQuestList() : ObservableList<Quest>
     + getStudentList() : ObservableList<Student>
+    + getTaskList() : ObservableList<Task>
 }
 
 abstract class "{abstract}\nViewCommand"{

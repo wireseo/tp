@@ -144,6 +144,7 @@ The `Storage` component,
 * can save the address book data in json format and read it back.
 
 ### Scraper component
+
 ![Structure of the Scraper Component](images/ScraperClassDiagram.png)
 
 **API** : [`Scraper.java`](https://github.com/AY2021S1-CS2103T-W11-2/tp/blob/master/src/main/java/seedu/address/scraper/Scraper.java)
@@ -184,7 +185,7 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 ## View Command
 ### Structure of View Command
 
-The follow diagram shows the overview of the ViewComamnd Class Diagram:
+The following diagram shows the overview of the ViewCommand Class Diagram:
 
 ![Sequence Diagram of View Mission Deadlines](images/ViewCommandClassDiagram.png)
 
@@ -212,6 +213,7 @@ Next, we will introduce how the `View Students Feature` works. The following is 
 Commands.
 
 ![Class Diagram of View Student Commands](images/ViewStudentsClassDiagram.png)
+
 * The abstract class `ViewCommand` extends from the abstract class `Command`
 * Both `ViewAllStudentCommand` and `ViewOneStudentCommand` extend from the abstract class `ViewCommand`
 * Both `ViewAllStudentCommand` and `ViewOneStudentCommand` take in a Model object for the execute method, as such
@@ -220,6 +222,7 @@ Commands.
 
 Now we will go into how the `View All Students Feature` works, the following is a sequence diagram modelling the
 interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
+
 ![Sequence Diagram of View All Students](images/ViewAllStudentsSequenceDiagram.png)
 
 * The `ViewAllStudentsCommand`'s`execute` method is first called with a model passed as an argument.
@@ -242,7 +245,8 @@ Consultations Commands. There are three variants (view all consultations, view p
   consultations) but they all share the same logic.
 
 ![Class Diagram of the three View Consultations Commands](images/ViewConsultationsClassDiagram.png)
-* The abstract class `ViewCommand` extends from the abstract class `Command`
+
+* The abstract class `ViewCommand` extends from the abstract class `Command`.
 * Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` extend
 from the abstract class `ViewCommand`
 * Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` take in a
@@ -251,19 +255,38 @@ Model object for the execute method, as such both have a dependency on Model.
 
 Now we will go into how the `View Consultations Feature` works, the following is a sequence diagram modelling the
 interaction between `ViewConsultationsCommand`, `Model` and `CommandResult`.
+
 ![Sequence Diagram of a general View Consultation](images/ViewConsultationsSequenceDiagram.png)
 
 * The `ViewConsultationsCommand`'s`execute` method is first called with a model passed as an argument.
-* `execute` method then calls `Model`'s `getConsultations` method with a predicate which shows all consultations of all students.
+* `execute` method then calls `Model`'s `getConsultations` method with a predicate which shows all consultations of all
+students.
 * A `CommandResult` object is created with the message "Listed all consultations: " and returned to
  `viewAllConsultationsCommand`.
 * The `CommandResult` object is returned to the caller of `execute`.
 
-## Structure of Add Command
-The following diagram shows the overview of AddCommand Class Diagram:
-![Class Diagram of Add Commands](images/ViewStudentsClassDiagram.png)
 
-In the AddCommand class
+## Add Command
+### Structure of Add Command
+The following diagram shows the overview of the AddComand Class Diagram:
+
+![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
+
+_This Add Command overall structure is similar to that of View Command._
+* Upon parsing user input to the correct `AddCommand` (ie. `AddXYZCommand`) which is done by the `AddCommandParser`, the
+correct `Model` object (eg. `Student`, `Task`) will be added to the corresponding list in `Model` class.
+* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
+
+### Add Task Feature
+The following diagram shows the overview of `AddCommand` Class Diagram which has a similar structure as other
+`Commands`:
+
+![Class Diagram of Add Commands](images/AddTaskClassDiagram.png)
+
+* The class `AddCommand` extends from the abstract class `Command`.
+* `AddCommand` class interacts with `Model` and `Task` related classes.
+* `Task` class objects will be added to `Model` class upon successful `Add Commands`.
+* `Todo`, `Event` and `Deadline` are classes that extend from from abstract class `Task`.
 
 ### Add Task Feature
 In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
@@ -272,12 +295,17 @@ In this section, we will introduce how the `Add Task Feature` works. We can add 
 a task that requires completion at a particular point in time; `Deadline` is a task that requires completion before a
 particular point in time.
 
-The sequence diagram for the Add Task Command is shown below:
+The sequence diagram for the Add Todo Command is shown below:
+
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
 
+_This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`._
 * The `AddCommand`'s`execute` method is first called with a model passed as an argument.
-* `execute` method then calls `AddCommandParser`'s `parse` method with a predicate which parses the task.
-* A `CommandResult` object is created with the message "Task added"" and returned to `AddCommand`.
+* `execute` method then calls `AddCommandParser`'s `hasTodo` method to check if the task is already contained within the
+Model class.
+* If the task is already contained within the Model class, `AddCommand` will throw an Exception `CommandException`.
+* Else, `AddCommand` will add the new `Task` to the Model class and return a result `CommandResult` containing a
+`SUCCESS` message.
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -2,38 +2,37 @@
 !include style.puml
 
 participant ":AddCommand" as AddCommand SCRAPER_COLOR
-participant ":AddCommandParser" as AddCommandParser SCRAPER_COLOR
-participant ":TaskCommandParser" as TaskCommandParser SCRAPER_COLOR
-participant ":Model" as Model SCRAPER_COLOR
+participant ":ModelManager" as ModelManager SCRAPER_COLOR
+participant ":AddressBook" as AddressBook SCRAPER_COLOR
+participant ":CommandException" as CommandException SCRAPER_COLOR
 participant ":CommandResult" as CommandResult SCRAPER_COLOR
 
 [-> AddCommand : execute(model)
-activate ViewAllStudentsCommand
 
-AddCommand -> AddCommandParser
+AddCommand -> ModelManager : hasTodo(Todo)
+ModelManager --> AddCommand : boolean
 
-AddCommandParser -> TaskCommandParser : parse(task)
+alt !boolean, duplicate object
 
-TaskCommandParser -> Model : toAdd(task)
+    create CommandException
+    AddCommand -> CommandException : new CommandException(MESSAGE_DUPLICATE_TASK)
+    activate CommandException
+    CommandException --> AddCommand : command exception
+    deactivate CommandException
 
-activate Model
+else boolean, unique object
 
-Model -> AddCommand
+    AddCommand -> ModelManager : addTodo(Todo)
+    ModelManager -> AddressBook : addTodo(Todo)
 
-deactivate Model
+    create CommandResult
+    AddCommand -> CommandResult : new CommandResult(MESSAGE_SUCCESS)
+    activate CommandResult
+    CommandResult --> AddCommand : command result
+    deactivate CommandResult
 
-create CommandResult
+end
 
-AddCommand -> CommandResult : CommandResult("Task added")
-
-activate CommandResult
-
-CommandResult -> AddCommand : command result
-
-deactivate CommandResult
-
-[<-- AddCommand : command result
-
-deactivate AddCommand
+[<-- AddCommand : result / exception
 
 @enduml

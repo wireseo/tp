@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #ffffff
+skinparam classAttributeIconSize 0
+hide circle
+
+class AddXYZCommand
+
+abstract class "{abstract}\nCommand" {
+    + {abstract} execute(model : Model) : CommandResult
+}
+
+class Model <<Interface>> {
+    /' Attributes '/
+    - FilteredList<Student> filteredStudents
+    - FilteredList<Mission> filteredMissions
+    - FilteredList<Quest> filteredQuests
+    - FilteredList<Task> filteredTasks
+
+    /' Methods '/
+    + hasXYZ(xyz)
+    + addXYZ(xyz)
+}
+
+class ReadOnlyAddressBook {
+    + getMissionList() : ObservableList<Mission>
+    + getQuestList() : ObservableList<Quest>
+    + getStudentList() : ObservableList<Student>
+    + getTaskList() : ObservableList<Task>
+}
+
+abstract class "{abstract}\nAddCommand"{
+    /' Methods '/
+    + execute(model : Model) : CommandResult
+}
+
+class AddCommandParser implements Parser {
+    /' Methods '/
+    + parse(args : String) : AddCommand
+}
+
+interface Parser<T> <<interface>> {
+    parse(userInput : String) : AddCommand
+}
+
+class Flag {
+    + getFlag(): String
+    + isValidFlag(): boolean
+}
+
+class AddXYZParser
+
+"{abstract}\nAddCommand" <..left AddCommandParser
+"{abstract}\nAddCommand" ..> Model
+Model ..> ReadOnlyAddressBook
+"{abstract}\nAddCommand" --up|> "{abstract}\nCommand"
+AddCommandParser ..> Flag
+
+AddXYZCommand -right-|> "{abstract}\nAddCommand"
+AddXYZParser -left-> AddCommandParser
+
+note as N1
+  <size: 11><u>examples:</u>
+  <size: 11>hasTodo(todo),</size>
+  <size: 11>addStudent(student)</size>
+end note
+
+N1 .right. Model
+@enduml
