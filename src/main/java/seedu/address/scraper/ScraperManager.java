@@ -132,8 +132,8 @@ public class ScraperManager implements Scraper {
 
     /**
      * Fetches missions from Sourceacademy and saves them to storage.
-     * @throws WrongLoginDetailsException
      * @return a list of missions
+     * @throws WrongLoginDetailsException
      */
     public List<Mission> getMissions() throws WrongLoginDetailsException {
         List<Mission> missions = new ArrayList<>();
@@ -179,8 +179,8 @@ public class ScraperManager implements Scraper {
 
     /**
      * Fetches quests from Sourceacademy and saves them to storage.
-     * @throws WrongLoginDetailsException
      * @return returns a list of quests
+     * @throws WrongLoginDetailsException
      */
     public List<Quest> getQuests() throws WrongLoginDetailsException {
         List<Quest> quests = new ArrayList<>();
@@ -225,8 +225,8 @@ public class ScraperManager implements Scraper {
 
     /**
      * Fetches students from Sourceacademy and saves them to the model.
-     * @throws WrongLoginDetailsException
      * @return A list of students
+     * @throws WrongLoginDetailsException
      */
     public List<Student> getStudents() throws WrongLoginDetailsException {
         List<Student> students = new ArrayList<>();

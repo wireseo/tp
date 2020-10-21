@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.model.quest.Quest;
 
 public class JsonAdaptedQuest {
