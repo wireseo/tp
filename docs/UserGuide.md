@@ -24,11 +24,10 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     * Viewing Student Information: `-s`
     * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
     * Viewing Mastery Check sessions: `-mc`, `mcp`, `-mcu`
-    * Viewing ungraded missions and quests: `-u`
     * Viewing deadline for missions: `-m`
     * Viewing deadline for quests: `-q`
-    * Viewing deadline for both missions and quests: `-b`
-    * Viewing deadline for specific mission/quest by id: `-i`
+    * Viewing ungraded missions: `-um`
+    * Viewing ungraded quests: `-uq`
     * Viewing Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
   * Exiting the program: `exit`
   * Saving the data
@@ -61,7 +60,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 ## Features
 **UI Layout**
 <br>
-   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`.
+   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`, `Tasks`.
 <br>
    * Clicking on each tab will give you the information you require for that field.
 
@@ -71,19 +70,16 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 **Notes about the command format:**<br>
    * Words in UPPER_CASE are the parameters to be supplied by you.
-   <br> e.g. in `add n/NAME`, `NAME` is a parameter which can be used as add n/John Doe.
+   <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
 
    * Items in square brackets are optional.
-   <br> e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or `as n/John Doe`.
+   <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
 
    * Items with …​ after them can be used multiple times including zero times.
    <br> e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
    * Parameters can be in any order.
    <br> e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-   * Commands in parentheses are optional.
-   <br> e.g. if the command specifies `add -c (NAME)`, name is an optional parameter.
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that the user should enter `delete -c` first and then `1` after the prompt has
@@ -163,7 +159,7 @@ Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is spe
 
 #### 4-2 Deleting Consultations: `delete -c`
 Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
-<br>**Format: delete -c [NAME]**
+<br>**Format: `delete -c [NAME]`**
 <br>Examples:
 * `delete -c
    → 3`
@@ -172,16 +168,13 @@ Shows a list of consultations with id numbers which can be entered by the user t
 
 #### 4-3. Deleting Mastery Checks: `delete -mc`
 Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
-<br>**Format: delete -mc [NAME]**
+<br>**Format: `delete -mc [NAME]`**
 <br>Examples:
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
 
 ### 5. Viewing Information: `view `
-Shows a list of all students under the tutor in JARVIS.
-<br>**Format: `view`**
-
 #### 5-1 Viewing a list of all students: `view -s`
 Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all
  details (contact information, consultation requests and studio participation marks) of a specific student.
@@ -237,35 +230,29 @@ Shows all upcoming MC sessions. If a student name is entered after the command, 
 * `view -mcu`
 * `view -mcu John Doe`* `
 
-#### 5-8. Viewing ungraded missions and quests: `view -u`
-Shows all the tutor’s ungraded missions and quests.
-<br>**Format: `view -u`**
-
-#### 5-9. Viewing deadline for missions: `view -m`
+#### 5-8. Viewing deadline for missions: `view -m`
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
 
-#### 5-10. Viewing deadline for quests: `view -q`
+#### 5-9. Viewing deadline for quests: `view -q`
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
-#### 5-11. Viewing deadline for both missions and quests: `view -b`
-Shows the deadline for current mission(s) and quest(s).
-<br>**Format: `view -b`**
+#### 5-10. Viewing ungraded missions: `view -um`
+Shows the missions that the user has not graded.
+<br>**Format: `view -um`**
 
-#### 5-12. Viewing deadline for a specific mission or quest by their id: `view -i`
-Shows the deadline for the specific mission or quest.
-<br>**Format: `view -i ID_OF_MISSION/QUEST`**
-<br>Examples:
-* `view -i 1`
+#### 5-11. Viewing ungraded quests: `view -uq`
+Shows the quests that the user has not graded.
+<br>**Format: `view -uq`**
 
-#### 5-13. Viewing studio participation marks of a specific student.
+#### 5-12. Viewing studio participation marks of a specific student.
 Shows the studio participation marks of a student.
 <br>**Format: `view -p [Name]`
 <br>Examples:
 * `view -p John Doe`
 
-#### 5-14. Viewing Tasks: `view -t`
+#### 5-13. Viewing Tasks: `view -t`
 Shows a list of tasks (todos, events, deadlines). If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively.
 <br>**Format: `view -t / -tt / -te / -td`**
 <br>Examples:
@@ -320,11 +307,10 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | -mc | view -mc NAME <br>E.g. view -mc / view -mc John Doe |
 | -mcp | view -mcp NAME <br>E.g. view -mcp / view -mcp John Doe |
 | -mcu | view -mcu NAME <br>E.g. view -mcu / view -mcu John Doe |
-| -u |view -u |
 | -m | view -m |
 | -q | view -q |
-| -b | view -b |
-| -i | view -i ID_OF_MISSION/QUEST <br>E.g. view -i 123456 |
+| -um | view -um |
+| -uq | view -uq |
 | -t | view -t / -tt / -te / -td |
 
 ### Exit
