@@ -20,7 +20,8 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     * Deleting Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
     * Deleting Consultations: `-c`
     * Deleting Mastery Checks: `-mc`
-  * Vewing information: `view`
+    <div style="page-break-after: always"></div>
+  * Viewing information: `view`
     * Viewing Student Information: `-s`
     * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
     * Viewing Mastery Check sessions: `-mc`, `mcp`, `-mcu`
@@ -35,8 +36,9 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 * Command summary
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
-## Quick start
+## Quick start (Everyone)
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
@@ -58,9 +60,10 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 1. Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## Features
-**UI Layout**
+**UI Layout** (Everyone)
 <br>
    * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`, `Tasks`.
 <br>
@@ -70,7 +73,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 <div markdown="block" class="alert alert-info">
 
-**Notes about the command format:**<br>
+**Notes about the command format:**<br> (Wiline)
    * Words in UPPER_CASE are the parameters to be supplied by you.
    <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
 
@@ -87,47 +90,48 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
    <br> e.g. `delete -c → 1` means that the user should enter `delete -c` first and then `1` after the prompt has
     been processed.`
 
-**Notes about student information in JARVIS:**<br>
+**Notes about student information in JARVIS:** (Peirong) <br>
 Students’ names that are under the Avenger using JARVIS will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 
 </div>
+<div style="page-break-after: always"></div>
 
-### 1. Viewing help : `help`
+### 1. Viewing help : `help` (Zhen Teng)
 
 Shows a message explaining how to access the help page.
 <br>**Format: `help`**
 
 ### 2. Adding Information: `add`
 
-#### 2-1. Adding Todos: `add -t`
+#### 2-1. Adding Todos: `add -t` (Jun Jie)
 Adds a  simple todo with a todo description.
 <br>**Format: `add -t DESCRIPTION`**
 <br>Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
-#### 2-2. Adding Events: `add -e`
+#### 2-2. Adding Events: `add -e` (Jun Jie)
 Adds an event with an event description to attend at a specific date and time.
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
 
-#### 2-3. Adding Deadlines: `add -d`
+#### 2-3. Adding Deadlines: `add -d` (Jun Jie)
 Adds a deadline with an deadline description to complete by a specific date and time.
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
 
-#### 2-4. Adding Consultations: `add -c`
+#### 2-4. Adding Consultations: `add -c` (Eryn)
 Adds a consultation session with a student at a specific date and time.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
-#### 2-5. Adding Mastery Checks: `add -mc`
+#### 2-5. Adding Mastery Checks: `add -mc` (Eryn)
 Adds a Mastery Check session with a student at a specific date and time.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
@@ -136,7 +140,7 @@ Adds a Mastery Check session with a student at a specific date and time.
 
 ### 3. Editing Information: `edit`
 
-#### 3-1. Editing Student Information: `edit`
+#### 3-1. Editing Student Information: `edit` (Peirong)
 `INDEX` refers to the number beside the student in the student list tab.
 Include tags followed by the updated information such as `t/maryjane132` or `e/e1234222@u.nus.edu` to edit the
 information which corresponds to that tag.
@@ -145,22 +149,24 @@ information which corresponds to that tag.
 * `edit 1 t/johndoe132 e/e1234567@u.nus.edu`
 * `edit 2 t/maryjane132 s/3`
 
-#### 3-2. Marking Tasks as Done: `edit -t`
+#### 3-2. Marking Tasks as Done: `edit -t` (Jun Jie)
 Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can specify the `TASK_ID` to mark that particular task as done.
 <br>**Format: `edit -t / -tt / -te / -td → TASK_ID`**
 <br>Examples:
 * `edit -t → 3`
 * `edit -te → 2`
 
+<div style="page-break-after: always"></div>
+
 ### 4. Deleting Information: `delete`
-#### 4-1. Deleting Tasks: `delete -t`
+#### 4-1. Deleting Tasks: `delete -t` (Jun Jie)
 Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can sepcify the `TASK_ID` to delete that particular task.
 <br> **Format:`delete -t / -tt / -te / -td → TASK_ID`**
 <br>Examples:
 * `delete -t → 3`
 * `delete -td → 2`
 
-#### 4-2 Deleting Consultations: `delete -c`
+#### 4-2 Deleting Consultations: `delete -c` (Eryn)
 Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: `delete -c [NAME]`**
 <br>Examples:
@@ -169,55 +175,54 @@ Shows a list of consultations with id numbers which can be entered by the user t
 * `delete -c John Doe
    → 2`
 
-#### 4-3. Deleting Mastery Checks: `delete -mc`
+#### 4-3. Deleting Mastery Checks: `delete -mc` (Wiline)
 Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: `delete -mc [NAME]`**
 <br>Examples:
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
+   
+<div style="page-break-after: always"></div>
 
-### 5. Viewing Information: `view `
-#### 5-1 Viewing a list of all students: `view -s`
+### 5. Viewing Information: `view ` 
+#### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
 Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all
  details (contact information, consultation requests and studio participation marks) of a specific student.
 <br>**Format: `view -s [NAME]`**
 
 
-#### 5-2. Viewing all consultation sessions: `view -c`
-
+#### 5-2. Viewing all consultation sessions: `view -c` (Peirong)
 Shows all confirmed consultation sessions, both past and upcoming. If a student name is entered after the command, it shows consultation sessions confirmed with the specific student.
 <br>**Format: `view -c [NAME]`**
 <br>Examples:
 * `view -c`
 * `view -c John Doe`
 
-#### 5-3. Viewing past consultation sessions: `view -cp`
-
+#### 5-3. Viewing past consultation sessions: `view -cp` (Peirong)
 Shows all past consultation sessions. If a student name is entered after the command, it shows past consultation sessions with the specific student.
 <br>**Format: `view -cp [NAME]`**
 <br>Examples:
 * `view -cp`
 * `view -cp John Doe`
 
-#### 5-4. Viewing upcoming consultation sessions: `view -cu`
-
+#### 5-4. Viewing upcoming consultation sessions: `view -cu` (Peirong)
 Shows all upcoming consultation sessions. If a student name is entered after the command, it shows upcoming consultation sessions with the specific student.
 <br>**Format: `view -cu [NAME]`**
 <br>Examples:
 * `view -cu`
 * `view -cu John Doe`
 
-#### 5-5. Viewing all Mastery Check sessions: `view -mc`
+<div style="page-break-after: always"></div>
 
+#### 5-5. Viewing all Mastery Check sessions: `view -mc` (Eryn)
 Shows all confirmed MC sessions, both past and upcoming. If a student name is entered after the command, it shows sessions confirmed with the specific student.
 <br>**Format: `view -mc [NAME]`**
 <br>Examples:
 * `view -mc`
 * `view -mc John Doe`
 
-#### 5-6. Viewing past Mastery Check sessions: `view -mcp`
-
+#### 5-6. Viewing past Mastery Check sessions: `view -mcp` (Eryn)
 Shows all past MC sessions. If a student name is entered after the command, it shows past sessions with the specific student.
 <br>**Format: `view -mcp [NAME]`**
 <br>Examples:
@@ -225,59 +230,62 @@ Shows all past MC sessions. If a student name is entered after the command, it s
 * `view -mcp John Doe`
 
 
-#### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu`
-
+#### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu` (Eryn)
 Shows all upcoming MC sessions. If a student name is entered after the command, it shows upcoming sessions with the specific student.
 <br>**Format: `view -mcu [NAME]`**
 <br>Examples:
 * `view -mcu`
 * `view -mcu John Doe`* `
 
-#### 5-8. Viewing deadline for missions: `view -m`
+#### 5-8. Viewing deadline for missions: `view -m` (Wiline)
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
 
-#### 5-9. Viewing deadline for quests: `view -q`
+#### 5-9. Viewing deadline for quests: `view -q` (Wiline)
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
-#### 5-10. Viewing ungraded missions: `view -um`
+<div style="page-break-after: always"></div>
+
+#### 5-10. Viewing ungraded missions: `view -um` (Wiline)
 Shows the missions that the user has not graded.
 <br>**Format: `view -um`**
 
-#### 5-11. Viewing ungraded quests: `view -uq`
+#### 5-11. Viewing ungraded quests: `view -uq` (Wiline)
 Shows the quests that the user has not graded.
 <br>**Format: `view -uq`**
 
-#### 5-12. Viewing studio participation marks of a specific student.
+#### 5-12. Viewing studio participation marks of a specific student. (Zhen Teng)
 Shows the studio participation marks of a student.
 <br>**Format: `view -p [Name]`**
 <br>Examples:
 * `view -p John Doe`
 
-#### 5-13. Viewing Tasks: `view -t`
+#### 5-13. Viewing Tasks: `view -t` (Jun Jie)
 Shows a list of tasks (todos, events, deadlines). If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively.
 <br>**Format: `view -t / -tt / -te / -td`**
 <br>Examples:
 * `view -t`
 * `view -td`
 
-### 6. Exiting the program : `exit`
+### 6. Exiting the program : `exit` (Zhen Teng)
 Exits the program.
 <br>**Format: `exit`**
 <br>Example:
 * `exit`
 
-### 7. Saving the data
+### 7. Saving the data (Peirong)
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### FAQ
+<div style="page-break-after: always"></div>
+
+### FAQ (Peirong)
 `Q: How do I transfer my data to another Computer?`
 <br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
 
 ## Command summary
 
-### Add
+### Add (Jun Jie)
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -t | add -t DESCRIPTION |
@@ -286,20 +294,20 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
 | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
 
-### Edit
+### Edit (Wiline)
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
 | -t | edit -t / -tt / -te / -td → TASK_ID |
 
-### Delete
+### Delete (Zhen Teng)
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -t | delete -t / -tt / -te / -td → TASK_ID <br>E.g. delete -tt → 3 / delete -t → 3 |
 | -c | delete -c NAME <br>E.g. delete -c → 3 / delete -c John Doe → 2 |
 | -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
 
-### View
+### View (Zhen Teng)
 | Tag | Format, Examples |
 | --- | ---------------- |
 | -s | view -s NAME |
@@ -316,12 +324,12 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | -uq | view -uq |
 | -t | view -t / -tt / -te / -td |
 
-### Exit
+### Exit (Peirong)
 | Format, Examples |
 | ---------------- |
 | `exit` |
 
-### Help
+### Help (Peirong)
 | Format, Examples |
 | ---------------- |
 | `help` |
