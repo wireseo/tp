@@ -49,6 +49,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
 
         //Include other cases here
 
+        //Will not be able to delete student becasue the flag is not allowed in Flag class.
         default:
             logger.info("DeleteCommandParser attempts to parse user's delete student input by default");
             try {

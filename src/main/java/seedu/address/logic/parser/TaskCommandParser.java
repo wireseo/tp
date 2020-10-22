@@ -175,7 +175,7 @@ public class TaskCommandParser {
      * @throws ParseException when input is incorrect
      */
     public static String parseDeleteTask(String[] nameKeywords) throws ParseException {
-        if (nameKeywords.length > 2) {
+        if (nameKeywords.length != 2) {
             throw new ParseException(MESSAGE_INVALID_ID);
         }
 
