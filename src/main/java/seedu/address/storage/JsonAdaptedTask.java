@@ -85,8 +85,8 @@ public class JsonAdaptedTask {
 
         case TASK_DEADLINE:
             try {
-
                 return new Deadline(id, description, dateTime);
+
             } catch (DateTimeParseException e) {
                 throw new IllegalValueException(INVALID_DATE_TIME_FORMAT);
             }

@@ -270,6 +270,23 @@ public class ModelManager implements Model {
         addressBook.addDeadline(deadline);
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Quest} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Task> getFilteredTaskList() {
+        return filteredTasks;
+    }
+
+    @Override
+    public void updateFilteredTaskList(Predicate<Task> predicate) {
+        requireNonNull(predicate);
+        filteredTasks.setPredicate(predicate);
+    }
+
+    //========================= Consultations ================================================================
+
     @Override
     public boolean hasConsultation(Consultation consultation) {
         requireNonNull(consultation);

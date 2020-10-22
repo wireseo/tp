@@ -42,7 +42,8 @@ public class Deadline extends Task {
         Task.compareTaskNum(taskId);
         this.description = description;
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        this.dateTime = LocalDateTime.parse(dateTime, dateTimeFormat);
+        String replacedDateTime = dateTime.replace('T', ' ');
+        this.dateTime = LocalDateTime.parse(replacedDateTime, dateTimeFormat);
     }
 
     public String getTaskId() {
