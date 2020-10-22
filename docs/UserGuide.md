@@ -20,7 +20,6 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     * Deleting Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
     * Deleting Consultations: `-c`
     * Deleting Mastery Checks: `-mc`
-    <div style="page-break-after: always"></div>
   * Viewing information: `view`
     * Viewing Student Information: `-s`
     * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
@@ -36,7 +35,6 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 * Command summary
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always"></div>
 
 ## Quick start (Everyone)
 
@@ -60,7 +58,6 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 1. Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always"></div>
 
 ## Features
 **UI Layout** (Everyone)
@@ -94,7 +91,6 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 Students’ names that are under the Avenger using JARVIS will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 
 </div>
-<div style="page-break-after: always"></div>
 
 ### 1. Viewing help : `help` (Zhen Teng)
 
@@ -156,8 +152,6 @@ Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is spe
 * `edit -t → 3`
 * `edit -te → 2`
 
-<div style="page-break-after: always"></div>
-
 ### 4. Deleting Information: `delete`
 #### 4-1. Deleting Tasks: `delete -t` (Jun Jie)
 Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can sepcify the `TASK_ID` to delete that particular task.
@@ -183,8 +177,6 @@ Shows a list of Mastery Checks with id numbers which can be entered by the user 
 * `delete -mc John Doe
    → 2`
    
-<div style="page-break-after: always"></div>
-
 ### 5. Viewing Information: `view ` 
 #### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
 Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all
@@ -212,8 +204,6 @@ Shows all upcoming consultation sessions. If a student name is entered after the
 <br>Examples:
 * `view -cu`
 * `view -cu John Doe`
-
-<div style="page-break-after: always"></div>
 
 #### 5-5. Viewing all Mastery Check sessions: `view -mc` (Eryn)
 Shows all confirmed MC sessions, both past and upcoming. If a student name is entered after the command, it shows sessions confirmed with the specific student.
@@ -245,8 +235,6 @@ Shows the deadline for the current mission(s).
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
-<div style="page-break-after: always"></div>
-
 #### 5-10. Viewing ungraded missions: `view -um` (Wiline)
 Shows the missions that the user has not graded.
 <br>**Format: `view -um`**
@@ -276,8 +264,6 @@ Exits the program.
 
 ### 7. Saving the data (Peirong)
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-<div style="page-break-after: always"></div>
 
 ### FAQ (Peirong)
 `Q: How do I transfer my data to another Computer?`
