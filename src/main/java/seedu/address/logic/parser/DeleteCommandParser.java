@@ -11,7 +11,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
-import seedu.address.model.task.Todo;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object

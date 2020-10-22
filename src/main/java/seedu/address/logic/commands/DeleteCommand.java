@@ -38,14 +38,20 @@ public class DeleteCommand extends Command {
 
     private final Index targetIndex;
     private final String taskId;
-    protected final String toDeleteType;
+    private final String toDeleteType;
 
+    /**
+     * Creates an DeleteCommand to delete the specified {@code Student}
+     */
     public DeleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
         this.taskId = null;
         this.toDeleteType = TO_DELETE_STUDENT;
     }
 
+    /**
+     * Creates an DeleteCommand to delete the specified {@code Task}
+     */
     public DeleteCommand(String taskId) {
         this.targetIndex = null;
         this.taskId = taskId;

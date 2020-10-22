@@ -168,6 +168,12 @@ public class TaskCommandParser {
         return formattedEventDateTime;
     }
 
+    /**
+     * Takes in user input and returns a string representation of Task ID
+     * @param nameKeywords is the partitioned user input
+     * @return Task ID String
+     * @throws ParseException when input is incorrect
+     */
     public static String parseDeleteTask(String[] nameKeywords) throws ParseException {
         if (nameKeywords.length > 2) {
             throw new ParseException(MESSAGE_INVALID_ID);
