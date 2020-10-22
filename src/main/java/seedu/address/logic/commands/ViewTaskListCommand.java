@@ -26,9 +26,6 @@ public class ViewTaskListCommand extends ViewCommand {
 
     private final String viewType;
 
-    //Temp storage for visualization
-    private static List<Task> taskList = new ArrayList<>();
-
     public ViewTaskListCommand(String viewType) {
         this.viewType = viewType;
     }
@@ -37,7 +34,8 @@ public class ViewTaskListCommand extends ViewCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        taskList = model.getFilteredTaskList();
+        //Temp storage for visualization
+        List<Task> taskList = model.getFilteredTaskList();
         int size = taskList.size();
 
         switch(viewType) {

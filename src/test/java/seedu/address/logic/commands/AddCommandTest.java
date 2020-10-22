@@ -27,6 +27,7 @@ import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
+import seedu.address.model.task.Task;
 import seedu.address.model.task.Todo;
 import seedu.address.testutil.StudentBuilder;
 
@@ -258,6 +259,16 @@ public class AddCommandTest {
 
         @Override
         public void addConsultation(Consultation consultation) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredTaskList(Predicate<Task> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Task> getFilteredTaskList() {
             throw new AssertionError("This method should not be called.");
         }
 
