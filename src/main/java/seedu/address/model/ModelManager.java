@@ -285,6 +285,11 @@ public class ModelManager implements Model {
         filteredTasks.setPredicate(predicate);
     }
 
+    @Override
+    public void deleteTask(Task target) {
+        addressBook.removeTask(target);
+    }
+
     //========================= Consultations ================================================================
 
     @Override

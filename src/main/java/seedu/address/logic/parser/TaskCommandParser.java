@@ -20,6 +20,7 @@ import seedu.address.model.task.Todo;
 public class TaskCommandParser {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
+    public static final String MESSAGE_INVALID_ID = "Task ID provided is not correct.";
 
     /**
      * Takes in user input parameters and creates a Todo.
@@ -166,4 +167,13 @@ public class TaskCommandParser {
 
         return formattedEventDateTime;
     }
+
+    public static String parseDeleteTask(String[] nameKeywords) throws ParseException {
+        if (nameKeywords.length > 2) {
+            throw new ParseException(MESSAGE_INVALID_ID);
+        }
+
+        return nameKeywords[1];
+    }
+
 }

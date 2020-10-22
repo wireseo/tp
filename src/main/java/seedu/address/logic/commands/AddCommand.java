@@ -51,7 +51,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS_DEADLINE = "New deadline added: %1$s";
     public static final String MESSAGE_SUCCESS_CONSULTATION = "New consultation added: %1$s";
 
-    public static final String MESSAGE_TASK_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
+    public static final String MESSAGE_ADD_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
             + "Parameters: \n"
             + TASK_TODO + " DESCRIPTION "
             + "\nor\n"
@@ -78,7 +78,6 @@ public class AddCommand extends Command {
         toAdd = student;
         toAddType = TO_ADD_STUDENT;
     }
-
 
     /**
      * Creates an AddCommand to add the specified {@code Todo}

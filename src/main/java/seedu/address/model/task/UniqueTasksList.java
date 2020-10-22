@@ -6,6 +6,9 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.student.Student;
+import seedu.address.model.student.exceptions.StudentNotFoundException;
+import seedu.address.model.task.eceptions.TaskNotFoundException;
 
 public class UniqueTasksList {
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
@@ -16,6 +19,17 @@ public class UniqueTasksList {
     public void add(Task toAdd) {
         requireNonNull(toAdd);
         internalList.add(toAdd);
+    }
+
+    /**
+     * Removes the equivalent task from the list.
+     * The task must exist in the list.
+     */
+    public void remove(Task toRemove) {
+        requireNonNull(toRemove);
+        if (!internalList.remove(toRemove)) {
+            throw new TaskNotFoundException();
+        }
     }
 
     public void setTasks(List<Task> tasks) {

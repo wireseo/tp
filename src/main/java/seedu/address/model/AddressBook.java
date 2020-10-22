@@ -260,6 +260,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.tasks.setTasks(tasks);
     }
 
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeTask(Task key) {
+        tasks.remove(key);
+    }
+
     @Override
     public ObservableList<Task> getTaskList() {
         return this.tasks.asObservableList();

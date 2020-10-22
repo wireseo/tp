@@ -28,4 +28,7 @@ public class CliSyntax {
     public static final String TASK_DATE = "d/";
     public static final String TASK_TIME = "t/";
 
+    /* Delete Command flags */
+    public static final String DELETE_TASK = "-t";
+
 }
