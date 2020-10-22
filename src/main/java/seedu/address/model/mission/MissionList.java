@@ -49,6 +49,7 @@ public class MissionList {
     public boolean updateMission(String name) {
         Optional<Mission> missionToUpdate = internalList.stream().filter(mission -> mission.getTitle().equals(name))
                 .findFirst();
+
         if (missionToUpdate.isPresent()) {
             Mission mission = missionToUpdate.get();
             this.internalList.remove(missionToUpdate.get());

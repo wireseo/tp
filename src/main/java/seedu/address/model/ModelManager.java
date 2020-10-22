@@ -291,21 +291,25 @@ public class ModelManager implements Model {
 
     @Override
     public boolean isMissionInList(String title) {
+        assert title.length() > 0 : "No mission title provided";
         return addressBook.isMissionInList(title);
     }
 
     @Override
     public boolean updateMission(String name) {
+        assert name.length() > 0 : "No mission title provided";
         return addressBook.updateMission(name);
     }
 
     @Override
     public boolean isQuestInList(String title) {
+        assert title.length() > 0 : "No quest title provided";
         return addressBook.isQuestInList(title);
     }
 
     @Override
     public boolean updateQuest(String name) {
+        assert name.length() > 0 : "No quest title provided";
         return addressBook.updateQuest(name);
     }
 
