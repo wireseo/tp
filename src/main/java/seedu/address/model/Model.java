@@ -74,7 +74,19 @@ public interface Model {
      */
     void setAddressBookFilePath(Path addressBookFilePath);
 
-    //=========== UserPrefs ==================================================================================
+    //=========== UserLogin ==================================================================================
+
+    /**
+     * Returns user login details.
+     * @return a UserLogin object
+     */
+    UserLogin getUserLogin();
+
+    /**
+     * Sets user login with new details.
+     * @param userLogin updated user login details to be set
+     */
+    void setUserLogin(ReadOnlyUserLogin userLogin);
 
     /**
      * Returns whether the login.json has username specified.

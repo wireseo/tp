@@ -92,6 +92,16 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
     //=========== UserLogin ==================================================================================
+    @Override
+    public UserLogin getUserLogin() {
+        return userLogin;
+    }
+
+    @Override
+    public void setUserLogin(ReadOnlyUserLogin userLogin) {
+        requireNonNull(userLogin);
+        this.userLogin.resetData(userLogin);
+    }
 
     @Override
     public boolean hasUsername() {

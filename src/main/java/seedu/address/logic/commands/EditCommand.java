@@ -8,8 +8,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
-public class EditCommand extends Command {
+public abstract class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
+
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits information stored in Jarvis according to the " + "command inputted.\n"
@@ -25,7 +27,5 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PASSWORD + "PASSWORD ";
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
-        return null;
-    }
+    public abstract CommandResult execute(Model model) throws CommandException;
 }

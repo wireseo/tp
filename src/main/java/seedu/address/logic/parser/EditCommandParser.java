@@ -6,9 +6,14 @@ import static seedu.address.logic.parser.CliSyntax.EDIT_LOGIN;
 import static seedu.address.logic.parser.CliSyntax.EDIT_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import java.util.Arrays;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EditLoginCommand;
+import seedu.address.logic.commands.EditLoginCommand.EditLoginDescriptor;
 import seedu.address.logic.commands.EditStudentCommand;
 import seedu.address.logic.commands.EditStudentCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ViewCommand;
@@ -18,14 +23,14 @@ import seedu.address.model.flag.Flag;
 /**
  * Parses input arguments and creates a new EditCommand object
  */
-public class EditCommandParser implements Parser<EditStudentCommand> {
+public class EditCommandParser implements Parser<EditCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public EditStudentCommand parse(String args) throws ParseException {
+    public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         String trimmedArgs = args.trim();
@@ -38,14 +43,17 @@ public class EditCommandParser implements Parser<EditStudentCommand> {
         // result will be as such: {-s, Alex, Yeoh}
         String[] inputsAfterCommandType = trimmedArgs.split("\\s+");
         assert inputsAfterCommandType.length > 0 : "String array of the arguments is empty";
+
         Flag commandFlag = ParserUtil.parseFlag(inputsAfterCommandType[0]);
+
+        String editArgs = String.join(" ", Arrays.copyOfRange(inputsAfterCommandType, 1,
+                inputsAfterCommandType.length));
+
+        ArgumentMultimap argMultimap;
 
         switch (commandFlag.getFlag()) {
         case EDIT_STUDENT:
-            String studentEditArgs = String.join(" ", Arrays.copyOfRange(inputsAfterCommandType, 1,
-                    inputsAfterCommandType.length));
-            ArgumentMultimap argMultimap =
-                    ArgumentTokenizer.tokenize(studentEditArgs, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL);
+            argMultimap = ArgumentTokenizer.tokenize(editArgs, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL);
 
             Index index;
 
@@ -73,7 +81,21 @@ public class EditCommandParser implements Parser<EditStudentCommand> {
             return new EditStudentCommand(index, editPersonDescriptor);
 
         case EDIT_LOGIN:
+            argMultimap = ArgumentTokenizer.tokenize(editArgs, PREFIX_USERNAME, PREFIX_PASSWORD);
 
+            EditLoginDescriptor editLoginDescriptor = new EditLoginDescriptor();
+            if (argMultimap.getValue(PREFIX_USERNAME).isPresent()) {
+                editLoginDescriptor.setUsername(ParserUtil.parseUername(argMultimap.getValue(PREFIX_USERNAME).get()));
+            }
+            if (argMultimap.getValue(PREFIX_PASSWORD).isPresent()) {
+                editLoginDescriptor.setPassword(argMultimap.getValue(PREFIX_PASSWORD).get());
+            }
+
+            if (!editLoginDescriptor.isAnyFieldEdited()) {
+                throw new ParseException(EditLoginCommand.MESSAGE_NOT_EDITED);
+            }
+
+            return new EditLoginCommand(editLoginDescriptor);
 
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditStudentCommand.MESSAGE_USAGE));

@@ -7,6 +7,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserLogin;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.login.Username;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserLoginStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
@@ -20,7 +21,7 @@ public class TypicalManagers {
         return new UserLogin();
     }
 
-    public static UserLogin getPopUserLogin(String username, String password) {
+    public static UserLogin getPopUserLogin(Username username, String password) {
         UserLogin userLogin = new UserLogin();
         userLogin.setUsername(username);
         userLogin.setPassword(password);
