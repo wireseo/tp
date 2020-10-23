@@ -12,13 +12,14 @@ import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Event;
+import seedu.address.model.task.Task;
 import seedu.address.model.task.Todo;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /** {@code Predicate} that always evaluate to true to show all students*/
     Predicate<Student> PREDICATE_SHOW_ALL_STUDENTS = unused -> true;
 
     /** {@code Predicate} that evaluate to true if mission is ongoing */
@@ -37,6 +38,9 @@ public interface Model {
 
     /** {@code Predicate} that always evaluate to true if quest is ongoing */
     Predicate<Quest> PREDICATE_SHOW_ALL_QUESTS = quest -> quest.getDeadline().contains("Due");
+
+    /** {@code Predicate} that always evaluate to true to show all tasks*/
+    Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
 
     //=========== UserPrefs ==================================================================================
 
@@ -93,6 +97,8 @@ public interface Model {
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
+
+    //================ Students ==============================================================================
 
     /**
      * Returns true if a student with the same identity as {@code student} exists in the address book.
@@ -160,12 +166,6 @@ public interface Model {
     void addDeadline(Deadline deadline);
 
     /**
-     * Adds the given consultation.
-     * {@code consultation} must not already exist in the address book.
-     */
-    void addConsultation(Consultation consultation);
-
-    /**
      * Returns true if a todo with the same identity as {@code todo} exists in the address book.
      */
     boolean hasTodo(Todo todo);
@@ -180,10 +180,33 @@ public interface Model {
      */
     boolean hasDeadline(Deadline deadline);
 
+    /** Returns an unmodifiable view of the filtered mission list. */
+    ObservableList<Task> getFilteredTaskList();
+
+    /**
+     * Updates the filter of the filtered task list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTaskList(Predicate<Task> predicate);
+
+    /**
+     * Deletes the given task.
+     * The task must exist in the address book.
+     */
+    void deleteTask(Task target);
+
+    //================== Consultations ========================================================================
+
     /**
      * Returns true if a consultation with the same identity as {@code consultation} exists in the address book.
      */
     boolean hasConsultation(Consultation consultation);
+
+    /**
+     * Adds the given consultation.
+     * {@code consultation} must not already exist in the address book.
+     */
+    void addConsultation(Consultation consultation);
 
     //=========== Filtered Mission List Accessors =============================================================
 

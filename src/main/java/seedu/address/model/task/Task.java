@@ -21,7 +21,7 @@ public abstract class Task {
     }
 
     public String getPossibleDateTime(Task task) {
-        String type = task.getTaskId().substring(0, 1);
+        String type = getType(task);
 
         if (type.equals(TO_ADD_EVENT)) {
             Event taskEvent = (Event) task;
@@ -36,6 +36,10 @@ public abstract class Task {
         }
     }
 
+    public static String getType(Task task) {
+        return task.getTaskId().substring(0, 1);
+    }
+
     private static void setTaskCount(int count) {
         taskNum = count;
     }
@@ -46,7 +50,7 @@ public abstract class Task {
      */
     public static void compareTaskNum(String taskId) {
         int taskNum = Integer.parseInt(taskId.substring(1));
-        if (taskNum > Task.getTaskNum()) {
+        if (taskNum >= Task.getTaskNum()) {
             Task.setTaskCount(taskNum);
             Task.taskNumInc();
         }

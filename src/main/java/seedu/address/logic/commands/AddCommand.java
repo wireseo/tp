@@ -51,7 +51,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS_DEADLINE = "New deadline added: %1$s";
     public static final String MESSAGE_SUCCESS_CONSULTATION = "New consultation added: %1$s";
 
-    public static final String MESSAGE_TASK_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
+    public static final String MESSAGE_ADD_USAGE = COMMAND_WORD + ": Adds a task to the address book. "
             + "Parameters: \n"
             + TASK_TODO + " DESCRIPTION "
             + "\nor\n"
@@ -78,7 +78,6 @@ public class AddCommand extends Command {
         toAdd = student;
         toAddType = TO_ADD_STUDENT;
     }
-
 
     /**
      * Creates an AddCommand to add the specified {@code Todo}
@@ -137,9 +136,6 @@ public class AddCommand extends Command {
             }
 
             model.addTodo(toAddTodo);
-
-            //Temp storage to be removed -> for better visualization
-            ViewTaskListCommand.add(toAddTodo);
             return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo));
 
         case TO_ADD_EVENT:
@@ -149,9 +145,6 @@ public class AddCommand extends Command {
             }
 
             model.addEvent(toAddEvent);
-
-            //Temp storage to be removed -> for better visualization
-            ViewTaskListCommand.add(toAddEvent);
             return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent));
 
         case TO_ADD_DEADLINE:
@@ -161,9 +154,6 @@ public class AddCommand extends Command {
             }
 
             model.addDeadline(toAddDeadline);
-
-            //Temp storage to be removed -> for better visualization
-            ViewTaskListCommand.add(toAddDeadline);
             return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline));
 
 

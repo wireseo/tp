@@ -40,7 +40,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_TASK_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));
         }
 
         // split the string trimmedArgs with regex of one or more whitespace characters.

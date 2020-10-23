@@ -23,3 +23,6 @@ docs/_site/
 
 # Login details
 login.json
+
+# Debug log
+debug.log

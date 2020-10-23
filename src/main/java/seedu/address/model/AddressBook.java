@@ -74,6 +74,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setStudents(newData.getStudentList());
         setMissions(newData.getMissionList());
         setQuests(newData.getQuestList());
+        setTasks(newData.getTaskList());
     }
 
     //// student-level operations
@@ -253,6 +254,18 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addTask(Task task) {
         this.tasks.add(task);
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks.setTasks(tasks);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeTask(Task key) {
+        tasks.remove(key);
     }
 
     @Override

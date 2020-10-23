@@ -6,8 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_MISSION;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_QUEST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_DEADLINE_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_EVENT_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.VIEW_TASK_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_TODO_LIST;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -76,14 +79,24 @@ public class ViewCommandParser implements Parser<ViewCommand> {
                 return new ViewAllStudentsCommand();
             }
 
-        case VIEW_TASK_LIST:
-            return new ViewTaskListCommand();
-
         case UNGRADED_MISSION:
             return new ViewUngradedMissionCommand();
 
         case UNGRADED_QUEST:
             return new ViewUngradedQuestCommand();
+
+        case VIEW_TASK_LIST:
+            return new ViewTaskListCommand(VIEW_TASK_LIST);
+
+        case VIEW_TODO_LIST:
+            return new ViewTaskListCommand(VIEW_TODO_LIST);
+
+        case VIEW_EVENT_LIST:
+            return new ViewTaskListCommand(VIEW_EVENT_LIST);
+
+        case VIEW_DEADLINE_LIST:
+            return new ViewTaskListCommand(VIEW_DEADLINE_LIST);
+
 
         // add the other cases here
 
