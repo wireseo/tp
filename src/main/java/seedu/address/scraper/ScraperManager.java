@@ -119,7 +119,7 @@ public class ScraperManager implements Scraper {
             driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys(
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();
-            System.out.println(driver.getPageSource());
+
             /*
              The time out of 5 may need to be adjusted, depending on how we implement the login system
              for Jarvis.
