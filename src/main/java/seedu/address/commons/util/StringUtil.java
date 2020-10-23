@@ -65,4 +65,8 @@ public class StringUtil {
             return false;
         }
     }
+
+    public static String pad(String s) {
+        return "0 " + s;
+    }
 }

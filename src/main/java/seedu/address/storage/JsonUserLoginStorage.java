@@ -23,7 +23,7 @@ public class JsonUserLoginStorage implements UserLoginStorage {
     }
 
     @Override
-    public Optional<UserLogin> readUserLogin() throws DataConversionException, IOException {
+    public Optional<UserLogin> readUserLogin() throws DataConversionException {
         return readUserLogin(filePath);
     }
 

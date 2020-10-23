@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.util.StringUtil.pad;
 import static seedu.address.logic.parser.CliSyntax.EDIT_LOGIN;
 import static seedu.address.logic.parser.CliSyntax.EDIT_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -81,7 +82,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             return new EditStudentCommand(index, editPersonDescriptor);
 
         case EDIT_LOGIN:
-            argMultimap = ArgumentTokenizer.tokenize(editArgs, PREFIX_USERNAME, PREFIX_PASSWORD);
+            argMultimap = ArgumentTokenizer.tokenize(pad(editArgs), PREFIX_USERNAME, PREFIX_PASSWORD);
 
             EditLoginDescriptor editLoginDescriptor = new EditLoginDescriptor();
             if (argMultimap.getValue(PREFIX_USERNAME).isPresent()) {

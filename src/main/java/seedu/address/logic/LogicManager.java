@@ -46,6 +46,7 @@ public class LogicManager implements Logic {
     public void saveToStorage() throws CommandException {
         try {
             storage.saveAddressBook(model.getAddressBook());
+            storage.saveUserLogin(model.getUserLogin());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -59,11 +60,7 @@ public class LogicManager implements Logic {
         Command command = addressBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-        try {
-            storage.saveAddressBook(model.getAddressBook());
-        } catch (IOException ioe) {
-            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
-        }
+        saveToStorage();
 
         return commandResult;
     }

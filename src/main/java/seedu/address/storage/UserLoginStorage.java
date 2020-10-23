@@ -29,9 +29,9 @@ public interface UserLoginStorage {
 
     /**
      * Saves the given {@link seedu.address.model.ReadOnlyUserPrefs} to the storage.
-     * @param userPrefs cannot be null.
+     * @param userLogin cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveUserLogin(ReadOnlyUserLogin userPrefs) throws IOException;
+    void saveUserLogin(ReadOnlyUserLogin userLogin) throws IOException;
 
 }

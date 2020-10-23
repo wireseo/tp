@@ -89,6 +89,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<UserLogin> readUserLogin() throws DataConversionException, IOException {
+        logger.fine("Attempting to read data from login.json: ");
         return userLoginStorage.readUserLogin();
     }
 

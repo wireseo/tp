@@ -11,9 +11,13 @@ public class Username {
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters, backslashes, and it should not be blank";
 
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}]\\[\\p{Alnum}]";
+    public static final String VALIDATION_REGEX = "[a-zA-Z0-9]+\\\\[a-zA-Z0-9]+$";
 
-    public final String username;
+    private final String username;
+
+    public Username() {
+        this.username = "";
+    }
 
     /**
      * Constructs a {@code Name}.
@@ -36,6 +40,8 @@ public class Username {
     public boolean isEmpty() {
         return username.isEmpty();
     }
+
+    public String getUsername() { return username; }
 
     @Override
     public String toString() {

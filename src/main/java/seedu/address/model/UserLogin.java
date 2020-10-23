@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.model.login.Username;
 
 public class UserLogin implements ReadOnlyUserLogin {
-    private Username username;
+    private Username username = new Username();
 
     private String password = "";
 
@@ -65,5 +65,15 @@ public class UserLogin implements ReadOnlyUserLogin {
 
     public boolean isEmpty() {
         return this.username.isEmpty() || this.password.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(" Username: ")
+                .append(getUsername())
+                .append(" Password: ")
+                .append(getUserPassword());
+        return builder.toString();
     }
 }
