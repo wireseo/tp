@@ -41,7 +41,9 @@ public class Username {
         return username.isEmpty();
     }
 
-    public String getUsername() { return username; }
+    public String getUsername() {
+        return username;
+    }
 
     @Override
     public String toString() {

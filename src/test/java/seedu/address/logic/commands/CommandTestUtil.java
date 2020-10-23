@@ -48,6 +48,9 @@ public class CommandTestUtil {
     public static final EditStudentCommand.EditPersonDescriptor DESC_AMY;
     public static final EditStudentCommand.EditPersonDescriptor DESC_BOB;
 
+    public static final String EDIT_STUDENT = "-s ";
+    public static final String EDIT_LOGIN = "-l ";
+
     static {
         DESC_AMY = new EditStudentDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).build();

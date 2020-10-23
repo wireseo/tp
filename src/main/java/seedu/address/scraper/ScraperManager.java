@@ -115,7 +115,8 @@ public class ScraperManager implements Scraper {
             // Authenticate using user-supplied details
             driver.findElement(By.xpath("//button[@class='bp3-button bp3-large']")).click();
 
-            driver.findElement(By.xpath("//input[@id='userNameInput']")).sendKeys(loginInfo.getUsername().getUsername());
+            driver.findElement(By.xpath("//input[@id='userNameInput']")).sendKeys(
+                    loginInfo.getUsername().getUsername());
             driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys(
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();

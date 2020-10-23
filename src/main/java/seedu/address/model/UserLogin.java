@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+
 import seedu.address.model.login.Username;
 
 public class UserLogin implements ReadOnlyUserLogin {
