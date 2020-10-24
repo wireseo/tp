@@ -15,6 +15,9 @@ public class Username {
 
     private final String username;
 
+    /**
+     * Constructs an empty username object.
+     */
     public Username() {
         this.username = "";
     }
