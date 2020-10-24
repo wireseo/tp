@@ -3,13 +3,15 @@ package seedu.address.model.mission;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION_DIFF;
+import static seedu.address.testutil.TypicalMissions.FRACTAL_DIMENSIONS;
+import static seedu.address.testutil.TypicalMissions.MUSICAL_NOTES;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.MissionBuilder;
 
 class MissionListTest {
 
@@ -28,25 +30,45 @@ class MissionListTest {
 
     @Test
     public void contains_missionNotInList_returnsFalse() {
-        assertFalse(missionList.contains(TEST_MISSION));
+        assertFalse(missionList.contains(FRACTAL_DIMENSIONS));
     }
 
     @Test
     public void contains_missionInList_returnsTrue() {
-        missionList.add(TEST_MISSION);
-        assertTrue(missionList.contains(TEST_MISSION));
+        missionList.add(FRACTAL_DIMENSIONS);
+        assertTrue(missionList.contains(FRACTAL_DIMENSIONS));
     }
 
     @Test
     void setNullMission_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> missionList.setMissions(null));
-        missionListTest.add(TEST_MISSION_DIFF);
+        missionListTest.add(FRACTAL_DIMENSIONS);
         missionList.setMissions(missionListTest);
-        assertFalse(missionList.contains(TEST_MISSION));
+        assertFalse(missionList.contains(MUSICAL_NOTES));
     }
 
     @Test
     void changeMissionListTo_asObservableList() {
         assertFalse(missionList.getClass().equals(missionList.asObservableList().getClass()));
+    }
+
+    @Test
+    void isMissionInList_missionInList_returnsTrue() {
+        missionList.add(FRACTAL_DIMENSIONS);
+        assertTrue(missionList.isMissionInList("Fractal Dimensions"));
+    }
+
+    @Test
+    void updateMission_missionInList_returnsTrue() {
+        missionList.add(MUSICAL_NOTES);
+        missionList.updateMission("Musical Notes");
+        Mission editedMusicalNotes = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
+        assertTrue(missionList.contains(editedMusicalNotes));
+    }
+
+    @Test
+    void updateMission_missionNotInList_returnsFalse() {
+        missionList.add(MUSICAL_NOTES);
+        assertFalse(missionList.updateMission("Streams"));
     }
 }
