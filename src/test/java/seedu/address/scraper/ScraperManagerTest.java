@@ -55,8 +55,10 @@ public class ScraperManagerTest {
     }
 
     @Test
-    // as this sets the System.property "os.name" to android, all subsequent tests set it back to the
-    // original system name.
+    /*
+    as this sets the System.property "os.name" to android, all subsequent tests set it back to the
+    original system name.
+     */
     public void constructor_unsupportedOs_throwsOsNotSupportedException() {
         System.setProperty("os.name", os);
         String invalidOsName = "android";
