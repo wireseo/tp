@@ -7,7 +7,9 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_STUDENT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME_PROF;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalStudents.getTypicalAddressBook;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.EditLoginCommand.EditLoginDescriptor;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
