@@ -12,11 +12,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditStudentCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditLoginCommand.EditLoginDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.student.NameContainsKeywordsPredicate;
 import seedu.address.model.student.Student;
+import seedu.address.testutil.EditLoginDescriptorBuilder;
 import seedu.address.testutil.EditStudentDescriptorBuilder;
 
 /**
@@ -31,6 +34,11 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
 
+    public static final String VALID_USERNAME_STUDENT = "nusstu\\e1234567";
+    public static final String VALID_USERNAME_PROF = "nusstf\\e1234567";
+    public static final String VALID_PASSWORD_1 = "test132";
+    public static final String VALID_PASSWORD_2 = "test133";
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String PHONE_DESC_AMY = " " + PREFIX_TELEGRAM + VALID_PHONE_AMY;
     public static final String PHONE_DESC_BOB = " " + PREFIX_TELEGRAM + VALID_PHONE_BOB;
@@ -41,8 +49,11 @@ public class CommandTestUtil {
     public static final String INVALID_PHONE_DESC = " " + PREFIX_TELEGRAM + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
 
-    public static final EditStudentCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditStudentCommand.EditPersonDescriptor DESC_BOB;
+    public static final EditPersonDescriptor DESC_AMY;
+    public static final EditPersonDescriptor DESC_BOB;
+
+    public static final EditLoginDescriptor DESC_STUDENT;
+    public static final EditLoginDescriptor DESC_PROF;
 
     public static final String EDIT_STUDENT = "-s ";
     public static final String EDIT_LOGIN = "-l ";
@@ -52,6 +63,10 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).build();
         DESC_BOB = new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
+        DESC_STUDENT = new EditLoginDescriptorBuilder().withUsername(VALID_USERNAME_STUDENT)
+                .withPassword(VALID_PASSWORD_1).build();
+        DESC_PROF = new EditLoginDescriptorBuilder().withUsername(VALID_USERNAME_PROF)
+                .withPassword(VALID_PASSWORD_1).build();
     }
 
     /**
