@@ -2,8 +2,10 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.model.login.Username;
+
 public class UserLogin implements ReadOnlyUserLogin {
-    private String username = "";
+    private Username username = new Username();
 
     private String password = "";
 
@@ -21,6 +23,16 @@ public class UserLogin implements ReadOnlyUserLogin {
     }
 
     /**
+     * Creates a {@code UserLogin} with username and password.
+     * @param username
+     * @param password
+     */
+    public UserLogin(Username username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    /**
      * Resets the existing data of this {@code UserPrefs} with {@code newUserPrefs}.
      */
     public void resetData(ReadOnlyUserLogin newUserLogin) {
@@ -28,7 +40,7 @@ public class UserLogin implements ReadOnlyUserLogin {
         setUsername(newUserLogin.getUsername());
         setPassword(newUserLogin.getUserPassword());
     }
-    public String getUsername() {
+    public Username getUsername() {
         return username;
     }
 
@@ -44,7 +56,7 @@ public class UserLogin implements ReadOnlyUserLogin {
         return !password.isEmpty();
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Username username) {
         this.username = username;
     }
 
@@ -54,5 +66,15 @@ public class UserLogin implements ReadOnlyUserLogin {
 
     public boolean isEmpty() {
         return this.username.isEmpty() || this.password.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(" Username: ")
+                .append(getUsername())
+                .append(" Password: ")
+                .append(getUserPassword());
+        return builder.toString();
     }
 }

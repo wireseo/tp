@@ -115,11 +115,12 @@ public class ScraperManager implements Scraper {
             // Authenticate using user-supplied details
             driver.findElement(By.xpath("//button[@class='bp3-button bp3-large']")).click();
 
-            driver.findElement(By.xpath("//input[@id='userNameInput']")).sendKeys(loginInfo.getUsername());
+            driver.findElement(By.xpath("//input[@id='userNameInput']")).sendKeys(
+                    loginInfo.getUsername().getUsername());
             driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys(
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();
-            System.out.println(driver.getPageSource());
+
             /*
              The time out of 5 may need to be adjusted, depending on how we implement the login system
              for Jarvis.

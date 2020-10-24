@@ -9,6 +9,12 @@ public class CliSyntax {
     public static final Prefix PREFIX_NAME = new Prefix("n/");
     public static final Prefix PREFIX_TELEGRAM = new Prefix("t/");
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
+    public static final Prefix PREFIX_USERNAME = new Prefix("u/");
+    public static final Prefix PREFIX_PASSWORD = new Prefix("p/");
+
+    /* Edit Command flags */
+    public static final String EDIT_STUDENT = "-s";
+    public static final String EDIT_LOGIN = "-l";
 
     /* View Command flags */
     public static final String UNGRADED_MISSION = "-um";

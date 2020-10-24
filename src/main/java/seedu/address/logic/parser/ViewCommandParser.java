@@ -64,7 +64,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         }
 
         // switch command to return the respective view commands
-        switch(commandFlag.getFlag()) {
+        switch (commandFlag.getFlag()) {
         case MISSION_DEADLINE:
             return new ViewMissionDeadlineCommand();
 
