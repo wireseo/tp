@@ -17,6 +17,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
+import seedu.address.model.task.Task;
 import seedu.address.storage.Storage;
 
 /**
@@ -83,6 +84,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Quest> getFilteredQuestList() {
         return model.getFilteredQuestList();
+    }
+
+    @Override
+    public ObservableList<Task> getFilteredTaskList() {
+        return model.getFilteredTaskList();
     }
 
     @Override

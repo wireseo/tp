@@ -11,11 +11,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="Address App" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="Jarvis" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
-    <Image url="@/images/address_book_32.png" />
+    <Image url="@/images/jarvis.png" />
   </icons>
   <scene>
     <Scene>
@@ -34,52 +39,138 @@
           </Menu>
         </MenuBar>
 
+        <StackPane styleClass="stack-pane">
+          <HBox prefHeight="100.0" prefWidth="450.0">
+              <VBox prefWidth="100.0">
+                  <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@/images/jarvis.png" backgroundLoading="true"/>
+                      </image>
+                  </ImageView>
+              </VBox>
+
+              <VBox prefWidth="50.0" alignment="BOTTOM_RIGHT">
+                  <ImageView fx:id="sourceAcademy" fitHeight="30.0" layoutX="61.0" layoutY="83.0"
+                             pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleSourceAcademy">
+                      <image>
+                          <Image url="@/images/source_academy.png" backgroundLoading="true"/>
+                      </image>
+                  </ImageView>
+              </VBox>
+
+              <VBox prefWidth="50.0" alignment="BOTTOM_CENTER">
+                  <ImageView fx:id="userGuide" fitHeight="30.0" layoutX="61.0" layoutY="83.0"
+                             pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleUserGuide">
+                      <image>
+                          <Image url="@/images/user_guide.png" backgroundLoading="true"/>
+                      </image>
+                  </ImageView>
+              </VBox>
+
+              <VBox alignment="BOTTOM_RIGHT" translateX="450">
+              <HBox>
+                <VBox>
+                  <Label text="Week 13: " styleClass="date_label"/>
+                </VBox>
+                <VBox>
+                  <Label text="Recursion" styleClass="topic_label"/>
+                </VBox>
+              </HBox>
+              <Label fx:id="date" text="\$date" styleClass="date_label"/>
+            </VBox>
+          </HBox>
+        </StackPane>
+
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10" />
+            <Insets top="5" right="10" left="10"/>
           </padding>
         </StackPane>
 
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
                    minHeight="100" prefHeight="100" maxHeight="100">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10" />
+            <Insets right="10" bottom="5" left="10" />
           </padding>
         </StackPane>
 
-        <VBox fx:id="studentList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <Label text="Student List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+        <TabPane fx:id="tabPane" side="LEFT" rotateGraphic="true" minWidth="-Infinity" prefWidth="680.0"
+                 tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+          <Tab fx:id="studentTab">
+            <graphic>
+              <Group>
+                <Label text="Student" rotate="90"/>
+              </Group>
+            </graphic>
+            <VBox fx:id="studentList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+<!--              <Label text="Student List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+              </padding>
+              <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            </VBox>
+          </Tab>
 
-        <VBox fx:id="missionList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <Label text="Mission List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="missionListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+          <Tab fx:id="missionTab">
+            <graphic>
+              <Group>
+                <Label text="Mission" rotate="90"/>
+              </Group>
+            </graphic>
+            <VBox fx:id="missionList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+<!--              <Label text="Mission List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+              </padding>
+              <StackPane fx:id="missionListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            </VBox>
+          </Tab>
 
-        <VBox fx:id="questList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <Label text="Quest List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="questListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+          <Tab fx:id="questTab">
+            <graphic>
+              <Group>
+                <Label text="Quest" rotate="90"/>
+              </Group>
+            </graphic>
+            <VBox fx:id="questList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+<!--              <Label text="Quest List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+              </padding>
+              <StackPane fx:id="questListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            </VBox>
+          </Tab>
 
-        <!--
-        <VBox fx:id="taskList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <Label text="Task List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
-        -->
+          <Tab fx:id="consultTab">
+            <graphic>
+              <Group>
+                <Label text="Consult" rotate="90"/>
+              </Group>
+            </graphic>
+            <VBox fx:id="consultList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+<!--              <Label text="Consult List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+              </padding>
+              <StackPane fx:id="consultListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            </VBox>
+          </Tab>
+
+          <Tab fx:id="taskTab">
+            <graphic>
+              <Group>
+                <Label text="Task" rotate="90"/>
+              </Group>
+            </graphic>
+            <VBox fx:id="taskList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+<!--              <Label text="Task List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+              </padding>
+              <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            </VBox>
+          </Tab>
+        </TabPane>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
