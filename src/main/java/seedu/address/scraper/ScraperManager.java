@@ -127,11 +127,7 @@ public class ScraperManager implements Scraper {
                     loginInfo.getUserPassword());
             driver.findElement(By.xpath("//span[@id='submitButton']")).click();
 
-            /*
-             The time out of 5 may need to be adjusted, depending on how we implement the login system
-             for Jarvis.
-             */
-            WebDriverWait wait = new WebDriverWait(driver, 5);
+            WebDriverWait wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
             throw new WrongLoginDetailsException();
@@ -258,7 +254,7 @@ public class ScraperManager implements Scraper {
         assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/grading")
                 : "Driver is on wrong page (Grading)";
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
         // Clear filter bar
@@ -304,7 +300,7 @@ public class ScraperManager implements Scraper {
 
         // Navigate to grading page
         driver.findElement(By.xpath("//a[@href='/academy/grading']")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='filterBar']")));
 
         WebElement filterBar = driver.findElement(By.xpath("//input[@id='filterBar']"));
