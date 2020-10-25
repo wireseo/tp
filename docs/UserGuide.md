@@ -341,4 +341,5 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 ### Help (Peirong)
 | Function | Format, Examples |
 | -------- | ---------------- |
-| Provide help | `help` |
+| Provide help with
+program commands | `help` |
