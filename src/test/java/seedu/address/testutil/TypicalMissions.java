@@ -17,7 +17,7 @@ public class TypicalMissions {
     public static final Mission MUSICAL_NOTES = new MissionBuilder().withTitle("Musical Notes")
             .withDeadline("Due: 12th October, 23:59").withIsGraded(true).build();
     public static final Mission REUSE_PAIRS = new MissionBuilder().withTitle("Reuse Pairs")
-            .withDeadline("Due: 18th October, 23:59").withIsGraded(false).build();
+            .withDeadline("Due: 18th October, 23:59").withIsGraded(true).build();
     public static final Mission STREAMS = new MissionBuilder().withTitle("Streams")
             .withDeadline("Due: 20th October, 23:59").withIsGraded(false).build();
     public static final Mission STREAM_ANOMALY = new MissionBuilder().withTitle("Stream Anomaly")
