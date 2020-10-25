@@ -1,11 +1,20 @@
 package seedu.address.ui;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -36,7 +45,19 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private MissionListPanel missionListPanel;
     private QuestListPanel questListPanel;
-    //private TaskListPanel taskListPanel;
+    private TaskListPanel taskListPanel;
+
+    @FXML
+    private Tab studentListTab;
+
+    @FXML
+    private Tab missionListTab;
+
+    @FXML
+    private Tab questListTab;
+
+    @FXML
+    private TabPane tabPane;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -50,10 +71,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane missionListPanelPlaceholder;
 
-    /*
     @FXML
     private StackPane taskListPanelPlaceholder;
-     */
 
     @FXML
     private StackPane questListPanelPlaceholder;
@@ -63,6 +82,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private Label date;
+
+    @FXML
+    private ImageView imageView;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -80,6 +105,8 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        setDate();
     }
 
     public Stage getPrimaryStage() {
@@ -143,6 +170,9 @@ public class MainWindow extends UiPart<Stage> {
 
         questListPanel = new QuestListPanel(logic.getFilteredQuestList());
         questListPanelPlaceholder.getChildren().add(questListPanel.getRoot());
+
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
 
     /**
@@ -155,6 +185,17 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
+    }
+
+    /**
+     * Sets the current date.
+     */
+    private void setDate() {
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedDate = localDate.format(formatter);
+
+        date.setText(formattedDate);
     }
 
     /**
@@ -192,6 +233,31 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Opens Source Academy in the browser.
+     */
+    @FXML
+    private void handleSourceAcademy() {
+        try {
+            Desktop.getDesktop().browse(URI.create("https://sourceacademy.nus.edu.sg/login"));
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    /**
+     * Opens User Guide in the browser.
+     */
+    @FXML
+    private void handleUserGuide() {
+        try {
+            Desktop.getDesktop()
+                    .browse(URI.create("https://ay2021s1-cs2103t-w11-2.github.io/tp/UserGuide.html#quick-start"));
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
@@ -227,6 +293,9 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
+            } else {
+                // Go to student list tab as default
+                tabPane.getSelectionModel().select(studentListTab);
             }
 
             if (commandResult.isExit()) {
