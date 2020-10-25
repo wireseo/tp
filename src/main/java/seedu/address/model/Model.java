@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.beans.PropertyChangeListener;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -280,4 +281,7 @@ public interface Model {
     boolean isQuestInList(String title);
 
     boolean updateQuest(String name);
+
+    //=========== EventSupport ===================================================================================
+    void addPropertyChangeListener(PropertyChangeListener pcv);
 }

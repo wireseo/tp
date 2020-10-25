@@ -2,6 +2,8 @@ package seedu.address.scraper;
 
 import static java.util.Objects.requireNonNull;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,7 @@ import seedu.address.model.student.exceptions.DuplicateStudentException;
 import seedu.address.storage.Storage;
 
 
-public class ScraperManager implements Scraper {
+public class ScraperManager implements Scraper, PropertyChangeListener {
 
     private static final String STUDENT_FILTER_KEY = "STUDIO JOURNAL";
     private static final String MISSION_FILTER_KEY = "MISSION";
@@ -67,7 +69,12 @@ public class ScraperManager implements Scraper {
         } else {
             throw new OsNotSupportedException(operatingSystem);
         }
+    }
 
+    /**
+     * Initializes a new WebDriver.
+     */
+    public void initDriver() {
         // Setup headless browser
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200", "--ignore-certificate-errors");
@@ -79,7 +86,9 @@ public class ScraperManager implements Scraper {
      * @throws WrongLoginDetailsException
      * @throws IOException
      */
-    public void startScraping() throws WrongLoginDetailsException, IOException {
+    public void startScraping() throws IOException {
+        initDriver();
+
         authenticate();
 
         if (!isAuthenticated) {
@@ -104,9 +113,8 @@ public class ScraperManager implements Scraper {
 
     /**
      * Authenticates the user with their supplied emails and password.
-     * @throws WrongLoginDetailsException
      */
-    public void authenticate() throws WrongLoginDetailsException {
+    public void authenticate() {
         // Check if authenticated or login information is empty
         if (isAuthenticated || loginInfo.isEmpty()) {
             return;
@@ -130,17 +138,17 @@ public class ScraperManager implements Scraper {
             WebDriverWait wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
-            throw new WrongLoginDetailsException();
+            return;
         }
+
         this.isAuthenticated = true;
     }
 
     /**
      * Fetches missions from Sourceacademy and saves them to storage.
      * @return a list of missions
-     * @throws WrongLoginDetailsException
      */
-    public List<Mission> getMissions() throws WrongLoginDetailsException {
+    public List<Mission> getMissions() {
         List<Mission> missions = new ArrayList<>();
 
         if (loginInfo.isEmpty()) {
@@ -185,9 +193,8 @@ public class ScraperManager implements Scraper {
     /**
      * Fetches quests from Sourceacademy and saves them to storage.
      * @return returns a list of quests
-     * @throws WrongLoginDetailsException
      */
-    public List<Quest> getQuests() throws WrongLoginDetailsException {
+    public List<Quest> getQuests() {
         List<Quest> quests = new ArrayList<>();
 
         if (loginInfo.isEmpty()) {
@@ -231,9 +238,8 @@ public class ScraperManager implements Scraper {
     /**
      * Fetches students from Sourceacademy and saves them to the model.
      * @return A list of students
-     * @throws WrongLoginDetailsException
      */
-    public List<Student> getStudents() throws WrongLoginDetailsException {
+    public List<Student> getStudents() {
         List<Student> students = new ArrayList<>();
 
         if (loginInfo.isEmpty()) {
@@ -285,9 +291,8 @@ public class ScraperManager implements Scraper {
 
     /**
      * Fetches the ungraded missions that have just recently passed.
-     * @throws WrongLoginDetailsException
      */
-    public void getUngradedMissionsAndQuests() throws WrongLoginDetailsException {
+    public void getUngradedMissionsAndQuests() {
         if (loginInfo.isEmpty()) {
             return;
         }
@@ -405,5 +410,19 @@ public class ScraperManager implements Scraper {
 
     public void shutDown() {
         driver.quit();
+    }
+
+    /**
+     * Fires the startScraping method when UserLogin is modified.
+     * @param evt the event that is fired
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        try {
+            loginInfo = (UserLogin) evt.getNewValue();
+            startScraping();
+        } catch (IOException e) {
+            return;
+        }
     }
 }

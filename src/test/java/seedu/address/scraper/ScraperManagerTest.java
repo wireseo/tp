@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.OsNotSupportedException;
-import seedu.address.commons.exceptions.WrongLoginDetailsException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserLogin;
@@ -113,6 +112,7 @@ public class ScraperManagerTest {
         ScraperManager scraperManager = new ScraperManager(
                 TypicalManagers.getUserLogin(), TypicalManagers.getModel(), TypicalManagers.getStorage()
         );
+        scraperManager.initDriver();
         scraperManager.shutDown();
 
         // Check if the System property "webdriver.chrome.driver" is set correctly.
@@ -136,6 +136,7 @@ public class ScraperManagerTest {
         ScraperManager scraperManager = new ScraperManager(
                 TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
                 TypicalManagers.getModel(), TypicalManagers.getStorage());
+        scraperManager.initDriver();
         Assertions.assertNotEquals(null, scraperManager.getDriver());
         scraperManager.shutDown();
     }
@@ -145,8 +146,7 @@ public class ScraperManagerTest {
     // webDriver is allocated correctly.
 
     @Test
-    public void authenticate_validLoginDetails_loginSuccess()
-            throws WrongLoginDetailsException, OsNotSupportedException {
+    public void authenticate_validLoginDetails_loginSuccess() throws OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
             return;
         }
@@ -155,6 +155,7 @@ public class ScraperManagerTest {
         ScraperManager scraperManager = new ScraperManager(
                 TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
                 TypicalManagers.getModel(), TypicalManagers.getStorage());
+        scraperManager.initDriver();
         scraperManager.authenticate();
         WebDriver webDriver = scraperManager.getDriver();
 
@@ -167,8 +168,7 @@ public class ScraperManagerTest {
 
     // test getMissions
     @Test
-    public void getMissions_validLoginDetails_missionsAddedToModel()
-            throws WrongLoginDetailsException, OsNotSupportedException {
+    public void getMissions_validLoginDetails_missionsAddedToModel() throws OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
             return;
         }
@@ -178,6 +178,7 @@ public class ScraperManagerTest {
         ScraperManager scraperManager = new ScraperManager(
                 TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()), model,
                 TypicalManagers.getStorage());
+        scraperManager.initDriver();
         scraperManager.getMissions();
         ObservableList<Mission> missionObservableList = model.getAddressBook().getMissionList();
 
@@ -194,8 +195,7 @@ public class ScraperManagerTest {
 
     // test getStudents
     @Test
-    public void getStudents_validLoginDetails_missionsAddedToModel()
-            throws WrongLoginDetailsException, OsNotSupportedException {
+    public void getStudents_validLoginDetails_missionsAddedToModel() throws OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
             return;
         }
@@ -206,6 +206,7 @@ public class ScraperManagerTest {
         ScraperManager scraperManager = new ScraperManager(
                 TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
                 model, TypicalManagers.getStorage());
+        scraperManager.initDriver();
         scraperManager.getMissions();
         ObservableList<Student> studentList = model.getAddressBook().getStudentList();
 
@@ -236,8 +237,7 @@ public class ScraperManagerTest {
     }
 
     @Test
-    public void getQuests_validLoginDetails_questsAddedToModel()
-            throws WrongLoginDetailsException, OsNotSupportedException {
+    public void getQuests_validLoginDetails_questsAddedToModel() throws OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
             return;
         }
@@ -247,6 +247,7 @@ public class ScraperManagerTest {
         ScraperManager scraperManager = new ScraperManager(
                 TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
                 model, TypicalManagers.getStorage());
+        scraperManager.initDriver();
         scraperManager.getQuests();
         ObservableList<Quest> questObservableList = model.getAddressBook().getQuestList();
 
