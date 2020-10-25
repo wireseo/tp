@@ -32,8 +32,6 @@ public class ViewMissionDeadlineCommandTest {
                 TypicalManagers.getUserLogin());
     }
 
-    // need to add a test case which asserts that the MissionList is empty, and not the command being invalid.
-    // however we need to have methods that filter the mission list in the first place.
     @Test
     public void execute_noFilters_success() {
         Command command = new ViewMissionDeadlineCommand();
