@@ -3,10 +3,12 @@ package seedu.address.scraper;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Optional;
-import javafx.collections.ObservableList;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;

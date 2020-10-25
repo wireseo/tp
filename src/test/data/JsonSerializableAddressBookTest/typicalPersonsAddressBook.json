@@ -1,0 +1,34 @@
+{
+  "students": [ {
+    "name": "Alice Pauline",
+    "telegram": "94351253",
+    "email": "alice@gmail.com"
+  }, {
+    "name": "Benson Meier",
+    "telegram": "98765432",
+    "email": "johnd@example.com"
+  }, {
+    "name": "Carl Kurz",
+    "telegram": "95352563",
+    "email": "heinz@example.com"
+  }, {
+    "name": "Daniel Meier",
+    "telegram": "87652533",
+    "email": "cornelia@example.com"
+  }, {
+    "name": "Elle Meyer",
+    "telegram": "9482224",
+    "email": "werner@example.com"
+  }, {
+    "name": "Fiona Kunz",
+    "telegram": "9482427",
+    "email": "lydia@example.com"
+  }, {
+    "name": "George Best",
+    "telegram": "9482442",
+    "email": "anna@example.com"
+  } ],
+  "missions": [ ],
+  "quests": [ ],
+  "tasks": [ ]
+}
