@@ -51,6 +51,10 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
    ![Ui](images/userguide/Jarvis.png)
 
+1. Upon start up, you will be prompted to log in to unlock Jarvis's
+ full set of features.
+ Please refer to the logging in segment below to complete your log in.
+ 
 1. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
    * `view -s:  Lists all students. `
@@ -60,6 +64,47 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
    * `exit : Exits the app.`
 
 1. Refer to the Features below for details of each command.
+
+--------------------------------------------------------------------------------------------------------------------
+## Navigating Jarvis
+
+Jarvis has a Graphical User Interface centered around a command input box on the top, surrounded by a light green
+line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
+this box.
+
+![Ui](images/userguide/Jarvis.png)
+
+The core features are based on Students, Consultations, Missions, Quests and Tasks.
+Each core feature has a tab for the organisation of its information.
+
+To navigate the features, there are 2 methods which could be used individually, or mixed. We have designed
+this flexibility with you, the user in mind.
+ 1. Only inputting commands into the box annotated "Enter command here..".
+ 1. Clicking on the tabs.
+ 
+
+
+ 
+
+--------------------------------------------------------------------------------------------------------------------
+## Logging in
+
+The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
+ 
+![NoLoginDetails](images/userguide/noLoginDetails.PNG)
+
+To log in, simply edit your log in details with the following command: 
+<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
+<br>Examples:
+* `edit -l u/nusstu\e1234567 p/testpassword`
+
+An example of the command being inputted:
+
+![LoginUsernamePasswordInput](images/userguide/loginUsernamePasswordInput.PNG)
+
+Within the green rectangle box, Jarvis will notify you if the log in was successful. Upon success, all information from
+ sourceacademy will be visible
+ to you.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -105,6 +150,9 @@ Shows a message explaining how to access the help page.
 
 #### 2-1. Adding Todos: `add -t` (Jun Jie)
 Adds a  simple todo with a todo description.
+
+![AddTodo](images/userguide/addTodo.PNG)
+
 <br>**Format: `add -t DESCRIPTION`**
 <br>Examples:
 * `add -t Clear the bin`
@@ -112,6 +160,9 @@ Adds a  simple todo with a todo description.
 
 #### 2-2. Adding Events: `add -e` (Jun Jie)
 Adds an event with an event description to attend at a specific date and time.
+
+![AddEvent](images/userguide/addEvent.PNG)
+
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
@@ -119,6 +170,9 @@ Adds an event with an event description to attend at a specific date and time.
 
 #### 2-3. Adding Deadlines: `add -d` (Jun Jie)
 Adds a deadline with an deadline description to complete by a specific date and time.
+
+![AddDeadline](images/userguide/addDeadline.PNG)
+
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
@@ -159,6 +213,9 @@ information which corresponds to that tag.
 ### 4. Deleting Information: `delete`
 #### 4-1. Deleting Tasks: `delete -t` (Jun Jie)
 Deletes a task based on the `TASK_ID` specified by the user.
+
+![DeleteTask](images/userguide/deleteTask.PNG)
+
 <br>**Format:`delete -t TASK_ID`**
 <br>Examples:
 * `delete -t T3`
@@ -183,8 +240,15 @@ Shows a list of Mastery Checks with id numbers which can be entered by the user 
    
 ### 5. Viewing Information: `view ` 
 #### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
-Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all
- details (contact information, consultation requests and studio participation marks) of a specific student.
+Shows a list of all students under the tutor in JARVIS.
+Please take note of the command inputted into the command box to understand how the respective commands are inputted.
+
+![ViewAllStudentsCommand](images/userguide/viewAllStudents.PNG)
+
+If a student name is entered after the command, Jarvis shows one specific student only.
+
+![ViewOneStudentCommand](images/userguide/viewOneStudent.PNG)
+
 <br>**Format: `view -s [NAME]`**
 
 
@@ -235,17 +299,33 @@ Shows all upcoming MC sessions. If a student name is entered after the command, 
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
 
+You may also click on the `Mission` tab to do so.
+
+![FetchMission](images/userguide/fetchMission.PNG)
+
 #### 5-9. Viewing deadline for quests: `view -q` (Wiline)
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
+You may also click on the `Quest` tab to do so.
+
+![FetchQuest](images/userguide/fetchQuest.PNG)
+
 #### 5-10. Viewing ungraded missions: `view -um` (Wiline)
 Shows the missions that the user has not graded.
+
+![ViewUngradedMissions](images/userguide/viewUngradedMissions.PNG)
+
 <br>**Format: `view -um`**
 
 #### 5-11. Viewing ungraded quests: `view -uq` (Wiline)
 Shows the quests that the user has not graded.
+
+![ViewUngradedQuests](images/userguide/viewUngradedQuests.PNG)
+
 <br>**Format: `view -uq`**
+
+
 
 #### 5-12. Viewing studio participation marks of a specific student: `view -p` (Zhen Teng)
 Shows the studio participation marks of a student.
