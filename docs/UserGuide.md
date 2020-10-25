@@ -232,7 +232,7 @@ Shows all upcoming MC sessions. If a student name is entered after the command, 
 <br>**Format: `view -mcu [NAME]`**
 <br>Examples:
 * `view -mcu`
-* `view -mcu John Doe`* `
+* `view -mcu John Doe`
 
 #### 5-8. Viewing deadline for missions: `view -m` (Wiline)
 Shows the deadline for the current mission(s).
@@ -250,7 +250,7 @@ Shows the missions that the user has not graded.
 Shows the quests that the user has not graded.
 <br>**Format: `view -uq`**
 
-#### 5-12. Viewing studio participation marks of a specific student. (Zhen Teng)
+#### 5-12. Viewing studio participation marks of a specific student: `view -p` (Zhen Teng)
 Shows the studio participation marks of a student.
 <br>**Format: `view -p [Name]`**
 <br>Examples:
