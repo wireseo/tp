@@ -61,7 +61,8 @@ public class Mission {
 
         Mission otherMission = (Mission) other;
         return otherMission.getTitle().equals(getTitle())
-                && otherMission.getDeadline().equals(getDeadline());
+                && otherMission.getDeadline().equals(getDeadline())
+                && otherMission.getIsGraded() == getIsGraded();
 
     }
 

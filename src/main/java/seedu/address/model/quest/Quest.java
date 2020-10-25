@@ -60,7 +60,8 @@ public class Quest {
 
         Quest otherQuest = (Quest) other;
         return otherQuest.getTitle().equals(getTitle())
-                && otherQuest.getDeadline().equals(getDeadline());
+                && otherQuest.getDeadline().equals(getDeadline())
+                && otherQuest.getIsGraded() == getIsGraded();
 
     }
 

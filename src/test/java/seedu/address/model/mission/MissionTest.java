@@ -2,47 +2,55 @@ package seedu.address.model.mission;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION_COPY;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION_DEADLINE;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION_DIFF;
-import static seedu.address.testutil.TypicalMissions.TEST_MISSION_TITLE;
+import static seedu.address.testutil.TypicalMissions.FRACTAL_DIMENSIONS;
+import static seedu.address.testutil.TypicalMissions.MUSICAL_NOTES;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.MissionBuilder;
 
 class MissionTest {
 
     @Test
     void getTitle() {
-        assertTrue(TEST_MISSION.getTitle().equals(TEST_MISSION_TITLE));
+        assertTrue(FRACTAL_DIMENSIONS.getTitle().equals("Fractal Dimensions"));
     }
 
     @Test
     void getDeadline() {
-        assertTrue(TEST_MISSION.getDeadline().equals(TEST_MISSION_DEADLINE));
+        assertTrue(FRACTAL_DIMENSIONS.getDeadline().equals("Due: 26th August, 23:59"));
     }
 
     @Test
     void testEquals() {
         // same values -> return true
-        assertTrue(TEST_MISSION.equals(TEST_MISSION_COPY));
+        assertTrue(FRACTAL_DIMENSIONS.equals(FRACTAL_DIMENSIONS));
 
         // same object -> return true
-        assertTrue(TEST_MISSION.equals(TEST_MISSION));
+        assertTrue(FRACTAL_DIMENSIONS.equals(FRACTAL_DIMENSIONS));
 
         // null -> returns false
-        assertFalse(TEST_MISSION.equals(null));
+        assertFalse(FRACTAL_DIMENSIONS.equals(null));
 
         // different type -> returns false
-        assertFalse(TEST_MISSION.equals(5));
+        assertFalse(FRACTAL_DIMENSIONS.equals(5));
 
         // different mission -> returns false
-        assertFalse(TEST_MISSION.equals(TEST_MISSION_DIFF));
+        assertFalse(FRACTAL_DIMENSIONS.equals(MUSICAL_NOTES));
+
+        // different deadline -> returns false
+        Mission editedFractualDimensions = new MissionBuilder(FRACTAL_DIMENSIONS)
+                .withDeadline("Due: 20th October, 23:59").build();
+        assertFalse(editedFractualDimensions.equals(FRACTAL_DIMENSIONS));
+
+        // different isGraded -> return false
+        Mission editedMusicalNotes = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
+        assertFalse(editedMusicalNotes.equals(MUSICAL_NOTES));
     }
 
     @Test
     void testToString() {
-        String missionTestToString = TEST_MISSION.getTitle() + " Deadline: " + TEST_MISSION.getDeadline();
-        assertTrue(TEST_MISSION.toString().equals(missionTestToString));
+        String missionTestToString = FRACTAL_DIMENSIONS.getTitle() + " Deadline: " + FRACTAL_DIMENSIONS.getDeadline();
+        assertTrue(FRACTAL_DIMENSIONS.toString().equals(missionTestToString));
     }
 }
