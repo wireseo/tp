@@ -3,6 +3,8 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,8 @@ public class ModelManager implements Model {
     private final FilteredList<Quest> filteredQuests;
     private final FilteredList<Task> filteredTasks;
 
+    private final PropertyChangeSupport support;
+
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
@@ -51,6 +55,8 @@ public class ModelManager implements Model {
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+
+        support = new PropertyChangeSupport(this);
     }
 
     public ModelManager() {
@@ -98,9 +104,10 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setUserLogin(ReadOnlyUserLogin userLogin) {
-        requireNonNull(userLogin);
-        this.userLogin.resetData(userLogin);
+    public void setUserLogin(ReadOnlyUserLogin editedUserLogin) {
+        requireNonNull(editedUserLogin);
+        support.firePropertyChange("loginDetails", userLogin, editedUserLogin);
+        this.userLogin.resetData(editedUserLogin);
     }
 
     @Override
@@ -345,4 +352,8 @@ public class ModelManager implements Model {
         return addressBook.updateQuest(name);
     }
 
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
 }
