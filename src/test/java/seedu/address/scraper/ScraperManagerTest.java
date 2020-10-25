@@ -130,7 +130,7 @@ public class ScraperManagerTest {
     @Test
     public void constructor_validLoginDetails_driverInstantiated() throws OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
-            Assertions.assertTrue(true);
+            return;
         }
 
         System.setProperty("os.name", os);
@@ -149,7 +149,7 @@ public class ScraperManagerTest {
     public void authenticate_validLoginDetails_loginSuccess()
             throws WrongLoginDetailsException, OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
-            Assertions.assertTrue(true);
+            return;
         }
 
         System.setProperty("os.name", os);
@@ -171,7 +171,7 @@ public class ScraperManagerTest {
     public void getMissions_validLoginDetails_missionsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
-            Assertions.assertTrue(true);
+            return;
         }
 
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
@@ -198,7 +198,7 @@ public class ScraperManagerTest {
     public void getStudents_validLoginDetails_missionsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
-            Assertions.assertTrue(true);
+            return;
         }
 
         System.setProperty("os.name", os);
@@ -240,7 +240,7 @@ public class ScraperManagerTest {
     public void getQuests_validLoginDetails_questsAddedToModel()
             throws WrongLoginDetailsException, OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
-            Assertions.assertTrue(true);
+            return;
         }
 
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
@@ -266,7 +266,7 @@ public class ScraperManagerTest {
     @Test
     public void startScraping_invalidLoginDetails() throws OsNotSupportedException {
         if (USER_LOGIN.isEmpty()) {
-            Assertions.assertTrue(true);
+            return;
         }
 
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
