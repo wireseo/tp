@@ -3,11 +3,13 @@ package seedu.address.scraper;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Optional;
-import javafx.collections.ObservableList;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -130,9 +132,8 @@ public class ScraperManagerTest {
     public void constructor_validLoginDetails_driverInstantiated() throws OsNotSupportedException {
         System.setProperty("os.name", os);
         ScraperManager scraperManager = new ScraperManager(
-                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword())
-                , TypicalManagers.getModel(),
-                TypicalManagers.getStorage());
+                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
+                TypicalManagers.getModel(), TypicalManagers.getStorage());
         Assertions.assertNotEquals(null, scraperManager.getDriver());
         scraperManager.shutDown();
     }
@@ -146,9 +147,8 @@ public class ScraperManagerTest {
             throws WrongLoginDetailsException, OsNotSupportedException {
         System.setProperty("os.name", os);
         ScraperManager scraperManager = new ScraperManager(
-                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword())
-                , TypicalManagers.getModel(),
-                TypicalManagers.getStorage());
+                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
+                TypicalManagers.getModel(), TypicalManagers.getStorage());
         scraperManager.authenticate();
         WebDriver webDriver = scraperManager.getDriver();
 
@@ -166,8 +166,8 @@ public class ScraperManagerTest {
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());
         ScraperManager scraperManager = new ScraperManager(
-                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword())
-                , model, TypicalManagers.getStorage());
+                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()), model,
+                TypicalManagers.getStorage());
         scraperManager.getMissions();
         ObservableList<Mission> missionObservableList = model.getAddressBook().getMissionList();
 
@@ -191,8 +191,8 @@ public class ScraperManagerTest {
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());
         ScraperManager scraperManager = new ScraperManager(
-                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword())
-                , model, TypicalManagers.getStorage());
+                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
+                model, TypicalManagers.getStorage());
         scraperManager.getMissions();
         ObservableList<Student> studentList = model.getAddressBook().getStudentList();
 
@@ -229,8 +229,8 @@ public class ScraperManagerTest {
         Model model = new ModelManager(TypicalStudents.getTypicalAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());
         ScraperManager scraperManager = new ScraperManager(
-                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword())
-                , model, TypicalManagers.getStorage());
+                TypicalManagers.getPopUserLogin(USER_LOGIN.getUsername(), USER_LOGIN.getUserPassword()),
+                model, TypicalManagers.getStorage());
         scraperManager.getQuests();
         ObservableList<Quest> questObservableList = model.getAddressBook().getQuestList();
 
