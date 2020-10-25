@@ -364,7 +364,7 @@ public class ScraperManager implements Scraper {
             }
         }
 
-        logger.info("Completed getting ungraded qeusts");
+        logger.info("Completed getting ungraded quests");
     }
 
     /**
