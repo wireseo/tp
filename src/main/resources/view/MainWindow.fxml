@@ -67,7 +67,7 @@
                   </ImageView>
               </VBox>
 
-              <VBox alignment="BOTTOM_RIGHT" translateX="450">
+              <VBox alignment="BOTTOM_CENTER" translateX="400">
               <HBox>
                 <VBox>
                   <Label text="Week 13: " styleClass="date_label"/>
