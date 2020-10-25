@@ -106,11 +106,7 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
 
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-        String formattedDate = localDate.format(formatter);
-
-        date.setText(formattedDate);
+        setDate();
     }
 
     public Stage getPrimaryStage() {
@@ -189,6 +185,17 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
+    }
+
+    /**
+     * Sets the current date.
+     */
+    private void setDate() {
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedDate = localDate.format(formatter);
+
+        date.setText(formattedDate);
     }
 
     /**
