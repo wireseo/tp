@@ -81,6 +81,12 @@ public class ScraperManager implements Scraper {
      */
     public void startScraping() throws WrongLoginDetailsException, IOException {
         authenticate();
+
+        if (!isAuthenticated) {
+            shutDown();
+            return;
+        }
+
         List<Mission> missions = getMissions();
         List<Quest> quests = getQuests();
         List<Student> students = new ArrayList<>();

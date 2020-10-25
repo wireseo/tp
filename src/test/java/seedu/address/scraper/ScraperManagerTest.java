@@ -3,13 +3,10 @@ package seedu.address.scraper;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Optional;
-
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-
-import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -26,7 +23,7 @@ import seedu.address.testutil.TypicalStudents;
 
 public class ScraperManagerTest {
 
-    private static String os = null;
+    private static String os = System.getProperty("os.name");
     private static final UserLogin USER_LOGIN = getLoginDetails();
 
     /**
@@ -80,11 +77,6 @@ public class ScraperManagerTest {
         return true;
     }
 
-    @BeforeAll
-    public static void initialize() {
-        os = System.getProperty("os.name");
-    }
-
     @Test
     public void constructor_nullUserLogin_throwsNullPointerException() {
         System.setProperty("os.name", os);
@@ -108,7 +100,7 @@ public class ScraperManagerTest {
 
     // glass box test case
     // Unable to simulate the separate Os's and their web driver set-up as the file paths are not
-    // present for the Chrom object to be instantiated, even after os.name is set.
+    // present for the Chrome object to be instantiated, even after os.name is set.
     // this test case only tests if the web driver is correctly allocated for the runtime environment os,
     // it does not test if the web driver is correctly allocated for all OSes.
     @Test
