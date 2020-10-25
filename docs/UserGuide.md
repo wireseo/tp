@@ -89,7 +89,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 **Notes about Jarvis' relationship with Sourceacademy:** (Peirong) <br>
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
-* LUMInus username and passwords will be stored in plaintext.
+* Luminus username and passwords will be stored in plaintext.
 </div>
 
 ### 1. Viewing help : `help` (Zhen Teng)
