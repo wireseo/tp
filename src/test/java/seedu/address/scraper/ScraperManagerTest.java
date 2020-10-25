@@ -104,9 +104,14 @@ public class ScraperManagerTest {
     // this test case only tests if the web driver is correctly allocated for the runtime environment os,
     // it does not test if the web driver is correctly allocated for all OSes.
     @Test
-    public void constructor_supportedOs_webdriverFieldSetSuccess() {
+    public void constructor_supportedOs_webdriverFieldSetSuccess() throws OsNotSupportedException {
         System.setProperty("os.name", os);
         final String operatingSystem = System.getProperty("os.name").toUpperCase();
+
+        ScraperManager scraperManager = new ScraperManager(
+                TypicalManagers.getUserLogin(), TypicalManagers.getModel(), TypicalManagers.getStorage()
+        );
+        scraperManager.shutDown();
 
         // Check if the System property "webdriver.chrome.driver" is set correctly.
         String webDriver = System.getProperty("webdriver.chrome.driver");
