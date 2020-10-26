@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -115,6 +116,11 @@ public class AddressBookTest {
 
         @Override
         public ObservableList<Task> getTaskList() {
+            return null;
+        }
+
+        @Override
+        public ObservableList<Consultation> getConsultationList() {
             return null;
         }
     }

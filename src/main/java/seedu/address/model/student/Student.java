@@ -2,12 +2,7 @@ package seedu.address.model.student;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
-
-import seedu.address.model.Consultation;
 
 /**
  * Represents a Student in the address book.
@@ -22,7 +17,6 @@ public class Student {
 
     // Field to be used in the future for editing student participation levels
     private ParticipationLevel participationLevel;
-    private List<Consultation> consultations = new ArrayList<>();
 
 
     /**
@@ -35,18 +29,6 @@ public class Student {
         this.email = email;
     }
 
-    /**
-     * Every field must be present and not null. This constructor contains consultations.
-     */
-    public Student(Name name, Telegram telegram, Email email,
-                   List<Consultation> consultations) {
-        requireAllNonNull(name, telegram, email, consultations);
-        this.name = name;
-        this.telegram = telegram;
-        this.email = email;
-        this.consultations.addAll(consultations);
-    }
-
     public Name getName() {
         return name;
     }
@@ -57,14 +39,6 @@ public class Student {
 
     public Email getEmail() {
         return email;
-    }
-
-    /**
-     * Returns an immutable consultation list, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public List<Consultation> getConsultations() {
-        return Collections.unmodifiableList(consultations);
     }
 
     /**
@@ -98,14 +72,13 @@ public class Student {
         Student otherStudent = (Student) other;
         return otherStudent.getName().equals(getName())
                 && otherStudent.getTelegram().equals(getTelegram())
-                && otherStudent.getEmail().equals(getEmail())
-                && otherStudent.getConsultations().equals(getConsultations());
+                && otherStudent.getEmail().equals(getEmail());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, telegram, email, consultations);
+        return Objects.hash(name, telegram, email);
     }
 
     @Override
@@ -115,9 +88,7 @@ public class Student {
                 .append(" Telegram: ")
                 .append(getTelegram())
                 .append(" Email: ")
-                .append(getEmail())
-                .append(" Consultations: ")
-                .append(getConsultations());
+                .append(getEmail());
         return builder.toString();
     }
 

@@ -6,7 +6,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -15,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -36,6 +36,7 @@ public class ModelManager implements Model {
     private final FilteredList<Mission> filteredMissions;
     private final FilteredList<Quest> filteredQuests;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Consultation> filteredConsultations;
 
     private final PropertyChangeSupport support;
 
@@ -55,7 +56,7 @@ public class ModelManager implements Model {
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
-
+        filteredConsultations = new FilteredList<>(this.addressBook.getConsultationList());
         support = new PropertyChangeSupport(this);
     }
 
@@ -177,6 +178,19 @@ public class ModelManager implements Model {
         addressBook.setMissions(missions);
     }
 
+    @Override
+    public boolean isMissionInList(String title) {
+        assert title.length() > 0 : "No mission title provided";
+        return addressBook.isMissionInList(title);
+    }
+
+    @Override
+    public boolean updateMission(String name) {
+        assert name.length() > 0 : "No mission title provided";
+        return addressBook.updateMission(name);
+    }
+
+
     //=========== Filtered Mission List Accessors =============================================================
     @Override
     public void updateMissionsList(Predicate<Mission> predicate) {
@@ -253,6 +267,18 @@ public class ModelManager implements Model {
                 && filteredStudents.equals(other.filteredStudents);
     }
 
+    @Override
+    public boolean isQuestInList(String title) {
+        assert title.length() > 0 : "No quest title provided";
+        return addressBook.isQuestInList(title);
+    }
+
+    @Override
+    public boolean updateQuest(String name) {
+        assert name.length() > 0 : "No quest title provided";
+        return addressBook.updateQuest(name);
+    }
+
     //============================== Task ====================================================================
     @Override
     public boolean hasTodo(Todo todo) {
@@ -321,37 +347,17 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
-        List<Consultation> allConsultations = new ArrayList<Consultation>();
-        addressBook.getStudentList().forEach(student -> student.getConsultations().stream().filter(predicate)
-                .forEach(consultation -> allConsultations.add(consultation)));
-        return allConsultations;
+    public ObservableList<Consultation> getFilteredConsultationsList() {
+        return filteredConsultations;
     }
 
     @Override
-    public boolean isMissionInList(String title) {
-        assert title.length() > 0 : "No mission title provided";
-        return addressBook.isMissionInList(title);
+    public void updateFilteredConsultationsList(Predicate<Consultation> predicate) {
+        requireNonNull(predicate);
+        filteredConsultations.setPredicate(predicate);
     }
 
-    @Override
-    public boolean updateMission(String name) {
-        assert name.length() > 0 : "No mission title provided";
-        return addressBook.updateMission(name);
-    }
-
-    @Override
-    public boolean isQuestInList(String title) {
-        assert title.length() > 0 : "No quest title provided";
-        return addressBook.isQuestInList(title);
-    }
-
-    @Override
-    public boolean updateQuest(String name) {
-        assert name.length() > 0 : "No quest title provided";
-        return addressBook.updateQuest(name);
-    }
-
+    //========================= PropertyChangeListener ===================================================
     @Override
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
