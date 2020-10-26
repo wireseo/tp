@@ -3,6 +3,7 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -11,12 +12,15 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.consultation.Consultation;
 
 
+/**
+ * Panel containing the list of consultations.
+ */
 public class ConsultationListPanel extends UiPart<Region> {
 
     private static final String FXML = "ConsultationListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ConsultationListPanel.class);
 
-    @javafx.fxml.FXML
+    @FXML
     private ListView<Consultation> consultationListView;
 
     /**
@@ -27,9 +31,12 @@ public class ConsultationListPanel extends UiPart<Region> {
 
         Label emptyListLabel = new Label("No consultations");
         emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
+        if (consultationListView == null) {
+            consultationListView = new ListView<Consultation>();
+        }
         consultationListView.setPlaceholder(emptyListLabel);
         consultationListView.setItems(consultationList);
-        consultationListView.setCellFactory(listView -> new ConsultationListPanel.ConsultationListViewCell());
+        consultationListView.setCellFactory(listView -> new ConsultationListViewCell());
     }
 
     /**
