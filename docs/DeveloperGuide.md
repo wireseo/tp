@@ -248,8 +248,8 @@ interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
 The View Task features involve viewing 4 categories of tasks which work similarly to the above as well. We can choose
 to:
 * View all `Task` in general,
-* View all `Todo`, 
-* View all `Event`, or 
+* View all `Todo`,
+* View all `Event`, or
 * View all `Deadline`.
 
 ### View Consultations Feature (Eryn)

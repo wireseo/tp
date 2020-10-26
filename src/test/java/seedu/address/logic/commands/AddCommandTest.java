@@ -19,12 +19,12 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.Consultation;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserLogin;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserLogin;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -216,17 +216,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Consultation> getFilteredConsultationsList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredConsultationsList(Predicate<Consultation> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addMission(Mission mission) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setMissions(List<Mission> missions) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
