@@ -32,6 +32,8 @@ public class TaskCard extends UiPart<Region> {
     private Label id;
     @FXML
     private Label dateTime;
+    @FXML
+    private Label taskType;
 
     /**
      * Creates a {@code TaskCard} with the given {@code Task}.
@@ -41,7 +43,23 @@ public class TaskCard extends UiPart<Region> {
         this.task = task;
         id.setText(task.getTaskId());
         description.setText(task.getDescription());
-        dateTime.setText(task.getPossibleDateTime(task));
+        dateTime.setText(task.getFormattedPossibleDateTime(task));
+        taskType.setText(getTaskType(task));
+        taskType.setStyle("-fx-text-fill: rgb(72,184,158); -fx-font-size: 10px;");
+    }
+
+    public String getTaskType(Task task) {
+        String type = Task.getType(task);
+        switch(type) {
+        case "T":
+            return "TODO";
+        case "E":
+            return "EVENT";
+        case "D":
+            return "DEADLINE";
+        default:
+            return "task";
+        }
     }
 
     @Override
