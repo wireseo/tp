@@ -173,6 +173,18 @@ public class ModelManager implements Model {
         addressBook.setMissions(missions);
     }
 
+    @Override
+    public boolean isMissionInList(String title) {
+        assert title.length() > 0 : "No mission title provided";
+        return addressBook.isMissionInList(title);
+    }
+
+    @Override
+    public boolean updateMission(String name) {
+        assert name.length() > 0 : "No mission title provided";
+        return addressBook.updateMission(name);
+    }
+
 
     //=========== Filtered Mission List Accessors =============================================================
     @Override
@@ -250,6 +262,18 @@ public class ModelManager implements Model {
                 && filteredStudents.equals(other.filteredStudents);
     }
 
+    @Override
+    public boolean isQuestInList(String title) {
+        assert title.length() > 0 : "No quest title provided";
+        return addressBook.isQuestInList(title);
+    }
+
+    @Override
+    public boolean updateQuest(String name) {
+        assert name.length() > 0 : "No quest title provided";
+        return addressBook.updateQuest(name);
+    }
+
     //============================== Task ====================================================================
     @Override
     public boolean hasTodo(Todo todo) {
@@ -318,11 +342,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
-        return null; // TODO: implement this
-    }
-
-    @Override
     public ObservableList<Consultation> getFilteredConsultationsList() {
         return filteredConsultations;
     }
@@ -332,29 +351,4 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredConsultations.setPredicate(predicate);
     }
-
-    @Override
-    public boolean isMissionInList(String title) {
-        assert title.length() > 0 : "No mission title provided";
-        return addressBook.isMissionInList(title);
-    }
-
-    @Override
-    public boolean updateMission(String name) {
-        assert name.length() > 0 : "No mission title provided";
-        return addressBook.updateMission(name);
-    }
-
-    @Override
-    public boolean isQuestInList(String title) {
-        assert title.length() > 0 : "No quest title provided";
-        return addressBook.isQuestInList(title);
-    }
-
-    @Override
-    public boolean updateQuest(String name) {
-        assert name.length() > 0 : "No quest title provided";
-        return addressBook.updateQuest(name);
-    }
-
 }

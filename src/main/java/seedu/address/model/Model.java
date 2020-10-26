@@ -268,14 +268,12 @@ public interface Model {
      */
     void updateQuestsList(Predicate<Quest> predicate);
 
-    ObservableList<Consultation> getFilteredConsultationsList();
-
-    void updateFilteredConsultationsList(Predicate<Consultation> predicate);
-
     /**
      * Returns an unmodifiable view of the filtered consultation list.
      */
-    List<Consultation> getConsultations(Predicate<Consultation> predicate);
+    ObservableList<Consultation> getFilteredConsultationsList();
+
+    void updateFilteredConsultationsList(Predicate<Consultation> predicate);
 
     boolean isMissionInList(String title);
 
