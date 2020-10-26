@@ -41,7 +41,7 @@ public class TaskCard extends UiPart<Region> {
         this.task = task;
         id.setText(task.getTaskId());
         description.setText(task.getDescription());
-        dateTime.setText(task.getPossibleDateTime(task));
+        dateTime.setText(task.getFormattedPossibleDateTime(task));
     }
 
     @Override

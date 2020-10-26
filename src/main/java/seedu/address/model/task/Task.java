@@ -20,7 +20,7 @@ public abstract class Task {
         taskNum++;
     }
 
-    public String getPossibleDateTime(Task task) {
+    public String getUnformattedPossibleDateTime(Task task) {
         String type = getType(task);
 
         if (type.equals(TO_ADD_EVENT)) {
@@ -30,6 +30,22 @@ public abstract class Task {
         } else if (type.equals(TO_ADD_DEADLINE)) {
             Deadline taskDeadline = (Deadline) task;
             return taskDeadline.getUnformattedDateTime();
+
+        } else { // all other task types have no date time attributes
+            return "-";
+        }
+    }
+
+    public String getFormattedPossibleDateTime(Task task) {
+        String type = getType(task);
+
+        if (type.equals(TO_ADD_EVENT)) {
+            Event taskEvent = (Event) task;
+            return taskEvent.getDateTime();
+
+        } else if (type.equals(TO_ADD_DEADLINE)) {
+            Deadline taskDeadline = (Deadline) task;
+            return taskDeadline.getDateTime();
 
         } else { // all other task types have no date time attributes
             return "-";

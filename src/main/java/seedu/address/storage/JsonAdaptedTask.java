@@ -48,7 +48,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         id = source.getTaskId();
         description = source.getDescription();
-        dateTime = source.getPossibleDateTime(source);
+        dateTime = source.getUnformattedPossibleDateTime(source);
     }
 
     /**
