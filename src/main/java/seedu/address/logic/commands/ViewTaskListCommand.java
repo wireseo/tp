@@ -23,6 +23,10 @@ public class ViewTaskListCommand extends ViewCommand {
     public static final String SAMPLE_COMMAND_EVENT = "view -te";
     public static final String SAMPLE_COMMAND_DEADLINE = "view -td";
     public static final String MESSAGE_SUCCESS = "Listed all %1$s";
+    public static final String TASK_LIST = "tasks";
+    public static final String TODO_LIST = "todos";
+    public static final String EVENT_LIST = "events";
+    public static final String DEADLINE_LIST = "deadlines";
 
     private final String viewType;
 
@@ -42,7 +46,7 @@ public class ViewTaskListCommand extends ViewCommand {
         case VIEW_TASK_LIST:
             /*
             model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, TASK_LIST);
             */
 
             //Temp method
@@ -51,6 +55,11 @@ public class ViewTaskListCommand extends ViewCommand {
             return new CommandResult(String.format(MESSAGE_SUCCESS, list));
 
         case VIEW_TODO_LIST:
+            /*
+            model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TODOS);
+            return new CommandResult(MESSAGE_SUCCESS, TODO_LIST);
+            */
+
             //Temp method
             ArrayList<Task> copyListTodo = new ArrayList<>();
             for (int i = 0; i < size; i++) {
@@ -65,6 +74,11 @@ public class ViewTaskListCommand extends ViewCommand {
             return new CommandResult(String.format(MESSAGE_SUCCESS, todoList));
 
         case VIEW_EVENT_LIST:
+            /*
+            model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_EVENTS);
+            return new CommandResult(MESSAGE_SUCCESS, EVENT_LIST);
+            */
+
             //Temp method
             ArrayList<Task> copyListEvent = new ArrayList<>();
             for (int i = 0; i < size; i++) {
@@ -79,6 +93,11 @@ public class ViewTaskListCommand extends ViewCommand {
             return new CommandResult(String.format(MESSAGE_SUCCESS, eventList));
 
         case VIEW_DEADLINE_LIST:
+            /*
+            model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_DEADLINES);
+            return new CommandResult(MESSAGE_SUCCESS, DEADLINE_LIST);
+            */
+
             //Temp method
             ArrayList<Task> copyListDeadline = new ArrayList<>();
             for (int i = 0; i < size; i++) {

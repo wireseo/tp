@@ -41,8 +41,17 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true if quest is ongoing */
     Predicate<Quest> PREDICATE_SHOW_ALL_QUESTS = quest -> quest.getDeadline().contains("Due");
 
-    /** {@code Predicate} that always evaluate to true to show all tasks*/
+    /** {@code Predicate} that always evaluate to true to show all tasks */
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
+
+    /** {@code Predicate} that evaluates to true when task is a Todo */
+    Predicate<Task> PREDICATE_SHOW_ALL_TODOS = task -> Task.getType(task).equals("T");
+
+    /** {@code Predicate} that evaluates to true when task is an Event */
+    Predicate<Task> PREDICATE_SHOW_ALL_EVENTS = task -> Task.getType(task).equals("E");
+
+    /** {@code Predicate} that evaluates to true when task is a Deadline */
+    Predicate<Task> PREDICATE_SHOW_ALL_DEADLINES = task -> Task.getType(task).equals("D");
 
     //=========== UserPrefs ==================================================================================
 
