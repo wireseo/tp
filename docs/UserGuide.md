@@ -49,7 +49,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
-   ![Jarvis](images/userguide/Jarvis.png)
+   ![Jarvis](images/userguide/Jarvis.PNG)
 
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
@@ -72,7 +72,7 @@ Jarvis has a Graphical User Interface centered around a command input box on the
 line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
 this box.
 
-![Jarvis](images/userguide/Jarvis.png)
+![Jarvis](images/userguide/Jarvis.PNG)
 
 The core features are based on Students, Consultations, Missions, Quests and Tasks.
 Each core feature has a tab for the organisation of its information.
