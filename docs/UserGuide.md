@@ -363,7 +363,7 @@ Exits the program.
 ### 7. Saving the data (Peirong)
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### FAQ (Peirong)
+#### FAQ (Peirong)
 `Q: How do I transfer my data to another Computer?`
 <br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
 
@@ -393,7 +393,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![editFormat](images/userguide/editFormat.PNG)
 
-### Delete (Zhen Teng)
+#### Delete (Zhen Teng)
 <!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
