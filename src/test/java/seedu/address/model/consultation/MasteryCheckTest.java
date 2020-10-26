@@ -39,8 +39,8 @@ public class MasteryCheckTest {
         // different length of meeting -> returns true
         assertTrue(normalConsultation.equals(consultationVariant1));
 
-        // same date, same length of meeting, different place of meeting -> returns true
-        assertTrue(normalConsultation.equals(consultationVariant3));
+        // same date, same length of meeting, different place of meeting -> returns false
+        assertFalse(normalConsultation.equals(consultationVariant3));
 
     }
 
