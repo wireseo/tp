@@ -45,7 +45,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3(trial)).
 
-1. Copy both files to the folder you want to use as the _home folder_ for your JARVIS.
+1. Copy both files to the folder you want to use as the _home folder_ for your Jarvis.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
