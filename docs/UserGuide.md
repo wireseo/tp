@@ -77,12 +77,13 @@ this box.
 The core features are based on Students, Consultations, Missions, Quests and Tasks.
 Each core feature has a tab for the organisation of its information.
 
+<div markdown="block" class="alert alert-info">
+
 To navigate the features, there are 2 methods which could be used individually, or mixed. We have designed
 this flexibility with you, the user in mind.
  1. Only inputting commands into the box annotated "Enter command here..".
  1. Clicking on the tabs.
- 
-
+</div>
 
  
 
@@ -133,7 +134,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
    * Commands with arrows indicate a multi-step process.
-   <br> e.g. `delete -c → 1` means that the user should enter `delete -c` first and then `1` after the prompt has
+   <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt has
     been processed.`
 
 **Notes about Jarvis' relationship with Sourceacademy:** (Peirong) <br>
@@ -149,7 +150,7 @@ Shows a message explaining how to access the help page.
 ### 2. Adding Information: `add`
 
 #### 2-1. Adding Todos: `add -t` (Jun Jie)
-Adds a  simple todo with a todo description.
+Adds your personal `Todo` with a `description`.
 
 ![AddTodo](images/userguide/addTodo.PNG)
 
@@ -159,7 +160,7 @@ Adds a  simple todo with a todo description.
 * `add -t Return calculator to Mary`
 
 #### 2-2. Adding Events: `add -e` (Jun Jie)
-Adds an event with an event description to attend at a specific date and time.
+Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 
 ![AddEvent](images/userguide/addEvent.PNG)
 
@@ -168,8 +169,13 @@ Adds an event with an event description to attend at a specific date and time.
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
 
+<div markdown="block" class="alert alert-info">
+
+An `Event` requires extra `date` and `time` specifications in order to create.
+</div>
+
 #### 2-3. Adding Deadlines: `add -d` (Jun Jie)
-Adds a deadline with an deadline description to complete by a specific date and time.
+Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 
 ![AddDeadline](images/userguide/addDeadline.PNG)
 
@@ -178,15 +184,20 @@ Adds a deadline with an deadline description to complete by a specific date and 
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
 
+<div markdown="block" class="alert alert-info">
+
+Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create.
+</div>
+
 #### 2-4. Adding Consultations: `add -c` (Eryn)
-Adds a consultation session with a student at a specific date and time.
+Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
 #### 2-5. Adding Mastery Checks: `add -mc` (Eryn)
-Adds a Mastery Check session with a student at a specific date and time.
+Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
@@ -195,7 +206,7 @@ Adds a Mastery Check session with a student at a specific date and time.
 ### 3. Editing Information: `edit`
 
 #### 3-1. Editing Login Information: `edit -l` (Peirong)
-Similar to the format for editing students above, we employ the use of tags to specify the field to be edited.
+Similar to the format for editing students above, you can use tags to specify the field to be edited.
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
@@ -211,8 +222,9 @@ information which corresponds to that tag.
 * `edit -s 2 t/maryjane132 s/3`
 
 ### 4. Deleting Information: `delete`
+
 #### 4-1. Deleting Tasks: `delete -t` (Jun Jie)
-Deletes a task based on the `TASK_ID` specified by the user.
+Deletes a task based on the `TASK_ID` you specify.
 
 ![DeleteTask](images/userguide/deleteTask.PNG)
 
@@ -222,7 +234,8 @@ Deletes a task based on the `TASK_ID` specified by the user.
 * `delete -t D2`
 
 #### 4-2 Deleting Consultations: `delete -c` (Eryn)
-Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
+Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
+If a `Student name` is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: `delete -c [NAME]`**
 <br>Examples:
 * `delete -c
@@ -231,14 +244,17 @@ Shows a list of consultations with id numbers which can be entered by the user t
    → 2`
 
 #### 4-3. Deleting Mastery Checks: `delete -mc` (Wiline)
-Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
+Similar to the above process of deleting consultations, deleting `Mastery Checks` first
+shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
+If a `Student name` is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: `delete -mc [NAME]`**
 <br>Examples:
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
    
-### 5. Viewing Information: `view ` 
+### 5. Viewing Information: `view`
+
 #### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
 Shows a list of all students under the tutor in JARVIS.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
@@ -253,35 +269,35 @@ If a student name is entered after the command, Jarvis shows one specific studen
 
 
 #### 5-2. Viewing all consultation sessions: `view -c` (Peirong)
-Shows all confirmed consultation sessions, both past and upcoming. If a student name is entered after the command, it shows consultation sessions confirmed with the specific student.
+Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
 <br>**Format: `view -c [NAME]`**
 <br>Examples:
 * `view -c`
 * `view -c John Doe`
 
 #### 5-3. Viewing past consultation sessions: `view -cp` (Peirong)
-Shows all past consultation sessions. If a student name is entered after the command, it shows past consultation sessions with the specific student.
+Shows all `past consultation` sessions. If you enter a `Student name` after the command, it will show `past consultation` sessions with the specific student.
 <br>**Format: `view -cp [NAME]`**
 <br>Examples:
 * `view -cp`
 * `view -cp John Doe`
 
 #### 5-4. Viewing upcoming consultation sessions: `view -cu` (Peirong)
-Shows all upcoming consultation sessions. If a student name is entered after the command, it shows upcoming consultation sessions with the specific student.
+Shows all `upcoming consultation` sessions. If you enter a `Student name` after the command, it will show `upcoming consultation` sessions with the specific student.
 <br>**Format: `view -cu [NAME]`**
 <br>Examples:
 * `view -cu`
 * `view -cu John Doe`
 
 #### 5-5. Viewing all Mastery Check sessions: `view -mc` (Eryn)
-Shows all confirmed MC sessions, both past and upcoming. If a student name is entered after the command, it shows sessions confirmed with the specific student.
+Shows all `confirmed MC` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all confirmed MC` sessions with the specific student.
 <br>**Format: `view -mc [NAME]`**
 <br>Examples:
 * `view -mc`
 * `view -mc John Doe`
 
 #### 5-6. Viewing past Mastery Check sessions: `view -mcp` (Eryn)
-Shows all past MC sessions. If a student name is entered after the command, it shows past sessions with the specific student.
+Shows all `past MC` sessions. If you enter a `Student name` after the command, it will show `past MC` sessions with the specific student.
 <br>**Format: `view -mcp [NAME]`**
 <br>Examples:
 * `view -mcp`
@@ -289,7 +305,7 @@ Shows all past MC sessions. If a student name is entered after the command, it s
 
 
 #### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu` (Eryn)
-Shows all upcoming MC sessions. If a student name is entered after the command, it shows upcoming sessions with the specific student.
+Shows all `upcoming MC` sessions. If you enter a `Student name` after the command, it will show `upcoming MC` sessions with the specific student.
 <br>**Format: `view -mcu [NAME]`**
 <br>Examples:
 * `view -mcu`
@@ -312,20 +328,18 @@ You may also click on the `Quest` tab to do so.
 ![FetchQuest](images/userguide/fetchQuest.PNG)
 
 #### 5-10. Viewing ungraded missions: `view -um` (Wiline)
-Shows the missions that the user has not graded.
+Shows the missions that you have not yet graded.
 
 ![ViewUngradedMissions](images/userguide/viewUngradedMissions.PNG)
 
 <br>**Format: `view -um`**
 
 #### 5-11. Viewing ungraded quests: `view -uq` (Wiline)
-Shows the quests that the user has not graded.
+Shows the quests that you have not yet graded.
 
 ![ViewUngradedQuests](images/userguide/viewUngradedQuests.PNG)
 
 <br>**Format: `view -uq`**
-
-
 
 #### 5-12. Viewing studio participation marks of a specific student: `view -p` (Zhen Teng)
 Shows the studio participation marks of a student.
@@ -334,34 +348,24 @@ Shows the studio participation marks of a student.
 * `view -p John Doe`
 
 #### 5-13. Viewing all Tasks: `view -t` (Jun Jie)
-Shows a list of all tasks created by the user.
+Shows the list of all your current tasks.
 <br>**Format: `view -t`**
-<br>Examples:
-* `view -t`
 
 #### 5-14. Viewing all Todos: `view -tt` (Jun Jie)
-Shows a list of all todos created by the user.
+Shows the list of all your current todos.
 <br>**Format: `view -tt`**
-<br>Examples:
-* `view -tt`
 
 #### 5-15. Viewing all Events: `view -te` (Jun Jie)
-Shows a list of all events created by the user.
+Shows the list of all your current events.
 <br>**Format: `view -te`**
-<br>Examples:
-* `view -te`
 
 #### 5-16. Viewing all Deadlines: `view -td` (Jun Jie)
-Shows a list of all deadlines created by the user.
+Shows the list of all your current deadlines.
 <br>**Format: `view -td`**
-<br>Examples:
-* `view -td`
 
 ### 6. Exiting the program : `exit` (Zhen Teng)
 Exits the program.
 <br>**Format: `exit`**
-<br>Example:
-* `exit`
 
 ### 7. Saving the data (Peirong)
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
