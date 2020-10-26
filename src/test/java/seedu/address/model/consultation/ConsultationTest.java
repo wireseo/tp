@@ -8,9 +8,6 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.Consultation;
-
-
 
 public class ConsultationTest {
 

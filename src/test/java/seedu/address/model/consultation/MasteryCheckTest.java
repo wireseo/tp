@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.MasteryCheck;
-
 
 public class MasteryCheckTest {
 
