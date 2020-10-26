@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -13,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -34,6 +34,7 @@ public class ModelManager implements Model {
     private final FilteredList<Mission> filteredMissions;
     private final FilteredList<Quest> filteredQuests;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Consultation> filteredConsultations;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -51,6 +52,8 @@ public class ModelManager implements Model {
         filteredMissions = new FilteredList<>(this.addressBook.getMissionList());
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+        filteredConsultations = new FilteredList<>(this.addressBook.getConsultationList());
+
     }
 
     public ModelManager() {
@@ -169,6 +172,7 @@ public class ModelManager implements Model {
     public void setMissions(List<Mission> missions) {
         addressBook.setMissions(missions);
     }
+
 
     //=========== Filtered Mission List Accessors =============================================================
     @Override
@@ -315,10 +319,18 @@ public class ModelManager implements Model {
 
     @Override
     public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
-        List<Consultation> allConsultations = new ArrayList<Consultation>();
-        addressBook.getStudentList().forEach(student -> student.getConsultations().stream().filter(predicate)
-                .forEach(consultation -> allConsultations.add(consultation)));
-        return allConsultations;
+        return null; // TODO: implement this
+    }
+
+    @Override
+    public ObservableList<Consultation> getFilteredConsultationsList() {
+        return filteredConsultations;
+    }
+
+    @Override
+    public void updateFilteredConsultationsList(Predicate<Consultation> predicate) {
+        requireNonNull(predicate);
+        filteredConsultations.setPredicate(predicate);
     }
 
     @Override

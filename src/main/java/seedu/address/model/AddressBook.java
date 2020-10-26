@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.ConsultationList;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
 import seedu.address.model.quest.Quest;
@@ -29,6 +31,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final QuestList quests;
 
+    private final ConsultationList consultations;
+
     private final UniqueTasksList tasks;
 
     /*
@@ -43,6 +47,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         missions = new MissionList();
         tasks = new UniqueTasksList();
         quests = new QuestList();
+        consultations = new ConsultationList();
     }
 
     public AddressBook() {}
@@ -146,6 +151,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.quests.asObservableList();
     }
 
+    @Override
+    public ObservableList<Consultation> getConsultationList() {
+        return this.consultations.asObservableList();
+    }
+
     public void addMission(Mission mission) {
         this.missions.add(mission);
     }
@@ -160,6 +170,14 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void setQuests(List<Quest> quests) {
         this.quests.setQuests(quests);
+    }
+
+    public void addConsultation(Consultation consultation) {
+        this.consultations.add(consultation);
+    }
+
+    public void setConsultaitons(List<Consultation> consultations) {
+        this.consultations.setConsultations(consultations);
     }
 
     @Override
@@ -229,16 +247,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean hasConsultation(Consultation consultation) {
         requireNonNull(consultation);
-        return students.containsConsultation(consultation);
+        return consultations.containsConsultation(consultation);
     }
 
-    /**
-     * Adds a consultation to the address book.
-     * The consultation must not already exist in the address book.
-     */
-    public void addConsultation(Consultation consultation) {
-        //this.students.addConsultation(consultation); TODO: NEED TO IMPLEMENT THIS METHOD!!!
-    }
 
     /**
      * Returns true if a task with the same identity as {@code task} exists in the address book.

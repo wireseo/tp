@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -244,12 +245,6 @@ public interface Model {
      * @param missions
      */
     void setMissions(List<Mission> missions);
-
-    /**
-     * Returns an unmodifiable view of the filtered consultation list.
-     */
-    List<Consultation> getConsultations(Predicate<Consultation> predicate);
-
     //=========== Quests ===================================================================================
 
     /**
@@ -272,6 +267,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateQuestsList(Predicate<Quest> predicate);
+
+    ObservableList<Consultation> getFilteredConsultationsList();
+
+    void updateFilteredConsultationsList(Predicate<Consultation> predicate);
+
+    /**
+     * Returns an unmodifiable view of the filtered consultation list.
+     */
+    List<Consultation> getConsultations(Predicate<Consultation> predicate);
 
     boolean isMissionInList(String title);
 
