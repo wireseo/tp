@@ -9,7 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Username {
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters, backslashes, and it should not be blank";
+            "Username invalid, it has to be the same as your Luminus user login i.d. with the format 'nusstu' "
+                    + "followed by a backslash and your NusNetId 'e1234567'";
 
     public static final String VALIDATION_REGEX = "[a-zA-Z0-9]+\\\\[a-zA-Z0-9]+$";
 

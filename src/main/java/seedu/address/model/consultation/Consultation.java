@@ -63,8 +63,14 @@ public class Consultation {
         return minutes;
     }
 
+    // Over here a navigability from student to Consultation is also created, hopefully this wouldnt break.
+    /**
+     * Sets a student to be the subject of this consultation session and the student to have this consultation session.
+     * @param student to be under this consultation session.
+     */
     public void setStudent(Student student) {
         this.student = student;
+        student.setConsultation(this);
     }
 
     public void setDateAndTime(LocalDateTime dateAndTime) {
