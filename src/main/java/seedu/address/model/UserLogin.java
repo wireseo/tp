@@ -1,7 +1,6 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
-
 import seedu.address.model.login.Username;
 
 public class UserLogin implements ReadOnlyUserLogin {
@@ -66,6 +65,14 @@ public class UserLogin implements ReadOnlyUserLogin {
 
     public boolean isEmpty() {
         return this.username.isEmpty() || this.password.isEmpty();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof UserLogin // instanceof handles nulls
+                && username.equals(((UserLogin) other).getUsername())
+                && password.equals(((UserLogin) other).getUserPassword())); // state check
     }
 
     @Override
