@@ -49,7 +49,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
-   ![Jarvis](images/userguide/Jarvis.png)
+   ![Jarvis](images/userguide/Jarvis.PNG)
 
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
@@ -72,7 +72,7 @@ Jarvis has a Graphical User Interface centered around a command input box on the
 line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
 this box.
 
-![Jarvis](images/userguide/Jarvis.png)
+![Jarvis](images/userguide/Jarvis.PNG)
 
 The core features are based on Students, Consultations, Missions, Quests and Tasks.
 Each core feature has a tab for the organisation of its information.
@@ -363,7 +363,7 @@ Exits the program.
 ### 7. Saving the data (Peirong)
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### FAQ (Peirong)
+#### FAQ (Peirong)
 `Q: How do I transfer my data to another Computer?`
 <br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
 
@@ -393,7 +393,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![editFormat](images/userguide/editFormat.PNG)
 
-### Delete (Zhen Teng)
+#### Delete (Zhen Teng)
 <!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
