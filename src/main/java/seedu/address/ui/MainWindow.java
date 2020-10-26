@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
+import com.sun.javafx.sg.prism.NGGroup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -46,6 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private MissionListPanel missionListPanel;
     private QuestListPanel questListPanel;
     private TaskListPanel taskListPanel;
+    private ConsultationListPanel consultationListPanel;
 
     @FXML
     private Tab studentListTab;
@@ -70,6 +72,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane missionListPanelPlaceholder;
+
+    @FXML
+    private StackPane consultationListPanelPlaceholder;
 
     @FXML
     private StackPane taskListPanelPlaceholder;
@@ -171,6 +176,9 @@ public class MainWindow extends UiPart<Stage> {
         questListPanel = new QuestListPanel(logic.getFilteredQuestList());
         questListPanelPlaceholder.getChildren().add(questListPanel.getRoot());
 
+        consultationListPanel = new ConsultationListPanel(logic.getFilteredConsultationList());
+        consultationListPanelPlaceholder.getChildren().add(consultationListPanel.getRoot());
+
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
@@ -264,6 +272,18 @@ public class MainWindow extends UiPart<Stage> {
 
     public MissionListPanel getMissionListPanel() {
         return missionListPanel;
+    }
+
+    public QuestListPanel getQuestListPanel() {
+        return questListPanel;
+    }
+
+    public ConsultationListPanel getConsultationListPanel() {
+        return consultationListPanel;
+    }
+
+    public TaskListPanel getTaskListPanel() {
+        return taskListPanel;
     }
 
     private String getLoginMessage() {
