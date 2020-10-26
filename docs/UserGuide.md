@@ -230,7 +230,7 @@ Shows a list of consultations with id numbers which can be entered by the user t
 * `delete -c John Doe
    → 2`
 
-#### 4-3. Deleting Mastery Checks: `delete -mc` (Wiline)
+#### 4-3. Deleting Mastery Checks: `delete -mc` (Eryn)
 Shows a list of Mastery Checks with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: `delete -mc [NAME]`**
 <br>Examples:
@@ -252,21 +252,21 @@ If a student name is entered after the command, Jarvis shows one specific studen
 <br>**Format: `view -s [NAME]`**
 
 
-#### 5-2. Viewing all consultation sessions: `view -c` (Peirong)
+#### 5-2. Viewing all consultation sessions: `view -c` (Eryn)
 Shows all confirmed consultation sessions, both past and upcoming. If a student name is entered after the command, it shows consultation sessions confirmed with the specific student.
 <br>**Format: `view -c [NAME]`**
 <br>Examples:
 * `view -c`
 * `view -c John Doe`
 
-#### 5-3. Viewing past consultation sessions: `view -cp` (Peirong)
+#### 5-3. Viewing past consultation sessions: `view -cp` (Eryn)
 Shows all past consultation sessions. If a student name is entered after the command, it shows past consultation sessions with the specific student.
 <br>**Format: `view -cp [NAME]`**
 <br>Examples:
 * `view -cp`
 * `view -cp John Doe`
 
-#### 5-4. Viewing upcoming consultation sessions: `view -cu` (Peirong)
+#### 5-4. Viewing upcoming consultation sessions: `view -cu` (Eryn)
 Shows all upcoming consultation sessions. If a student name is entered after the command, it shows upcoming consultation sessions with the specific student.
 <br>**Format: `view -cu [NAME]`**
 <br>Examples:
@@ -274,26 +274,23 @@ Shows all upcoming consultation sessions. If a student name is entered after the
 * `view -cu John Doe`
 
 #### 5-5. Viewing all Mastery Check sessions: `view -mc` (Eryn)
-Shows all confirmed MC sessions, both past and upcoming. If a student name is entered after the command, it shows sessions confirmed with the specific student.
-<br>**Format: `view -mc [NAME]`**
+Shows all confirmed MC sessions, both past and upcoming.
+<br>**Format: `view -mc`**
 <br>Examples:
 * `view -mc`
-* `view -mc John Doe`
 
 #### 5-6. Viewing past Mastery Check sessions: `view -mcp` (Eryn)
-Shows all past MC sessions. If a student name is entered after the command, it shows past sessions with the specific student.
-<br>**Format: `view -mcp [NAME]`**
+Shows all past MC sessions.
+<br>**Format: `view -mcp`**
 <br>Examples:
 * `view -mcp`
-* `view -mcp John Doe`
 
 
 #### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu` (Eryn)
-Shows all upcoming MC sessions. If a student name is entered after the command, it shows upcoming sessions with the specific student.
-<br>**Format: `view -mcu [NAME]`**
+Shows all upcoming MC sessions.
+<br>**Format: `view -mcu`**
 <br>Examples:
 * `view -mcu`
-* `view -mcu John Doe`
 
 #### 5-8. Viewing deadline for missions: `view -m` (Wiline)
 Shows the deadline for the current mission(s).
