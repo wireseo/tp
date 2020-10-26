@@ -66,7 +66,7 @@ public class DeleteCommand extends Command {
         case TO_DELETE_STUDENT:
             assert targetIndex != null : "Student's delete target index should not be null";
 
-            List<Student> lastShownList = model.getFilteredPersonList();
+            List<Student> lastShownList = model.getFilteredStudentList();
             if (targetIndex.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
