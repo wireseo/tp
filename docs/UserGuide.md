@@ -49,7 +49,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
-   ![Ui](images/userguide/Jarvis.png)
+   ![Jarvis](images/userguide/Jarvis.png)
 
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
@@ -72,7 +72,7 @@ Jarvis has a Graphical User Interface centered around a command input box on the
 line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
 this box.
 
-![Ui](images/userguide/Jarvis.png)
+![Jarvis](images/userguide/Jarvis.png)
 
 The core features are based on Students, Consultations, Missions, Quests and Tasks.
 Each core feature has a tab for the organisation of its information.
@@ -117,7 +117,6 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    * Clicking on each tab will give you the information you require for that field.
 
 
-
 <div markdown="block" class="alert alert-info">
 
 **Notes about the command format:**<br> (Wiline)
@@ -135,7 +134,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt has
-    been processed.`
+    been processed.
 
 **Notes about Jarvis' relationship with Sourceacademy:** (Peirong) <br>
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
@@ -243,7 +242,7 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 * `delete -c John Doe
    → 2`
 
-#### 4-3. Deleting Mastery Checks: `delete -mc` (Wiline)
+#### 4-3. Deleting Mastery Checks: `delete -mc` (Eryn)
 Similar to the above process of deleting consultations, deleting `Mastery Checks` first
 shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
 If a `Student name` is entered after the command, it shows only the sessions with the specific student.
@@ -268,7 +267,7 @@ If a student name is entered after the command, Jarvis shows one specific studen
 <br>**Format: `view -s [NAME]`**
 
 
-#### 5-2. Viewing all consultation sessions: `view -c` (Peirong)
+#### 5-2. Viewing all consultation sessions: `view -c` (Eryn)
 Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
 <br>**Format: `view -c [NAME]`**
 <br>Examples:
@@ -290,26 +289,22 @@ Shows all `upcoming consultation` sessions. If you enter a `Student name` after 
 * `view -cu John Doe`
 
 #### 5-5. Viewing all Mastery Check sessions: `view -mc` (Eryn)
-Shows all `confirmed MC` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all confirmed MC` sessions with the specific student.
-<br>**Format: `view -mc [NAME]`**
+Shows all `confirmed MC` sessions, both past and upcoming.
+<br>**Format: `view -mc`**
 <br>Examples:
 * `view -mc`
-* `view -mc John Doe`
 
 #### 5-6. Viewing past Mastery Check sessions: `view -mcp` (Eryn)
-Shows all `past MC` sessions. If you enter a `Student name` after the command, it will show `past MC` sessions with the specific student.
-<br>**Format: `view -mcp [NAME]`**
+Shows all `past MC` sessions.
+<br>**Format: `view -mcp`**
 <br>Examples:
 * `view -mcp`
-* `view -mcp John Doe`
-
 
 #### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu` (Eryn)
-Shows all `upcoming MC` sessions. If you enter a `Student name` after the command, it will show `upcoming MC` sessions with the specific student.
-<br>**Format: `view -mcu [NAME]`**
+Shows all `upcoming MC` sessions.
+<br>**Format: `view -mcu`**
 <br>Examples:
 * `view -mcu`
-* `view -mcu John Doe`
 
 #### 5-8. Viewing deadline for missions: `view -m` (Wiline)
 Shows the deadline for the current mission(s).
@@ -376,7 +371,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ## Command summary
 
-### Add (Jun Jie)
+#### Add (Jun Jie)
+<!--- Not sure why the format is not working on github page :(
+      Replaced with a table image for now
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Add Todo | -t | add -t DESCRIPTION |
@@ -384,30 +381,42 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Add Deadline | -d | add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM |
 | Add Consultation | -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
 | Add Mastery Check | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
+-->
 
-### Edit (Wiline)
+![addFormat](images/userguide/addFormat.PNG)
+
+#### Edit (Wiline)
+<!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
+-->
+
+![editFormat](images/userguide/editFormat.PNG)
 
 ### Delete (Zhen Teng)
+<!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Delete Task | -t | delete -t TASK_ID |
 | Delete Consultation | -c | delete -c NAME <br>E.g. delete -c → 3 / delete -c John Doe → 2 |
 | Delete Mastery Check | -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
+-->
 
-### View (Zhen Teng)
+![deleteFormat](images/userguide/deleteFormat.PNG)
+
+#### View (Zhen Teng)
+<!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | View one Student | -s | view -s NAME |
 | View all Consultations | -c | view -c NAME <br>E.g. view -c / view -c John Doe |
 | View all Past Consultations | -cp | view -cp NAME <br>E.g. view -cp, view -cp John Doe |
 | View all Upcoming Consultations | -cu | view -cu NAME <br>E.g. view -cu / view -cu John Doe |
-| View all Mastery Checks | -mc | view -mc NAME <br>E.g. view -mc / view -mc John Doe |
-| View all Past Mastery Checks | -mcp | view -mcp NAME <br>E.g. view -mcp / view -mcp John Doe |
-| View all Upcoming Mastery Checks | -mcu | view -mcu NAME <br>E.g. view -mcu / view -mcu John Doe |
+| View all Mastery Checks | -mc | view -mc |
+| View all Past Mastery Checks | -mcp | view -mcp |
+| View all Upcoming Mastery Checks | -mcu | view -mcu  |
 | View Deadlines for Missions | -m | view -m |
 | View Deadlines for Quests | -q | view -q |
 | View Ungraded Missions | -um | view -um |
@@ -416,14 +425,25 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | View all Todos | -tt | view -tt |
 | View all Events | -te | view -te |
 | View all Deadlines | -td | view -td |
+-->
 
-### Exit (Peirong)
+![viewFormat](images/userguide/viewFormat.PNG)
+
+#### Exit (Peirong)
+<!---
 | Function | Format, Examples |
 | -------- | ---------------- |
-| Exit program | `exit` |
+| Exits program | `exit` |
+-->
 
-### Help (Peirong)
+![exitFormat](images/userguide/exitFormat.PNG)
+
+#### Help (Peirong)
+<!---
 | Function | Format, Examples |
 | -------- | ---------------- |
 | Provide help with
 program commands | `help` |
+-->
+
+![helpFormat](images/userguide/helpFormat.PNG)
