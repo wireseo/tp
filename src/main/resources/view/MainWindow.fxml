@@ -68,16 +68,16 @@
               </VBox>
 
               <VBox alignment="BOTTOM_CENTER" translateX="400">
-              <HBox>
-                <VBox>
-                  <Label text="Week 13: " styleClass="date_label"/>
-                </VBox>
-                <VBox>
-                  <Label text="Recursion" styleClass="topic_label"/>
-                </VBox>
-              </HBox>
+                  <HBox>
+                    <VBox>
+                      <Label text="Week 13: " styleClass="date_label"/>
+                    </VBox>
+                    <VBox>
+                      <Label text="Recursion" styleClass="topic_label"/>
+                    </VBox>
+                  </HBox>
               <Label fx:id="date" text="\$date" styleClass="date_label"/>
-            </VBox>
+              </VBox>
           </HBox>
         </StackPane>
 
@@ -107,7 +107,7 @@
               <padding>
                 <Insets top="10" right="10" bottom="10" left="10" />
               </padding>
-              <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              <StackPane fx:id="studentListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
           </Tab>
 

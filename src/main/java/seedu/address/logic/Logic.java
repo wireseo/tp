@@ -34,7 +34,7 @@ public interface Logic {
     ReadOnlyAddressBook getAddressBook();
 
     /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Student> getFilteredPersonList();
+    ObservableList<Student> getFilteredStudentList();
 
     /** Returns an unmodifiable view of the filtered list of missions */
     ObservableList<Mission> getFilteredMissionList();

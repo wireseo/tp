@@ -99,7 +99,7 @@ public class ParserUtil {
      * @return A Username object
      * @throws ParseException
      */
-    public static Username parseUername(String username) throws ParseException {
+    public static Username parseUsername(String username) throws ParseException {
         requireNonNull(username);
         String trimmedUsername = username.trim();
         if (!Username.isValidUsername(trimmedUsername)) {

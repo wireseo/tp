@@ -89,7 +89,7 @@ public class EditCommandParser implements Parser<EditCommand> {
 
             EditLoginDescriptor editLoginDescriptor = new EditLoginDescriptor();
             if (argMultimap.getValue(PREFIX_USERNAME).isPresent()) {
-                editLoginDescriptor.setUsername(ParserUtil.parseUername(argMultimap.getValue(PREFIX_USERNAME).get()));
+                editLoginDescriptor.setUsername(ParserUtil.parseUsername(argMultimap.getValue(PREFIX_USERNAME).get()));
             }
             if (argMultimap.getValue(PREFIX_PASSWORD).isPresent()) {
                 editLoginDescriptor.setPassword(argMultimap.getValue(PREFIX_PASSWORD).get());

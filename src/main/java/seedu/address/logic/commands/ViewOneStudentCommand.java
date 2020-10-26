@@ -42,7 +42,7 @@ public class ViewOneStudentCommand extends ViewCommand {
         model.updateFilteredPersonList(student ->
                 student.getName().fullName.contains(searchedName.toString())
                 || student.getName().fullName.toLowerCase().contains(searchedName.toString()));
-        ObservableList<Student> filteredResult = model.getFilteredPersonList();
+        ObservableList<Student> filteredResult = model.getFilteredStudentList();
         if (filteredResult.size() == 0) {
             // reset the list to show all persons
             model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_STUDENTS);
