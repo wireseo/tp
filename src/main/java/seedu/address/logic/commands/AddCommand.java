@@ -11,7 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Consultation;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.Model;
 import seedu.address.model.student.Student;
 import seedu.address.model.task.Deadline;
