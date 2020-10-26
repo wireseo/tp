@@ -15,10 +15,6 @@ public class Student {
     private final Telegram telegram;
     private final Email email;
 
-    // Field to be used in the future for editing student participation levels
-    private ParticipationLevel participationLevel;
-
-
     /**
      * Every field must be present and not null.
      */
