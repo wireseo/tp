@@ -216,17 +216,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Consultation> getFilteredConsultationsList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredConsultationsList(Predicate<Consultation> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addMission(Mission mission) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setMissions(List<Mission> missions) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public List<Consultation> getConsultations(Predicate<Consultation> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
