@@ -1,5 +1,6 @@
 package seedu.address;
 
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -75,7 +76,7 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs, userLogin);
 
-        initScraper(userLogin, model, storage);
+        scraper = initScraper(userLogin, model, storage);
 
         logic = new LogicManager(model, storage);
 
@@ -209,11 +210,14 @@ public class MainApp extends Application {
         return initializedPrefs;
     }
 
-    protected void initScraper(UserLogin userLogin, Model model, Storage storage)
+    protected Scraper initScraper(UserLogin userLogin, Model model, Storage storage)
             throws ScraperParsingException, IOException {
         logger.info("Starting scraper to scrape SourceAcademy");
-        scraper = new ScraperManager(userLogin, model, storage);
+        Scraper scraper = new ScraperManager(userLogin, model, storage);
+        model.addPropertyChangeListener((PropertyChangeListener) scraper);
         scraper.startScraping();
+
+        return scraper;
     }
 
     @Override

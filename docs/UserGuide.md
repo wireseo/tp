@@ -14,10 +14,10 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
       * Adding Consultations: `-c`
       * Adding Mastery Checks: `-mc`
   * Editing information: `edit`
-    * Marking Tasks as Done: `-t`, `-tt`, `-te`, `td`
+    * Editing Login details: `-l`
     * Editing Student Information: `-s`
   * Deleting information: `delete`
-    * Deleting Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
+    * Deleting Tasks: `-t`
     * Deleting Consultations: `-c`
     * Deleting Mastery Checks: `-mc`
   * Viewing information: `view`
@@ -28,7 +28,10 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     * Viewing deadline for quests: `-q`
     * Viewing ungraded missions: `-um`
     * Viewing ungraded quests: `-uq`
-    * Viewing Tasks (Todos, Events, Deadlines): `-t`, `-tt`, `-te`, `-td`
+    * Viewing all Tasks: `-t`
+    * Viewing all Todos: `-tt`
+    * Viewing all Events: `-te`
+    * Viewing all Deadlines: `-td`
   * Exiting the program: `exit`
   * Saving the data
 * FAQ
@@ -45,8 +48,13 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 1. Copy both files to the folder you want to use as the _home folder_ for your JARVIS.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
+   ![Ui](images/userguide/Jarvis.png)
+
+1. Upon start up, you will be prompted to log in to unlock Jarvis's
+ full set of features.
+ Please refer to the logging in segment below to complete your log in.
+ 
 1. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
    * `view -s:  Lists all students. `
@@ -56,6 +64,47 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
    * `exit : Exits the app.`
 
 1. Refer to the Features below for details of each command.
+
+--------------------------------------------------------------------------------------------------------------------
+## Navigating Jarvis
+
+Jarvis has a Graphical User Interface centered around a command input box on the top, surrounded by a light green
+line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
+this box.
+
+![Ui](images/userguide/Jarvis.png)
+
+The core features are based on Students, Consultations, Missions, Quests and Tasks.
+Each core feature has a tab for the organisation of its information.
+
+To navigate the features, there are 2 methods which could be used individually, or mixed. We have designed
+this flexibility with you, the user in mind.
+ 1. Only inputting commands into the box annotated "Enter command here..".
+ 1. Clicking on the tabs.
+ 
+
+
+ 
+
+--------------------------------------------------------------------------------------------------------------------
+## Logging in
+
+The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
+ 
+![NoLoginDetails](images/userguide/noLoginDetails.PNG)
+
+To log in, simply edit your log in details with the following command: 
+<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
+<br>Examples:
+* `edit -l u/nusstu\e1234567 p/testpassword`
+
+An example of the command being inputted:
+
+![LoginUsernamePasswordInput](images/userguide/loginUsernamePasswordInput.PNG)
+
+Within the green rectangle box, Jarvis will notify you if the log in was successful. Upon success, all information from
+ sourceacademy will be visible
+ to you.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -101,6 +150,9 @@ Shows a message explaining how to access the help page.
 
 #### 2-1. Adding Todos: `add -t` (Jun Jie)
 Adds a  simple todo with a todo description.
+
+![AddTodo](images/userguide/addTodo.PNG)
+
 <br>**Format: `add -t DESCRIPTION`**
 <br>Examples:
 * `add -t Clear the bin`
@@ -108,6 +160,9 @@ Adds a  simple todo with a todo description.
 
 #### 2-2. Adding Events: `add -e` (Jun Jie)
 Adds an event with an event description to attend at a specific date and time.
+
+![AddEvent](images/userguide/addEvent.PNG)
+
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
@@ -115,6 +170,9 @@ Adds an event with an event description to attend at a specific date and time.
 
 #### 2-3. Adding Deadlines: `add -d` (Jun Jie)
 Adds a deadline with an deadline description to complete by a specific date and time.
+
+![AddDeadline](images/userguide/addDeadline.PNG)
+
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
@@ -136,7 +194,14 @@ Adds a Mastery Check session with a student at a specific date and time.
 
 ### 3. Editing Information: `edit`
 
-#### 3-1. Editing Student Information: `edit -s` (Peirong)
+#### 3-1. Editing Login Information: `edit -l` (Peirong)
+Similar to the format for editing students above, we employ the use of tags to specify the field to be edited.
+<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`
+<br>Examples:
+* `edit -l u/nusstu\e1234567 p/testpassword`
+* `edit -l p/testpassword`
+
+#### 3-2. Editing Student Information: `edit -s` (Peirong)
 `INDEX` refers to the number beside the student in the student list tab.
 Include tags followed by the updated information such as `t/maryjane132` or `e/e1234222@u.nus.edu` to edit the
 information which corresponds to that tag.
@@ -145,27 +210,16 @@ information which corresponds to that tag.
 * `edit -s 1 t/johndoe132 e/e1234567@u.nus.edu`
 * `edit -s 2 t/maryjane132 s/3`
 
-#### 3-2. Editing Login Information: `edit -l` (Peirong)
-Similar to the format for editing students above, we employ the use of tags to specify the field to be edited.
-<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`
-<br>Examples:
-* `edit -l u/nusstu\e1234567 p/testpassword`
-* `edit -l p/testpassword`
-
-#### 3-3. Marking Tasks as Done: `edit -t` (Jun Jie)
-Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can specify the `TASK_ID` to mark that particular task as done.
-<br>**Format: `edit -t / -tt / -te / -td → TASK_ID`**
-<br>Examples:
-* `edit -t → 3`
-* `edit -te → 2`
-
 ### 4. Deleting Information: `delete`
 #### 4-1. Deleting Tasks: `delete -t` (Jun Jie)
-Shows a list of tasks (todos, events, deadlines) with id numbers. If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively. Then, user can sepcify the `TASK_ID` to delete that particular task.
-<br>**Format:`delete -t / -tt / -te / -td → TASK_ID`**
+Deletes a task based on the `TASK_ID` specified by the user.
+
+![DeleteTask](images/userguide/deleteTask.PNG)
+
+<br>**Format:`delete -t TASK_ID`**
 <br>Examples:
-* `delete -t → 3`
-* `delete -td → 2`
+* `delete -t T3`
+* `delete -t D2`
 
 #### 4-2 Deleting Consultations: `delete -c` (Eryn)
 Shows a list of consultations with id numbers which can be entered by the user to specify and delete a session. If a student name is entered after the command, it shows only the sessions with the specific student.
@@ -186,8 +240,15 @@ Shows a list of Mastery Checks with id numbers which can be entered by the user 
    
 ### 5. Viewing Information: `view ` 
 #### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
-Shows a list of all students under the tutor in JARVIS. If a student name is entered after the command, it shows all
- details (contact information, consultation requests and studio participation marks) of a specific student.
+Shows a list of all students under the tutor in JARVIS.
+Please take note of the command inputted into the command box to understand how the respective commands are inputted.
+
+![ViewAllStudentsCommand](images/userguide/viewAllStudents.PNG)
+
+If a student name is entered after the command, Jarvis shows one specific student only.
+
+![ViewOneStudentCommand](images/userguide/viewOneStudent.PNG)
+
 <br>**Format: `view -s [NAME]`**
 
 
@@ -238,17 +299,33 @@ Shows all upcoming MC sessions. If a student name is entered after the command, 
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
 
+You may also click on the `Mission` tab to do so.
+
+![FetchMission](images/userguide/fetchMission.PNG)
+
 #### 5-9. Viewing deadline for quests: `view -q` (Wiline)
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
+You may also click on the `Quest` tab to do so.
+
+![FetchQuest](images/userguide/fetchQuest.PNG)
+
 #### 5-10. Viewing ungraded missions: `view -um` (Wiline)
 Shows the missions that the user has not graded.
+
+![ViewUngradedMissions](images/userguide/viewUngradedMissions.PNG)
+
 <br>**Format: `view -um`**
 
 #### 5-11. Viewing ungraded quests: `view -uq` (Wiline)
 Shows the quests that the user has not graded.
+
+![ViewUngradedQuests](images/userguide/viewUngradedQuests.PNG)
+
 <br>**Format: `view -uq`**
+
+
 
 #### 5-12. Viewing studio participation marks of a specific student: `view -p` (Zhen Teng)
 Shows the studio participation marks of a student.
@@ -256,11 +333,28 @@ Shows the studio participation marks of a student.
 <br>Examples:
 * `view -p John Doe`
 
-#### 5-13. Viewing Tasks: `view -t` (Jun Jie)
-Shows a list of tasks (todos, events, deadlines). If `-t` is specified by user, all tasks regardless of their category will be listed. If `-tt`, `-te` or `-td` is specified, todo list, event list or deadline list will be shown respectively.
-<br>**Format: `view -t / -tt / -te / -td`**
+#### 5-13. Viewing all Tasks: `view -t` (Jun Jie)
+Shows a list of all tasks created by the user.
+<br>**Format: `view -t`**
 <br>Examples:
 * `view -t`
+
+#### 5-14. Viewing all Todos: `view -tt` (Jun Jie)
+Shows a list of all todos created by the user.
+<br>**Format: `view -tt`**
+<br>Examples:
+* `view -tt`
+
+#### 5-15. Viewing all Events: `view -te` (Jun Jie)
+Shows a list of all events created by the user.
+<br>**Format: `view -te`**
+<br>Examples:
+* `view -te`
+
+#### 5-16. Viewing all Deadlines: `view -td` (Jun Jie)
+Shows a list of all deadlines created by the user.
+<br>**Format: `view -td`**
+<br>Examples:
 * `view -td`
 
 ### 6. Exiting the program : `exit` (Zhen Teng)
@@ -279,50 +373,53 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 ## Command summary
 
 ### Add (Jun Jie)
-| Tag | Format, Examples |
-| --- | ---------------- |
-| -t | add -t DESCRIPTION |
-| -e | add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM |
-| -d | add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM |
-| -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
-| -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
+| Function | Tag | Format, Examples |
+| -------- | --- | ---------------- |
+| Add Todo | -t | add -t DESCRIPTION |
+| Add Event | -e | add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM |
+| Add Deadline | -d | add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM |
+| Add Consultation | -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
+| Add Mastery Check | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
 
 ### Edit (Wiline)
-| Tag | Format, Examples |
-| --- | ---------------- |
-| -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
-| -t | edit -t / -tt / -te / -td → TASK_ID |
+| Function | Tag | Format, Examples |
+| -------- | --- | ---------------- |
+| Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
+| Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
 
 ### Delete (Zhen Teng)
-| Tag | Format, Examples |
-| --- | ---------------- |
-| -t | delete -t / -tt / -te / -td → TASK_ID <br>E.g. delete -tt → 3 / delete -t → 3 |
-| -c | delete -c NAME <br>E.g. delete -c → 3 / delete -c John Doe → 2 |
-| -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
+| Function | Tag | Format, Examples |
+| -------- | --- | ---------------- |
+| Delete Task | -t | delete -t TASK_ID |
+| Delete Consultation | -c | delete -c NAME <br>E.g. delete -c → 3 / delete -c John Doe → 2 |
+| Delete Mastery Check | -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
 
 ### View (Zhen Teng)
-| Tag | Format, Examples |
-| --- | ---------------- |
-| -s | view -s NAME |
-|-s -cr | view -s -c NAME |
-| -c | view -c NAME <br>E.g. view -c / view -c John Doe |
-| -cp | view -cp NAME <br>E.g. view -cp, view -cp John Doe |
-| -cu | view -cu NAME <br>E.g. view -cu / view -cu John Doe |
-| -mc | view -mc NAME <br>E.g. view -mc / view -mc John Doe |
-| -mcp | view -mcp NAME <br>E.g. view -mcp / view -mcp John Doe |
-| -mcu | view -mcu NAME <br>E.g. view -mcu / view -mcu John Doe |
-| -m | view -m |
-| -q | view -q |
-| -um | view -um |
-| -uq | view -uq |
-| -t | view -t / -tt / -te / -td |
+| Function | Tag | Format, Examples |
+| -------- | --- | ---------------- |
+| View one Student | -s | view -s NAME |
+| View all Consultations | -c | view -c NAME <br>E.g. view -c / view -c John Doe |
+| View all Past Consultations | -cp | view -cp NAME <br>E.g. view -cp, view -cp John Doe |
+| View all Upcoming Consultations | -cu | view -cu NAME <br>E.g. view -cu / view -cu John Doe |
+| View all Mastery Checks | -mc | view -mc NAME <br>E.g. view -mc / view -mc John Doe |
+| View all Past Mastery Checks | -mcp | view -mcp NAME <br>E.g. view -mcp / view -mcp John Doe |
+| View all Upcoming Mastery Checks | -mcu | view -mcu NAME <br>E.g. view -mcu / view -mcu John Doe |
+| View Deadlines for Missions | -m | view -m |
+| View Deadlines for Quests | -q | view -q |
+| View Ungraded Missions | -um | view -um |
+| View Ungraded Quests | -uq | view -uq |
+| View all Tasks | -t | view -t |
+| View all Todos | -tt | view -tt |
+| View all Events | -te | view -te |
+| View all Deadlines | -td | view -td |
 
 ### Exit (Peirong)
-| Format, Examples |
-| ---------------- |
-| `exit` |
+| Function | Format, Examples |
+| -------- | ---------------- |
+| Exit program | `exit` |
 
 ### Help (Peirong)
-| Format, Examples |
-| ---------------- |
-| `help` |
+| Function | Format, Examples |
+| -------- | ---------------- |
+| Provide help with
+program commands | `help` |

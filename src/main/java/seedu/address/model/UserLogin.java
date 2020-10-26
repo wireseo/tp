@@ -6,13 +6,13 @@ import seedu.address.model.login.Username;
 
 public class UserLogin implements ReadOnlyUserLogin {
     private Username username = new Username();
-
     private String password = "";
 
     /**
      * Creates a {@code UserLogin} with default values.
      */
-    public UserLogin() {}
+    public UserLogin() {
+    }
 
     /**
      * Creates a {@code UserLogin} with the prefs in {@code userLogin}.
