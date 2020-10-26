@@ -69,6 +69,14 @@ public class UserLogin implements ReadOnlyUserLogin {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof UserLogin // instanceof handles nulls
+                && username.equals(((UserLogin) other).getUsername())
+                && password.equals(((UserLogin) other).getUserPassword())); // state check
+    }
+
+    @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(" Username: ")

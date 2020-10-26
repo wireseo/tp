@@ -18,6 +18,7 @@ public class Student {
     private final Name name;
     private final Telegram telegram;
     private final Email email;
+
     // By default every student has no consultations. However we need to see how consultation is implemented to make
     // sure that upon start up the stored data is reflected.
     private Optional<Consultation> consultation = Optional.empty();
