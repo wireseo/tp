@@ -1,8 +1,9 @@
 package seedu.address.model.consultation;
 
+import java.time.LocalDateTime;
+
 import seedu.address.model.student.Student;
 
-import java.time.LocalDateTime;
 
 
 public class MasteryCheck extends Consultation {
@@ -17,7 +18,8 @@ public class MasteryCheck extends Consultation {
      * @param placeOfMeeting  place of meeting; may be a zoom link or any indicator for a meeting room at NUS
      * @param notes           any notes relevant to the mastery check; may be null
      */
-    private MasteryCheck(Student student, LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting, String notes) {
+    private MasteryCheck(Student student, LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting,
+                         String notes) {
         super(student, dateAndTime, lengthOfMeeting, placeOfMeeting, notes);
     }
 

@@ -356,8 +356,8 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredConsultations.setPredicate(predicate);
     }
-  
-  //========================= PropertyChangeListener ===================================================
+
+    //========================= PropertyChangeListener ===================================================
     @Override
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);

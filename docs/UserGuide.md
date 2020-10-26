@@ -54,7 +54,7 @@ JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
  Please refer to the logging in segment below to complete your log in.
- 
+
 1. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
    * `view -s:  Lists all students. `
@@ -81,19 +81,19 @@ To navigate the features, there are 2 methods which could be used individually, 
 this flexibility with you, the user in mind.
  1. Only inputting commands into the box annotated "Enter command here..".
  1. Clicking on the tabs.
- 
 
 
- 
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 ## Logging in
 
 The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
- 
+
 ![NoLoginDetails](images/userguide/noLoginDetails.PNG)
 
-To log in, simply edit your log in details with the following command: 
+To log in, simply edit your log in details with the following command:
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
@@ -134,7 +134,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that the user should enter `delete -c` first and then `1` after the prompt has
-    been processed.`
+    been processed.
 
 **Notes about Jarvis' relationship with Sourceacademy:** (Peirong) <br>
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
@@ -237,8 +237,8 @@ Shows a list of Mastery Checks with id numbers which can be entered by the user 
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
-   
-### 5. Viewing Information: `view ` 
+
+### 5. Viewing Information: `view `
 #### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
 Shows a list of all students under the tutor in JARVIS.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.

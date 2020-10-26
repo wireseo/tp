@@ -1,10 +1,10 @@
 package seedu.address.model.consultation;
 
-import seedu.address.model.student.Student;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
+
+import seedu.address.model.student.Student;
 
 
 /**

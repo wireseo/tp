@@ -1,13 +1,14 @@
 package seedu.address.model.consultation;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.model.student.Student;
+import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.student.Student;
+
 
 public class ConsultationList {
     private final ObservableList<Consultation> internalList = FXCollections.observableArrayList();
