@@ -8,6 +8,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.student.Student;
@@ -76,7 +77,8 @@ public class DeleteCommand extends Command {
             Student studentToDelete = lastShownList.get(targetIndex.getZeroBased());
             model.deletePerson(studentToDelete);
 
-            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, studentToDelete));
+            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, studentToDelete),
+                    CommandTargetFeature.Students);
 
         case TO_DELETE_TASK:
             assert taskId != null : "Task id of task to be deleted should not be null";
@@ -97,7 +99,8 @@ public class DeleteCommand extends Command {
             if (hasDeletedTask) {
                 assert taskToDelete != null : "Upon successful task deletion, the task deleted cannot be null";
                 model.deleteTask(taskToDelete);
-                return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+                return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete),
+                        CommandTargetFeature.Tasks);
 
             } else {
                 throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_ID);

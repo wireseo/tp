@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.function.Predicate;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.model.Model;
 import seedu.address.model.mission.Mission;
 
@@ -21,6 +22,6 @@ public class ViewUngradedMissionCommand extends ViewCommand {
         requireNonNull(model);
         model.updateMissionsList(PREDICATE_SHOW_UNGRADED_MISSIONS);
 
-        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewMissions);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Missions);
     }
 }

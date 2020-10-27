@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_QUESTS;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.model.Model;
 
 /**
@@ -17,6 +18,6 @@ public class ViewQuestDeadlineCommand extends ViewCommand {
         requireNonNull(model);
         model.updateQuestsList(PREDICATE_SHOW_ALL_QUESTS);
 
-        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewQuest);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Quest);
     }
 }

@@ -1,13 +1,10 @@
 package seedu.address.ui;
 
-import java.util.Optional;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.consultation.Consultation;
 import seedu.address.model.student.Student;
 
 /**
@@ -54,12 +51,6 @@ public class StudentCard extends UiPart<Region> {
         name.setText(student.getName().fullName);
         phone.setText("Telegram: " + student.getTelegram().username);
         email.setText("E-mail: " + student.getEmail().value);
-        Optional<Consultation> studentConsultation = student.getConsultation();
-        if (studentConsultation.isPresent()) {
-            consultationDate.setText("Consultation slot: " + studentConsultation.get().getDateAndTime());
-        } else {
-            consultationDate.setText("Consultation slot: Not set");
-        }
     }
 
     @Override

@@ -24,8 +24,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.view.ViewCommandType;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -47,6 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private MissionListPanel missionListPanel;
     private QuestListPanel questListPanel;
+    private ConsultationListPanel consultationListPanel;
     private TaskListPanel taskListPanel;
 
     @FXML
@@ -78,6 +79,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane missionListPanelPlaceholder;
+
+    @FXML
+    private StackPane consultationListPanelPlaceholder;
 
     @FXML
     private StackPane taskListPanelPlaceholder;
@@ -183,6 +187,9 @@ public class MainWindow extends UiPart<Stage> {
         questListPanel = new QuestListPanel(logic.getFilteredQuestList());
         questListPanelPlaceholder.getChildren().add(questListPanel.getRoot());
 
+        consultationListPanel = new ConsultationListPanel(logic.getFilteredConsultationList());
+        consultationListPanelPlaceholder.getChildren().add(consultationListPanel.getRoot());
+
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
@@ -206,7 +213,6 @@ public class MainWindow extends UiPart<Stage> {
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         String formattedDate = localDate.format(formatter);
-
         date.setText(formattedDate);
     }
 
@@ -314,7 +320,7 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-            ViewCommandType commandType = commandResult.getCommandType();
+            CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
             SingleSelectionModel<Tab> tabSelector = tabPane.getSelectionModel();
 
             if (commandResult.isShowHelp()) {
@@ -325,15 +331,15 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandType == ViewCommandType.ViewStudents) {
+            if (commandTargetFeature == CommandTargetFeature.Students) {
                 tabSelector.select(studentTab);
-            } else if (commandType == ViewCommandType.ViewMissions) {
+            } else if (commandTargetFeature == CommandTargetFeature.Missions) {
                 tabSelector.select(missionTab);
-            } else if (commandType == ViewCommandType.ViewQuest) {
+            } else if (commandTargetFeature == CommandTargetFeature.Quest) {
                 tabSelector.select(questTab);
-            } else if (commandType == ViewCommandType.ViewConsultations) {
+            } else if (commandTargetFeature == CommandTargetFeature.Consultations) {
                 tabSelector.select(consultationTab);
-            } else if (commandType == ViewCommandType.ViewTasks) {
+            } else if (commandTargetFeature == CommandTargetFeature.Tasks) {
                 tabSelector.select(taskTab);
             }
 

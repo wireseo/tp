@@ -3,6 +3,7 @@ package seedu.address.logic.commands.view;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.model.Model;
 
 /**
@@ -16,6 +17,6 @@ public class ViewAllStudentsCommand extends ViewCommand {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_STUDENTS);
-        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewStudents);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Students);
     }
 }
