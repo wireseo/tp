@@ -39,6 +39,10 @@ public class CliSyntax {
     public static final String TASK_DEADLINE = "-d";
     public static final String TASK_DATE = "d/";
     public static final String TASK_TIME = "t/";
+    public static final String CONSULTATION = "-c";
+    public static final String MASTERY_CHECK = "-mc";
+    public static final String NAME = "[NAME]";
+
 
     /* Delete Command flags */
     public static final String DELETE_TASK = "-t";
