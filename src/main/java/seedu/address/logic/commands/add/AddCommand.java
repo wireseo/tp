@@ -1,14 +1,6 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.CONSULTATION;
-import static seedu.address.logic.parser.CliSyntax.TASK_DATE;
-import static seedu.address.logic.parser.CliSyntax.TASK_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.TASK_EVENT;
-import static seedu.address.logic.parser.CliSyntax.MASTERY_CHECK;
-import static seedu.address.logic.parser.CliSyntax.NAME;
-import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
-import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -51,8 +43,8 @@ public class AddCommand extends Command {
             + "add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add event with DESCRIPTION at specified date and time\n"
             + "add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add deadline with DESCRIPTION at specified date and time\n"
             + "add -c NAME d/YYYY-MM-DD t/HH:MM: Add consultation with student with NAME at specified date and time\n"
-            + "add -mc NAME d/YYYY-MM-DD t/HH:MM: Add mastery check with student with NAME at specified date and " +
-            "time\n";
+            + "add -mc NAME d/YYYY-MM-DD t/HH:MM: Add mastery check with student with NAME at specified date and "
+            + "time\n";
 
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include task DESCRIPTION";
     public static final String MESSAGE_MISSING_DATE = "Please include task DATE and TIME d/YYYY-MM-DD t/HH:MM";

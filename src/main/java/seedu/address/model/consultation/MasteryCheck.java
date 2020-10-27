@@ -2,8 +2,6 @@ package seedu.address.model.consultation;
 
 import java.time.LocalDateTime;
 
-import seedu.address.model.student.Student;
-
 public class MasteryCheck extends Consultation {
     private boolean passed;
 
