@@ -225,6 +225,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return consultations.isConsultationInList(name);
     }
 
+    /**
+     * Returns whether consultation is in consultations list already.
+     * @return a boolean
+     */
     public boolean hasConsultation(Consultation toAddConsultation) {
         requireNonNull(toAddConsultation);
         return consultations.contains(toAddConsultation);
@@ -249,6 +253,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.masteryChecks.isMasteryCheckInList(name);
     }
 
+    /**
+     * Returns whether mastery check is in mastery check list already.
+     * @return a boolean
+     */
     public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
         requireNonNull(toAddMasteryCheck);
         return masteryChecks.contains(toAddMasteryCheck);
