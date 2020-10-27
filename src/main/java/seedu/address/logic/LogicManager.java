@@ -15,6 +15,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -88,13 +89,18 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Consultation> getFilteredConsultationsList() {
+    public ObservableList<Task> getFilteredTaskList() {
+        return model.getFilteredTaskList();
+    }
+
+    @Override
+    public ObservableList<Consultation> getFilteredConsultationList() {
         return model.getFilteredConsultationsList();
     }
 
     @Override
-    public ObservableList<Task> getFilteredTaskList() {
-        return model.getFilteredTaskList();
+    public ObservableList<MasteryCheck> getFilteredMasteryCheckList() {
+        return model.getFilteredMasteryChecksList();
     }
 
     @Override
