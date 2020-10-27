@@ -2,12 +2,10 @@ package seedu.address.model.consultation;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.student.Student;
 
 
 public class ConsultationList {
@@ -26,7 +24,7 @@ public class ConsultationList {
      */
     public boolean contains(Consultation toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::equals);
+        return internalList.stream().anyMatch(toCheck::isSameConsultation);
     }
 
     public void setConsultations(List<Consultation> consultations) {
@@ -38,19 +36,7 @@ public class ConsultationList {
         return internalList;
     }
 
-    public boolean isConsultationInList(Student student) { // TODO: may be unnecessary
-        return internalList.stream().anyMatch(consultation -> consultation.getStudent().equals(student));
-    }
-
-    public boolean isConsultationInList(LocalDateTime dateAndTime) { // TODO: may be unnecessary
-        return internalList.stream().anyMatch(consultation -> consultation.getDateAndTime().equals(dateAndTime));
-    }
-
-    public boolean containsConsultation(Consultation consultation) { // TODO: may be unnecessary
-        return internalList.stream().anyMatch(c -> c.isSameConsultation(consultation));
-    }
-
-    public void addConsultation(Consultation consultation) {
-        this.internalList.add(consultation);
+    public boolean isConsultationInList(String name) {
+        return internalList.stream().anyMatch(consultation -> consultation.getIdentifier().equals(name));
     }
 }

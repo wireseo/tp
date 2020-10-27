@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -27,7 +28,7 @@ public interface Model {
     /** {@code Predicate} that evaluate to true if mission is ongoing */
     Predicate<Mission> PREDICATE_SHOW_ALL_MISSIONS = mission -> mission.getDeadline().contains("Due");
 
-    /** {@code Predicate} that always evaluate to true */
+    /** {@code Predicate} that always evaluate to true if it is a consultation*/
     Predicate<Consultation> PREDICATE_SHOW_ALL_CONSULTATIONS = unused -> true;
 
     /** {@code Predicate} that evaluates to true when the consultation has taken place in the past. */
@@ -36,6 +37,17 @@ public interface Model {
 
     /** {@code Predicate} that evaluates to true when the consultation will take place in the future. */
     Predicate<Consultation> PREDICATE_SHOW_UPCOMING_CONSULTATIONS = unused ->
+            unused.getDateAndTime().isAfter(LocalDateTime.now());
+
+    /** {@code Predicate} that always evaluate to true if it is a mastery check */
+    Predicate<MasteryCheck> PREDICATE_SHOW_ALL_MASTERY_CHECKS = unused -> true;
+
+    /** {@code Predicate} that evaluates to true when the mastery check has taken place in the past. */
+    Predicate<MasteryCheck> PREDICATE_SHOW_PAST_MASTERY_CHECKS = unused ->
+            unused.getDateAndTime().isBefore(LocalDateTime.now());
+
+    /** {@code Predicate} that evaluates to true when the mastery check will take place in the future. */
+    Predicate<MasteryCheck> PREDICATE_SHOW_UPCOMING_MASTERY_CHECKS = unused ->
             unused.getDateAndTime().isAfter(LocalDateTime.now());
 
     /** {@code Predicate} that always evaluate to true if quest is ongoing */
@@ -218,18 +230,40 @@ public interface Model {
      */
     void deleteTask(Task target);
 
-    //================== Consultations ========================================================================
-
-    /**
-     * Returns true if a consultation with the same identity as {@code consultation} exists in the address book.
-     */
-    boolean hasConsultation(Consultation consultation);
+    //================== Consultations  ======================================================
 
     /**
      * Adds the given consultation.
      * {@code consultation} must not already exist in the address book.
      */
     void addConsultation(Consultation consultation);
+
+    void setConsultations(List<Consultation> consultations);
+
+    /**
+     * Returns an unmodifiable view of the filtered consultation list.
+     */
+    ObservableList<Consultation> getFilteredConsultationsList();
+
+    void updateConsultationsList(Predicate<Consultation> predicate);
+
+    boolean isConsultationInList(String identifier);
+
+    boolean hasConsultation(Consultation toAddConsultation);
+
+    //================== Mastery Checks  ======================================================
+
+    void addMasteryCheck(MasteryCheck masteryCheck);
+
+    void setMasteryChecks(List<MasteryCheck> masteryChecks);
+
+    ObservableList<MasteryCheck> getFilteredMasteryChecksList();
+
+    void updateMasteryChecksList(Predicate<MasteryCheck> predicate);
+
+    boolean isMasteryCheckInList(String identifier);
+
+    boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck);
 
     //=========== Filtered Mission List Accessors =============================================================
 
@@ -255,6 +289,11 @@ public interface Model {
      * @param missions
      */
     void setMissions(List<Mission> missions);
+
+    boolean isMissionInList(String title);
+
+    boolean updateMission(String name);
+
     //=========== Quests ===================================================================================
 
     /**
@@ -278,21 +317,11 @@ public interface Model {
      */
     void updateQuestsList(Predicate<Quest> predicate);
 
-    /**
-     * Returns an unmodifiable view of the filtered consultation list.
-     */
-    ObservableList<Consultation> getFilteredConsultationsList();
-
-    void updateFilteredConsultationsList(Predicate<Consultation> predicate);
-
-    boolean isMissionInList(String title);
-
-    boolean updateMission(String name);
-
     boolean isQuestInList(String title);
 
     boolean updateQuest(String name);
 
     //=========== EventSupport ===================================================================================
     void addPropertyChangeListener(PropertyChangeListener pcv);
+
 }

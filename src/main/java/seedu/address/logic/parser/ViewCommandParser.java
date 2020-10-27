@@ -6,11 +6,17 @@ import static seedu.address.logic.parser.CliSyntax.MISSION_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.QUEST_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_MISSION;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_QUEST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_CONSULTATION_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_DEADLINE_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_EVENT_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_MASTERY_CHECK_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_PAST_CONSULTATION_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_PAST_MASTERY_CHECK_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.VIEW_TASK_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_TODO_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_UPCOMING_CONSULTATION_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_UPCOMING_MASTERY_CHECK_LIST;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -19,12 +25,18 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.view.ViewAllStudentsCommand;
 import seedu.address.logic.commands.view.ViewCommand;
+import seedu.address.logic.commands.view.ViewConsultationsCommand;
+import seedu.address.logic.commands.view.ViewMasteryChecksCommand;
 import seedu.address.logic.commands.view.ViewMissionDeadlineCommand;
 import seedu.address.logic.commands.view.ViewOneStudentCommand;
+import seedu.address.logic.commands.view.ViewPastConsultationsCommand;
+import seedu.address.logic.commands.view.ViewPastMasteryChecksCommand;
 import seedu.address.logic.commands.view.ViewQuestDeadlineCommand;
 import seedu.address.logic.commands.view.ViewTaskListCommand;
 import seedu.address.logic.commands.view.ViewUngradedMissionCommand;
 import seedu.address.logic.commands.view.ViewUngradedQuestCommand;
+import seedu.address.logic.commands.view.ViewUpcomingConsultationsCommand;
+import seedu.address.logic.commands.view.ViewUpcomingMasteryChecksCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Name;
@@ -97,6 +109,23 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         case VIEW_DEADLINE_LIST:
             return new ViewTaskListCommand(VIEW_DEADLINE_LIST);
 
+        case VIEW_CONSULTATION_LIST:
+            return new ViewConsultationsCommand();
+
+        case VIEW_UPCOMING_CONSULTATION_LIST:
+            return new ViewUpcomingConsultationsCommand();
+
+        case VIEW_PAST_CONSULTATION_LIST:
+            return new ViewPastConsultationsCommand();
+
+        case VIEW_MASTERY_CHECK_LIST:
+            return new ViewMasteryChecksCommand();
+
+        case VIEW_UPCOMING_MASTERY_CHECK_LIST:
+            return new ViewUpcomingMasteryChecksCommand();
+
+        case VIEW_PAST_MASTERY_CHECK_LIST:
+            return new ViewPastMasteryChecksCommand();
 
         // add the other cases here
 

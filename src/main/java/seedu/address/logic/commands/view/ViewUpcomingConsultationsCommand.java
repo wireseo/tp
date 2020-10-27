@@ -15,8 +15,7 @@ public class ViewUpcomingConsultationsCommand extends ViewCommand {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredConsultationsList(PREDICATE_SHOW_UPCOMING_CONSULTATIONS);
-
+        model.updateConsultationsList(PREDICATE_SHOW_UPCOMING_CONSULTATIONS);
         return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewConsultations);
     }
 }
