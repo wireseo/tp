@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MASTERY_CHECKS;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.model.Model;
 
 /**
@@ -17,6 +18,6 @@ public class ViewMasteryChecksCommand extends ViewCommand {
         requireNonNull(model);
         model.updateMasteryChecksList(PREDICATE_SHOW_ALL_MASTERY_CHECKS);
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Consultations);
     }
 }

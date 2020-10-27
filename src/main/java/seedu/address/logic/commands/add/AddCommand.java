@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
@@ -129,7 +130,7 @@ public class AddCommand extends Command {
             }
 
             model.addPerson(toAddStudent);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAddStudent));
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAddStudent), CommandTargetFeature.Students);
 
         case TO_ADD_TODO:
             Todo toAddTodo = (Todo) toAdd;
@@ -138,7 +139,7 @@ public class AddCommand extends Command {
             }
 
             model.addTodo(toAddTodo);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo), CommandTargetFeature.Tasks);
 
         case TO_ADD_EVENT:
             Event toAddEvent = (Event) toAdd;
@@ -147,7 +148,7 @@ public class AddCommand extends Command {
             }
 
             model.addEvent(toAddEvent);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent), CommandTargetFeature.Tasks);
 
         case TO_ADD_DEADLINE:
             Deadline toAddDeadline = (Deadline) toAdd;
@@ -156,7 +157,8 @@ public class AddCommand extends Command {
             }
 
             model.addDeadline(toAddDeadline);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline),
+                    CommandTargetFeature.Tasks);
 
 
             // add the other cases here

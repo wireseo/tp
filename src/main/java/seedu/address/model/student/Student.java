@@ -1,12 +1,8 @@
 package seedu.address.model.student;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
-import java.util.Optional;
-
-import seedu.address.model.consultation.Consultation;
 
 /**
  * Represents a Student in the address book.
@@ -18,10 +14,6 @@ public class Student {
     private final Name name;
     private final Telegram telegram;
     private final Email email;
-
-    // By default every student has no consultations. However we need to see how consultation is implemented to make
-    // sure that upon start up the stored data is reflected.
-    private Optional<Consultation> consultation = Optional.empty();
 
     /**
      * Every field must be present and not null.
@@ -52,23 +44,6 @@ public class Student {
      */
     public Email getEmail() {
         return email;
-    }
-
-    /**
-     * Assigns a consultation slot to a student.
-     * @param consultationSession to be attached to this student.
-     */
-    public void setConsultation(Consultation consultationSession) {
-        requireNonNull(consultationSession);
-        consultation = Optional.of(consultationSession);
-    }
-
-    /**
-     * Getter method for a consultation with the student. If a consultation with this student does not exists,
-     * an empty optional will be returned, else an optional with the Consultation session will be returned.
-     */
-    public Optional<Consultation> getConsultation() {
-        return consultation;
     }
 
     /**

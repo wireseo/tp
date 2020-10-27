@@ -152,12 +152,13 @@
                 <Label text="Consultation" rotate="90"/>
               </Group>
             </graphic>
-            <VBox fx:id="consultList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+            <VBox fx:id="consultationList" styleClass="pane-with-border" minWidth="340" prefWidth="340"
+                  VBox.vgrow="ALWAYS">
 <!--              <Label text="Consult List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
               <padding>
                 <Insets top="10" right="10" bottom="10" left="10" />
               </padding>
-              <StackPane fx:id="consultListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              <StackPane fx:id="consultationListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
           </Tab>
 

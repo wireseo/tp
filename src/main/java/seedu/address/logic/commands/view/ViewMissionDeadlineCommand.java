@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MISSIONS;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.model.Model;
 
 /**
@@ -17,6 +18,6 @@ public class ViewMissionDeadlineCommand extends ViewCommand {
         requireNonNull(model);
         model.updateMissionsList(PREDICATE_SHOW_ALL_MISSIONS);
 
-        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewMissions);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Missions);
     }
 }

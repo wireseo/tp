@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_PAST_CONSULTATIONS;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.model.Model;
 
 
@@ -17,6 +18,6 @@ public class ViewPastConsultationsCommand extends ViewCommand {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateConsultationsList(PREDICATE_SHOW_PAST_CONSULTATIONS);
-        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewConsultations);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Consultations);
     }
 }

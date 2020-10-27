@@ -3,6 +3,7 @@ package seedu.address.logic.commands.add;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
@@ -23,7 +24,7 @@ public class AddConsultationCommand extends AddCommand {
         }
 
         model.addConsultation(toAddConsultation);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAddConsultation));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAddConsultation), CommandTargetFeature.Consultations);
 
     }
 }

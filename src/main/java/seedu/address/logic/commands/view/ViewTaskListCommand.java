@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.VIEW_TODO_LIST;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
@@ -38,19 +39,19 @@ public class ViewTaskListCommand extends ViewCommand {
         switch(viewType) {
         case VIEW_TASK_LIST:
             model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, TASK_LIST), ViewCommandType.ViewTasks);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, TASK_LIST), CommandTargetFeature.Tasks);
 
         case VIEW_TODO_LIST:
             model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TODOS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, TODO_LIST), ViewCommandType.ViewTasks);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, TODO_LIST), CommandTargetFeature.Tasks);
 
         case VIEW_EVENT_LIST:
             model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_EVENTS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, EVENT_LIST), ViewCommandType.ViewTasks);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, EVENT_LIST), CommandTargetFeature.Tasks);
 
         case VIEW_DEADLINE_LIST:
             model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_DEADLINES);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, DEADLINE_LIST), ViewCommandType.ViewTasks);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, DEADLINE_LIST), CommandTargetFeature.Tasks);
 
         default:
             throw new CommandException(Messages.MESSAGE_VIEW_TYPE_NOT_FOUND);

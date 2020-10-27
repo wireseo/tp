@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandTargetFeature;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.student.Name;
@@ -49,7 +50,7 @@ public class ViewOneStudentCommand extends ViewCommand {
             model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_STUDENTS);
             throw new CommandException(Messages.MESSAGE_STUDENT_NAME_NOT_FOUND);
         } else {
-            return new CommandResult(String.format(MESSAGE_SUCCESS, searchedName), ViewCommandType.ViewStudents);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, searchedName), CommandTargetFeature.Students);
         }
     }
 

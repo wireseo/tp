@@ -4,16 +4,14 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
-import seedu.address.logic.commands.view.ViewCommandType;
-
 /**
  * Represents the result of a command execution.
  */
 public class CommandResult {
 
     private final String feedbackToUser;
-    // commandType is set to CommandType.NotAssigned if it is not set by the constructor.
-    private ViewCommandType viewCommandType = ViewCommandType.NotAssigned;
+    // commandTargetFeature is set to CommandTargetFeature.NotAssigned if it is not set by the constructor.
+    private CommandTargetFeature commandTargetFeature = CommandTargetFeature.NotAssigned;
 
     /** Help information should be shown to the user. */
     private final boolean showHelp;
@@ -40,12 +38,12 @@ public class CommandResult {
 
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
-     * {@code commandType} and other fields set to their default value.
+     * {@code commandTargetFeature} and other fields set to their default value.
      */
-    public CommandResult(String feedbackToUser, ViewCommandType commandType) {
+    public CommandResult(String feedbackToUser, CommandTargetFeature commandTargetFeature) {
         this(feedbackToUser, false, false);
-        requireNonNull(commandType);
-        this.viewCommandType = commandType;
+        requireNonNull(commandTargetFeature);
+        this.commandTargetFeature = commandTargetFeature;
     }
 
     public String getFeedbackToUser() {
@@ -64,8 +62,8 @@ public class CommandResult {
      * Returns the type of the command executed, resulting in this command result.
      * @return type of the command object executed.
      */
-    public ViewCommandType getCommandType() {
-        return viewCommandType;
+    public CommandTargetFeature getCommandTargetFeature() {
+        return commandTargetFeature;
     }
 
     @Override
