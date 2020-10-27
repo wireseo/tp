@@ -31,6 +31,11 @@ class JsonSerializableAddressBook {
 
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
+    private final List<JsonAdaptedConsultation> consultations = new ArrayList<>();
+
+    private final List<JsonAdaptedMasteryCheck> masteryChecks = new ArrayList<>();
+
+
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given fields.
      */
@@ -39,11 +44,15 @@ class JsonSerializableAddressBook {
             @JsonProperty("students") List<JsonAdaptedStudent> students,
             @JsonProperty("missions") List<JsonAdaptedMission> missions,
             @JsonProperty("quests") List<JsonAdaptedQuest> quests,
-            @JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
+            @JsonProperty("tasks") List<JsonAdaptedTask> tasks,
+            @JsonProperty("consultations") List<JsonAdaptedConsultation> consultations,
+            @JsonProperty("masteryChecks") List<JsonAdaptedMasteryCheck> masteryChecks) {
         this.students.addAll(students);
         this.missions.addAll(missions);
         this.quests.addAll(quests);
         this.tasks.addAll(tasks);
+        this.consultations.addAll(consultations);
+        this.masteryChecks.addAll(masteryChecks);
     }
 
     /**
