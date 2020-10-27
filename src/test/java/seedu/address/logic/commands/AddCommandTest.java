@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.add.AddCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -25,6 +26,7 @@ import seedu.address.model.ReadOnlyUserLogin;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserLogin;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -197,7 +199,7 @@ public class AddCommandTest {
 
         @Override
         public boolean hasStudents() {
-            return false;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -221,7 +223,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateFilteredConsultationsList(Predicate<Consultation> predicate) {
+        public void updateConsultationsList(Predicate<Consultation> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean isConsultationInList(String identifier) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -261,6 +268,36 @@ public class AddCommandTest {
         }
 
         @Override
+        public void addMasteryCheck(MasteryCheck masteryCheck) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMasteryChecks(List<MasteryCheck> masteryChecks) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<MasteryCheck> getFilteredMasteryChecksList() {
+            return null;
+        }
+
+        @Override
+        public void updateMasteryChecksList(Predicate<MasteryCheck> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean isMasteryCheckInList(String identifier) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addTodo(Todo todo) {
             throw new AssertionError("This method should not be called.");
         }
@@ -282,6 +319,11 @@ public class AddCommandTest {
 
         @Override
         public void addConsultation(Consultation consultation) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setConsultations(List<Consultation> consultations) {
             throw new AssertionError("This method should not be called.");
         }
 
