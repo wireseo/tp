@@ -95,17 +95,17 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         if (!isAuthenticated) {
             shutDown();
             return;
-        }     
+        }
 
         // Run JavaFX-modifying functions after JavaFX Thread is done.
         Platform.runLater(() -> {
             String name = "";
-            
+
             // Only fetch name if name in addressbook is empty
             if (!model.hasName()) {
                 name = getName();
             }
-          
+
             List<Mission> missions = getMissions();
             List<Quest> quests = getQuests();
             List<Student> students = new ArrayList<>();
