@@ -15,6 +15,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -37,6 +38,7 @@ public class ModelManager implements Model {
     private final FilteredList<Quest> filteredQuests;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Consultation> filteredConsultations;
+    private final FilteredList<MasteryCheck> filteredMasteryChecks;
     private String name;
 
     private final PropertyChangeSupport support;
@@ -58,6 +60,8 @@ public class ModelManager implements Model {
         filteredQuests = new FilteredList<>(this.addressBook.getQuestList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
         filteredConsultations = new FilteredList<>(this.addressBook.getConsultationList());
+        filteredMasteryChecks = new FilteredList<>(this.addressBook.getMasteryChecksList());
+
         support = new PropertyChangeSupport(this);
         name = this.addressBook.getName();
     }
@@ -185,6 +189,31 @@ public class ModelManager implements Model {
         return addressBook.hasStudents();
     }
 
+    @Override
+    public void updateFilteredPersonList(Predicate<Student> predicate) {
+        requireNonNull(predicate);
+        filteredStudents.setPredicate(predicate);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ModelManager)) {
+            return false;
+        }
+
+        // state check
+        ModelManager other = (ModelManager) obj;
+        return addressBook.equals(other.addressBook)
+                && userPrefs.equals(other.userPrefs)
+                && filteredStudents.equals(other.filteredStudents);
+    }
+
     //=========== Missions ===================================================================================
     @Override
     public void addMission(Mission mission) {
@@ -261,31 +290,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Student> predicate) {
-        requireNonNull(predicate);
-        filteredStudents.setPredicate(predicate);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        // short circuit if same object
-        if (obj == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(obj instanceof ModelManager)) {
-            return false;
-        }
-
-        // state check
-        ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredStudents.equals(other.filteredStudents);
-    }
-
-    @Override
     public boolean isQuestInList(String title) {
         assert title.length() > 0 : "No quest title provided";
         return addressBook.isQuestInList(title);
@@ -354,14 +358,13 @@ public class ModelManager implements Model {
     //========================= Consultations ================================================================
 
     @Override
-    public boolean hasConsultation(Consultation consultation) {
-        requireNonNull(consultation);
-        return addressBook.hasConsultation(consultation);
+    public void addConsultation(Consultation consultation) {
+        addressBook.addConsultation(consultation);
     }
 
     @Override
-    public void addConsultation(Consultation consultation) {
-        addressBook.addConsultation(consultation);
+    public void setConsultations(List<Consultation> consultations) {
+        addressBook.setConsultations(consultations);
     }
 
     @Override
@@ -370,9 +373,56 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredConsultationsList(Predicate<Consultation> predicate) {
+    public void updateConsultationsList(Predicate<Consultation> predicate) {
         requireNonNull(predicate);
         filteredConsultations.setPredicate(predicate);
+    }
+
+    @Override
+    public boolean isConsultationInList(String identifier) {
+        assert identifier.length() > 0 : "No identifier provided";
+        return addressBook.isConsultationInList(identifier);
+    }
+
+    @Override
+    public boolean hasConsultation(Consultation toAddConsultation) {
+        requireNonNull(toAddConsultation);
+        return addressBook.hasConsultation(toAddConsultation);
+    }
+
+    //========================= Mastery Checks ================================================================
+
+    @Override
+    public void addMasteryCheck(MasteryCheck masteryCheck) {
+        addressBook.addMasteryCheck(masteryCheck);
+    }
+
+    @Override
+    public void setMasteryChecks(List<MasteryCheck> masteryChecks) {
+        addressBook.setMasteryChecks(masteryChecks);
+    }
+
+    @Override
+    public ObservableList<MasteryCheck> getFilteredMasteryChecksList() {
+        return filteredMasteryChecks;
+    }
+
+    @Override
+    public void updateMasteryChecksList(Predicate<MasteryCheck> predicate) {
+        requireNonNull(predicate);
+        filteredMasteryChecks.setPredicate(predicate);
+    }
+
+    @Override
+    public boolean isMasteryCheckInList(String identifier) {
+        assert identifier.length() > 0 : "No identifier provided";
+        return addressBook.isMasteryCheckInList(identifier);
+    }
+
+    @Override
+    public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
+        requireNonNull(toAddMasteryCheck);
+        return addressBook.hasMasteryCheck(toAddMasteryCheck);
     }
 
     //========================= PropertyChangeListener ===================================================

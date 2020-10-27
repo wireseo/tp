@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.delete;
 
 import seedu.address.commons.core.index.Index;
 

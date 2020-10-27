@@ -26,6 +26,12 @@ public class CliSyntax {
     public static final String VIEW_TODO_LIST = "-tt";
     public static final String VIEW_EVENT_LIST = "-te";
     public static final String VIEW_DEADLINE_LIST = "-td";
+    public static final String VIEW_CONSULTATION_LIST = "-c";
+    public static final String VIEW_UPCOMING_CONSULTATION_LIST = "-cu";
+    public static final String VIEW_PAST_CONSULTATION_LIST = "-cp";
+    public static final String VIEW_MASTERY_CHECK_LIST = "-mc";
+    public static final String VIEW_UPCOMING_MASTERY_CHECK_LIST = "-mcu";
+    public static final String VIEW_PAST_MASTERY_CHECK_LIST = "-mcp";
 
     /* Add Command flags */
     public static final String TASK_TODO = "-t";

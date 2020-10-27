@@ -7,6 +7,8 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.ConsultationList;
+import seedu.address.model.consultation.MasteryCheck;
+import seedu.address.model.consultation.MasteryCheckList;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
 import seedu.address.model.quest.Quest;
@@ -33,6 +35,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final ConsultationList consultations;
 
+    private final MasteryCheckList masteryChecks;
+
     private final UniqueTasksList tasks;
 
     private String name;
@@ -50,8 +54,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks = new UniqueTasksList();
         quests = new QuestList();
         consultations = new ConsultationList();
+        masteryChecks = new MasteryCheckList();
         name = "";
-    }
 
     public AddressBook() {}
 
@@ -83,6 +87,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         setMissions(newData.getMissionList());
         setQuests(newData.getQuestList());
         setTasks(newData.getTaskList());
+        setConsultations(newData.getConsultationList());
+        setMasteryChecks(newData.getMasteryChecksList());
         name = newData.getName();
     }
 
@@ -146,45 +152,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Mission> getMissionList() {
-        return this.missions.asObservableList();
-    }
-
-    @Override
-    public ObservableList<Quest> getQuestList() {
-        return this.quests.asObservableList();
-    }
-
-    @Override
-    public ObservableList<Consultation> getConsultationList() {
-        return this.consultations.asObservableList();
-    }
-
-    public void addMission(Mission mission) {
-        this.missions.add(mission);
-    }
-
-    public void setMissions(List<Mission> missions) {
-        this.missions.setMissions(missions);
-    }
-
-    public void addQuest(Quest quest) {
-        this.quests.add(quest);
-    }
-
-    public void setQuests(List<Quest> quests) {
-        this.quests.setQuests(quests);
-    }
-
-    public void addConsultation(Consultation consultation) {
-        this.consultations.add(consultation);
-    }
-
-    public void setConsultaitons(List<Consultation> consultations) {
-        this.consultations.setConsultations(consultations);
-    }
-
-    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
@@ -196,6 +163,107 @@ public class AddressBook implements ReadOnlyAddressBook {
         return students.hashCode();
     }
 
+    //======================== Quests =======================================================
+
+    @Override
+    public ObservableList<Quest> getQuestList() {
+        return this.quests.asObservableList();
+    }
+
+    public void addQuest(Quest quest) {
+        this.quests.add(quest);
+    }
+
+    public void setQuests(List<Quest> quests) {
+        this.quests.setQuests(quests);
+    }
+
+    public boolean isQuestInList(String name) {
+        return this.quests.isQuestInList(name);
+    }
+
+    public boolean updateQuest(String name) {
+        return this.quests.updateQuest(name);
+    }
+
+    //======================== Missions =======================================================
+
+    public void addMission(Mission mission) {
+        this.missions.add(mission);
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions.setMissions(missions);
+    }
+
+    @Override
+    public ObservableList<Mission> getMissionList() {
+        return this.missions.asObservableList();
+    }
+
+    public boolean isMissionInList(String name) {
+        return this.missions.isMissionInList(name);
+    }
+
+    public boolean updateMission(String name) {
+        return this.missions.updateMission(name);
+    }
+
+    //======================== Consultations =======================================================
+
+    public void addConsultation(Consultation consultation) {
+        this.consultations.add(consultation);
+    }
+
+    public void setConsultations(List<Consultation> consultations) {
+        this.consultations.setConsultations(consultations);
+    }
+
+    @Override
+    public ObservableList<Consultation> getConsultationList() {
+        return this.consultations.asObservableList();
+    }
+
+    public boolean isConsultationInList(String name) {
+        return consultations.isConsultationInList(name);
+    }
+
+    /**
+     * Returns whether consultation is in consultations list already.
+     * @return a boolean
+     */
+    public boolean hasConsultation(Consultation toAddConsultation) {
+        requireNonNull(toAddConsultation);
+        return consultations.contains(toAddConsultation);
+    }
+
+    //======================== MasteryChecks =======================================================
+
+    public void addMasteryCheck(MasteryCheck masteryCheck) {
+        this.masteryChecks.add(masteryCheck);
+    }
+
+    public void setMasteryChecks(List<MasteryCheck> masteryChecks) {
+        this.masteryChecks.setMasteryChecks(masteryChecks);
+    }
+
+    @Override
+    public ObservableList<MasteryCheck> getMasteryChecksList() {
+        return this.masteryChecks.asObservableList();
+    }
+
+    public boolean isMasteryCheckInList(String name) {
+        return this.masteryChecks.isMasteryCheckInList(name);
+    }
+
+    /**
+     * Returns whether mastery check is in mastery check list already.
+     * @return a boolean
+     */
+    public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
+        requireNonNull(toAddMasteryCheck);
+        return masteryChecks.contains(toAddMasteryCheck);
+    }
 
     //======================== Tasks ==========================================================================
     /**
@@ -247,15 +315,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if a consultation with the same identity as {@code deadline} exists in the address book.
-     */
-    public boolean hasConsultation(Consultation consultation) {
-        requireNonNull(consultation);
-        return consultations.containsConsultation(consultation);
-    }
-
-
-    /**
      * Returns true if a task with the same identity as {@code task} exists in the address book.
      */
     public boolean hasTask(Task task) {
@@ -287,7 +346,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Task> getTaskList() {
         return this.tasks.asObservableList();
     }
-
+      
     public boolean isMissionInList(String name) {
         return this.missions.isMissionInList(name);
     }
@@ -315,5 +374,4 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean hasName() {
         return !this.name.isEmpty();
     }
-
 }

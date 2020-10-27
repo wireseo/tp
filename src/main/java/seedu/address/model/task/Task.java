@@ -1,7 +1,7 @@
 package seedu.address.model.task;
 
-import static seedu.address.logic.commands.AddCommand.TO_ADD_DEADLINE;
-import static seedu.address.logic.commands.AddCommand.TO_ADD_EVENT;
+import static seedu.address.logic.commands.add.AddCommand.TO_ADD_DEADLINE;
+import static seedu.address.logic.commands.add.AddCommand.TO_ADD_EVENT;
 
 public abstract class Task {
     private static int taskNum = 1;

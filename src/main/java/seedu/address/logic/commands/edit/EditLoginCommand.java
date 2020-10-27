@@ -1,10 +1,11 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
 
 import java.util.Optional;
 
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.UserLogin;
 import seedu.address.model.login.Username;

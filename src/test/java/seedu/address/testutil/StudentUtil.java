@@ -4,8 +4,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.EditStudentCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.add.AddCommand;
+import seedu.address.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
 import seedu.address.model.student.Student;
 
 /**

@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -30,14 +31,23 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Quest> getQuestList();
 
-    ObservableList<Consultation> getConsultationList();
-
     /**
      * Returns an unmodifiable view of the task list.
      * This list will not contain any duplicate tasks.
      */
     ObservableList<Task> getTaskList();
 
+     * Returns an unmodifiable view of the consultation list.
+     * This list will not contain any duplicate consultations.
+     */
+    ObservableList<Consultation> getConsultationList();
+
+    /**
+     * Returns an unmodifiable view of the mastery check list.
+     * This list will not contain any duplicate mastery checks.
+     */
+    ObservableList<MasteryCheck> getMasteryChecksList();
+  
     /**
      * Returns the name of the user.
      */

@@ -16,11 +16,10 @@ public class Consultation {
     private Optional<Integer> lengthOfMeeting;
     private Optional<String> placeOfMeeting;
     private Optional<String> notes;
-    private String minutes;
 
     /**
      * Creates a {@code Consultation} with the given parameters.
-     * {@code placeOfMeeting} and {@code notes} may be null.
+     * {@code placeOfMeeting} {@code lengthOfMeeting} and {@code notes} may be null.
      * @param student the subject of this consultation
      * @param dateAndTime date and time of the consultation
      * @param lengthOfMeeting the length of the consultation in minutes
@@ -36,7 +35,6 @@ public class Consultation {
         this.lengthOfMeeting = Optional.of(lengthOfMeeting);
         this.placeOfMeeting = Optional.of(placeOfMeeting);
         this.notes = Optional.of(notes);
-        this.minutes = "";
     }
 
     public Student getStudent() {
@@ -45,6 +43,10 @@ public class Consultation {
 
     public LocalDateTime getDateAndTime() {
         return dateAndTime;
+    }
+
+    public String getIdentifier() {
+        return getStudent().getName().fullName + dateAndTime.toString();
     }
 
     public Optional<Integer> getLengthOfMeeting() {
@@ -57,10 +59,6 @@ public class Consultation {
 
     public Optional<String> getNotes() {
         return notes;
-    }
-
-    public String getMinutes() {
-        return minutes;
     }
 
     // Over here a navigability from student to Consultation is also created, hopefully this wouldnt break.
@@ -87,10 +85,6 @@ public class Consultation {
 
     public void setNotes(Optional<String> notes) {
         this.notes = notes;
-    }
-
-    public void setMinutes(String minutes) {
-        this.minutes = minutes;
     }
 
 
