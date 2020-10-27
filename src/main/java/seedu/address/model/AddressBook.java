@@ -56,6 +56,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         consultations = new ConsultationList();
         masteryChecks = new MasteryCheckList();
         name = "";
+    }
 
     public AddressBook() {}
 
@@ -345,22 +346,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Task> getTaskList() {
         return this.tasks.asObservableList();
-    }
-      
-    public boolean isMissionInList(String name) {
-        return this.missions.isMissionInList(name);
-    }
-
-    public boolean updateMission(String name) {
-        return this.missions.updateMission(name);
-    }
-
-    public boolean isQuestInList(String name) {
-        return this.quests.isQuestInList(name);
-    }
-
-    public boolean updateQuest(String name) {
-        return this.quests.updateQuest(name);
     }
 
     public String getName() {

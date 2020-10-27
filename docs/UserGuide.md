@@ -249,7 +249,7 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 * `delete -mc → 3`
 * `delete -mc John Doe
    → 2`
-   
+
 ### 5. Viewing Information: `view`
 
 #### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
