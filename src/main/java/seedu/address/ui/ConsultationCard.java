@@ -36,7 +36,7 @@ public class ConsultationCard extends UiPart<Region> {
         super(FXML);
         this.consultation = consultation;
         id.setText(displayedIndex + ". ");
-        studentName.setText(consultation.getStudent().getName().fullName);
+        studentName.setText(consultation.getStudentName());
         dateAndTime.setText(consultation.getDateAndTime().toString());
     }
 

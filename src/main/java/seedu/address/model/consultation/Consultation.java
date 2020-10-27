@@ -2,43 +2,26 @@ package seedu.address.model.consultation;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.Optional;
-
-import seedu.address.model.student.Student;
-
 
 /**
  * Represents a Consultation that contains information relating to general consultations.
  */
 public class Consultation {
-    private Student student;
+    private String studentName;
     private LocalDateTime dateAndTime;
-    private Optional<Integer> lengthOfMeeting;
-    private Optional<String> placeOfMeeting;
-    private Optional<String> notes;
 
     /**
      * Creates a {@code Consultation} with the given parameters.
-     * {@code placeOfMeeting} {@code lengthOfMeeting} and {@code notes} may be null.
-     * @param student the subject of this consultation
+     * @param studentName the name of the subject of this consultation
      * @param dateAndTime date and time of the consultation
-     * @param lengthOfMeeting the length of the consultation in minutes
-     * @param placeOfMeeting place of meeting; may be a zoom link or any indicator for a meeting room at NUS
-     * @param notes any notes relevant to the consultation; may be null
-     *
-     * Student and dateAndTime are the identifiers of objects of this class.
      */
-    public Consultation(Student student, LocalDateTime dateAndTime, int lengthOfMeeting, String placeOfMeeting,
-                        String notes) {
-        this.student = student; // TODO: NEED TO TEST WHEN STUDENT REFERENCE DELETED IN FILE; AUTO DELETE NECESSARY
+    public Consultation(String studentName, LocalDateTime dateAndTime) {
+        this.studentName = studentName;
         this.dateAndTime = dateAndTime;
-        this.lengthOfMeeting = Optional.of(lengthOfMeeting);
-        this.placeOfMeeting = Optional.of(placeOfMeeting);
-        this.notes = Optional.of(notes);
     }
 
-    public Student getStudent() {
-        return student;
+    public String getStudentName() {
+        return studentName;
     }
 
     public LocalDateTime getDateAndTime() {
@@ -46,41 +29,20 @@ public class Consultation {
     }
 
     public String getIdentifier() {
-        return getStudent().getName().fullName + dateAndTime.toString();
+        return studentName + dateAndTime.toString();
     }
 
-    public Optional<Integer> getLengthOfMeeting() {
-        return lengthOfMeeting;
-    }
-
-    public Optional<String> getPlaceOfMeeting() {
-        return placeOfMeeting;
-    }
-
-    public Optional<String> getNotes() {
-        return notes;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 
-    public void setLengthOfMeeting(Optional<Integer> lengthOfMeeting) {
-        this.lengthOfMeeting = lengthOfMeeting;
-    }
-
-    public void setPlaceOfMeeting(Optional<String> placeOfMeeting) {
-        this.placeOfMeeting = placeOfMeeting;
-    }
-
-    public void setNotes(Optional<String> notes) {
-        this.notes = notes;
-    }
-
-
     @Override
     public int hashCode() {
-        return Objects.hash(student, dateAndTime);
+        return Objects.hash(studentName, dateAndTime);
     }
 
 
@@ -97,12 +59,12 @@ public class Consultation {
         }
 
         Consultation otherConsultation = (Consultation) other;
-        return otherConsultation.getStudent().equals(getStudent())
+        return otherConsultation.getStudentName().equals(getStudentName())
                 && otherConsultation.getDateAndTime().equals(getDateAndTime());
     }
 
     /**
-     * Returns true if both consultations have the same identity and data fields, including the place of meeting.
+     * Returns true if both consultations have the same identity and data fields.
      */
     @Override
     public boolean equals(Object other) {
@@ -115,9 +77,8 @@ public class Consultation {
         }
 
         Consultation otherConsultation = (Consultation) other;
-        return otherConsultation.getStudent().equals(getStudent())
-                && otherConsultation.getDateAndTime().equals(getDateAndTime())
-                && otherConsultation.getPlaceOfMeeting().equals(getPlaceOfMeeting());
+        return otherConsultation.getStudentName().equals(getStudentName())
+                && otherConsultation.getDateAndTime().equals(getDateAndTime());
     }
 
     /**
@@ -140,16 +101,12 @@ public class Consultation {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Consultation with ");
-        sb.append(getStudent().getName().fullName);
+        sb.append(getStudentName());
         sb.append(" @");
-        sb.append(getDateAndTime());
-        sb.append(" for ");
-        sb.append(getLengthOfMeeting());
-        sb.append(" minutes");
-        sb.append(" / ");
-        sb.append(getPlaceOfMeeting());
-        // may include if checks for optional fields later
-        // should add notes and minutes to toString method?
+        LocalDateTime date = getDateAndTime();
+        sb.append(date.getDayOfMonth() + " " + date.getMonth() + ", " + date.getYear() + " / ");
+        sb.append(date.getHour() + ":" + date.getMinute());
+
         return sb.toString();
     }
 }

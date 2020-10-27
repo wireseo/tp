@@ -8,22 +8,20 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
 
 
 public class ConsultationTest {
-    private Student student = new StudentBuilder().build();
+    private String studentName = new StudentBuilder().build().getName().fullName;
+    private String studentName2 = "nullName";
 
     // TODO: Naming constraints
-    private Consultation normalConsultation = new Consultation(student, LocalDateTime.of(2020, 01,
-            8, 13, 10), 120, "COM2", "");
-    private Consultation consultationVariant1 = new Consultation(student, LocalDateTime.of(2020, 01,
-            8, 13, 10), 100, "COM2", "");
-    private Consultation consultationVariant2 = new Consultation(student, LocalDateTime.of(2020, 01,
-            9, 13, 10), 120, "COM2", "");
-    private Consultation consultationVariant3 = new Consultation(student, LocalDateTime.of(2020, 01,
-            8, 13, 10), 120, "COM3", "");
+    private Consultation normalConsultation = new Consultation(studentName, LocalDateTime.of(2020, 01,
+            8, 13, 10));
+    private Consultation consultationVariant1 = new Consultation(studentName2, LocalDateTime.of(2020, 01,
+            8, 13, 10));
+    private Consultation consultationVariant2 = new Consultation(studentName, LocalDateTime.of(2020, 01,
+            9, 13, 10));
 
 
     @Test
@@ -35,14 +33,10 @@ public class ConsultationTest {
         assertFalse(normalConsultation.equals(null));
 
         // different date -> returns false
+        assertFalse(normalConsultation.equals(consultationVariant1));
+
+        // different name -> returns false
         assertFalse(normalConsultation.equals(consultationVariant2));
-
-        // different length of meeting -> returns true
-        assertTrue(normalConsultation.equals(consultationVariant1));
-
-        // same date, same length of meeting, different place of meeting -> returns false
-        assertFalse(normalConsultation.equals(consultationVariant3));
-
     }
 
     @Test
@@ -52,6 +46,5 @@ public class ConsultationTest {
 
         // different dateandtime -> returns false
         assertFalse(normalConsultation.conflictsWith(consultationVariant2));
-
     }
 }
