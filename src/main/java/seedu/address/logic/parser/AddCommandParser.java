@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.add.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Email;

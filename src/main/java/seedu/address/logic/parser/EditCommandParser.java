@@ -14,12 +14,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import java.util.Arrays;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditLoginCommand;
-import seedu.address.logic.commands.EditLoginCommand.EditLoginDescriptor;
-import seedu.address.logic.commands.EditStudentCommand;
-import seedu.address.logic.commands.EditStudentCommand.EditPersonDescriptor;
-import seedu.address.logic.commands.ViewCommand;
+import seedu.address.logic.commands.edit.EditCommand;
+import seedu.address.logic.commands.edit.EditLoginCommand;
+import seedu.address.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
+import seedu.address.logic.commands.edit.EditStudentCommand;
+import seedu.address.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.view.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 

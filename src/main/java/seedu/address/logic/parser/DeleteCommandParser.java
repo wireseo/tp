@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.delete.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flag.Flag;
 
