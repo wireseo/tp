@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.CONSULTATION;
+import static seedu.address.logic.parser.CliSyntax.MASTERY_CHECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
@@ -15,6 +17,8 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.add.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.flag.Flag;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
@@ -74,6 +78,15 @@ public class AddCommandParser implements Parser<AddCommand> {
             Deadline deadline = TaskCommandParser.parseDeadline(nameKeywords, length);
             return new AddCommand(deadline);
 
+        case CONSULTATION:
+            logger.info("AddCommandParser attempts to parse user's newly added consultation");
+            Consultation consultation = ConsultationMasteryCheckCommandParser.parseConsultation(nameKeywords, length);
+            return new AddCommand(consultation);
+
+        case MASTERY_CHECK:
+            logger.info("AddCommandParser attempts to parse user's newly added mastery check");
+            MasteryCheck masteryCheck = ConsultationMasteryCheckCommandParser.parseMasteryCheck(nameKeywords, length);
+            return new AddCommand(masteryCheck);
 
         default:
             logger.info("AddCommandParser attempts to parse user's newly added student");
