@@ -11,7 +11,7 @@ public class MasteryCheck extends Consultation {
      * @param studentName         subject of the mastery check
      * @param dateAndTime     date and time of the mastery check
      */
-    private MasteryCheck(String studentName, LocalDateTime dateAndTime) {
+    public MasteryCheck(String studentName, LocalDateTime dateAndTime) {
         super(studentName, dateAndTime);
     }
 

@@ -103,7 +103,10 @@ public class Consultation {
         sb.append("Consultation with ");
         sb.append(getStudentName());
         sb.append(" @");
-        sb.append(getDateAndTime());
+        LocalDateTime date = getDateAndTime();
+        sb.append(date.getDayOfMonth() + " " + date.getMonth() + ", " + date.getYear() + " / ");
+        sb.append(date.getHour() + ":" + date.getMinute());
+
         return sb.toString();
     }
 }
