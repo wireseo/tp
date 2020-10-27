@@ -14,11 +14,17 @@ import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 import static seedu.address.logic.parser.CliSyntax.TASK_TODO;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_MISSION;
 import static seedu.address.logic.parser.CliSyntax.UNGRADED_QUEST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_CONSULTATION_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_DEADLINE_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_EVENT_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_MASTERY_CHECK_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_PAST_CONSULTATION_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_PAST_MASTERY_CHECK_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.VIEW_TASK_LIST;
 import static seedu.address.logic.parser.CliSyntax.VIEW_TODO_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_UPCOMING_CONSULTATION_LIST;
+import static seedu.address.logic.parser.CliSyntax.VIEW_UPCOMING_MASTERY_CHECK_LIST;
 
 import java.util.Set;
 
@@ -31,7 +37,9 @@ public class Flag {
     public static final String MESSAGE_CONSTRAINTS = "Flag provided is invalid";
     private static final Set<String> VALID_FLAGS = ImmutableSet.of(MISSION_DEADLINE, QUEST_DEADLINE, UNGRADED_QUEST,
             UNGRADED_MISSION, VIEW_STUDENT, TASK_TODO, TASK_EVENT, TASK_DEADLINE, TASK_DATE, TASK_TIME, VIEW_TASK_LIST,
-            VIEW_TODO_LIST, VIEW_EVENT_LIST, VIEW_DEADLINE_LIST, DELETE_TASK, EDIT_STUDENT, EDIT_LOGIN);
+            VIEW_TODO_LIST, VIEW_EVENT_LIST, VIEW_DEADLINE_LIST, VIEW_CONSULTATION_LIST, VIEW_PAST_CONSULTATION_LIST,
+            VIEW_UPCOMING_CONSULTATION_LIST, VIEW_UPCOMING_MASTERY_CHECK_LIST, VIEW_PAST_MASTERY_CHECK_LIST,
+            VIEW_MASTERY_CHECK_LIST, DELETE_TASK, EDIT_STUDENT, EDIT_LOGIN);
 
     public final String flag;
 
