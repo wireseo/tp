@@ -8,6 +8,8 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.quest.Quest;
 import seedu.address.model.student.Student;
@@ -44,6 +46,12 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of tasks */
     ObservableList<Task> getFilteredTaskList();
+
+    /** Returns an unmodifiable view of the filtered list of consultations */
+    ObservableList<Consultation> getFilteredConsultationList();
+
+    /** Returns an unmodifiable view of the filtered list of mastery checks */
+    ObservableList<MasteryCheck> getFilteredMasteryCheckList();
 
     /**
      * Returns the user prefs' address book file path.

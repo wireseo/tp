@@ -7,23 +7,22 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.student.Student;
 import seedu.address.testutil.StudentBuilder;
 
 
 public class MasteryCheckTest {
     // TODO: ADD MORE TESTS
 
-    private Student student = new StudentBuilder().build();
+    private String studentName = new StudentBuilder().build().getName().fullName;
+    private String studentName2 = "StudentName";
 
-    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(student, LocalDateTime.of(2020,
-            1, 8, 13, 10), 120, "COM2", "");
-    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(student, LocalDateTime.of(2020,
-            1, 8, 13, 10), 100, "COM2", "");
-    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(student, LocalDateTime.of(2020,
-            1, 9, 13, 10), 120, "COM2", "");
-    private MasteryCheck consultationVariant3 = MasteryCheck.createFullMarkMC(student, LocalDateTime.of(2020,
-            1, 8, 13, 10), 120, "COM3", "");
+
+    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(studentName, LocalDateTime.of(2020,
+            1, 8, 13, 10));
+    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(studentName2, LocalDateTime.of(2020,
+            1, 8, 13, 10));
+    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(studentName, LocalDateTime.of(2020,
+            1, 9, 13, 10));
 
     @Test
     public void equals() {
@@ -36,11 +35,8 @@ public class MasteryCheckTest {
         // different date -> returns false
         assertFalse(normalConsultation.equals(consultationVariant2));
 
-        // different length of meeting -> returns true
-        assertTrue(normalConsultation.equals(consultationVariant1));
-
-        // same date, same length of meeting, different place of meeting -> returns false
-        assertFalse(normalConsultation.equals(consultationVariant3));
+        // different name -> returns false
+        assertFalse(normalConsultation.equals(consultationVariant1));
 
     }
 
