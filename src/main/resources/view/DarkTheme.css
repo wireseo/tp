@@ -170,8 +170,8 @@
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 13pt;
-    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+    -fx-text-fill: black;
 }
 
 .result-display .label {
@@ -328,6 +328,10 @@
     -fx-padding: 8 1 8 1;
 }
 
+#infoBar {
+    -fx-padding: 2 14 2 14;
+}
+
 #cardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
@@ -347,7 +351,7 @@
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: #4cc3a8;
-    -fx-padding: 1px;
+    -fx-padding: 5px;
     -fx-prompt-text-fill: #4cc3a8;
 }
 
@@ -359,7 +363,10 @@
     -fx-background-color: #4cc3a8;
     -fx-background-radius: 0;
     -fx-border-color: #4cc3a8;
-    -fx-padding: 1px;
+}
+
+#resultDisplay {
+    -fx-padding: 3px;
 }
 
 #tags {

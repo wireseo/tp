@@ -39,7 +39,7 @@
           </Menu>
         </MenuBar>
 
-        <StackPane styleClass="stack-pane">
+        <StackPane fx:id="infoBar" styleClass="stack-pane">
           <HBox prefHeight="100.0" prefWidth="450.0">
               <VBox prefWidth="100.0">
                   <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
@@ -67,8 +67,11 @@
                   </ImageView>
               </VBox>
 
-              <VBox alignment="BOTTOM_CENTER" translateX="400">
-                  <HBox>
+              <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                  <HBox alignment="TOP_RIGHT" VBox.vgrow="ALWAYS">
+                      <Label fx:id="name" styleClass="date_label"/>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT">
                     <VBox>
                       <Label text="Week 13: " styleClass="date_label"/>
                     </VBox>
@@ -76,7 +79,9 @@
                       <Label text="Recursion" styleClass="topic_label"/>
                     </VBox>
                   </HBox>
-              <Label fx:id="date" text="\$date" styleClass="date_label"/>
+                  <HBox alignment="CENTER_RIGHT">
+                      <Label fx:id="date" text="\$date" styleClass="date_label"/>
+                  </HBox>
               </VBox>
           </HBox>
         </StackPane>
@@ -90,7 +95,7 @@
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
                    minHeight="100" prefHeight="100" maxHeight="100">
           <padding>
-            <Insets right="10" bottom="5" left="10" />
+            <Insets top="4" right="4" bottom="4" left="4"/>
           </padding>
         </StackPane>
 
@@ -141,10 +146,10 @@
             </VBox>
           </Tab>
 
-          <Tab fx:id="consultTab">
+          <Tab fx:id="consultationTab">
             <graphic>
               <Group>
-                <Label text="Consult" rotate="90"/>
+                <Label text="Consultation" rotate="90"/>
               </Group>
             </graphic>
             <VBox fx:id="consultList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">

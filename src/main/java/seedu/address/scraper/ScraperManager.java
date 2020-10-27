@@ -18,6 +18,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -31,7 +33,6 @@ import seedu.address.model.student.Student;
 import seedu.address.model.student.Telegram;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
 import seedu.address.storage.Storage;
-
 
 public class ScraperManager implements Scraper, PropertyChangeListener {
 
@@ -96,19 +97,34 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             return;
         }
 
-        List<Mission> missions = getMissions();
-        List<Quest> quests = getQuests();
-        List<Student> students = new ArrayList<>();
+        // Run JavaFX-modifying functions after JavaFX Thread is done.
+        Platform.runLater(() -> {
+            String name = "";
 
-        getUngradedMissionsAndQuests();
+            // Only fetch name if name in addressbook is empty
+            if (!model.hasName()) {
+                name = getName();
+            }
 
-        // Only fetch students if students in addressbook is empty
-        if (!model.hasStudents()) {
-            students = getStudents();
-        }
+            List<Mission> missions = getMissions();
+            List<Quest> quests = getQuests();
+            List<Student> students = new ArrayList<>();
 
-        saveToStorage(missions, quests, students);
-        shutDown();
+            getUngradedMissionsAndQuests();
+
+            // Only fetch students if students in addressbook is empty
+            if (!model.hasStudents()) {
+                students = getStudents();
+            }
+
+            try {
+                saveToStorage(missions, quests, students, name);
+            } catch (IOException exception) {
+                logger.info("Unable to save SA information to storage");
+                return;
+            }
+            shutDown();
+        });
     }
 
     /**
@@ -138,10 +154,35 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             WebDriverWait wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
+            logger.info("Authentication failed due to incorrect login details or unresponsive SA");
             return;
         }
 
         this.isAuthenticated = true;
+    }
+
+    public String getName() {
+        if (loginInfo.isEmpty()) {
+            return "";
+        }
+
+        if (!isAuthenticated) {
+            authenticate();
+        }
+
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/game")
+                : "Driver is on the wrong page (Get name)";
+
+        logger.info("Getting user's name");
+
+        driver.findElement(By.xpath("//button[@class='bp3-button bp3-minimal']")).click();
+
+        WebElement nameElement = driver.findElement(By.xpath("//div[@class='bp3-text-overflow-ellipsis bp3-fill']"));
+        String name = nameElement.getText();
+
+        logger.info("User's name has been fetched");
+
+        return name;
     }
 
     /**
@@ -290,7 +331,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
     }
 
     /**
-     * Fetches the ungraded missions that have just recently passed.
+     * Fetches the ungraded missions and quests that the user has not marked.
      */
     public void getUngradedMissionsAndQuests() {
         if (loginInfo.isEmpty()) {
@@ -314,6 +355,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         getUngradedQuests(filterBar);
     }
 
+    /**
+     * Fetches the ungraded missions that the user has not marked.
+     */
     public void getUngradedMissions(WebElement filterBar) {
         filterBar.clear();
         filterBar.sendKeys(MISSION_FILTER_KEY + Keys.ENTER);
@@ -344,6 +388,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         logger.info("Completed getting ungraded missions");
     }
 
+    /**
+     * Fetches the ungraded quests that the user has not marked.
+     */
     public void getUngradedQuests(WebElement filterBar) {
         filterBar.clear();
         filterBar.sendKeys(QUEST_FILTER_KEY + Keys.ENTER);
@@ -381,8 +428,13 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
      * @param students list of students to be saved
      * @throws IOException
      */
-    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students) throws IOException {
+    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String name)
+            throws IOException {
         try {
+            if (!name.isEmpty()) {
+                model.setName(name);
+            }
+
             if (!missions.isEmpty()) {
                 model.setMissions(missions);
             }
@@ -408,7 +460,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         return driver;
     }
 
+    /**
+     * Shutsdown the webdriver and resets the isAuthenticated variable.
+     */
     public void shutDown() {
+        isAuthenticated = false;
         driver.quit();
     }
 
@@ -418,11 +474,19 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
      */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        try {
-            loginInfo = (UserLogin) evt.getNewValue();
-            startScraping();
-        } catch (IOException e) {
-            return;
-        }
+        loginInfo = (UserLogin) evt.getNewValue();
+        // Execute the task on another thread to fetch and update the GUI
+        Thread fetchThread = new Thread(new Task<>() {
+            @Override
+            public Void call() {
+                try {
+                    startScraping();
+                    return null;
+                } catch (IOException e) {
+                    return null;
+                }
+            }
+        });
+        fetchThread.start();
     }
 }

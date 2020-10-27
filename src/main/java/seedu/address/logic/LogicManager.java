@@ -127,4 +127,9 @@ public class LogicManager implements Logic {
     public boolean hasPassword() {
         return model.hasPassword();
     }
+
+    @Override
+    public String getName() {
+        return model.getName();
+    }
 }
