@@ -49,7 +49,7 @@ public class ViewOneStudentCommand extends ViewCommand {
             model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_STUDENTS);
             throw new CommandException(Messages.MESSAGE_STUDENT_NAME_NOT_FOUND);
         } else {
-            return new CommandResult(String.format(MESSAGE_SUCCESS, searchedName));
+            return new CommandResult(String.format(MESSAGE_SUCCESS, searchedName), ViewCommandType.ViewStudents);
         }
     }
 

@@ -16,7 +16,6 @@ public class ViewConsultationsCommand extends ViewCommand {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateConsultationsList(PREDICATE_SHOW_ALL_CONSULTATIONS);
-
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewConsultations);
     }
 }

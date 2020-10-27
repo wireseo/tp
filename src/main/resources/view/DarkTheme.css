@@ -329,7 +329,7 @@
 }
 
 #infoBar {
-    -fx-padding: 0 14 0 14;
+    -fx-padding: 2 14 2 14;
 }
 
 #cardPane {
