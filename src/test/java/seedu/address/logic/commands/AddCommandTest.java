@@ -361,6 +361,21 @@ public class AddCommandTest {
         public void addPropertyChangeListener(PropertyChangeListener pcv) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public String getName() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasName() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setName(String name) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
