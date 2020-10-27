@@ -1,17 +1,17 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.add.AddCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.consultation.Consultation;
-import seedu.address.model.consultation.MasteryCheck;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.TASK_DATE;
+import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.TASK_DATE;
-import static seedu.address.logic.parser.CliSyntax.TASK_TIME;
+import seedu.address.logic.commands.add.AddCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.MasteryCheck;
 
 /**
  * Parses input add consultation or mastery check arguments and creates a new specified consultation or mc object
