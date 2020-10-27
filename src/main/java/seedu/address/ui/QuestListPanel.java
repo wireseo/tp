@@ -3,7 +3,6 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -29,7 +28,7 @@ public class QuestListPanel extends UiPart<Region> {
     public QuestListPanel(ObservableList<Quest> questList) {
         super(FXML);
 
-        Label emptyListLabel = new Label("No quests");
+        Label emptyListLabel = new Label("No Quests");
         emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
         questListView.setPlaceholder(emptyListLabel);
         questListView.setItems(questList);
