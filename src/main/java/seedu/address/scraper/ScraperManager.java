@@ -18,6 +18,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.OsNotSupportedException;
 import seedu.address.commons.exceptions.WrongLoginDetailsException;
@@ -31,7 +33,6 @@ import seedu.address.model.student.Student;
 import seedu.address.model.student.Telegram;
 import seedu.address.model.student.exceptions.DuplicateStudentException;
 import seedu.address.storage.Storage;
-
 
 public class ScraperManager implements Scraper, PropertyChangeListener {
 
@@ -96,19 +97,28 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             return;
         }
 
-        List<Mission> missions = getMissions();
-        List<Quest> quests = getQuests();
-        List<Student> students = new ArrayList<>();
+        // Run JavaFX-modifying functions after JavaFX Thread is done.
+        Platform.runLater(() -> {
+            List<Mission> missions = getMissions();
+            List<Quest> quests = getQuests();
+            List<Student> students = new ArrayList<>();
 
-        getUngradedMissionsAndQuests();
+            getUngradedMissionsAndQuests();
 
-        // Only fetch students if students in addressbook is empty
-        if (!model.hasStudents()) {
-            students = getStudents();
-        }
+            // Only fetch students if students in addressbook is empty
+            if (!model.hasStudents()) {
+                students = getStudents();
+            }
 
-        saveToStorage(missions, quests, students);
-        shutDown();
+            try {
+                saveToStorage(missions, quests, students);
+            } catch (IOException exception) {
+                logger.info("Unable to save SA information to storage");
+                return;
+            }
+            shutDown();
+        });
+
     }
 
     /**
@@ -138,6 +148,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             WebDriverWait wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.urlToBe("https://sourceacademy.nus.edu.sg/academy/game"));
         } catch (Exception e) {
+            logger.info("Authentication failed due to incorrect login details or unresponsive SA");
             return;
         }
 
@@ -408,7 +419,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         return driver;
     }
 
+    /**
+     * Shutsdown the webdriver and resets the isAuthenticated variable.
+     */
     public void shutDown() {
+        isAuthenticated = false;
         driver.quit();
     }
 
@@ -418,11 +433,19 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
      */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        try {
-            loginInfo = (UserLogin) evt.getNewValue();
-            startScraping();
-        } catch (IOException e) {
-            return;
-        }
+        loginInfo = (UserLogin) evt.getNewValue();
+        // Execute the task on another thread to fetch and update the GUI
+        Thread fetchThread = new Thread(new Task<>() {
+            @Override
+            public Void call() {
+                try {
+                    startScraping();
+                    return null;
+                } catch (IOException e) {
+                    return null;
+                }
+            }
+        });
+        fetchThread.start();
     }
 }
