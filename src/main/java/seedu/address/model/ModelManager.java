@@ -39,6 +39,7 @@ public class ModelManager implements Model {
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Consultation> filteredConsultations;
     private final FilteredList<MasteryCheck> filteredMasteryChecks;
+    private String name;
 
     private final PropertyChangeSupport support;
 
@@ -62,6 +63,7 @@ public class ModelManager implements Model {
         filteredMasteryChecks = new FilteredList<>(this.addressBook.getMasteryChecksList());
 
         support = new PropertyChangeSupport(this);
+        name = this.addressBook.getName();
     }
 
     public ModelManager() {
@@ -123,6 +125,22 @@ public class ModelManager implements Model {
     @Override
     public boolean hasPassword() {
         return userLogin.hasPassword();
+    }
+
+    //=========== User's Name ==================================================================================
+    @Override
+    public void setName(String name) {
+        addressBook.setName(name);
+    }
+
+    @Override
+    public boolean hasName() {
+        return addressBook.hasName();
+    }
+
+    @Override
+    public String getName() {
+        return addressBook.getName();
     }
 
     //=========== AddressBook ================================================================================

@@ -129,6 +129,11 @@ public class AddressBookTest {
         public ObservableList<MasteryCheck> getMasteryChecksList() {
             return null;
         }
+
+        @Override
+        public String getName() {
+            return null;
+        }
     }
 
 }

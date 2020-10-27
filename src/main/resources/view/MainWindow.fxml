@@ -68,6 +68,9 @@
               </VBox>
 
               <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                  <HBox alignment="TOP_RIGHT" VBox.vgrow="ALWAYS">
+                      <Label fx:id="name" styleClass="date_label"/>
+                  </HBox>
                   <HBox alignment="CENTER_RIGHT">
                     <VBox>
                       <Label text="Week 13: " styleClass="date_label"/>
@@ -146,7 +149,7 @@
           <Tab fx:id="consultationTab">
             <graphic>
               <Group>
-                <Label text="Consult" rotate="90"/>
+                <Label text="Consultation" rotate="90"/>
               </Group>
             </graphic>
             <VBox fx:id="consultList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">

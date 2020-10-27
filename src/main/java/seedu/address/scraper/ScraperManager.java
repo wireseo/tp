@@ -99,6 +99,13 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
 
         // Run JavaFX-modifying functions after JavaFX Thread is done.
         Platform.runLater(() -> {
+            String name = "";
+
+            // Only fetch name if name in addressbook is empty
+            if (!model.hasName()) {
+                name = getName();
+            }
+
             List<Mission> missions = getMissions();
             List<Quest> quests = getQuests();
             List<Student> students = new ArrayList<>();
@@ -111,14 +118,13 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             }
 
             try {
-                saveToStorage(missions, quests, students);
+                saveToStorage(missions, quests, students, name);
             } catch (IOException exception) {
                 logger.info("Unable to save SA information to storage");
                 return;
             }
             shutDown();
         });
-
     }
 
     /**
@@ -153,6 +159,31 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         }
 
         this.isAuthenticated = true;
+    }
+
+    public String getName() {
+        if (loginInfo.isEmpty()) {
+            return "";
+        }
+
+        if (!isAuthenticated) {
+            authenticate();
+        }
+
+        assert driver.getCurrentUrl().equals("https://sourceacademy.nus.edu.sg/academy/game")
+                : "Driver is on the wrong page (Get name)";
+
+        logger.info("Getting user's name");
+
+        driver.findElement(By.xpath("//button[@class='bp3-button bp3-minimal']")).click();
+
+        WebElement nameElement = driver.findElement(By.xpath("//div[@class='bp3-text-overflow-ellipsis bp3-fill']"));
+
+        String name = nameElement.getText();
+
+        logger.info("User's name has been fetched");
+
+        return name;
     }
 
     /**
@@ -301,7 +332,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
     }
 
     /**
-     * Fetches the ungraded missions that have just recently passed.
+     * Fetches the ungraded missions and quests that the user has not marked.
      */
     public void getUngradedMissionsAndQuests() {
         if (loginInfo.isEmpty()) {
@@ -325,6 +356,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         getUngradedQuests(filterBar);
     }
 
+    /**
+     * Fetches the ungraded missions that the user has not marked.
+     */
     public void getUngradedMissions(WebElement filterBar) {
         filterBar.clear();
         filterBar.sendKeys(MISSION_FILTER_KEY + Keys.ENTER);
@@ -355,6 +389,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         logger.info("Completed getting ungraded missions");
     }
 
+    /**
+     * Fetches the ungraded quests that the user has not marked.
+     */
     public void getUngradedQuests(WebElement filterBar) {
         filterBar.clear();
         filterBar.sendKeys(QUEST_FILTER_KEY + Keys.ENTER);
@@ -392,8 +429,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
      * @param students list of students to be saved
      * @throws IOException
      */
-    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students) throws IOException {
+    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String name)
+            throws IOException {
         try {
+            model.setName(name);
+
             if (!missions.isEmpty()) {
                 model.setMissions(missions);
             }

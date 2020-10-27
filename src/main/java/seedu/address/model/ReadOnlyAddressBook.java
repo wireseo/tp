@@ -37,8 +37,7 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Task> getTaskList();
 
-    /**
-     * Returns an unmodifiable view of the consultation list.
+    /** Returns an unmodifiable view of the consultation list.
      * This list will not contain any duplicate consultations.
      */
     ObservableList<Consultation> getConsultationList();
@@ -48,4 +47,9 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate mastery checks.
      */
     ObservableList<MasteryCheck> getMasteryChecksList();
+
+    /**
+     * Returns the name of the user.
+     */
+    String getName();
 }

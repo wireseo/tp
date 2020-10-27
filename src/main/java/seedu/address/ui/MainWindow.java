@@ -97,6 +97,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private ImageView imageView;
 
+    @FXML
+    private Label name;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -115,6 +118,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         setDate();
+        setName();
     }
 
     public Stage getPrimaryStage() {
@@ -204,6 +208,18 @@ public class MainWindow extends UiPart<Stage> {
         String formattedDate = localDate.format(formatter);
 
         date.setText(formattedDate);
+    }
+
+    /**
+     * Sets the user's name.
+     */
+    private void setName() {
+        // User has not logged in
+        if (logic.getName().isEmpty()) {
+            name.setText("Hi! Please log in to continue.");
+        } else {
+            name.setText("Welcome, " + logic.getName() + " !");
+        }
     }
 
     /**
