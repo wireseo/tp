@@ -74,4 +74,6 @@ public interface Logic {
      * Saves model to storage
      */
     void saveToStorage() throws CommandException;
+
+    String getName();
 }

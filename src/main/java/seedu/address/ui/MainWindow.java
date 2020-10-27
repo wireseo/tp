@@ -48,13 +48,19 @@ public class MainWindow extends UiPart<Stage> {
     private TaskListPanel taskListPanel;
 
     @FXML
-    private Tab studentListTab;
+    private Tab studentTab;
 
     @FXML
-    private Tab missionListTab;
+    private Tab missionTab;
 
     @FXML
-    private Tab questListTab;
+    private Tab questTab;
+
+    @FXML
+    private Tab consultationTab;
+
+    @FXML
+    private Tab taskTab;
 
     @FXML
     private TabPane tabPane;
@@ -89,6 +95,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private ImageView imageView;
 
+    @FXML
+    private Label name;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -107,6 +116,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         setDate();
+        setName();
     }
 
     public Stage getPrimaryStage() {
@@ -196,6 +206,18 @@ public class MainWindow extends UiPart<Stage> {
         String formattedDate = localDate.format(formatter);
 
         date.setText(formattedDate);
+    }
+
+    /**
+     * Sets the user's name.
+     */
+    private void setName() {
+        // User has not logged in
+        if (logic.getName().isEmpty()) {
+            name.setText("Hi! Please log in to continue.");
+        } else {
+            name.setText("Welcome, " + logic.getName() + " !");
+        }
     }
 
     /**
@@ -293,9 +315,6 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            } else {
-                // Go to student list tab as default
-                tabPane.getSelectionModel().select(studentListTab);
             }
 
             if (commandResult.isExit()) {

@@ -35,6 +35,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueTasksList tasks;
 
+    private String name;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -48,6 +50,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks = new UniqueTasksList();
         quests = new QuestList();
         consultations = new ConsultationList();
+        name = "";
     }
 
     public AddressBook() {}
@@ -80,6 +83,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setMissions(newData.getMissionList());
         setQuests(newData.getQuestList());
         setTasks(newData.getTaskList());
+        name = newData.getName();
     }
 
     //// student-level operations
@@ -298,6 +302,18 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public boolean updateQuest(String name) {
         return this.quests.updateQuest(name);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean hasName() {
+        return !this.name.isEmpty();
     }
 
 }

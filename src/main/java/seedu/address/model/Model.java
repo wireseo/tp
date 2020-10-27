@@ -111,6 +111,12 @@ public interface Model {
      */
     boolean hasPassword();
 
+    //=========== User's Name ==================================================================================
+    void setName(String name);
+
+    boolean hasName();
+
+    String getName();
     //=========== AddressBook ================================================================================
 
     /**

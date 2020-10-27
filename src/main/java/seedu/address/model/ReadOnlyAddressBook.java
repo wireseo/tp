@@ -37,4 +37,9 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate tasks.
      */
     ObservableList<Task> getTaskList();
+
+    /**
+     * Returns the name of the user.
+     */
+    String getName();
 }
