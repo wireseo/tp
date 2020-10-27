@@ -356,7 +356,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.name = name;
     }
 
+    /**
+     * Checks whether the name of the user exists.
+     * @return true if it exists
+     */
     public boolean hasName() {
-        return !this.name.isEmpty();
+        if (name == null) {
+            return false;
+        } else {
+            return !name.isEmpty();
+        }
     }
 }

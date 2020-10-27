@@ -178,7 +178,6 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         driver.findElement(By.xpath("//button[@class='bp3-button bp3-minimal']")).click();
 
         WebElement nameElement = driver.findElement(By.xpath("//div[@class='bp3-text-overflow-ellipsis bp3-fill']"));
-
         String name = nameElement.getText();
 
         logger.info("User's name has been fetched");
@@ -432,7 +431,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
     private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String name)
             throws IOException {
         try {
-            model.setName(name);
+            if (!name.isEmpty()) {
+                model.setName(name);
+            }
 
             if (!missions.isEmpty()) {
                 model.setMissions(missions);
