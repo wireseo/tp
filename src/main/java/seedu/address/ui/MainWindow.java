@@ -187,7 +187,7 @@ public class MainWindow extends UiPart<Stage> {
         questListPanel = new QuestListPanel(logic.getFilteredQuestList());
         questListPanelPlaceholder.getChildren().add(questListPanel.getRoot());
 
-        consultationListPanel = new ConsultationListPanel(logic.getFilteredConsultationsList());
+        consultationListPanel = new ConsultationListPanel(logic.getFilteredConsultationList());
         consultationListPanelPlaceholder.getChildren().add(consultationListPanel.getRoot());
 
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
