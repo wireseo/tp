@@ -1,8 +1,9 @@
 package seedu.address.model.topic;
 
-import com.google.common.collect.ImmutableMap;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
 
 public class Topics {
     public final ImmutableMap<Integer, Topic> allTopics;
