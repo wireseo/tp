@@ -13,13 +13,13 @@ import seedu.address.model.student.Telegram;
 public class SampleDataUtil {
     public static Student[] getSamplePersons() {
         return new Student[] {
-            new Student(new Name("Alex Yeoh"), new Telegram("87438807"), new Email("alexyeoh@example.com")),
-            new Student(new Name("Bernice Yu"), new Telegram("99272758"), new Email("berniceyu@example.com")),
-            new Student(new Name("Charlotte Oliveiro"), new Telegram("93210283"),
+            new Student(new Name("Alex Yeoh"), new Telegram("alexyeoh"), new Email("alexyeoh@example.com")),
+            new Student(new Name("Bernice Yu"), new Telegram("berniceyu132"), new Email("berniceyu@example.com")),
+            new Student(new Name("Charlotte Oliveiro"), new Telegram("coliverro"),
                     new Email("charlotte@example.com")),
-            new Student(new Name("David Li"), new Telegram("91031282"), new Email("lidavid@example.com")),
-            new Student(new Name("Irfan Ibrahim"), new Telegram("92492021"), new Email("irfan@example.com")),
-            new Student(new Name("Roy Balakrishnan"), new Telegram("92624417"), new Email("royb@example.com"))
+            new Student(new Name("David Li"), new Telegram("davidli"), new Email("lidavid@example.com")),
+            new Student(new Name("Irfan Ibrahim"), new Telegram("irfan"), new Email("irfan@example.com")),
+            new Student(new Name("Roy Balakrishnan"), new Telegram("royb"), new Email("royb@example.com"))
         };
     }
 
