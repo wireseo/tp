@@ -47,7 +47,6 @@ class JsonSerializableAddressBook {
             @JsonProperty("students") List<JsonAdaptedStudent> students,
             @JsonProperty("missions") List<JsonAdaptedMission> missions,
             @JsonProperty("quests") List<JsonAdaptedQuest> quests,
-            @JsonProperty("tasks") List<JsonAdaptedTask> tasks,
             @JsonProperty("consultations") List<JsonAdaptedConsultation> consultations,
             @JsonProperty("masteryChecks") List<JsonAdaptedMasteryCheck> masteryChecks,
             @JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
