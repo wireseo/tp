@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME_PROF;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditLoginCommand.EditLoginDescriptor;
+import seedu.address.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
 import seedu.address.testutil.EditLoginDescriptorBuilder;
 
 public class EditLoginDescriptorTest {

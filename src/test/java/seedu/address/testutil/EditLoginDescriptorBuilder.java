@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.EditLoginCommand.EditLoginDescriptor;
+import seedu.address.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
 import seedu.address.model.UserLogin;
 import seedu.address.model.login.Username;
 
