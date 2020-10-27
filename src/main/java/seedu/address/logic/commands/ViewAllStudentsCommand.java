@@ -15,6 +15,6 @@ public class ViewAllStudentsCommand extends ViewCommand {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_STUDENTS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewStudents);
     }
 }

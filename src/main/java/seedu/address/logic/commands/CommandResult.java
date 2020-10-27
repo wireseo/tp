@@ -10,6 +10,8 @@ import java.util.Objects;
 public class CommandResult {
 
     private final String feedbackToUser;
+    // commandType is set to CommandType.NotAssigned if it is not set by the constructor.
+    private ViewCommandType viewCommandType = ViewCommandType.NotAssigned;
 
     /** Help information should be shown to the user. */
     private final boolean showHelp;
@@ -34,6 +36,16 @@ public class CommandResult {
         this(feedbackToUser, false, false);
     }
 
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
+     * {@code commandType} and other fields set to their default value.
+     */
+    public CommandResult(String feedbackToUser, ViewCommandType commandType) {
+        this(feedbackToUser, false, false);
+        requireNonNull(commandType);
+        this.viewCommandType = commandType;
+    }
+
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
@@ -44,6 +56,14 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    /**
+     * Returns the type of the command executed, resulting in this command result.
+     * @return type of the command object executed.
+     */
+    public ViewCommandType getCommandType() {
+        return viewCommandType;
     }
 
     @Override

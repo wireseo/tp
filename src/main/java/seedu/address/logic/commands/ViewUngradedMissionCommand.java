@@ -20,6 +20,6 @@ public class ViewUngradedMissionCommand extends ViewCommand {
         requireNonNull(model);
         model.updateMissionsList(PREDICATE_SHOW_UNGRADED_MISSIONS);
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewMissions);
     }
 }

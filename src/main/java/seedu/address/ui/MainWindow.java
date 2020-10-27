@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
@@ -23,6 +24,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.ViewCommandType;
+import seedu.address.logic.commands.ViewCommandType;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -48,13 +51,19 @@ public class MainWindow extends UiPart<Stage> {
     private TaskListPanel taskListPanel;
 
     @FXML
-    private Tab studentListTab;
+    private Tab studentTab;
 
     @FXML
-    private Tab missionListTab;
+    private Tab missionTab;
 
     @FXML
-    private Tab questListTab;
+    private Tab questTab;
+
+    @FXML
+    private Tab consultationTab;
+
+    @FXML
+    private Tab taskTab;
 
     @FXML
     private TabPane tabPane;
@@ -290,19 +299,31 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            ViewCommandType commandType = commandResult.getCommandType();
+            SingleSelectionModel<Tab> tabSelector = tabPane.getSelectionModel();
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            } else {
-                // Go to student list tab as default
-                tabPane.getSelectionModel().select(studentListTab);
             }
 
             if (commandResult.isExit()) {
                 handleExit();
             }
 
+            if (commandType == ViewCommandType.ViewStudents) {
+                tabSelector.select(studentTab);
+            } else if (commandType == ViewCommandType.ViewMissions) {
+                tabSelector.select(missionTab);
+            } else if (commandType == ViewCommandType.ViewQuest) {
+                tabSelector.select(questTab);
+            } else if (commandType == ViewCommandType.ViewConsultations) {
+                tabSelector.select(consultationTab);
+            } else if (commandType == ViewCommandType.ViewTasks) {
+                tabSelector.select(taskTab);
+            }
+
             return commandResult;
+
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
