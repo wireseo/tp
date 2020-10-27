@@ -224,7 +224,7 @@ public class MainWindow extends UiPart<Stage> {
         if (logic.getName().isEmpty()) {
             name.setText("Hi! Please log in to continue.");
         } else {
-            name.setText("Welcome, " + logic.getName() + " !");
+            name.setText("Welcome, " + logic.getName() + "!");
         }
     }
 

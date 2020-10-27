@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.time.LocalDateTime;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -37,7 +39,10 @@ public class ConsultationCard extends UiPart<Region> {
         this.consultation = consultation;
         id.setText(displayedIndex + ". ");
         studentName.setText(consultation.getStudentName());
-        dateAndTime.setText(consultation.getDateAndTime().toString());
+        LocalDateTime localDateTime = consultation.getDateAndTime();
+        String date = localDateTime.toLocalDate().toString();
+        String time = localDateTime.toLocalTime().toString();
+        dateAndTime.setText(date + " at " + time);
     }
 
     @Override

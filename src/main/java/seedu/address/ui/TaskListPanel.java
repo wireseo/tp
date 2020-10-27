@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
@@ -25,6 +26,9 @@ public class TaskListPanel extends UiPart<Region> {
      */
     public TaskListPanel(ObservableList<Task> taskList) {
         super(FXML);
+        Label emptyListLabel = new Label("No Tasks");
+        emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
+        taskListView.setPlaceholder(emptyListLabel);
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
     }

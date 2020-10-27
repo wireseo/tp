@@ -25,7 +25,7 @@ public class ConsultationListPanel extends UiPart<Region> {
     public ConsultationListPanel(ObservableList<Consultation> consultationList) {
         super(FXML);
 
-        Label emptyListLabel = new Label("No consultations");
+        Label emptyListLabel = new Label("No Consultations");
         emptyListLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20");
         consultationListView.setPlaceholder(emptyListLabel);
         consultationListView.setItems(consultationList);
