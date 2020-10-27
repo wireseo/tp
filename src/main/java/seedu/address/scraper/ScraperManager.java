@@ -97,6 +97,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             return;
         }
 
+        // Run JavaFX-modifying functions after JavaFX Thread is done.
         Platform.runLater(() -> {
             List<Mission> missions = getMissions();
             List<Quest> quests = getQuests();
@@ -433,7 +434,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         loginInfo = (UserLogin) evt.getNewValue();
-        // Execute a runnable on another thread to fetch and update the GUI
+        // Execute the task on another thread to fetch and update the GUI
         Thread fetchThread = new Thread(new Task<>() {
             @Override
             public Void call() {
