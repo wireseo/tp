@@ -20,7 +20,7 @@ import seedu.address.logic.commands.EditStudentCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ViewAllStudentsCommand;
+import seedu.address.logic.commands.view.ViewAllStudentsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.student.NameContainsKeywordsPredicate;
 import seedu.address.model.student.Student;

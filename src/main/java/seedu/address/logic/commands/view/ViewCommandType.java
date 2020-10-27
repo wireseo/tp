@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.view;
 
 /**
  * Enum for the Command type. This enum is useful for identifying the type of Command Object executed.

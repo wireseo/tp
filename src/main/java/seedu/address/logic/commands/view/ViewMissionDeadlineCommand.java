@@ -1,8 +1,9 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.view;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MISSIONS;
 
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 
 /**

@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import seedu.address.logic.commands.view.ViewCommandType;
+
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
