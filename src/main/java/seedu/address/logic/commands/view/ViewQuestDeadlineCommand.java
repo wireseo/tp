@@ -17,6 +17,6 @@ public class ViewQuestDeadlineCommand extends ViewCommand {
         requireNonNull(model);
         model.updateQuestsList(PREDICATE_SHOW_ALL_QUESTS);
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewQuest);
     }
 }

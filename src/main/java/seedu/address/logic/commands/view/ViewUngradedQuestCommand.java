@@ -21,6 +21,6 @@ public class ViewUngradedQuestCommand extends ViewCommand {
         requireNonNull(model);
         model.updateQuestsList(PREDICATE_SHOW_UNGRADED_QUESTS);
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ViewCommandType.ViewQuest);
     }
 }
