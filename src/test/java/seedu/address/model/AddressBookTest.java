@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
@@ -131,7 +132,7 @@ public class AddressBookTest {
         }
 
         @Override
-        public String getName() {
+        public StringProperty getGreeting() {
             return null;
         }
     }

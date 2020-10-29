@@ -4,11 +4,13 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.ConsultationList;
 import seedu.address.model.consultation.MasteryCheck;
 import seedu.address.model.consultation.MasteryCheckList;
+import seedu.address.model.greeting.Greeting;
 import seedu.address.model.mission.Mission;
 import seedu.address.model.mission.MissionList;
 import seedu.address.model.quest.Quest;
@@ -26,7 +28,6 @@ import seedu.address.model.task.UniqueTasksList;
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
 public class AddressBook implements ReadOnlyAddressBook {
-
     private final UniqueStudentsList students;
 
     private final MissionList missions;
@@ -39,7 +40,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueTasksList tasks;
 
-    private String name;
+    private Greeting greeting;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -55,7 +56,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         quests = new QuestList();
         consultations = new ConsultationList();
         masteryChecks = new MasteryCheckList();
-        name = "";
+        greeting = new Greeting();
     }
 
     public AddressBook() {}
@@ -90,7 +91,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setTasks(newData.getTaskList());
         setConsultations(newData.getConsultationList());
         setMasteryChecks(newData.getMasteryChecksList());
-        name = newData.getName();
+        setGreeting(newData.getGreeting().getValue());
     }
 
     //// student-level operations
@@ -348,23 +349,19 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.tasks.asObservableList();
     }
 
-    public String getName() {
-        return this.name;
+    public StringProperty getGreeting() {
+        return greeting.getGreeting();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGreeting(String greeting) {
+        this.greeting.setGreeting(greeting);
     }
 
     /**
      * Checks whether the name of the user exists.
      * @return true if it exists
      */
-    public boolean hasName() {
-        if (name == null) {
-            return false;
-        } else {
-            return !name.isEmpty();
-        }
+    public boolean hasGreeting() {
+        return !greeting.isEmpty();
     }
 }

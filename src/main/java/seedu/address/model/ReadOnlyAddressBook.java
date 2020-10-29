@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.MasteryCheck;
@@ -49,7 +50,7 @@ public interface ReadOnlyAddressBook {
     ObservableList<MasteryCheck> getMasteryChecksList();
 
     /**
-     * Returns the name of the user.
+     * Returns the greeting of the user.
      */
-    String getName();
+    StringProperty getGreeting();
 }

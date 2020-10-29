@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -129,7 +130,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public String getName() {
-        return model.getName();
+    public StringProperty getGreeting() {
+        return model.getGreeting();
     }
 }

@@ -23,7 +23,7 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_STUDENT = "Students list contains duplicate student(s).";
     public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
 
-    private String name = "";
+    private String greeting = "";
 
     private final List<JsonAdaptedStudent> students = new ArrayList<>();
 
@@ -43,14 +43,14 @@ class JsonSerializableAddressBook {
      */
     @JsonCreator
     public JsonSerializableAddressBook(
-            @JsonProperty("name") String name,
+            @JsonProperty("greeting") String greeting,
             @JsonProperty("students") List<JsonAdaptedStudent> students,
             @JsonProperty("missions") List<JsonAdaptedMission> missions,
             @JsonProperty("quests") List<JsonAdaptedQuest> quests,
             @JsonProperty("consultations") List<JsonAdaptedConsultation> consultations,
             @JsonProperty("masteryChecks") List<JsonAdaptedMasteryCheck> masteryChecks,
             @JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
-        this.name = name;
+        this.greeting = greeting;
         this.students.addAll(students);
         this.missions.addAll(missions);
         this.quests.addAll(quests);
@@ -65,7 +65,7 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        name = source.getName();
+        greeting = source.getGreeting().get();
         students.addAll(source.getStudentList().stream().map(JsonAdaptedStudent::new).collect(Collectors.toList()));
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
     }
@@ -96,7 +96,7 @@ class JsonSerializableAddressBook {
             addressBook.addTask(task);
         }
 
-        addressBook.setName(name);
+        addressBook.setGreeting(greeting);
 
         return addressBook;
     }

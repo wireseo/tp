@@ -15,7 +15,6 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -99,10 +98,7 @@ public class MainWindow extends UiPart<Stage> {
     private Label date;
 
     @FXML
-    private ImageView imageView;
-
-    @FXML
-    private Label name;
+    private Label greeting;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -122,7 +118,8 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         setDate();
-        setName();
+
+        setGreeting();
     }
 
     public Stage getPrimaryStage() {
@@ -217,15 +214,10 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Sets the user's name.
+     * Sets the greeting.
      */
-    private void setName() {
-        // User has not logged in
-        if (logic.getName().isEmpty()) {
-            name.setText("Hi! Please log in to continue.");
-        } else {
-            name.setText("Welcome, " + logic.getName() + "!");
-        }
+    private void setGreeting() {
+        greeting.textProperty().bind(logic.getGreeting());
     }
 
     /**
