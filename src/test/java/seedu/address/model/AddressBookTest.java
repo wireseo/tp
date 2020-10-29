@@ -12,9 +12,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.beans.property.StringProperty;
 import org.junit.jupiter.api.Test;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
