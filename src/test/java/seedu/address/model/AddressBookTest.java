@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javafx.beans.property.StringProperty;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
@@ -131,7 +132,7 @@ public class AddressBookTest {
         }
 
         @Override
-        public String getName() {
+        public StringProperty getGreeting() {
             return null;
         }
     }

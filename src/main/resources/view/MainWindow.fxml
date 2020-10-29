@@ -69,14 +69,14 @@
 
               <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
                   <HBox alignment="TOP_RIGHT" VBox.vgrow="ALWAYS">
-                      <Label fx:id="name" styleClass="date_label"/>
+                      <Label fx:id="greeting" styleClass="date_label"/>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">
                     <VBox>
-                      <Label text="Week 13: " styleClass="date_label"/>
+                      <Label fx:id="week" text="Week 11: " styleClass="date_label"/>
                     </VBox>
                     <VBox>
-                      <Label text="Recursion" styleClass="topic_label"/>
+                      <Label fx:id="topic" text="Streams" styleClass="topic_label"/>
                     </VBox>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">

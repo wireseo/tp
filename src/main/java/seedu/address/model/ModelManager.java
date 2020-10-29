@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -39,7 +40,7 @@ public class ModelManager implements Model {
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Consultation> filteredConsultations;
     private final FilteredList<MasteryCheck> filteredMasteryChecks;
-    private String name;
+    private StringProperty greeting;
 
     private final PropertyChangeSupport support;
 
@@ -63,7 +64,7 @@ public class ModelManager implements Model {
         filteredMasteryChecks = new FilteredList<>(this.addressBook.getMasteryChecksList());
 
         support = new PropertyChangeSupport(this);
-        name = this.addressBook.getName();
+        greeting = this.addressBook.getGreeting();
     }
 
     public ModelManager() {
@@ -129,18 +130,18 @@ public class ModelManager implements Model {
 
     //=========== User's Name ==================================================================================
     @Override
-    public void setName(String name) {
-        addressBook.setName(name);
+    public void setGreeting(String greeting) {
+        addressBook.setGreeting(greeting);
     }
 
     @Override
-    public boolean hasName() {
-        return addressBook.hasName();
+    public boolean hasGreeting() {
+        return addressBook.hasGreeting();
     }
 
     @Override
-    public String getName() {
-        return addressBook.getName();
+    public StringProperty getGreeting() {
+        return addressBook.getGreeting();
     }
 
     //=========== AddressBook ================================================================================

@@ -99,11 +99,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
 
         // Run JavaFX-modifying functions after JavaFX Thread is done.
         Platform.runLater(() -> {
-            String name = "";
+            String greeting = "";
 
             // Only fetch name if name in addressbook is empty
-            if (!model.hasName()) {
-                name = getName();
+            if (!model.hasGreeting()) {
+                greeting = getGreeting();
             }
 
             List<Mission> missions = getMissions();
@@ -118,7 +118,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
             }
 
             try {
-                saveToStorage(missions, quests, students, name);
+                saveToStorage(missions, quests, students, greeting);
             } catch (IOException exception) {
                 logger.info("Unable to save SA information to storage");
                 return;
@@ -161,7 +161,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         this.isAuthenticated = true;
     }
 
-    public String getName() {
+    public String getGreeting() {
         if (loginInfo.isEmpty()) {
             return "";
         }
@@ -178,11 +178,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         driver.findElement(By.xpath("//button[@class='bp3-button bp3-minimal']")).click();
 
         WebElement nameElement = driver.findElement(By.xpath("//div[@class='bp3-text-overflow-ellipsis bp3-fill']"));
-        String name = nameElement.getText();
+        String greeting = nameElement.getText();
 
         logger.info("User's name has been fetched");
 
-        return name;
+        return greeting;
     }
 
     /**
@@ -428,11 +428,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
      * @param students list of students to be saved
      * @throws IOException
      */
-    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String name)
+    private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String greeting)
             throws IOException {
         try {
-            if (!name.isEmpty()) {
-                model.setName(name);
+            if (!greeting.isEmpty()) {
+                model.setGreeting(greeting);
             }
 
             if (!missions.isEmpty()) {

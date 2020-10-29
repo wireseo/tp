@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Predicate;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.consultation.Consultation;
@@ -123,12 +124,12 @@ public interface Model {
      */
     boolean hasPassword();
 
-    //=========== User's Name ==================================================================================
-    void setName(String name);
+    //=========== User's Greeting ==================================================================================
+    void setGreeting(String greeting);
 
-    boolean hasName();
+    boolean hasGreeting();
 
-    String getName();
+    StringProperty getGreeting();
     //=========== AddressBook ================================================================================
 
     /**
