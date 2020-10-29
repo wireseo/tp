@@ -8,9 +8,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.consultation.Consultation;
 
-public class ConsultationCard extends UiPart<Region> {
+public class MasteryCheckCard extends UiPart<Region> {
 
-    private static final String FXML = "ConsultationListCard.fxml";
+    private static final String FXML = "MasteryCheckListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -20,7 +20,7 @@ public class ConsultationCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Consultation consultation;
+    public final Consultation masteryCheck;
 
     @javafx.fxml.FXML
     private HBox cardPane;
@@ -34,12 +34,12 @@ public class ConsultationCard extends UiPart<Region> {
     /**
      * Creates a {@code ConsultationCard} with the given {@code Consultation} and index to display.
      */
-    public ConsultationCard(Consultation consultation, int displayedIndex) {
+    public MasteryCheckCard(Consultation masteryCheck, int displayedIndex) {
         super(FXML);
-        this.consultation = consultation;
+        this.masteryCheck = masteryCheck;
         id.setText(displayedIndex + ". ");
-        studentName.setText(consultation.getStudentName());
-        LocalDateTime localDateTime = consultation.getDateAndTime();
+        studentName.setText(masteryCheck.getStudentName());
+        LocalDateTime localDateTime = masteryCheck.getDateAndTime();
         String date = localDateTime.toLocalDate().toString();
         String time = localDateTime.toLocalTime().toString();
         dateAndTime.setText("Details: " + date + " at " + time);
@@ -53,13 +53,13 @@ public class ConsultationCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ConsultationCard)) {
+        if (!(other instanceof MasteryCheckCard)) {
             return false;
         }
 
         // state check
-        ConsultationCard card = (ConsultationCard) other;
+        MasteryCheckCard card = (MasteryCheckCard) other;
         return id.getText().equals(card.id.getText())
-                && consultation.equals(card.consultation);
+                && masteryCheck.equals(card.masteryCheck);
     }
 }

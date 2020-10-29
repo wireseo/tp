@@ -9,5 +9,6 @@ public enum CommandTargetFeature {
     Missions,
     Quest,
     Consultations,
+    MasteryCheck,
     Tasks,
 }

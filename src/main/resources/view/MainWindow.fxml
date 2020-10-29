@@ -162,6 +162,22 @@
             </VBox>
           </Tab>
 
+            <Tab fx:id="masteryCheckTab">
+            <graphic>
+                <Group>
+                    <Label text="Mastery Check" rotate="90"/>
+                </Group>
+            </graphic>
+            <VBox fx:id="masteryCheckList" styleClass="pane-with-border" minWidth="340" prefWidth="340"
+                  VBox.vgrow="ALWAYS">
+<!--              <Label text="Mastery Check List" styleClass="cell_big_label" style="-fx-text-fill: #ffffff;"/>-->
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10" />
+                    </padding>
+                    <StackPane fx:id="masteryCheckListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </Tab>
+
           <Tab fx:id="taskTab">
             <graphic>
               <Group>

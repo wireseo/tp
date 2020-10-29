@@ -47,6 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private MissionListPanel missionListPanel;
     private QuestListPanel questListPanel;
     private ConsultationListPanel consultationListPanel;
+    private MasteryCheckListPanel masteryCheckListPanel;
     private TaskListPanel taskListPanel;
 
     @FXML
@@ -60,6 +61,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private Tab consultationTab;
+
+    @FXML
+    private Tab masteryCheckTab;
 
     @FXML
     private Tab taskTab;
@@ -81,6 +85,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane consultationListPanelPlaceholder;
+
+    @FXML
+    private StackPane masteryCheckListPanelPlaceholder;
 
     @FXML
     private StackPane taskListPanelPlaceholder;
@@ -186,6 +193,9 @@ public class MainWindow extends UiPart<Stage> {
 
         consultationListPanel = new ConsultationListPanel(logic.getFilteredConsultationList());
         consultationListPanelPlaceholder.getChildren().add(consultationListPanel.getRoot());
+
+        masteryCheckListPanel = new MasteryCheckListPanel(logic.getFilteredMasteryCheckList());
+        masteryCheckListPanelPlaceholder.getChildren().add(masteryCheckListPanel.getRoot());
 
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
