@@ -158,7 +158,8 @@ public class AddCommand extends Command {
             }
 
             model.addConsultation(toAddConsultation);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_CONSULTATION, toAddConsultation));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_CONSULTATION, toAddConsultation),
+                    CommandTargetFeature.Consultations);
 
         case TO_ADD_MASTERY_CHECK:
             MasteryCheck toAddMasteryCheck = (MasteryCheck) toAdd;
@@ -167,7 +168,8 @@ public class AddCommand extends Command {
             }
 
             model.addMasteryCheck(toAddMasteryCheck);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_MASTERY_CHECK, toAddMasteryCheck));
+            return new CommandResult(String.format(MESSAGE_SUCCESS_MASTERY_CHECK, toAddMasteryCheck),
+                    CommandTargetFeature.MasteryCheck);
 
         default:
             throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);
