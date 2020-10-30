@@ -487,8 +487,6 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Add Consultation | -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
 | Add Mastery Check | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
 
-![addFormat](images/userguide/addFormat.png)
-
 ### 7.2 Edit Command Summary
 (Wiline)
 
@@ -497,25 +495,18 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
 
-![editFormat](images/userguide/editFormat.png)
-
 ### 7.3 Delete Command Summary
 (Zhen Teng)
 
-<!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Delete Task | -t | delete -t TASK_ID |
 | Delete Consultation | -c | delete -c NAME <br>E.g. delete -c → 3 / delete -c John Doe → 2 |
 | Delete Mastery Check | -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
--->
-
-![deleteFormat](images/userguide/deleteFormat.png)
 
 ### 7.4 View Command Summary
 (Zhen Teng)
 
-<!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | View one Student | -s | view -s NAME |
@@ -533,32 +524,21 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | View all Todos | -tt | view -tt |
 | View all Events | -te | view -te |
 | View all Deadlines | -td | view -td |
--->
-
-![viewFormat](images/userguide/viewFormat.png)
 
 ### 7.5 Exit Command Summary
 (Peirong)
 
-<!---
 | Function | Format, Examples |
 | -------- | ---------------- |
 | Exits program | `exit` |
--->
-
-![exitFormat](images/userguide/exitFormat.png)
 
 ### 7.6 Help Command Summary
 (Peirong)
 
-<!---
 | Function | Format, Examples |
 | -------- | ---------------- |
 | Provide help with
 program commands | `help` |
--->
-
-![helpFormat](images/userguide/helpFormat.png)
 
 ## 8. Glossary
 
