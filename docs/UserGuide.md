@@ -133,13 +133,13 @@ this box.
 ### 4.1 UI Layout
 (Everyone)
 <br>
-   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`, `Tasks`.
+   * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
 <br>
    * Clicking on each tab will give you the information you require for that field.
 
 ![Jarvis](images/userguide/Jarvis.png)
 
-The core features are based on Students, Consultations, Missions, Quests and Tasks.
+The core features are based on Students, Missions, Quests, Consultations, Mastery Checks and Tasks.
 Each core feature has a tab for the organisation of its information.
 
 <div markdown="block" class="alert alert-info">
@@ -186,7 +186,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
 
    * Parameters can be in any order.
-   <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
+   <br> e.g. if the command specifies `t/TELEGRAM_ID e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt
@@ -492,7 +492,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
-| Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
+| Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
 
 ### 7.3 Delete Command Summary
@@ -537,8 +537,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 | Function | Format, Examples |
 | -------- | ---------------- |
-| Provide help with
-program commands | `help` |
+| Provide help with program commands | `help` |
 
 ## 8. Glossary
 
