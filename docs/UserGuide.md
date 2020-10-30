@@ -59,20 +59,27 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     - [7.4 View Command Summary](#74-view-command-summary)
     - [7.5 Exit Command Summary](#75-exit-command-summary)
     - [7.6 Help Command Summary](#76-help-command-summary)
-8. [FAQ](#8-faq) 
+8. [Glossary](#8-glossary)
+9. [FAQ](#9-faq)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 1. Overview
 
 ### 1.1 Introduction
-
+Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI). Jarvis in general helps to organise and simplify
+CS1101S tutors' administrative tasks.
 
 ### 1.2 Purpose
+As an Avenger, not only do you have immense power but you are also burdened with inevitable great responsibility.
+Not to worry, Jarvis is here to empower you to manage your personal tasks while teaching others efficiently and 
+effectively. 
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. About the User Guide
+This section aims to remind you of the important parts to take note of while reading the user guide.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -553,7 +560,10 @@ program commands | `help` |
 
 ![helpFormat](images/userguide/helpFormat.png)
 
-## 8. FAQ
+## 8. Glossary
+
+
+## 9. FAQ
 (Peirong)
 
 `Q: How do I transfer my data to another Computer?`
