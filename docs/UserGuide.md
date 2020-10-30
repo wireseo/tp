@@ -1,3 +1,8 @@
+---
+layout: page
+title: User Guide
+---
+
 ## User Guide
 
 Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Jarvis can get your TA administrative tasks done faster than traditional GUI apps.
