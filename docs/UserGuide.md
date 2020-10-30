@@ -19,21 +19,39 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 5. [Logging into Jarvis](#5-logging-into-jarvis)
 6. [Features](#6-features)
     - [6.1 General Notes about Command Format](#61-general-notes-about-command-format)
-    - [6.2 Viewing help : `help`](#62-viewing-help)
-    - [6.3 Adding Information : `add`](#63-adding-information)
-        * [6.3.1 Adding Todos : `add -t`](#631-adding-todos)
-        * [6.3.2 Adding Events : `add -e`](#632-adding-events)
-        * [6.3.3 Adding Deadlines : `add -d`](#633-adding-deadlines)
-        * [6.3.4 Adding Consultations : `add -c`](#634-adding-consultations)
-        * [6.3.5 Adding Mastery Checks : `add -mc`](#635-adding-mastery-checks)
-    - [6.4 Editing Information : `edit`](#64-editing-information)
-        * [6.4.1 Editing Login Information : `edit -l`](#641-editing-login-information)
-        * [6.4.2 Editing Student Information : `add -s`](#642-editing-student-information)
-    - [6.5 Deleting Information : `delete`](#65-deleting-information)
-        * [6.5.1 Deleting Tasks : `delete -t`](#651-deleting-tasks)
-        * [6.5.2 Deleting Consultations : `delete -c`](#652-deleting-consultations)
-        * [6.5.3 Deleting Mastery Checks : `delete -mc`](#653-deleting-mastery-checks)
-    - [6.6 Viewing Information : `view`](#66-viewing-information)
+    - [6.2 Viewing help : `help`](#62-viewing-help--help)
+    - [6.3 Adding Information : `add`](#63-adding-information--add)
+        * [6.3.1 Adding Todos : `add -t`](#631-adding-todos--t)
+        * [6.3.2 Adding Events : `add -e`](#632-adding-events---e)
+        * [6.3.3 Adding Deadlines : `add -d`](#633-adding-deadlines---d)
+        * [6.3.4 Adding Consultations : `add -c`](#634-adding-consultations---c)
+        * [6.3.5 Adding Mastery Checks : `add -mc`](#635-adding-mastery-checks---mc)
+    - [6.4 Editing Information : `edit`](#64-editing-information--edit)
+        * [6.4.1 Editing Login Information : `edit -l`](#641-editing-login-information---l)
+    - [6.5 Deleting Information : `delete`](#65-deleting-information--delete)
+        * [6.5.1 Deleting Tasks : `delete -t`](#651-deleting-tasks---t)
+        * [6.5.2 Deleting Consultations : `delete -c`](#652-deleting-consultations---c)
+        * [6.5.3 Deleting Mastery Checks : `delete -mc`](#653-deleting-mastery-checks---mc)
+    - [6.6 Viewing Information : `view`](#66-viewing-information--view)
+        * [6.6.1 Viewing a list of all students : `view -s`](#661-viewing-a-list-of-all-students---s)
+        * [6.6.2 Viewing one student : `view -s NAME`](#662-viewing-one-student---s-name)
+        * [6.6.3 Viewing all consultation sessions : `view -c`](#663-viewing-all-consultation-sessions---c)
+        * [6.6.4 Viewing past consultation sessions: `view -cp`](#664-viewing-past-consultation-sessions---cp)
+        * [6.6.5 Viewing upcoming consultation sessions: `view -cu`](#665-viewing-upcoming-consultation-sessions---cu)
+        * [6.6.6 Viewing all Mastery Check sessions: `view -mc`](#666-viewing-all-mastery-check-sessions---mc)
+        * [6.6.7 Viewing past Mastery Check sessions: `view -mcp`](#667-viewing-past-mastery-check-sessions--mcp)
+        * [6.6.8 Viewing upcoming Mastery Check sessions: `view -mcu`](#668-viewing-upcoming-mastery-check-sessions--mcu)
+        * [6.6.9 Viewing deadline for missions: `view -m`](#669-viewing-deadline-for-missions---m)
+        * [6.6.10 Viewing deadline for quests: `view -q`](#6610-viewing-deadline-for-quests---q)
+        * [6.6.11 Viewing ungraded missions: `view -um`](#6611-viewing-ungraded-missions---um)
+        * [6.6.12 Viewing ungraded quests: `view -uq`](#6612-viewing-ungraded-quests---uq)
+        * [6.6.13 Viewing studio participation marks of a specific student: `view -p`](#6613-viewing-studio-participation-marks-of-a-specific-student--view--p)
+        * [6.6.14 Viewing all Tasks: `view -t`](#6614-viewing-all-tasks---t)
+        * [6.6.15 Viewing all Todos: `view -tt`](#6615-viewing-all-todos---tt)
+        * [6.6.16 Viewing all Events: `view -te`](#6616-viewing-all-events---te)
+        * [6.6.17 Viewing all Deadlines: `view -td`](#6617-viewing-all-deadlines---td)
+    - [6.7 Exiting the program: `exit`](#67-exiting-the-program--exit)
+    - [6.8 Saving the data](#668-viewing-upcoming-mastery-check-sessions--mcu)
 7. [Command Summary](#7-command-summary)
     - [7.1 Add Command Summary](#71-add-command-summary)
     - [7.2 Edit Command Summary](#72-edit-command-summary)
@@ -48,6 +66,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 ## 1. Overview
 
 ### 1.1 Introduction
+
 
 ### 1.2 Purpose
 
@@ -170,17 +189,15 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 * Luminus username and passwords will be stored in plaintext.
 
-### 6.2 Viewing help 
+### 6.2 Viewing help : `help`
 (Zhen Teng)
 
 Shows a message explaining how to access the help page.
 <br>**Format: `help`**
 
-### 6.3 Adding Information
+### 6.3 Adding Information : `add`
 
-General Command: `add`
-
-#### 6.3.1 Adding Todos
+#### 6.3.1 Adding Todos `-t`
 (Jun Jie)
 
 Adds your personal `Todo` with a `description`.
@@ -192,7 +209,7 @@ Adds your personal `Todo` with a `description`.
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
-#### 6.3.2 Adding Events
+#### 6.3.2 Adding Events : `-e`
 (Jun Jie)
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
@@ -209,7 +226,7 @@ Adds your personal `Event` with a `description`, to attend at a specific `date` 
 An `Event` requires extra `date` and `time` specifications in order to create.
 </div>
 
-#### 6.3.3 Adding Deadlines
+#### 6.3.3 Adding Deadlines : `-d`
 (Jun Jie)
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
@@ -226,7 +243,7 @@ Adds your personal `Deadline` with a `description`, to complete by a specific `d
 Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create.
 </div>
 
-#### 6.3.4 Adding Consultations
+#### 6.3.4 Adding Consultations : `-c`
 (Eryn)
 
 Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
@@ -235,7 +252,7 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
-#### 6.3.5 Adding Mastery Checks
+#### 6.3.5 Adding Mastery Checks : `-mc`
 (Eryn)
 
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
@@ -244,11 +261,9 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
-### 6.4 Editing Information
+### 6.4 Editing Information : `edit`
 
-General Command: `edit`
-
-#### 6.4.1 Editing Login Information
+#### 6.4.1 Editing Login Information : `-l`
 (Peirong)
 
 Similar to the format for editing students above, you can use tags to specify the field to be edited.
@@ -257,22 +272,9 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
 
-#### 6.4.2 Editing Student Information
-(Peirong)
+### 6.5 Deleting Information : `delete`
 
-`INDEX` refers to the number beside the student in the student list tab.
-Include tags followed by the updated information such as `t/maryjane132` or `e/e1234222@u.nus.edu` to edit the
-information which corresponds to that tag.
-<br>**Format: `edit -s INDEX t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE`**
-<br>Examples:
-* `edit -s 1 t/johndoe132 e/e1234567@u.nus.edu`
-* `edit -s 2 t/maryjane132 s/3`
-
-### 6.5 Deleting Information
-
-General Command: `delete`
-
-#### 6.5.1 Deleting Tasks
+#### 6.5.1 Deleting Tasks : `-t`
 (Jun Jie)
 
 Deletes a task based on the `TASK_ID` you specify.
@@ -284,7 +286,7 @@ Deletes a task based on the `TASK_ID` you specify.
 * `delete -t T3`
 * `delete -t D2`
 
-#### 6.5.2 Deleting Consultations
+#### 6.5.2 Deleting Consultations : `-c`
 (Eryn)
 
 Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
@@ -296,7 +298,7 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 * `delete -c John Doe
    → 2`
 
-#### 6.5.3 Deleting Mastery Checks
+#### 6.5.3 Deleting Mastery Checks : `-mc`
 (Eryn)
 
 Similar to the above process of deleting consultations, deleting `Mastery Checks` first
@@ -308,11 +310,9 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 * `delete -mc John Doe
    → 2`
 
-### 6.6 Viewing Information
+### 6.6 Viewing Information : `view`
 
-General Command: `view`
-
-#### 6.6.1 Viewing a list of all students
+#### 6.6.1 Viewing a list of all students : `-s`
 (Zhen Teng)
 
 Shows a list of all students under the tutor in JARVIS.
@@ -320,13 +320,20 @@ Please take note of the command inputted into the command box to understand how 
 
 ![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
-If a student name is entered after the command, Jarvis shows one specific student only.
+<br>**Format: `view -s`**
+
+#### 6.6.2 Viewing one student : `-s [NAME]`
+(Zhen Teng)
+
+Shows a specific student if a student name is entered after the command, Jarviss.
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
 <br>**Format: `view -s [NAME]`**
+<br>Examples:
+* `view -s John Doe`
 
-#### 6.6.2 Viewing all consultation sessions
+#### 6.6.3 Viewing all consultation sessions : `-c`
 (Eryn)
 
 Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
@@ -335,7 +342,7 @@ Shows all `confirmed consultation` sessions, both past and upcoming. If you ente
 * `view -c`
 * `view -c John Doe`
 
-#### 6.6.3 Viewing past consultation sessions
+#### 6.6.4 Viewing past consultation sessions : `-cp`
 (Peirong)
 
 Shows all `past consultation` sessions. If you enter a `Student name` after the command, it will show `past consultation` sessions with the specific student.
@@ -344,7 +351,7 @@ Shows all `past consultation` sessions. If you enter a `Student name` after the 
 * `view -cp`
 * `view -cp John Doe`
 
-#### 6.6.4 Viewing upcoming consultation sessions
+#### 6.6.5 Viewing upcoming consultation sessions : `-cu`
 (Peirong)
 
 Shows all `upcoming consultation` sessions. If you enter a `Student name` after the command, it will show `upcoming consultation` sessions with the specific student.
@@ -353,7 +360,7 @@ Shows all `upcoming consultation` sessions. If you enter a `Student name` after 
 * `view -cu`
 * `view -cu John Doe`
 
-#### 6.6.5 Viewing all Mastery Check sessions
+#### 6.6.6 Viewing all Mastery Check sessions : `-mc`
 (Eryn)
 
 Shows all `confirmed MC` sessions, both past and upcoming.
@@ -361,7 +368,7 @@ Shows all `confirmed MC` sessions, both past and upcoming.
 <br>Examples:
 * `view -mc`
 
-#### 6.6.6 Viewing past Mastery Check sessions
+#### 6.6.7 Viewing past Mastery Check sessions : `mcp`
 (Eryn)
 
 Shows all `past MC` sessions.
@@ -369,7 +376,7 @@ Shows all `past MC` sessions.
 <br>Examples:
 * `view -mcp`
 
-#### 6.6.7 Viewing upcoming Mastery Check sessions
+#### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
 (Eryn)
 
 Shows all `upcoming MC` sessions.
@@ -377,7 +384,7 @@ Shows all `upcoming MC` sessions.
 <br>Examples:
 * `view -mcu`
 
-#### 6.6.8 Viewing deadline for missions
+#### 6.6.9 Viewing deadline for missions : `-m`
 (Wiline)
 
 Shows the deadline for the current mission(s).
@@ -387,7 +394,7 @@ You may also click on the `Mission` tab to do so.
 
 ![FetchMission](images/userguide/viewMissions.png)
 
-#### 6.6.9 Viewing deadline for quests
+#### 6.6.10 Viewing deadline for quests : `-q`
 (Wiline)
 
 Shows the deadline for the current quest(s).
@@ -397,7 +404,7 @@ You may also click on the `Quest` tab to do so.
 
 ![FetchQuest](images/userguide/viewQuests.png)
 
-#### 6.6.10 Viewing ungraded missions
+#### 6.6.11 Viewing ungraded missions : `-um`
 (Wiline)
 
 Shows the missions that you have not yet graded.
@@ -406,7 +413,7 @@ Shows the missions that you have not yet graded.
 
 <br>**Format: `view -um`**
 
-#### 6.6.11 Viewing ungraded quests
+#### 6.6.12 Viewing ungraded quests : `-uq`
 (Wiline)
 
 Shows the quests that you have not yet graded.
@@ -415,7 +422,7 @@ Shows the quests that you have not yet graded.
 
 <br>**Format: `view -uq`**
 
-#### 6.6.12 Viewing studio participation marks of a specific student: `view -p`
+#### 6.6.13 Viewing studio participation marks of a specific student : `view -p`
 (Zhen Teng)
 
 Shows the studio participation marks of a student.
@@ -423,31 +430,31 @@ Shows the studio participation marks of a student.
 <br>Examples:
 * `view -p John Doe`
 
-#### 6.6.13 Viewing all Tasks
+#### 6.6.14 Viewing all Tasks : `-t`
 (Jun Jie)
 
 Shows the list of all your current tasks.
 <br>**Format: `view -t`**
 
-#### 6.6.14 Viewing all Todos
+#### 6.6.15 Viewing all Todos : `-tt`
 (Jun Jie)
 
 Shows the list of all your current todos.
 <br>**Format: `view -tt`**
 
-#### 6.6.15 Viewing all Events
+#### 6.6.16 Viewing all Events : `-te`
 (Jun Jie)
 
 Shows the list of all your current events.
 <br>**Format: `view -te`**
 
-#### 6.6.16 Viewing all Deadlines
+#### 6.6.17 Viewing all Deadlines : `-td`
 (Jun Jie)
 
 Shows the list of all your current deadlines.
 <br>**Format: `view -td`**
 
-### 6.7 Exiting the program
+### 6.7 Exiting the program : `exit`
 (Zhen Teng)
 
 Exits the program.
@@ -534,7 +541,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![exitFormat](images/userguide/exitFormat.png)
 
-#### 7.6 Help Command Summary
+### 7.6 Help Command Summary
 (Peirong)
 
 <!---
