@@ -124,11 +124,8 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    * Items in square brackets are optional.
    <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
 
-   * Items with …​ after them can be used multiple times including zero times.
-   <br> e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
    * Parameters can be in any order.
-   <br> e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+   <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt
