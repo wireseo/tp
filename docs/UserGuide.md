@@ -57,13 +57,24 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
-1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3(trial)).
+1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
+It is crucial to have the Chrome Driver in order for Jarvis to start up, if the GUI does not launch, 
+Please check that you have installed the correct driver
+    1. Windows: chromedriver.exe
+    1. MacOS: chromedriver_mac
+    1. Linux: chromedriver_linux
 
 1. Copy both files to the folder you want to use as the _home folder_ for your Jarvis.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+1. There are two options for launching Jarvis.
+    1. Double-click the `jarvis.jar` file to start the app.
+    1. Launch Jarvis from the the Windows Command Prompt or MacOS
+    command line by navigating to the directory containing jarvis.jar,
+    then typing the command `java -jar jarvis.jar`
 
-   ![Jarvis](images/userguide/Jarvis.PNG)
+    A GUI similar to the screenshot below should appear in a few seconds.
+
+   ![Jarvis](images/userguide/Jarvis.png)
 
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
@@ -95,7 +106,7 @@ this box.
 <br>
    * Clicking on each tab will give you the information you require for that field.
 
-![Jarvis](images/userguide/Jarvis.PNG)
+![Jarvis](images/userguide/Jarvis.png)
 
 The core features are based on Students, Consultations, Missions, Quests and Tasks.
 Each core feature has a tab for the organisation of its information.
@@ -115,7 +126,7 @@ this flexibility with you, the user in mind.
 
 The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
 
-![NoLoginDetails](images/userguide/noLoginDetails.PNG)
+![NoLoginDetails](images/userguide/loginPrompt.png)
 
 To log in, simply edit your log in details with the following command:
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
@@ -124,7 +135,7 @@ To log in, simply edit your log in details with the following command:
 
 An example of the command being inputted:
 
-![LoginUsernamePasswordInput](images/userguide/loginUsernamePasswordInput.PNG)
+![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
 Within the green rectangle box, Jarvis will notify you if the log in was successful. Upon success, all information from
  sourceacademy will be visible
@@ -169,7 +180,7 @@ General Command: `add`
 
 Adds your personal `Todo` with a `description`.
 
-![AddTodo](images/userguide/addTodo.PNG)
+![AddTodo](images/userguide/addTodo.png)
 
 <br>**Format: `add -t DESCRIPTION`**
 <br>Examples:
@@ -181,7 +192,7 @@ Adds your personal `Todo` with a `description`.
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 
-![AddEvent](images/userguide/addEvent.PNG)
+![AddEvent](images/userguide/addEvent.png)
 
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
@@ -198,7 +209,7 @@ An `Event` requires extra `date` and `time` specifications in order to create.
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 
-![AddDeadline](images/userguide/addDeadline.PNG)
+![AddDeadline](images/userguide/addDeadline.png)
 
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
@@ -261,7 +272,7 @@ General Command: `delete`
 
 Deletes a task based on the `TASK_ID` you specify.
 
-![DeleteTask](images/userguide/deleteTask.PNG)
+![DeleteTask](images/userguide/deleteTask.png)
 
 <br>**Format:`delete -t TASK_ID`**
 <br>Examples:
@@ -302,11 +313,11 @@ General Command: `view`
 Shows a list of all students under the tutor in JARVIS.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
 
-![ViewAllStudentsCommand](images/userguide/viewAllStudents.PNG)
+![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
 If a student name is entered after the command, Jarvis shows one specific student only.
 
-![ViewOneStudentCommand](images/userguide/viewOneStudent.PNG)
+![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
 <br>**Format: `view -s [NAME]`**
 
@@ -369,7 +380,7 @@ Shows the deadline for the current mission(s).
 
 You may also click on the `Mission` tab to do so.
 
-![FetchMission](images/userguide/fetchMission.PNG)
+![FetchMission](images/userguide/viewMissions.png)
 
 #### 6.6.9 Viewing deadline for quests
 (Wiline)
@@ -379,14 +390,14 @@ Shows the deadline for the current quest(s).
 
 You may also click on the `Quest` tab to do so.
 
-![FetchQuest](images/userguide/fetchQuest.PNG)
+![FetchQuest](images/userguide/viewQuests.png)
 
 #### 6.6.10 Viewing ungraded missions
 (Wiline)
 
 Shows the missions that you have not yet graded.
 
-![ViewUngradedMissions](images/userguide/viewUngradedMissions.PNG)
+![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
 
 <br>**Format: `view -um`**
 
@@ -395,7 +406,7 @@ Shows the missions that you have not yet graded.
 
 Shows the quests that you have not yet graded.
 
-![ViewUngradedQuests](images/userguide/viewUngradedQuests.PNG)
+![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
 
 <br>**Format: `view -uq`**
 
