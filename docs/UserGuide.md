@@ -2,44 +2,58 @@
 
 Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Jarvis can get your TA administrative tasks done faster than traditional GUI apps.
 
-### Table of Contents
+## Table of Contents
 
-* Quick start
-* Features
-    * Viewing help: `help`
-    * Adding information: `add`
-      * Adding Todos: `-t`
-      * Adding Events: `-e`
-      * Adding Deadlines: `-d`
-      * Adding Consultations: `-c`
-      * Adding Mastery Checks: `-mc`
-  * Editing information: `edit`
-    * Editing Login details: `-l`
-    * Editing Student Information: `-s`
-  * Deleting information: `delete`
-    * Deleting Tasks: `-t`
-    * Deleting Consultations: `-c`
-    * Deleting Mastery Checks: `-mc`
-  * Viewing information: `view`
-    * Viewing Student Information: `-s`
-    * Viewing Consultation sessions: `-c`, `-cp`, `-cu`
-    * Viewing Mastery Check sessions: `-mc`, `mcp`, `-mcu`
-    * Viewing deadline for missions: `-m`
-    * Viewing deadline for quests: `-q`
-    * Viewing ungraded missions: `-um`
-    * Viewing ungraded quests: `-uq`
-    * Viewing all Tasks: `-t`
-    * Viewing all Todos: `-tt`
-    * Viewing all Events: `-te`
-    * Viewing all Deadlines: `-td`
-  * Exiting the program: `exit`
-  * Saving the data
-* FAQ
-* Command summary
+1. [Overview](#1-overview)
+    - [1.1 Introduction](#11-introduction)
+    - [1.2 Purpose](#12-purpose)
+2. [About the User Guide](#2-about-the-user-guide)
+3. [Quick Start](#3-quick-start)
+4. [Navigating Jarvis](#4-navigating-jarvis)
+    - [4.1 UI Layout](#41-ui-layout)
+5. [Logging into Jarvis](#5-logging-into-jarvis)
+6. [Features](#6-features)
+    - [6.1 General Notes about Command Format](#61-general-notes-about-command-format)
+    - [6.2 Viewing help : `help`](#62-viewing-help)
+    - [6.3 Adding Information : `add`](#63-adding-information)
+        * [6.3.1 Adding Todos : `add -t`](#631-adding-todos)
+        * [6.3.2 Adding Events : `add -e`](#632-adding-events)
+        * [6.3.3 Adding Deadlines : `add -d`](#633-adding-deadlines)
+        * [6.3.4 Adding Consultations : `add -c`](#634-adding-consultations)
+        * [6.3.5 Adding Mastery Checks : `add -mc`](#635-adding-mastery-checks)
+    - [6.4 Editing Information : `edit`](#64-editing-information)
+        * [6.4.1 Editing Login Information : `edit -l`](#641-editing-login-information)
+        * [6.4.2 Editing Student Information : `add -s`](#642-editing-student-information)
+    - [6.5 Deleting Information : `delete`](#65-deleting-information)
+        * [6.5.1 Deleting Tasks : `delete -t`](#651-deleting-tasks)
+        * [6.5.2 Deleting Consultations : `delete -c`](#652-deleting-consultations)
+        * [6.5.3 Deleting Mastery Checks : `delete -mc`](#653-deleting-mastery-checks)
+    - [6.6 Viewing Information : `view`](#66-viewing-information)
+7. [Command Summary](#7-command-summary)
+    - [7.1 Add Command Summary](#71-add-command-summary)
+    - [7.2 Edit Command Summary](#72-edit-command-summary)
+    - [7.3 Delete Command Summary](#73-delete-command-summary)
+    - [7.4 View Command Summary](#74-view-command-summary)
+    - [7.5 Exit Command Summary](#75-exit-command-summary)
+    - [7.6 Help Command Summary](#76-help-command-summary)
+8. [FAQ](#8-faq) 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start (Everyone)
+## 1. Overview
+
+### 1.1 Introduction
+
+### 1.2 Purpose
+
+--------------------------------------------------------------------------------------------------------------------
+
+## 2. About the User Guide
+
+--------------------------------------------------------------------------------------------------------------------
+
+## 3. Quick start
+(Everyone)
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
@@ -66,11 +80,20 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 1. Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## Navigating Jarvis
+
+## 4. Navigating Jarvis
+(Everyone)
 
 Jarvis has a Graphical User Interface centered around a command input box on the top, surrounded by a light green
 line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
 this box.
+
+### 4.1 UI Layout
+(Everyone)
+<br>
+   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`, `Tasks`.
+<br>
+   * Clicking on each tab will give you the information you require for that field.
 
 ![Jarvis](images/userguide/Jarvis.PNG)
 
@@ -86,7 +109,9 @@ this flexibility with you, the user in mind.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
-## Logging in
+
+## 5. Logging into Jarvis
+(Zhen Teng)
 
 The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
 
@@ -107,17 +132,11 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
-**UI Layout** (Everyone)
-<br>
-   * The user interface is split into clearly marked tabs: `Students`, `Missions`, `Quests`, `Consultations`, `Tasks`.
-<br>
-   * Clicking on each tab will give you the information you require for that field.
+## 6. Features
 
+### 6.1 General Notes about Command Format
+(Wiline)
 
-<div markdown="block" class="alert alert-info">
-
-**Notes about the command format:**<br> (Wiline)
    * Words in UPPER_CASE are the parameters to be supplied by you.
    <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
 
@@ -134,16 +153,20 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 **Notes about Jarvis' relationship with Sourceacademy:** (Peirong) <br>
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 * Luminus username and passwords will be stored in plaintext.
-</div>
 
-### 1. Viewing help : `help` (Zhen Teng)
+### 6.2 Viewing help 
+(Zhen Teng)
 
 Shows a message explaining how to access the help page.
 <br>**Format: `help`**
 
-### 2. Adding Information: `add`
+### 6.3 Adding Information
 
-#### 2-1. Adding Todos: `add -t` (Jun Jie)
+General Command: `add`
+
+#### 6.3.1 Adding Todos
+(Jun Jie)
+
 Adds your personal `Todo` with a `description`.
 
 ![AddTodo](images/userguide/addTodo.PNG)
@@ -153,7 +176,9 @@ Adds your personal `Todo` with a `description`.
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
-#### 2-2. Adding Events: `add -e` (Jun Jie)
+#### 6.3.2 Adding Events
+(Jun Jie)
+
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 
 ![AddEvent](images/userguide/addEvent.PNG)
@@ -168,7 +193,9 @@ Adds your personal `Event` with a `description`, to attend at a specific `date` 
 An `Event` requires extra `date` and `time` specifications in order to create.
 </div>
 
-#### 2-3. Adding Deadlines: `add -d` (Jun Jie)
+#### 6.3.3 Adding Deadlines
+(Jun Jie)
+
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 
 ![AddDeadline](images/userguide/addDeadline.PNG)
@@ -183,30 +210,40 @@ Adds your personal `Deadline` with a `description`, to complete by a specific `d
 Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create.
 </div>
 
-#### 2-4. Adding Consultations: `add -c` (Eryn)
+#### 6.3.4 Adding Consultations
+(Eryn)
+
 Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
-#### 2-5. Adding Mastery Checks: `add -mc` (Eryn)
+#### 6.3.5 Adding Mastery Checks
+(Eryn)
+
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
-### 3. Editing Information: `edit`
+### 6.4 Editing Information
 
-#### 3-1. Editing Login Information: `edit -l` (Peirong)
+General Command: `edit`
+
+#### 6.4.1 Editing Login Information
+(Peirong)
+
 Similar to the format for editing students above, you can use tags to specify the field to be edited.
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
 
-#### 3-2. Editing Student Information: `edit -s` (Peirong)
+#### 6.4.2 Editing Student Information
+(Peirong)
+
 `INDEX` refers to the number beside the student in the student list tab.
 Include tags followed by the updated information such as `t/maryjane132` or `e/e1234222@u.nus.edu` to edit the
 information which corresponds to that tag.
@@ -215,9 +252,13 @@ information which corresponds to that tag.
 * `edit -s 1 t/johndoe132 e/e1234567@u.nus.edu`
 * `edit -s 2 t/maryjane132 s/3`
 
-### 4. Deleting Information: `delete`
+### 6.5 Deleting Information
 
-#### 4-1. Deleting Tasks: `delete -t` (Jun Jie)
+General Command: `delete`
+
+#### 6.5.1 Deleting Tasks
+(Jun Jie)
+
 Deletes a task based on the `TASK_ID` you specify.
 
 ![DeleteTask](images/userguide/deleteTask.PNG)
@@ -227,7 +268,9 @@ Deletes a task based on the `TASK_ID` you specify.
 * `delete -t T3`
 * `delete -t D2`
 
-#### 4-2 Deleting Consultations: `delete -c` (Eryn)
+#### 6.5.2 Deleting Consultations
+(Eryn)
+
 Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
 If a `Student name` is entered after the command, it shows only the sessions with the specific student.
 <br>**Format: `delete -c [NAME]`**
@@ -237,7 +280,9 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 * `delete -c John Doe
    → 2`
 
-#### 4-3. Deleting Mastery Checks: `delete -mc` (Eryn)
+#### 6.5.3 Deleting Mastery Checks
+(Eryn)
+
 Similar to the above process of deleting consultations, deleting `Mastery Checks` first
 shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
 If a `Student name` is entered after the command, it shows only the sessions with the specific student.
@@ -247,9 +292,13 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 * `delete -mc John Doe
    → 2`
 
-### 5. Viewing Information: `view`
+### 6.6 Viewing Information
 
-#### 5-1 Viewing a list of all students: `view -s` (Zhen Teng)
+General Command: `view`
+
+#### 6.6.1 Viewing a list of all students
+(Zhen Teng)
+
 Shows a list of all students under the tutor in JARVIS.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
 
@@ -261,47 +310,60 @@ If a student name is entered after the command, Jarvis shows one specific studen
 
 <br>**Format: `view -s [NAME]`**
 
+#### 6.6.2 Viewing all consultation sessions
+(Eryn)
 
-#### 5-2. Viewing all consultation sessions: `view -c` (Eryn)
 Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
 <br>**Format: `view -c [NAME]`**
 <br>Examples:
 * `view -c`
 * `view -c John Doe`
 
-#### 5-3. Viewing past consultation sessions: `view -cp` (Peirong)
+#### 6.6.3 Viewing past consultation sessions
+(Peirong)
+
 Shows all `past consultation` sessions. If you enter a `Student name` after the command, it will show `past consultation` sessions with the specific student.
 <br>**Format: `view -cp [NAME]`**
 <br>Examples:
 * `view -cp`
 * `view -cp John Doe`
 
-#### 5-4. Viewing upcoming consultation sessions: `view -cu` (Peirong)
+#### 6.6.4 Viewing upcoming consultation sessions
+(Peirong)
+
 Shows all `upcoming consultation` sessions. If you enter a `Student name` after the command, it will show `upcoming consultation` sessions with the specific student.
 <br>**Format: `view -cu [NAME]`**
 <br>Examples:
 * `view -cu`
 * `view -cu John Doe`
 
-#### 5-5. Viewing all Mastery Check sessions: `view -mc` (Eryn)
+#### 6.6.5 Viewing all Mastery Check sessions
+(Eryn)
+
 Shows all `confirmed MC` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
 <br>Examples:
 * `view -mc`
 
-#### 5-6. Viewing past Mastery Check sessions: `view -mcp` (Eryn)
+#### 6.6.6 Viewing past Mastery Check sessions
+(Eryn)
+
 Shows all `past MC` sessions.
 <br>**Format: `view -mcp`**
 <br>Examples:
 * `view -mcp`
 
-#### 5-7. Viewing upcoming Mastery Check sessions: `view -mcu` (Eryn)
+#### 6.6.7 Viewing upcoming Mastery Check sessions
+(Eryn)
+
 Shows all `upcoming MC` sessions.
 <br>**Format: `view -mcu`**
 <br>Examples:
 * `view -mcu`
 
-#### 5-8. Viewing deadline for missions: `view -m` (Wiline)
+#### 6.6.8 Viewing deadline for missions
+(Wiline)
+
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
 
@@ -309,7 +371,9 @@ You may also click on the `Mission` tab to do so.
 
 ![FetchMission](images/userguide/fetchMission.PNG)
 
-#### 5-9. Viewing deadline for quests: `view -q` (Wiline)
+#### 6.6.9 Viewing deadline for quests
+(Wiline)
+
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
 
@@ -317,56 +381,73 @@ You may also click on the `Quest` tab to do so.
 
 ![FetchQuest](images/userguide/fetchQuest.PNG)
 
-#### 5-10. Viewing ungraded missions: `view -um` (Wiline)
+#### 6.6.10 Viewing ungraded missions
+(Wiline)
+
 Shows the missions that you have not yet graded.
 
 ![ViewUngradedMissions](images/userguide/viewUngradedMissions.PNG)
 
 <br>**Format: `view -um`**
 
-#### 5-11. Viewing ungraded quests: `view -uq` (Wiline)
+#### 6.6.11 Viewing ungraded quests
+(Wiline)
+
 Shows the quests that you have not yet graded.
 
 ![ViewUngradedQuests](images/userguide/viewUngradedQuests.PNG)
 
 <br>**Format: `view -uq`**
 
-#### 5-12. Viewing studio participation marks of a specific student: `view -p` (Zhen Teng)
+#### 6.6.12 Viewing studio participation marks of a specific student: `view -p`
+(Zhen Teng)
+
 Shows the studio participation marks of a student.
 <br>**Format: `view -p [Name]`**
 <br>Examples:
 * `view -p John Doe`
 
-#### 5-13. Viewing all Tasks: `view -t` (Jun Jie)
+#### 6.6.13 Viewing all Tasks
+(Jun Jie)
+
 Shows the list of all your current tasks.
 <br>**Format: `view -t`**
 
-#### 5-14. Viewing all Todos: `view -tt` (Jun Jie)
+#### 6.6.14 Viewing all Todos
+(Jun Jie)
+
 Shows the list of all your current todos.
 <br>**Format: `view -tt`**
 
-#### 5-15. Viewing all Events: `view -te` (Jun Jie)
+#### 6.6.15 Viewing all Events
+(Jun Jie)
+
 Shows the list of all your current events.
 <br>**Format: `view -te`**
 
-#### 5-16. Viewing all Deadlines: `view -td` (Jun Jie)
+#### 6.6.16 Viewing all Deadlines
+(Jun Jie)
+
 Shows the list of all your current deadlines.
 <br>**Format: `view -td`**
 
-### 6. Exiting the program : `exit` (Zhen Teng)
+### 6.7 Exiting the program
+(Zhen Teng)
+
 Exits the program.
 <br>**Format: `exit`**
 
-### 7. Saving the data (Peirong)
+### 7.7 Saving the data
+(Peirong)
+
 JARVIS data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-#### FAQ (Peirong)
-`Q: How do I transfer my data to another Computer?`
-<br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
+--------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## 7. Command Summary
 
-#### Add (Jun Jie)
+### 7.1 Add Command Summary
+(Jun Jie)
 <!--- Not sure why the format is not working on github page :(
       Replaced with a table image for now
 | Function | Tag | Format, Examples |
@@ -380,7 +461,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![addFormat](images/userguide/addFormat.PNG)
 
-#### Edit (Wiline)
+### 7.2 Edit Command Summary
+(Wiline)
+
 <!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -390,7 +473,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![editFormat](images/userguide/editFormat.PNG)
 
-#### Delete (Zhen Teng)
+### 7.3 Delete Command Summary
+(Zhen Teng)
+
 <!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -401,7 +486,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![deleteFormat](images/userguide/deleteFormat.PNG)
 
-#### View (Zhen Teng)
+### 7.4 View Command Summary
+(Zhen Teng)
+
 <!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -424,7 +511,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![viewFormat](images/userguide/viewFormat.PNG)
 
-#### Exit (Peirong)
+### 7.5 Exit Command Summary
+(Peirong)
+
 <!---
 | Function | Format, Examples |
 | -------- | ---------------- |
@@ -433,7 +522,9 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ![exitFormat](images/userguide/exitFormat.PNG)
 
-#### Help (Peirong)
+#### 7.6 Help Command Summary
+(Peirong)
+
 <!---
 | Function | Format, Examples |
 | -------- | ---------------- |
@@ -442,3 +533,10 @@ program commands | `help` |
 -->
 
 ![helpFormat](images/userguide/helpFormat.PNG)
+
+## 8. FAQ
+(Peirong)
+
+`Q: How do I transfer my data to another Computer?`
+<br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
+
