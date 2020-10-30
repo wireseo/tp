@@ -464,8 +464,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 ### 7.1 Add Command Summary
 (Jun Jie)
-<!--- Not sure why the format is not working on github page :(
-      Replaced with a table image for now
+
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Add Todo | -t | add -t DESCRIPTION |
@@ -473,21 +472,18 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Add Deadline | -d | add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM |
 | Add Consultation | -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
 | Add Mastery Check | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
--->
 
-![addFormat](images/userguide/addFormat.PNG)
+![addFormat](images/userguide/addFormat.png)
 
 ### 7.2 Edit Command Summary
 (Wiline)
 
-<!---
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL s/PARTICIPATION_SCORE |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
--->
 
-![editFormat](images/userguide/editFormat.PNG)
+![editFormat](images/userguide/editFormat.png)
 
 ### 7.3 Delete Command Summary
 (Zhen Teng)
@@ -500,7 +496,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Delete Mastery Check | -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
 -->
 
-![deleteFormat](images/userguide/deleteFormat.PNG)
+![deleteFormat](images/userguide/deleteFormat.png)
 
 ### 7.4 View Command Summary
 (Zhen Teng)
@@ -525,7 +521,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | View all Deadlines | -td | view -td |
 -->
 
-![viewFormat](images/userguide/viewFormat.PNG)
+![viewFormat](images/userguide/viewFormat.png)
 
 ### 7.5 Exit Command Summary
 (Peirong)
@@ -536,7 +532,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Exits program | `exit` |
 -->
 
-![exitFormat](images/userguide/exitFormat.PNG)
+![exitFormat](images/userguide/exitFormat.png)
 
 #### 7.6 Help Command Summary
 (Peirong)
@@ -548,7 +544,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 program commands | `help` |
 -->
 
-![helpFormat](images/userguide/helpFormat.PNG)
+![helpFormat](images/userguide/helpFormat.png)
 
 ## 8. FAQ
 (Peirong)
