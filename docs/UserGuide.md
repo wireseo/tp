@@ -271,13 +271,20 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 ### 6.4 Editing Information : `edit`
 
 #### 6.4.1 Editing Login Information : `-l`
-(Peirong)
 
 Similar to the format for editing students above, you can use tags to specify the field to be edited.
-<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`
+<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
+
+Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Sourceacademy to be reflected in the GUI.
+
+#### 6.4.2 Editing Student Informaion : `-s`
+<br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
+<br>Examples:
+* `edit -s 1 e/koolguy@gmail.com t/handsome`
+* `edit -s 3 n/Timots`
 
 ### 6.5 Deleting Information : `delete`
 
