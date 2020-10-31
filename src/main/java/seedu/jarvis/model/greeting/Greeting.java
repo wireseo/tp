@@ -33,8 +33,8 @@ public class Greeting {
     }
 
     private boolean verifyGreeting(String greeting) {
-        return greeting == null || greeting.isEmpty() || greeting.equals(DEFAULT_GREETING) ||
-                greeting.contains("Welcome");
+        return greeting == null || greeting.isEmpty() || greeting.equals(DEFAULT_GREETING)
+                || greeting.contains("Welcome");
     }
 
     public String padWithIntro(String greeting) {
