@@ -44,8 +44,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
         * [6.6.9 Viewing deadline for missions: `view -m`](#669-viewing-deadline-for-missions---m)
         * [6.6.10 Viewing deadline for quests: `view -q`](#6610-viewing-deadline-for-quests---q)
         * [6.6.11 Viewing ungraded missions: `view -um`](#6611-viewing-ungraded-missions---um)
-        * [6.6.12 Viewing ungraded quests: `view -uq`](#6612-viewing-ungraded-quests---uq)
-        * [6.6.13 Viewing studio participation marks of a specific student: `view -p`](#6613-viewing-studio-participation-marks-of-a-specific-student--view--p)
+        * [6.6.12 Viewing ungraded quests: `view -uq`](#6612-viewing-ungraded-quests---uq)     
         * [6.6.14 Viewing all Tasks: `view -t`](#6614-viewing-all-tasks---t)
         * [6.6.15 Viewing all Todos: `view -tt`](#6615-viewing-all-todos---tt)
         * [6.6.16 Viewing all Events: `view -te`](#6616-viewing-all-events---te)
@@ -436,33 +435,25 @@ Shows the quests that you have not yet graded.
 
 <br>**Format: `view -uq`**
 
-#### 6.6.13 Viewing studio participation marks of a specific student : `view -p`
-(Zhen Teng)
-
-Shows the studio participation marks of a student.
-<br>**Format: `view -p [Name]`**
-<br>Examples:
-* `view -p John Doe`
-
-#### 6.6.14 Viewing all Tasks : `-t`
+#### 6.6.13 Viewing all Tasks : `-t`
 (Jun Jie)
 
 Shows the list of all your current tasks.
 <br>**Format: `view -t`**
 
-#### 6.6.15 Viewing all Todos : `-tt`
+#### 6.6.14 Viewing all Todos : `-tt`
 (Jun Jie)
 
 Shows the list of all your current todos.
 <br>**Format: `view -tt`**
 
-#### 6.6.16 Viewing all Events : `-te`
+#### 6.6.15 Viewing all Events : `-te`
 (Jun Jie)
 
 Shows the list of all your current events.
 <br>**Format: `view -te`**
 
-#### 6.6.17 Viewing all Deadlines : `-td`
+#### 6.6.16 Viewing all Deadlines : `-td`
 (Jun Jie)
 
 Shows the list of all your current deadlines.
