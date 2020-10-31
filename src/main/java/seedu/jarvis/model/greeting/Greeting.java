@@ -24,12 +24,17 @@ public class Greeting {
     }
 
     public void setGreeting(String newGreeting) {
-        if (newGreeting == null || newGreeting.isEmpty() || newGreeting.equals(DEFAULT_GREETING)) {
+        if (verifyGreeting(newGreeting)) {
             this.greeting.setValue(DEFAULT_GREETING);
         } else {
             this.greeting.setValue(padWithIntro(newGreeting));
         }
 
+    }
+
+    private boolean verifyGreeting(String greeting) {
+        return greeting == null || greeting.isEmpty() || greeting.equals(DEFAULT_GREETING) ||
+                greeting.contains("Welcome");
     }
 
     public String padWithIntro(String greeting) {
