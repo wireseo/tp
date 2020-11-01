@@ -355,7 +355,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                                    | I want to …​                     | So that I …​                                                |
 | -------- | ------------------------------------------ | ------------------------------   | ----------------------------------------------------------- |
 | `* * *`  | new user                                   | see usage instructions           | can refer to instructions when I forget how to use the App. |
-| `* * *`  | user                                       | edit a student                   | can keep the contact details of all my students updated.    |                                                  |
+| `* * *`  | user                                       | edit a student                   | can keep the contact details of all my students updated.    |
 | `* * *`  | user                                       | view my students automatically   | can know who to contact.                                    |
 | `* * *`  | user                                       | list all unmarked assignments    | will not miss out on marking any overdue missions or quests.|
 | `* * *`  | user                                       | view the deadline of missions or quests  | know when I can start marking them.                 |
