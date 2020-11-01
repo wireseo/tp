@@ -186,7 +186,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
 
    * Parameters can be in any order.
-   <br> e.g. if the command specifies `t/TELEGRAM_ID e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
+   <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
 
    * Commands with arrows indicate a multi-step process.
    <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt
@@ -491,8 +491,8 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
-| Edit Student details | -s | edit -s NAME t/TELEGRAM_ID e/EMAIL |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
+| Edit Student details | -s | edit -s NAME t/TELEGRAM e/EMAIL |
 
 ### 7.3 Delete Command Summary
 (Zhen Teng)
