@@ -73,8 +73,8 @@ CS1101S tutors' administrative tasks.
 
 ### 1.2 Purpose
 As an Avenger, not only do you have immense power but you are also burdened with inevitable great responsibility.
-Not to worry, Jarvis is here to empower you to manage your personal tasks while teaching others efficiently and 
-effectively. 
+Not to worry, Jarvis is here to empower you to manage your personal tasks while teaching others efficiently and
+effectively.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ This section aims to remind you of the important parts to take note of while rea
 1. Ensure you have Java 11 or above installed in your Computer.
 
 1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
-It is crucial to have the Chrome Driver in order for Jarvis to start up, if the GUI does not launch, 
+It is crucial to have the Chrome Driver in order for Jarvis to start up, if the GUI does not launch,
 Please check that you have installed the correct driver
     1. Windows: chromedriver.exe
     1. MacOS: chromedriver_mac
@@ -350,29 +350,26 @@ Shows a specific student if a student name is entered after the command, Jarviss
 #### 6.6.3 Viewing all consultation sessions : `-c`
 (Eryn)
 
-Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
-<br>**Format: `view -c [NAME]`**
+Shows all `confirmed consultation` sessions, both past and upcoming.
+<br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
-* `view -c John Doe`
 
 #### 6.6.4 Viewing past consultation sessions : `-cp`
 (Peirong)
 
-Shows all `past consultation` sessions. If you enter a `Student name` after the command, it will show `past consultation` sessions with the specific student.
-<br>**Format: `view -cp [NAME]`**
+Shows all `past consultation` sessions.
+<br>**Format: `view -cp`**
 <br>Examples:
 * `view -cp`
-* `view -cp John Doe`
 
 #### 6.6.5 Viewing upcoming consultation sessions : `-cu`
 (Peirong)
 
-Shows all `upcoming consultation` sessions. If you enter a `Student name` after the command, it will show `upcoming consultation` sessions with the specific student.
-<br>**Format: `view -cu [NAME]`**
+Shows all `upcoming consultation` sessions.
+<br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
-* `view -cu John Doe`
 
 #### 6.6.6 Viewing all Mastery Check sessions : `-mc`
 (Eryn)
@@ -546,4 +543,3 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 
 `Q: How do I transfer my data to another Computer?`
 <br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
-
