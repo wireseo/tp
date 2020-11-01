@@ -492,7 +492,7 @@ JARVIS data are saved in the hard disk automatically after any command that chan
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
-| Edit Student details | -s | edit -s NAME t/TELEGRAM e/EMAIL |
+| Edit Student details | -s | edit -s INDEX n/NAME t/TELEGRAM e/EMAIL |
 
 ### 7.3 Delete Command Summary
 (Zhen Teng)
