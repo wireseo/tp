@@ -1,10 +1,12 @@
 package seedu.jarvis.logic.parser;
 
+import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseFailure;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.model.flag.Flag;
+import seedu.jarvis.logic.commands.delete.DeleteCommand;
+
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -26,6 +28,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(Flag.MESSAGE_CONSTRAINTS));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteCommand.MESSAGE_DELETE_USAGE));
     }
 }
