@@ -49,8 +49,10 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include task DESCRIPTION";
     public static final String MESSAGE_MISSING_DATE = "Please include task DATE and TIME d/YYYY-MM-DD t/HH:MM";
-    public static final String MESSAGE_WRONG_DATETIME_FORMAT = "The date time format is wrong. Correct format: "
+    public static final String MESSAGE_WRONG_DATETIME_FORMAT = "The date time format is incorrect. Correct format: "
             + "d/YYYY-MM-DD t/HH:MM";
+    public static final String MESSAGE_INVALID_DATETIME = "The provided date and time is incorrect.\nBe careful of "
+            + "leap years and the number of days in a specific month";
 
     protected final Object toAdd;
     protected final String toAddType;
