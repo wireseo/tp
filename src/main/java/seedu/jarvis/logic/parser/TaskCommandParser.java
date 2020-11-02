@@ -45,14 +45,14 @@ public class TaskCommandParser {
         LocalDateTime formattedEventDateTime;
 
         try {
+            String eventDescription = parseTimedTaskDescription(nameKeywords, length);
             formattedEventDateTime = parseTimedTaskTime(nameKeywords, length);
+
+            return new Event(eventDescription, formattedEventDateTime);
+
         } catch (ParseException pe) {
             throw pe;
         }
-
-        String eventDescription = parseTimedTaskDescription(nameKeywords, length);
-
-        return new Event(eventDescription, formattedEventDateTime);
     }
 
     /**
@@ -63,14 +63,14 @@ public class TaskCommandParser {
         LocalDateTime formattedDeadlineDateTime;
 
         try {
+            String deadlineDescription = parseTimedTaskDescription(nameKeywords, length);
             formattedDeadlineDateTime = parseTimedTaskTime(nameKeywords, length);
+
+            return new Deadline(deadlineDescription, formattedDeadlineDateTime);
+
         } catch (ParseException pe) {
             throw pe;
         }
-
-        String deadlineDescription = parseTimedTaskDescription(nameKeywords, length);
-
-        return new Deadline(deadlineDescription, formattedDeadlineDateTime);
     }
 
     /**
@@ -78,11 +78,22 @@ public class TaskCommandParser {
      * @param nameKeywords
      * @param length
      * @return String of description
+     * @throws ParseException
      */
-    public static String parseTimedTaskDescription(String[] nameKeywords, int length) {
+    public static String parseTimedTaskDescription(String[] nameKeywords, int length) throws ParseException {
         int datePrefixLocation = -1;
+
+        if (nameKeywords[1].substring(0, 2).equals(TASK_DATE)
+            || nameKeywords[1].substring(0, 2).equals(TASK_TIME)) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
+        }
+
         for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            if (nameKeywords[i].length() <= 1) {
+                //Ignores the string segment if the length is <= 1
+
+            } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
                 datePrefixLocation = i;
             }
         }
@@ -96,7 +107,8 @@ public class TaskCommandParser {
     }
 
     /**
-     * Parses the date time String to LocalDateTime object with checks
+     * Parses the date time String to LocalDateTime object with checks for missing date, missing time, or incorrectly
+     * rounding down of date while parsing using Java API.
      * @param nameKeywords
      * @param length
      * @return LocalDateTime
@@ -109,12 +121,14 @@ public class TaskCommandParser {
         int timePrefixLocation = -1;
 
         for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            if (nameKeywords[i].length() <= 1) {
+                //Ignores the string segment if the length is <= 1
+
+            } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
                 hasDatePrefix = true;
                 datePrefixLocation = i;
-            }
 
-            if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
+            } else if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
                 hasTimePrefix = true;
                 timePrefixLocation = i;
             }
@@ -156,16 +170,21 @@ public class TaskCommandParser {
             throws ParseException {
         String taskDateTime = dateString.substring(2) + " " + timeString.substring(2);
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        LocalDateTime formattedEventDateTime;
+        LocalDateTime formattedTaskDateTime;
 
         try {
-            formattedEventDateTime = LocalDateTime.parse(taskDateTime, dateTimeFormat);
+            formattedTaskDateTime = LocalDateTime.parse(taskDateTime, dateTimeFormat);
         } catch (DateTimeParseException e) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
         }
 
-        return formattedEventDateTime;
+        if (isDateTimeChanged(taskDateTime, formattedTaskDateTime)) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DATETIME));
+        }
+
+        return formattedTaskDateTime;
     }
 
     /**
@@ -180,6 +199,17 @@ public class TaskCommandParser {
         }
 
         return nameKeywords[1];
+    }
+
+    /**
+     * Compares if the string forms of user input and parsed LocalDateTime have the same values.
+     * @param userInput date time input by the user.
+     * @param parsedDateTime date time parsed into Java LocalDateTime.
+     * @return a boolean value check if both araguments' values are the same.
+     */
+    private static boolean isDateTimeChanged(String userInput, LocalDateTime parsedDateTime) {
+        String stringifiedParsedDateTime = parsedDateTime.toString().replace('T', ' ');
+        return !(userInput.equals(stringifiedParsedDateTime));
     }
 
 }
