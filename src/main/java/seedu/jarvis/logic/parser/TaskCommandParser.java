@@ -82,7 +82,10 @@ public class TaskCommandParser {
     public static String parseTimedTaskDescription(String[] nameKeywords, int length) {
         int datePrefixLocation = -1;
         for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            if (nameKeywords[i].length() <= 1) {
+                //Ignores the string segment if the length is <= 1
+
+            } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
                 datePrefixLocation = i;
             }
         }
@@ -109,14 +112,16 @@ public class TaskCommandParser {
         int timePrefixLocation = -1;
 
         for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
-                hasDatePrefix = true;
-                datePrefixLocation = i;
-            }
+            if (nameKeywords[i].length() <= 1) {
+                //Ignores the string segment if the length is <= 1
 
-            if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
-                hasTimePrefix = true;
-                timePrefixLocation = i;
+            } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+                    hasDatePrefix = true;
+                    datePrefixLocation = i;
+
+            } else if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
+                    hasTimePrefix = true;
+                    timePrefixLocation = i;
             }
         }
 
