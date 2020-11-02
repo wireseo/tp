@@ -204,6 +204,16 @@ Shows a message explaining how to access the help page.
 
 ### 6.3 Adding Information : `add`
 
+#### General Notes on Tasks
+(Jun Jie)
+
+Each `Task` you create, be it `Todo`, `Event` or `Deadline`, there will be an unique ID assigned to each of them, so
+that there will be no 2 of the same Task ID in your Task List at any point of Time. The Task ID is reflected as
+<br>eg. D1, E5, T21
+The first alphabet "T", "E" and "D" refers to `Todo`, `Event`, and `Deadline` respectively, and the number followed
+after the alphabet is the Task Number, which refers to the index of the `Task` you created with respect to all the
+`Task` you ever created.
+
 #### 6.3.1 Adding Todos `-t`
 (Jun Jie)
 
