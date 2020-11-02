@@ -83,8 +83,8 @@ public class TaskCommandParser {
     public static String parseTimedTaskDescription(String[] nameKeywords, int length) throws ParseException {
         int datePrefixLocation = -1;
 
-        if (nameKeywords[1].substring(0, 2).equals(TASK_DATE) ||
-            nameKeywords[1].substring(0, 2).equals(TASK_TIME)) {
+        if (nameKeywords[1].substring(0, 2).equals(TASK_DATE)
+            || nameKeywords[1].substring(0, 2).equals(TASK_TIME)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
         }
@@ -125,12 +125,12 @@ public class TaskCommandParser {
                 //Ignores the string segment if the length is <= 1
 
             } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
-                    hasDatePrefix = true;
-                    datePrefixLocation = i;
+                hasDatePrefix = true;
+                datePrefixLocation = i;
 
             } else if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
-                    hasTimePrefix = true;
-                    timePrefixLocation = i;
+                hasTimePrefix = true;
+                timePrefixLocation = i;
             }
         }
 
