@@ -45,14 +45,14 @@ public class TaskCommandParser {
         LocalDateTime formattedEventDateTime;
 
         try {
+            String eventDescription = parseTimedTaskDescription(nameKeywords, length);
             formattedEventDateTime = parseTimedTaskTime(nameKeywords, length);
+
+            return new Event(eventDescription, formattedEventDateTime);
+
         } catch (ParseException pe) {
             throw pe;
         }
-
-        String eventDescription = parseTimedTaskDescription(nameKeywords, length);
-
-        return new Event(eventDescription, formattedEventDateTime);
     }
 
     /**
@@ -63,14 +63,14 @@ public class TaskCommandParser {
         LocalDateTime formattedDeadlineDateTime;
 
         try {
+            String deadlineDescription = parseTimedTaskDescription(nameKeywords, length);
             formattedDeadlineDateTime = parseTimedTaskTime(nameKeywords, length);
+
+            return new Deadline(deadlineDescription, formattedDeadlineDateTime);
+
         } catch (ParseException pe) {
             throw pe;
         }
-
-        String deadlineDescription = parseTimedTaskDescription(nameKeywords, length);
-
-        return new Deadline(deadlineDescription, formattedDeadlineDateTime);
     }
 
     /**
@@ -78,9 +78,17 @@ public class TaskCommandParser {
      * @param nameKeywords
      * @param length
      * @return String of description
+     * @throws ParseException
      */
-    public static String parseTimedTaskDescription(String[] nameKeywords, int length) {
+    public static String parseTimedTaskDescription(String[] nameKeywords, int length) throws ParseException {
         int datePrefixLocation = -1;
+
+        if (nameKeywords[1].substring(0, 2).equals(TASK_DATE) ||
+            nameKeywords[1].substring(0, 2).equals(TASK_TIME)) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
+        }
+
         for (int i = 2; i < length; i++) {
             if (nameKeywords[i].length() <= 1) {
                 //Ignores the string segment if the length is <= 1
@@ -99,7 +107,8 @@ public class TaskCommandParser {
     }
 
     /**
-     * Parses the date time String to LocalDateTime object with checks
+     * Parses the date time String to LocalDateTime object with checks for missing date, missing time, or incorrectly
+     * rounding down of date while parsing using Java API.
      * @param nameKeywords
      * @param length
      * @return LocalDateTime
