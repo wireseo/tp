@@ -23,7 +23,7 @@ Given below are my contributions to the project.
   * What it does: Edits the username, telegram username and email of the fetched students from SA so that they can remain updated.
   * Justification: This allows Avengers to use the app as a one-stop hub of all information they need to carry out their TA duties.
 
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=peironggg)
+* ###### **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=peironggg)
 
 * **Project management**:
   * Managed milestones `v1.2 - v1.3` on GitHub
