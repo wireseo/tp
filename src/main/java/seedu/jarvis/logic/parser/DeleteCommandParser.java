@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import seedu.jarvis.MainApp;
 import seedu.jarvis.commons.core.LogsCenter;
-import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.delete.DeleteCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.flag.Flag;
@@ -54,10 +53,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_DELETE_TASK_USAGE), pe);
             }
 
-        //Include other cases here
-
         //Will not be able to delete student becasue the flag is not allowed in Flag class.
         default:
+            /*
             logger.info("DeleteCommandParser attempts to parse user's delete student input by default");
             try {
                 Index index = ParserUtil.parseIndex(args);
@@ -66,7 +64,8 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             } catch (ParseException pe) {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_DELETE_USAGE), pe);
-            }
+            }*/
+            throw new ParseException("This stage should not be reached!");
         }
     }
 
