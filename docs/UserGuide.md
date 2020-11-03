@@ -189,7 +189,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt
    has been processed.
 
-**Notes about Jarvis' relationship with Sourceacademy:** (Peirong) <br>
+**Notes about Jarvis' relationship with Sourceacademy:** <br>
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 * Luminus username and passwords will be stored in plaintext.
 
@@ -290,7 +290,6 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -s 3 n/Timots`
 
 #### 6.4.2 Editing Mastery Checks : `-mc`
-(Eryn)
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
