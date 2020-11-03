@@ -29,6 +29,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     - [6.4 Editing Information : `edit`](#64-editing-information--edit)
         * [6.4.1 Editing Login Information : `edit -l`](#641-editing-login-information---l)
         * [6.4.2 Editing Student Information : `edit -s`](#642-editing-student-information---s)
+        * [6.4.3 Editing Mastery Checks : `edit -mc`](#643-editing-mastery-checks---mc)
     - [6.5 Deleting Information : `delete`](#65-deleting-information--delete)
         * [6.5.1 Deleting Tasks : `delete -t`](#651-deleting-tasks---t)
         * [6.5.2 Deleting Consultations : `delete -c`](#652-deleting-consultations---c)
@@ -60,6 +61,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     - [7.5 Exit Command Summary](#75-exit-command-summary)
     - [7.6 Help Command Summary](#76-help-command-summary)
 8. [Glossary](#8-glossary)
+    - [8.1 Difference Between Consultations and Mastery Checks](#81-difference-between-consultations-and-mastery-checks)
 9. [FAQ](#9-faq)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -73,8 +75,8 @@ CS1101S tutors' administrative tasks.
 
 ### 1.2 Purpose
 As an Avenger, not only do you have immense power but you are also burdened with inevitable great responsibility.
-Not to worry, Jarvis is here to empower you to manage your personal tasks while teaching others efficiently and 
-effectively. 
+Not to worry, Jarvis is here to empower you to manage your personal tasks while teaching others efficiently and
+effectively.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -89,7 +91,7 @@ This section aims to remind you of the important parts to take note of while rea
 1. Ensure you have Java 11 or above installed in your Computer.
 
 1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
-It is crucial to have the Chrome Driver in order for Jarvis to start up, if the GUI does not launch, 
+It is crucial to have the Chrome Driver in order for Jarvis to start up, if the GUI does not launch,
 Please check that you have installed the correct driver
     1. Windows: chromedriver.exe
     1. MacOS: chromedriver_mac
@@ -181,7 +183,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
 
    * Items in square brackets are optional.
-   <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
+   <br> e.g `view -s [NAME]`, name is an optional parameter. It can be used as `view -s` or as `view -s [John]`.
 
    * Parameters can be in any order.
    <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
@@ -290,6 +292,18 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
 * `edit -s 3 n/Timots`
 
+#### 6.4.2 Editing Mastery Checks : `-mc`
+(Eryn)
+
+Edits the score of a `Mastery Check` session with a `Student`.
+<br>**Format: `edit -mc INDEX s/SCORE`**
+<br>Examples:
+* `edit -s 1 s/0`
+* `edit -s 3 s/1`
+
+Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of mastery check pass/fail in CS1101S.
+
+
 ### 6.5 Deleting Information : `delete`
 
 #### 6.5.1 Deleting Tasks : `-t`
@@ -306,24 +320,18 @@ Deletes a task based on the `TASK_ID` you specify.
 #### 6.5.2 Deleting Consultations : `-c`
 
 Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
-If a `Student name` is entered after the command, it shows only the sessions with the specific student.
-<br>**Format: `delete -c [NAME]`**
+<br>**Format: `delete -c`**
 <br>Examples:
 * `delete -c
    → 3`
-* `delete -c John Doe
-   → 2`
 
 #### 6.5.3 Deleting Mastery Checks : `-mc`
 
 Similar to the above process of deleting consultations, deleting `Mastery Checks` first
 shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
-If a `Student name` is entered after the command, it shows only the sessions with the specific student.
-<br>**Format: `delete -mc [NAME]`**
+<br>**Format: `delete -mc`**
 <br>Examples:
 * `delete -mc → 3`
-* `delete -mc John Doe
-   → 2`
 
 ### 6.6 Viewing Information : `view`
 
@@ -348,27 +356,24 @@ Shows a specific student if a student name is entered after the command, Jarviss
 
 #### 6.6.3 Viewing all consultation sessions : `-c`
 
-Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
-<br>**Format: `view -c [NAME]`**
+Shows all `confirmed consultation` sessions, both past and upcoming.
+<br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
-* `view -c John Doe`
 
 #### 6.6.4 Viewing past consultation sessions : `-cp`
 
-Shows all `past consultation` sessions. If you enter a `Student name` after the command, it will show `past consultation` sessions with the specific student.
-<br>**Format: `view -cp [NAME]`**
+Shows all `past consultation` sessions.
+<br>**Format: `view -cp`**
 <br>Examples:
 * `view -cp`
-* `view -cp John Doe`
 
 #### 6.6.5 Viewing upcoming consultation sessions : `-cu`
 
-Shows all `upcoming consultation` sessions. If you enter a `Student name` after the command, it will show `upcoming consultation` sessions with the specific student.
-<br>**Format: `view -cu [NAME]`**
+Shows all `upcoming consultation` sessions.
+<br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
-* `view -cu John Doe`
 
 #### 6.6.6 Viewing all Mastery Check sessions : `-mc`
 
@@ -522,10 +527,11 @@ are likely to change frequently.
 | Provide help with program commands | `help` |
 
 ## 8. Glossary
+### 8.1 Difference Between Consultations and Mastery Checks
+Mastery Checks are a specific type of consultations that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
 
 
 ## 9. FAQ
 
 `Q: How do I transfer my data to another Computer?`
 <br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
-

@@ -15,6 +15,7 @@ public class CliSyntax {
     /* Edit Command flags */
     public static final String EDIT_STUDENT = "-s";
     public static final String EDIT_LOGIN = "-l";
+    public static final String EDIT_MASTERY_CHECK = "-mc";
 
     /* View Command flags */
     public static final String UNGRADED_MISSION = "-um";
@@ -41,10 +42,12 @@ public class CliSyntax {
     public static final String TASK_TIME = "t/";
     public static final String CONSULTATION = "-c";
     public static final String MASTERY_CHECK = "-mc";
-    public static final String NAME = "[NAME]";
 
 
     /* Delete Command flags */
     public static final String DELETE_TASK = "-t";
+    public static final String DELETE_CONSULTATION = "-c";
+    public static final String DELETE_MASTERY_CHECK = "-mc";
+
 
 }
