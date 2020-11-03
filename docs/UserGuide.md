@@ -86,7 +86,6 @@ This section aims to remind you of the important parts to take note of while rea
 --------------------------------------------------------------------------------------------------------------------
 
 ## 3. Quick start
-(Everyone)
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
@@ -126,14 +125,12 @@ Please check that you have installed the correct driver
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. Navigating Jarvis
-(Everyone)
 
 Jarvis has a Graphical User Interface centered around a command input box on the top, surrounded by a light green
 line. The green box below the command input box is the user feedback box. Jarvis provides feedback to the user through
 this box.
 
 ### 4.1 UI Layout
-(Everyone)
 <br>
    * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
 <br>
