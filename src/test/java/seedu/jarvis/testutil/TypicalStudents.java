@@ -13,6 +13,7 @@ import java.util.List;
 
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.student.Student;
+import seedu.jarvis.model.task.Task;
 
 /**
  * A utility class containing a list of {@code Student} objects to be used in tests.
@@ -48,6 +49,11 @@ public class TypicalStudents {
     public static final Student BOB = new StudentBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB).build();
 
+    public static final Task TODO1 = new TodoBuilder().build();
+    public static final Task TODO2 = new TodoBuilder().withDescription("Do more workouts").build();
+    public static final Task TODO3 = new TodoBuilder().withDescription("Practice the flute").build();
+    public static final Task TODO4 = new TodoBuilder().withDescription("Get milk from cold storage").build();
+
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
     private TypicalStudents() {} // prevents instantiation
@@ -57,13 +63,13 @@ public class TypicalStudents {
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        for (Student student : getTypicalPersons()) {
+        for (Student student : getTypicalStudents()) {
             ab.addStudent(student);
         }
         return ab;
     }
 
-    public static List<Student> getTypicalPersons() {
+    public static List<Student> getTypicalStudents() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }

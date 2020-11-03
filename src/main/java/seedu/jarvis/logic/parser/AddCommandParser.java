@@ -3,9 +3,6 @@ package seedu.jarvis.logic.parser;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.logic.parser.CliSyntax.CONSULTATION;
 import static seedu.jarvis.logic.parser.CliSyntax.MASTERY_CHECK;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_TODO;
@@ -20,10 +17,6 @@ import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.consultation.MasteryCheck;
 import seedu.jarvis.model.flag.Flag;
-import seedu.jarvis.model.student.Email;
-import seedu.jarvis.model.student.Name;
-import seedu.jarvis.model.student.Student;
-import seedu.jarvis.model.student.Telegram;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Todo;
@@ -93,25 +86,26 @@ public class AddCommandParser implements Parser<AddCommand> {
             logger.info("AddCommandParser attempts to parse user's newly added mastery check");
             MasteryCheck masteryCheck = ConsultationMasteryCheckCommandParser.parseMasteryCheck(nameKeywords, length);
             return new AddCommand(masteryCheck);
-
         default:
-            logger.info("AddCommandParser attempts to parse user's newly added student");
-            ArgumentMultimap argMultimap =
-                    ArgumentTokenizer.tokenize(args,
-                            PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL);
-
-            if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL)
-                    || !argMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));
-            }
-
-            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-            Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
-            Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-
-            Student student = new Student(name, telegram, email);
-
-            return new AddCommand(student);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));
+//        default:
+//            logger.info("AddCommandParser attempts to parse user's newly added student");
+//            ArgumentMultimap argMultimap =
+//                    ArgumentTokenizer.tokenize(args,
+//                            PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL);
+//
+//            if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL)
+//                    || !argMultimap.getPreamble().isEmpty()) {
+//                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));
+//            }
+//
+//            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+//            Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
+//            Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+//
+//            Student student = new Student(name, telegram, email);
+//
+//            return new AddCommand(student);
         }
     }
 
