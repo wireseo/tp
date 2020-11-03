@@ -5,42 +5,43 @@ title: Eryn Seo's Project Portfolio Page
 
 ## Project: JARVIS
 
-JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, JARVIS can get your TA administrative tasks done faster than traditional GUI apps.
+JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers) to help Avengers keep track of their grading duties and consultations.
+The user interacts with it using CLI and it has a GUI created with JavaFX. It is written in Java and has more than 10kLoC.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+* **New Feature**: Added the ability to view consultations and mastery checks.
+  * What it does: allows the user to view all/past/upcoming consultations or mastery checks.
+  * Justification: This feature improves the product significantly because the user needs to view consultation appointments created within the software.
+  * Highlights: This enhancement was a completely new feature that did not exist in the AB3 codebase, and had to be designed from scratch. Due to design concerns, the class structure of Student and Consultations had to be changed multiple times which resulted in multiple attempts to refactor and restructure, as well as rewriting tests. It required an in-depth analysis of design alternatives. The implementation too was challenging as it was a completely new command for completely new classes.
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+* **New Feature**: Added the ability to add and delete consultations and mastery checks.
+  * What it does: allows the user to add and delete consultations or mastery checks.
+  * Justification: This feature improves the product significantly because the user needs to add and delete consultation appointments created within the software.
+  * Highlights: This enhancement was a completely new feature that did not exist in the AB3 codebase, and had to be designed from scratch. It required an in-depth analysis of design alternatives. The implementation too was challenging as it was a completely new command for completely new classes.
 
-* **Code contributed**: [RepoSense link]()
+* **New Feature**: Added the ability to edit mastery checks.
+  * What it does: allows the user to edit mastery check scores to either pass (1) or fail (0).
+  * Justification: This feature improves the product significantly because the user needs to edit mastery check scores.
+  * Highlights: This enhancement was a completely new feature that did not exist in the AB3 codebase, and had to be designed from scratch. It required an in-depth analysis of design alternatives. The implementation too was challenging as it was a completely new command for a completely new class.
+
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=wireseo)
 
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+  * In charge of implementation of all consultation and mastery check related features and overall GUI
+  * Ensure that project deliverables are delivered on time
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+  * Designed the new GUI [\#12]
+  * Wrote additional tests for existing features to increase coverage
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for the features `view -c`, `view -cp`, `view -cu`, `view -mc`, `view -mcp`,  `view -mcu`, `add -c`, `add -mc`, `delete -c`, `delete -mc`[\#34]()
+    * Added documentation for the features `edit -mc` [\#291]()
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
+    * Added implementation details of the `view -c` feature.
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-* **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
+  * PRs reviewed (with non-trivial review comments): [\#287](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/287#pullrequestreview-522475093), [\#290](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/290#pullrequestreview-522476413)
+  * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/AY2021S1-CS2103T-F11-2/tp/issues/154), [2](https://github.com/AY2021S1-CS2103T-F11-2/tp/issues/152), [3](https://github.com/AY2021S1-CS2103T-F11-2/tp/issues/156))
