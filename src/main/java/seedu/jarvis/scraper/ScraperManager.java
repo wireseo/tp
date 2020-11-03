@@ -108,14 +108,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
 
             List<Mission> missions = getMissions();
             List<Quest> quests = getQuests();
-            List<Student> students = new ArrayList<>();
+            List<Student> students = getStudents();
 
             getUngradedMissionsAndQuests();
-
-            // Only fetch students if students in addressbook is empty
-            if (!model.hasStudents()) {
-                students = getStudents();
-            }
 
             try {
                 saveToStorage(missions, quests, students, greeting);
@@ -431,19 +426,11 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
     private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String greeting)
             throws IOException {
         try {
-            if (!greeting.isEmpty()) {
-                model.setGreeting(greeting);
-            }
+            model.setGreeting(greeting);
+            model.setMissions(missions);
+            model.setQuests(quests);
+            model.setStudents(students);
 
-            if (!missions.isEmpty()) {
-                model.setMissions(missions);
-            }
-            if (!quests.isEmpty()) {
-                model.setQuests(quests);
-            }
-            if (!students.isEmpty()) {
-                model.setStudents(students);
-            }
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException e) {
             throw new IOException("Error saving to addressbook");

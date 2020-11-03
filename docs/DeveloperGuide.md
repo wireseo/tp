@@ -152,7 +152,7 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
-### Scraper component (Peirong)
+### Scraper component
 
 ![Structure of the Scraper Component](images/ScraperClassDiagram.png)
 
@@ -175,7 +175,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Get Missions Feature (Peirong)
+### Get Missions Feature
 In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
@@ -196,7 +196,7 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 <div style="page-break-after: always"></div>
 
 ## View Command
-### Structure of View Command (Wiline)
+### Structure of View Command
 
 The following diagram shows the overview of the ViewCommand Class Diagram:
 
@@ -209,7 +209,7 @@ In the `ViewCommandParser` class, under the `parse()` method, we reference the `
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
 
-### View Mission Deadlines Feature (Wiline)
+### View Mission Deadlines Feature
 In this section, we will introduce how the `View Mission Deadlines Feature` works. The sequence diagram for the View Mission Deadline Command is shown below:
 
 ![Sequence Diagram of View Mission Deadlines](images/ViewMissionDeadlineSequenceDiagram.png)
@@ -221,7 +221,7 @@ The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This 
 
 The View Quest Deadlines features work similarly to this as well.
 
-### View Students Feature (Zhen Teng)
+### View Students Feature
 Next, we will introduce how the `View Students Feature` works. The following is a class diagram for View Student
 Commands.
 
@@ -244,7 +244,7 @@ interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
  `ViewALlStudentsCommand`.
 * The `CommandResult` object is returned to the caller of `execute`.
 
-### View Tasks Feature (Jun Jie)
+### View Tasks Feature
 The View Task features involve viewing 4 categories of tasks which work similarly to the above as well. We can choose
 to:
 * View all `Task` in general,
@@ -252,7 +252,7 @@ to:
 * View all `Event`, or
 * View all `Deadline`.
 
-### View Consultations Feature (Eryn)
+### View Consultations Feature
 Next, we will introduce how the `View Consultations Feature` works. The following is a class diagram for View
 Consultations Commands. There are three variants (view all consultations, view past consultations, view future
   consultations) but they all share the same logic.
@@ -281,7 +281,7 @@ students.
 <div style="page-break-after: always"></div>
 
 ## Add Command
-### Structure of Add Command (Jun Jie)
+### Structure of Add Command
 The following diagram shows the overview of the AddComand Class Diagram:
 
 ![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
@@ -291,7 +291,7 @@ The following diagram shows the overview of the AddComand Class Diagram:
 correct `Model` object (eg. `Student`, `Task`) will be added to the corresponding list in `Model` class.
 * Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
 
-### Add Task Feature (Jun Jie)
+### Add Task Feature
 The following diagram shows the overview of `AddCommand` Class Diagram which has a similar structure as other
 `Commands`:
 
@@ -302,7 +302,7 @@ The following diagram shows the overview of `AddCommand` Class Diagram which has
 * `Task` class objects will be added to `Model` class upon successful `Add Commands`.
 * `Todo`, `Event` and `Deadline` are classes that extend from from abstract class `Task`.
 
-### Add Task Feature (Jun Jie)
+### Add Task Feature
 In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
 `Todo`, `Event` and `Deadline`.
 * `Todo` is a basic simple tasks that is usually not constrained by time; `Event` is
