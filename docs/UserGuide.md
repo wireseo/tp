@@ -501,10 +501,10 @@ are likely to change frequently.
 | View all Mastery Checks | -mc | view -mc |
 | View all Past Mastery Checks | -mcp | view -mcp |
 | View all Upcoming Mastery Checks | -mcu | view -mcu  |
-| View Deadlines for Missions | -m | view -m |
-| View Deadlines for Quests | -q | view -q |
-| View Ungraded Missions | -um | view -um |
-| View Ungraded Quests | -uq | view -uq |
+| View deadlines for Missions | -m | view -m |
+| View deadlines for Quests | -q | view -q |
+| View ungraded Missions | -um | view -um |
+| View ungraded Quests | -uq | view -uq |
 | View all Tasks | -t | view -t |
 | View all Todos | -tt | view -tt |
 | View all Events | -te | view -te |
