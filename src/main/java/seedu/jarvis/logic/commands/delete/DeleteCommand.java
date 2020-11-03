@@ -11,9 +11,6 @@ import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
-import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
-import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.task.Task;
 
 /**
@@ -60,10 +57,10 @@ public class DeleteCommand extends Command {
     /**
      * Creates an DeleteCommand to delete the specified {@code Consultation} or {@code Mastery Check}
      */
-     public DeleteCommand(Index targetIndex, String toDeleteType) {
+    public DeleteCommand(Index targetIndex, String toDeleteType) {
         this.targetIndex = targetIndex;
         this.taskId = null;
-        this.toDeleteType = toDeleteType; // TODO: This should only be "C" or "MC" -- otherwise throw error
+        this.toDeleteType = toDeleteType;
     }
 
     /**
