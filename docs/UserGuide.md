@@ -90,8 +90,8 @@ This section aims to remind you of the important parts to take note of while rea
 1. Ensure you have Java 11 or above installed in your Computer.
 
 1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
-It is crucial to have the Chrome Driver in order for Jarvis to start up, if the GUI does not launch,
-Please check that you have installed the correct driver
+It is crucial to have the Chrome Driver in order for Jarvis to start up. If the GUI does not launch,
+please check that you have installed the correct driver:
     1. Windows: chromedriver.exe
     1. MacOS: chromedriver_mac
     1. Linux: chromedriver_linux
@@ -101,7 +101,7 @@ Please check that you have installed the correct driver
 1. There are two options for launching Jarvis.
     1. Double-click the `jarvis.jar` file to start the app.
     1. Launch Jarvis from the the Windows Command Prompt or MacOS
-    command line by navigating to the directory containing jarvis.jar,
+    command line by navigating to the directory containing `jarvis.jar`,
     then typing the command `java -jar jarvis.jar`
 
     A GUI similar to the screenshot below should appear in a few seconds.
@@ -112,7 +112,7 @@ Please check that you have installed the correct driver
  full set of features.
  Please refer to the logging in segment below to complete your log in.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
+1. Type the command in the command box and press Enter to execute it. E.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
    * `view -s:  Lists all students. `
    * `view -s John Doe: Lists information about a student named John Doe.`
@@ -153,11 +153,11 @@ this flexibility with you, the user in mind.
 
 ## 5. Logging into Jarvis
 
-The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
+The following is the prompt upon first login, you are prompted to key in your Source Academy username and password:
 
 ![NoLoginDetails](images/userguide/loginPrompt.png)
 
-To log in, simply edit your log in details with the following command:
+To log in, simply edit your login details with the following command:
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
@@ -166,9 +166,8 @@ An example of the command being inputted:
 
 ![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
-Within the green rectangle box, Jarvis will notify you if the log in was successful. Upon success, all information from
- sourceacademy will be visible
- to you.
+Within the green rectangle box, Jarvis will notify you if the login was successful. Upon success, all information from 
+Source Academy will be visible to you.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -189,7 +188,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g. `delete -c → 1` means that you should enter `delete -c` first and then `1` after the prompt
    has been processed.
 
-**Notes about Jarvis' relationship with Sourceacademy:** <br>
+**Notes about Jarvis' relationship with Source Academy:** <br>
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 * Luminus username and passwords will be stored in plaintext.
 
@@ -279,9 +278,9 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -l p/testpassword`
 
 <br>Notes:
-* Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Sourceacademy to be reflected in the GUI.
+* Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Source Academy to be reflected in the GUI.
 * After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
-* This is because SA does not contain these 2 fields of any student. Editing the student details will save the updated values. 
+* This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values. 
 
 #### 6.4.2 Editing Student Information : `-s`
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
@@ -289,15 +288,15 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
 * `edit -s 3 n/Timots`
 
-#### 6.4.2 Editing Mastery Checks : `-mc`
+#### 6.4.3 Editing Mastery Checks : `-mc`
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
 <br>Examples:
-* `edit -s 1 s/0`
-* `edit -s 3 s/1`
+* `edit -mc 1 s/0`
+* `edit -mc 3 s/1`
 
-Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of mastery check pass/fail in CS1101S.
+Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of Mastery Check pass/fail in CS1101S.
 
 
 ### 6.5 Deleting Information : `delete`
@@ -331,18 +330,18 @@ shows a list of `Mastery Checks` with `id numbers` so that you can specify which
 
 ### 6.6 Viewing Information : `view`
 
-#### 6.6.1 Viewing a list of all students : `-s`
+#### 6.6.1 Viewing a list of all Students : `-s`
 
-Shows a list of all students under the tutor in JARVIS.
+Shows a list of all students under the tutor in Jarvis.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
 
 ![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
 <br>**Format: `view -s`**
 
-#### 6.6.2 Viewing one student : `-s [NAME]`
+#### 6.6.2 Viewing one Student : `-s [NAME]`
 
-Shows a specific student if a student name is entered after the command, Jarviss.
+Shows a specific student if a student name is entered after the command.
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
@@ -350,21 +349,21 @@ Shows a specific student if a student name is entered after the command, Jarviss
 <br>Examples:
 * `view -s John Doe`
 
-#### 6.6.3 Viewing all consultation sessions : `-c`
+#### 6.6.3 Viewing all Consultation sessions : `-c`
 
 Shows all `confirmed consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
 
-#### 6.6.4 Viewing past consultation sessions : `-cp`
+#### 6.6.4 Viewing past Consultation sessions : `-cp`
 
 Shows all `past consultation` sessions.
 <br>**Format: `view -cp`**
 <br>Examples:
 * `view -cp`
 
-#### 6.6.5 Viewing upcoming consultation sessions : `-cu`
+#### 6.6.5 Viewing upcoming Consultation sessions : `-cu`
 
 Shows all `upcoming consultation` sessions.
 <br>**Format: `view -cu`**
@@ -392,7 +391,7 @@ Shows all `upcoming MC` sessions.
 <br>Examples:
 * `view -mcu`
 
-#### 6.6.9 Viewing deadline for missions : `-m`
+#### 6.6.9 Viewing deadline for Missions : `-m`
 
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
@@ -401,7 +400,7 @@ You may also click on the `Mission` tab to do so.
 
 ![FetchMission](images/userguide/viewMissions.png)
 
-#### 6.6.10 Viewing deadline for quests : `-q`
+#### 6.6.10 Viewing deadline for Quests : `-q`
 
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
@@ -410,7 +409,7 @@ You may also click on the `Quest` tab to do so.
 
 ![FetchQuest](images/userguide/viewQuests.png)
 
-#### 6.6.11 Viewing ungraded missions : `-um`
+#### 6.6.11 Viewing ungraded Missions : `-um`
 
 Shows the missions that you have not yet graded.
 
@@ -418,7 +417,7 @@ Shows the missions that you have not yet graded.
 
 <br>**Format: `view -um`**
 
-#### 6.6.12 Viewing ungraded quests : `-uq`
+#### 6.6.12 Viewing ungraded Quests : `-uq`
 
 Shows the quests that you have not yet graded.
 
@@ -453,7 +452,7 @@ Exits the program.
 
 ### 7.7 Saving the data
 
-JARVIS data are saved in the file `jarvis.json` automatically after any command that changes the data. There is no need to save manually.
+Jarvis data are saved in the file `jarvis.json` automatically after any command that changes the data. There is no need to save manually.
 
 <div markdown="block" class="alert alert-info">
 
@@ -473,7 +472,7 @@ are likely to change frequently.
 | Add Event | -e | add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM |
 | Add Deadline | -d | add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM |
 | Add Consultation | -c | add -c NAME d/YYYY-MM-DD t/HH:MM |
-| Add Mastery Check | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
+| Add Mastery Check | -mc | add -mc NAME d/YYYY-MM-DD t/HH:MM |
 
 ### 7.2 Edit Command Summary
 
@@ -481,6 +480,7 @@ are likely to change frequently.
 | -------- | --- | ---------------- |
 | Edit Login details | -l | edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD |
 | Edit Student details | -s | edit -s INDEX n/NAME t/TELEGRAM e/EMAIL |
+| Edit Mastery Check | -mc | edit -mc INDEX /SCORE |
 
 ### 7.3 Delete Command Summary
 
