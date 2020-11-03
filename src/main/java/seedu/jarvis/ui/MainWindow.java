@@ -344,7 +344,7 @@ public class MainWindow extends UiPart<Stage> {
         } else if (!logic.hasPassword()) {
             sb.append("Please edit your password using `edit -l p/[PASSWORD]` and restart to fetch missions/quests");
         } else {
-            sb.append("Welcome to Jarvis! enter 'help' to see the amazing things you can do with me.");
+            sb.append("Welcome to Jarvis! Enter 'help' to see the amazing things you can do with me.");
         }
         return sb.toString();
     }
