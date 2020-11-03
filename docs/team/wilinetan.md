@@ -5,7 +5,8 @@ title: Wiline Tan's Project Portfolio Page
 
 ## Project: Jarvis
 
-JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers) to help Avengers keep track of their grading duties and consultations. The user interacts with it using CLI and it has a GUI created with JavaFX. It is written in Java and has more than 10kLoC.
+JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers) to help Avengers keep track of their grading duties and consultations.
+The user interacts with it using CLI and it has a GUI created with JavaFX. It is written in Java and has more than 10kLoC.
 
 Given below are my contributions to the project.
 
@@ -49,5 +50,5 @@ Given below are my contributions to the project.
   * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/AY2021S1-CS2103T-W17-3/tp/issues/170), [2](https://github.com/AY2021S1-CS2103T-W17-3/tp/issues/172), [3](https://github.com/AY2021S1-CS2103T-W17-3/tp/issues/173))
 
 * **Tools**:
-  * Used JavaFX library extensively for the GUI 
+  * Used JavaFX library and CSS extensively for the GUI 
   * Made use of the Java Desktop library to open links in user's default browser [\#183](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/183)
