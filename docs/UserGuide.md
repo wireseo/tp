@@ -61,6 +61,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     - [7.5 Exit Command Summary](#75-exit-command-summary)
     - [7.6 Help Command Summary](#76-help-command-summary)
 8. [Glossary](#8-glossary)
+    - [8.1 Difference Between Consultations and Mastery Checks](#81-difference-between-consultations-and-mastery-checks)
 9. [FAQ](#9-faq)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -184,7 +185,7 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
    <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
 
    * Items in square brackets are optional.
-   <br> e.g `view -c [NAME]`, name is an optional parameter. It can be used as `view -c` or as `view -c [John]`.
+   <br> e.g `view -s [NAME]`, name is an optional parameter. It can be used as `view -s` or as `view -s [John]`.
 
    * Parameters can be in any order.
    <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
@@ -559,6 +560,8 @@ are likely to change frequently.
 | Provide help with program commands | `help` |
 
 ## 8. Glossary
+### 8.1 Difference Between Consultations and Mastery Checks
+Mastery Checks are a specific type of consultations that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
 
 
 ## 9. FAQ
