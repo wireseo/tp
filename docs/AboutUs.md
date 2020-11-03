@@ -41,7 +41,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/wilinetan.md)]
 
 * Role: Developer
-* Responsibilities: Mission + Quest Features
+* Responsibilities: Mission + Quest Features + GUI
 
 ### Ng Zhen Teng
 
