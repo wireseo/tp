@@ -288,7 +288,10 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
 
-Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Sourceacademy to be reflected in the GUI.
+<br>Notes:
+* Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Sourceacademy to be reflected in the GUI.
+* After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
+* This is because SA does not contain these 2 fields of any student. Editing the student details will save the updated values. 
 
 #### 6.4.2 Editing Student Information : `-s`
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
