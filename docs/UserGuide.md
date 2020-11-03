@@ -153,7 +153,6 @@ this flexibility with you, the user in mind.
 --------------------------------------------------------------------------------------------------------------------
 
 ## 5. Logging into Jarvis
-(Zhen Teng)
 
 The following is the prompt upon first log in, you are prompted to key in your Sourceacademy username and password:
 
@@ -177,7 +176,6 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 ## 6. Features
 
 ### 6.1 General Notes about Command Format
-(Wiline)
 
    * Words in UPPER_CASE are the parameters to be supplied by you.
    <br> e.g. in `add -t DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add -t Mark Missions`.
@@ -197,7 +195,6 @@ Within the green rectangle box, Jarvis will notify you if the log in was success
 * Luminus username and passwords will be stored in plaintext.
 
 ### 6.2 Viewing help : `help`
-(Zhen Teng)
 
 Shows a message explaining how to access the help page.
 <br>**Format: `help`**
@@ -205,7 +202,6 @@ Shows a message explaining how to access the help page.
 ### 6.3 Adding Information : `add`
 
 #### General Notes on Tasks
-(Jun Jie)
 
 Each `Task` you create, be it `Todo`, `Event` or `Deadline`, there will be an unique ID assigned to each of them, so
 that there will be no 2 of the same Task ID in your Task List at any point of Time. The Task ID is reflected as
@@ -215,7 +211,6 @@ after the alphabet is the Task Number, which refers to the index of the `Task` y
 `Task` you ever created.
 
 #### 6.3.1 Adding Todos `-t`
-(Jun Jie)
 
 Adds your personal `Todo` with a `description`.
 
@@ -227,7 +222,6 @@ Adds your personal `Todo` with a `description`.
 * `add -t Return calculator to Mary`
 
 #### 6.3.2 Adding Events : `-e`
-(Jun Jie)
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 
@@ -244,7 +238,6 @@ An `Event` requires extra `date` and `time` specifications in order to create.
 </div>
 
 #### 6.3.3 Adding Deadlines : `-d`
-(Jun Jie)
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 
@@ -261,7 +254,6 @@ Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications
 </div>
 
 #### 6.3.4 Adding Consultations : `-c`
-(Eryn)
 
 Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
@@ -270,7 +262,6 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
 #### 6.3.5 Adding Mastery Checks : `-mc`
-(Eryn)
 
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
@@ -302,7 +293,6 @@ Similar to the format for editing students above, you can use tags to specify th
 ### 6.5 Deleting Information : `delete`
 
 #### 6.5.1 Deleting Tasks : `-t`
-(Jun Jie)
 
 Deletes a task based on the `TASK_ID` you specify.
 
@@ -314,7 +304,6 @@ Deletes a task based on the `TASK_ID` you specify.
 * `delete -t D2`
 
 #### 6.5.2 Deleting Consultations : `-c`
-(Eryn)
 
 Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
 If a `Student name` is entered after the command, it shows only the sessions with the specific student.
@@ -326,7 +315,6 @@ If a `Student name` is entered after the command, it shows only the sessions wit
    → 2`
 
 #### 6.5.3 Deleting Mastery Checks : `-mc`
-(Eryn)
 
 Similar to the above process of deleting consultations, deleting `Mastery Checks` first
 shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
@@ -340,7 +328,6 @@ If a `Student name` is entered after the command, it shows only the sessions wit
 ### 6.6 Viewing Information : `view`
 
 #### 6.6.1 Viewing a list of all students : `-s`
-(Zhen Teng)
 
 Shows a list of all students under the tutor in JARVIS.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
@@ -350,7 +337,6 @@ Please take note of the command inputted into the command box to understand how 
 <br>**Format: `view -s`**
 
 #### 6.6.2 Viewing one student : `-s [NAME]`
-(Zhen Teng)
 
 Shows a specific student if a student name is entered after the command, Jarviss.
 
@@ -361,7 +347,6 @@ Shows a specific student if a student name is entered after the command, Jarviss
 * `view -s John Doe`
 
 #### 6.6.3 Viewing all consultation sessions : `-c`
-(Eryn)
 
 Shows all `confirmed consultation` sessions, both past and upcoming. If you enter a `Student name` after the command, it will show `all consultation` sessions confirmed with the specific student.
 <br>**Format: `view -c [NAME]`**
@@ -370,7 +355,6 @@ Shows all `confirmed consultation` sessions, both past and upcoming. If you ente
 * `view -c John Doe`
 
 #### 6.6.4 Viewing past consultation sessions : `-cp`
-(Peirong)
 
 Shows all `past consultation` sessions. If you enter a `Student name` after the command, it will show `past consultation` sessions with the specific student.
 <br>**Format: `view -cp [NAME]`**
@@ -379,7 +363,6 @@ Shows all `past consultation` sessions. If you enter a `Student name` after the 
 * `view -cp John Doe`
 
 #### 6.6.5 Viewing upcoming consultation sessions : `-cu`
-(Peirong)
 
 Shows all `upcoming consultation` sessions. If you enter a `Student name` after the command, it will show `upcoming consultation` sessions with the specific student.
 <br>**Format: `view -cu [NAME]`**
@@ -388,7 +371,6 @@ Shows all `upcoming consultation` sessions. If you enter a `Student name` after 
 * `view -cu John Doe`
 
 #### 6.6.6 Viewing all Mastery Check sessions : `-mc`
-(Eryn)
 
 Shows all `confirmed MC` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
@@ -396,7 +378,6 @@ Shows all `confirmed MC` sessions, both past and upcoming.
 * `view -mc`
 
 #### 6.6.7 Viewing past Mastery Check sessions : `mcp`
-(Eryn)
 
 Shows all `past MC` sessions.
 <br>**Format: `view -mcp`**
@@ -404,7 +385,6 @@ Shows all `past MC` sessions.
 * `view -mcp`
 
 #### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
-(Eryn)
 
 Shows all `upcoming MC` sessions.
 <br>**Format: `view -mcu`**
@@ -412,7 +392,6 @@ Shows all `upcoming MC` sessions.
 * `view -mcu`
 
 #### 6.6.9 Viewing deadline for missions : `-m`
-(Wiline)
 
 Shows the deadline for the current mission(s).
 <br>**Format: `view -m`**
@@ -422,7 +401,6 @@ You may also click on the `Mission` tab to do so.
 ![FetchMission](images/userguide/viewMissions.png)
 
 #### 6.6.10 Viewing deadline for quests : `-q`
-(Wiline)
 
 Shows the deadline for the current quest(s).
 <br>**Format: `view -q`**
@@ -432,7 +410,6 @@ You may also click on the `Quest` tab to do so.
 ![FetchQuest](images/userguide/viewQuests.png)
 
 #### 6.6.11 Viewing ungraded missions : `-um`
-(Wiline)
 
 Shows the missions that you have not yet graded.
 
@@ -441,7 +418,6 @@ Shows the missions that you have not yet graded.
 <br>**Format: `view -um`**
 
 #### 6.6.12 Viewing ungraded quests : `-uq`
-(Wiline)
 
 Shows the quests that you have not yet graded.
 
@@ -450,37 +426,31 @@ Shows the quests that you have not yet graded.
 <br>**Format: `view -uq`**
 
 #### 6.6.13 Viewing all Tasks : `-t`
-(Jun Jie)
 
 Shows the list of all your current tasks.
 <br>**Format: `view -t`**
 
 #### 6.6.14 Viewing all Todos : `-tt`
-(Jun Jie)
 
 Shows the list of all your current todos.
 <br>**Format: `view -tt`**
 
 #### 6.6.15 Viewing all Events : `-te`
-(Jun Jie)
 
 Shows the list of all your current events.
 <br>**Format: `view -te`**
 
 #### 6.6.16 Viewing all Deadlines : `-td`
-(Jun Jie)
 
 Shows the list of all your current deadlines.
 <br>**Format: `view -td`**
 
 ### 6.7 Exiting the program : `exit`
-(Zhen Teng)
 
 Exits the program.
 <br>**Format: `exit`**
 
 ### 7.7 Saving the data
-(Wiline)
 
 JARVIS data are saved in the file `jarvis.json` automatically after any command that changes the data. There is no need to save manually.
 
@@ -495,7 +465,6 @@ are likely to change frequently.
 ## 7. Command Summary
 
 ### 7.1 Add Command Summary
-(Jun Jie)
 
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -506,7 +475,6 @@ are likely to change frequently.
 | Add Mastery Check | -mc | add -c NAME d/YYYY-MM-DD t/HH:MM |
 
 ### 7.2 Edit Command Summary
-(Wiline)
 
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -514,7 +482,6 @@ are likely to change frequently.
 | Edit Student details | -s | edit -s INDEX n/NAME t/TELEGRAM e/EMAIL |
 
 ### 7.3 Delete Command Summary
-(Zhen Teng)
 
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -523,7 +490,6 @@ are likely to change frequently.
 | Delete Mastery Check | -mc | delete -mc NAME <br>E.g. delete -mc → 3 / delete -mc John Doe → 2 |
 
 ### 7.4 View Command Summary
-(Zhen Teng)
 
 | Function | Tag | Format, Examples |
 | -------- | --- | ---------------- |
@@ -544,14 +510,12 @@ are likely to change frequently.
 | View all Deadlines | -td | view -td |
 
 ### 7.5 Exit Command Summary
-(Peirong)
 
 | Function | Format, Examples |
 | -------- | ---------------- |
 | Exits program | `exit` |
 
 ### 7.6 Help Command Summary
-(Peirong)
 
 | Function | Format, Examples |
 | -------- | ---------------- |
@@ -561,7 +525,6 @@ are likely to change frequently.
 
 
 ## 9. FAQ
-(Peirong)
 
 `Q: How do I transfer my data to another Computer?`
 <br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
