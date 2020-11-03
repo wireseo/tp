@@ -280,7 +280,11 @@ Similar to the format for editing students above, you can use tags to specify th
 <br>Notes:
 * Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Source Academy to be reflected in the GUI.
 * After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
-* This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values. 
+* This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values.
+* After a TA account has been used to login and fetch the information, logging in with a non-TA account will not change the information displayed
+as we choose to give you the benefit of doubt of keying in the wrong login details.
+* Whenever a TA account is used to login, the information will always be updated to reflect the logged in TA's student,
+mission and quest information.
 
 #### 6.4.2 Editing Student Information : `-s`
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
