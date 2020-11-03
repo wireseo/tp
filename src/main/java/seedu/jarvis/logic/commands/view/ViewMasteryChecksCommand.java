@@ -18,6 +18,6 @@ public class ViewMasteryChecksCommand extends ViewCommand {
         requireNonNull(model);
         model.updateMasteryChecksList(PREDICATE_SHOW_ALL_MASTERY_CHECKS);
 
-        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.Consultations);
+        return new CommandResult(MESSAGE_SUCCESS, CommandTargetFeature.MasteryCheck);
     }
 }

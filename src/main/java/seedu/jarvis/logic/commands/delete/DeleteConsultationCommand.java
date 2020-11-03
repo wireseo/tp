@@ -6,4 +6,7 @@ public class DeleteConsultationCommand extends DeleteCommand {
     public DeleteConsultationCommand(Index targetIndex) {
         super(targetIndex);
     }
+
+    // When this is implemented, you may return a CommandResult(userFeedback, CommandTargetFeature.Consultations);
+    // and the tab redirecting will work.
 }
