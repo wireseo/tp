@@ -51,7 +51,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/ngzhenteng.md)]
 
 * Role: Developer
-* Responsibilities: Student Information Retrieval Features
+* Responsibilities: Student Features + Testing
 
 ### Lim Jun Jie
 

@@ -378,6 +378,8 @@ public class MainWindow extends UiPart<Stage> {
                 tabSelector.select(questTab);
             } else if (commandTargetFeature == CommandTargetFeature.Consultations) {
                 tabSelector.select(consultationTab);
+            } else if (commandTargetFeature == CommandTargetFeature.MasteryCheck) {
+                tabSelector.select(masteryCheckTab);
             } else if (commandTargetFeature == CommandTargetFeature.Tasks) {
                 tabSelector.select(taskTab);
             }
