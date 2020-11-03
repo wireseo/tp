@@ -1,6 +1,8 @@
 package seedu.jarvis.logic.parser;
 
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.jarvis.logic.parser.CliSyntax.DELETE_CONSULTATION;
+import static seedu.jarvis.logic.parser.CliSyntax.DELETE_MASTERY_CHECK;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_TASK;
 
 import java.util.logging.Logger;
@@ -53,11 +55,31 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_DELETE_TASK_USAGE), pe);
             }
+        case DELETE_CONSULTATION:
+            logger.info("DeleteCommandParser attempts to parse user's delete Task input");
+            try {
+                String taskId = TaskCommandParser.parseDeleteTask(nameKeywords);
+                return new DeleteCommand(taskId);
 
-        //Include other cases here
+            } catch (ParseException pe) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_DELETE_TASK_USAGE), pe);
+            }
+
+        case DELETE_MASTERY_CHECK:
+            logger.info("DeleteCommandParser attempts to parse user's delete Task input");
+            try {
+                String taskId = TaskCommandParser.parseDeleteTask(nameKeywords);
+                return new DeleteCommand(taskId);
+
+            } catch (ParseException pe) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_DELETE_TASK_USAGE), pe);
+            }
 
         //Will not be able to delete student becasue the flag is not allowed in Flag class.
         default:
+            /*
             logger.info("DeleteCommandParser attempts to parse user's delete student input by default");
             try {
                 Index index = ParserUtil.parseIndex(args);
@@ -66,7 +88,8 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             } catch (ParseException pe) {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_DELETE_USAGE), pe);
-            }
+            }*/
+            throw new ParseException("This stage should not be reached!");
         }
     }
 

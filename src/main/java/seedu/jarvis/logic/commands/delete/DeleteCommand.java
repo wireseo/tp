@@ -11,6 +11,8 @@ import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
+import seedu.jarvis.model.consultation.Consultation;
+import seedu.jarvis.model.consultation.MasteryCheck;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.task.Task;
 
@@ -22,6 +24,8 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String TO_DELETE_STUDENT = "S";
     public static final String TO_DELETE_TASK = "T";
+    public static final String TO_DELETE_CONSULTATION = "C";
+    public static final String TO_DELETE_MASTERY_CHECK = "MC";
 
     public static final String MESSAGE_DELETE_USAGE = "Delete Command supports:\n"
             + "1. delete task (delete -t)";
@@ -33,23 +37,33 @@ public class DeleteCommand extends Command {
             + ": Deletes the task identified by the task ID used in the task list.\n"
             + "Example: " + COMMAND_WORD + " -t T1\n"
             + "Type \"view -t\" to verify your task ID before deleting!";
+    public static final String MESSAGE_DELETE_CONSULTATION_USAGE = COMMAND_WORD
+            + ": Deletes the consultation identified by the task ID used in the consultation list.\n"
+            + "Example: " + COMMAND_WORD + " -c 1\n"
+            + "Type \"view -c\" to verify your task ID before deleting!";
+    public static final String MESSAGE_DELETE_MASTERY_CHECK_USAGE = COMMAND_WORD
+            + ": Deletes the mastery check identified by the mastery check ID used in the mastery check list.\n"
+            + "Example: " + COMMAND_WORD + " -mc 1\n"
+            + "Type \"view -mc\" to verify your task ID before deleting!";
 
     public static final String MESSAGE_INVALID_TO_DELETE_TYPE = "This object to delete is unidentifiable";
-
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Student: %1$s";
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+    public static final String MESSAGE_DELETE_CONSULTATION_SUCCESS = "Deleted Consultation: %1$s";
+    public static final String MESSAGE_DELETE_MASTERY_CHECK_SUCCESS = "Deleted Mastery Check: %1$s";
 
     private final Index targetIndex;
     private final String taskId;
     private final String toDeleteType;
 
+
     /**
-     * Creates an DeleteCommand to delete the specified {@code Student}
+     * Creates an DeleteCommand to delete the specified {@code Consultation} or {@code Mastery Check}
      */
-    public DeleteCommand(Index targetIndex) {
+     public DeleteCommand(Index targetIndex, String toDeleteType) {
         this.targetIndex = targetIndex;
         this.taskId = null;
-        this.toDeleteType = TO_DELETE_STUDENT;
+        this.toDeleteType = toDeleteType; // TODO: This should only be "C" or "MC" -- otherwise throw error
     }
 
     /**
@@ -66,7 +80,7 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
 
         switch(toDeleteType) {
-        case TO_DELETE_STUDENT:
+        /*case TO_DELETE_STUDENT:
             assert targetIndex != null : "Student's delete target index should not be null";
 
             List<Student> lastShownList = model.getFilteredStudentList();
@@ -79,7 +93,7 @@ public class DeleteCommand extends Command {
 
             return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, studentToDelete),
                     CommandTargetFeature.Students);
-
+        */
         case TO_DELETE_TASK:
             assert taskId != null : "Task id of task to be deleted should not be null";
 
