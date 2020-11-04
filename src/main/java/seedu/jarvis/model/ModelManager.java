@@ -223,13 +223,11 @@ public class ModelManager implements Model {
     @Override
     public void addMission(Mission mission) {
         addressBook.addMission(mission);
-        updateUngradedMissionsSummaryDetail();
     }
 
     @Override
     public void setMissions(List<Mission> missions) {
         addressBook.setMissions(missions);
-        updateUngradedMissionsSummaryDetail();
     }
 
     @Override
@@ -241,9 +239,7 @@ public class ModelManager implements Model {
     @Override
     public boolean updateMission(String name) {
         assert name.length() > 0 : "No mission title provided";
-        boolean result = addressBook.updateMission(name);
-        updateUngradedMissionsSummaryDetail();
-        return result;
+        return addressBook.updateMission(name);
     }
 
 
@@ -276,13 +272,11 @@ public class ModelManager implements Model {
     @Override
     public void addQuest(Quest quest) {
         addressBook.addQuest(quest);
-        updateUngradedQuestsSummaryDetail();
     }
 
     @Override
     public void setQuests(List<Quest> quests) {
         addressBook.setQuests(quests);
-        updateUngradedQuestsSummaryDetail();
     }
 
     /**
@@ -309,9 +303,7 @@ public class ModelManager implements Model {
     @Override
     public boolean updateQuest(String name) {
         assert name.length() > 0 : "No quest title provided";
-        boolean result = addressBook.updateQuest(name);
-        updateUngradedQuestsSummaryDetail();
-        return result;
+        return addressBook.updateQuest(name);
     }
 
     //============================== Task ====================================================================
@@ -324,7 +316,6 @@ public class ModelManager implements Model {
     @Override
     public void addTodo(Todo todo) {
         addressBook.addTodo(todo);
-        updateTasksSummaryDetail();
     }
 
     @Override
@@ -336,7 +327,6 @@ public class ModelManager implements Model {
     @Override
     public void addEvent(Event event) {
         addressBook.addEvent(event);
-        updateTasksSummaryDetail();
     }
 
     @Override
@@ -348,7 +338,6 @@ public class ModelManager implements Model {
     @Override
     public void addDeadline(Deadline deadline) {
         addressBook.addDeadline(deadline);
-        updateTasksSummaryDetail();
     }
 
     /**
@@ -369,7 +358,6 @@ public class ModelManager implements Model {
     @Override
     public void deleteTask(Task target) {
         addressBook.removeTask(target);
-        updateTasksSummaryDetail();
     }
 
     //========================= Consultations ================================================================
@@ -377,13 +365,11 @@ public class ModelManager implements Model {
     @Override
     public void addConsultation(Consultation consultation) {
         addressBook.addConsultation(consultation);
-        updateUpcomingConsultationsSummaryDetail();
     }
 
     @Override
     public void setConsultations(List<Consultation> consultations) {
         addressBook.setConsultations(consultations);
-        updateUpcomingConsultationsSummaryDetail();
     }
 
     @Override
@@ -414,13 +400,11 @@ public class ModelManager implements Model {
     @Override
     public void addMasteryCheck(MasteryCheck masteryCheck) {
         addressBook.addMasteryCheck(masteryCheck);
-        updateUpcomingMasteryChecksSummaryDetail();
     }
 
     @Override
     public void setMasteryChecks(List<MasteryCheck> masteryChecks) {
         addressBook.setMasteryChecks(masteryChecks);
-        updateUpcomingMasteryChecksSummaryDetail();
     }
 
     @Override
