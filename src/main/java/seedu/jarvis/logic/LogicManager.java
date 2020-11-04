@@ -66,6 +66,8 @@ public class LogicManager implements Logic {
 
         saveToStorage();
 
+        model.updateAllSummaryDetails();
+
         return commandResult;
     }
 
@@ -132,5 +134,11 @@ public class LogicManager implements Logic {
     @Override
     public StringProperty getGreeting() {
         return model.getGreeting();
+    }
+
+    @Override
+    public StringProperty getSummary() {
+        model.updateAllSummaryDetails();
+        return model.getSummary();
     }
 }

@@ -88,4 +88,10 @@ public interface Logic {
      * Returns the greeting to be displayed.
      */
     StringProperty getGreeting();
+
+    /**
+     * Returns the string representation of a summary for all ungraded missions and quests, as well as upcoming
+     * Consultations, Mastery Checks and remaining Tasks.
+     */
+    StringProperty getSummary();
 }

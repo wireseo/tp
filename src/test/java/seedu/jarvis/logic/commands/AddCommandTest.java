@@ -364,6 +364,41 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateAllSummaryDetails() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateUngradedMissionsSummaryDetail() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateUngradedQuestsSummaryDetail() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateUpcomingConsultationsSummaryDetail() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateUpcomingMasteryChecksSummaryDetail() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateTasksSummaryDetail() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public StringProperty getSummary() {
+            return null;
+        }
+
+        @Override
         public StringProperty getGreeting() {
             throw new AssertionError("This method should not be called.");
         }

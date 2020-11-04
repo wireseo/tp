@@ -53,4 +53,5 @@ public interface ReadOnlyAddressBook {
      * Returns the greeting of the user.
      */
     StringProperty getGreeting();
+
 }

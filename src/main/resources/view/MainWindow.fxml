@@ -68,8 +68,16 @@
               </VBox>
 
               <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+                      <VBox>
+                          <Label fx:id="summaryTitle" styleClass="date_label"/>
+                      </VBox>
+                      <VBox>
+                          <Label fx:id="summaryDetails" styleClass="topic_label"/>
+                      </VBox>
+                  </HBox>
                   <HBox alignment="TOP_RIGHT" VBox.vgrow="ALWAYS">
-                      <Label fx:id="greeting" styleClass="date_label"/>
+                      <Label fx:id="greeting" styleClass="greeting_message"/>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">
                     <VBox>
@@ -82,6 +90,7 @@
                   <HBox alignment="CENTER_RIGHT">
                       <Label fx:id="date" text="\$date" styleClass="date_label"/>
                   </HBox>
+
               </VBox>
           </HBox>
         </StackPane>
