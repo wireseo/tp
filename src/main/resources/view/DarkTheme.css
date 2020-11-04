@@ -393,6 +393,11 @@
     -fx-font-size: 11pt;
 }
 
+.greeting_message {
+    -fx-text-fill: #4cc3a8;
+    -fx-font-size: 13pt;
+}
+
 .topic_label {
     -fx-text-fill: #c3c525;
     -fx-font-size: 11pt;

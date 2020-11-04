@@ -345,7 +345,8 @@ Please take note of the command inputted into the command box to understand how 
 
 #### 6.6.2 Viewing one Student : `-s [NAME]`
 
-Shows a specific student if a student name is entered after the command.
+Shows all students that match(partial and full) the student name entered after the command. The name is case
+-insensitive. An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 

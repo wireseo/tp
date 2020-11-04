@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Logger;
 
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -114,6 +115,12 @@ public class MainWindow extends UiPart<Stage> {
     private Label greeting;
 
     @FXML
+    private Label summaryTitle;
+
+    @FXML
+    private Label summaryDetails;
+
+    @FXML
     private Label week;
 
     @FXML
@@ -139,6 +146,8 @@ public class MainWindow extends UiPart<Stage> {
         setDate();
 
         setGreeting();
+
+        setSummary();
 
         setWeekAndTopic();
     }
@@ -242,6 +251,16 @@ public class MainWindow extends UiPart<Stage> {
      */
     private void setGreeting() {
         greeting.textProperty().bind(logic.getGreeting());
+    }
+
+    /**
+     * Sets the details for a summary of the number of ungraded missions, ungraded quests, consultations, tasks and
+     * mastery checks.
+     */
+    private void setSummary() {
+        // check if user logged in.
+        StringProperty summary = logic.getSummary();
+        summaryDetails.textProperty().bind(summary);
     }
 
     /**
@@ -384,6 +403,8 @@ public class MainWindow extends UiPart<Stage> {
                 tabSelector.select(taskTab);
             }
 
+            StringProperty summary = logic.getSummary();
+            summaryDetails.textProperty().bind(summary);
             return commandResult;
 
         } catch (CommandException | ParseException e) {

@@ -331,4 +331,19 @@ public interface Model {
     //=========== EventSupport ===================================================================================
     void addPropertyChangeListener(PropertyChangeListener pcv);
 
+    //=========== Summary ===================================================================================
+    void updateAllSummaryDetails();
+
+    void updateUngradedMissionsSummaryDetail();
+
+    void updateUngradedQuestsSummaryDetail();
+
+    void updateUpcomingConsultationsSummaryDetail();
+
+    void updateUpcomingMasteryChecksSummaryDetail();
+
+    void updateTasksSummaryDetail();
+
+    StringProperty getSummary();
+
 }

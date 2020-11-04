@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.jarvis.commons.core.GuiSettings;
 import seedu.jarvis.commons.core.LogsCenter;
+import seedu.jarvis.logic.commands.view.ViewUngradedMissionCommand;
+import seedu.jarvis.logic.commands.view.ViewUngradedQuestCommand;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.consultation.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
@@ -41,6 +43,7 @@ public class ModelManager implements Model {
     private final FilteredList<Consultation> filteredConsultations;
     private final FilteredList<MasteryCheck> filteredMasteryChecks;
     private StringProperty greeting;
+    private StringProperty summary;
 
     private final PropertyChangeSupport support;
 
@@ -65,6 +68,7 @@ public class ModelManager implements Model {
 
         support = new PropertyChangeSupport(this);
         greeting = this.addressBook.getGreeting();
+        summary = this.addressBook.getSummary();
     }
 
     public ModelManager() {
@@ -431,4 +435,66 @@ public class ModelManager implements Model {
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
+
+    //========================= Summary ===================================================
+
+    /**
+     * Updates all summary details. Useful for updating after a user command.
+     */
+    @Override
+    public void updateAllSummaryDetails() {
+        updateUngradedMissionsSummaryDetail();
+        updateUngradedQuestsSummaryDetail();
+        updateUpcomingConsultationsSummaryDetail();
+        updateUpcomingMasteryChecksSummaryDetail();
+        updateTasksSummaryDetail();
+    }
+
+    @Override
+    public void updateUngradedMissionsSummaryDetail() {
+        FilteredList<Mission> filteredMissionListCopy = new FilteredList<>(this.addressBook.getMissionList());
+        // set the mission list copy to only show ungraded missions.
+        filteredMissionListCopy.setPredicate(ViewUngradedMissionCommand.PREDICATE_SHOW_UNGRADED_MISSIONS);
+        int numUngradedMissions = filteredMissionListCopy.size();
+        addressBook.setNumUngradedMissions(numUngradedMissions);
+    }
+
+    @Override
+    public void updateUngradedQuestsSummaryDetail() {
+        FilteredList<Quest> filteredQuestListCopy = new FilteredList<>(this.addressBook.getQuestList());
+        // set the quest list copy to only show ungraded quests.
+        filteredQuestListCopy.setPredicate(ViewUngradedQuestCommand.PREDICATE_SHOW_UNGRADED_QUESTS);
+        int numUngradedQuests = filteredQuestListCopy.size();
+        addressBook.setNumUngradedQuests(numUngradedQuests);
+    }
+
+    @Override
+    public void updateUpcomingConsultationsSummaryDetail() {
+        FilteredList<Consultation> filteredConsultationListCopy =
+                new FilteredList<>(this.addressBook.getConsultationList());
+        filteredConsultationListCopy.setPredicate(Model.PREDICATE_SHOW_UPCOMING_CONSULTATIONS);
+        int numUpcomingConsultations = filteredConsultationListCopy.size();
+        addressBook.setNumUpcomingConsultations(numUpcomingConsultations);
+    }
+
+    @Override
+    public void updateUpcomingMasteryChecksSummaryDetail() {
+        FilteredList<MasteryCheck> filteredMasteryChecksListCopy =
+                new FilteredList<>(this.addressBook.getMasteryChecksList());
+        filteredMasteryChecksListCopy.setPredicate(Model.PREDICATE_SHOW_UPCOMING_MASTERY_CHECKS);
+        int numUpcomingMasteryChecks = filteredMasteryChecksListCopy.size();
+        addressBook.setNumUpcomingMasteryChecks(numUpcomingMasteryChecks);
+    }
+
+    @Override
+    public void updateTasksSummaryDetail() {
+        int numTasks = this.addressBook.getTaskList().size();
+        addressBook.setNumTasks(numTasks);
+    }
+
+    @Override
+    public StringProperty getSummary() {
+        return addressBook.getSummary();
+    }
+
 }

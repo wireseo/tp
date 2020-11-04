@@ -17,6 +17,7 @@ import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.quest.QuestList;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.student.UniqueStudentsList;
+import seedu.jarvis.model.summary.Summary;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
@@ -42,6 +43,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private Greeting greeting;
 
+    private Summary summary;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -57,6 +60,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         consultations = new ConsultationList();
         masteryChecks = new MasteryCheckList();
         greeting = new Greeting();
+        summary = new Summary();
     }
 
     public AddressBook() {}
@@ -92,6 +96,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setConsultations(newData.getConsultationList());
         setMasteryChecks(newData.getMasteryChecksList());
         setGreeting(newData.getGreeting().getValue());
+
     }
 
     //// student-level operations
@@ -364,4 +369,33 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean hasGreeting() {
         return !greeting.isEmpty();
     }
+
+    public void setNumUngradedMissions(int numUm) {
+        summary.setNumUngradedMissions(numUm);
+    }
+
+    public void setNumUngradedQuests(int numUq) {
+        summary.setNumUngradedQuests(numUq);
+    }
+
+    public void setNumUpcomingConsultations(int numConsult) {
+        summary.setNumUpcomingConsultations(numConsult);
+    }
+
+    public void setNumUpcomingMasteryChecks(int numMc) {
+        summary.setNumUpcomingMasteryChecks(numMc);
+    }
+
+    public void setNumTasks(int numT) {
+        summary.setNumTasks(numT);
+    }
+
+    public StringProperty getSummary() {
+        return summary.getSummaryDetails();
+    }
+
+    public boolean hasSummary() {
+        return !summary.isEmpty();
+    }
+
 }
