@@ -61,4 +61,3 @@ Given below are my contributions to the project.
 
 * **Tools**:
   * Used JavaFX libraries and CSS to create portions of the Graphic User Interface.
-  
