@@ -86,35 +86,10 @@ public class AddCommandParser implements Parser<AddCommand> {
             logger.info("AddCommandParser attempts to parse user's newly added mastery check");
             MasteryCheck masteryCheck = ConsultationMasteryCheckCommandParser.parseMasteryCheck(nameKeywords, length);
             return new AddCommand(masteryCheck);
+
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));
-//        default:
-//            logger.info("AddCommandParser attempts to parse user's newly added student");
-//            ArgumentMultimap argMultimap =
-//                    ArgumentTokenizer.tokenize(args,
-//                            PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL);
-//
-//            if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL)
-//                    || !argMultimap.getPreamble().isEmpty()) {
-//                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));
-//            }
-//
-//            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-//            Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
-//            Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-//
-//            Student student = new Student(name, telegram, email);
-//
-//            return new AddCommand(student);
         }
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
 }
