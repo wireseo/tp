@@ -8,11 +8,12 @@ import static seedu.jarvis.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_TODO;
 
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
-import seedu.jarvis.MainApp;
 import seedu.jarvis.commons.core.LogsCenter;
 import seedu.jarvis.logic.commands.add.AddCommand;
+import seedu.jarvis.logic.commands.add.AddConsultationCommand;
+import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
+import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.consultation.MasteryCheck;
@@ -26,7 +27,7 @@ import seedu.jarvis.model.task.Todo;
  */
 public class AddCommandParser implements Parser<AddCommand> {
 
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+    private static final Logger logger = LogsCenter.getLogger(AddCommandParser.class);
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -65,27 +66,27 @@ public class AddCommandParser implements Parser<AddCommand> {
         case TASK_TODO:
             logger.info("AddCommandParser attempts to parse user's newly added todo task");
             Todo todo = TaskCommandParser.parseTodo(nameKeywords, length);
-            return new AddCommand(todo);
+            return new AddTaskCommand(todo);
 
         case TASK_EVENT:
             logger.info("AddCommandParser attempts to parse user's newly added event task");
             Event event = TaskCommandParser.parseEvent(nameKeywords, length);
-            return new AddCommand(event);
+            return new AddTaskCommand(event);
 
         case TASK_DEADLINE:
             logger.info("AddCommandParser attempts to parse user's newly added deadline task");
             Deadline deadline = TaskCommandParser.parseDeadline(nameKeywords, length);
-            return new AddCommand(deadline);
+            return new AddTaskCommand(deadline);
 
         case CONSULTATION:
             logger.info("AddCommandParser attempts to parse user's newly added consultation");
             Consultation consultation = ConsultationMasteryCheckCommandParser.parseConsultation(nameKeywords, length);
-            return new AddCommand(consultation);
+            return new AddConsultationCommand(consultation);
 
         case MASTERY_CHECK:
             logger.info("AddCommandParser attempts to parse user's newly added mastery check");
             MasteryCheck masteryCheck = ConsultationMasteryCheckCommandParser.parseMasteryCheck(nameKeywords, length);
-            return new AddCommand(masteryCheck);
+            return new AddMasteryCheckCommand(masteryCheck);
 
         default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_ADD_USAGE));

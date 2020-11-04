@@ -17,27 +17,9 @@ import seedu.jarvis.model.task.Todo;
 /**
  * Adds a student to the jarvis book.
  */
-public class AddCommand extends Command {
+public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-    public static final String TO_ADD_STUDENT = "S";
-    public static final String TO_ADD_TODO = "T";
-    public static final String TO_ADD_EVENT = "E";
-    public static final String TO_ADD_DEADLINE = "D";
-    public static final String TO_ADD_CONSULTATION = "C";
-    public static final String TO_ADD_MASTERY_CHECK = "MC";
-
-    public static final String MESSAGE_SUCCESS = "New student added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in jarvis";
-    public static final String MESSAGE_INVALID_TO_ADD_TYPE = "This object to add is unidentifiable";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in jarvis";
-    public static final String MESSAGE_DUPLICATE_CONSULTATION = "This consultation already exists in jarvis";
-    public static final String MESSAGE_DUPLICATE_MASTERY_CHECK = "This mastery check already exists in jarvis";
-    public static final String MESSAGE_SUCCESS_TODO = "New todo added: %1$s";
-    public static final String MESSAGE_SUCCESS_EVENT = "New event added: %1$s";
-    public static final String MESSAGE_SUCCESS_DEADLINE = "New deadline added: %1$s";
-    public static final String MESSAGE_SUCCESS_CONSULTATION = "New consultation added: %1$s";
-    public static final String MESSAGE_SUCCESS_MASTERY_CHECK = "New mastery check added: %1$s";
 
     public static final String MESSAGE_ADD_USAGE = COMMAND_WORD + ": Adds a task or consultation to the jarvis book.\n"
             + "add -t DESCRIPTION: Add todo with DESCRIPTION\n"
@@ -54,134 +36,6 @@ public class AddCommand extends Command {
     public static final String MESSAGE_INVALID_DATETIME = "The provided date and time is incorrect.\nBe careful of "
             + "leap years and the number of days in a specific month";
 
-    protected final Object toAdd;
-    protected final String toAddType;
+    public abstract CommandResult execute(Model model) throws CommandException;
 
-    /**
-     * Creates an AddCommand to add the specified {@code Student}
-     */
-    public AddCommand(Student student) {
-        requireNonNull(student);
-        toAdd = student;
-        toAddType = TO_ADD_STUDENT;
-    }
-
-    /**
-     * Creates an AddCommand to add the specified {@code Todo}
-     */
-    public AddCommand(Todo todo) {
-        requireNonNull(todo);
-        toAdd = todo;
-        toAddType = TO_ADD_TODO;
-    }
-
-    /**
-     * Creates an AddCommand to add the specified {@code Event}
-     */
-    public AddCommand(Event event) {
-        requireNonNull(event);
-        toAdd = event;
-        toAddType = TO_ADD_EVENT;
-    }
-
-    /**
-     * Creates an AddCommand to add the specified {@code Deadline}
-     */
-    public AddCommand(Deadline deadline) {
-        requireNonNull(deadline);
-        toAdd = deadline;
-        toAddType = TO_ADD_DEADLINE;
-    }
-
-    /**
-     * Creates an AddCommand to add the specified {@code Consultation}
-     */
-    public AddCommand(Consultation consultation) {
-        requireNonNull(consultation);
-        toAdd = consultation;
-        toAddType = TO_ADD_CONSULTATION;
-    }
-
-    /**
-     * Creates an AddCommand to add the specified {@code MasteryCheck}
-     */
-    public AddCommand(MasteryCheck masteryCheck) {
-        requireNonNull(masteryCheck);
-        toAdd = masteryCheck;
-        toAddType = TO_ADD_MASTERY_CHECK;
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-
-        switch(toAddType) {
-        case TO_ADD_STUDENT:
-            Student toAddStudent = (Student) toAdd;
-            if (model.hasPerson(toAddStudent)) {
-                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-            }
-
-            model.addPerson(toAddStudent);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAddStudent), CommandTargetFeature.Students);
-
-        case TO_ADD_TODO:
-            Todo toAddTodo = (Todo) toAdd;
-            if (model.hasTodo(toAddTodo)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TASK);
-            }
-
-            model.addTodo(toAddTodo);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_TODO, toAddTodo), CommandTargetFeature.Tasks);
-
-        case TO_ADD_EVENT:
-            Event toAddEvent = (Event) toAdd;
-            if (model.hasEvent(toAddEvent)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TASK);
-            }
-
-            model.addEvent(toAddEvent);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_EVENT, toAddEvent), CommandTargetFeature.Tasks);
-
-        case TO_ADD_DEADLINE:
-            Deadline toAddDeadline = (Deadline) toAdd;
-            if (model.hasDeadline(toAddDeadline)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TASK);
-            }
-
-            model.addDeadline(toAddDeadline);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_DEADLINE, toAddDeadline),
-                    CommandTargetFeature.Tasks);
-
-        case TO_ADD_CONSULTATION:
-            Consultation toAddConsultation = (Consultation) toAdd;
-            if (model.hasConsultation(toAddConsultation)) {
-                throw new CommandException(MESSAGE_DUPLICATE_CONSULTATION);
-            }
-
-            model.addConsultation(toAddConsultation);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_CONSULTATION, toAddConsultation),
-                    CommandTargetFeature.Consultations);
-
-        case TO_ADD_MASTERY_CHECK:
-            MasteryCheck toAddMasteryCheck = (MasteryCheck) toAdd;
-            if (model.hasMasteryCheck(toAddMasteryCheck)) {
-                throw new CommandException(MESSAGE_DUPLICATE_MASTERY_CHECK);
-            }
-
-            model.addMasteryCheck(toAddMasteryCheck);
-            return new CommandResult(String.format(MESSAGE_SUCCESS_MASTERY_CHECK, toAddMasteryCheck),
-                    CommandTargetFeature.MasteryCheck);
-
-        default:
-            throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);
-        }
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof AddCommand // instanceof handles nulls
-                && toAdd.equals(((AddCommand) other).toAdd));
-    }
 }
