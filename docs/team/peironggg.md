@@ -12,13 +12,13 @@ Given below are my contributions to the project.
 * **New Feature**: Added the ability to scrape Sourceacademy.nus.edu.sg for grading information.
   * What it does: Automatically logs in to SA with the user login details and parses for student names, current missions and quests to be graded.
   * Justification: This feature improves the product significantly because an Avenger can get all the grading information he needs simply by starting up the app.
-  * Highlights: Memorable learning experience was implementing multithreading into the fetching from SA and updating of JavaFX's UI-update thread. A real educational experience by learning about the nuances of when threads run and how to make them run when you want them to.   
+  * Highlights: Memorable learning experience was implementing multithreading into the fetching from SA and updating of JavaFX's UI-update thread. A real educational experience by learning about the nuances of when threads run and how to make them run when you want them to.
   * Credits: *Google Chrome's Chrome Driver for the ability to launch a headless Chrome browser to scrape for information.*
 
 * **New Feature**: Added an edit command that allows users to edit their login information.
   * What it does: Edits the nusnetid and password required to login so that different Avengers can access the application.
   * Justification: This allows greater portability and ease of entering login details into the app since login details can be changed on the fly.
-  
+
 * **New Feature**: Added an edit command that allows users to edit their student information.
   * What it does: Edits the username, telegram username and email of the fetched students from SA so that they can remain updated.
   * Justification: This allows Avengers to use the app as a one-stop hub of all information they need to carry out their TA duties.

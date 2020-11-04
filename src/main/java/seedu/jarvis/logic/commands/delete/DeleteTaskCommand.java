@@ -30,29 +30,29 @@ public class DeleteTaskCommand extends DeleteCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-            assert taskId != null : "Task id of task to be deleted should not be null";
+        assert taskId != null : "Task id of task to be deleted should not be null";
 
-            List<Task> allTasks = model.getFilteredTaskList();
-            Task taskToDelete = null;
-            boolean hasDeletedTask = false;
-            int size = allTasks.size();
-            for (int i = 0; i < size; i++) {
-                Task currTask = allTasks.get(i);
-                if (currTask.getTaskId().equals(taskId)) {
-                    taskToDelete = currTask;
-                    hasDeletedTask = true;
-                    break;
-                }
+        List<Task> allTasks = model.getFilteredTaskList();
+        Task taskToDelete = null;
+        boolean hasDeletedTask = false;
+        int size = allTasks.size();
+        for (int i = 0; i < size; i++) {
+            Task currTask = allTasks.get(i);
+            if (currTask.getTaskId().equals(taskId)) {
+                taskToDelete = currTask;
+                hasDeletedTask = true;
+                break;
             }
+        }
 
-            if (hasDeletedTask) {
-                assert taskToDelete != null : "Upon successful task deletion, the task deleted cannot be null";
-                model.deleteTask(taskToDelete);
-                return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete),
-                        CommandTargetFeature.Tasks);
+        if (hasDeletedTask) {
+            assert taskToDelete != null : "Upon successful task deletion, the task deleted cannot be null";
+            model.deleteTask(taskToDelete);
+            return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete),
+                    CommandTargetFeature.Tasks);
 
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_ID);
-            }
+        } else {
+            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_ID);
+        }
     }
 }

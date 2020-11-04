@@ -1,18 +1,9 @@
 package seedu.jarvis.logic.commands.add;
 
-import static java.util.Objects.requireNonNull;
-
 import seedu.jarvis.logic.commands.Command;
 import seedu.jarvis.logic.commands.CommandResult;
-import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
-import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
-import seedu.jarvis.model.student.Student;
-import seedu.jarvis.model.task.Deadline;
-import seedu.jarvis.model.task.Event;
-import seedu.jarvis.model.task.Todo;
 
 /**
  * Adds a student to the jarvis book.
