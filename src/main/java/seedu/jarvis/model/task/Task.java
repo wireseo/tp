@@ -1,7 +1,7 @@
 package seedu.jarvis.model.task;
 
-import static seedu.jarvis.logic.commands.add.AddCommand.TO_ADD_DEADLINE;
-import static seedu.jarvis.logic.commands.add.AddCommand.TO_ADD_EVENT;
+import static seedu.jarvis.logic.commands.add.AddTaskCommand.TO_ADD_DEADLINE;
+import static seedu.jarvis.logic.commands.add.AddTaskCommand.TO_ADD_EVENT;
 
 public abstract class Task {
     private static int taskNum = 1;

@@ -17,7 +17,7 @@ Given below are my contributions to the project.
   * Highlights: This is a core feature for our app as it serves as a reminder for Avengers on their upcoming marking tasks
   so that they can manage their time.
   * Credits: *Selenium WebDriver for the ability to scrape for information on Source Academy*
-  
+
 * **New Feature**: Added the ability to view ungraded Missions and Quests
   * What it does: List all the ungraded Missions and Quests that the Avenger has yet to mark.
   * Justification: This feature allows users to keep track of the Missions and Quests that they have yet to mark so
@@ -50,5 +50,5 @@ Given below are my contributions to the project.
   * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/AY2021S1-CS2103T-W17-3/tp/issues/170), [2](https://github.com/AY2021S1-CS2103T-W17-3/tp/issues/172), [3](https://github.com/AY2021S1-CS2103T-W17-3/tp/issues/173))
 
 * **Tools**:
-  * Used JavaFX library and CSS extensively for the GUI 
+  * Used JavaFX library and CSS extensively for the GUI
   * Made use of the Java Desktop library to open links in user's default browser [\#183](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/183)
