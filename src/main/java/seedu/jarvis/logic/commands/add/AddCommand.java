@@ -21,13 +21,13 @@ public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_ADD_USAGE = COMMAND_WORD + ": Adds a task or consultation to the jarvis book.\n"
-            + "add -t DESCRIPTION: Add todo with DESCRIPTION\n"
-            + "add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add event with DESCRIPTION at specified date and time\n"
-            + "add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add deadline with DESCRIPTION at specified date and time\n"
+    public static final String MESSAGE_ADD_USAGE = COMMAND_WORD + ": Adds a consultation or task to the jarvis book.\n"
             + "add -c NAME d/YYYY-MM-DD t/HH:MM: Add consultation with student with NAME at specified date and time\n"
             + "add -mc NAME d/YYYY-MM-DD t/HH:MM: Add mastery check with student with NAME at specified date and "
-            + "time\n";
+            + "time\n"
+            + "add -t DESCRIPTION: Add todo with DESCRIPTION\n"
+            + "add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add event with DESCRIPTION at specified date and time\n"
+            + "add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add deadline with DESCRIPTION at specified date and time\n";
 
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include task DESCRIPTION";
     public static final String MESSAGE_MISSING_DATE = "Please include task DATE and TIME d/YYYY-MM-DD t/HH:MM";
