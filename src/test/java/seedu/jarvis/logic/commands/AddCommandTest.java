@@ -18,7 +18,7 @@ import seedu.jarvis.model.ReadOnlyUserLogin;
 import seedu.jarvis.model.ReadOnlyUserPrefs;
 import seedu.jarvis.model.UserLogin;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;

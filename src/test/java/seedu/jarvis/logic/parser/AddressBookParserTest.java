@@ -8,21 +8,15 @@ import static seedu.jarvis.logic.commands.CommandTestUtil.EDIT_STUDENT;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.logic.commands.ClearCommand;
 import seedu.jarvis.logic.commands.ExitCommand;
-import seedu.jarvis.logic.commands.FindCommand;
 import seedu.jarvis.logic.commands.HelpCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
 import seedu.jarvis.logic.commands.view.ViewAllStudentsCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
-import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.testutil.EditStudentDescriptorBuilder;
 import seedu.jarvis.testutil.StudentBuilder;
@@ -70,14 +64,6 @@ public class AddressBookParserTest {
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
-    }
-
-    @Test
-    public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
