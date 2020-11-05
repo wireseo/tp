@@ -16,7 +16,7 @@ import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
 import seedu.jarvis.model.flag.Flag;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
