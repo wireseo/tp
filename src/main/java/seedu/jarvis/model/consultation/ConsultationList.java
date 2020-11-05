@@ -6,6 +6,9 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.jarvis.model.consultation.exceptions.ConsultationNotFoundException;
+import seedu.jarvis.model.task.Task;
+import seedu.jarvis.model.task.exceptions.TaskNotFoundException;
 
 
 public class ConsultationList {
@@ -38,5 +41,16 @@ public class ConsultationList {
 
     public boolean isConsultationInList(String name) {
         return internalList.stream().anyMatch(consultation -> consultation.getIdentifier().equals(name));
+    }
+
+    /**
+     * Removes the equivalent consultation from the list.
+     * The consultation must exist in the list.
+     */
+    public void remove(Consultation toRemove) {
+        requireNonNull(toRemove);
+        if (!internalList.remove(toRemove)) {
+            throw new ConsultationNotFoundException();
+        }
     }
 }

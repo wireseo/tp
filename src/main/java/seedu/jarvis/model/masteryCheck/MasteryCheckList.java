@@ -7,6 +7,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masteryCheck.exceptions.DuplicateMasteryCheckException;
 import seedu.jarvis.model.masteryCheck.exceptions.MasteryCheckNotFoundException;
 
@@ -64,5 +65,16 @@ public class MasteryCheckList {
         }
 
         internalList.set(index, editedMasteryCheck);
+    }
+
+    /**
+     * Removes the equivalent mastery check from the list.
+     * The mastery check must exist in the list.
+     */
+    public void remove(MasteryCheck toRemove) {
+        requireNonNull(toRemove);
+        if (!internalList.remove(toRemove)) {
+            throw new MasteryCheckNotFoundException();
+        }
     }
 }
