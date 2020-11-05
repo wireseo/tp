@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.jarvis.model.consultation.Consultation;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
 
 public class MasteryCheckCard extends UiPart<Region> {
 
@@ -20,7 +20,7 @@ public class MasteryCheckCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Consultation masteryCheck;
+    public final MasteryCheck masteryCheck;
 
     @javafx.fxml.FXML
     private HBox cardPane;
@@ -30,19 +30,26 @@ public class MasteryCheckCard extends UiPart<Region> {
     private Label studentName;
     @FXML
     private Label dateAndTime;
+    @FXML
+    private Label passed;
 
     /**
-     * Creates a {@code ConsultationCard} with the given {@code Consultation} and index to display.
+     * Creates a {@code MasteryCheckCard} with the given {@code MasteryCheck} and index to display.
      */
-    public MasteryCheckCard(Consultation masteryCheck, int displayedIndex) {
+    public MasteryCheckCard(MasteryCheck masteryCheck, int displayedIndex) {
         super(FXML);
         this.masteryCheck = masteryCheck;
+
         id.setText(displayedIndex + ". ");
         studentName.setText(masteryCheck.getStudentName());
+
         LocalDateTime localDateTime = masteryCheck.getDateAndTime();
         String date = localDateTime.toLocalDate().toString();
         String time = localDateTime.toLocalTime().toString();
         dateAndTime.setText("Details: " + date + " at " + time);
+
+        String passFail = "Score: " + (masteryCheck.isPassed() ? "PASS" : "FAIL");
+        passed.setText(passFail);
     }
 
     @Override

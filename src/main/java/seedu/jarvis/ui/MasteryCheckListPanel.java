@@ -8,7 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.jarvis.commons.core.LogsCenter;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
 
 public class MasteryCheckListPanel extends UiPart<Region> {
 
