@@ -244,6 +244,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         return consultations.contains(toAddConsultation);
     }
 
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the jarvis book.
+     */
+    public void removeConsultation(Consultation key) {
+        consultations.remove(key);
+    }
+
     //======================== MasteryChecks =======================================================
 
     public void addMasteryCheck(MasteryCheck masteryCheck) {
@@ -281,6 +289,15 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         masteryChecks.setMasteryCheck(target, editedMasteryCheck);
     }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the jarvis book.
+     */
+    public void removeMasteryCheck(MasteryCheck key) {
+        masteryChecks.remove(key);
+    }
+
     //======================== Tasks ==========================================================================
     /**
      * Returns true if a todo with the same identity as {@code todo} exists in the jarvis book.
