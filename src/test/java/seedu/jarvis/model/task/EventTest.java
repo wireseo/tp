@@ -42,6 +42,13 @@ public class EventTest {
     }
 
     @Test
+    void generateTaskIdTest() {
+        String eventCurrentId = eventTest.getTaskId();
+        String eventNextId = eventTest.generateTaskId();
+        assertTrue(eventCurrentId != eventNextId);
+    }
+
+    @Test
     void testEquals() {
         //same object reference -> true
         assertTrue(eventTest.equals(eventTest));

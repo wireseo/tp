@@ -46,6 +46,8 @@ public class Event extends Task {
         this.dateTime = LocalDateTime.parse(replacedDateTime, dateTimeFormat);
     }
 
+    // ------------------- Getters -----------------------------------------------------------------------------
+
     public String getTaskId() {
         return taskId;
     }
@@ -61,6 +63,8 @@ public class Event extends Task {
     public String getUnformattedDateTime() {
         return dateTime.toString();
     }
+
+    // ---------------------------------------------------------------------------------------------------------
 
     /**
      * Returns a unique task id.

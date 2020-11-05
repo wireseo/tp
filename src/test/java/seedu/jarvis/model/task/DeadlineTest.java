@@ -42,6 +42,13 @@ public class DeadlineTest {
     }
 
     @Test
+    void generateTaskIdTest() {
+        String deadlineCurrentId = deadlineTest.getTaskId();
+        String deadlineNextId = deadlineTest.generateTaskId();
+        assertTrue(deadlineCurrentId != deadlineNextId);
+    }
+
+    @Test
     void testEquals() {
         //same object reference -> true
         assertTrue(deadlineTest.equals(deadlineTest));

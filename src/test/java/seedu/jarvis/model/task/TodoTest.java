@@ -28,6 +28,13 @@ public class TodoTest {
     }
 
     @Test
+    void generateTaskIdTest() {
+        String todoCurrentId = todoTest.getTaskId();
+        String todoNextId = todoTest.generateTaskId();
+        assertTrue(todoCurrentId != todoNextId);
+    }
+
+    @Test
     void testEquals() {
         //same object reference -> true
         assertTrue(todoTest.equals(todoTest));

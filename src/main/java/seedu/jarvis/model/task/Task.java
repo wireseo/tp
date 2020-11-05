@@ -1,33 +1,51 @@
 package seedu.jarvis.model.task;
 
-import static seedu.jarvis.logic.commands.add.AddTaskCommand.TO_ADD_DEADLINE;
-import static seedu.jarvis.logic.commands.add.AddTaskCommand.TO_ADD_EVENT;
-
 public abstract class Task {
+
+    public static final String EVENT = "E";
+    public static final String DEADLINE = "D";
+
     private static int taskNum = 1;
 
-    public abstract String generateTaskId();
+    protected static void taskNumInc() {
+        int currentTaskNum = getTaskNum();
+        setTaskCount(currentTaskNum + 1);
+    }
 
-    public abstract String getDescription();
+    /**
+     * Compares tasknum from taskid of a task to current tasknum in Task.
+     * @param taskId String
+     */
+    protected static void compareTaskNum(String taskId) {
+        int taskNum = Integer.parseInt(taskId.substring(1));
+        if (taskNum >= Task.getTaskNum()) {
+            Task.setTaskCount(taskNum);
+            Task.taskNumInc();
+        }
+    }
 
-    public abstract String getTaskId();
+    //-------------------------- Setters ---------------------------------------------------------------------
+    private static void setTaskCount(int count) {
+        taskNum = count;
+    }
 
-    public static int getTaskNum() {
+    //-------------------------- Getters ---------------------------------------------------------------------
+    protected static int getTaskNum() {
         return taskNum;
     }
 
-    public static void taskNumInc() {
-        taskNum++;
+    public static String getType(Task task) {
+        return task.getTaskId().substring(0, 1);
     }
 
     public String getUnformattedPossibleDateTime(Task task) {
         String type = getType(task);
 
-        if (type.equals(TO_ADD_EVENT)) {
+        if (type.equals(EVENT)) {
             Event taskEvent = (Event) task;
             return taskEvent.getUnformattedDateTime();
 
-        } else if (type.equals(TO_ADD_DEADLINE)) {
+        } else if (type.equals(DEADLINE)) {
             Deadline taskDeadline = (Deadline) task;
             return taskDeadline.getUnformattedDateTime();
 
@@ -38,12 +56,11 @@ public abstract class Task {
 
     public String getFormattedPossibleDateTime(Task task) {
         String type = getType(task);
-
-        if (type.equals(TO_ADD_EVENT)) {
+        if (type.equals(EVENT)) {
             Event taskEvent = (Event) task;
             return taskEvent.getDateTime();
 
-        } else if (type.equals(TO_ADD_DEADLINE)) {
+        } else if (type.equals(DEADLINE)) {
             Deadline taskDeadline = (Deadline) task;
             return taskDeadline.getDateTime();
 
@@ -52,25 +69,12 @@ public abstract class Task {
         }
     }
 
-    public static String getType(Task task) {
-        return task.getTaskId().substring(0, 1);
-    }
+    //-------------------------- Inherited Methods ---------------------------------------------------------
+    public abstract String generateTaskId();
 
-    private static void setTaskCount(int count) {
-        taskNum = count;
-    }
+    public abstract String getDescription();
 
-    /**
-     * Compares tasknum from taskid of a task to current tasknum in Task.
-     * @param taskId String
-     */
-    public static void compareTaskNum(String taskId) {
-        int taskNum = Integer.parseInt(taskId.substring(1));
-        if (taskNum >= Task.getTaskNum()) {
-            Task.setTaskCount(taskNum);
-            Task.taskNumInc();
-        }
-    }
+    public abstract String getTaskId();
 
     @Override
     public abstract boolean equals(Object other);

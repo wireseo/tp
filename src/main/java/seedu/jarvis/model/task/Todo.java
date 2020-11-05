@@ -33,6 +33,8 @@ public class Todo extends Task {
         this.description = description;
     }
 
+    // ------------------- Getters -----------------------------------------------------------------------------
+
     public String getTaskId() {
         return taskId;
     }
@@ -40,6 +42,8 @@ public class Todo extends Task {
     public String getDescription() {
         return description;
     }
+
+    // ---------------------------------------------------------------------------------------------------------
 
     /**
      * Returns a unique task id.
