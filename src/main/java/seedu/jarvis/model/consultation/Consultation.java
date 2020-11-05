@@ -102,10 +102,10 @@ public class Consultation {
         StringBuilder sb = new StringBuilder();
         sb.append("Consultation with ");
         sb.append(getStudentName());
-        sb.append(" @");
+        sb.append(" [");
         LocalDateTime date = getDateAndTime();
-        sb.append(date.getDayOfMonth() + " " + date.getMonth() + ", " + date.getYear() + " / ");
-        sb.append(date.getHour() + ":" + date.getMinute());
+        sb.append(date.getDayOfMonth() + " " + date.getMonth() + ", " + date.getYear() + " @ ");
+        sb.append(date.getHour() + ":" + date.getMinute() + "]");
 
         return sb.toString();
     }
