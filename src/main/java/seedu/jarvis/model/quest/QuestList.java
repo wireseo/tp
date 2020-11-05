@@ -1,5 +1,7 @@
 package seedu.jarvis.model.quest;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +15,16 @@ public class QuestList {
      * Adds a Quest to the list.
      */
     public void add(Quest toAdd) {
+        requireNonNull(toAdd);
         internalList.add(toAdd);
+    }
+
+    /**
+     * Returns true if the list contains an equivalent quest as the given argument.
+     */
+    public boolean contains(Quest toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().anyMatch(toCheck::equals);
     }
 
     public void setQuests(List<Quest> quests) {

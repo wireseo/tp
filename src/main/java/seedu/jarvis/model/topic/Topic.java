@@ -1,5 +1,7 @@
 package seedu.jarvis.model.topic;
 
+import static java.util.Objects.requireNonNull;
+
 public class Topic {
     public final String week;
     public final String outline;
@@ -18,6 +20,8 @@ public class Topic {
      * @param outline outline of Topic
      */
     public Topic(String week, String outline) {
+        requireNonNull(week);
+        requireNonNull(outline);
         this.week = week;
         this.outline = outline;
     }

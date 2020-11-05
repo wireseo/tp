@@ -11,11 +11,6 @@ import seedu.jarvis.model.quest.Quest;
  * A utility class containing a list of {@code Quest} objects to be used in tests.
  */
 public class TypicalQuests {
-    public static final String TEST_QUEST_TITLE = "Fractal Dimensions";
-    public static final String TEST_QUEST_DEADLINE = "Due: 26th August, 23:59";
-    public static final Quest TEST_QUEST = new Quest(TEST_QUEST_TITLE, TEST_QUEST_DEADLINE);
-
-    public static final Quest TEST_QUEST_COPY = new Quest(TEST_QUEST_TITLE, TEST_QUEST_DEADLINE);
     public static final Quest RUNIC_CARPETS = new QuestBuilder().withTitle("Runic Carpets")
             .withDeadline("Due: 26th August, 23:59").withIsGraded(false).build();
     public static final Quest COLORFUL_CARPETS = new QuestBuilder().withTitle("Colorful Carpets")
@@ -26,10 +21,6 @@ public class TypicalQuests {
             .withDeadline("Due: 20th October, 23:59").withIsGraded(false).build();
     public static final Quest CURVACEOUS_WIZARDRY = new QuestBuilder().withTitle("Curvaceous Wizardry")
             .withDeadline("Deadline is over").withIsGraded(false).build();
-
-    public static final String TEST_QUEST_TITLE_DIFF = "Musical Notes";
-    public static final String TEST_QUEST_DEADLINE_DIFF = "Due: 12th October, 23:59";
-    public static final Quest TEST_QUEST_DIFF = new Quest(TEST_QUEST_TITLE_DIFF, TEST_QUEST_DEADLINE_DIFF);
 
     private TypicalQuests() {} // prevents instantiation
 
