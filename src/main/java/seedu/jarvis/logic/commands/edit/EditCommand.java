@@ -5,6 +5,8 @@ import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_PASSWORD;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_USERNAME;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_SCORE;
+
 
 import seedu.jarvis.logic.commands.Command;
 import seedu.jarvis.logic.commands.CommandResult;
@@ -22,15 +24,18 @@ public abstract class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "Example: " + COMMAND_WORD + " -s 1 "
             + PREFIX_TELEGRAM + "example132 "
             + PREFIX_EMAIL + "johndoe@example.com\n"
             + "edit -l "
             + "[" + PREFIX_USERNAME + "USERNAME] "
             + "[" + PREFIX_PASSWORD + "PASSWORD] "
-            + "[" + PREFIX_PASSWORD + "PASSWORD]\n"
-            + "Example: " + COMMAND_WORD + PREFIX_USERNAME
-            + "nusstu\\e1234567 " + PREFIX_PASSWORD + "password";;
+            + "[" + PREFIX_PASSWORD + "PASSWORD] "
+            + "Example: " + COMMAND_WORD + " -l " + PREFIX_USERNAME
+            + "nusstu\\e1234567 " + PREFIX_PASSWORD + "password\n"
+            + "edit -mc [index number used in mastery check list] "
+            + "s/[SCORE (1 or 0)] "
+            + "Example: " + COMMAND_WORD + " -mc 1 " + PREFIX_SCORE + "0";
 
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;
