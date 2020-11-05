@@ -7,6 +7,7 @@ import seedu.jarvis.commons.util.StringUtil;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.flag.Flag;
 import seedu.jarvis.model.login.Username;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
 import seedu.jarvis.model.student.Email;
 import seedu.jarvis.model.student.Name;
 import seedu.jarvis.model.student.Telegram;
@@ -106,6 +107,22 @@ public class ParserUtil {
             throw new ParseException(Username.MESSAGE_CONSTRAINTS);
         }
         return new Username(trimmedUsername);
+    }
+
+    /**
+     * Parses an String score with integer values into a boolean.
+     * @param score
+     * @return A Boolean object
+     * @throws ParseException
+     */
+    public static boolean parseScore(String score) throws ParseException {
+        requireNonNull(score);
+        String trimmedScore = score.trim();
+        if (!trimmedScore.equals("1") && !trimmedScore.equals("0")) {
+            throw new ParseException("Mastery check score can only be 0 or 1.");
+        }
+
+        return trimmedScore.equals("1"); // true if 1, false if 0
     }
 
     /**
