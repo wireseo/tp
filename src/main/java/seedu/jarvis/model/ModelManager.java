@@ -18,7 +18,7 @@ import seedu.jarvis.commons.core.LogsCenter;
 import seedu.jarvis.logic.commands.view.ViewUngradedMissionCommand;
 import seedu.jarvis.logic.commands.view.ViewUngradedQuestCommand;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;
@@ -428,6 +428,19 @@ public class ModelManager implements Model {
     public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
         requireNonNull(toAddMasteryCheck);
         return addressBook.hasMasteryCheck(toAddMasteryCheck);
+    }
+
+    @Override
+    public void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck) {
+        requireAllNonNull(target, editedMasteryCheck);
+
+        addressBook.setMasteryCheck(target, editedMasteryCheck);
+    }
+
+    @Override
+    public void updateFilteredMasteryCheckList(Predicate<MasteryCheck> predicate) {
+        requireNonNull(predicate);
+        filteredMasteryChecks.setPredicate(predicate);
     }
 
     //========================= PropertyChangeListener ===================================================
