@@ -25,7 +25,7 @@ public class GreetingTest {
     }
 
     @Test
-    void getGreeting() {
+    void setGreeting_validString_success() {
         Greeting greeting = new Greeting();
         greeting.setGreeting("Wu Peirong");
         assertTrue(greeting.getGreeting().getValue().equals("Welcome, Wu Peirong!"));
