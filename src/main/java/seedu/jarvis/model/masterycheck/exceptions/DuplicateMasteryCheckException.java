@@ -1,4 +1,4 @@
-package seedu.jarvis.model.masteryCheck.exceptions;
+package seedu.jarvis.model.masterycheck.exceptions;
 
 /**
  * Signals that the operation will result in duplicate MasteryChecks
