@@ -7,8 +7,6 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.jarvis.model.consultation.exceptions.ConsultationNotFoundException;
-import seedu.jarvis.model.task.Task;
-import seedu.jarvis.model.task.exceptions.TaskNotFoundException;
 
 
 public class ConsultationList {

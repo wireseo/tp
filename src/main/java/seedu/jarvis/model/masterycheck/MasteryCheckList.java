@@ -1,4 +1,4 @@
-package seedu.jarvis.model.masteryCheck;
+package seedu.jarvis.model.masterycheck;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.jarvis.commons.util.CollectionUtil.requireAllNonNull;
@@ -7,9 +7,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.masteryCheck.exceptions.DuplicateMasteryCheckException;
-import seedu.jarvis.model.masteryCheck.exceptions.MasteryCheckNotFoundException;
+import seedu.jarvis.model.masterycheck.exceptions.DuplicateMasteryCheckException;
+import seedu.jarvis.model.masterycheck.exceptions.MasteryCheckNotFoundException;
 
 
 public class MasteryCheckList {
@@ -35,11 +34,12 @@ public class MasteryCheckList {
         requireNonNull(masteryChecks);
         this.internalList.setAll(masteryChecks);
     }
-
+    /*
     public void setMasteryCheck(List<MasteryCheck> masteryChecks) {
         requireNonNull(masteryChecks);
         this.internalList.setAll(masteryChecks);
-    }
+    }*/
+
     public ObservableList<MasteryCheck> asObservableList() {
         return internalList;
     }

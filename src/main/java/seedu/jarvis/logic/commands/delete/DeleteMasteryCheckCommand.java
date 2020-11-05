@@ -1,16 +1,16 @@
 package seedu.jarvis.logic.commands.delete;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
-
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 public class DeleteMasteryCheckCommand extends DeleteCommand {
 

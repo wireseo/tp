@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
 import seedu.jarvis.logic.commands.add.AddCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 /**
  * Parses input add consultation or mastery check arguments and creates a new specified consultation or mc object

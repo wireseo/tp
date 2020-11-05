@@ -9,10 +9,9 @@ import static seedu.jarvis.logic.parser.CliSyntax.EDIT_STUDENT;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_PASSWORD;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_SCORE;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_USERNAME;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_SCORE;
-
 
 import java.util.Arrays;
 
@@ -136,7 +135,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             return new EditMasteryCheckCommand(masteryCheckIndex, editMasteryCheckDescriptor);
 
         default:
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditMasteryCheckCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditMasteryCheckCommand.MESSAGE_USAGE));
         }
     }
 }

@@ -18,7 +18,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;

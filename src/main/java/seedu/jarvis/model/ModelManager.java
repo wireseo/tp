@@ -18,7 +18,7 @@ import seedu.jarvis.commons.core.LogsCenter;
 import seedu.jarvis.logic.commands.view.ViewUngradedMissionCommand;
 import seedu.jarvis.logic.commands.view.ViewUngradedQuestCommand;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;

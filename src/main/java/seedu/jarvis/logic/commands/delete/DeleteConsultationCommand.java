@@ -1,5 +1,9 @@
 package seedu.jarvis.logic.commands.delete;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.CommandResult;
@@ -7,10 +11,6 @@ import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.consultation.Consultation;
-
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 public class DeleteConsultationCommand extends DeleteCommand {
 

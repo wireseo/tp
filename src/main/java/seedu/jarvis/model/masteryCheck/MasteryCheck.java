@@ -1,8 +1,8 @@
-package seedu.jarvis.model.masteryCheck;
-
-import seedu.jarvis.model.consultation.Consultation;
+package seedu.jarvis.model.masterycheck;
 
 import java.time.LocalDateTime;
+
+import seedu.jarvis.model.consultation.Consultation;
 
 public class MasteryCheck extends Consultation {
     private boolean passed;

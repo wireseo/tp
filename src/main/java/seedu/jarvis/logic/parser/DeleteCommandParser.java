@@ -57,7 +57,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
                 inputsAfterCommandType.length));
 
         if (editArgs.length() <= 0) { // when editArgs is empty (no command after delete -flag)
-             throw new ParseException(
+            throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, EMPTY_DELETE_COMMAND));
         }
 

@@ -1,5 +1,11 @@
 package seedu.jarvis.logic.commands.edit;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.jarvis.model.Model.PREDICATE_SHOW_ALL_MASTERY_CHECKS;
+
+import java.util.List;
+import java.util.Optional;
+
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.commons.util.CollectionUtil;
@@ -7,13 +13,7 @@ import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
-
-import java.util.List;
-import java.util.Optional;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.jarvis.model.Model.PREDICATE_SHOW_ALL_MASTERY_CHECKS;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 public class EditMasteryCheckCommand extends EditCommand {
 

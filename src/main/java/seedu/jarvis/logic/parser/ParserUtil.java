@@ -7,7 +7,6 @@ import seedu.jarvis.commons.util.StringUtil;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.flag.Flag;
 import seedu.jarvis.model.login.Username;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
 import seedu.jarvis.model.student.Email;
 import seedu.jarvis.model.student.Name;
 import seedu.jarvis.model.student.Telegram;

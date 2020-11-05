@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.jarvis.model.masteryCheck.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 public class MasteryCheckCard extends UiPart<Region> {
 
