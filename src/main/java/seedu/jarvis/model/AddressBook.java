@@ -8,8 +8,8 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.consultation.ConsultationList;
-import seedu.jarvis.model.consultation.MasteryCheck;
-import seedu.jarvis.model.consultation.MasteryCheckList;
+import seedu.jarvis.model.masteryCheck.MasteryCheck;
+import seedu.jarvis.model.masteryCheck.MasteryCheckList;
 import seedu.jarvis.model.greeting.Greeting;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.mission.MissionList;
@@ -272,6 +272,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         return masteryChecks.contains(toAddMasteryCheck);
     }
 
+    /**
+     * Replaces the given mastery check {@code target} in the list with {@code editedMasteryCheck}.
+     * {@code target} must exist in the jarvis book.
+     */
+    public void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck) {
+        requireNonNull(editedMasteryCheck);
+
+        masteryChecks.setMasteryCheck(target, editedMasteryCheck);
+    }
     //======================== Tasks ==========================================================================
     /**
      * Returns true if a todo with the same identity as {@code todo} exists in the jarvis book.
