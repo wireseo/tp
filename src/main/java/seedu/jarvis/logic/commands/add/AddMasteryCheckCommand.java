@@ -9,6 +9,7 @@ import seedu.jarvis.model.Model;
 import seedu.jarvis.model.consultation.MasteryCheck;
 
 public class AddMasteryCheckCommand extends AddCommand {
+    //@@author wireseo
     public static final String MESSAGE_DUPLICATE_MASTERY_CHECK = "This mastery check already exists in jarvis";
     public static final String MESSAGE_SUCCESS_MASTERY_CHECK = "New mastery check added: %1$s";
 
