@@ -395,6 +395,11 @@ public class ModelManager implements Model {
         return addressBook.hasConsultation(toAddConsultation);
     }
 
+    @Override
+    public void deleteConsultation(Consultation consultation) {
+        addressBook.removeConsultation(consultation);
+    }
+
     //========================= Mastery Checks ================================================================
 
     @Override
@@ -442,6 +447,12 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredMasteryChecks.setPredicate(predicate);
     }
+
+    @Override
+    public void deleteMasteryCheck(MasteryCheck masteryCheck) {
+        addressBook.removeMasteryCheck(masteryCheck);
+    }
+
 
     //========================= PropertyChangeListener ===================================================
     @Override

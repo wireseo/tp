@@ -241,9 +241,14 @@ public interface Model {
 
     /**
      * Adds the given consultation.
-     * {@code consultation} must not already exist in the jarvis book.
+     * {@code Consultation} must not already exist in the jarvis book.
      */
     void addConsultation(Consultation consultation);
+
+    /**
+     * Deletes the given consultation.
+     */
+    void deleteConsultation(Consultation consultation);
 
     void setConsultations(List<Consultation> consultations);
 
@@ -284,6 +289,10 @@ public interface Model {
      */
     void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck);
 
+    /**
+     * Deletes the given mastery check.
+     */
+    void deleteMasteryCheck(MasteryCheck masteryCheck);
 
     //=========== Filtered Mission List Accessors =============================================================
 
