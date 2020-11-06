@@ -211,24 +211,22 @@ Shows a message explaining how to access the help page.
 #### 6.3.1 Adding Todos : `-t`
 
 Adds your personal `Todo` with a `description`.
-
-![AddTodo](images/userguide/addTodo.png)
-
 <br>**Format: `add -t DESCRIPTION`**
 <br>Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
+![AddTodo](images/userguide/addTodo.png)
+
 #### 6.3.2 Adding Events : `-e`
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
-
-![AddEvent](images/userguide/addEvent.png)
-
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
+
+![AddEvent](images/userguide/addEvent.png)
 
 <div markdown="block" class="alert alert-info">
 
@@ -238,13 +236,12 @@ An `Event` requires extra `date` and `time` specifications in order to create.
 #### 6.3.3 Adding Deadlines : `-d`
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
-
-![AddDeadline](images/userguide/addDeadline.png)
-
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
+
+![AddDeadline](images/userguide/addDeadline.png)
 
 <div markdown="block" class="alert alert-info">
 
@@ -325,13 +322,12 @@ Do note that the SCORE parameter can only be 0 or 1, according to the actual res
 #### 6.5.1 Deleting Tasks : `-t`
 
 Deletes a task based on the `TASK_ID` you specify.
-
-![DeleteTask](images/userguide/deleteTask.png)
-
 <br>**Format:`delete -t TASK_ID`**
 <br>Examples:
 * `delete -t T3`
 * `delete -t D2`
+
+![DeleteTask](images/userguide/deleteTask.png)
 
 #### 6.5.2 Deleting Consultations : `-c`
 
@@ -365,12 +361,11 @@ You may also click on the `Student` tab to do so.
 
 Shows all students that match(partial and full) the student name entered after the command. The name is case
 -insensitive. An example of a partial match will be `view -s do` resulting in John Doe being displayed.
-
-![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
-
 <br>**Format: `view -s [NAME]`**
 <br>Examples:
 * `view -s John Doe`
+
+![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
 #### 6.6.3 Viewing all Consultation sessions : `-c`
 
@@ -460,18 +455,16 @@ You may also click on the `Quest` tab to do so.
 #### 6.6.11 Viewing ungraded Missions : `-um`
 
 Shows the missions that you have not yet graded.
+<br>**Format: `view -um`**
 
 ![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
-
-<br>**Format: `view -um`**
 
 #### 6.6.12 Viewing ungraded Quests : `-uq`
 
 Shows the quests that you have not yet graded.
+<br>**Format: `view -uq`**
 
 ![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
-
-<br>**Format: `view -uq`**
 
 #### 6.6.13 Viewing all Tasks : `-t`
 
