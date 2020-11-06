@@ -3,6 +3,7 @@ package seedu.jarvis.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.jarvis.model.task.Task.NO_DATE_TIME_DESCRIPTION;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FIRST;
 
@@ -116,15 +117,32 @@ public class TaskTest {
     }
 
     @Test
-    public void getTypes() {
+    public void getTypeTest() {
         assertEquals(Task.getType(todoTest), TYPE_TODO);
         assertEquals(Task.getType(eventTest), TYPE_EVENT);
         assertEquals(Task.getType(deadlineTest), TYPE_DEADLINE);
+        Task taskTest = todoTest;
+        assertEquals(Task.getType(taskTest), TYPE_TODO);
     }
 
     @Test
     public void getUnformattedPossibleDateTimeTest() {
+        // Event and Deadline have unformatted date time
+        assertEquals(eventTest.getUnformattedPossibleDateTime(eventTest), TEST_TASK_DATETIME_FIRST.toString());
+        assertEquals(eventTest.getUnformattedPossibleDateTime(eventTest), eventTest.getUnformattedDateTime());
+        assertEquals(deadlineTest.getUnformattedPossibleDateTime(deadlineTest), TEST_TASK_DATETIME_FIRST.toString());
+        assertEquals(deadlineTest.getUnformattedPossibleDateTime(deadlineTest), deadlineTest.getUnformattedDateTime());
+        // Todo has no unformatted date time
+        assertEquals(todoTest.getUnformattedPossibleDateTime(todoTest), NO_DATE_TIME_DESCRIPTION);
+    }
 
+    @Test
+    public void getFormattedPossibleDateTimeTest() {
+        // Event and Deadline have unformatted date time
+        assertEquals(eventTest.getFormattedPossibleDateTime(eventTest), eventTest.getDateTime());
+        assertEquals(deadlineTest.getFormattedPossibleDateTime(deadlineTest), deadlineTest.getDateTime());
+        // Todo has no unformatted date time
+        assertEquals(todoTest.getFormattedPossibleDateTime(todoTest), NO_DATE_TIME_DESCRIPTION);
     }
 
 }

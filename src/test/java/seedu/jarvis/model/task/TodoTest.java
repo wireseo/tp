@@ -3,6 +3,7 @@ package seedu.jarvis.model.task;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FOURTH;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_SECOND;
@@ -15,6 +16,7 @@ public class TodoTest {
     private final Todo todoTestTwo = new Todo(TEST_TASK_DESCRIPTION_SECOND);
     private final Todo todoTestThree = new Todo(TEST_TASK_DESCRIPTION_THIRD);
     private final Todo todoTestFour = new Todo(TEST_TASK_DESCRIPTION_FOURTH);
+    private final Event eventTest = new Event(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -39,8 +41,11 @@ public class TodoTest {
         //same object reference -> true
         assertTrue(todoTest.equals(todoTest));
 
-        //different object refernce -> false
+        //different object reference -> false
         assertFalse(todoTestTwo.equals(todoTestFour));
+
+        //totally different object classes -> false
+        assertFalse(todoTest.equals(eventTest));
     }
 
     @Test

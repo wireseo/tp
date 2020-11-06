@@ -12,6 +12,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.model.task.exceptions.TaskNotFoundException;
+
 class UniqueTasksListTest {
 
     private final UniqueTasksList taskList = new UniqueTasksList();
@@ -36,6 +38,11 @@ class UniqueTasksListTest {
     public void contains_taskInList_returnsTrue() {
         taskList.add(TEST_EVENT);
         assertTrue(taskList.contains(TEST_EVENT));
+        taskList.remove(TEST_EVENT);
+        assertFalse(taskList.contains(TEST_EVENT));
+
+        //Throws an exception if there is no such task found in the task list that is asked to be removed.
+        assertThrows(TaskNotFoundException.class, () -> taskList.remove(TEST_EVENT));
     }
 
     @Test
@@ -50,4 +57,5 @@ class UniqueTasksListTest {
     void changeTaskListTo_asObservableList() {
         assertFalse(taskList.getClass().equals(taskList.asObservableList().getClass()));
     }
+
 }

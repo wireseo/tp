@@ -4,6 +4,7 @@ public abstract class Task {
 
     public static final String EVENT = "E";
     public static final String DEADLINE = "D";
+    public static final String NO_DATE_TIME_DESCRIPTION = "-";
 
     private static int taskNum = 1;
 
@@ -50,7 +51,7 @@ public abstract class Task {
             return taskDeadline.getUnformattedDateTime();
 
         } else { // all other task types have no date time attributes
-            return "-";
+            return NO_DATE_TIME_DESCRIPTION;
         }
     }
 
@@ -65,7 +66,7 @@ public abstract class Task {
             return taskDeadline.getDateTime();
 
         } else { // all other task types have no date time attributes
-            return "-";
+            return NO_DATE_TIME_DESCRIPTION;
         }
     }
 
