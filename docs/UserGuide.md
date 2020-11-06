@@ -259,9 +259,11 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
+<div markdown="block" class="alert alert-info">
+
 When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
 Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
-
+</div>
 
 #### 6.3.5 Adding Mastery Checks : `-mc`
 
@@ -271,11 +273,10 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
-When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
-Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
-
 <div markdown="block" class="alert alert-info">
 
+When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
+Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
 When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
 </div>
 
@@ -289,7 +290,8 @@ Similar to the format for editing students above, you can use tags to specify th
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
 
-<br>Notes:
+<div markdown="block" class="alert alert-info">
+
 * Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Source Academy to be reflected in the GUI.
 * After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
 * This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values.
@@ -297,6 +299,7 @@ Similar to the format for editing students above, you can use tags to specify th
 as we choose to give you the benefit of doubt of keying in the wrong login details.
 * Whenever a TA account is used to log in, the information will always be updated to reflect the logged in TA's student,
 mission and quest information.
+</div>
 
 #### 6.4.2 Editing Student Information : `-s`
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
@@ -312,8 +315,10 @@ Edits the score of a `Mastery Check` session with a `Student`.
 * `edit -mc 1 s/0`
 * `edit -mc 3 s/1`
 
-Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of Mastery Check pass/fail in CS1101S.
+<div markdown="block" class="alert alert-info">
 
+Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of Mastery Check pass/fail in CS1101S.
+</div>
 
 ### 6.5 Deleting Information : `delete`
 
@@ -392,9 +397,12 @@ Shows all `upcoming consultation` sessions.
 <br>Examples:
 * `view -cu`
 
+<div markdown="block" class="alert alert-info">
+
 When the time of the consultation displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
 it is still considered as an upcoming consultation when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the consultation session.
 When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated consultation list with the current local time as the standard.
+</div>
 
 #### 6.6.6 Viewing all Mastery Check sessions : `-mc`
 
@@ -412,7 +420,10 @@ Shows all `past MC` sessions.
 <br>Examples:
 * `view -mcp`
 
+<div markdown="block" class="alert alert-info">
+
 When the mastery check time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+</div>
 
 #### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
 
@@ -421,9 +432,12 @@ Shows all `upcoming MC` sessions.
 <br>Examples:
 * `view -mcu`
 
+<div markdown="block" class="alert alert-info">
+
 When the time of the mastery check displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
 it is still considered as an upcoming mastery check when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the mastery check session.
 When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated mastery check list with the current local time as the standard.
+</div>
 
 #### 6.6.9 Viewing deadline for Missions : `-m`
 
