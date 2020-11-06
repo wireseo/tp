@@ -34,18 +34,9 @@ public class MasteryCheckList {
         requireNonNull(masteryChecks);
         this.internalList.setAll(masteryChecks);
     }
-    /*
-    public void setMasteryCheck(List<MasteryCheck> masteryChecks) {
-        requireNonNull(masteryChecks);
-        this.internalList.setAll(masteryChecks);
-    }*/
 
     public ObservableList<MasteryCheck> asObservableList() {
         return internalList;
-    }
-
-    public boolean isMasteryCheckInList(String name) {
-        return internalList.stream().anyMatch(masteryCheck -> masteryCheck.getIdentifier().equals(name));
     }
 
     /**
