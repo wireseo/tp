@@ -12,8 +12,8 @@ Given below are my contributions to the project.
 
 * **New Feature**: Added the ability to view consultations and mastery checks.
   * What it does: allows the user to view all/past/upcoming consultations or mastery checks.
-  * Justification: This feature improves the product significantly because the user needs to view consultation appointments created within the software.
-  * Highlights: This enhancement was a completely new feature that did not exist in the AB3 codebase, and had to be designed from scratch. Due to design concerns, the class structure of Student and Consultations had to be changed multiple times which resulted in multiple attempts to refactor and restructure, as well as rewriting tests. It required an in-depth analysis of design alternatives. The implementation too was challenging as it was a completely new command for completely new classes.
+  * Justification: This feature improves the product significantly because the user needs to view consultation appointments created within the software and easily switch between past, current and future views.
+  * Highlights: This enhancement was a completely new feature that did not exist in the AB3 codebase, and had to be designed from scratch. Due to design concerns, the class structure of Student and Consultations had to be changed multiple times which resulted in multiple attempts to refactor and restructure, as well as rewriting tests. It required an in-depth analysis of design alternatives. The implementation too was challenging as it was a completely new command for completely new classes. Looking at the past/upcoming consultations only required the use of Java Streams and the Optional class.
 
 * **New Feature**: Added the ability to add and delete consultations and mastery checks.
   * What it does: allows the user to add and delete consultations or mastery checks.
