@@ -8,9 +8,9 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.consultation.ConsultationList;
-import seedu.jarvis.model.consultation.MasteryCheck;
-import seedu.jarvis.model.consultation.MasteryCheckList;
 import seedu.jarvis.model.greeting.Greeting;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheckList;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.mission.MissionList;
 import seedu.jarvis.model.quest.Quest;
@@ -244,6 +244,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         return consultations.contains(toAddConsultation);
     }
 
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the jarvis book.
+     */
+    public void removeConsultation(Consultation key) {
+        consultations.remove(key);
+    }
+
     //======================== MasteryChecks =======================================================
 
     public void addMasteryCheck(MasteryCheck masteryCheck) {
@@ -270,6 +278,24 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
         requireNonNull(toAddMasteryCheck);
         return masteryChecks.contains(toAddMasteryCheck);
+    }
+
+    /**
+     * Replaces the given mastery check {@code target} in the list with {@code editedMasteryCheck}.
+     * {@code target} must exist in the jarvis book.
+     */
+    public void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck) {
+        requireNonNull(editedMasteryCheck);
+
+        masteryChecks.setMasteryCheck(target, editedMasteryCheck);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the jarvis book.
+     */
+    public void removeMasteryCheck(MasteryCheck key) {
+        masteryChecks.remove(key);
     }
 
     //======================== Tasks ==========================================================================

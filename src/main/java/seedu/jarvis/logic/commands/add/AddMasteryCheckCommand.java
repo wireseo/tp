@@ -6,7 +6,7 @@ import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 public class AddMasteryCheckCommand extends AddCommand {
     public static final String MESSAGE_DUPLICATE_MASTERY_CHECK = "This mastery check already exists in jarvis";

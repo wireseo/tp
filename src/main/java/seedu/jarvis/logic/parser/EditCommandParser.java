@@ -4,10 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.commons.util.StringUtil.pad;
 import static seedu.jarvis.logic.parser.CliSyntax.EDIT_LOGIN;
+import static seedu.jarvis.logic.parser.CliSyntax.EDIT_MASTERY_CHECK;
 import static seedu.jarvis.logic.parser.CliSyntax.EDIT_STUDENT;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_PASSWORD;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_SCORE;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_USERNAME;
 
@@ -17,6 +19,8 @@ import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.edit.EditCommand;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
+import seedu.jarvis.logic.commands.edit.EditMasteryCheckCommand;
+import seedu.jarvis.logic.commands.edit.EditMasteryCheckCommand.EditMasteryCheckDescriptor;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
@@ -106,8 +110,34 @@ public class EditCommandParser implements Parser<EditCommand> {
 
             return new EditLoginCommand(editLoginDescriptor);
 
+        case EDIT_MASTERY_CHECK:
+            argMultimap = ArgumentTokenizer.tokenize(pad(editArgs), PREFIX_SCORE);
+            String[] split = editArgs.split("\\s+");
+
+            Index masteryCheckIndex;
+
+            try {
+                masteryCheckIndex = ParserUtil.parseIndex(split[0]);
+            } catch (ParseException pe) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditMasteryCheckCommand.MESSAGE_USAGE), pe);
+            }
+
+            EditMasteryCheckDescriptor editMasteryCheckDescriptor = new EditMasteryCheckDescriptor();
+            if (argMultimap.getValue(PREFIX_SCORE).isPresent()) {
+                editMasteryCheckDescriptor.setPassed(ParserUtil.parseScore(argMultimap.getValue(PREFIX_SCORE).get()));
+            }
+
+            if (!editMasteryCheckDescriptor.isAnyFieldEdited()) {
+                throw new ParseException(EditMasteryCheckCommand.MESSAGE_NOT_EDITED);
+            }
+
+            return new EditMasteryCheckCommand(masteryCheckIndex, editMasteryCheckDescriptor);
+
         default:
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditStudentCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditMasteryCheckCommand.MESSAGE_USAGE));
         }
     }
 }
+

@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 import seedu.jarvis.logic.commands.ClearCommand;
 import seedu.jarvis.logic.commands.Command;
 import seedu.jarvis.logic.commands.ExitCommand;
-import seedu.jarvis.logic.commands.FindCommand;
 import seedu.jarvis.logic.commands.HelpCommand;
 import seedu.jarvis.logic.commands.add.AddCommand;
 import seedu.jarvis.logic.commands.delete.DeleteCommand;
@@ -55,9 +54,6 @@ public class AddressBookParser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
-
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

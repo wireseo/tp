@@ -10,7 +10,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import seedu.jarvis.commons.core.GuiSettings;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;
@@ -241,9 +241,14 @@ public interface Model {
 
     /**
      * Adds the given consultation.
-     * {@code consultation} must not already exist in the jarvis book.
+     * {@code Consultation} must not already exist in the jarvis book.
      */
     void addConsultation(Consultation consultation);
+
+    /**
+     * Deletes the given consultation.
+     */
+    void deleteConsultation(Consultation consultation);
 
     void setConsultations(List<Consultation> consultations);
 
@@ -271,6 +276,23 @@ public interface Model {
     boolean isMasteryCheckInList(String identifier);
 
     boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck);
+
+    /**
+     * Updates the filter of the filtered mastery check list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredMasteryCheckList(Predicate<MasteryCheck> predicate);
+
+    /**
+     * Replaces the given mastery check {@code target} with {@code editedMasteryCheck}.
+     * {@code target} must exist in the jarvis book.
+     */
+    void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck);
+
+    /**
+     * Deletes the given mastery check.
+     */
+    void deleteMasteryCheck(MasteryCheck masteryCheck);
 
     //=========== Filtered Mission List Accessors =============================================================
 

@@ -109,6 +109,22 @@ public class ParserUtil {
     }
 
     /**
+     * Parses an String score with integer values into a boolean.
+     * @param score
+     * @return A Boolean object
+     * @throws ParseException
+     */
+    public static boolean parseScore(String score) throws ParseException {
+        requireNonNull(score);
+        String trimmedScore = score.trim();
+        if (!trimmedScore.equals("1") && !trimmedScore.equals("0")) {
+            throw new ParseException("Mastery check score can only be 0 or 1.");
+        }
+
+        return trimmedScore.equals("1"); // true if 1, false if 0
+    }
+
+    /**
      * Parses a string containing a flag such as "-s" and return the Flag object which matches it.
      * @param flag The String arguments to be parsed
      */

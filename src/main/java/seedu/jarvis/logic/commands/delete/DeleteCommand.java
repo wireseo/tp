@@ -13,9 +13,10 @@ public abstract class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_DELETE_USAGE = "Delete Command supports:\n"
-            + "1. delete task (delete -t)"
-            + "2. delete consultation (delete -c)"
-            + "3. delete mastery check (delete -mc)";
+            + "1. delete task (delete -t)\n"
+            + "2. delete consultation (delete -c)\n"
+            + "3. delete mastery check (delete -mc)\n"
+            + "All three must be followed by an index.";
 
     public abstract CommandResult execute(Model model) throws CommandException;
 

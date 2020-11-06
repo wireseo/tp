@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.testutil.StudentBuilder;
 
 

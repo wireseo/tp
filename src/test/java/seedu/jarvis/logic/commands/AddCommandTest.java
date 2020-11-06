@@ -18,7 +18,7 @@ import seedu.jarvis.model.ReadOnlyUserLogin;
 import seedu.jarvis.model.ReadOnlyUserPrefs;
 import seedu.jarvis.model.UserLogin;
 import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.consultation.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;
@@ -271,7 +271,7 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<MasteryCheck> getFilteredMasteryChecksList() {
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -287,6 +287,24 @@ public class AddCommandTest {
         @Override
         public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredMasteryCheckList(Predicate<MasteryCheck> predicate) {
+            throw new AssertionError("This method should not be called.");
+
+        }
+
+        @Override
+        public void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck) {
+            throw new AssertionError("This method should not be called.");
+
+        }
+
+        @Override
+        public void deleteMasteryCheck(MasteryCheck masteryCheck) {
+            throw new AssertionError("This method should not be called.");
+
         }
 
         @Override
@@ -312,6 +330,12 @@ public class AddCommandTest {
         @Override
         public void addConsultation(Consultation consultation) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteConsultation(Consultation consultation) {
+            throw new AssertionError("This method should not be called.");
+
         }
 
         @Override
@@ -386,7 +410,7 @@ public class AddCommandTest {
 
         @Override
         public StringProperty getSummary() {
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
