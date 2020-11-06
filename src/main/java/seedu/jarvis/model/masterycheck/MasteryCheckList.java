@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.jarvis.model.masterycheck.exceptions.DuplicateMasteryCheckException;
 import seedu.jarvis.model.masterycheck.exceptions.MasteryCheckNotFoundException;
+import seedu.jarvis.model.student.UniqueStudentsList;
 
 
 public class MasteryCheckList {
@@ -30,6 +31,10 @@ public class MasteryCheckList {
         return internalList.stream().anyMatch(toCheck::isSameConsultation);
     }
 
+    /**
+     * Replaces the contents of this list with {@code masteryChecks}.
+     * {@code masteryChecks} must not contain duplicate mastery checks.
+     */
     public void setMasteryChecks(List<MasteryCheck> masteryChecks) {
         requireNonNull(masteryChecks);
         this.internalList.setAll(masteryChecks);
@@ -40,7 +45,7 @@ public class MasteryCheckList {
     }
 
     /**
-     * Replaces the student {@code target} in the list with {@code editedStudent}.
+     * Replaces the mastery check {@code target} in the list with {@code editedMasteryCheck}.
      * {@code target} must exist in the list.
      */
     public void setMasteryCheck(MasteryCheck target, MasteryCheck editedMasteryCheck) {
@@ -67,5 +72,16 @@ public class MasteryCheckList {
         if (!internalList.remove(toRemove)) {
             throw new MasteryCheckNotFoundException();
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this  || (other instanceof MasteryCheckList
+                && internalList.equals(((MasteryCheckList) other).internalList));
+    }
+
+    @Override
+    public int hashCode() {
+        return internalList.hashCode();
     }
 }
