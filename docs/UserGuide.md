@@ -131,14 +131,15 @@ line. The green box below the command input box is the user feedback box. Jarvis
 this box.
 
 ### 4.1 UI Layout
-<br>
+
    * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
-<br>
    * Clicking on each tab will give you the information you require for that field.
+   
+<br>
 
 ![Jarvis](images/userguide/Jarvis.png)
 
-The core features are based on Students, Missions, Quests, Consultations, Mastery Checks and Tasks.
+The core features are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`.
 Each core feature has a tab for the organisation of its information.
 
 <div markdown="block" class="alert alert-info">
