@@ -558,4 +558,4 @@ Mastery Checks are a specific type of consultations that is mandatory and graded
 ## 9. FAQ
 
 `Q: How do I transfer my data to another Computer?`
-<br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
+<br>`A: Install the app in the other computer and overwrite the empty data file(.json file) it creates with the file(.json file) that contains the data of your previous JARVIS home folder.`
