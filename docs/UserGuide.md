@@ -322,7 +322,7 @@ Do note that the SCORE parameter can only be 0 or 1, according to the actual res
 #### 6.5.1 Deleting Tasks : `-t`
 
 Deletes a task based on the `TASK_ID` you specify.
-<br>**Format:`delete -t TASK_ID`**
+<br>**Format: `delete -t TASK_ID`**
 <br>Examples:
 * `delete -t T3`
 * `delete -t D2`
@@ -331,15 +331,15 @@ Deletes a task based on the `TASK_ID` you specify.
 
 #### 6.5.2 Deleting Consultations : `-c`
 
-Deletes a task based on the `CONSULTATION_ID` you specify.
+Deletes a `Task` based on the `CONSULTATION_ID` you specify.
 <br>**Format: `delete -c CONSULTATION_ID`**
 <br>Examples:
 * `delete -c 3`
 
 #### 6.5.3 Deleting Mastery Checks : `-mc`
 
-Similar to the above process of deleting consultations, deleting `Mastery Checks` first
-Deletes a task based on the `MASTERYCHECK_ID` you specify.
+Similar to the above process of deleting `Consultation`, deleting `Mastery Checks` first
+Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 <br>**Format: `delete -mc MASTERYCHECK_ID`**
 <br>Examples:
 * `delete -mc 3`
