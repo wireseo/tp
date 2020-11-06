@@ -284,7 +284,7 @@ When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
 
 #### 6.4.1 Editing Login Information : `-l`
 
-Similar to the format for editing students above, you can use tags to specify the field to be edited.
+You can use tags to specify the field to be edited.
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
