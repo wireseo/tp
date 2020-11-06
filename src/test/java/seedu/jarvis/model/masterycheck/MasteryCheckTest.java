@@ -1,4 +1,4 @@
-package seedu.jarvis.model.consultation;
+package seedu.jarvis.model.masterycheck;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
