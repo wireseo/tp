@@ -208,7 +208,7 @@ Shows a message explaining how to access the help page.
 
 ### 6.3 Adding Information : `add`
 
-#### 6.3.1 Adding Todos `-t`
+#### 6.3.1 Adding Todos : `-t`
 
 Adds your personal `Todo` with a `description`.
 
