@@ -95,7 +95,7 @@ please check that you have installed the correct driver:
     1. Windows: chromedriver.exe
     1. MacOS: chromedriver_mac
     1. Linux: chromedriver_linux
-
+<br>
 1. Copy both files to the folder you want to use as the _home folder_ for your Jarvis.
 
 1. There are two options for launching Jarvis.
@@ -274,6 +274,10 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
 Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
 
+<div markdown="block" class="alert alert-info">
+
+When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
+</div>
 
 ### 6.4 Editing Information : `edit`
 
