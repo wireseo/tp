@@ -350,9 +350,11 @@ Deletes a task based on the `MASTERYCHECK_ID` you specify.
 Shows a list of all students under the tutor in Jarvis.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
 
-![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
-
 <br>**Format: `view -s`**
+
+You may also click on the `Student` tab to do so.
+
+![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
 #### 6.6.2 Viewing one Student : `-s [NAME]`
 
@@ -371,6 +373,8 @@ Shows all `confirmed consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
+
+You may also click on the `Consultation` tab to do so.
 
 #### 6.6.4 Viewing past Consultation sessions : `-cp`
 
@@ -398,6 +402,8 @@ Shows all `confirmed MC` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
 <br>Examples:
 * `view -mc`
+
+You may also click on the `Mastery Check` tab to do so.
 
 #### 6.6.7 Viewing past Mastery Check sessions : `-mcp`
 
@@ -457,6 +463,8 @@ Shows the quests that you have not yet graded.
 
 Shows the list of all your current tasks.
 <br>**Format: `view -t`**
+
+You may also click on the `Task` tab to do so.
 
 #### 6.6.14 Viewing all Todos : `-tt`
 
