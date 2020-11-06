@@ -259,6 +259,10 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
+When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
+Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
+
+
 #### 6.3.5 Adding Mastery Checks : `-mc`
 
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
@@ -266,6 +270,10 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
+
+When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
+Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
+
 
 ### 6.4 Editing Information : `edit`
 
@@ -368,12 +376,18 @@ Shows all `past consultation` sessions.
 <br>Examples:
 * `view -cp`
 
+When the consultation time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+
 #### 6.6.5 Viewing upcoming Consultation sessions : `-cu`
 
 Shows all `upcoming consultation` sessions.
 <br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
+
+When the time of the consultation displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
+it is still considered as an upcoming consultation when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the consultation session.
+When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated consultation list with the current local time as the standard.
 
 #### 6.6.6 Viewing all Mastery Check sessions : `-mc`
 
@@ -389,12 +403,18 @@ Shows all `past MC` sessions.
 <br>Examples:
 * `view -mcp`
 
+When the mastery check time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+
 #### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
 
 Shows all `upcoming MC` sessions.
 <br>**Format: `view -mcu`**
 <br>Examples:
 * `view -mcu`
+
+When the time of the mastery check displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
+it is still considered as an upcoming mastery check when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the mastery check session.
+When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated mastery check list with the current local time as the standard.
 
 #### 6.6.9 Viewing deadline for Missions : `-m`
 
