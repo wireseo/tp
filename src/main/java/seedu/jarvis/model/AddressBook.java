@@ -262,7 +262,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<MasteryCheck> getMasteryChecksList() {
         return this.masteryChecks.asObservableList();
     }
-    
+
     /**
      * Returns whether mastery check is in mastery check list already.
      * @return a boolean

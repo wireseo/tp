@@ -1,11 +1,13 @@
 package seedu.jarvis.storage;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.consultation.Consultation;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 
 public class JsonAdaptedConsultation {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Consultation's %s field is missing!";
@@ -37,9 +39,8 @@ public class JsonAdaptedConsultation {
 
     /**
      * Converts this Jackson-friendly adapted Consultation object into the model's {@code Consultation} object.
-     *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted Consultation.
      * @return Consultation
+     * @throws IllegalValueException if there were any data constraints violated in the adapted Consultation.
      */
     public Consultation toModelType() throws IllegalValueException {
         if (studentName == null) {

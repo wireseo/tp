@@ -73,8 +73,10 @@ class JsonSerializableAddressBook {
         greeting = source.getGreeting().get();
         students.addAll(source.getStudentList().stream().map(JsonAdaptedStudent::new).collect(Collectors.toList()));
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
-        consultations.addAll(source.getConsultationList().stream().map(JsonAdaptedConsultation::new).collect(Collectors.toList()));
-        masteryChecks.addAll(source.getMasteryChecksList().stream().map(JsonAdaptedMasteryCheck::new).collect(Collectors.toList()));
+        consultations.addAll(source.getConsultationList().stream().map(JsonAdaptedConsultation::new).collect(
+                Collectors.toList()));
+        masteryChecks.addAll(source.getMasteryChecksList().stream().map(JsonAdaptedMasteryCheck::new).collect(
+                Collectors.toList()));
 
     }
 

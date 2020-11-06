@@ -1,11 +1,13 @@
 package seedu.jarvis.storage;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 
 public class JsonAdaptedMasteryCheck {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Mastery Check's %s field is missing!";
@@ -41,9 +43,8 @@ public class JsonAdaptedMasteryCheck {
 
     /**
      * Converts this Jackson-friendly adapted Mastery Check object into the model's {@code MasteryCheck} object.
-     *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted Mastery Check.
      * @return MasteryCheck
+     * @throws IllegalValueException if there were any data constraints violated in the adapted Mastery Check.
      */
     public MasteryCheck toModelType() throws IllegalValueException {
         if (studentName == null) {
@@ -62,7 +63,7 @@ public class JsonAdaptedMasteryCheck {
         try {
             if (passed.equals("T")) {
                 return MasteryCheck.createFullMarkMC(studentName, LocalDateTime.parse(dateAndTime));
-            } else if (passed.equals("F")){
+            } else if (passed.equals("F")) {
                 return MasteryCheck.createZeroMarkMC(studentName, LocalDateTime.parse(dateAndTime));
                 // TODO: this needs to work! otherwise parsing / toString is at fault
             } else {

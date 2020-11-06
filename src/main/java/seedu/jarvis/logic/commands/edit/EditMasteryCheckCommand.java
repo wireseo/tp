@@ -19,8 +19,8 @@ public class EditMasteryCheckCommand extends EditCommand {
 
     public static final String MESSAGE_EDIT_MASTERY_CHECK_SUCCESS = "Edited Mastery Check: %1$s";
     public static final String MESSAGE_DUPLICATE_MASTERY_CHECK = "There may not be any duplicates.";
-    public static final String NO_SCORE_PARAMETER = "To edit the score of the mastery check, " +
-            "must include s/SCORE where SCORE is 1 (pass) or 0 (fail). i.e. edit -mc 1 s/0";
+    public static final String NO_SCORE_PARAMETER = "To edit the score of the mastery check, "
+            + "must include s/SCORE where SCORE is 1 (pass) or 0 (fail). i.e. edit -mc 1 s/0";
 
 
     private final Index index;
