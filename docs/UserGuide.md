@@ -114,10 +114,10 @@ please check that you have installed the correct driver:
 
 1. Type the command in the command box and press Enter to execute it. E.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
-   * `view -s:  Lists all students. `
-   * `view -s John Doe: Lists information about a student named John Doe.`
-   * `add -t DESCRIPTION : Adds a todo task with specified description.`
-   * `edit -s TASK_ID : Edits student's Name, Email, Telegram.`
+   * `view -s:  Lists all Students.`
+   * `view -s John Doe: Lists information about a Student named John Doe.`
+   * `add -t DESCRIPTION : Adds a Todo task with specified description.`
+   * `edit -s TASK_ID : Edits Student's Name, Email, Telegram.`
    * `exit : Exits the app.`
 
 1. Refer to the Features below for details of each command.
