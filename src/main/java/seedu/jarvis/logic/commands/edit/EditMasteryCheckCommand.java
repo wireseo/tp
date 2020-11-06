@@ -19,6 +19,8 @@ public class EditMasteryCheckCommand extends EditCommand {
 
     public static final String MESSAGE_EDIT_MASTERY_CHECK_SUCCESS = "Edited Mastery Check: %1$s";
     public static final String MESSAGE_DUPLICATE_MASTERY_CHECK = "There may not be any duplicates.";
+    public static final String NO_SCORE_PARAMETER = "To edit the score of the mastery check, "
+            + "must include s/SCORE where SCORE is 1 (pass) or 0 (fail). i.e. edit -mc 1 s/0";
 
 
     private final Index index;
@@ -68,9 +70,9 @@ public class EditMasteryCheckCommand extends EditCommand {
         EditMasteryCheckCommand.EditMasteryCheckDescriptor editMasteryCheckDescriptor) {
         assert masteryCheckToEdit != null;
 
-        Boolean passed = editMasteryCheckDescriptor.isPassed().orElse(masteryCheckToEdit.isPassed());
+        Boolean hasPassed = editMasteryCheckDescriptor.hasPassed().orElse(masteryCheckToEdit.isPassed());
 
-        if (passed) {
+        if (hasPassed) {
             return MasteryCheck.createFullMarkMC(masteryCheckToEdit.getStudentName(),
                     masteryCheckToEdit.getDateAndTime());
         } else {
@@ -102,7 +104,7 @@ public class EditMasteryCheckCommand extends EditCommand {
      * corresponding field value of the mastery check.
      */
     public static class EditMasteryCheckDescriptor {
-        private boolean passed;
+        private boolean hasPassed;
 
         public EditMasteryCheckDescriptor() {}
 
@@ -111,22 +113,22 @@ public class EditMasteryCheckCommand extends EditCommand {
          * A defensive copy of {@code boolean} is used internally.
          */
         public EditMasteryCheckDescriptor(EditMasteryCheckDescriptor toCopy) {
-            setPassed(toCopy.passed);
+            setPassed(toCopy.hasPassed);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(passed);
+            return CollectionUtil.isAnyNonNull(hasPassed);
         }
 
-        public void setPassed(Boolean passed) {
-            this.passed = passed;
+        public void setPassed(Boolean hasPassed) {
+            this.hasPassed = hasPassed;
         }
 
-        public Optional<Boolean> isPassed() {
-            return Optional.ofNullable(passed);
+        public Optional<Boolean> hasPassed() {
+            return Optional.ofNullable(hasPassed);
         }
 
         @Override
@@ -145,7 +147,7 @@ public class EditMasteryCheckCommand extends EditCommand {
             EditMasteryCheckCommand.EditMasteryCheckDescriptor e = (EditMasteryCheckCommand.EditMasteryCheckDescriptor)
                     other;
 
-            return isPassed() == e.isPassed();
+            return hasPassed() == e.hasPassed();
         }
 
     }

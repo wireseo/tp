@@ -259,7 +259,7 @@ public interface Model {
 
     void updateConsultationsList(Predicate<Consultation> predicate);
 
-    boolean isConsultationInList(String identifier);
+    // boolean isConsultationInList(String identifier);
 
     boolean hasConsultation(Consultation toAddConsultation);
 
@@ -273,7 +273,7 @@ public interface Model {
 
     void updateMasteryChecksList(Predicate<MasteryCheck> predicate);
 
-    boolean isMasteryCheckInList(String identifier);
+    // boolean isMasteryCheckInList(String identifier);
 
     boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck);
 

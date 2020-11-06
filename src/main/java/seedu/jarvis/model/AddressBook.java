@@ -231,10 +231,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.consultations.asObservableList();
     }
 
-    public boolean isConsultationInList(String name) {
-        return consultations.isConsultationInList(name);
-    }
-
     /**
      * Returns whether consultation is in consultations list already.
      * @return a boolean
@@ -265,10 +261,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<MasteryCheck> getMasteryChecksList() {
         return this.masteryChecks.asObservableList();
-    }
-
-    public boolean isMasteryCheckInList(String name) {
-        return this.masteryChecks.isMasteryCheckInList(name);
     }
 
     /**
