@@ -110,7 +110,7 @@ please check that you have installed the correct driver:
 
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
- Please refer to the logging in segment below to complete your log in.
+ Please refer to the logging in segment below to complete your login.
 
 1. Type the command in the command box and press Enter to execute it. E.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
@@ -293,9 +293,9 @@ Similar to the format for editing students above, you can use tags to specify th
 * Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Source Academy to be reflected in the GUI.
 * After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
 * This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values.
-* After a TA account has been used to login and fetch the information, logging in with a non-TA account will not change the information displayed
+* After a TA account has been used to log in and fetch the information, logging in with a non-TA account will not change the information displayed
 as we choose to give you the benefit of doubt of keying in the wrong login details.
-* Whenever a TA account is used to login, the information will always be updated to reflect the logged in TA's student,
+* Whenever a TA account is used to log in, the information will always be updated to reflect the logged in TA's student,
 mission and quest information.
 
 #### 6.4.2 Editing Student Information : `-s`
