@@ -30,26 +30,26 @@ public class DeadlineTest {
     }
 
     @Test
-    void getDescription() {
+    void getDescription_sameTrue_diffFalse() {
         assertTrue(deadlineTestTwo.getDescription().equals(TEST_TASK_DESCRIPTION_SECOND));
         assertFalse(deadlineTestFour.getDescription().equals(TEST_TASK_DESCRIPTION_THIRD));
     }
 
     @Test
-    void getDateTime() {
+    void getDateTime_sameTrue_diffFalse() {
         assertTrue(deadlineTest.getDateTime().equals(FORMATTED_DATETIME_ONE));
         assertFalse(deadlineTestTwo.getDateTime().equals(FORMATTED_DATETIME_THREE));
     }
 
     @Test
-    void generateTaskIdTest() {
+    void generateTaskIdTest_uniqueTaskId() {
         String deadlineCurrentId = deadlineTest.getTaskId();
         String deadlineNextId = deadlineTest.generateTaskId();
         assertTrue(deadlineCurrentId != deadlineNextId);
     }
 
     @Test
-    void testEquals() {
+    void testEquals_sameReference() {
         //same object reference -> true
         assertTrue(deadlineTest.equals(deadlineTest));
 
@@ -58,7 +58,7 @@ public class DeadlineTest {
     }
 
     @Test
-    void testToString() {
+    void testToString_deadlineString() {
         String taskTestToString = "[" + deadlineTestThree.getTaskId() + "] " + deadlineTestThree.getDescription()
                 + " by " + deadlineTestThree.getDateTime();
         assertTrue(deadlineTestThree.toString().equals(taskTestToString));

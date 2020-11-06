@@ -24,20 +24,20 @@ public class TodoTest {
     }
 
     @Test
-    void getDescription() {
+    void getDescription_sameTrue_diffFalse() {
         assertTrue(todoTest.getDescription().equals(TEST_TASK_DESCRIPTION_FIRST));
         assertFalse(todoTestThree.getDescription().equals(TEST_TASK_DESCRIPTION_FOURTH));
     }
 
     @Test
-    void generateTaskIdTest() {
+    void generateTaskIdTest_uniqueTaskId() {
         String todoCurrentId = todoTest.getTaskId();
         String todoNextId = todoTest.generateTaskId();
         assertTrue(todoCurrentId != todoNextId);
     }
 
     @Test
-    void testEquals() {
+    void testEquals_sameReference() {
         //same object reference -> true
         assertTrue(todoTest.equals(todoTest));
 
@@ -49,7 +49,7 @@ public class TodoTest {
     }
 
     @Test
-    void testToString() {
+    void testToString_todoString() {
         String taskTestToString = "[" + todoTestThree.getTaskId() + "] " + todoTestThree.getDescription();
         assertTrue(todoTestThree.toString().equals(taskTestToString));
     }

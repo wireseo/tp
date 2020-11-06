@@ -11,15 +11,15 @@ import org.junit.jupiter.api.Test;
 
 public class TaskTest {
 
-    private final String TYPE_TODO = "T";
-    private final String TYPE_EVENT = "E";
-    private final String TYPE_DEADLINE = "D";
+    private final String typeTodo = "T";
+    private final String typeEvent = "E";
+    private final String typeDeadline = "D";
     private final Todo todoTest = new Todo(TEST_TASK_DESCRIPTION_FIRST);
     private final Event eventTest = new Event(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
     private final Deadline deadlineTest = new Deadline(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
 
     @Test
-    public void taskNumIncTest() {
+    public void taskNumIncTest_incByOne() {
         int prev = Task.getTaskNum();
         Task.taskNumInc();
         assertEquals(Task.getTaskNum(), prev + 1);
@@ -31,7 +31,7 @@ public class TaskTest {
     // Simulate Todo read from .json data file, new task num == stored task num
     public void compareAndSet_taskNum_todoEqualStored() {
         int storedTaskNum = Task.getTaskNum();
-        String simulatedNewTaskId = TYPE_TODO + storedTaskNum;
+        String simulatedNewTaskId = typeTodo + storedTaskNum;
 
         Task.compareTaskNum(simulatedNewTaskId);
         int afterComparisonTaskNum = Task.getTaskNum();
@@ -47,7 +47,7 @@ public class TaskTest {
         int storedTaskNum = Task.getTaskNum();
         int taskNumInc = 100;
         int newTaskNum = storedTaskNum + taskNumInc;
-        String simulatedNewTaskId = TYPE_TODO + newTaskNum;
+        String simulatedNewTaskId = typeTodo + newTaskNum;
 
         Task.compareTaskNum(simulatedNewTaskId);
         int afterComparisonTaskNum = Task.getTaskNum();
@@ -62,7 +62,7 @@ public class TaskTest {
         int storedTaskNum = Task.getTaskNum();
         int taskNumInc = 1;
         int newTaskNum = storedTaskNum + taskNumInc;
-        String simulatedNewTaskId = TYPE_EVENT + newTaskNum;
+        String simulatedNewTaskId = typeEvent + newTaskNum;
 
         Task.compareTaskNum(simulatedNewTaskId);
         int afterComparisonTaskNum = Task.getTaskNum();
@@ -77,7 +77,7 @@ public class TaskTest {
         int storedTaskNum = Task.getTaskNum();
         int taskNumInc = 5;
         int newTaskNum = storedTaskNum + taskNumInc;
-        String simulatedNewTaskId = TYPE_DEADLINE + newTaskNum;
+        String simulatedNewTaskId = typeDeadline + newTaskNum;
 
         Task.compareTaskNum(simulatedNewTaskId);
         int afterComparisonTaskNum = Task.getTaskNum();
@@ -92,7 +92,7 @@ public class TaskTest {
         int storedTaskNum = Task.getTaskNum();
         int taskNumInc = -1;
         int newTaskNum = storedTaskNum + taskNumInc;
-        String simulatedNewTaskId = TYPE_EVENT + newTaskNum;
+        String simulatedNewTaskId = typeEvent + newTaskNum;
 
         Task.compareTaskNum(simulatedNewTaskId);
         int afterComparisonTaskNum = Task.getTaskNum();
@@ -107,7 +107,7 @@ public class TaskTest {
         int storedTaskNum = Task.getTaskNum();
         int taskNumInc = -100;
         int newTaskNum = storedTaskNum + taskNumInc;
-        String simulatedNewTaskId = TYPE_DEADLINE + newTaskNum;
+        String simulatedNewTaskId = typeDeadline + newTaskNum;
 
         Task.compareTaskNum(simulatedNewTaskId);
         int afterComparisonTaskNum = Task.getTaskNum();
@@ -117,31 +117,39 @@ public class TaskTest {
     }
 
     @Test
-    public void getTypeTest() {
-        assertEquals(Task.getType(todoTest), TYPE_TODO);
-        assertEquals(Task.getType(eventTest), TYPE_EVENT);
-        assertEquals(Task.getType(deadlineTest), TYPE_DEADLINE);
+    public void getTypeTest_todoEventDeadline() {
+        assertEquals(Task.getType(todoTest), typeTodo);
+        assertEquals(Task.getType(eventTest), typeEvent);
+        assertEquals(Task.getType(deadlineTest), typeDeadline);
         Task taskTest = todoTest;
-        assertEquals(Task.getType(taskTest), TYPE_TODO);
+        assertEquals(Task.getType(taskTest), typeTodo);
     }
 
     @Test
-    public void getUnformattedPossibleDateTimeTest() {
+    public void getUnformattedPossibleDateTimeTest_eventDeadlineHasDateTime() {
         // Event and Deadline have unformatted date time
         assertEquals(eventTest.getUnformattedPossibleDateTime(eventTest), TEST_TASK_DATETIME_FIRST.toString());
         assertEquals(eventTest.getUnformattedPossibleDateTime(eventTest), eventTest.getUnformattedDateTime());
         assertEquals(deadlineTest.getUnformattedPossibleDateTime(deadlineTest), TEST_TASK_DATETIME_FIRST.toString());
         assertEquals(deadlineTest.getUnformattedPossibleDateTime(deadlineTest), deadlineTest.getUnformattedDateTime());
+    }
+
+    @Test
+    public void getUnformattedPossibleDateTimeTest_todoHasNoDateTime() {
         // Todo has no unformatted date time
         assertEquals(todoTest.getUnformattedPossibleDateTime(todoTest), NO_DATE_TIME_DESCRIPTION);
     }
 
     @Test
-    public void getFormattedPossibleDateTimeTest() {
+    public void getFormattedPossibleDateTimeTest_eventDeadlineHasDateTime() {
         // Event and Deadline have unformatted date time
         assertEquals(eventTest.getFormattedPossibleDateTime(eventTest), eventTest.getDateTime());
         assertEquals(deadlineTest.getFormattedPossibleDateTime(deadlineTest), deadlineTest.getDateTime());
-        // Todo has no unformatted date time
+    }
+
+    @Test
+    public void getFormattedPossibleDateTimeTest_todoHasNoDateTime() {
+    // Todo has no unformatted date time
         assertEquals(todoTest.getFormattedPossibleDateTime(todoTest), NO_DATE_TIME_DESCRIPTION);
     }
 
