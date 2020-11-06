@@ -23,7 +23,7 @@ public class UniqueTasksList {
      * Removes the equivalent task from the list.
      * The task must exist in the list.
      */
-    public void remove(Task toRemove) {
+    public void remove(Task toRemove) throws TaskNotFoundException {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new TaskNotFoundException();

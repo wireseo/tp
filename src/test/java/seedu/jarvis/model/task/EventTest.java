@@ -30,19 +30,26 @@ public class EventTest {
     }
 
     @Test
-    void getDescription() {
+    void getDescriptionTest_sameSuccess() {
         assertTrue(eventTest.getDescription().equals(TEST_TASK_DESCRIPTION_FIRST));
         assertFalse(eventTestThree.getDescription().equals(TEST_TASK_DESCRIPTION_FOURTH));
     }
 
     @Test
-    void getDateTime() {
+    void getDateTime_sameSuccess() {
         assertTrue(eventTestTwo.getDateTime().equals(FORMATTED_DATETIME_TWO));
         assertFalse(eventTestFour.getDateTime().equals(FORMATTED_DATETIME_ONE));
     }
 
     @Test
-    void testEquals() {
+    void generateTaskIdTest_uniqueTaskId() {
+        String eventCurrentId = eventTest.getTaskId();
+        String eventNextId = eventTest.generateTaskId();
+        assertTrue(eventCurrentId != eventNextId);
+    }
+
+    @Test
+    void testEquals_sameReference() {
         //same object reference -> true
         assertTrue(eventTest.equals(eventTest));
 
@@ -51,7 +58,7 @@ public class EventTest {
     }
 
     @Test
-    void testToString() {
+    void testToString_eventString() {
         String taskTestToString = "[" + eventTestThree.getTaskId() + "] " + eventTestThree.getDescription()
                 + " at " + eventTestThree.getDateTime();
         assertTrue(eventTestThree.toString().equals(taskTestToString));

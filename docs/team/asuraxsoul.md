@@ -56,7 +56,7 @@ Given below are my contributions to the project.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#215](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/215),
-  [\#231](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/231)
+  [\#300](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/300), [\#304](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/304)
   * Reported bugs and suggestions for other teams in the same CS2103T class: [Dry run PE](https://github.com/Asuraxsoul/ped/issues)
 
 * **Tools**:
