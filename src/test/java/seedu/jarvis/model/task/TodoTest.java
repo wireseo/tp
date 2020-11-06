@@ -24,7 +24,7 @@ public class TodoTest {
     }
 
     @Test
-    void getDescription_sameTrue_diffFalse() {
+    void getDescription_sameSuccess() {
         assertTrue(todoTest.getDescription().equals(TEST_TASK_DESCRIPTION_FIRST));
         assertFalse(todoTestThree.getDescription().equals(TEST_TASK_DESCRIPTION_FOURTH));
     }

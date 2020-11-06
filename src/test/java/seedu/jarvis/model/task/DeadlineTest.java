@@ -30,13 +30,13 @@ public class DeadlineTest {
     }
 
     @Test
-    void getDescription_sameTrue_diffFalse() {
+    void getDescription_sameSuccess() {
         assertTrue(deadlineTestTwo.getDescription().equals(TEST_TASK_DESCRIPTION_SECOND));
         assertFalse(deadlineTestFour.getDescription().equals(TEST_TASK_DESCRIPTION_THIRD));
     }
 
     @Test
-    void getDateTime_sameTrue_diffFalse() {
+    void getDateTime_sameSuccess() {
         assertTrue(deadlineTest.getDateTime().equals(FORMATTED_DATETIME_ONE));
         assertFalse(deadlineTestTwo.getDateTime().equals(FORMATTED_DATETIME_THREE));
     }

@@ -30,13 +30,13 @@ public class EventTest {
     }
 
     @Test
-    void getDescriptionTest_sameTrue_diffFalse() {
+    void getDescriptionTest_sameSuccess() {
         assertTrue(eventTest.getDescription().equals(TEST_TASK_DESCRIPTION_FIRST));
         assertFalse(eventTestThree.getDescription().equals(TEST_TASK_DESCRIPTION_FOURTH));
     }
 
     @Test
-    void getDateTime_sameTrue_diffFalse() {
+    void getDateTime_sameSuccess() {
         assertTrue(eventTestTwo.getDateTime().equals(FORMATTED_DATETIME_TWO));
         assertFalse(eventTestFour.getDateTime().equals(FORMATTED_DATETIME_ONE));
     }

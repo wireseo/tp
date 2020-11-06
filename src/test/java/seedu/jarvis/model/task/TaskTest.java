@@ -149,7 +149,7 @@ public class TaskTest {
 
     @Test
     public void getFormattedPossibleDateTimeTest_todoHasNoDateTime() {
-    // Todo has no unformatted date time
+        // Todo has no unformatted date time
         assertEquals(todoTest.getFormattedPossibleDateTime(todoTest), NO_DATE_TIME_DESCRIPTION);
     }
 
