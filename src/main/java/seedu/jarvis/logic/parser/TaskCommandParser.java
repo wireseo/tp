@@ -140,7 +140,7 @@ public class TaskCommandParser {
 
         } else if (!hasDatePrefix || !hasTimePrefix) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DATE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_INFO));
         }
 
         assert hasDatePrefix : "Date prefix d/ should already be handled properly";

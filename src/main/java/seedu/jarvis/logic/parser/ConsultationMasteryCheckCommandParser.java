@@ -27,13 +27,13 @@ public class ConsultationMasteryCheckCommandParser {
     public static Consultation parseConsultation(String[] nameKeywords, int length) throws ParseException {
         LocalDateTime formattedEventDateTime;
 
+        String studentName = parseStudentName(nameKeywords, length);
+
         try {
             formattedEventDateTime = parseTimedTaskTime(nameKeywords, length);
         } catch (ParseException pe) {
             throw pe;
         }
-
-        String studentName = parseStudentName(nameKeywords, length);
 
         return new Consultation(studentName, formattedEventDateTime);
     }
@@ -109,7 +109,7 @@ public class ConsultationMasteryCheckCommandParser {
 
         } else if (!hasDatePrefix || !hasTimePrefix) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DATE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_INFO));
         }
 
         assert hasDatePrefix : "Date prefix d/ should already be handled properly";

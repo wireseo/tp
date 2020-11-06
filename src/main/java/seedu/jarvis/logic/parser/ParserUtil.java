@@ -109,7 +109,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses an String score with integer values into a boolean.
+     * Parses a String score with integer values into a boolean.
      * @param score
      * @return A Boolean object
      * @throws ParseException
