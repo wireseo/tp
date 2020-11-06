@@ -330,19 +330,18 @@ Deletes a task based on the `TASK_ID` you specify.
 
 #### 6.5.2 Deleting Consultations : `-c`
 
-Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
-<br>**Format: `delete -c`**
+Deletes a task based on the `CONSULTATION_ID` you specify.
+<br>**Format: `delete -c CONSULTATION_ID`**
 <br>Examples:
-* `delete -c
-   → 3`
+* `delete -c 3`
 
 #### 6.5.3 Deleting Mastery Checks : `-mc`
 
 Similar to the above process of deleting consultations, deleting `Mastery Checks` first
-shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
-<br>**Format: `delete -mc`**
+Deletes a task based on the `MASTERYCHECK_ID` you specify.
+<br>**Format: `delete -mc MASTERYCHECK_ID`**
 <br>Examples:
-* `delete -mc → 3`
+* `delete -mc 3`
 
 ### 6.6 Viewing Information : `view`
 
