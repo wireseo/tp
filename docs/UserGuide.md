@@ -89,7 +89,7 @@ This section aims to remind you of the important parts to take note of while rea
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
-1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
+1. Download the latest _`jarvis.jar`_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
 It is crucial to have the Chrome Driver in order for Jarvis to start up. If the GUI does not launch,
 please check that you have installed the correct driver:
     1. Windows: chromedriver.exe
@@ -117,7 +117,7 @@ please check that you have installed the correct driver:
    * `view -s:  Lists all students. `
    * `view -s John Doe: Lists information about a student named John Doe.`
    * `add -t DESCRIPTION : Adds a todo task with specified description.`
-   * `edit -t TASK_ID : Marks the task referenced by Task_ID as Done.`
+   * `edit -s TASK_ID : Edits student's Name, Email, Telegram.`
    * `exit : Exits the app.`
 
 1. Refer to the Features below for details of each command.
@@ -399,7 +399,7 @@ Shows all `confirmed MC` sessions, both past and upcoming.
 <br>Examples:
 * `view -mc`
 
-#### 6.6.7 Viewing past Mastery Check sessions : `mcp`
+#### 6.6.7 Viewing past Mastery Check sessions : `-mcp`
 
 Shows all `past MC` sessions.
 <br>**Format: `view -mcp`**
