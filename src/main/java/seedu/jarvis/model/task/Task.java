@@ -4,7 +4,7 @@ public abstract class Task {
 
     public static final String EVENT = "E";
     public static final String DEADLINE = "D";
-    public static final String NO_DATE_TIME_DESCRIPTION = "-";
+    public static final String NO_DATE_TIME_DESCRIPTION = " ";
 
     private static int taskNum = 1;
 
