@@ -50,6 +50,6 @@ public class MasteryCheckTest {
         assertFalse(normalMasteryCheck.conflictsWith(masteryCheckVariant2));
 
         // different pass status -> returns true
-        assertFalse(normalMasteryCheck.conflictsWith(masteryCheckVariant3));
+        assertTrue(normalMasteryCheck.conflictsWith(masteryCheckVariant3));
     }
 }
