@@ -363,8 +363,8 @@ You may also click on the `Student` tab to do so.
 
 #### 6.6.2 Viewing one `Student` : `-s [NAME]`
 
-Shows all students that match(partial and full) the student name entered after the command. The name is case
--insensitive. An example of a partial match will be `view -s do` resulting in John Doe being displayed.
+Shows all students that match(partial and full) the student name entered after the command. The name is case-insensitive. 
+An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 <br>**Format: `view -s [NAME]`**
 <br>Examples:
 * `view -s John Doe`
