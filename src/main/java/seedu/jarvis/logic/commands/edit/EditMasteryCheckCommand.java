@@ -59,7 +59,7 @@ public class EditMasteryCheckCommand extends EditCommand {
         model.setMasteryCheck(masteryCheckToEdit, editedMasteryCheck);
         model.updateFilteredMasteryCheckList(PREDICATE_SHOW_ALL_MASTERY_CHECKS);
         return new CommandResult(String.format(MESSAGE_EDIT_MASTERY_CHECK_SUCCESS, editedMasteryCheck),
-                CommandTargetFeature.Students);
+                CommandTargetFeature.MasteryCheck);
     }
 
     /**

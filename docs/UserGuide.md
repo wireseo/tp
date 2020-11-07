@@ -89,13 +89,13 @@ This section aims to remind you of the important parts to take note of while rea
 
 1. Ensure you have Java 11 or above installed in your Computer.
 
-1. Download the latest _jarvis.jar_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
+1. Download the latest _`jarvis.jar`_ and your operating system's _Chrome Driver_ from [here](https://github.com/AY2021S1-CS2103T-W11-2/tp/releases/tag/v1.3).
 It is crucial to have the Chrome Driver in order for Jarvis to start up. If the GUI does not launch,
 please check that you have installed the correct driver:
     1. Windows: chromedriver.exe
     1. MacOS: chromedriver_mac
     1. Linux: chromedriver_linux
-
+<br>
 1. Copy both files to the folder you want to use as the _home folder_ for your Jarvis.
 
 1. There are two options for launching Jarvis.
@@ -110,14 +110,14 @@ please check that you have installed the correct driver:
 
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
- Please refer to the logging in segment below to complete your log in.
+ Please refer to the logging in segment below to complete your login.
 
 1. Type the command in the command box and press Enter to execute it. E.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
-   * `view -s:  Lists all students. `
-   * `view -s John Doe: Lists information about a student named John Doe.`
-   * `add -t DESCRIPTION : Adds a todo task with specified description.`
-   * `edit -t TASK_ID : Marks the task referenced by Task_ID as Done.`
+   * `view -s:  Lists all Students.`
+   * `view -s John Doe: Lists information about a Student named John Doe.`
+   * `add -t DESCRIPTION : Adds a Todo task with specified description.`
+   * `edit -s TASK_ID : Edits Student's Name, Email, Telegram.`
    * `exit : Exits the app.`
 
 1. Refer to the Features below for details of each command.
@@ -131,14 +131,15 @@ line. The green box below the command input box is the user feedback box. Jarvis
 this box.
 
 ### 4.1 UI Layout
-<br>
+
    * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
-<br>
    * Clicking on each tab will give you the information you require for that field.
+   
+<br>
 
 ![Jarvis](images/userguide/Jarvis.png)
 
-The core features are based on Students, Missions, Quests, Consultations, Mastery Checks and Tasks.
+The core features are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`.
 Each core feature has a tab for the organisation of its information.
 
 <div markdown="block" class="alert alert-info">
@@ -192,6 +193,14 @@ Source Academy will be visible to you.
 * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
 * Luminus username and passwords will be stored in plaintext.
 
+**General Notes on Tasks:**
+* Each `Task` you create, be it `Todo`, `Event` or `Deadline`, there will be an unique ID assigned to each of them, so
+that there will be no 2 of the same Task ID in your Task List at any point of time. The Task ID is reflected as
+<br>eg. D1, E5, T21
+* The first alphabet "T", "E" and "D" refers to `Todo`, `Event`, and `Deadline` respectively, and the number followed
+after the alphabet is the Task Number, which refers to the index of the `Task` you created with respect to all the
+`Task` you ever created.
+
 ### 6.2 Viewing help : `help`
 
 Shows a message explaining how to access the help page.
@@ -199,36 +208,25 @@ Shows a message explaining how to access the help page.
 
 ### 6.3 Adding Information : `add`
 
-#### General Notes on Tasks
-
-Each `Task` you create, be it `Todo`, `Event` or `Deadline`, there will be an unique ID assigned to each of them, so
-that there will be no 2 of the same Task ID in your Task List at any point of Time. The Task ID is reflected as
-<br>eg. D1, E5, T21
-The first alphabet "T", "E" and "D" refers to `Todo`, `Event`, and `Deadline` respectively, and the number followed
-after the alphabet is the Task Number, which refers to the index of the `Task` you created with respect to all the
-`Task` you ever created.
-
-#### 6.3.1 Adding Todos `-t`
+#### 6.3.1 Adding Todos : `-t`
 
 Adds your personal `Todo` with a `description`.
-
-![AddTodo](images/userguide/addTodo.png)
-
 <br>**Format: `add -t DESCRIPTION`**
 <br>Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
+![AddTodo](images/userguide/addTodo.png)
+
 #### 6.3.2 Adding Events : `-e`
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
-
-![AddEvent](images/userguide/addEvent.png)
-
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
+
+![AddEvent](images/userguide/addEvent.png)
 
 <div markdown="block" class="alert alert-info">
 
@@ -238,13 +236,12 @@ An `Event` requires extra `date` and `time` specifications in order to create.
 #### 6.3.3 Adding Deadlines : `-d`
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
-
-![AddDeadline](images/userguide/addDeadline.png)
-
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 <br>Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
+
+![AddDeadline](images/userguide/addDeadline.png)
 
 <div markdown="block" class="alert alert-info">
 
@@ -259,9 +256,11 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
+<div markdown="block" class="alert alert-info">
+
 When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
 Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
-
+</div>
 
 #### 6.3.5 Adding Mastery Checks : `-mc`
 
@@ -271,28 +270,33 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
+<div markdown="block" class="alert alert-info">
+
 When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
 Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
-
+When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
+</div>
 
 ### 6.4 Editing Information : `edit`
 
 #### 6.4.1 Editing Login Information : `-l`
 
-Similar to the format for editing students above, you can use tags to specify the field to be edited.
+You can use tags to specify the field to be edited.
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
 
-<br>Notes:
+<div markdown="block" class="alert alert-info">
+
 * Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Source Academy to be reflected in the GUI.
 * After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
 * This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values.
-* After a TA account has been used to login and fetch the information, logging in with a non-TA account will not change the information displayed
+* After a TA account has been used to log in and fetch the information, logging in with a non-TA account will not change the information displayed
 as we choose to give you the benefit of doubt of keying in the wrong login details.
-* Whenever a TA account is used to login, the information will always be updated to reflect the logged in TA's student,
+* Whenever a TA account is used to log in, the information will always be updated to reflect the logged in TA's student,
 mission and quest information.
+</div>
 
 #### 6.4.2 Editing Student Information : `-s`
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
@@ -308,37 +312,37 @@ Edits the score of a `Mastery Check` session with a `Student`.
 * `edit -mc 1 s/0`
 * `edit -mc 3 s/1`
 
-Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of Mastery Check pass/fail in CS1101S.
+<div markdown="block" class="alert alert-info">
 
+Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of Mastery Check pass/fail in CS1101S.
+</div>
 
 ### 6.5 Deleting Information : `delete`
 
 #### 6.5.1 Deleting Tasks : `-t`
 
 Deletes a task based on the `TASK_ID` you specify.
-
-![DeleteTask](images/userguide/deleteTask.png)
-
-<br>**Format:`delete -t TASK_ID`**
+<br>**Format: `delete -t TASK_ID`**
 <br>Examples:
 * `delete -t T3`
 * `delete -t D2`
 
+![DeleteTask](images/userguide/deleteTask.png)
+
 #### 6.5.2 Deleting Consultations : `-c`
 
-Shows a list of `Consultations` with `id numbers` so that you can specify which session you want to delete.
-<br>**Format: `delete -c`**
+Deletes a `Task` based on the `CONSULTATION_ID` you specify.
+<br>**Format: `delete -c CONSULTATION_ID`**
 <br>Examples:
-* `delete -c
-   → 3`
+* `delete -c 3`
 
 #### 6.5.3 Deleting Mastery Checks : `-mc`
 
-Similar to the above process of deleting consultations, deleting `Mastery Checks` first
-shows a list of `Mastery Checks` with `id numbers` so that you can specify which session you want to delete.
-<br>**Format: `delete -mc`**
+Similar to the above process of deleting `Consultation`, deleting `Mastery Checks` first
+Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
+<br>**Format: `delete -mc MASTERYCHECK_ID`**
 <br>Examples:
-* `delete -mc → 3`
+* `delete -mc 3`
 
 ### 6.6 Viewing Information : `view`
 
@@ -347,20 +351,21 @@ shows a list of `Mastery Checks` with `id numbers` so that you can specify which
 Shows a list of all students under the tutor in Jarvis.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
 
-![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
-
 <br>**Format: `view -s`**
+
+You may also click on the `Student` tab to do so.
+
+![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
 #### 6.6.2 Viewing one Student : `-s [NAME]`
 
 Shows all students that match(partial and full) the student name entered after the command. The name is case
 -insensitive. An example of a partial match will be `view -s do` resulting in John Doe being displayed.
-
-![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
-
 <br>**Format: `view -s [NAME]`**
 <br>Examples:
 * `view -s John Doe`
+
+![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
 #### 6.6.3 Viewing all Consultation sessions : `-c`
 
@@ -368,6 +373,8 @@ Shows all `confirmed consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
+
+You may also click on the `Consultation` tab to do so.
 
 #### 6.6.4 Viewing past Consultation sessions : `-cp`
 
@@ -385,9 +392,12 @@ Shows all `upcoming consultation` sessions.
 <br>Examples:
 * `view -cu`
 
+<div markdown="block" class="alert alert-info">
+
 When the time of the consultation displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
 it is still considered as an upcoming consultation when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the consultation session.
 When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated consultation list with the current local time as the standard.
+</div>
 
 #### 6.6.6 Viewing all Mastery Check sessions : `-mc`
 
@@ -396,14 +406,19 @@ Shows all `confirmed MC` sessions, both past and upcoming.
 <br>Examples:
 * `view -mc`
 
-#### 6.6.7 Viewing past Mastery Check sessions : `mcp`
+You may also click on the `Mastery Check` tab to do so.
+
+#### 6.6.7 Viewing past Mastery Check sessions : `-mcp`
 
 Shows all `past MC` sessions.
 <br>**Format: `view -mcp`**
 <br>Examples:
 * `view -mcp`
 
+<div markdown="block" class="alert alert-info">
+
 When the mastery check time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+</div>
 
 #### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
 
@@ -412,9 +427,12 @@ Shows all `upcoming MC` sessions.
 <br>Examples:
 * `view -mcu`
 
+<div markdown="block" class="alert alert-info">
+
 When the time of the mastery check displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
 it is still considered as an upcoming mastery check when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the mastery check session.
 When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated mastery check list with the current local time as the standard.
+</div>
 
 #### 6.6.9 Viewing deadline for Missions : `-m`
 
@@ -437,23 +455,23 @@ You may also click on the `Quest` tab to do so.
 #### 6.6.11 Viewing ungraded Missions : `-um`
 
 Shows the missions that you have not yet graded.
+<br>**Format: `view -um`**
 
 ![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
-
-<br>**Format: `view -um`**
 
 #### 6.6.12 Viewing ungraded Quests : `-uq`
 
 Shows the quests that you have not yet graded.
+<br>**Format: `view -uq`**
 
 ![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
-
-<br>**Format: `view -uq`**
 
 #### 6.6.13 Viewing all Tasks : `-t`
 
 Shows the list of all your current tasks.
 <br>**Format: `view -t`**
+
+You may also click on the `Task` tab to do so.
 
 #### 6.6.14 Viewing all Todos : `-tt`
 
@@ -555,4 +573,4 @@ Mastery Checks are a specific type of consultations that is mandatory and graded
 ## 9. FAQ
 
 `Q: How do I transfer my data to another Computer?`
-<br>`A: Install the app in the other computer and overwrite the empty data file(.txt file) it creates with the file(.txt file) that contains the data of your previous JARVIS home folder.`
+<br>`A: Install the app in the other computer and overwrite the empty data file(.json file) it creates with the file(.json file) that contains the data of your previous JARVIS home folder.`

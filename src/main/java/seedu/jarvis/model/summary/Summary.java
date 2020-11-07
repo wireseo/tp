@@ -1,5 +1,6 @@
 package seedu.jarvis.model.summary;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -13,6 +14,14 @@ public class Summary {
     public static final String UPCOMING_CONSULTATIONS = "Upcoming Consultations";
     public static final String UPCOMING_MASTERY_CHECKS = "Upcoming Mastery Checks";
     public static final String TASKS = "Outstanding Tasks";
+
+    // Strings used in the displayed summary.
+    public static final String MESSAGE_REMAINING = "Remaining";
+    public static final String MESSAGE_MISSIONS = "Missions";
+    public static final String MESSAGE_QUESTS = "Quests";
+    public static final String MESSAGE_CONSULTATIONS = "Consultations";
+    public static final String MESSAGE_MASTERY_CHECKS = "Mastery Checks";
+    public static final String MESSAGE_TASKS = "Tasks";
 
     // an always updated hash map of summary values.
     private HashMap<String, Integer> summaryHashMap = new HashMap<>();
@@ -33,7 +42,7 @@ public class Summary {
 
     /**
      * Sets the number of ungraded missions, when the hashMap has an existing value.
-     * @param numUm
+     * @param numUm number of ungraded missions
      */
     public void setNumUngradedMissions(int numUm) {
         assert numUm >= 0 : "Trying to set a negative number of ungraded missions";
@@ -48,7 +57,7 @@ public class Summary {
 
     /**
      * Sets the number of ungraded quests, when the hashMap has an existing value.
-     * @param numUq
+     * @param numUq number of ungraded quests.
      */
     public void setNumUngradedQuests(int numUq) {
         assert numUq >= 0 : "Trying to set a negative number of ungraded quests";
@@ -63,7 +72,7 @@ public class Summary {
 
     /**
      * Sets the number of upcoming Consultations, when the hashMap has an existing value.
-     * @param numConsult
+     * @param numConsult number of upcoming consultations
      */
     public void setNumUpcomingConsultations(int numConsult) {
         assert numConsult >= 0 : "Trying to set a negative number of consultations";
@@ -78,7 +87,7 @@ public class Summary {
 
     /**
      * Sets the number of Mastery Checks, when the hashMap has an existing value.
-     * @param numMc
+     * @param numMc number of upcoming mastery checks
      */
     public void setNumUpcomingMasteryChecks(int numMc) {
         assert numMc >= 0 : "Trying to set a negative number of mastery checks";
@@ -93,7 +102,7 @@ public class Summary {
 
     /**
      * Sets the number of Tasks, when the hashMap has an existing value.
-     * @param numT
+     * @param numT number of remaining tasks
      */
     public void setNumTasks(int numT) {
         assert numT >= 0 : "Trying to set a negative number of tasks";
@@ -107,34 +116,118 @@ public class Summary {
     }
 
     /**
+     * Generates a string of ungraded missions and quests. If there are none, an empty string is returned.
+     * @return A string of ungraded missions and quests. If there are none, an empty string is returned.
+     */
+    public String generateMissionsQuestsString() {
+
+        StringBuilder missionsQuestSb = new StringBuilder();
+        int numUngradedMissions = getNumUngradedMissions();
+        int numUngradedQuests = getNumUngradedQuests();
+
+        // Generate the string of mission and quests
+        if (numUngradedMissions > 0 && numUngradedQuests > 0) {
+            missionsQuestSb.append(MESSAGE_MISSIONS).append(": ")
+                    .append(numUngradedMissions).append(", ");
+            missionsQuestSb.append(MESSAGE_QUESTS).append(": ")
+                    .append(numUngradedQuests);
+        } else if (numUngradedMissions > 0) {
+            missionsQuestSb.append(MESSAGE_MISSIONS).append(": ")
+                    .append(numUngradedMissions).append(", ");
+        } else if (numUngradedQuests > 0) {
+            missionsQuestSb.append(MESSAGE_QUESTS).append(": ")
+                    .append(numUngradedQuests);
+        }
+
+        return missionsQuestSb.toString();
+    }
+
+    /**
+     * Generates a string of upcoming consultations and mastery checks.
+     * If there are none, an empty string is returned.
+     * @return A string of upcoming consultations and mastery checks.
+     * If there are none, an empty string is returned.
+     */
+    public String generateConsultationsMcsString() {
+
+        StringBuilder consultationsMcSb = new StringBuilder();
+        int numUpcomingConsultations = getNumUpcomingConsultations();
+        int numUpcomingMasteryChecks = getNumUpcomingMasteryChecks();
+
+        // Generate the string of consultations and mastery checks
+        if (numUpcomingConsultations > 0 && numUpcomingMasteryChecks > 0) {
+            consultationsMcSb.append(MESSAGE_CONSULTATIONS).append(": ")
+                    .append(numUpcomingConsultations).append(", ");
+            consultationsMcSb.append(MESSAGE_MASTERY_CHECKS)
+                    .append(": ").append(numUpcomingMasteryChecks);
+        } else if (numUpcomingConsultations > 0) {
+            consultationsMcSb.append(MESSAGE_CONSULTATIONS).append(": ")
+                    .append(numUpcomingConsultations).append(", ");
+        } else if (numUpcomingMasteryChecks > 0) {
+            consultationsMcSb.append(MESSAGE_MASTERY_CHECKS)
+                    .append(": ").append(numUpcomingMasteryChecks);
+        }
+
+        return consultationsMcSb.toString();
+    }
+
+    /**
+     * Generates a string of the remaining tasks. If there are none, an empty string is returned.
+     * @return A string of the remaining tasks. If there are none, an empty string is returned.
+     */
+    public String generateTaskString() {
+
+        StringBuilder taskSb = new StringBuilder();
+        int numTasks = getNumTasks();
+
+        // Generate the string of tasks
+        if (numTasks > 0) {
+            taskSb.append(MESSAGE_TASKS).append(": ").append(numTasks);
+        }
+
+        return taskSb.toString();
+    }
+
+    /**
      * Updates the summary string, allowing the updates done by the setter methods above to be reflected.
      */
     private void formatSummaryString() {
         StringBuilder summary = new StringBuilder();
-        int numUngradedMissions = getNumUngradedMissions();
-        int numUngradedQuests = getNumUngradedQuests();
-        int numUpcomingConsultations = getNumUpcomingConsultations();
-        int numUpcomingMasteryChecks = getNumUpcomingMasteryChecks();
-        int numTasks = getNumTasks();
 
-        if (numUngradedMissions > 0) {
-            summary.append(UNGRADED_MISSIONS).append(": ").append(numUngradedMissions).append(", ");
+        String missionsQuestsString = generateMissionsQuestsString();
+        String consultationsMcsString = generateConsultationsMcsString();
+        String tasksString = generateTaskString();
+
+        ArrayList<String> summaryComponents = new ArrayList<>();
+
+        if (missionsQuestsString.length() > 0) {
+            summaryComponents.add(missionsQuestsString);
         }
 
-        if (numUngradedQuests > 0) {
-            summary.append(UNGRADED_QUESTS).append(": ").append(numUngradedQuests).append(", ");
+        if (consultationsMcsString.length() > 0) {
+            summaryComponents.add(consultationsMcsString);
         }
 
-        if (numUpcomingConsultations > 0) {
-            summary.append(UPCOMING_CONSULTATIONS).append(": ").append(numUpcomingConsultations).append(", ");
+        if (tasksString.length() > 0) {
+            summaryComponents.add(tasksString);
         }
 
-        if (numUpcomingMasteryChecks > 0) {
-            summary.append(UPCOMING_MASTERY_CHECKS).append(": ").append(numUpcomingMasteryChecks).append(", ");
+        // Generate the final summary output
+        int numComponents = summaryComponents.size();
+        summary.append(MESSAGE_REMAINING).append(" - ");
+
+        if (missionsQuestsString.length() == 0
+                && consultationsMcsString.length() == 0 && tasksString.length() == 0) {
+            summary.append("Nothing!");
         }
 
-        if (numTasks > 0) {
-            summary.append(TASKS).append(": ").append(numTasks);
+        for (int i = 0; i < numComponents; i++) {
+            String component = summaryComponents.get(i);
+            if (i == numComponents - 1) {
+                summary.append(component);
+            } else {
+                summary.append(component).append(", ");
+            }
         }
 
         summaryDetails.setValue(summary.toString());
