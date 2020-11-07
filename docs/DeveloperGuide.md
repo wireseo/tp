@@ -10,17 +10,17 @@ title: Developer Guide
 
 ## **Introduction**
 
-###Purpose
+### Purpose
 The purpose of this document is to cover the multi-level design architecture of Jarvis, so that the intended audience
 of this document can understand the relationship between components that make up Jarvis.
 
-###Audience
+### Audience
 This developer guide is for anyone who wants to understand the internal software architecture of Jarvis.
 The following groups of people are the intended audience:
 * Jarvis developers: anyone who wish to upgrade Jarvis to support more functions.
 * CS1101S Avengers: tutors of CS1101S who wants to improve their efficiency and productivity.
 
-###Jarvis Overview
+### Jarvis Overview
 Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI). Jarvis in general helps to organise and simplify
 CS1101S tutors' administrative tasks.
