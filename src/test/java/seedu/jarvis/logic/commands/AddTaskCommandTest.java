@@ -10,18 +10,16 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ReadOnlyAddressBook;
-import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
 import seedu.jarvis.model.task.Todo;
-import seedu.jarvis.testutil.ConsultationBuilder;
+import seedu.jarvis.testutil.DeadlineBuilder;
 import seedu.jarvis.testutil.EventBuilder;
 import seedu.jarvis.testutil.ModelStub;
 import seedu.jarvis.testutil.TodoBuilder;
@@ -46,9 +44,9 @@ public class AddTaskCommandTest {
     }
 
     @Test
-    public void execute_taskAcceptedByModel_addSuccessful() throws CommandException {
+    public void execute_todoAcceptedByModel_addSuccessful() throws CommandException {
         ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
-        Todo todo = new TodoBuilder().build();
+        Todo todo = new TodoBuilder().withDescription("UniqueTodo").build();
 
         CommandResult commandResult = new AddTaskCommand(todo).execute(modelStub);
 
@@ -58,13 +56,49 @@ public class AddTaskCommandTest {
     }
 
     @Test
-    public void execute_duplicateTask_throwsCommandException() {
-        Event validEvent = new EventBuilder().build();
-        AddTaskCommand addCommand = new AddTaskCommand(validEvent);
-        ModelStub modelStub = new ModelStubWithTask(validEvent);
+    public void execute_eventAcceptedByModel_addSuccessful() throws CommandException {
+        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
+        Event event = new EventBuilder().withDescription("UniqueEvent").build();
 
+        CommandResult commandResult = new AddTaskCommand(event).execute(modelStub);
+
+        assertEquals(String.format(AddTaskCommand.MESSAGE_SUCCESS_EVENT, event),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(event), modelStub.tasksAdded);
+    }
+
+    @Test
+    public void execute_deadlineAcceptedByModel_addSuccessful() throws CommandException {
+        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
+        Deadline deadline = new DeadlineBuilder().withDescription("UniqueDeadline").build();
+
+        CommandResult commandResult = new AddTaskCommand(deadline).execute(modelStub);
+
+        assertEquals(String.format(AddTaskCommand.MESSAGE_SUCCESS_DEADLINE, deadline),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(deadline), modelStub.tasksAdded);
+    }
+
+    @Test
+    public void execute_duplicateTask_throwsCommandException() {
+        Todo validTodo = new TodoBuilder().build();
+        AddTaskCommand addCommandTodo = new AddTaskCommand(validTodo);
+        ModelStub modelStubTodo = new ModelStubWithTask(validTodo);
+        assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK,
+                () -> addCommandTodo.execute(modelStubTodo));
+
+        Event validEvent = new EventBuilder().build();
+        AddTaskCommand addCommandEvent = new AddTaskCommand(validEvent);
+        ModelStub modelStubEvent = new ModelStubWithTask(validEvent);
         assertThrows(CommandException.class,
-                AddTaskCommand.MESSAGE_DUPLICATE_TASK, () -> addCommand.execute(modelStub));
+                AddTaskCommand.MESSAGE_DUPLICATE_TASK, () -> addCommandEvent.execute(modelStubEvent));
+
+        Deadline validDeadline = new DeadlineBuilder().build();
+        AddTaskCommand addCommandDeadline = new AddTaskCommand(validDeadline);
+        ModelStub modelStubDeadline = new ModelStubWithTask(validDeadline);
+        assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK,
+                () -> addCommandDeadline.execute(modelStubDeadline));
+
     }
 
     /**
@@ -116,14 +150,51 @@ public class AddTaskCommandTest {
         }
 
         @Override
+        public boolean hasTodo(Todo todo) {
+            requireNonNull(todo);
+            return tasksAdded.stream().anyMatch(todo::equals);
+        }
+
+        @Override
+        public boolean hasEvent(Event event) {
+            requireNonNull(event);
+            return tasksAdded.stream().anyMatch(event::equals);
+        }
+
+        @Override
+        public boolean hasDeadline(Deadline deadline) {
+            requireNonNull(deadline);
+            return tasksAdded.stream().anyMatch(deadline::equals);
+        }
+
+        @Override
         public void addTask(Task task) {
             requireNonNull(task);
             tasksAdded.add(task);
         }
 
         @Override
+        public void addTodo(Todo todo) {
+            requireNonNull(todo);
+            tasksAdded.add(todo);
+        }
+
+        @Override
+        public void addEvent(Event event) {
+            requireNonNull(event);
+            tasksAdded.add(event);
+        }
+
+        @Override
+        public void addDeadline(Deadline deadline) {
+            requireNonNull(deadline);
+            tasksAdded.add(deadline);
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }
+
     }
 }
