@@ -95,8 +95,9 @@ public class EditMasteryCheckCommand extends EditCommand {
 
         // state check
         EditMasteryCheckCommand e = (EditMasteryCheckCommand) other;
-        return index.equals(e.index)
-                && editMasteryCheckDescriptor.equals(e.editMasteryCheckDescriptor);
+        boolean b1 = index.equals(e.index);
+        boolean b2 = editMasteryCheckDescriptor.equals(e.editMasteryCheckDescriptor);
+        return b1 && b2;
     }
 
     /**
@@ -147,7 +148,7 @@ public class EditMasteryCheckCommand extends EditCommand {
             EditMasteryCheckCommand.EditMasteryCheckDescriptor e = (EditMasteryCheckCommand.EditMasteryCheckDescriptor)
                     other;
 
-            return hasPassed() == e.hasPassed();
+            return hasPassed().get() == e.hasPassed().get();
         }
 
     }
