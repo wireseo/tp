@@ -7,13 +7,12 @@ import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.consultation.Consultation;
-
-import java.time.LocalDateTime;
-
 
 public class JsonAdaptedConsultationTest {
 
@@ -116,14 +115,14 @@ public class JsonAdaptedConsultationTest {
     }
 
     @Test
-    public void toModelType_invalidDateInvalidYearFormatYYY_throwsIllegalValueException() {
+    public void toModelType_invalidDateInvalidYearFormatYyy_throwsIllegalValueException() {
         JsonAdaptedConsultation consultation = new JsonAdaptedConsultation(VALID_NAME_ONE, INVALID_DATE_SEVEN);
         String expectedMessage = INVALID_DATE_TIME_FORMAT;
         assertThrows(IllegalValueException.class, expectedMessage, consultation::toModelType);
     }
 
     @Test
-    public void toModelType_invalidDateInvalidYearFormatYYYY_throwsIllegalValueException() {
+    public void toModelType_invalidDateInvalidYearFormatYyyy_throwsIllegalValueException() {
         JsonAdaptedConsultation consultation = new JsonAdaptedConsultation(VALID_NAME_ONE, INVALID_DATE_EIGHT);
         String expectedMessage = INVALID_DATE_TIME_FORMAT;
         assertThrows(IllegalValueException.class, expectedMessage, consultation::toModelType);

@@ -1,10 +1,8 @@
 package seedu.jarvis.testutil;
 
-
-import seedu.jarvis.model.consultation.Consultation;
-import seedu.jarvis.model.masterycheck.MasteryCheck;
-
 import java.time.LocalDateTime;
+
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 /**
  * A utility class to help with building {@code MasteryCheck} objects.
@@ -13,7 +11,7 @@ public class MasteryCheckBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final LocalDateTime DEFAULT_DATE_AND_TIME =
-            LocalDateTime.of(2020,12,31,8,30);
+            LocalDateTime.of(2020, 12, 31, 8, 30);
     public static final boolean DEFAULT_HASPASSED = true;
 
     private String studentName;
@@ -62,6 +60,9 @@ public class MasteryCheckBuilder {
         return this;
     }
 
+    /**
+     * Builds the MasteryCheck with current class variables.
+     */
     public MasteryCheck build() {
         if (hasPassed) {
             return MasteryCheck.createFullMarkMC(studentName, dateAndTime);

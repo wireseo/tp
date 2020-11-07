@@ -1,10 +1,10 @@
 package seedu.jarvis.testutil;
 
-import seedu.jarvis.model.consultation.Consultation;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+
+import seedu.jarvis.model.consultation.Consultation;
 
 public class TypicalConsultations {
     public static final String TEST_CONSULTATION_NAME_FIRST = "Alive";

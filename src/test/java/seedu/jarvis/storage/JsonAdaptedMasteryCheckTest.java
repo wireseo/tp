@@ -9,12 +9,12 @@ import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.MISSING_FIELD_MESSAGE
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_ONE;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
-
-import java.time.LocalDateTime;
 
 public class JsonAdaptedMasteryCheckTest {
 
@@ -70,7 +70,7 @@ public class JsonAdaptedMasteryCheckTest {
 
     @Test
     public void toModelType_nullHasPassed_throwsIllegalValueException() {
-        JsonAdaptedMasteryCheck masteryCheck = new JsonAdaptedMasteryCheck(VALID_NAME_ONE, VALID_DATE,null);
+        JsonAdaptedMasteryCheck masteryCheck = new JsonAdaptedMasteryCheck(VALID_NAME_ONE, VALID_DATE, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, HASPASSED_FIELD);
         assertThrows(IllegalValueException.class, expectedMessage, masteryCheck::toModelType);
     }
@@ -156,7 +156,7 @@ public class JsonAdaptedMasteryCheckTest {
     }
 
     @Test
-    public void toModelType_invalidDateInvalidYearFormatYYY_throwsIllegalValueException() {
+    public void toModelType_invalidDateInvalidYearFormatYyy_throwsIllegalValueException() {
         JsonAdaptedMasteryCheck masteryCheck =
                 new JsonAdaptedMasteryCheck(VALID_NAME_ONE, INVALID_DATE_SEVEN, VALID_HASPASSED_FALSE);
         String expectedMessage = INVALID_DATE_TIME_FORMAT;
@@ -164,7 +164,7 @@ public class JsonAdaptedMasteryCheckTest {
     }
 
     @Test
-    public void toModelType_invalidDateInvalidYearFormatYYYY_throwsIllegalValueException() {
+    public void toModelType_invalidDateInvalidYearFormatYyyy_throwsIllegalValueException() {
         JsonAdaptedMasteryCheck masteryCheck =
                 new JsonAdaptedMasteryCheck(VALID_NAME_ONE, INVALID_DATE_EIGHT, VALID_HASPASSED_FALSE);
         String expectedMessage = INVALID_DATE_TIME_FORMAT;

@@ -1,24 +1,24 @@
 package seedu.jarvis.model.consultation;
 
-import org.junit.jupiter.api.Test;
-import seedu.jarvis.model.consultation.exceptions.ConsultationNotFoundException;
-import seedu.jarvis.model.masterycheck.MasteryCheckList;
-import seedu.jarvis.testutil.ConsultationBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
-import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_TWO;
-import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_THREE;
-import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_FOUR;
 import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_FIVE;
+import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_FOUR;
+import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
+import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_THREE;
+import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_TWO;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_ONE;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.jarvis.model.consultation.exceptions.ConsultationNotFoundException;
+import seedu.jarvis.model.masterycheck.MasteryCheckList;
+import seedu.jarvis.testutil.ConsultationBuilder;
 
 public class ConsultationListTest {
 

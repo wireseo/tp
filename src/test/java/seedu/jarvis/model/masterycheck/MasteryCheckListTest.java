@@ -1,23 +1,24 @@
 package seedu.jarvis.model.masterycheck;
 
-import org.junit.jupiter.api.Test;
-import seedu.jarvis.model.consultation.ConsultationList;
-import seedu.jarvis.model.masterycheck.exceptions.MasteryCheckNotFoundException;
-import seedu.jarvis.testutil.MasteryCheckBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
+import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_FIVE;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_FOUR;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_ONE;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_THREE;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_TWO;
-import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.jarvis.model.consultation.ConsultationList;
+import seedu.jarvis.model.masterycheck.exceptions.MasteryCheckNotFoundException;
+import seedu.jarvis.testutil.MasteryCheckBuilder;
 
 public class MasteryCheckListTest {
     private final MasteryCheckList masteryCheckList = new MasteryCheckList();
@@ -49,7 +50,7 @@ public class MasteryCheckListTest {
     }
 
     @Test
-    public void contains_MasteryCheckWithSameIdentityFieldsInList_returnsTrue() {
+    public void contains_masteryCheckWithSameIdentityFieldsInList_returnsTrue() {
         masteryCheckList.add(TEST_MASTERY_CHECK_ONE);
         MasteryCheck editedMasteryCheck = new MasteryCheckBuilder(TEST_MASTERY_CHECK_ONE).build();
         assertTrue(masteryCheckList.contains(editedMasteryCheck));
@@ -90,18 +91,18 @@ public class MasteryCheckListTest {
     }
 
     @Test
-    public void removes_MasteryCheckNotInList_throwsMasteryCheckNotFoundException() {
+    public void removes_masteryCheckNotInList_throwsMasteryCheckNotFoundException() {
         assertThrows(MasteryCheckNotFoundException.class, () -> masteryCheckList.remove(TEST_MASTERY_CHECK_ONE));
     }
 
     @Test
-    public void contains_MasteryCheckInList_returnsTrue() {
+    public void contains_masteryCheckInList_returnsTrue() {
         masteryCheckList.add(TEST_MASTERY_CHECK_ONE);
         assertTrue(masteryCheckList.contains(TEST_MASTERY_CHECK_ONE));
     }
 
     @Test
-    public void contains_MasteryCheckInList_throwsMasteryCheckNotFoundException() {
+    public void contains_masteryCheckInList_throwsMasteryCheckNotFoundException() {
         assertThrows(MasteryCheckNotFoundException.class, () -> masteryCheckList.remove(TEST_MASTERY_CHECK_ONE));
     }
 

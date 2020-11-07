@@ -1,8 +1,8 @@
 package seedu.jarvis.testutil;
 
-import seedu.jarvis.model.consultation.Consultation;
-
 import java.time.LocalDateTime;
+
+import seedu.jarvis.model.consultation.Consultation;
 
 /**
  * A utility class to help with building Consultation objects.
@@ -11,7 +11,7 @@ public class ConsultationBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final LocalDateTime DEFAULT_DATE_AND_TIME =
-            LocalDateTime.of(2020,12,31,8,30);
+            LocalDateTime.of(2020, 12, 31, 8, 30);
 
     private String studentName;
     private LocalDateTime dateAndTime;
