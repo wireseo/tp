@@ -7,6 +7,8 @@ import seedu.jarvis.model.masterycheck.MasteryCheck;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD;
+import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.HASPASSED_FIELD;
 import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.INVALID_DATE_TIME_FORMAT;
 import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.INVALID_HASPASSED_FORMAT;
 import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.MISSING_FIELD_MESSAGE_FORMAT;
@@ -53,7 +55,7 @@ public class JsonAdaptedMasteryCheckTest {
     public void toModelType_nullStudentName_throwsIllegalValueException() {
         JsonAdaptedMasteryCheck masteryCheck =
                 new JsonAdaptedMasteryCheck(null, VALID_DATE, VALID_HASPASSED_FALSE);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, MasteryCheck.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, NAME_OF_STUDENT_FIELD);
         assertThrows(IllegalValueException.class, expectedMessage, masteryCheck::toModelType);
     }
 
@@ -61,14 +63,14 @@ public class JsonAdaptedMasteryCheckTest {
     public void toModelType_nullDate_throwsIllegalValueException() {
         JsonAdaptedMasteryCheck masteryCheck =
                 new JsonAdaptedMasteryCheck(VALID_NAME_ONE, null, VALID_HASPASSED_FALSE);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, MasteryCheck.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDateTime.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, masteryCheck::toModelType);
     }
 
     @Test
     public void toModelType_nullHasPassed_throwsIllegalValueException() {
         JsonAdaptedMasteryCheck masteryCheck = new JsonAdaptedMasteryCheck(VALID_NAME_ONE, VALID_DATE,null);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, MasteryCheck.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, HASPASSED_FIELD);
         assertThrows(IllegalValueException.class, expectedMessage, masteryCheck::toModelType);
     }
 
@@ -92,7 +94,7 @@ public class JsonAdaptedMasteryCheckTest {
     public void toModelType_validMasteryCheckDetailsWithHasPassedTrue_returnsMasteryCheck() throws Exception {
         JsonAdaptedMasteryCheck jsonMasteryCheck =
                 new JsonAdaptedMasteryCheck(VALID_NAME_ONE, VALID_DATE, VALID_HASPASSED_TRUE);
-        MasteryCheck masteryCheck = MasteryCheck.createFullMarkMC(VALID_NAME_THREE, LocalDateTime.parse(VALID_DATE));
+        MasteryCheck masteryCheck = MasteryCheck.createFullMarkMC(VALID_NAME_ONE, LocalDateTime.parse(VALID_DATE));
         assertEquals(masteryCheck, jsonMasteryCheck.toModelType());
     }
 
@@ -100,7 +102,7 @@ public class JsonAdaptedMasteryCheckTest {
     public void toModelType_validMasteryCheckDetailsWithHasPassedFalse_returnsMasteryCheck() throws Exception {
         JsonAdaptedMasteryCheck jsonMasteryCheck =
                 new JsonAdaptedMasteryCheck(VALID_NAME_ONE, VALID_DATE, VALID_HASPASSED_FALSE);
-        MasteryCheck masteryCheck = new MasteryCheck(VALID_NAME_THREE, LocalDateTime.parse(VALID_DATE));
+        MasteryCheck masteryCheck = new MasteryCheck(VALID_NAME_ONE, LocalDateTime.parse(VALID_DATE));
         assertEquals(masteryCheck, jsonMasteryCheck.toModelType());
     }
 

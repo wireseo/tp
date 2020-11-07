@@ -3,6 +3,7 @@ package seedu.jarvis.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.storage.JsonAdaptedConsultation.INVALID_DATE_TIME_FORMAT;
 import static seedu.jarvis.storage.JsonAdaptedConsultation.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
 
@@ -47,14 +48,14 @@ public class JsonAdaptedConsultationTest {
     @Test
     public void toModelType_nullStudentName_throwsIllegalValueException() {
         JsonAdaptedConsultation consultation = new JsonAdaptedConsultation(null, VALID_DATE);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Consultation.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, NAME_OF_STUDENT_FIELD);
         assertThrows(IllegalValueException.class, expectedMessage, consultation::toModelType);
     }
 
     @Test
     public void toModelType_nullDate_throwsIllegalValueException() {
         JsonAdaptedConsultation consultation = new JsonAdaptedConsultation(VALID_NAME_ONE, null);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Consultation.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDateTime.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, consultation::toModelType);
     }
 
