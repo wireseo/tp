@@ -371,27 +371,27 @@ An example of a partial match will be `view -s do` resulting in John Doe being d
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
-#### 6.6.3 Viewing all Consultation sessions : `-c`
+#### 6.6.3 Viewing all `Consultation` sessions : `-c`
 
-Shows all `confirmed consultation` sessions, both past and upcoming.
+Shows all confirmed `Consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
 
 You may also click on the `Consultation` tab to do so.
 
-#### 6.6.4 Viewing past Consultation sessions : `-cp`
+#### 6.6.4 Viewing past `Consultation` sessions : `-cp`
 
-Shows all `past consultation` sessions.
+Shows all `Consultation` sessions.
 <br>**Format: `view -cp`**
 <br>Examples:
 * `view -cp`
 
 When the consultation time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 
-#### 6.6.5 Viewing upcoming Consultation sessions : `-cu`
+#### 6.6.5 Viewing upcoming `Consultation` sessions : `-cu`
 
-Shows all `upcoming consultation` sessions.
+Shows all `Consultation` sessions.
 <br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
