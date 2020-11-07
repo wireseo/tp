@@ -23,6 +23,10 @@ public class AddMasteryCheckCommand extends AddCommand {
         toAddMasteryCheck = masteryCheck;
     }
 
+    public MasteryCheck getToAddMasteryCheck() {
+        return toAddMasteryCheck;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -33,5 +37,23 @@ public class AddMasteryCheckCommand extends AddCommand {
         model.addMasteryCheck(toAddMasteryCheck);
         return new CommandResult(String.format(MESSAGE_SUCCESS_MASTERY_CHECK, toAddMasteryCheck),
                 CommandTargetFeature.MasteryCheck);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddMasteryCheckCommand)) {
+            return false;
+        }
+
+        // state check
+        AddMasteryCheckCommand e = (AddMasteryCheckCommand) other;
+
+        return toAddMasteryCheck.equals(e.getToAddMasteryCheck());
     }
 }

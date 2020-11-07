@@ -7,7 +7,7 @@ import java.time.format.FormatStyle;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 public class TypicalMasteryChecks {
-    public static final String TEST_MASTERY_CHECK_NAME_FIRST = "Alive";
+    public static final String TEST_MASTERY_CHECK_NAME_FIRST = "Alice";
     public static final String TEST_MASTERY_CHECK_NAME_SECOND = "Bob";
     public static final String TEST_MASTERY_CHECK_NAME_THIRD = "Carl";
     public static final String TEST_MASTERY_CHECK_NAME_FOURTH = "David";
