@@ -10,15 +10,12 @@ import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
-import seedu.jarvis.logic.commands.edit.EditCommand;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.UserLogin;
-import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.testutil.EditLoginDescriptorBuilder;
 import seedu.jarvis.testutil.LoginBuilder;
 import seedu.jarvis.testutil.TypicalManagers;

@@ -1,12 +1,5 @@
 package seedu.jarvis.logic.commands.edit;
 
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_PASSWORD;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_SCORE;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_USERNAME;
-
 import seedu.jarvis.logic.commands.Command;
 import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
