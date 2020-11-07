@@ -2,10 +2,11 @@ package seedu.jarvis.ui;
 
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 
-import org.junit.jupiter.api.BeforeAll;
+import java.nio.file.Path;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.io.TempDir;
+
 import seedu.jarvis.logic.Logic;
 import seedu.jarvis.logic.LogicManager;
 import seedu.jarvis.model.Model;
@@ -15,8 +16,6 @@ import seedu.jarvis.storage.JsonUserLoginStorage;
 import seedu.jarvis.storage.JsonUserPrefsStorage;
 import seedu.jarvis.storage.StorageManager;
 import seedu.jarvis.testutil.TypicalManagers;
-
-import java.nio.file.Path;
 
 public class MainWindowTest {
 
