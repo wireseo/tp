@@ -10,12 +10,16 @@ import static seedu.jarvis.testutil.TypicalMissions.STREAMS;
 import static seedu.jarvis.testutil.TypicalQuests.COLORFUL_CARPETS;
 import static seedu.jarvis.testutil.TypicalStudents.ALICE;
 import static seedu.jarvis.testutil.TypicalStudents.BENSON;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.jarvis.commons.core.GuiSettings;
+import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.login.Username;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
@@ -229,6 +233,11 @@ public class ModelManagerTest {
 
     @Test
     public void hasTodo_nullTodo_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasTodo(null));
+    }
+
+    @Test
+    public void addTodo_nullTodo_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.addTodo(null));
     }
 
@@ -243,6 +252,11 @@ public class ModelManagerTest {
 
     @Test
     public void hasEvent_nullEvent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasEvent(null));
+    }
+
+    @Test
+    public void addEvent_nullEvent_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.addEvent(null));
     }
 
@@ -257,6 +271,11 @@ public class ModelManagerTest {
 
     @Test
     public void hasDeadline_nullDeadline_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasDeadline(null));
+    }
+
+    @Test
+    public void addDeadline_nullDeadline_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.addDeadline(null));
     }
 
@@ -268,4 +287,36 @@ public class ModelManagerTest {
         modelManager.addDeadline(deadline);
         assertTrue(modelManager.hasDeadline(deadline));
     }
+
+    //========================= Consultations ================================================================
+
+    @Test
+    public void hasConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasConsultation(null));
+    }
+
+    @Test
+    public void addConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addConsultation(null));
+    }
+
+    @Test
+    public void isConsultationInAddressBook() {
+        Consultation consultation = new Consultation("Adam", LocalDateTime.now());
+        assertFalse(modelManager.hasConsultation(consultation));
+
+        modelManager.addConsultation(consultation);
+        assertTrue(modelManager.hasConsultation(consultation));
+    }
+
+    @Test
+    public void deleteConsultation() {
+        Consultation consultation = new Consultation("Eve", LocalDateTime.now());
+        modelManager.addConsultation(consultation);
+        assertTrue(modelManager.hasConsultation(consultation));
+        modelManager.deleteConsultation(consultation);
+        assertFalse(modelManager.hasConsultation(consultation));
+    }
+
+    //========================= Mastery Checks ================================================================
 }
