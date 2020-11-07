@@ -12,41 +12,45 @@ import seedu.jarvis.testutil.StudentBuilder;
 
 
 public class MasteryCheckTest {
-    // TODO: ADD MORE TESTS
 
     private String studentName = new StudentBuilder().build().getName().fullName;
     private String studentName2 = "StudentName";
 
-
-    private MasteryCheck normalConsultation = MasteryCheck.createFullMarkMC(studentName, LocalDateTime.of(2020,
+    private MasteryCheck normalMasteryCheck = MasteryCheck.createFullMarkMC(studentName, LocalDateTime.of(2020,
             1, 8, 13, 10));
-    private MasteryCheck consultationVariant1 = MasteryCheck.createFullMarkMC(studentName2, LocalDateTime.of(2020,
+    private MasteryCheck masteryCheckVariant1 = MasteryCheck.createFullMarkMC(studentName2, LocalDateTime.of(2020,
             1, 8, 13, 10));
-    private MasteryCheck consultationVariant2 = MasteryCheck.createFullMarkMC(studentName, LocalDateTime.of(2020,
+    private MasteryCheck masteryCheckVariant2 = MasteryCheck.createFullMarkMC(studentName, LocalDateTime.of(2020,
             1, 9, 13, 10));
-
+    private MasteryCheck masteryCheckVariant3 = MasteryCheck.createZeroMarkMC(studentName, LocalDateTime.of(2020,
+            1, 8, 13, 10));
     @Test
     public void equals() {
         // same object -> returns true
-        assertTrue(normalConsultation.equals(normalConsultation));
+        assertTrue(normalMasteryCheck.equals(normalMasteryCheck));
 
         // null -> returns false
-        assertFalse(normalConsultation.equals(null));
+        assertFalse(normalMasteryCheck.equals(null));
 
         // different date -> returns false
-        assertFalse(normalConsultation.equals(consultationVariant2));
+        assertFalse(normalMasteryCheck.equals(masteryCheckVariant2));
 
         // different name -> returns false
-        assertFalse(normalConsultation.equals(consultationVariant1));
+        assertFalse(normalMasteryCheck.equals(masteryCheckVariant1));
 
+        // different pass status -> returns true (still equal)
+        assertTrue(normalMasteryCheck.equals(masteryCheckVariant3));
     }
 
     @Test
     public void conflictsWith() {
         // same dateandtime -> returns true
-        assertTrue(normalConsultation.conflictsWith(consultationVariant1));
+        assertTrue(normalMasteryCheck.conflictsWith(masteryCheckVariant1));
 
         // different dateandtime -> returns false
-        assertFalse(normalConsultation.conflictsWith(consultationVariant2));
+        assertFalse(normalMasteryCheck.conflictsWith(masteryCheckVariant2));
+
+        // different pass status -> returns true
+        assertFalse(normalMasteryCheck.conflictsWith(masteryCheckVariant3));
     }
 }
