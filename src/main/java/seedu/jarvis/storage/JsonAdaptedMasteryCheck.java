@@ -1,5 +1,7 @@
 package seedu.jarvis.storage;
 
+import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -9,10 +11,14 @@ import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
 
 
+
 public class JsonAdaptedMasteryCheck {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Mastery Check's %s field is missing!";
     public static final String INVALID_DATE_TIME_FORMAT = "Date time format is wrong! Please follow format: "
             + "YYYY-MM-DDTHH:MM";
+    public static final String INVALID_HASPASSED_FORMAT = "Pass/Fail status of the Mastery Check is corrupted!";
+
+    public static final String HASPASSED_FIELD = "passed";
 
     private final String studentName;
     private final String dateAndTime;
@@ -38,7 +44,7 @@ public class JsonAdaptedMasteryCheck {
     public JsonAdaptedMasteryCheck(MasteryCheck source) {
         studentName = source.getStudentName();
         dateAndTime = source.getDateAndTime().toString();
-        passed = source.isPassed() ? "T" : "F";
+        passed = source.hasPassed() ? "T" : "F";
     }
 
     /**
@@ -48,7 +54,7 @@ public class JsonAdaptedMasteryCheck {
      */
     public MasteryCheck toModelType() throws IllegalValueException {
         if (studentName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "name of student"));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, NAME_OF_STUDENT_FIELD));
         }
 
         if (dateAndTime == null) {
@@ -57,7 +63,7 @@ public class JsonAdaptedMasteryCheck {
         }
 
         if (passed == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "passed "));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, HASPASSED_FIELD));
         }
 
         try {
@@ -67,7 +73,7 @@ public class JsonAdaptedMasteryCheck {
                 return MasteryCheck.createZeroMarkMC(studentName, LocalDateTime.parse(dateAndTime));
                 // TODO: this needs to work! otherwise parsing / toString is at fault
             } else {
-                throw new IllegalValueException("passed value corrupted");
+                throw new IllegalValueException(INVALID_HASPASSED_FORMAT);
             }
         } catch (DateTimeParseException e) {
             throw new IllegalValueException(INVALID_DATE_TIME_FORMAT);

@@ -48,7 +48,7 @@ public class MasteryCheckCard extends UiPart<Region> {
         String time = localDateTime.toLocalTime().toString();
         dateAndTime.setText("Details: " + date + " at " + time);
 
-        String passFail = "Score: " + (masteryCheck.isPassed() ? "PASS" : "FAIL");
+        String passFail = "Score: " + (masteryCheck.hasPassed() ? "PASS" : "FAIL");
         passed.setText(passFail);
     }
 
