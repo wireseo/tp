@@ -1,11 +1,5 @@
 package seedu.jarvis.storage;
 
-import org.junit.jupiter.api.Test;
-import seedu.jarvis.commons.exceptions.IllegalValueException;
-import seedu.jarvis.model.masterycheck.MasteryCheck;
-
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD;
 import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.HASPASSED_FIELD;
@@ -14,6 +8,13 @@ import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.INVALID_HASPASSED_FOR
 import static seedu.jarvis.storage.JsonAdaptedMasteryCheck.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_ONE;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.jarvis.commons.exceptions.IllegalValueException;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
+
+import java.time.LocalDateTime;
 
 public class JsonAdaptedMasteryCheckTest {
 

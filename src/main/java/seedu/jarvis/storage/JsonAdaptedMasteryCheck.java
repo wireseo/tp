@@ -1,5 +1,7 @@
 package seedu.jarvis.storage;
 
+import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -8,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
 
-import static seedu.jarvis.storage.JsonAdaptedConsultation.NAME_OF_STUDENT_FIELD;
 
 
 public class JsonAdaptedMasteryCheck {

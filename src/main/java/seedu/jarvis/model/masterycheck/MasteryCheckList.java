@@ -9,8 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.jarvis.model.masterycheck.exceptions.DuplicateMasteryCheckException;
 import seedu.jarvis.model.masterycheck.exceptions.MasteryCheckNotFoundException;
-import seedu.jarvis.model.student.UniqueStudentsList;
-
 
 public class MasteryCheckList {
     private final ObservableList<MasteryCheck> internalList = FXCollections.observableArrayList();
@@ -76,7 +74,7 @@ public class MasteryCheckList {
 
     @Override
     public boolean equals(Object other) {
-        return other == this  || (other instanceof MasteryCheckList
+        return other == this || (other instanceof MasteryCheckList
                 && internalList.equals(((MasteryCheckList) other).internalList));
     }
 
