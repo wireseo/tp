@@ -10,6 +10,7 @@ import static seedu.jarvis.testutil.TypicalQuests.COLORFUL_CARPETS;
 import static seedu.jarvis.testutil.TypicalStudents.ALICE;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,7 +27,10 @@ import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.student.exceptions.DuplicateStudentException;
+import seedu.jarvis.model.task.Deadline;
+import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
+import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.testutil.MissionBuilder;
 import seedu.jarvis.testutil.QuestBuilder;
 import seedu.jarvis.testutil.StudentBuilder;
@@ -68,33 +72,8 @@ public class AddressBookTest {
     }
 
     @Test
-    public void hasConsultation_nullConsultation_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasConsultation(null));
-    }
-
-    @Test
-    public void hasMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasMasteryCheck(null));
-    }
-
-    @Test
     public void hasTask_nullTask_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> addressBook.hasTask(null));
-    }
-
-    @Test
-    public void hasTodo_nullTodo_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasTodo(null));
-    }
-
-    @Test
-    public void hasEvent_nullEvent_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasEvent(null));
-    }
-
-    @Test
-    public void hasDeadline_nullDeadline_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasDeadline(null));
     }
 
     @Test
@@ -171,6 +150,125 @@ public class AddressBookTest {
         addressBook.updateQuest("Colorful Carpets");
         Quest updatedQuest = new QuestBuilder(COLORFUL_CARPETS).withIsGraded(false).build();
         assertTrue(addressBook.getQuestList().contains(updatedQuest));
+    }
+
+    //============================== Task ====================================================================
+
+    @Test
+    public void hasTodo_nullTodo_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasTodo(null));
+    }
+
+    @Test
+    public void addTodo_nullTodo_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.addTodo(null));
+    }
+
+    @Test
+    public void isTodoInAddressBook() {
+        Todo todo = new Todo("TestTodo");
+        assertFalse(addressBook.hasTodo(todo));
+
+        addressBook.addTodo(todo);
+        assertTrue(addressBook.hasTodo(todo));
+    }
+
+    @Test
+    public void hasEvent_nullEvent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasEvent(null));
+    }
+
+    @Test
+    public void addEvent_nullEvent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.addEvent(null));
+    }
+
+    @Test
+    public void isEventInAddressBook() {
+        Event event = new Event("TestEvent", LocalDateTime.now());
+        assertFalse(addressBook.hasEvent(event));
+
+        addressBook.addEvent(event);
+        assertTrue(addressBook.hasEvent(event));
+    }
+
+    @Test
+    public void hasDeadline_nullDeadline_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasDeadline(null));
+    }
+
+    @Test
+    public void addDeadline_nullDeadline_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.addDeadline(null));
+    }
+
+    @Test
+    public void isDeadlineInAddressBook() {
+        Deadline deadline = new Deadline("TestDeadline", LocalDateTime.now());
+        assertFalse(addressBook.hasDeadline(deadline));
+
+        addressBook.addDeadline(deadline);
+        assertTrue(addressBook.hasDeadline(deadline));
+    }
+
+    //========================= Consultations ================================================================
+
+    @Test
+    public void hasConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasConsultation(null));
+    }
+
+    @Test
+    public void addConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.addConsultation(null));
+    }
+
+    @Test
+    public void isConsultationInAddressBook() {
+        Consultation consultation = new Consultation("Adam", LocalDateTime.now());
+        assertFalse(addressBook.hasConsultation(consultation));
+
+        addressBook.addConsultation(consultation);
+        assertTrue(addressBook.hasConsultation(consultation));
+    }
+
+    @Test
+    public void deleteConsultation() {
+        Consultation consultation = new Consultation("Eve", LocalDateTime.now());
+        addressBook.addConsultation(consultation);
+        assertTrue(addressBook.hasConsultation(consultation));
+        addressBook.removeConsultation(consultation);
+        assertFalse(addressBook.hasConsultation(consultation));
+    }
+
+    //========================= Mastery Checks ================================================================
+
+    @Test
+    public void hasMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasMasteryCheck(null));
+    }
+
+    @Test
+    public void addMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.addMasteryCheck(null));
+    }
+
+    @Test
+    public void isMasteryCheckInAddressBook() {
+        MasteryCheck masteryCheck = new MasteryCheck("Jacob", LocalDateTime.now());
+        assertFalse(addressBook.hasMasteryCheck(masteryCheck));
+
+        addressBook.addMasteryCheck(masteryCheck);
+        assertTrue(addressBook.hasMasteryCheck(masteryCheck));
+    }
+
+    @Test
+    public void setMasteryCheck_validMasteryCheck_copiesMasteryCheck() {
+        MasteryCheck oldMasteryCheck = new MasteryCheck("Abraham", LocalDateTime.now());
+        MasteryCheck newMasteryCheck = new MasteryCheck("Igausus", LocalDateTime.now());
+        addressBook.addMasteryCheck(oldMasteryCheck);
+        addressBook.setMasteryCheck(oldMasteryCheck, newMasteryCheck);
+        assertTrue(addressBook.hasMasteryCheck(newMasteryCheck));
     }
 
     /**
