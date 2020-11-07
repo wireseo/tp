@@ -358,7 +358,7 @@ public class MainWindow extends UiPart<Stage> {
         StringBuilder sb = new StringBuilder();
 
         if (!logic.hasUsername() || !logic.hasPassword()) {
-            sb.append("Please edit your username using `edit -l u/[LUMINUS_USERNAME] p/[PASSWORD]` "
+            sb.append("Please edit your username and password using `edit -l u/[LUMINUS_USERNAME] p/[PASSWORD]` "
                     + "and restart to fetch missions/quests");
             sb.append("\n");
         } else {
