@@ -111,6 +111,8 @@ please check that you have installed the correct driver:
 1. Upon start up, you will be prompted to log in to unlock Jarvis's
  full set of features.
  Please refer to the logging in segment below to complete your login.
+ Do note that after editing your login details, exiting and relaunching the Jarvis User interface will take some time
+ as Jarvis is attempting to log you into Source Academy.
 
 1. Type the command in the command box and press Enter to execute it. E.g. typing help and pressing Enter will open the help window.
    Some example commands you can try:
@@ -132,16 +134,54 @@ this box.
 
 ### 4.1 UI Layout
 
-   * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
+   * The user interface is split into five separate segments.
+        1. 1 - Top bar - Passive information, such as a summary for the user, greeting message, week number, topic for
+         the week and today's date is presented to the user. An explanation on each information can be found below.
+        1. 2 - Command Box - An input box for user's commands to be keyed in.
+        1. 3 - Feedback Box - The feedback shown to the user for a given inputted command.
+        1. 4 - Information Panel - A detailed list on the information stored within Jarvis.
+        1. 5 - Tab Switcher - A tab switcher for browsing through the different types of information stored in Jarvis.
+        
+   ![Jarvis](images/userguide/uiLayout.png)
+   
+#### 4.1.1 Top Bar
+   * The top bar includes the following components.
+        1. Summary information - A quick summary indicating the number of ungraded missions and quests, upcoming
+           consultations and mastery checks as well as outstanding tasks in Jarvis. Do note that graded missions and
+           quests, as well as past consultations and mastery checks will not be indicated.
+        1. Greeting message - A welcome message for you. If you are not logged in, this message will prompt you to do
+         so.
+        1. Weekly topic and Today's date - The week count for the semester, together with the topic for the week and
+         today's date.
+        1. Shortcut icons - These icons are positioned here for your convenience to quickly navigating to source academy
+         with the blue diamond on the left, and Jarvis' user guide with the white book icon on the right.
+        1. Jarvis logo.
+   
+   ![Jarvis](images/userguide/topBar.png)
+
+#### 4.1.2 Command Box and Feedback Box
+
+   * A text input box for all user commands to be keyed in. You may refer to a detailed guide on the various commands
+    available in Jarvis. Hit the enter key to execute the inputted command. The feedback from you command will be
+     displayed in the Feedback Box.
+
+#### 4.1.3 Information Panel
+   * A detailed list of information that corresponds to the tab selected in the Tab Switcher on the left of the
+    Graphical User Interface(GUI).
+
+#### 4.1.4 Tab Switcher
+
+   * The tab switcher contains clearly marked tabs: `Student`, `Mission`, `Quest
+   `, `Consultation`, `Mastery
+    Check`, `Task`.
    * `Todo`, `Event` and `Deadline` are all variants of `Task`.
    * Clicking on each tab will give you the information you require for that field.
    * The icons correspond respectively to the Sourceacademy and User Guide (this) websites.
    
 <br>
 
-![Jarvis](images/userguide/Jarvis.png)
-
-The core features are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`.
+The core features of Jarvis are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and
+ `Tasks`.
 Each core feature has a tab for the organisation of its information.
 
 <div markdown="block" class="alert alert-info">
@@ -210,7 +250,36 @@ Shows a message explaining how to access the help page.
 
 ### 6.3 Adding Information : `add`
 
-#### 6.3.1 Adding Todos : `-t`
+#### 6.3.1 Adding Consultations : `-c`
+
+Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
+<br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
+<br>Examples:
+* `add -c John Doe d/2020-09-20 t/13:30`
+* `add -c Mary Jane d/2021-01-02 t/09:15`
+
+<div markdown="block" class="alert alert-info">
+
+When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
+Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
+</div>
+
+#### 6.3.2 Adding Mastery Checks : `-mc`
+
+Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
+<br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
+<br>Examples:
+* `add -mc John Doe d/2020-09-20 t/13:30`
+* `add -mc Mary Jane d/2021-01-02 t/09:15`
+
+<div markdown="block" class="alert alert-info">
+
+When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
+Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
+When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
+</div>
+
+#### 6.3.3 Adding Todos : `-t`
 
 Adds your personal `Todo` with a `description`.
 <br>**Format: `add -t DESCRIPTION`**
@@ -220,7 +289,7 @@ Adds your personal `Todo` with a `description`.
 
 ![AddTodo](images/userguide/addTodo.png)
 
-#### 6.3.2 Adding Events : `-e`
+#### 6.3.4 Adding Events : `-e`
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
@@ -235,7 +304,7 @@ Adds your personal `Event` with a `description`, to attend at a specific `date` 
 An `Event` requires extra `date` and `time` specifications in order to create.
 </div>
 
-#### 6.3.3 Adding Deadlines : `-d`
+#### 6.3.5 Adding Deadlines : `-d`
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
@@ -250,34 +319,7 @@ Adds your personal `Deadline` with a `description`, to complete by a specific `d
 Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create.
 </div>
 
-#### 6.3.4 Adding Consultations : `-c`
 
-Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
-<br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
-<br>Examples:
-* `add -c John Doe d/2020-09-20 t/13:30`
-* `add -c Mary Jane d/2021-01-02 t/09:15`
-
-<div markdown="block" class="alert alert-info">
-
-When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
-Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
-</div>
-
-#### 6.3.5 Adding Mastery Checks : `-mc`
-
-Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
-<br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
-<br>Examples:
-* `add -mc John Doe d/2020-09-20 t/13:30`
-* `add -mc Mary Jane d/2021-01-02 t/09:15`
-
-<div markdown="block" class="alert alert-info">
-
-When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
-Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
-When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
-</div>
 
 ### 6.4 Editing Information : `edit`
 
@@ -323,16 +365,6 @@ Do note that the SCORE parameter can only be 0 or 1, according to the actual res
 
 ### 6.5 Deleting Information : `delete`
 
-#### 6.5.1 Deleting Tasks : `-t`
-
-Deletes a task based on the `TASK_ID` you specify.
-<br>**Format: `delete -t TASK_ID`**
-<br>Examples:
-* `delete -t T3`
-* `delete -t D2`
-
-![DeleteTask](images/userguide/deleteTask.png)
-
 #### 6.5.2 Deleting Consultations : `-c`
 
 Deletes a `Task` based on the `CONSULTATION_ID` you specify.
@@ -347,6 +379,16 @@ Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 <br>**Format: `delete -mc MASTERYCHECK_ID`**
 <br>Examples:
 * `delete -mc 3`
+
+#### 6.5.1 Deleting Tasks : `-t`
+
+Deletes a task based on the `TASK_ID` you specify.
+<br>**Format: `delete -t TASK_ID`**
+<br>Examples:
+* `delete -t T3`
+* `delete -t D2`
+
+![DeleteTask](images/userguide/deleteTask.png)
 
 ### 6.6 Viewing Information : `view`
 
@@ -371,7 +413,39 @@ An example of a partial match will be `view -s do` resulting in John Doe being d
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
-#### 6.6.3 Viewing all `Consultation` sessions : `-c`
+#### 6.6.3 Viewing deadline for Missions : `-m`
+
+Shows the deadline for the current mission(s).
+<br>**Format: `view -m`**
+
+You may also click on the `Mission` tab to do so.
+
+![FetchMission](images/userguide/viewMissions.png)
+
+#### 6.6.4 Viewing deadline for `Quests` : `-q`
+
+Shows the deadline for the current `Quest`(s).
+<br>**Format: `view -q`**
+
+You may also click on the `Quest` tab to do so.
+
+![FetchQuest](images/userguide/viewQuests.png)
+
+#### 6.6.5 Viewing ungraded `Missions` : `-um`
+
+Shows the `Missions` that you have not yet graded.
+<br>**Format: `view -um`**
+
+![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
+
+#### 6.6.6 Viewing ungraded `Quests` : `-uq`
+
+Shows the `Quests` that you have not yet graded.
+<br>**Format: `view -uq`**
+
+![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
+
+#### 6.6.7 Viewing all `Consultation` sessions : `-c`
 
 Shows all confirmed `Consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
@@ -380,7 +454,7 @@ Shows all confirmed `Consultation` sessions, both past and upcoming.
 
 You may also click on the `Consultation` tab to do so.
 
-#### 6.6.4 Viewing past `Consultation` sessions : `-cp`
+#### 6.6.8 Viewing past `Consultation` sessions : `-cp`
 
 Shows all past `Consultation` sessions.
 <br>**Format: `view -cp`**
@@ -389,7 +463,7 @@ Shows all past `Consultation` sessions.
 
 When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 
-#### 6.6.5 Viewing upcoming `Consultation` sessions : `-cu`
+#### 6.6.9 Viewing upcoming `Consultation` sessions : `-cu`
 
 Shows all upcoming `Consultation` sessions.
 <br>**Format: `view -cu`**
@@ -403,7 +477,7 @@ it is still considered as an upcoming `Consultation` when you enter `view -cu`. 
 When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated `Consultation` list with the current local time as the standard.
 </div>
 
-#### 6.6.6 Viewing all `Mastery Check` sessions : `-mc`
+#### 6.6.10 Viewing all `Mastery Check` sessions : `-mc`
 
 Shows all confirmed `Mastery Check` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
@@ -412,7 +486,7 @@ Shows all confirmed `Mastery Check` sessions, both past and upcoming.
 
 You may also click on the `Mastery Check` tab to do so.
 
-#### 6.6.7 Viewing past `Mastery Check sessions : `-mcp`
+#### 6.6.11 Viewing past `Mastery Check` sessions : `-mcp`
 
 Shows all past `Mastery Check` sessions.
 <br>**Format: `view -mcp`**
@@ -424,7 +498,7 @@ Shows all past `Mastery Check` sessions.
 When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 </div>
 
-#### 6.6.8 Viewing upcoming `Mastery Check` sessions : `mcu`
+#### 6.6.12 Viewing upcoming `Mastery Check` sessions : `mcu`
 
 Shows all upcoming `Mastery Check` sessions.
 <br>**Format: `view -mcu`**
@@ -437,38 +511,6 @@ When the time of the `Mastery Check` displayed by `view -mcu` is earlier than th
 it is still considered as an upcoming `Mastery Check` when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the `Mastery Check` session.
 When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated `Mastery Check` list with the current local time as the standard.
 </div>
-
-#### 6.6.9 Viewing deadline for Missions : `-m`
-
-Shows the deadline for the current mission(s).
-<br>**Format: `view -m`**
-
-You may also click on the `Mission` tab to do so.
-
-![FetchMission](images/userguide/viewMissions.png)
-
-#### 6.6.10 Viewing deadline for `Quests` : `-q`
-
-Shows the deadline for the current `Quest`(s).
-<br>**Format: `view -q`**
-
-You may also click on the `Quest` tab to do so.
-
-![FetchQuest](images/userguide/viewQuests.png)
-
-#### 6.6.11 Viewing ungraded `Missions` : `-um`
-
-Shows the `Missions` that you have not yet graded.
-<br>**Format: `view -um`**
-
-![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
-
-#### 6.6.12 Viewing ungraded `Quests` : `-uq`
-
-Shows the `Quests` that you have not yet graded.
-<br>**Format: `view -uq`**
-
-![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
 
 #### 6.6.13 Viewing all `Tasks` : `-t`
 
