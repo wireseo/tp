@@ -13,6 +13,9 @@ public class CliSyntax {
     public static final Prefix PREFIX_PASSWORD = new Prefix("p/");
     public static final Prefix PREFIX_SCORE = new Prefix("s/");
 
+    public static final String PREFIX_DATE = "d/";
+    public static final String PREFIX_TIME = "t/";
+
     /* Edit Command flags */
     public static final String EDIT_STUDENT = "-s";
     public static final String EDIT_LOGIN = "-l";
@@ -39,16 +42,11 @@ public class CliSyntax {
     public static final String TASK_TODO = "-t";
     public static final String TASK_EVENT = "-e";
     public static final String TASK_DEADLINE = "-d";
-    public static final String TASK_DATE = "d/";
-    public static final String TASK_TIME = "t/";
     public static final String CONSULTATION = "-c";
     public static final String MASTERY_CHECK = "-mc";
-
 
     /* Delete Command flags */
     public static final String DELETE_TASK = "-t";
     public static final String DELETE_CONSULTATION = "-c";
     public static final String DELETE_MASTERY_CHECK = "-mc";
-
-
 }

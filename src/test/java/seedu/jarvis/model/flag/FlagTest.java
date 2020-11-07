@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.parser.CliSyntax.MISSION_DEADLINE;
 import static seedu.jarvis.logic.parser.CliSyntax.QUEST_DEADLINE;
-import static seedu.jarvis.logic.parser.CliSyntax.TASK_DATE;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_EVENT;
-import static seedu.jarvis.logic.parser.CliSyntax.TASK_TIME;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_TODO;
 import static seedu.jarvis.logic.parser.CliSyntax.UNGRADED_MISSION;
 import static seedu.jarvis.logic.parser.CliSyntax.UNGRADED_QUEST;
@@ -51,8 +51,8 @@ class FlagTest {
         assertTrue(Flag.isValidFlag(TASK_TODO));
         assertTrue(Flag.isValidFlag(TASK_EVENT));
         assertTrue(Flag.isValidFlag(TASK_DEADLINE));
-        assertTrue(Flag.isValidFlag(TASK_DATE));
-        assertTrue(Flag.isValidFlag(TASK_TIME));
+        assertTrue(Flag.isValidFlag(PREFIX_DATE));
+        assertTrue(Flag.isValidFlag(PREFIX_TIME));
         assertTrue(Flag.isValidFlag(UNGRADED_MISSION));
         assertTrue(Flag.isValidFlag(UNGRADED_QUEST));
     }
