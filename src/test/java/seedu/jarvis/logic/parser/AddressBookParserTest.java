@@ -6,7 +6,7 @@ import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.jarvis.logic.commands.CommandTestUtil.EDIT_STUDENT;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
@@ -55,9 +55,9 @@ public class AddressBookParserTest {
         Student student = new StudentBuilder().build();
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder(student).build();
         EditStudentCommand command = (EditStudentCommand) parser.parseCommand(
-                EditStudentCommand.COMMAND_WORD + " " + EDIT_STUDENT + INDEX_FIRST_PERSON.getOneBased() + " "
+                EditStudentCommand.COMMAND_WORD + " " + EDIT_STUDENT + INDEX_FIRST.getOneBased() + " "
                 + StudentUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditStudentCommand(INDEX_FIRST_PERSON, descriptor), command);
+        assertEquals(new EditStudentCommand(INDEX_FIRST, descriptor), command);
     }
 
     @Test

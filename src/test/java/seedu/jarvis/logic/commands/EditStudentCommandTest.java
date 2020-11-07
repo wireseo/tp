@@ -9,8 +9,8 @@ import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.logic.commands.CommandTestUtil.showStudentAtIndex;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ public class EditStudentCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Student editedStudent = new StudentBuilder().build();
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder(editedStudent).build();
-        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST_PERSON, descriptor);
+        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST, descriptor);
 
         String expectedMessage = String.format(EditStudentCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedStudent);
 
@@ -73,8 +73,8 @@ public class EditStudentCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST_PERSON, new EditPersonDescriptor());
-        Student editedStudent = model.getFilteredStudentList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST, new EditPersonDescriptor());
+        Student editedStudent = model.getFilteredStudentList().get(INDEX_FIRST.getZeroBased());
 
         String expectedMessage = String.format(EditStudentCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedStudent);
 
@@ -86,11 +86,11 @@ public class EditStudentCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showStudentAtIndex(model, INDEX_FIRST_PERSON);
+        showStudentAtIndex(model, INDEX_FIRST);
 
-        Student studentInFilteredList = model.getFilteredStudentList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Student studentInFilteredList = model.getFilteredStudentList().get(INDEX_FIRST.getZeroBased());
         Student editedStudent = new StudentBuilder(studentInFilteredList).withName(VALID_NAME_BOB).build();
-        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST_PERSON,
+        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST,
                 new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         String expectedMessage = String.format(EditStudentCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedStudent);
@@ -104,20 +104,20 @@ public class EditStudentCommandTest {
 
     @Test
     public void execute_duplicatePersonUnfilteredList_failure() {
-        Student firstStudent = model.getFilteredStudentList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Student firstStudent = model.getFilteredStudentList().get(INDEX_FIRST.getZeroBased());
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder(firstStudent).build();
-        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_SECOND_PERSON, descriptor);
+        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_SECOND, descriptor);
 
         assertCommandFailure(editStudentCommand, model, EditStudentCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
     @Test
     public void execute_duplicatePersonFilteredList_failure() {
-        showStudentAtIndex(model, INDEX_FIRST_PERSON);
+        showStudentAtIndex(model, INDEX_FIRST);
 
         // edit student in filtered list into a duplicate in jarvis book
-        Student studentInList = model.getAddressBook().getStudentList().get(INDEX_SECOND_PERSON.getZeroBased());
-        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST_PERSON,
+        Student studentInList = model.getAddressBook().getStudentList().get(INDEX_SECOND.getZeroBased());
+        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST,
                 new EditStudentDescriptorBuilder(studentInList).build());
 
         assertCommandFailure(editStudentCommand, model, EditStudentCommand.MESSAGE_DUPLICATE_PERSON);
@@ -138,8 +138,8 @@ public class EditStudentCommandTest {
      */
     @Test
     public void execute_invalidPersonIndexFilteredList_failure() {
-        showStudentAtIndex(model, INDEX_FIRST_PERSON);
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+        showStudentAtIndex(model, INDEX_FIRST);
+        Index outOfBoundIndex = INDEX_SECOND;
         // ensures that outOfBoundIndex is still in bounds of jarvis book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getStudentList().size());
 
@@ -151,11 +151,11 @@ public class EditStudentCommandTest {
 
     @Test
     public void equals() {
-        final EditStudentCommand standardCommand = new EditStudentCommand(INDEX_FIRST_PERSON, DESC_AMY);
+        final EditStudentCommand standardCommand = new EditStudentCommand(INDEX_FIRST, DESC_AMY);
 
         // same values -> returns true
         EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_AMY);
-        EditStudentCommand commandWithSameValues = new EditStudentCommand(INDEX_FIRST_PERSON, copyDescriptor);
+        EditStudentCommand commandWithSameValues = new EditStudentCommand(INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -168,10 +168,10 @@ public class EditStudentCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditStudentCommand(INDEX_SECOND_PERSON, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditStudentCommand(INDEX_SECOND, DESC_AMY)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditStudentCommand(INDEX_FIRST_PERSON, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditStudentCommand(INDEX_FIRST, DESC_BOB)));
     }
 
 }

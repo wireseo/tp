@@ -3,7 +3,7 @@ package seedu.jarvis.logic.commands;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.logic.commands.CommandTestUtil.showStudentAtIndex;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +38,7 @@ public class ViewAllStudentsCommandTest {
 
     @Test
     public void execute_studentListIsFiltered_showsEverything() {
-        showStudentAtIndex(model, INDEX_FIRST_PERSON);
+        showStudentAtIndex(model, INDEX_FIRST);
         assertCommandSuccess(new ViewAllStudentsCommand(), model,
                 ViewAllStudentsCommand.MESSAGE_SUCCESS, expectedModel);
     }
