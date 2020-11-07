@@ -6,6 +6,7 @@ import java.time.format.FormatStyle;
 
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
+import seedu.jarvis.model.task.Task;
 import seedu.jarvis.model.task.Todo;
 
 public class TypicalTasks {
@@ -33,7 +34,24 @@ public class TypicalTasks {
     public static final String FORMATTED_DATETIME_FOUR =
             TEST_TASK_DATETIME_FOURTH.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
 
-    public static final Todo TEST_TODO = new Todo(TEST_TASK_DESCRIPTION_FIRST);
-    public static final Event TEST_EVENT = new Event(TEST_TASK_DESCRIPTION_SECOND, TEST_TASK_DATETIME_THIRD);
-    public static final Deadline TEST_DEADLINE = new Deadline(TEST_TASK_DESCRIPTION_THIRD, TEST_TASK_DATETIME_FOURTH);
+    public static final Todo TEST_TODO = new TodoBuilder().build();
+    public static final Todo TODO2 = new TodoBuilder().withDescription("Do more workouts").build();
+    public static final Todo TODO3 = new TodoBuilder().withDescription("Practice the flute").build();
+    public static final Task TODO4 = new TodoBuilder().withDescription("Get milk from cold storage").build();
+
+    public static final Event TEST_EVENT = new EventBuilder().build();
+    public static final Event EVENT2 = new EventBuilder().withDescription("Eat more vegetable")
+            .withDateTime("2020-01-01 20:15").build();
+    public static final Event EVENT3 = new EventBuilder().withDescription("Eat more meat")
+            .withDateTime("2020-02-06 00:45").buildJson("E17");
+    public static final Task EVENT4 = new EventBuilder().withDescription("Eat more fish")
+            .withDateTime("2020-05-12 07:08").build();
+
+    public static final Deadline TEST_DEADLINE = new DeadlineBuilder().build();
+    public static final Deadline DEADLINE2 = new DeadlineBuilder().withDescription("Drink more water")
+            .withDateTime("2021-01-01 13:55").build();
+    public static final Deadline DEADLINE3 = new DeadlineBuilder().withDescription("Drink more juice")
+            .withDateTime("2019-10-15 22:10").buildJson("D15");
+    public static final Task DEALDLINE4 = new DeadlineBuilder().withDescription("Drink more tea")
+            .withDateTime("2022-07-17 18:17").build();
 }

@@ -1,8 +1,12 @@
 package seedu.jarvis.model.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
+import static seedu.jarvis.testutil.TypicalTasks.DEADLINE3;
+import static seedu.jarvis.testutil.TypicalTasks.EVENT3;
 import static seedu.jarvis.testutil.TypicalTasks.FORMATTED_DATETIME_ONE;
 import static seedu.jarvis.testutil.TypicalTasks.FORMATTED_DATETIME_THREE;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
@@ -22,11 +26,19 @@ public class DeadlineTest {
     private final Deadline deadlineTestThree = new Deadline(TEST_TASK_DESCRIPTION_THIRD, TEST_TASK_DATETIME_THIRD);
     private final Deadline deadlineTestFour = new Deadline(TEST_TASK_DESCRIPTION_FOURTH, TEST_TASK_DATETIME_FOURTH);
 
+    //For constructing Deadline from CLI
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Deadline(null, null));
         assertThrows(NullPointerException.class, () -> new Deadline(null, TEST_TASK_DATETIME_FIRST));
         assertThrows(NullPointerException.class, () -> new Deadline(TEST_TASK_DESCRIPTION_FIRST, null));
+    }
+
+    //For constructing Deadline from .json file
+    @Test
+    public void constructorTest_deadlineEquals() {
+        assertNotEquals(EVENT3, DEADLINE3);
+        assertEquals(DEADLINE3, DEADLINE3);
     }
 
     @Test
