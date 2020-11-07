@@ -82,25 +82,24 @@ public class ConsultationListTest {
     }
 
     @Test
-    void changeTaskListTo_asObservableList() {
+    void asObservableList_consultationList_success() {
         assertFalse(consultationList.getClass().equals(consultationList.asObservableList().getClass()));
     }
 
     @Test
-    public void removeNullConsultation_returnsFalse() {
+    public void remove_nullConsultation_returnsFalse() {
         assertThrows(NullPointerException.class, () -> consultationList.remove(null));
+    }
+
+    @Test
+    public void remove_consultationNotInList_throwsConsultationNotFoundException() {
+        assertThrows(ConsultationNotFoundException.class, () -> consultationList.remove(TEST_CONSULTATION_ONE));
     }
 
     @Test
     public void contains_consultationInList_returnsTrue() {
         consultationList.add(TEST_CONSULTATION_ONE);
         assertTrue(consultationList.contains(TEST_CONSULTATION_ONE));
-    }
-
-    @Test
-    public void contains_consultationInList_returnsFalse() {
-        consultationList.remove(TEST_CONSULTATION_ONE);
-        assertFalse(consultationList.contains(TEST_CONSULTATION_ONE));
     }
 
     @Test

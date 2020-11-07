@@ -80,25 +80,24 @@ public class MasteryCheckListTest {
     }
 
     @Test
-    void changeTaskListTo_asObservableList() {
+    void asObservableList_masteryCheckList_success() {
         assertFalse(masteryCheckList.getClass().equals(masteryCheckList.asObservableList().getClass()));
     }
 
     @Test
-    public void removeNullMasteryCheck_returnsFalse() {
+    public void remove_nullMasteryCheck_returnsFalse() {
         assertThrows(NullPointerException.class, () -> masteryCheckList.remove(null));
+    }
+
+    @Test
+    public void removes_MasteryCheckNotInList_throwsMasteryCheckNotFoundException() {
+        assertThrows(MasteryCheckNotFoundException.class, () -> masteryCheckList.remove(TEST_MASTERY_CHECK_ONE));
     }
 
     @Test
     public void contains_MasteryCheckInList_returnsTrue() {
         masteryCheckList.add(TEST_MASTERY_CHECK_ONE);
         assertTrue(masteryCheckList.contains(TEST_MASTERY_CHECK_ONE));
-    }
-
-    @Test
-    public void contains_MasteryCheckInList_returnsFalse() {
-        masteryCheckList.remove(TEST_MASTERY_CHECK_ONE);
-        assertFalse(masteryCheckList.contains(TEST_MASTERY_CHECK_ONE));
     }
 
     @Test
