@@ -22,8 +22,8 @@ public class MasteryCheck extends Consultation {
         return hasPassed;
     }
 
-    public MasteryCheck setPassed(boolean passed) {
-        this.hasPassed = passed;
+    public MasteryCheck setPassed(boolean hasPassed) {
+        this.hasPassed = hasPassed;
         return this;
     }
 
