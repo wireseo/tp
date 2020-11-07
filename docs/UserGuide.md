@@ -141,9 +141,8 @@ this box.
         1. Feedback Box - The feedback shown to the user for a given inputted command.
         1. Information Panel - A detailed list on the information stored within Jarvis.
         1. Tab Switcher - A tab switcher for browsing through the different types of information stored in Jarvis.
-        
    ![Jarvis](images/userguide/uiLayout.png)
-   
+
 #### 4.1.1 Top Bar
    * The top bar includes the following components.
         1. Summary information - A quick summary indicating the number of ungraded missions and quests, upcoming
@@ -156,7 +155,7 @@ this box.
         1. Shortcut icons - These icons are positioned here for your convenience to quickly navigate to Source Academy
          with the blue diamond on the left, and Jarvis' user guide with the white book icon on the right.
         1. Jarvis logo.
-   
+
    ![Jarvis](images/userguide/topBar.png)
 
 #### 4.1.2 Command Box
@@ -181,7 +180,7 @@ this box.
    * `Todo`, `Event` and `Deadline` are all variants of `Task`.
    * Clicking on each tab will give you the information you require for that field.
    * The icons correspond respectively to the Sourceacademy and User Guide (this) websites.
-   
+
 <br>
 
 The core features of Jarvis are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and
@@ -328,10 +327,12 @@ Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications
 #### 6.4.1 Editing Login Information : `-l`
 
 You can use tags to specify the field to be edited.
-<br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
+<br>**Format: `edit -l [u/LUMINUS_USERNAME] [p/LUMINUS_PASSWORD]`**
 <br>Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
+
+At least one of the optional parameters must be provided.
 
 <div markdown="block" class="alert alert-info">
 
@@ -347,12 +348,14 @@ mission and quest information.
 #### 6.4.2 Editing `Student` Information : `-s`
 
 Edits the fields of a `Student`.
-<br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
+<br>**Format: `edit -s INDEX [n/NAME] [t/TELEGRAM] [e/EMAIL]`**
 <br>Examples:
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
 * `edit -s 3 n/Timots`
 
 #### 6.4.3 Editing `Mastery Checks` : `-mc`
+
+At least one of the optional parameters must be provided.
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
@@ -407,7 +410,7 @@ You may also click on the `Student` tab to do so.
 
 #### 6.6.2 View `Student` with keyword : `-s [NAME]`
 
-Shows all students that match(partial and full) the student name entered after the command. The name is case-sensitive. 
+Shows all students that match(partial and full) the student name entered after the command. The name is case-sensitive.
 An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 <br>**Format: `view -s [NAME]`**
 <br>Examples:

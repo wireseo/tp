@@ -7,7 +7,7 @@ import java.time.format.FormatStyle;
 import seedu.jarvis.model.consultation.Consultation;
 
 public class TypicalConsultations {
-    public static final String TEST_CONSULTATION_NAME_FIRST = "Alive";
+    public static final String TEST_CONSULTATION_NAME_FIRST = "Alice";
     public static final String TEST_CONSULTATION_NAME_SECOND = "Bob";
     public static final String TEST_CONSULTATION_NAME_THIRD = "Carl";
     public static final String TEST_CONSULTATION_NAME_FOURTH = "David";

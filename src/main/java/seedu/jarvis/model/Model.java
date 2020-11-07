@@ -124,7 +124,7 @@ public interface Model {
      */
     boolean hasPassword();
 
-    //=========== User's Greeting ==================================================================================
+    //=========== Greeting ===================================================================================
     void setGreeting(String greeting);
 
     boolean hasGreeting();

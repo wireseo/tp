@@ -1,8 +1,8 @@
 package seedu.jarvis.logic.parser;
 
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.jarvis.logic.parser.CliSyntax.TASK_DATE;
-import static seedu.jarvis.logic.parser.CliSyntax.TASK_TIME;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -83,8 +83,8 @@ public class TaskCommandParser {
     public static String parseTimedTaskDescription(String[] nameKeywords, int length) throws ParseException {
         int datePrefixLocation = -1;
 
-        if (nameKeywords[1].substring(0, 2).equals(TASK_DATE)
-            || nameKeywords[1].substring(0, 2).equals(TASK_TIME)) {
+        if (nameKeywords[1].substring(0, 2).equals(PREFIX_DATE)
+            || nameKeywords[1].substring(0, 2).equals(PREFIX_TIME)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
         }
@@ -93,7 +93,7 @@ public class TaskCommandParser {
             if (nameKeywords[i].length() <= 1) {
                 //Ignores the string segment if the length is <= 1
 
-            } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            } else if (nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
                 datePrefixLocation = i;
             }
         }
@@ -124,11 +124,11 @@ public class TaskCommandParser {
             if (nameKeywords[i].length() <= 1) {
                 //Ignores the string segment if the length is <= 1
 
-            } else if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            } else if (nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
                 hasDatePrefix = true;
                 datePrefixLocation = i;
 
-            } else if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
+            } else if (nameKeywords[i].substring(0, 2).equals(PREFIX_TIME)) {
                 hasTimePrefix = true;
                 timePrefixLocation = i;
             }

@@ -2,9 +2,11 @@ package seedu.jarvis.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -40,6 +42,11 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
 
+    public static final String VALID_DATE_AMY_CONSULTATION = "2020-09-20";
+    public static final String VALID_DATE_BOB_CONSULTATION = "2020-10-23";
+    public static final String VALID_TIME_AMY_CONSULTATION = "11:20";
+    public static final String VALID_TIME_BOB_CONSULTATION = "14:30";
+
     public static final String VALID_USERNAME_STUDENT = "nusstu\\e1234567";
     public static final String VALID_USERNAME_PROF = "nusstf\\e1234567";
     public static final String VALID_PASSWORD_1 = "test132";
@@ -50,6 +57,41 @@ public class CommandTestUtil {
     public static final String PHONE_DESC_BOB = " " + PREFIX_TELEGRAM + VALID_PHONE_BOB;
     public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
+
+    public static final String NAME_DESC_AMY_CONSULTATION = " " + VALID_NAME_AMY;
+    public static final String NAME_DESC_BOB_CONSULTATION = " " + VALID_NAME_BOB;
+    public static final String DATE_DESC_AMY_CONSULTATION = " " + PREFIX_DATE + VALID_DATE_AMY_CONSULTATION;
+    public static final String DATE_DESC_BOB_CONSULTATION = " " + PREFIX_DATE + VALID_DATE_BOB_CONSULTATION;
+    public static final String TIME_DESC_AMY_CONSULTATION = " " + PREFIX_TIME + VALID_TIME_AMY_CONSULTATION;
+    public static final String TIME_DESC_BOB_CONSULTATION = " " + PREFIX_TIME + VALID_TIME_BOB_CONSULTATION;
+
+    public static final String INVALID_DATE_ONE = ""; // empty string
+    public static final String INVALID_DATE_TWO = "0"; // not in correct format
+    public static final String INVALID_DATE_THREE = "2019-13-27"; // invalid month - over 12
+    public static final String INVALID_DATE_FOUR = "2019-02-30"; // invalid date - over 28 for Feb
+    public static final String INVALID_DATE_FIVE = "999-02-27"; // invalid year - wrong format (YYY)
+    public static final String INVALID_DATE_SIX = "99999-02-27"; // invalid year - wrong format (YYYYY)
+    public static final String INVALID_DATE_SEVEN = "2019-3-27"; // invalid month - wrong format
+    public static final String INVALID_DATE_EIGHT = "2019-03-2"; // invalid date - wrong format
+
+    public static final String INVALID_TIME_ONE = "25:51"; // invalid hour - over 24
+    public static final String INVALID_TIME_TWO = "25:61"; // invalid minute - over 60
+    public static final String INVALID_TIME_THREE = "0:51"; // invalid hour - wrong format
+    public static final String INVALID_TIME_FOUR = "00:5"; // invalid minute - wrong format
+
+    public static final String INVALID_DATE_ONE_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_ONE;
+    public static final String INVALID_DATE_TWO_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_TWO;
+    public static final String INVALID_DATE_THREE_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_THREE;
+    public static final String INVALID_DATE_FOUR_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_FOUR;
+    public static final String INVALID_DATE_FIVE_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_FIVE;
+    public static final String INVALID_DATE_SIX_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_SIX;
+    public static final String INVALID_DATE_SEVEN_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_SEVEN;
+    public static final String INVALID_DATE_EIGHT_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_EIGHT;
+
+    public static final String INVALID_TIME_ONE_WITH_PREFIX = " " + PREFIX_DATE + INVALID_TIME_ONE;
+    public static final String INVALID_TIME_TWO_WITH_PREFIX = " " + PREFIX_DATE + INVALID_TIME_TWO;
+    public static final String INVALID_TIME_THREE_WITH_PREFIX = " " + PREFIX_DATE + INVALID_TIME_THREE;
+    public static final String INVALID_TIME_FOUR_WITH_PREFIX = " " + PREFIX_DATE + INVALID_TIME_FOUR;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_TELEGRAM + "911a"; // 'a' not allowed in phones
@@ -66,6 +108,10 @@ public class CommandTestUtil {
 
     public static final String EDIT_STUDENT = "-s ";
     public static final String EDIT_LOGIN = "-l ";
+
+    public static final String MASTERY_CHECK_PREFIX = "-mc";
+    public static final String CONSULTATION_PREFIX = "-c";
+
 
     static {
         DESC_AMY = new EditStudentDescriptorBuilder().withName(VALID_NAME_AMY)

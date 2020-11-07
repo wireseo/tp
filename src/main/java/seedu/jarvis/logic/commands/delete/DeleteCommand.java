@@ -12,11 +12,13 @@ public abstract class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_DELETE_USAGE = "Delete Command supports:\n"
-            + "1. delete task (delete -t)\n"
-            + "2. delete consultation (delete -c)\n"
-            + "3. delete mastery check (delete -mc)\n"
-            + "All three must be followed by an index.";
+    public static final String MESSAGE_DELETE_USAGE =
+            COMMAND_WORD + ": Deletes a consultation, mastery check, or task (todo, event, deadline) from Jarvis.\n"
+            + "delete -c CONSULTATION_ID: Delete consultation with CONSULTATION_ID\n"
+            + "delete -mc MASTERYCHECK_ID: Delete mastery check with MASTERYCHECK_ID\n"
+            + "delete -t TASK_ID: Delete task with TASK_ID\n\n"
+            + "To check the IDs of consultations, mastery checks, and tasks, "
+            + "enter view -c, view -mc, view -t respectively and take note of the leftmost identifier of each item.";
 
     public abstract CommandResult execute(Model model) throws CommandException;
 

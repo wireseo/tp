@@ -99,7 +99,7 @@ public class EditMasteryCheckCommandTest {
         assertFalse(standardCommand.equals(null));
 
         // different types -> returns false
-        assertFalse(standardCommand.equals(new ClearCommand()));
+        assertFalse(standardCommand.equals(new ExitCommand()));
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new EditMasteryCheckCommand(INDEX_SECOND, DESC_MC_ONE)));

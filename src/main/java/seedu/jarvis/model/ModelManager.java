@@ -109,7 +109,9 @@ public class ModelManager implements Model {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
+
     //=========== UserLogin ==================================================================================
+
     @Override
     public UserLogin getUserLogin() {
         return userLogin;
@@ -132,7 +134,7 @@ public class ModelManager implements Model {
         return userLogin.hasPassword();
     }
 
-    //=========== User's Name ==================================================================================
+    //=========== Greeting ==================================================================================
     @Override
     public void setGreeting(String greeting) {
         addressBook.setGreeting(greeting);

@@ -13,14 +13,21 @@ import static seedu.jarvis.testutil.TypicalStudents.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.GuiSettings;
+import seedu.jarvis.model.consultation.Consultation;
+import seedu.jarvis.model.login.Username;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
+import seedu.jarvis.model.task.Deadline;
+import seedu.jarvis.model.task.Event;
+import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.testutil.AddressBookBuilder;
 import seedu.jarvis.testutil.MissionBuilder;
 import seedu.jarvis.testutil.QuestBuilder;
@@ -36,6 +43,8 @@ public class ModelManagerTest {
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
     }
+
+    //=========== UserPrefs ==================================================================================
 
     @Test
     public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {
@@ -80,6 +89,29 @@ public class ModelManagerTest {
         assertEquals(path, modelManager.getAddressBookFilePath());
     }
 
+    //=========== UserLogin ==================================================================================
+
+    @Test
+    public void setUserLogin_nullUserLogin_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setUserLogin(null));
+    }
+
+    @Test
+    public void setUserLogin_validUserLogin_copiesUserLogin() {
+        UserLogin userLogin = new UserLogin();
+        userLogin.setUsername(new Username("nusstu\\e1234567"));
+        userLogin.setPassword("testCaseOld132");
+        modelManager.setUserLogin(userLogin);
+        assertEquals(userLogin, modelManager.getUserLogin());
+
+        // Modifying userLogin should not modify modelManager's userLogin
+        UserLogin oldUserLogin = new UserLogin(userLogin);
+        userLogin.setPassword("testCaseNew132");
+        assertEquals(oldUserLogin, modelManager.getUserLogin());
+    }
+
+    //=========== AddressBook ================================================================================
+
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
@@ -105,53 +137,6 @@ public class ModelManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredStudentList().remove(0));
-    }
-
-    @Test
-    public void hasGreeting() {
-        // Have not set greeting
-        assertFalse(modelManager.hasGreeting());
-
-        // After setting greeting
-        modelManager.setGreeting("Alex Yeoh");
-        assertTrue(modelManager.getGreeting().getValue().equals("Welcome, Alex Yeoh!"));
-        assertTrue(modelManager.hasGreeting());
-    }
-
-    @Test
-    public void isMissionInList() {
-        // Mission not in list
-        assertFalse(modelManager.isMissionInList("Streams"));
-
-        // Mission in list
-        modelManager.addMission(STREAMS);
-        assertTrue(modelManager.isMissionInList("Streams"));
-    }
-
-    @Test
-    public void updateMission_returnsTrue() {
-        modelManager.addMission(MUSICAL_NOTES);
-        modelManager.updateMission("Musical Notes");
-        Mission updatedMission = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
-        assertTrue(modelManager.getFilteredMissionList().contains(updatedMission));
-    }
-
-    @Test
-    void isQuestInList() {
-        // Quest not in list
-        assertFalse(modelManager.isQuestInList("Colorful Carpets"));
-
-        // Quest in list
-        modelManager.addQuest(COLORFUL_CARPETS);
-        assertTrue(modelManager.isQuestInList("Colorful Carpets"));
-    }
-
-    @Test
-    public void updateQuest_returnsTrue() {
-        modelManager.addQuest(COLORFUL_CARPETS);
-        modelManager.updateQuest("Colorful Carpets");
-        Quest updatedQuest = new QuestBuilder(COLORFUL_CARPETS).withIsGraded(false).build();
-        assertTrue(modelManager.getFilteredQuestList().contains(updatedQuest));
     }
 
     @Test
@@ -190,5 +175,177 @@ public class ModelManagerTest {
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs, userLogin)));
+    }
+
+    //=========== Greeting ==================================================================================
+
+    @Test
+    public void hasGreeting() {
+        // Have not set greeting
+        assertFalse(modelManager.hasGreeting());
+
+        // After setting greeting
+        modelManager.setGreeting("Alex Yeoh");
+        assertTrue(modelManager.getGreeting().getValue().equals("Welcome, Alex Yeoh!"));
+        assertTrue(modelManager.hasGreeting());
+    }
+
+    //=========== Missions ===================================================================================
+
+    @Test
+    public void isMissionInList() {
+        // Mission not in list
+        assertFalse(modelManager.isMissionInList("Streams"));
+
+        // Mission in list
+        modelManager.addMission(STREAMS);
+        assertTrue(modelManager.isMissionInList("Streams"));
+    }
+
+    @Test
+    public void updateMission_returnsTrue() {
+        modelManager.addMission(MUSICAL_NOTES);
+        modelManager.updateMission("Musical Notes");
+        Mission updatedMission = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
+        assertTrue(modelManager.getFilteredMissionList().contains(updatedMission));
+    }
+
+    //=========== Quests ===================================================================================
+
+    @Test
+    public void isQuestInList() {
+        // Quest not in list
+        assertFalse(modelManager.isQuestInList("Colorful Carpets"));
+
+        // Quest in list
+        modelManager.addQuest(COLORFUL_CARPETS);
+        assertTrue(modelManager.isQuestInList("Colorful Carpets"));
+    }
+
+    @Test
+    public void updateQuest_returnsTrue() {
+        modelManager.addQuest(COLORFUL_CARPETS);
+        modelManager.updateQuest("Colorful Carpets");
+        Quest updatedQuest = new QuestBuilder(COLORFUL_CARPETS).withIsGraded(false).build();
+        assertTrue(modelManager.getFilteredQuestList().contains(updatedQuest));
+    }
+
+    //============================== Task ====================================================================
+
+    @Test
+    public void hasTodo_nullTodo_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasTodo(null));
+    }
+
+    @Test
+    public void addTodo_nullTodo_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addTodo(null));
+    }
+
+    @Test
+    public void isTodoInAddressBook() {
+        Todo todo = new Todo("TestTodo");
+        assertFalse(modelManager.hasTodo(todo));
+
+        modelManager.addTodo(todo);
+        assertTrue(modelManager.hasTodo(todo));
+    }
+
+    @Test
+    public void hasEvent_nullEvent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasEvent(null));
+    }
+
+    @Test
+    public void addEvent_nullEvent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addEvent(null));
+    }
+
+    @Test
+    public void isEventInAddressBook() {
+        Event event = new Event("TestEvent", LocalDateTime.now());
+        assertFalse(modelManager.hasEvent(event));
+
+        modelManager.addEvent(event);
+        assertTrue(modelManager.hasEvent(event));
+    }
+
+    @Test
+    public void hasDeadline_nullDeadline_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasDeadline(null));
+    }
+
+    @Test
+    public void addDeadline_nullDeadline_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addDeadline(null));
+    }
+
+    @Test
+    public void isDeadlineInAddressBook() {
+        Deadline deadline = new Deadline("TestDeadline", LocalDateTime.now());
+        assertFalse(modelManager.hasDeadline(deadline));
+
+        modelManager.addDeadline(deadline);
+        assertTrue(modelManager.hasDeadline(deadline));
+    }
+
+    //========================= Consultations ================================================================
+
+    @Test
+    public void hasConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasConsultation(null));
+    }
+
+    @Test
+    public void addConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addConsultation(null));
+    }
+
+    @Test
+    public void isConsultationInAddressBook() {
+        Consultation consultation = new Consultation("Adam", LocalDateTime.now());
+        assertFalse(modelManager.hasConsultation(consultation));
+
+        modelManager.addConsultation(consultation);
+        assertTrue(modelManager.hasConsultation(consultation));
+    }
+
+    @Test
+    public void deleteConsultation() {
+        Consultation consultation = new Consultation("Eve", LocalDateTime.now());
+        modelManager.addConsultation(consultation);
+        assertTrue(modelManager.hasConsultation(consultation));
+        modelManager.deleteConsultation(consultation);
+        assertFalse(modelManager.hasConsultation(consultation));
+    }
+
+    //========================= Mastery Checks ================================================================
+
+    @Test
+    public void hasMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasMasteryCheck(null));
+    }
+
+    @Test
+    public void addMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addMasteryCheck(null));
+    }
+
+    @Test
+    public void isMasteryCheckInAddressBook() {
+        MasteryCheck masteryCheck = new MasteryCheck("Jacob", LocalDateTime.now());
+        assertFalse(modelManager.hasMasteryCheck(masteryCheck));
+
+        modelManager.addMasteryCheck(masteryCheck);
+        assertTrue(modelManager.hasMasteryCheck(masteryCheck));
+    }
+
+    @Test
+    public void setMasteryCheck_validMasteryCheck_copiesMasteryCheck() {
+        MasteryCheck oldMasteryCheck = new MasteryCheck("Abraham", LocalDateTime.now());
+        MasteryCheck newMasteryCheck = new MasteryCheck("Igausus", LocalDateTime.now());
+        modelManager.addMasteryCheck(oldMasteryCheck);
+        modelManager.setMasteryCheck(oldMasteryCheck, newMasteryCheck);
+        assertTrue(modelManager.hasMasteryCheck(newMasteryCheck));
     }
 }

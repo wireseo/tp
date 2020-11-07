@@ -1,8 +1,8 @@
 package seedu.jarvis.logic.parser;
 
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.jarvis.logic.parser.CliSyntax.TASK_DATE;
-import static seedu.jarvis.logic.parser.CliSyntax.TASK_TIME;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -65,7 +65,7 @@ public class ConsultationMasteryCheckCommandParser {
     public static String parseStudentName(String[] nameKeywords, int length) {
         int datePrefixLocation = -1;
         for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            if (nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
                 datePrefixLocation = i;
             }
         }
@@ -92,12 +92,12 @@ public class ConsultationMasteryCheckCommandParser {
         int timePrefixLocation = -1;
 
         for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(TASK_DATE)) {
+            if (nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
                 hasDatePrefix = true;
                 datePrefixLocation = i;
             }
 
-            if (nameKeywords[i].substring(0, 2).equals(TASK_TIME)) {
+            if (nameKeywords[i].substring(0, 2).equals(PREFIX_TIME)) {
                 hasTimePrefix = true;
                 timePrefixLocation = i;
             }
