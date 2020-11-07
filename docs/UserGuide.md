@@ -308,7 +308,7 @@ Edits the fields of a `Student`.
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
 * `edit -s 3 n/Timots`
 
-#### 6.4.3 Editing Mastery Checks : `-mc`
+#### 6.4.3 Editing Mastery Checks: `-mc`
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
@@ -473,6 +473,7 @@ Shows the quests that you have not yet graded.
 #### 6.6.13 Viewing all Tasks : `-t`
 
 Shows the list of all your current tasks.
+This includes `Todo`, `Event` and `Deadline` are all considered tasks.
 <br>**Format: `view -t`**
 
 You may also click on the `Task` tab to do so.
