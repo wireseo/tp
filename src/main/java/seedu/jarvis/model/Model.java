@@ -263,6 +263,12 @@ public interface Model {
 
     boolean hasConsultation(Consultation toAddConsultation);
 
+    /**
+     * Updates the filter of the filtered consultation list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredConsultationList(Predicate<Consultation> predicate);
+
     //================== Mastery Checks  ======================================================
 
     void addMasteryCheck(MasteryCheck masteryCheck);

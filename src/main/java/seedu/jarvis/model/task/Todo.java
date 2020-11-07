@@ -23,7 +23,7 @@ public class Todo extends Task {
 
     /**
      * Creates a Todo object that only has taskId and description attributes.
-     * For creation of Todo object from addressbook.txt data file.
+     * For creation of Todo object from jarvis.json data file.
      * @param taskId of Todo
      * @param description of Todo
      */

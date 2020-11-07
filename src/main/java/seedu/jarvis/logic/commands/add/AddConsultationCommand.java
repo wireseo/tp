@@ -9,7 +9,6 @@ import seedu.jarvis.model.Model;
 import seedu.jarvis.model.consultation.Consultation;
 
 public class AddConsultationCommand extends AddCommand {
-    //@@author wireseo
     public static final String MESSAGE_DUPLICATE_CONSULTATION = "This consultation already exists in jarvis";
     public static final String MESSAGE_SUCCESS_CONSULTATION = "New consultation added: %1$s";
 

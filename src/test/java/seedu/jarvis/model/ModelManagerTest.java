@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.model.Model.PREDICATE_SHOW_ALL_STUDENTS;
 import static seedu.jarvis.testutil.Assert.assertThrows;
+import static seedu.jarvis.testutil.TypicalMissions.MUSICAL_NOTES;
+import static seedu.jarvis.testutil.TypicalMissions.STREAMS;
+import static seedu.jarvis.testutil.TypicalQuests.COLORFUL_CARPETS;
 import static seedu.jarvis.testutil.TypicalStudents.ALICE;
 import static seedu.jarvis.testutil.TypicalStudents.BENSON;
 
@@ -15,8 +18,12 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.GuiSettings;
+import seedu.jarvis.model.mission.Mission;
+import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
 import seedu.jarvis.testutil.AddressBookBuilder;
+import seedu.jarvis.testutil.MissionBuilder;
+import seedu.jarvis.testutil.QuestBuilder;
 import seedu.jarvis.testutil.TypicalManagers;
 
 public class ModelManagerTest {
@@ -98,6 +105,53 @@ public class ModelManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredStudentList().remove(0));
+    }
+
+    @Test
+    public void hasGreeting() {
+        // Have not set greeting
+        assertFalse(modelManager.hasGreeting());
+
+        // After setting greeting
+        modelManager.setGreeting("Alex Yeoh");
+        assertTrue(modelManager.getGreeting().getValue().equals("Welcome, Alex Yeoh!"));
+        assertTrue(modelManager.hasGreeting());
+    }
+
+    @Test
+    public void isMissionInList() {
+        // Mission not in list
+        assertFalse(modelManager.isMissionInList("Streams"));
+
+        // Mission in list
+        modelManager.addMission(STREAMS);
+        assertTrue(modelManager.isMissionInList("Streams"));
+    }
+
+    @Test
+    public void updateMission_returnsTrue() {
+        modelManager.addMission(MUSICAL_NOTES);
+        modelManager.updateMission("Musical Notes");
+        Mission updatedMission = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
+        assertTrue(modelManager.getFilteredMissionList().contains(updatedMission));
+    }
+
+    @Test
+    void isQuestInList() {
+        // Quest not in list
+        assertFalse(modelManager.isQuestInList("Colorful Carpets"));
+
+        // Quest in list
+        modelManager.addQuest(COLORFUL_CARPETS);
+        assertTrue(modelManager.isQuestInList("Colorful Carpets"));
+    }
+
+    @Test
+    public void updateQuest_returnsTrue() {
+        modelManager.addQuest(COLORFUL_CARPETS);
+        modelManager.updateQuest("Colorful Carpets");
+        Quest updatedQuest = new QuestBuilder(COLORFUL_CARPETS).withIsGraded(false).build();
+        assertTrue(modelManager.getFilteredQuestList().contains(updatedQuest));
     }
 
     @Test

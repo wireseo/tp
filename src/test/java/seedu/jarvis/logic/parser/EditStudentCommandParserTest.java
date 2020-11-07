@@ -17,9 +17,9 @@ import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.jarvis.testutil.TypicalIndexes.INDEX_THIRD;
 
 import org.junit.jupiter.api.Test;
 
@@ -75,7 +75,7 @@ public class EditStudentCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_PERSON;
+        Index targetIndex = INDEX_SECOND;
         String userInput = EDIT_STUDENT + targetIndex.getOneBased() + PHONE_DESC_BOB + EMAIL_DESC_AMY + NAME_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -87,7 +87,7 @@ public class EditStudentCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST;
         String userInput = EDIT_STUDENT + targetIndex.getOneBased() + PHONE_DESC_BOB + EMAIL_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder().withPhone(VALID_PHONE_BOB)
@@ -100,7 +100,7 @@ public class EditStudentCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD;
         String userInput = EDIT_STUDENT + targetIndex.getOneBased() + NAME_DESC_AMY;
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder().withName(VALID_NAME_AMY).build();
         EditStudentCommand expectedCommand = new EditStudentCommand(targetIndex, descriptor);
@@ -121,7 +121,7 @@ public class EditStudentCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST;
         String userInput = EDIT_STUDENT + targetIndex.getOneBased() + PHONE_DESC_AMY + EMAIL_DESC_AMY + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_BOB;
 
@@ -135,7 +135,7 @@ public class EditStudentCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST;
         String userInput = EDIT_STUDENT + targetIndex.getOneBased() + INVALID_PHONE_DESC + PHONE_DESC_BOB;
         EditPersonDescriptor descriptor = new EditStudentDescriptorBuilder().withPhone(VALID_PHONE_BOB).build();
         EditStudentCommand expectedCommand = new EditStudentCommand(targetIndex, descriptor);
