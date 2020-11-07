@@ -133,7 +133,9 @@ this box.
 ### 4.1 UI Layout
 
    * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
+   * `Todo`, `Event` and `Deadline` are all variants of `Task`.
    * Clicking on each tab will give you the information you require for that field.
+   * The icons correspond respectively to the Sourceacademy and User Guide (this) websites.
    
 <br>
 
