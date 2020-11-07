@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import seedu.jarvis.commons.core.GuiSettings;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.login.Username;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
@@ -319,4 +320,32 @@ public class ModelManagerTest {
     }
 
     //========================= Mastery Checks ================================================================
+
+    @Test
+    public void hasMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasMasteryCheck(null));
+    }
+
+    @Test
+    public void addMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addMasteryCheck(null));
+    }
+
+    @Test
+    public void isMasteryCheckInAddressBook() {
+        MasteryCheck masteryCheck = new MasteryCheck("Jacob", LocalDateTime.now());
+        assertFalse(modelManager.hasMasteryCheck(masteryCheck));
+
+        modelManager.addMasteryCheck(masteryCheck);
+        assertTrue(modelManager.hasMasteryCheck(masteryCheck));
+    }
+
+    @Test
+    public void setMasteryCheck_validMasteryCheck_copiesMasteryCheck() {
+        MasteryCheck oldMasteryCheck = new MasteryCheck("Abraham", LocalDateTime.now());
+        MasteryCheck newMasteryCheck = new MasteryCheck("Igausus", LocalDateTime.now());
+        modelManager.addMasteryCheck(oldMasteryCheck);
+        modelManager.setMasteryCheck(oldMasteryCheck, newMasteryCheck);
+        assertTrue(modelManager.hasMasteryCheck(newMasteryCheck));
+    }
 }
