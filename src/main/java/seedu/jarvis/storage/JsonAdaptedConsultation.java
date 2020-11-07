@@ -13,7 +13,7 @@ public class JsonAdaptedConsultation {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Consultation's %s field is missing!";
     public static final String INVALID_DATE_TIME_FORMAT = "Date time format is wrong! Please follow format: "
             + "YYYY-MM-DDTHH:MM";
-
+    public static final String NAME_OF_STUDENT_FIELD = "name of student";
 
     private final String studentName;
     private final String dateAndTime;
@@ -44,7 +44,7 @@ public class JsonAdaptedConsultation {
      */
     public Consultation toModelType() throws IllegalValueException {
         if (studentName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "name of student"));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, NAME_OF_STUDENT_FIELD));
         }
 
         if (dateAndTime == null) {
