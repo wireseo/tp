@@ -350,7 +350,7 @@ Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 
 ### 6.6 Viewing Information : `view`
 
-#### 6.6.1 Viewing a list of all Students : `-s`
+#### 6.6.1 Viewing a list of all `Students` : `-s`
 
 Shows a list of all students under the tutor in Jarvis.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
@@ -361,7 +361,7 @@ You may also click on the `Student` tab to do so.
 
 ![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
-#### 6.6.2 Viewing one Student : `-s [NAME]`
+#### 6.6.2 Viewing one `Student` : `-s [NAME]`
 
 Shows all students that match(partial and full) the student name entered after the command. The name is case
 -insensitive. An example of a partial match will be `view -s do` resulting in John Doe being displayed.
