@@ -13,6 +13,7 @@ public class JsonAdaptedMasteryCheck {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Mastery Check's %s field is missing!";
     public static final String INVALID_DATE_TIME_FORMAT = "Date time format is wrong! Please follow format: "
             + "YYYY-MM-DDTHH:MM";
+    public static final String INVALID_HASPASSED_FORMAT = "Pass/Fail status of the Mastery Check is corrupted!";
 
     private final String studentName;
     private final String dateAndTime;
@@ -67,7 +68,7 @@ public class JsonAdaptedMasteryCheck {
                 return MasteryCheck.createZeroMarkMC(studentName, LocalDateTime.parse(dateAndTime));
                 // TODO: this needs to work! otherwise parsing / toString is at fault
             } else {
-                throw new IllegalValueException("passed value corrupted");
+                throw new IllegalValueException(INVALID_HASPASSED_FORMAT);
             }
         } catch (DateTimeParseException e) {
             throw new IllegalValueException(INVALID_DATE_TIME_FORMAT);
