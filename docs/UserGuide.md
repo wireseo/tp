@@ -387,7 +387,7 @@ Shows all past `Consultation` sessions.
 <br>Examples:
 * `view -cp`
 
-When the consultation time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 
 #### 6.6.5 Viewing upcoming `Consultation` sessions : `-cu`
 
@@ -398,9 +398,9 @@ Shows all upcoming `Consultation` sessions.
 
 <div markdown="block" class="alert alert-info">
 
-When the time of the consultation displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
-it is still considered as an upcoming consultation when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the consultation session.
-When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated consultation list with the current local time as the standard.
+When the time of the `Consultation` displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
+it is still considered as an upcoming `Consultation` when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the `Consultation` session.
+When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated `Consultation` list with the current local time as the standard.
 </div>
 
 #### 6.6.6 Viewing all `Mastery Check` sessions : `-mc`
@@ -447,50 +447,50 @@ You may also click on the `Mission` tab to do so.
 
 ![FetchMission](images/userguide/viewMissions.png)
 
-#### 6.6.10 Viewing deadline for Quests : `-q`
+#### 6.6.10 Viewing deadline for `Quests` : `-q`
 
-Shows the deadline for the current quest(s).
+Shows the deadline for the current `Quest`(s).
 <br>**Format: `view -q`**
 
 You may also click on the `Quest` tab to do so.
 
 ![FetchQuest](images/userguide/viewQuests.png)
 
-#### 6.6.11 Viewing ungraded Missions : `-um`
+#### 6.6.11 Viewing ungraded `Missions` : `-um`
 
-Shows the missions that you have not yet graded.
+Shows the `Missions` that you have not yet graded.
 <br>**Format: `view -um`**
 
 ![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
 
-#### 6.6.12 Viewing ungraded Quests : `-uq`
+#### 6.6.12 Viewing ungraded `Quests` : `-uq`
 
-Shows the quests that you have not yet graded.
+Shows the `Quests` that you have not yet graded.
 <br>**Format: `view -uq`**
 
 ![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
 
-#### 6.6.13 Viewing all Tasks : `-t`
+#### 6.6.13 Viewing all `Tasks` : `-t`
 
-Shows the list of all your current tasks.
+Shows the list of all your current `Tasks`.
 This includes `Todo`, `Event` and `Deadline` are all considered tasks.
 <br>**Format: `view -t`**
 
 You may also click on the `Task` tab to do so.
 
-#### 6.6.14 Viewing all Todos : `-tt`
+#### 6.6.14 Viewing all `Todos` : `-tt`
 
-Shows the list of all your current todos.
+Shows the list of all your current `Todos`.
 <br>**Format: `view -tt`**
 
-#### 6.6.15 Viewing all Events : `-te`
+#### 6.6.15 Viewing all `Events` : `-te`
 
-Shows the list of all your current events.
+Shows the list of all your current `Events`.
 <br>**Format: `view -te`**
 
-#### 6.6.16 Viewing all Deadlines : `-td`
+#### 6.6.16 Viewing all `Deadlines` : `-td`
 
-Shows the list of all your current deadlines.
+Shows the list of all your current `Deadlines`.
 <br>**Format: `view -td`**
 
 ### 6.7 Exiting the program : `exit`
