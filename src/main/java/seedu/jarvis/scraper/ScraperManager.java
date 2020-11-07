@@ -426,6 +426,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
     private void saveToStorage(List<Mission> missions, List<Quest> quests, List<Student> students, String greeting)
             throws IOException {
         try {
+            if (!isAuthenticated) {
+                return;
+            }
             model.setGreeting(greeting);
             model.setMissions(missions);
             model.setQuests(quests);
