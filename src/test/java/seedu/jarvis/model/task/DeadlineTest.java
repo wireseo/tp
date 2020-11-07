@@ -37,7 +37,7 @@ public class DeadlineTest {
     //For constructing Deadline from .json file
     @Test
     public void constructorTest_deadlineEquals() {
-        assertNotEquals(EVENT3, DEADLINE3);
+        assertNotEquals(DEADLINE3, EVENT3);
         assertEquals(DEADLINE3, DEADLINE3);
     }
 

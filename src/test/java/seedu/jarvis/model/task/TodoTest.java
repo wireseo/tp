@@ -1,13 +1,18 @@
 package seedu.jarvis.model.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
+import static seedu.jarvis.testutil.TypicalTasks.DEADLINE3;
+import static seedu.jarvis.testutil.TypicalTasks.EVENT3;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FOURTH;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_SECOND;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_THIRD;
+import static seedu.jarvis.testutil.TypicalTasks.TODO3;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +23,17 @@ public class TodoTest {
     private final Todo todoTestFour = new Todo(TEST_TASK_DESCRIPTION_FOURTH);
     private final Event eventTest = new Event(TEST_TASK_DESCRIPTION_FIRST, TEST_TASK_DATETIME_FIRST);
 
+    //For construction of todo from CLI
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Todo(null));
+    }
+
+    //For construction of todo from .json file
+    @Test
+    public void constructorTest_todoEquals() {
+        assertNotEquals(TODO3, DEADLINE3);
+        assertEquals(TODO3, TODO3);
     }
 
     @Test

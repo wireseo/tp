@@ -36,7 +36,7 @@ public class TypicalTasks {
 
     public static final Todo TEST_TODO = new TodoBuilder().build();
     public static final Todo TODO2 = new TodoBuilder().withDescription("Do more workouts").build();
-    public static final Todo TODO3 = new TodoBuilder().withDescription("Practice the flute").build();
+    public static final Todo TODO3 = new TodoBuilder().withDescription("Practice the flute").buildJson("T22");
     public static final Task TODO4 = new TodoBuilder().withDescription("Get milk from cold storage").build();
 
     public static final Event TEST_EVENT = new EventBuilder().build();

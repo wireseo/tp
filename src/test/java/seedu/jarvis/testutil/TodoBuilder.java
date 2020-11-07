@@ -26,4 +26,8 @@ public class TodoBuilder {
         return new Todo(description);
     }
 
+    public Todo buildJson(String taskId) {
+        return new Todo(taskId, description);
+    }
+
 }
