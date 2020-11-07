@@ -10,7 +10,6 @@ import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.ClearCommand;
 import seedu.jarvis.logic.commands.ExitCommand;
 import seedu.jarvis.logic.commands.HelpCommand;
 import seedu.jarvis.logic.commands.add.AddConsultationCommand;
@@ -53,12 +52,6 @@ public class AddressBookParserTest {
 
         // Parse adding of mastery checks
         assertTrue(parser.parseCommand("add -mc John Doe d/2020-09-20 t/13:30") instanceof AddMasteryCheckCommand);
-    }
-
-    @Test
-    public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
     @Test
