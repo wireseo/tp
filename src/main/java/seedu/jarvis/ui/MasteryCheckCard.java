@@ -1,7 +1,5 @@
 package seedu.jarvis.ui;
 
-import java.time.LocalDateTime;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -43,10 +41,7 @@ public class MasteryCheckCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         studentName.setText(masteryCheck.getStudentName());
 
-        LocalDateTime localDateTime = masteryCheck.getDateAndTime();
-        String date = localDateTime.toLocalDate().toString();
-        String time = localDateTime.toLocalTime().toString();
-        dateAndTime.setText("Details: " + date + " at " + time);
+        dateAndTime.setText(masteryCheck.getFormattedDateTime());
 
         String passFail = "Score: " + (masteryCheck.hasPassed() ? "PASS" : "FAIL");
         passed.setText(passFail);

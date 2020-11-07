@@ -176,7 +176,7 @@ public class TaskCommandParser {
             formattedTaskDateTime = LocalDateTime.parse(taskDateTime, dateTimeFormat);
         } catch (DateTimeParseException e) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DATETIME));
         }
 
         if (isDateTimeChanged(taskDateTime, formattedTaskDateTime)) {
