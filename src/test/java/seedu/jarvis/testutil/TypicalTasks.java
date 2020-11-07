@@ -3,7 +3,12 @@ package seedu.jarvis.testutil;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import seedu.jarvis.model.AddressBook;
+import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
@@ -52,6 +57,34 @@ public class TypicalTasks {
             .withDateTime("2021-01-01 13:55").build();
     public static final Deadline DEADLINE3 = new DeadlineBuilder().withDescription("Drink more juice")
             .withDateTime("2019-10-15 22:10").buildJson("D15");
-    public static final Task DEALDLINE4 = new DeadlineBuilder().withDescription("Drink more tea")
+    public static final Task DEADLINE4 = new DeadlineBuilder().withDescription("Drink more tea")
             .withDateTime("2022-07-17 18:17").build();
+
+    /**
+     * Returns an {@code AddressBook} with all the typical tasks.
+     */
+    public static AddressBook getTypicalAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Task task : getTypicalTasks()) {
+            ab.addTask(task);
+        }
+        return ab;
+    }
+
+    public static List<Task> getTypicalTasks() {
+        return new ArrayList<>(Arrays.asList(TODO2, DEADLINE2, EVENT4, DEADLINE4, EVENT2, TODO4));
+    }
+
+    public static List<Task> getTypicalTodos() {
+        return new ArrayList<>(Arrays.asList(TODO2, TODO4));
+    }
+
+    public static List<Task> getTypicalEvents() {
+        return new ArrayList<>(Arrays.asList(EVENT4, EVENT2));
+    }
+
+    public static List<Task> getTypicalDeadlines() {
+        return new ArrayList<>(Arrays.asList(DEADLINE2, DEADLINE4));
+    }
+
 }
