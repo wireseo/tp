@@ -14,6 +14,9 @@ public class DeadlineBuilder {
     private String description;
     private LocalDateTime dateTime;
 
+    /**
+     * Sets both description and dateTime of the to be created Deadline to be the default values defined in this class.
+     */
     public DeadlineBuilder() {
         description = DEFAULT_EVENT_DESCRIPTION;
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);

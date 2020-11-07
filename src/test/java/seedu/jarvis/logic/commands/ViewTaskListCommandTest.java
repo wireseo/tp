@@ -5,12 +5,12 @@ import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalMissions.getTypicalAddressBook;
-import static seedu.jarvis.testutil.TypicalTasks.DEADLINE2;
-import static seedu.jarvis.testutil.TypicalTasks.DEADLINE4;
-import static seedu.jarvis.testutil.TypicalTasks.EVENT2;
-import static seedu.jarvis.testutil.TypicalTasks.EVENT4;
-import static seedu.jarvis.testutil.TypicalTasks.TODO2;
-import static seedu.jarvis.testutil.TypicalTasks.TODO4;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_DEADLINE_FOUR;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_DEADLINE_TWO;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_EVENT_FOUR;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_EVENT_TWO;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_FOUR;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_TWO;
 
 import java.util.Arrays;
 
@@ -81,8 +81,8 @@ public class ViewTaskListCommandTest {
         ViewTaskListCommand command = new ViewTaskListCommand(taskType);
         expectedModel.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(TODO2, DEADLINE2, EVENT4, DEADLINE4, EVENT2, TODO4),
-                TypicalTasks.getTypicalTasks());
+        assertEquals(Arrays.asList(TEST_TODO_TWO, TEST_DEADLINE_TWO, TEST_EVENT_FOUR, TEST_DEADLINE_FOUR,
+                TEST_EVENT_TWO, TEST_TODO_FOUR), TypicalTasks.getTypicalTasks());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class ViewTaskListCommandTest {
         ViewTaskListCommand command = new ViewTaskListCommand(todoType);
         expectedModel.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TODOS);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(TODO2, TODO4),
+        assertEquals(Arrays.asList(TEST_TODO_TWO, TEST_TODO_FOUR),
                 TypicalTasks.getTypicalTodos());
     }
 
@@ -101,7 +101,7 @@ public class ViewTaskListCommandTest {
         ViewTaskListCommand command = new ViewTaskListCommand(eventType);
         expectedModel.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_EVENTS);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(EVENT4, EVENT2),
+        assertEquals(Arrays.asList(TEST_EVENT_FOUR, TEST_EVENT_TWO),
                 TypicalTasks.getTypicalEvents());
     }
 
@@ -111,7 +111,7 @@ public class ViewTaskListCommandTest {
         ViewTaskListCommand command = new ViewTaskListCommand(deadlineType);
         expectedModel.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_DEADLINES);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(DEADLINE2, DEADLINE4),
+        assertEquals(Arrays.asList(TEST_DEADLINE_TWO, TEST_DEADLINE_FOUR),
                 TypicalTasks.getTypicalDeadlines());
     }
 

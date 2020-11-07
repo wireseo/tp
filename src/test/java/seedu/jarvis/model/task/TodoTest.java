@@ -5,14 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalTasks.DEADLINE3;
-import static seedu.jarvis.testutil.TypicalTasks.EVENT3;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_DEADLINE_THREE;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_FOURTH;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_SECOND;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DESCRIPTION_THIRD;
-import static seedu.jarvis.testutil.TypicalTasks.TODO3;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_THREE;
 
 import org.junit.jupiter.api.Test;
 
@@ -32,8 +31,8 @@ public class TodoTest {
     //For construction of todo from .json file
     @Test
     public void constructorTest_todoEquals() {
-        assertNotEquals(TODO3, DEADLINE3);
-        assertEquals(TODO3, TODO3);
+        assertNotEquals(TEST_TODO_THREE, TEST_DEADLINE_THREE);
+        assertEquals(TEST_TODO_THREE, TEST_TODO_THREE);
     }
 
     @Test

@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalTasks.DEADLINE3;
-import static seedu.jarvis.testutil.TypicalTasks.EVENT3;
 import static seedu.jarvis.testutil.TypicalTasks.FORMATTED_DATETIME_ONE;
 import static seedu.jarvis.testutil.TypicalTasks.FORMATTED_DATETIME_TWO;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_DEADLINE_THREE;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_EVENT_THREE;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FIRST;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_FOURTH;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TASK_DATETIME_SECOND;
@@ -37,8 +37,8 @@ public class EventTest {
     //For constructing Event from .json file
     @Test
     public void constructorTest_eventEquals() {
-        assertNotEquals(EVENT3, DEADLINE3);
-        assertEquals(EVENT3, EVENT3);
+        assertNotEquals(TEST_EVENT_THREE, TEST_DEADLINE_THREE);
+        assertEquals(TEST_EVENT_THREE, TEST_EVENT_THREE);
     }
 
     @Test

@@ -3,7 +3,7 @@ package seedu.jarvis.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_ONE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,8 +39,8 @@ public class AddTaskCommandTest {
     @Test
     public void execute_emptyModel_throwsNullPointerException() {
         Model emptyModel = null;
-        AddTaskCommand AddTaskCommandTodo = new AddTaskCommand(TEST_TODO);
-        assertThrows(NullPointerException.class, () -> AddTaskCommandTodo.execute(emptyModel));
+        AddTaskCommand addTaskCommandTodo = new AddTaskCommand(TEST_TODO_ONE);
+        assertThrows(NullPointerException.class, () -> addTaskCommandTodo.execute(emptyModel));
     }
 
     @Test
@@ -84,8 +84,8 @@ public class AddTaskCommandTest {
         Todo validTodo = new TodoBuilder().build();
         AddTaskCommand addCommandTodo = new AddTaskCommand(validTodo);
         ModelStub modelStubTodo = new ModelStubWithTask(validTodo);
-        assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK,
-                () -> addCommandTodo.execute(modelStubTodo));
+        assertThrows(CommandException.class,
+                AddTaskCommand.MESSAGE_DUPLICATE_TASK, () -> addCommandTodo.execute(modelStubTodo));
 
         Event validEvent = new EventBuilder().build();
         AddTaskCommand addCommandEvent = new AddTaskCommand(validEvent);
@@ -96,8 +96,8 @@ public class AddTaskCommandTest {
         Deadline validDeadline = new DeadlineBuilder().build();
         AddTaskCommand addCommandDeadline = new AddTaskCommand(validDeadline);
         ModelStub modelStubDeadline = new ModelStubWithTask(validDeadline);
-        assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK,
-                () -> addCommandDeadline.execute(modelStubDeadline));
+        assertThrows(CommandException.class,
+                AddTaskCommand.MESSAGE_DUPLICATE_TASK, () -> addCommandDeadline.execute(modelStubDeadline));
 
     }
 

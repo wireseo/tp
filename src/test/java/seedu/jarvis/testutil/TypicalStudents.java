@@ -13,7 +13,6 @@ import java.util.List;
 
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.student.Student;
-import seedu.jarvis.model.task.Task;
 
 /**
  * A utility class containing a list of {@code Student} objects to be used in tests.
