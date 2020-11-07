@@ -74,7 +74,7 @@ public class DeleteConsultationCommandTest {
         showConsultationAtIndex(model, INDEX_FIRST);
         Index outOfBoundIndex = INDEX_SECOND;
         DeleteConsultationCommand deleteCommand = new DeleteConsultationCommand(outOfBoundIndex);
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_MASTERY_CHECK_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_CONSULTATION_DISPLAYED_INDEX);
     }
 
     /**
