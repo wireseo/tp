@@ -381,7 +381,6 @@ When the consultation time is the same as the local time (year, month, date, hou
 #### 6.6.5 Viewing upcoming Consultation sessions : `-cu`
 
 Shows all `upcoming consultation` sessions.
-<br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
 
