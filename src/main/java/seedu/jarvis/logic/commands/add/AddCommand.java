@@ -12,7 +12,8 @@ public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_ADD_USAGE = COMMAND_WORD + ": Adds a consultation or task to the jarvis book.\n"
+    public static final String MESSAGE_ADD_USAGE =
+            COMMAND_WORD + ": Adds a consultation, mastery check, or task (todo, event, deadline) to Jarvis.\n"
             + "add -c NAME d/YYYY-MM-DD t/HH:MM: Add consultation with student with NAME at specified date and time\n"
             + "add -mc NAME d/YYYY-MM-DD t/HH:MM: Add mastery check with student with NAME at specified date and "
             + "time\n"

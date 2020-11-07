@@ -84,7 +84,7 @@ public class EditLoginCommandTest {
         assertFalse(standardCommand.equals(null));
 
         // different types -> returns false
-        assertFalse(standardCommand.equals(new ClearCommand()));
+        assertFalse(standardCommand.equals(new ExitCommand()));
 
         // different descriptor -> returns false
         assertFalse(standardCommand.equals(new EditLoginCommand(DESC_PROF)));
