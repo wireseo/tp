@@ -38,7 +38,7 @@ public class JsonAdaptedMasteryCheck {
     public JsonAdaptedMasteryCheck(MasteryCheck source) {
         studentName = source.getStudentName();
         dateAndTime = source.getDateAndTime().toString();
-        passed = source.isPassed() ? "T" : "F";
+        passed = source.hasPassed() ? "T" : "F";
     }
 
     /**

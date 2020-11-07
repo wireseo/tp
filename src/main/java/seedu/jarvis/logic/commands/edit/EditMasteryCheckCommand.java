@@ -70,7 +70,7 @@ public class EditMasteryCheckCommand extends EditCommand {
         EditMasteryCheckCommand.EditMasteryCheckDescriptor editMasteryCheckDescriptor) {
         assert masteryCheckToEdit != null;
 
-        Boolean hasPassed = editMasteryCheckDescriptor.hasPassed().orElse(masteryCheckToEdit.isPassed());
+        Boolean hasPassed = editMasteryCheckDescriptor.hasPassed().orElse(masteryCheckToEdit.hasPassed());
 
         if (hasPassed) {
             return MasteryCheck.createFullMarkMC(masteryCheckToEdit.getStudentName(),
