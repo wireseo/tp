@@ -1,8 +1,14 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.testutil.Assert.assertThrows;
-import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
+import static seedu.jarvis.testutil.TypicalQuests.CARDIOID_ARREST;
+import static seedu.jarvis.testutil.TypicalQuests.CURVACEOUS_WIZARDRY;
+import static seedu.jarvis.testutil.TypicalQuests.RUNIC_CARPETS;
+import static seedu.jarvis.testutil.TypicalQuests.getTypicalAddressBook;
+
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,6 +43,16 @@ public class ViewUngradedQuestCommandTest {
         Model emptyModel = null;
         ViewUngradedQuestCommand viewUngradedQuestCommand = new ViewUngradedQuestCommand();
         assertThrows(NullPointerException.class, () -> viewUngradedQuestCommand.execute(emptyModel));
+    }
+
+    @Test
+    public void execute_viewUngradedQuestCommand_questListFiltered() {
+        String expectedMessage = ViewUngradedQuestCommand.MESSAGE_SUCCESS;
+        ViewUngradedQuestCommand command = new ViewUngradedQuestCommand();
+        expectedModel.updateQuestsList(ViewUngradedQuestCommand.PREDICATE_SHOW_UNGRADED_QUESTS);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(RUNIC_CARPETS, CARDIOID_ARREST, CURVACEOUS_WIZARDRY),
+                model.getFilteredQuestList());
     }
 
 }
