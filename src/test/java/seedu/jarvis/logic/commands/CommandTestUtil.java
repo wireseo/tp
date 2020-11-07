@@ -13,13 +13,19 @@ import java.util.List;
 
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
+import seedu.jarvis.logic.commands.edit.EditMasteryCheckCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
+import seedu.jarvis.model.consultation.Consultation;
+import seedu.jarvis.model.consultation.ConsultationNameContainsKeywordsPredicate;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
+import seedu.jarvis.model.masterycheck.MasteryCheckNameContainsKeywordsPredicate;
 import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.testutil.EditLoginDescriptorBuilder;
+import seedu.jarvis.testutil.EditMasteryCheckDescriptorBuilder;
 import seedu.jarvis.testutil.EditStudentDescriptorBuilder;
 
 /**
@@ -55,6 +61,9 @@ public class CommandTestUtil {
     public static final EditLoginDescriptor DESC_STUDENT;
     public static final EditLoginDescriptor DESC_PROF;
 
+    public static final EditMasteryCheckCommand.EditMasteryCheckDescriptor DESC_MC_ONE;
+    public static final EditMasteryCheckCommand.EditMasteryCheckDescriptor DESC_MC_TWO;
+
     public static final String EDIT_STUDENT = "-s ";
     public static final String EDIT_LOGIN = "-l ";
 
@@ -67,6 +76,8 @@ public class CommandTestUtil {
                 .withPassword(VALID_PASSWORD_1).build();
         DESC_PROF = new EditLoginDescriptorBuilder().withUsername(VALID_USERNAME_PROF)
                 .withPassword(VALID_PASSWORD_1).build();
+        DESC_MC_ONE = new EditMasteryCheckDescriptorBuilder().withHasPassed(false).build();
+        DESC_MC_TWO = new EditMasteryCheckDescriptorBuilder().withHasPassed(true).build();
     }
 
     /**
@@ -125,4 +136,33 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredStudentList().size());
     }
 
+    /**
+     * Updates {@code model}'s filtered list to show only the consultation at the given {@code targetIndex} in the
+     * {@code model}'s jarvis book.
+     */
+    public static void showConsultationAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredStudentList().size());
+
+        Consultation consultation = model.getFilteredConsultationsList().get(targetIndex.getZeroBased());
+        final String[] splitName = consultation.getStudentName().split("\\s+");
+        model.updateFilteredConsultationList(
+                new ConsultationNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredConsultationsList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the mastery check at the given {@code targetIndex} in the
+     * {@code model}'s jarvis book.
+     */
+    public static void showMasteryCheckAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredMasteryChecksList().size());
+
+        MasteryCheck masteryCheck = model.getFilteredMasteryChecksList().get(targetIndex.getZeroBased());
+        final String[] splitName = masteryCheck.getStudentName().split("\\s+");
+        model.updateFilteredMasteryCheckList(
+                new MasteryCheckNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredMasteryChecksList().size());
+    }
 }
