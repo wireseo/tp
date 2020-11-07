@@ -133,7 +133,9 @@ this box.
 ### 4.1 UI Layout
 
    * The user interface is split into clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
+   * `Todo`, `Event` and `Deadline` are all variants of `Task`.
    * Clicking on each tab will give you the information you require for that field.
+   * The icons correspond respectively to the Sourceacademy and User Guide (this) websites.
    
 <br>
 
@@ -299,12 +301,14 @@ mission and quest information.
 </div>
 
 #### 6.4.2 Editing Student Information : `-s`
+
+Edits the fields of a `Student`.
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
 <br>Examples:
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
 * `edit -s 3 n/Timots`
 
-#### 6.4.3 Editing Mastery Checks : `-mc`
+#### 6.4.3 Editing Mastery Checks: `-mc`
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
@@ -346,7 +350,7 @@ Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 
 ### 6.6 Viewing Information : `view`
 
-#### 6.6.1 Viewing a list of all Students : `-s`
+#### 6.6.1 Viewing a list of all `Students` : `-s`
 
 Shows a list of all students under the tutor in Jarvis.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
@@ -357,81 +361,81 @@ You may also click on the `Student` tab to do so.
 
 ![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
-#### 6.6.2 Viewing one Student : `-s [NAME]`
+#### 6.6.2 Viewing one `Student` : `-s [NAME]`
 
-Shows all students that match(partial and full) the student name entered after the command. The name is case
--insensitive. An example of a partial match will be `view -s do` resulting in John Doe being displayed.
+Shows all students that match(partial and full) the student name entered after the command. The name is case-insensitive. 
+An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 <br>**Format: `view -s [NAME]`**
 <br>Examples:
 * `view -s John Doe`
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
 
-#### 6.6.3 Viewing all Consultation sessions : `-c`
+#### 6.6.3 Viewing all `Consultation` sessions : `-c`
 
-Shows all `confirmed consultation` sessions, both past and upcoming.
+Shows all confirmed `Consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
 <br>Examples:
 * `view -c`
 
 You may also click on the `Consultation` tab to do so.
 
-#### 6.6.4 Viewing past Consultation sessions : `-cp`
+#### 6.6.4 Viewing past `Consultation` sessions : `-cp`
 
-Shows all `past consultation` sessions.
+Shows all past `Consultation` sessions.
 <br>**Format: `view -cp`**
 <br>Examples:
 * `view -cp`
 
-When the consultation time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 
-#### 6.6.5 Viewing upcoming Consultation sessions : `-cu`
+#### 6.6.5 Viewing upcoming `Consultation` sessions : `-cu`
 
-Shows all `upcoming consultation` sessions.
+Shows all upcoming `Consultation` sessions.
 <br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
 
 <div markdown="block" class="alert alert-info">
 
-When the time of the consultation displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
-it is still considered as an upcoming consultation when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the consultation session.
-When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated consultation list with the current local time as the standard.
+When the time of the `Consultation` displayed by `view -cu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
+it is still considered as an upcoming `Consultation` when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the `Consultation` session.
+When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated `Consultation` list with the current local time as the standard.
 </div>
 
-#### 6.6.6 Viewing all Mastery Check sessions : `-mc`
+#### 6.6.6 Viewing all `Mastery Check` sessions : `-mc`
 
-Shows all `confirmed MC` sessions, both past and upcoming.
+Shows all confirmed `Mastery Check` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
 <br>Examples:
 * `view -mc`
 
 You may also click on the `Mastery Check` tab to do so.
 
-#### 6.6.7 Viewing past Mastery Check sessions : `-mcp`
+#### 6.6.7 Viewing past `Mastery Check sessions : `-mcp`
 
-Shows all `past MC` sessions.
+Shows all past `Mastery Check` sessions.
 <br>**Format: `view -mcp`**
 <br>Examples:
 * `view -mcp`
 
 <div markdown="block" class="alert alert-info">
 
-When the mastery check time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 </div>
 
-#### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
+#### 6.6.8 Viewing upcoming `Mastery Check` sessions : `mcu`
 
-Shows all `upcoming MC` sessions.
+Shows all upcoming `Mastery Check` sessions.
 <br>**Format: `view -mcu`**
 <br>Examples:
 * `view -mcu`
 
 <div markdown="block" class="alert alert-info">
 
-When the time of the mastery check displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
-it is still considered as an upcoming mastery check when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the mastery check session.
-When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated mastery check list with the current local time as the standard.
+When the time of the `Mastery Check` displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
+it is still considered as an upcoming `Mastery Check` when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the `Mastery Check` session.
+When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated `Mastery Check` list with the current local time as the standard.
 </div>
 
 #### 6.6.9 Viewing deadline for Missions : `-m`
@@ -443,49 +447,50 @@ You may also click on the `Mission` tab to do so.
 
 ![FetchMission](images/userguide/viewMissions.png)
 
-#### 6.6.10 Viewing deadline for Quests : `-q`
+#### 6.6.10 Viewing deadline for `Quests` : `-q`
 
-Shows the deadline for the current quest(s).
+Shows the deadline for the current `Quest`(s).
 <br>**Format: `view -q`**
 
 You may also click on the `Quest` tab to do so.
 
 ![FetchQuest](images/userguide/viewQuests.png)
 
-#### 6.6.11 Viewing ungraded Missions : `-um`
+#### 6.6.11 Viewing ungraded `Missions` : `-um`
 
-Shows the missions that you have not yet graded.
+Shows the `Missions` that you have not yet graded.
 <br>**Format: `view -um`**
 
 ![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
 
-#### 6.6.12 Viewing ungraded Quests : `-uq`
+#### 6.6.12 Viewing ungraded `Quests` : `-uq`
 
-Shows the quests that you have not yet graded.
+Shows the `Quests` that you have not yet graded.
 <br>**Format: `view -uq`**
 
 ![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
 
-#### 6.6.13 Viewing all Tasks : `-t`
+#### 6.6.13 Viewing all `Tasks` : `-t`
 
-Shows the list of all your current tasks.
+Shows the list of all your current `Tasks`.
+This includes `Todo`, `Event` and `Deadline` are all considered tasks.
 <br>**Format: `view -t`**
 
 You may also click on the `Task` tab to do so.
 
-#### 6.6.14 Viewing all Todos : `-tt`
+#### 6.6.14 Viewing all `Todos` : `-tt`
 
-Shows the list of all your current todos.
+Shows the list of all your current `Todos`.
 <br>**Format: `view -tt`**
 
-#### 6.6.15 Viewing all Events : `-te`
+#### 6.6.15 Viewing all `Events` : `-te`
 
-Shows the list of all your current events.
+Shows the list of all your current `Events`.
 <br>**Format: `view -te`**
 
-#### 6.6.16 Viewing all Deadlines : `-td`
+#### 6.6.16 Viewing all `Deadlines` : `-td`
 
-Shows the list of all your current deadlines.
+Shows the list of all your current `Deadlines`.
 <br>**Format: `view -td`**
 
 ### 6.7 Exiting the program : `exit`
@@ -500,7 +505,7 @@ Jarvis data are saved in the file `jarvis.json` automatically after any command 
 <div markdown="block" class="alert alert-info">
 
 Note that only `Student`, `Consultation`, `Mastery Check` and `Task` data are saved to the hard drive since `Mission` and `Quest` data
-are likely to change frequently.
+are likely to change frequently and hence, will not need to be persisted.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -566,8 +571,8 @@ are likely to change frequently.
 | Provide help with program commands | `help` |
 
 ## 8. Glossary
-### 8.1 Difference Between Consultations and Mastery Checks
-Mastery Checks are a specific type of consultations that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
+### 8.1 Difference Between `Consultations` and `Mastery Checks`
+`Mastery Checks` are a specific type of `Consultations` that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
 
 
 ## 9. FAQ

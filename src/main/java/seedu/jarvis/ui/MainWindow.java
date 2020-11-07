@@ -357,11 +357,10 @@ public class MainWindow extends UiPart<Stage> {
     private String getLoginMessage() {
         StringBuilder sb = new StringBuilder();
 
-        if (!logic.hasUsername()) {
-            sb.append("Please edit your username using `edit -l u/[USERNAME]` and restart to fetch missions/quests");
+        if (!logic.hasUsername() || !logic.hasPassword()) {
+            sb.append("Please edit your username and password using `edit -l u/[LUMINUS_USERNAME] p/[PASSWORD]` "
+                    + "and restart to fetch missions/quests");
             sb.append("\n");
-        } else if (!logic.hasPassword()) {
-            sb.append("Please edit your password using `edit -l p/[PASSWORD]` and restart to fetch missions/quests");
         } else {
             sb.append("Welcome to Jarvis! Enter 'help' to see the amazing things you can do with me.");
         }
