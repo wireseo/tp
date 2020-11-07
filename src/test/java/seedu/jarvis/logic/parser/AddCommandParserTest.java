@@ -26,14 +26,14 @@ import static seedu.jarvis.logic.commands.add.AddCommand.MESSAGE_WRONG_DATETIME_
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
-
-import java.time.LocalDateTime;
 
 public class AddCommandParserTest {
     private static final String PREAMBLE_NON_EMPTY = "asdfasdf";

@@ -2,11 +2,11 @@ package seedu.jarvis.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;

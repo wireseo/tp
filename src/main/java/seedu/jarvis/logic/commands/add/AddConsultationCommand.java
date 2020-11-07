@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
-import seedu.jarvis.logic.commands.edit.EditStudentCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.consultation.Consultation;
