@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.testutil.Assert.assertThrows;
+import static seedu.jarvis.testutil.TypicalMissions.MUSICAL_NOTES;
+import static seedu.jarvis.testutil.TypicalMissions.STREAMS;
+import static seedu.jarvis.testutil.TypicalQuests.COLORFUL_CARPETS;
 import static seedu.jarvis.testutil.TypicalStudents.ALICE;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 
@@ -24,6 +27,8 @@ import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.student.exceptions.DuplicateStudentException;
 import seedu.jarvis.model.task.Task;
+import seedu.jarvis.testutil.MissionBuilder;
+import seedu.jarvis.testutil.QuestBuilder;
 import seedu.jarvis.testutil.StudentBuilder;
 
 public class AddressBookTest {
@@ -48,7 +53,7 @@ public class AddressBookTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicateStudents_throwsDuplicatePersonException() {
         // Two students with the same identity fields
         Student editedAlice = new StudentBuilder(ALICE).build();
         List<Student> newStudents = Arrays.asList(ALICE, editedAlice);
@@ -58,37 +63,114 @@ public class AddressBookTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasStudent_nullStudent_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> addressBook.hasStudent(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasConsultation_nullConsultation_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasConsultation(null));
+    }
+
+    @Test
+    public void hasMasteryCheck_nullMasteryCheck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasMasteryCheck(null));
+    }
+
+    @Test
+    public void hasTask_nullTask_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasTask(null));
+    }
+
+    @Test
+    public void hasTodo_nullTodo_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasTodo(null));
+    }
+
+    @Test
+    public void hasEvent_nullEvent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasEvent(null));
+    }
+
+    @Test
+    public void hasDeadline_nullDeadline_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasDeadline(null));
+    }
+
+    @Test
+    public void hasGreeting() {
+        // Have not set greeting
+        assertFalse(addressBook.hasGreeting());
+
+        // After setting greeting
+        addressBook.setGreeting("Alex Yeoh");
+        assertTrue(addressBook.getGreeting().getValue().equals("Welcome, Alex Yeoh!"));
+        assertTrue(addressBook.hasGreeting());
+    }
+
+    @Test
+    public void hasStudent_studentNotInAddressBook_returnsFalse() {
         assertFalse(addressBook.hasStudent(ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasStudent_studentInAddressBook_returnsTrue() {
         addressBook.addStudent(ALICE);
         assertTrue(addressBook.hasStudent(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasStudent_studentWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addStudent(ALICE);
         Student editedAlice = new StudentBuilder(ALICE).build();
         assertTrue(addressBook.hasStudent(editedAlice));
     }
 
     @Test
-    public void hasPersons_addressBookPopulated_returnsTrue() {
+    public void hasStudents_addressBookPopulated_returnsTrue() {
         addressBook.addStudent(ALICE);
         assertTrue(addressBook.hasStudents());
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getStudentList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getStudentList().remove(0));
+    }
+
+    @Test
+    public void isMissionInList() {
+        // Mission not in list
+        assertFalse(addressBook.isMissionInList("Streams"));
+
+        // Mission in list
+        addressBook.addMission(STREAMS);
+        assertTrue(addressBook.isMissionInList("Streams"));
+    }
+
+    @Test
+    public void updateMission_returnsTrue() {
+        addressBook.addMission(MUSICAL_NOTES);
+        addressBook.updateMission("Musical Notes");
+        Mission updatedMission = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
+        assertTrue(addressBook.getMissionList().contains(updatedMission));
+    }
+
+    @Test
+    void isQuestInList() {
+        // Quest not in list
+        assertFalse(addressBook.isQuestInList("Colorful Carpets"));
+
+        // Quest in list
+        addressBook.addQuest(COLORFUL_CARPETS);
+        assertTrue(addressBook.isQuestInList("Colorful Carpets"));
+    }
+
+    @Test
+    public void updateQuest_returnsTrue() {
+        addressBook.addQuest(COLORFUL_CARPETS);
+        addressBook.updateQuest("Colorful Carpets");
+        Quest updatedQuest = new QuestBuilder(COLORFUL_CARPETS).withIsGraded(false).build();
+        assertTrue(addressBook.getQuestList().contains(updatedQuest));
     }
 
     /**
