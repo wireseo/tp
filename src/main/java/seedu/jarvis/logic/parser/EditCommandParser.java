@@ -126,6 +126,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             EditMasteryCheckDescriptor editMasteryCheckDescriptor = new EditMasteryCheckDescriptor();
             if (argMultimap.getValue(PREFIX_SCORE).isPresent()) {
                 editMasteryCheckDescriptor.setPassed(ParserUtil.parseScore(argMultimap.getValue(PREFIX_SCORE).get()));
+            } else {
+                throw new ParseException(EditMasteryCheckCommand.NO_SCORE_PARAMETER);
             }
 
             if (!editMasteryCheckDescriptor.isAnyFieldEdited()) {

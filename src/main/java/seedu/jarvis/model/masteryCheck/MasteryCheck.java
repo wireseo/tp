@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import seedu.jarvis.model.consultation.Consultation;
 
 public class MasteryCheck extends Consultation {
-    private boolean passed;
+    private boolean hasPassed;
 
     /**
      * Creates a {@code MasteryCheck} with the given parameters. {@code lengthOfMeeting} and {@code notes} may be null.
@@ -15,15 +15,15 @@ public class MasteryCheck extends Consultation {
      */
     public MasteryCheck(String studentName, LocalDateTime dateAndTime) {
         super(studentName, dateAndTime);
-        passed = false; // defaulted to false
+        hasPassed = false; // defaulted to false
     }
 
-    public boolean isPassed() {
-        return passed;
+    public boolean hasPassed() {
+        return hasPassed;
     }
 
     public MasteryCheck setPassed(boolean passed) {
-        this.passed = passed;
+        this.hasPassed = passed;
         return this;
     }
 
@@ -50,7 +50,7 @@ public class MasteryCheck extends Consultation {
         LocalDateTime date = getDateAndTime();
         sb.append(date.getDayOfMonth() + " " + date.getMonth() + ", " + date.getYear() + " @ ");
         sb.append(date.getHour() + ":" + date.getMinute());
-        sb.append("] / " + (passed ? "PASS" : "FAIL"));
+        sb.append("] / " + (hasPassed ? "PASS" : "FAIL"));
 
         return sb.toString();
     }

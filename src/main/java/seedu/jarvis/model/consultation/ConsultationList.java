@@ -28,6 +28,10 @@ public class ConsultationList {
         return internalList.stream().anyMatch(toCheck::isSameConsultation);
     }
 
+    /**
+     * Replaces the contents of this list with {@code consultations}.
+     * {@code consultations} must not contain duplicate consultations.
+     */
     public void setConsultations(List<Consultation> consultations) {
         requireNonNull(consultations);
         this.internalList.setAll(consultations);
@@ -35,10 +39,6 @@ public class ConsultationList {
 
     public ObservableList<Consultation> asObservableList() {
         return internalList;
-    }
-
-    public boolean isConsultationInList(String name) {
-        return internalList.stream().anyMatch(consultation -> consultation.getIdentifier().equals(name));
     }
 
     /**
@@ -50,5 +50,16 @@ public class ConsultationList {
         if (!internalList.remove(toRemove)) {
             throw new ConsultationNotFoundException();
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this || (other instanceof ConsultationList
+                && internalList.equals(((ConsultationList) other).internalList));
+    }
+
+    @Override
+    public int hashCode() {
+        return internalList.hashCode();
     }
 }

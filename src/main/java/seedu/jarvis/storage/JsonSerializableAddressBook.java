@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.jarvis.commons.exceptions.IllegalValueException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.ReadOnlyAddressBook;
+import seedu.jarvis.model.consultation.Consultation;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.task.Task;
 
@@ -22,6 +24,9 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_STUDENT = "Students list contains duplicate student(s).";
     public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
+    public static final String MESSAGE_DUPLICATE_MASTERY_CHECK = "Tasks list contains duplicate mastery checks(s).";
+    public static final String MESSAGE_DUPLICATE_CONSULTATION = "Tasks list contains duplicate consultations(s).";
+
 
     private String greeting = "";
 
@@ -68,6 +73,11 @@ class JsonSerializableAddressBook {
         greeting = source.getGreeting().get();
         students.addAll(source.getStudentList().stream().map(JsonAdaptedStudent::new).collect(Collectors.toList()));
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
+        consultations.addAll(source.getConsultationList().stream().map(JsonAdaptedConsultation::new).collect(
+                Collectors.toList()));
+        masteryChecks.addAll(source.getMasteryChecksList().stream().map(JsonAdaptedMasteryCheck::new).collect(
+                Collectors.toList()));
+
     }
 
     /**
@@ -94,6 +104,24 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
             }
             addressBook.addTask(task);
+        }
+
+        // Mastery Checks
+        for (JsonAdaptedMasteryCheck jsonAdaptedMasteryCheck : masteryChecks) {
+            MasteryCheck masteryCheck = jsonAdaptedMasteryCheck.toModelType();
+            if (addressBook.hasMasteryCheck(masteryCheck)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_MASTERY_CHECK);
+            }
+            addressBook.addMasteryCheck(masteryCheck);
+        }
+
+        // Consultations
+        for (JsonAdaptedConsultation jsonAdaptedConsultation : consultations) {
+            Consultation consultation = jsonAdaptedConsultation.toModelType();
+            if (addressBook.hasConsultation(consultation)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_CONSULTATION);
+            }
+            addressBook.addConsultation(consultation);
         }
 
         addressBook.setGreeting(greeting);

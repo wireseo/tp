@@ -25,7 +25,8 @@ import seedu.jarvis.model.flag.Flag;
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
     private static final Logger logger = LogsCenter.getLogger(DeleteCommandParser.class);
-    private static final String EMPTY_DELETE_COMMAND = "Parameters should not be empty for delete commands; enter id.";
+    private static final String EMPTY_DELETE_COMMAND = "Please enter an index number after the command. e.g. delete "
+            + "-mc 1";
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand

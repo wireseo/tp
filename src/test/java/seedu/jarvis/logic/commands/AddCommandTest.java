@@ -220,11 +220,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean isConsultationInList(String identifier) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void addMission(Mission mission) {
             throw new AssertionError("This method should not be called.");
         }
@@ -276,11 +271,6 @@ public class AddCommandTest {
 
         @Override
         public void updateMasteryChecksList(Predicate<MasteryCheck> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean isMasteryCheckInList(String identifier) {
             throw new AssertionError("This method should not be called.");
         }
 
