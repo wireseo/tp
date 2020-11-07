@@ -12,15 +12,24 @@ public abstract class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists information according to the command inputted.\n"
-            + "view -s: View Student information\n"
-            + "view -c / view -cp / view -cu: View Consultation sessions (cp: past, cu: upcoming only)\n"
-            + "view -mc / view -mcp / view -mcu: View Mastery Check sessions (cp: past, cu: upcoming only)\n"
-            + "view -u: View ungraded Missions and Quests\n"
-            + "view -m: View deadline for Missions\n"
-            + "view -q: View deadline for Quests\n"
-            + "view -i: View deadline for specific mission/quest by id\n"
-            + "view -t / view -tt / view -te / view -td: View Tasks(Todos, Events, Deadlines)\n";
+    public static final String MESSAGE_USAGE =
+            COMMAND_WORD + ": Lists various information according to the command inputted.\n"
+            + "view -s [NAME]: View a list of all students OR if [NAME] is provided only the information for the "
+            + "student with the name corresponding NAME\n"
+            + "view -m: View all missions\n"
+            + "view -q: View all quests\n"
+            + "view -um: View ungraded missions\n"
+            + "view -uq: View ungraded quests\n"
+            + "view -c: View all consultation sessions\n"
+            + "view -cp: View past consultation sessions\n"
+            + "view -cu: View upcoming consultation sessions\n"
+            + "view -mc: View all mastery check sessions\n"
+            + "view -mcp: View past mastery check sessions\n"
+            + "view -mcu: View upcoming mastery check sessions\n"
+            + "view -t: View all tasks (todos, events, deadlines)\n"
+            + "view -tt: View all todos only\n"
+            + "view -te: View all events only\n"
+            + "view -td: View all deadlines only\n";
 
     public abstract CommandResult execute(Model model) throws CommandException;
 
