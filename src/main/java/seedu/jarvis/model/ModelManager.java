@@ -383,11 +383,11 @@ public class ModelManager implements Model {
         filteredConsultations.setPredicate(predicate);
     }
 
-    /*
-    public boolean isConsultationInList(String identifier) {
-        assert identifier.length() > 0 : "No identifier provided";
-        return addressBook.isConsultationInList(identifier);
-    }*/
+    @Override
+    public void updateFilteredConsultationList(Predicate<Consultation> predicate) {
+        requireNonNull(predicate);
+        filteredConsultations.setPredicate(predicate);
+    }
 
     @Override
     public boolean hasConsultation(Consultation toAddConsultation) {
@@ -422,12 +422,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredMasteryChecks.setPredicate(predicate);
     }
-
-    /*
-    public boolean isMasteryCheckInList(String identifier) {
-        assert identifier.length() > 0 : "No identifier provided";
-        return addressBook.isMasteryCheckInList(identifier);
-    }*/
 
     @Override
     public boolean hasMasteryCheck(MasteryCheck toAddMasteryCheck) {
