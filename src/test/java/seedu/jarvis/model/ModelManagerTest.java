@@ -18,6 +18,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.GuiSettings;
+import seedu.jarvis.model.login.Username;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
@@ -36,6 +37,8 @@ public class ModelManagerTest {
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
     }
+
+    //=========== UserPrefs ==================================================================================
 
     @Test
     public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {
@@ -80,6 +83,29 @@ public class ModelManagerTest {
         assertEquals(path, modelManager.getAddressBookFilePath());
     }
 
+    //=========== UserLogin ==================================================================================
+
+    @Test
+    public void setUserLogin_nullUserLogin_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setUserLogin(null));
+    }
+
+    @Test
+    public void setUserLogin_validUserLogin_copiesUserLogin() {
+        UserLogin userLogin = new UserLogin();
+        userLogin.setUsername(new Username("nusstu\\e1234567"));
+        userLogin.setPassword("testCaseOld132");
+        modelManager.setUserLogin(userLogin);
+        assertEquals(userLogin, modelManager.getUserLogin());
+
+        // Modifying userLogin should not modify modelManager's userLogin
+        UserLogin oldUserLogin = new UserLogin(userLogin);
+        userLogin.setPassword("testCaseNew132");
+        assertEquals(oldUserLogin, modelManager.getUserLogin());
+    }
+
+    //=========== AddressBook ================================================================================
+
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
@@ -107,6 +133,8 @@ public class ModelManagerTest {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredStudentList().remove(0));
     }
 
+    //=========== Greeting ==================================================================================
+
     @Test
     public void hasGreeting() {
         // Have not set greeting
@@ -117,6 +145,8 @@ public class ModelManagerTest {
         assertTrue(modelManager.getGreeting().getValue().equals("Welcome, Alex Yeoh!"));
         assertTrue(modelManager.hasGreeting());
     }
+
+    //=========== Missions ===================================================================================
 
     @Test
     public void isMissionInList() {
@@ -135,6 +165,8 @@ public class ModelManagerTest {
         Mission updatedMission = new MissionBuilder(MUSICAL_NOTES).withIsGraded(false).build();
         assertTrue(modelManager.getFilteredMissionList().contains(updatedMission));
     }
+
+    //=========== Quests ===================================================================================
 
     @Test
     void isQuestInList() {
