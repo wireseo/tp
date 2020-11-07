@@ -13,9 +13,8 @@ import seedu.jarvis.testutil.StudentBuilder;
 
 public class ConsultationTest {
     private String studentName = new StudentBuilder().build().getName().fullName;
-    private String studentName2 = "nullName";
+    private String studentName2 = "anyName";
 
-    // TODO: Naming constraints
     private Consultation normalConsultation = new Consultation(studentName, LocalDateTime.of(2020, 01,
             8, 13, 10));
     private Consultation consultationVariant1 = new Consultation(studentName2, LocalDateTime.of(2020, 01,
