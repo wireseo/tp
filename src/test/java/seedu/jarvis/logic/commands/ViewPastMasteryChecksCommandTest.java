@@ -7,12 +7,13 @@ import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.view.ViewPastConsultationsCommand;
+import seedu.jarvis.logic.commands.view.ViewPastMasteryChecksCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.testutil.TypicalManagers;
 
-public class ViewPastConsultationsCommandTest {
+
+public class ViewPastMasteryChecksCommandTest {
 
     private Model model;
     private Model expectedModel;
@@ -27,15 +28,15 @@ public class ViewPastConsultationsCommandTest {
 
     @Test
     public void execute_noFilters_success() {
-        Command command = new ViewPastConsultationsCommand();
-        String expectedMessage = ViewPastConsultationsCommand.MESSAGE_SUCCESS;
+        Command command = new ViewPastMasteryChecksCommand();
+        String expectedMessage = ViewPastMasteryChecksCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_emptyModel_throwsNullPointerException() {
         Model emptyModel = null;
-        ViewPastConsultationsCommand viewPastConsultationsCommand = new ViewPastConsultationsCommand();
-        assertThrows(NullPointerException.class, () -> viewPastConsultationsCommand.execute(emptyModel));
+        ViewPastMasteryChecksCommand viewPastMasteryChecksCommand = new ViewPastMasteryChecksCommand();
+        assertThrows(NullPointerException.class, () -> viewPastMasteryChecksCommand.execute(emptyModel));
     }
 }

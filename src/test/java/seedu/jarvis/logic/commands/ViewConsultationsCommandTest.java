@@ -28,11 +28,9 @@ public class ViewConsultationsCommandTest {
     @Test
     public void execute_noFilters_success() {
         Command command = new ViewConsultationsCommand();
-        String expectedMessage = ViewConsultationsCommand.MESSAGE_SUCCESS; // TODO: Fix this expected message
+        String expectedMessage = ViewConsultationsCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
-
-    // TODO: implement test to check if actual output is correct
 
     @Test
     public void execute_emptyModel_throwsNullPointerException() {

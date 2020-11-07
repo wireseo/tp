@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.testutil.StudentBuilder;
 
-public class NameContainsKeywordsPredicateTest {
+public class MasteryCheckNameContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
