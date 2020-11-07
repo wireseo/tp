@@ -382,7 +382,7 @@ You may also click on the `Consultation` tab to do so.
 
 #### 6.6.4 Viewing past `Consultation` sessions : `-cp`
 
-Shows all `Consultation` sessions.
+Shows all past `Consultation` sessions.
 <br>**Format: `view -cp`**
 <br>Examples:
 * `view -cp`
@@ -391,7 +391,7 @@ When the consultation time is the same as the local time (year, month, date, hou
 
 #### 6.6.5 Viewing upcoming `Consultation` sessions : `-cu`
 
-Shows all `Consultation` sessions.
+Shows all upcoming `Consultation` sessions.
 <br>**Format: `view -cu`**
 <br>Examples:
 * `view -cu`
@@ -403,39 +403,39 @@ it is still considered as an upcoming consultation when you enter `view -cu`. Th
 When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated consultation list with the current local time as the standard.
 </div>
 
-#### 6.6.6 Viewing all Mastery Check sessions : `-mc`
+#### 6.6.6 Viewing all `Mastery Check` sessions : `-mc`
 
-Shows all `confirmed MC` sessions, both past and upcoming.
+Shows all confirmed `Mastery Check` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
 <br>Examples:
 * `view -mc`
 
 You may also click on the `Mastery Check` tab to do so.
 
-#### 6.6.7 Viewing past Mastery Check sessions : `-mcp`
+#### 6.6.7 Viewing past `Mastery Check sessions : `-mcp`
 
-Shows all `past MC` sessions.
+Shows all past `Mastery Check` sessions.
 <br>**Format: `view -mcp`**
 <br>Examples:
 * `view -mcp`
 
 <div markdown="block" class="alert alert-info">
 
-When the mastery check time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
 </div>
 
-#### 6.6.8 Viewing upcoming Mastery Check sessions : `mcu`
+#### 6.6.8 Viewing upcoming `Mastery Check` sessions : `mcu`
 
-Shows all `upcoming MC` sessions.
+Shows all upcoming `Mastery Check` sessions.
 <br>**Format: `view -mcu`**
 <br>Examples:
 * `view -mcu`
 
 <div markdown="block" class="alert alert-info">
 
-When the time of the mastery check displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
-it is still considered as an upcoming mastery check when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the mastery check session.
-When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated mastery check list with the current local time as the standard.
+When the time of the `Mastery Check` displayed by `view -mcu` is earlier than the local time (year, month, date, hour, and minute all equal) and then caught up eventually,
+it is still considered as an upcoming `Mastery Check` when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the `Mastery Check` session.
+When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated `Mastery Check` list with the current local time as the standard.
 </div>
 
 #### 6.6.9 Viewing deadline for Missions : `-m`
@@ -571,8 +571,8 @@ are likely to change frequently.
 | Provide help with program commands | `help` |
 
 ## 8. Glossary
-### 8.1 Difference Between Consultations and Mastery Checks
-Mastery Checks are a specific type of consultations that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
+### 8.1 Difference Between `Consultations` and `Mastery Checks`
+`Mastery Checks` are a specific type of `Consultations` that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
 
 
 ## 9. FAQ
