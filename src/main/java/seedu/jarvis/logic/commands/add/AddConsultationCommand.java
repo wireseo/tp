@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.jarvis.logic.commands.CommandResult;
 import seedu.jarvis.logic.commands.CommandTargetFeature;
+import seedu.jarvis.logic.commands.edit.EditStudentCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.consultation.Consultation;
@@ -22,6 +23,10 @@ public class AddConsultationCommand extends AddCommand {
         toAddConsultation = consultation;
     }
 
+    public Consultation getToAddConsultation() {
+        return toAddConsultation;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -32,5 +37,23 @@ public class AddConsultationCommand extends AddCommand {
         model.addConsultation(toAddConsultation);
         return new CommandResult(String.format(MESSAGE_SUCCESS_CONSULTATION, toAddConsultation),
                 CommandTargetFeature.Consultations);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddConsultationCommand)) {
+            return false;
+        }
+
+        // state check
+        AddConsultationCommand e = (AddConsultationCommand) other;
+
+        return toAddConsultation.equals(e.getToAddConsultation());
     }
 }
