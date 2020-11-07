@@ -505,7 +505,7 @@ Jarvis data are saved in the file `jarvis.json` automatically after any command 
 <div markdown="block" class="alert alert-info">
 
 Note that only `Student`, `Consultation`, `Mastery Check` and `Task` data are saved to the hard drive since `Mission` and `Quest` data
-are likely to change frequently.
+are likely to change frequently and hence, will not need to be persisted.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
