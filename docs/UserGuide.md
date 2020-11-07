@@ -301,6 +301,8 @@ mission and quest information.
 </div>
 
 #### 6.4.2 Editing Student Information : `-s`
+
+Edits the fields of a `Student`.
 <br>**Format: `edit -s INDEX n/NAME t/TELEGRAM e/EMAIL`**
 <br>Examples:
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
