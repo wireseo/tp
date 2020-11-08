@@ -297,9 +297,9 @@ Model class.
 <div style="page-break-after: always"></div>
 
 ## Delete Command
-In this section, we will introduce the Delete Command. It will show the structure of the DeleteCommand class and the DeleteCommandParser
-class, as well as the path diagram and sequence diagram of the DeleteConsultationCommand to capture the interactions between
-the DeleteConsultationCommand and other object classes.
+In this section, we will introduce the `Delete Command`. It will show the structure of the `DeleteCommand` class and the `DeleteCommandParser`
+class, as well as the path diagram and sequence diagram of the `DeleteConsultationCommand` to capture the interactions between
+the `DeleteConsultationCommand` and other object classes.
 
 ### What is DeleteCommand
 `DeleteCommand` is an abstract class encapsulating the different delete commands for the `Consultations`,
@@ -307,7 +307,7 @@ the DeleteConsultationCommand and other object classes.
 
 ### Structure of DeleteCommand
 
-The following diagram shows the overview of the DeleteCommand Class Diagram:
+The following diagram shows the overview of the `DeleteCommand` Class Diagram:
 
 ![Class Diagram of DeleteCommand](images/DeleteCommandClassDiagram.png)
 
@@ -329,7 +329,9 @@ The following diagram shows the overview of the DeleteCommandParser Class Diagra
 
 In the `DeleteCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
 the different flags that `DeleteCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
-the flag and return the correct `DeleteCommand` object.
+the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
+the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
+and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
 
 ### Path Execution of DeleteConsultationCommand
 As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
@@ -345,9 +347,12 @@ The sequence diagram for the `DeleteConsultationCommand` is shown below:
 
 ![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
 
-The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `DeleteCommandParser` object.
-The `DeleteCommandParser` will return a `DeleteConsultationCommand` object. This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
-`DeleteConsultationCommand` object. In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the arguments to the `DeleteCommandParser` object.
+The `DeleteCommandParser`, after parsing the arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
+This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the `DeleteConsultationCommand` object.
+In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified
+consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message
+to the `LogicManager`, indicating that the command execution is a success.
 
 The other `DeleteCommand` subclasses work similarly to this as well.
 
