@@ -9,7 +9,7 @@ else ([Mission List is not empty])
     if () then ([Filtered Mission List is empty])
         : GUI displays "No Missions";
     else ([Filtered Mission List is not empty])
-        : GUI displays all current Mission Deadlines;
+        : GUI displays all current Mission deadlines;
     endif
 endif
 stop

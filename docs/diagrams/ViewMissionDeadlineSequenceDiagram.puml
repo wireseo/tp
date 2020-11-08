@@ -5,6 +5,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR
+participant ":ParserUtil" as ParserUtil LOGIC_COLOR
 participant "v:ViewMissionDeadlineCommand" as ViewMissionDeadlineCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
@@ -28,6 +29,15 @@ deactivate ViewCommandParser
 
 AddressBookParser -> ViewCommandParser : parse("-m")
 activate ViewCommandParser
+
+create ParserUtil
+ViewCommandParser -> ParserUtil : parseFlag("-m")
+activate ParserUtil
+
+ParserUtil --> ViewCommandParser : commandFlag
+deactivate ParserUtil
+
+ViewCommandParser --> AddressBookParser
 
 create ViewMissionDeadlineCommand
 ViewCommandParser -> ViewMissionDeadlineCommand
