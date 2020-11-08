@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.logic.commands.CommandTestUtil.showMasteryCheckAtIndex;
-import static seedu.jarvis.testutil.TypicalConsultations.TEST_CONSULTATION_ONE;
 import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.jarvis.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_ONE;
@@ -15,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
-import seedu.jarvis.logic.commands.delete.DeleteConsultationCommand;
 import seedu.jarvis.logic.commands.delete.DeleteMasteryCheckCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;

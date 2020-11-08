@@ -14,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.logic.commands.exceptions.CommandException;
-import seedu.jarvis.logic.commands.view.ViewUngradedMissionCommand;
 import seedu.jarvis.logic.commands.view.ViewUngradedQuestCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;

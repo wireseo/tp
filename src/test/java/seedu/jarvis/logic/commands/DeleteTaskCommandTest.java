@@ -3,8 +3,6 @@ package seedu.jarvis.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.jarvis.testutil.TypicalIndexes.INDEX_FIRST;
-import static seedu.jarvis.testutil.TypicalMasteryChecks.TEST_MASTERY_CHECK_ONE;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_EVENT_TWO;
 import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_TWO;
@@ -12,7 +10,6 @@ import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_TWO;
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.Messages;
-import seedu.jarvis.logic.commands.delete.DeleteMasteryCheckCommand;
 import seedu.jarvis.logic.commands.delete.DeleteTaskCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;

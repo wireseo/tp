@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.view.ViewPastMasteryChecksCommand;
 import seedu.jarvis.logic.commands.view.ViewQuestDeadlineCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;

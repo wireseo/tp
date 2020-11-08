@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
-import seedu.jarvis.logic.commands.edit.EditMasteryCheckCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
@@ -26,7 +25,6 @@ import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.student.Student;
-import seedu.jarvis.testutil.EditMasteryCheckDescriptorBuilder;
 import seedu.jarvis.testutil.EditStudentDescriptorBuilder;
 import seedu.jarvis.testutil.StudentBuilder;
 import seedu.jarvis.testutil.TypicalManagers;

@@ -2,17 +2,17 @@ package seedu.jarvis.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import javafx.stage.Stage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.junit.jupiter.api.Test;
+
+import javafx.stage.Stage;
 import seedu.jarvis.commons.core.GuiSettings;
 import seedu.jarvis.logic.Logic;
 import seedu.jarvis.logic.LogicManager;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.storage.Storage;
 import seedu.jarvis.testutil.TypicalManagers;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainWindowTest {
 

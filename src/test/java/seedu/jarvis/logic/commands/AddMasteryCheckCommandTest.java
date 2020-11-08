@@ -10,14 +10,11 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.ReadOnlyAddressBook;
-import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
-import seedu.jarvis.testutil.ConsultationBuilder;
 import seedu.jarvis.testutil.MasteryCheckBuilder;
 import seedu.jarvis.testutil.ModelStub;
 

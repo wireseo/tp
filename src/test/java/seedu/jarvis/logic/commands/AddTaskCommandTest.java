@@ -10,20 +10,17 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ReadOnlyAddressBook;
-import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
 import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.testutil.DeadlineBuilder;
 import seedu.jarvis.testutil.EventBuilder;
-import seedu.jarvis.testutil.MasteryCheckBuilder;
 import seedu.jarvis.testutil.ModelStub;
 import seedu.jarvis.testutil.TodoBuilder;
 

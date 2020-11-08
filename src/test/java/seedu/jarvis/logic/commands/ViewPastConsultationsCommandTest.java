@@ -8,7 +8,6 @@ import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.jarvis.logic.commands.view.ViewMissionDeadlineCommand;
 import seedu.jarvis.logic.commands.view.ViewPastConsultationsCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
