@@ -8,43 +8,62 @@ abstract class "{abstract}\nCommand" {
 }
 
 class Model <<Interface>> {
-    + setOrderBook(orderBook : ReadOnlyOrderBook) : void
-    + setReturnOrderBook(returnOrderBook : ReadOnlyReturnOrderBook) : void
+    /' Methods '/
+    + updateFilteredPersonList(Predicate<Student> predicate) : void
+    + updateMissionsList(Predicate<Mission> predicate) : void
+    + updateQuestsList(Predicate<Quest> predicate) : void
+    + updateFilteredConsultationList() : void
+    + updateFilteredMasteryCheckList() : void
+    + updateFilteredTaskList(Predicate<Task> predicate) : void
 }
 
-Model ..> ReadOnlyAddressBook
+class ModelManager {
+    /' Attributes '/
+    - addressBook: AddressBook
+    - filteredStudents: FilteredList<Student>
+    - filteredMissions: FilteredList<Mission>
+    - filteredQuests: FilteredList<Quest>
+    - filteredConsultations: FilteredList<Consultation>
+    - filteredMasteryChecks: FilteredList<MasteryCheck>
+    - filteredTasks: FilteredList<Task>
 
-class ReadOnlyAddressBook {
-    + getMissionList() : ObservableList<Mission>
-    + getQuestList() : ObservableList<Quest>
-    + getStudentList() : ObservableList<Student>
-    + getTaskList() : ObservableList<Task>
+    /' Methods '/
+    + updateFilteredPersonList(Predicate<Student> predicate) : void
+    + updateMissionsList(Predicate<Mission> predicate) : void
+    + updateQuestsList(Predicate<Quest> predicate) : void
+    + updateFilteredConsultationList() : void
+    + updateFilteredMasteryCheckList() : void
+    + updateFilteredTaskList(Predicate<Task> predicate) : void
 }
 
 abstract class "{abstract}\nViewCommand"{
+    /' Attributes '/
+    + {static} MESSAGE_USAGE: String
+
+    /' Methods '/
+    + {abstract} execute(model : Model) : CommandResult
+}
+
+class ViewXYZCommand {
+    /' Attributes '/
+    + {static} MESSAGE_SUCCESS: String
+
     /' Methods '/
     + execute(model : Model) : CommandResult
 }
 
-class ViewCommandParser implements Parser {
-    /' Methods '/
-    + parse(args : String) : ViewCommand
-}
 
-interface Parser<T> <<interface>> {
-    parse(userInput : String) : ViewCommand
-}
+note as N1
+  <size: 11><u>ViewXYZCommand:</size>
+  <size: 11>ViewMissionDeadlineCommand,</size>
+  <size: 11>ViewAllStudentsCommand, etc</size>
+end note
 
-class Flag {
-    + getFlag(): String
-    + isValidFlag(): boolean
-}
+N1 .up. ViewXYZCommand
 
-class ViewXYZCommand
-
-"{abstract}\nViewCommand" <..left ViewCommandParser
 "{abstract}\nViewCommand" ..> Model
 "{abstract}\nViewCommand" --up|> "{abstract}\nCommand"
-ViewCommandParser ..> Flag
 ViewXYZCommand -> "{abstract}\nViewCommand"
+"ViewXYZCommand" ..> Model
+ModelManager --up|> Model
 @enduml

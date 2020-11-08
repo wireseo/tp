@@ -195,88 +195,61 @@ and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div style="page-break-after: always"></div>
 
-## View Command
-### Structure of View Command
+### View Command
+in this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
+class, as well as the path diagram and sequence diagram of the ViewMissionDeadlineCommand to capture the interactions between
+the ViewMissionDeadlineCommand and other object classes.
+
+#### What is ViewCommand
+`ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
+`Mission`, `Quest`, `Consultation`, `Mastery Check` and `Task`.
+
+#### Structure of ViewCommand
 
 The following diagram shows the overview of the ViewCommand Class Diagram:
 
-![Sequence Diagram of View Mission Deadlines](images/ViewCommandClassDiagram.png)
+![Class Diagram of ViewCommand](images/ViewCommandClassDiagram.png)
 
-In the `ViewCommand` class, there is also a static message `MESSAGE_USAGE` for when user does not include a second argument since view
-has to take in at least one argument. The message will guide the user on what parameters the `ViewCommand` can take in.
+The abstract class `ViewCommand` extends from the abstract class `Command`. In the `ViewCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all view commands that extend from the `ViewCommand` class will implement
+the `execute` method. Thus, all view command classes have a dependency on `Model`.
+ 
+In the `ViewCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+view has to take in at least one argument. The message will guide the user on what parameters the `ViewCommand` can take in.
+
+In all the view commands that extend from `ViewCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
+has executed successfully. The message will be shown to the user to indicate success.
+
+#### Structure of ViewCommandParser
+
+The following diagram shows the overview of the ViewCommandParser Class Diagram:
+
+![Class Diagram of ViewCommandParser](images/ViewCommandParserClassDiagram.png)
 
 In the `ViewCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
 
-### View Mission Deadlines Feature
-In this section, we will introduce how the `View Mission Deadlines Feature` works. The sequence diagram for the View Mission Deadline Command is shown below:
+#### Path Execution of ViewMissionDeadlineCommand
+As there are many `ViewCommand` sub classes such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
+as an example for the `ViewCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
+The other `ViewCommand` sub classes will execute similarly.
 
-![Sequence Diagram of View Mission Deadlines](images/ViewMissionDeadlineSequenceDiagram.png)
+![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
+
+#### Interaction between objects when ViewMissionDeadlineCommand is executed
+The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
+
+![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
 
 The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `ViewCommandParser` object.
-The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be ultimately returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
+The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
 `ViewMissionDeadlineCommand` object. In this method, it wil use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
 `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
 
-The View Quest Deadlines features work similarly to this as well.
-
-### View Students Feature
-Next, we will introduce how the `View Students Feature` works. The following is a class diagram for View Student
-Commands.
-
-![Class Diagram of View Student Commands](images/ViewStudentsClassDiagram.png)
-
-* The abstract class `ViewCommand` extends from the abstract class `Command`
-* Both `ViewAllStudentCommand` and `ViewOneStudentCommand` extend from the abstract class `ViewCommand`
-* Both `ViewAllStudentCommand` and `ViewOneStudentCoVmmand` take in a Model object for the execute method, as such
- both have a dependency on Model.
-
-
-Now we will go into how the `View All Students Feature` works, the following is a sequence diagram modelling the
-interaction between `ViewAllStudentsCommand`, `Model` and `CommandResult`.
-
-![Sequence Diagram of View All Students](images/ViewAllStudentsSequenceDiagram.png)
-
-* The `ViewAllStudentsCommand`'s`execute` method is first called with a model passed as an argument.
-* `execute` method then calls `Model`'s `updateFilteredPersonList` method with a predicate which shows all students.
-* A `CommandResult` object is created with the message "Listed all students taught by you" and returned to
- `ViewALlStudentsCommand`.
-* The `CommandResult` object is returned to the caller of `execute`.
-
-### View Tasks Feature
-The View Task features involve viewing 4 categories of tasks which work similarly to the above as well. We can choose
-to:
-* View all `Task` in general,
-* View all `Todo`,
-* View all `Event`, or
-* View all `Deadline`.
-
-### View Consultations Feature
-Next, we will introduce how the `View Consultations Feature` works. The following is a class diagram for View
-Consultations Commands. There are three variants (view all consultations, view past consultations, view future
-  consultations) but they all share the same logic.
-
-![Class Diagram of the three View Consultations Commands](images/ViewConsultationsClassDiagram.png)
-
-* The abstract class `ViewCommand` extends from the abstract class `Command`.
-* Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` extend
-from the abstract class `ViewCommand`
-* Both `ViewConsultationCommand` and `ViewPastConsultationCommand` and `ViewUpcomingConsultationCommand` take in a
-Model object for the execute method, as such both have a dependency on Model.
-
-
-Now we will go into how the `View Consultations Feature` works, the following is a sequence diagram modelling the
-interaction between `ViewConsultationsCommand`, `Model` and `CommandResult`.
-
-![Sequence Diagram of a general View Consultation](images/ViewConsultationsSequenceDiagram.png)
-
-* The `ViewConsultationsCommand`'s`execute` method is first called with a model passed as an argument.
-* `execute` method then calls `Model`'s `getConsultations` method with a predicate which shows all consultations of all
-students.
-* A `CommandResult` object is created with the message "Listed all consultations: " and returned to
- `viewAllConsultationsCommand`.
-* The `CommandResult` object is returned to the caller of `execute`.
+The other `ViewCommand` sub classes work similarly to this as well.
 
 <div style="page-break-after: always"></div>
 
