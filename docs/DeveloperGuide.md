@@ -175,22 +175,33 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 ## **Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
+This section describes some noteworthy details on how certain key features have been implemented.
 
-### Get Missions Feature
-In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
+### getMissions
+In this section, we will introduce how the `getMissions` method works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
 </div>
 
+#### What is getMissions
+`getMissions` is a method implemented by `ScraperManager` that fetches `Mission` information from Source Academy through the use of a headless browser, _Chrome_Driver_.
+
+#### Structure of getMissions
+The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the method definition.
+
+![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
+
+The following diagram shows the path diagram from the user's perspective when `getMissions` is called.
+
 ![Path Diagram of Get Missions](images/GetMissionsPathDiagram.png)
 
 ![Sequence Diagram of Get Missions](images/GetMissionsSequenceDiagram.png)
 
-* The strange-looking string within the `XPath.by(...)` is a HTML descriptor for the HTML element that corresponds to each individual mission on SA.
-* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on SA that matches the HTML descriptor we passed in.
-* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could of size 0 if there are no active missions that day.
+* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual mission on Source Academy.
+* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on Source Academy that matches the HTML descriptor we passed in.
+* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could be of size 0 if there are no active missions that day.
+* `getMissions` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
 
  <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
  </div>

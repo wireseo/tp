@@ -4,6 +4,7 @@ skinparam classAttributeIconSize 0
 hide circle
 
 class Scraper <<Interface>> {
+    + init() : void
     + authenticate() : void
     + getMissions() : void
     + getQuests() : void
@@ -13,21 +14,22 @@ class Scraper <<Interface>> {
 }
 
 class ReadOnlyUserLogin <<Interface>> {
-    + getUsername() : String
+    + getUsername() : Username
     + getUserPassword() : String
 }
 
 class UserLogin implements ReadOnlyUserLogin {
     /' Fields '/
-    - username : String
+    - username : Username
     - password: String
 }
 
 class ScraperManager implements Scraper {
     /' Fields '/
     - driver : WebDriver
-    - userLogin : UserLogin
+    - loginInfo : UserLogin
     - model : Model
+    - storage : Storage
     - isAuthenticated: boolean
 
     /' Methods '/
