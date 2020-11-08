@@ -45,7 +45,7 @@ CommandBox --|> UiPart
 XYZListPanel --|> UiPart
 note right of XYZListPanel: XYZListPanel = StudentListPanel, \nMissionListPanel, QuestListPanel etc.
 XYZCard --|> UiPart
-note right of XYZCard: XYZCard = StudentCard, \MissionCard, QuestCard etc.
+note right of XYZCard: XYZCard = StudentCard, \nMissionCard, QuestCard etc.
 StatusBarFooter --|> UiPart
 HelpWindow -down-|> UiPart
 
