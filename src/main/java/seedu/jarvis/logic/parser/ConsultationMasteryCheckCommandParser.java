@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import seedu.jarvis.logic.commands.add.AddCommand;
+import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
@@ -26,10 +27,10 @@ public class ConsultationMasteryCheckCommandParser {
      */
     public static Consultation parseConsultation(String[] nameKeywords, int length) throws ParseException {
         LocalDateTime formattedEventDateTime;
-
-        String studentName = parseStudentName(nameKeywords, length);
+        String studentName;
 
         try {
+            studentName = parseStudentName(nameKeywords, length);
             formattedEventDateTime = parseTimedTaskTime(nameKeywords, length);
         } catch (ParseException pe) {
             throw pe;
@@ -44,15 +45,14 @@ public class ConsultationMasteryCheckCommandParser {
      */
     public static MasteryCheck parseMasteryCheck(String[] nameKeywords, int length) throws ParseException {
         LocalDateTime formattedDeadlineDateTime;
-
+        String studentName;
         try {
+            studentName = parseStudentName(nameKeywords, length);
             formattedDeadlineDateTime = parseTimedTaskTime(nameKeywords, length);
         } catch (ParseException pe) {
             throw pe;
         }
-
-        String studentName = parseStudentName(nameKeywords, length);
-
+        
         return new MasteryCheck(studentName, formattedDeadlineDateTime);
     }
 
@@ -62,20 +62,31 @@ public class ConsultationMasteryCheckCommandParser {
      * @param length
      * @return String of description
      */
-    public static String parseStudentName(String[] nameKeywords, int length) {
+    public static String parseStudentName(String[] nameKeywords, int length) throws ParseException {
+
+        if (nameKeywords[1].equals(PREFIX_DATE) || nameKeywords[1].equals(PREFIX_TIME)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
+        }
+
         int datePrefixLocation = -1;
-        for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
+        for (int i = 1; i < length; i++) {
+            if (nameKeywords[i].length() > 1 && nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
                 datePrefixLocation = i;
             }
         }
 
-        String taskDescription = nameKeywords[1];
-        for (int i = 2; i < datePrefixLocation; i++) {
-            taskDescription = taskDescription + " " + nameKeywords[i];
+        if (datePrefixLocation == -1) { // if still not found
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
         }
 
-        return taskDescription;
+        String studentName = nameKeywords[1];
+        for (int i = 2; i < datePrefixLocation; i++) {
+            studentName = studentName + " " + nameKeywords[i];
+        }
+
+        return studentName;
     }
 
     /**
@@ -91,25 +102,21 @@ public class ConsultationMasteryCheckCommandParser {
         int datePrefixLocation = -1;
         int timePrefixLocation = -1;
 
-        for (int i = 2; i < length; i++) {
-            if (nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
+        for (int i = 1; i < length; i++) {
+            if (nameKeywords[i].length() > 1 && nameKeywords[i].substring(0, 2).equals(PREFIX_DATE)) {
                 hasDatePrefix = true;
                 datePrefixLocation = i;
             }
 
-            if (nameKeywords[i].substring(0, 2).equals(PREFIX_TIME)) {
+            if (nameKeywords[i].length() > 1 && nameKeywords[i].substring(0, 2).equals(PREFIX_TIME)) {
                 hasTimePrefix = true;
                 timePrefixLocation = i;
             }
         }
 
-        if (datePrefixLocation > timePrefixLocation) {
+        if (datePrefixLocation > timePrefixLocation || !hasDatePrefix || !hasTimePrefix) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
-
-        } else if (!hasDatePrefix || !hasTimePrefix) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_INFO));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
         }
 
         assert hasDatePrefix : "Date prefix d/ should already be handled properly";

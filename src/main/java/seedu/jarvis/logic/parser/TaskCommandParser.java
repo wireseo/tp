@@ -136,7 +136,7 @@ public class TaskCommandParser {
 
         if (datePrefixLocation > timePrefixLocation) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DATETIME));
 
         } else if (!hasDatePrefix || !hasTimePrefix) {
             throw new ParseException(
