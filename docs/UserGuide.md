@@ -251,8 +251,8 @@ An example of the command being inputted:
 ![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
 ### 5.3 Updated Details Summary
-Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered.
-The username and password are covered with a red rectangle for this diagram only to protect the Avenger's account security.
+Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered. 
+The username, password and student names are covered with a red rectangle for this diagram only to protect the Avenger's account security.
 You will be able to see the login details you entered.
 
 ### 5.4 Updated Student Information
