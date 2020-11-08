@@ -268,6 +268,8 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 
 ![Path Diagram of login process](images/LoginPathDiagram.png)
 
+#### Sequence Diagram of login process
+
 ![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
 
 * The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
