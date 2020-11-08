@@ -6,6 +6,7 @@ participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
 participant "v:EditLoginCommand" as EditLoginCommand LOGIC_COLOR
+participant ":ParserUtil" as ParserUtil LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -26,6 +27,27 @@ activate AddressBookParser
 create EditCommandParser
 AddressBookParser -> EditCommandParser
 activate EditCommandParser
+
+create ParserUtil
+EditCommandParser -> ParserUtil : parseFlag("-l")
+activate ParserUtil
+
+ParserUtil --> EditCommandParser : commandFlag
+deactivate ParserUtil
+
+EditCommandParser -> ParserUtil : parseUsername("/u")
+activate ParserUtil
+
+ParserUtil --> EditCommandParser : username
+
+deactivate ParserUtil
+
+EditCommandParser -> ParserUtil : parsePassword("/u")
+activate ParserUtil
+
+ParserUtil --> EditCommandParser : password
+
+deactivate ParserUtil
 
 EditCommandParser --> AddressBookParser
 deactivate EditCommandParser
