@@ -177,35 +177,33 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain key features have been implemented.
 
-### getMissions
-In this section, we will introduce how the `getMissions` method works. We will do so through showing the expected path-execution
+### Login
+In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
 </div>
 
-#### What is getMissions
-`getMissions` is a method implemented by `ScraperManager` that fetches `Mission` information from Source Academy through the use of a headless browser, _Chrome_Driver_.
+#### What is the login process
+Login is a series of method calls that any new user who uses Jarvis has to go through. It is carried out by `ScraperManager` and involves fetching information from Source Academy through the use of a headless browser, _Chrome_Driver_.
 
-#### Structure of getMissions
-The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the method definition.
+#### Structure of login process
+The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the login process.
 
 ![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
 
-The following diagram shows the path diagram from the user's perspective when `getMissions` is called.
+The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
+The login process is kickstarted whenever Jarvis is launched or the login details are edited.
 
-![Path Diagram of Get Missions](images/GetMissionsPathDiagram.png)
+![Path Diagram of login process](images/LoginPathDiagram.png)
 
-![Sequence Diagram of Get Missions](images/GetMissionsSequenceDiagram.png)
+![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
 
-* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual mission on Source Academy.
+* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
 * The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on Source Academy that matches the HTML descriptor we passed in.
 * `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could be of size 0 if there are no active missions that day.
-* `getMissions` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
-
- <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
- </div>
-
+* `startScraping()` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
+* In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
 <div style="page-break-after: always"></div>
 
 ### View Command

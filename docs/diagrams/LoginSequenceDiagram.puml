@@ -10,7 +10,7 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> ScraperManager : getMissions()
+[-> ScraperManager : startScraping()
 activate ScraperManager
 
 ScraperManager -> WebDriver : get("sourceacademy.nus.edu.sg")
@@ -18,10 +18,15 @@ activate WebDriver
 
 deactivate WebDriver
 
+ScraperManager -> WebDriver : sendKeys(username, password)
+activate WebDriver
+
+deactivate WebDriver
+
 ScraperManager -> WebDriver : findElements(By.xpath("//h4[@class='bp3-heading listing-title']"))
 activate WebDriver
 
-WebDriver -> ScraperManager : missionTitles: List<WebElement>
+WebDriver -> ScraperManager : titles: List<WebElement>
 deactivate WebDriver
 
 ScraperManager -> Model : saveToStorage(mission)
