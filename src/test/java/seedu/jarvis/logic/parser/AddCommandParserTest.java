@@ -3,6 +3,7 @@ package seedu.jarvis.logic.parser;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.logic.commands.CommandTestUtil.CONSULTATION_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.DATE_DESC_AMY_CONSULTATION;
+import static seedu.jarvis.logic.commands.CommandTestUtil.DEADLINE_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.INVALID_DATE_EIGHT_WITH_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.INVALID_DATE_FIVE_WITH_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.INVALID_DATE_FOUR_WITH_PREFIX;
@@ -18,9 +19,13 @@ import static seedu.jarvis.logic.commands.CommandTestUtil.INVALID_TIME_TWO_WITH_
 import static seedu.jarvis.logic.commands.CommandTestUtil.MASTERY_CHECK_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.NAME_DESC_AMY_CONSULTATION;
 import static seedu.jarvis.logic.commands.CommandTestUtil.TIME_DESC_AMY_CONSULTATION;
+import static seedu.jarvis.logic.commands.CommandTestUtil.TODO_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_DATE_AMY_CONSULTATION;
+import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_DESCRIPTION;
 import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_TIME_AMY_CONSULTATION;
+import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_USERINPUT_DATE;
+import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_USERINPUT_TIME;
 import static seedu.jarvis.logic.commands.add.AddCommand.MESSAGE_MISSING_INFO;
 import static seedu.jarvis.logic.commands.add.AddCommand.MESSAGE_WRONG_DATETIME_FORMAT;
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -33,8 +38,12 @@ import org.junit.jupiter.api.Test;
 import seedu.jarvis.logic.commands.add.AddCommand;
 import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
+import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
+import seedu.jarvis.model.task.Deadline;
+import seedu.jarvis.model.task.Event;
+import seedu.jarvis.model.task.Todo;
 
 public class AddCommandParserTest {
     private static final String PREAMBLE_NON_EMPTY = "asdfasdf";
@@ -55,6 +64,31 @@ public class AddCommandParserTest {
         assertParseFailure(parser, "-2", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddCommand.MESSAGE_ADD_USAGE));
     }
+
+    /*
+    @Test
+    public void parseTodo_allFieldsPresent_success() {
+        Todo expectedTodo = new Todo(VALID_DESCRIPTION);
+        String userInput = TODO_PREFIX + " " + VALID_DESCRIPTION;
+        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedTodo));
+    }
+
+    @Test
+    public void parseEvent_allFieldsPresent_success() {
+        Event expectedEvent = new Event(VALID_DESCRIPTION, VALID_DATE_TIME);
+        String userInput = TODO_PREFIX + " " + VALID_DESCRIPTION + " "
+                + VALID_USERINPUT_DATE + " " + VALID_USERINPUT_TIME;
+        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedEvent));
+    }
+
+    @Test
+    public void parseDeadline_allFieldsPresent_success() {
+        Deadline expectedDeadline = new Deadline(VALID_DESCRIPTION, VALID_DATE_TIME);
+        String userInput = DEADLINE_PREFIX + " " + VALID_DESCRIPTION + " "
+                + VALID_USERINPUT_DATE + " " + VALID_USERINPUT_TIME;
+        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedDeadline));
+    }
+    */
 
     @Test
     public void parseConsultation_allFieldsPresent_success() {
