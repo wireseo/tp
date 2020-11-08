@@ -38,7 +38,7 @@ TaskCommandParser --> AddCommandParser : Event event
 deactivate TaskCommandParser
 
 create AddTaskCommand
-AddCommandParser -> AddTaskCommand : new AddTaskCommand(event)
+AddCommandParser -> AddTaskCommand : AddTaskCommand(event)
 activate AddTaskCommand
 
 AddTaskCommand --> AddCommandParser : a
@@ -57,7 +57,7 @@ AddTaskCommand -> ModelManager : hasEvent(event)
 alt hasEvent(event) == true
 
     create CommandException
-    AddTaskCommand -> CommandException : new CommandException(errorMsg)
+    AddTaskCommand -> CommandException : CommandException(errorMsg)
     activate CommandException
     CommandException --> AddTaskCommand : commandException
     deactivate CommandException
@@ -69,7 +69,7 @@ else hasEvent(event) == false
     AddressBook -->] : add(event)
 
     create CommandResult
-    AddTaskCommand -> CommandResult : new CommandResult(MESSAGE_SUCCESS)
+    AddTaskCommand -> CommandResult : CommandResult(MESSAGE_SUCCESS)
     activate CommandResult
     CommandResult --> AddTaskCommand : commandResult
     deactivate CommandResult
