@@ -19,7 +19,7 @@ public abstract class AddCommand extends Command {
             + "time\n"
             + "add -t DESCRIPTION: Add todo with DESCRIPTION\n"
             + "add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add event with DESCRIPTION at specified date and time\n"
-            + "add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add deadline with DESCRIPTION at specified date and time\n";
+            + "add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add deadline with DESCRIPTION at specified date and time";
 
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include the DESCRIPTION";
     public static final String MESSAGE_MISSING_DATE = "Please make sure to include DATE and TIME: d/YYYY-MM-DD t/HH:MM";
