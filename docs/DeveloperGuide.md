@@ -183,7 +183,7 @@ In this section we will explain how the `Automatic Tab Switching Feature` featur
  
 #### What is Automatic Tab Switching
 `Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
-` `Missions` `Quests` `Consultations` `Mastery Checks` and `Tasks`, for the user's input command.
+` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
 
 #### Interaction between objects when Automatic Tab Switching happens
 The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
@@ -194,16 +194,12 @@ The following is a sequence diagram explaining the interaction between `MainWind
 On start up of the GUI the `fillInnerParts` method of `MainWindow` is called, creating a `CommandBox` object with
 a method reference to `MainWindow`'s `executeCommand` method passed as parameter to the constructor. 
 
-The `CommandBox
-` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
- `MainWindow`'s
- `executeCommand
-` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult
-` object and returns it to `MainWindow`.
+The `CommandBox` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
+`MainWindow`'s `executeCommand` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult` object and returns it to `MainWindow`.
 
 `MainWindow` class calls the `CommandResult` object's `getCommandTargetFeature` method, which then returns a
- `CommandTargetFeature` `Enum`
-corresponding to the feature that the user input command relates to. Based on that Enum, `MainWindow` then selects the
+ `CommandTargetFeature`, `Enum`
+corresponding to the feature that the user input command relates to. Based on that `Enum`, `MainWindow` then selects the
  corresponding tab using its local variable `tabSelector`. In this case `Missions` was returned and hence the
   `missionTab` was selected.
    
