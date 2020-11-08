@@ -24,11 +24,11 @@ import seedu.jarvis.model.flag.Flag;
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
+    public static final String MESSAGE_INVALID_ID = "Task ID provided is not correct.";
     private static final Logger logger = LogsCenter.getLogger(DeleteCommandParser.class);
     private static final String EMPTY_DELETE_COMMAND = "Please enter an index or id after the command. e.g. delete "
             + "-mc 1, delete -c 2, or delete -t T1";
     private static final String VALID_INDEX_MSG = "Please enter a valid index or id after the command.";
-    public static final String MESSAGE_INVALID_ID = "Task ID provided is not correct.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
