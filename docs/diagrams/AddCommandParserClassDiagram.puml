@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #ffffff
+skinparam classAttributeIconSize 0
+hide circle
+
+interface Parser<T> <<interface>> {
+    parse(userInput : String) : AddCommand
+}
+
+class AddXYZParser {
+
+}
+
+class Flag {
+    + getFlag(): String
+    + isValidFlag(): boolean
+}
+
+class AddCommandParser implements Parser {
+    /' Methods '/
+    + parse(args : String) : AddCommand
+}
+@enduml
