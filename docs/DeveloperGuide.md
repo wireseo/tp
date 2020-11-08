@@ -213,7 +213,7 @@ The following diagram shows the overview of the ViewCommand Class Diagram:
 The abstract class `ViewCommand` extends from the abstract class `Command`. In the `ViewCommand` class, the abstract
 method `execute` takes in a `Model` object. As such, all view commands that extend from the `ViewCommand` class will implement
 the `execute` method. Thus, all view command classes have a dependency on `Model`.
- 
+
 In the `ViewCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
 view has to take in at least one argument. The message will guide the user on what parameters the `ViewCommand` can take in.
 
