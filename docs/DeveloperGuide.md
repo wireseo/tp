@@ -207,16 +207,16 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 * In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
 <div style="page-break-after: always"></div>
 
-### View Command
-in this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
+## View Command
+In this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
 class, as well as the path diagram and sequence diagram of the ViewMissionDeadlineCommand to capture the interactions between
 the ViewMissionDeadlineCommand and other object classes.
 
-#### What is ViewCommand
+### What is ViewCommand
 `ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
 `Mission`, `Quest`, `Consultation`, `Mastery Check` and `Task`.
 
-#### Structure of ViewCommand
+### Structure of ViewCommand
 
 The following diagram shows the overview of the ViewCommand Class Diagram:
 
@@ -232,7 +232,7 @@ view has to take in at least one argument. The message will guide the user on wh
 In all the view commands that extend from `ViewCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
 has executed successfully. The message will be shown to the user to indicate success.
 
-#### Structure of ViewCommandParser
+### Structure of ViewCommandParser
 
 The following diagram shows the overview of the ViewCommandParser Class Diagram:
 
@@ -242,26 +242,26 @@ In the `ViewCommandParser` class, under the `parse()` method, we reference the `
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
 
-#### Path Execution of ViewMissionDeadlineCommand
+### Path Execution of ViewMissionDeadlineCommand
 As there are many `ViewCommand` sub classes such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
 as an example for the `ViewCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
-The other `ViewCommand` sub classes will execute similarly.
+The diagram below demonstrates the expected path execution of `ViewMissionDeadlineCommand`.
+The other `ViewCommand` subclasses will execute similarly.
 
 ![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
 
-#### Interaction between objects when ViewMissionDeadlineCommand is executed
+### Interaction between objects when ViewMissionDeadlineCommand is executed
 The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
 
 ![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
 
 The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `ViewCommandParser` object.
 The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
-`ViewMissionDeadlineCommand` object. In this method, it wil use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
+`ViewMissionDeadlineCommand` object. In this method, it will use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
 `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
 
-The other `ViewCommand` sub classes work similarly to this as well.
+The other `ViewCommand` subclasses work similarly to this as well.
 
 <div style="page-break-after: always"></div>
 
@@ -308,6 +308,68 @@ Model class.
 
 <div style="page-break-after: always"></div>
 
+## Delete Command
+In this section, we will introduce the `Delete Command`. It will show the structure of the `DeleteCommand` class and the `DeleteCommandParser`
+class, as well as the path diagram and sequence diagram of the `DeleteConsultationCommand` to capture the interactions between
+the `DeleteConsultationCommand` and other object classes.
+
+### What is DeleteCommand
+`DeleteCommand` is an abstract class encapsulating the different delete commands for the `Consultations`,
+`Mastery Checks`, and `Tasks`.
+
+### Structure of DeleteCommand
+
+The following diagram shows the overview of the `DeleteCommand` Class Diagram:
+
+![Class Diagram of DeleteCommand](images/DeleteCommandClassDiagram.png)
+
+The abstract class `DeleteCommand` extends from the abstract class `Command`. In the `DeleteCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all delete commands that extend from the `DeleteCommand` class will implement
+the `execute` method. Thus, all delete command classes have a dependency on `Model`.
+
+In the `DeleteCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+delete has to take in at least one argument. The message will guide the user on what parameters the `DeleteCommand` can take in.
+
+In all the delete commands that extend from `DeleteCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
+has executed successfully. The message will be shown to the user to indicate success.
+
+### Structure of DeleteCommandParser
+
+The following diagram shows the overview of the DeleteCommandParser Class Diagram:
+
+![Class Diagram of DeleteCommandParser](images/DeleteCommandParserClassDiagram.png)
+
+In the `DeleteCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
+the different flags that `DeleteCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
+the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
+the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
+and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
+The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a String to store identifiers instead;
+however, they are similar in how they operate and interact with the rest of the system.
+
+### Path Execution of DeleteConsultationCommand
+As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
+as an example for the `DeleteCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `DeleteConsultationCommand`.
+The other `DeleteCommand` sub classes will execute similarly.
+
+![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
+
+### Interaction between objects when DeleteConsultationCommand is executed
+The sequence diagram for the `DeleteConsultationCommand` is shown below:
+
+![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
+
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the arguments to the `DeleteCommandParser` object.
+The `DeleteCommandParser`, after parsing the necessary arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
+This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the `DeleteConsultationCommand` object.
+In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified
+consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message
+to the `LogicManager`, indicating that the command execution is a success.
+
+The other `DeleteCommand` subclasses work similarly to this as well.
+=======
 ## Edit Command
 ### What is Edit Command
 The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.

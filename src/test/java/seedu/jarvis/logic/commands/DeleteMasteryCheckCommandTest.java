@@ -33,7 +33,7 @@ public class DeleteMasteryCheckCommandTest {
         DeleteMasteryCheckCommand deleteCommand = new DeleteMasteryCheckCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(
-                DeleteMasteryCheckCommand.MESSAGE_DELETE_MASTERY_CHECK_SUCCESS, masteryCheckToDelete);
+                DeleteMasteryCheckCommand.MESSAGE_SUCCESS, masteryCheckToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());
@@ -62,7 +62,7 @@ public class DeleteMasteryCheckCommandTest {
         DeleteMasteryCheckCommand deleteCommand = new DeleteMasteryCheckCommand(INDEX_FIRST);
 
         String expectedMessage =
-                String.format(DeleteMasteryCheckCommand.MESSAGE_DELETE_MASTERY_CHECK_SUCCESS, masteryCheckToDelete);
+                String.format(DeleteMasteryCheckCommand.MESSAGE_SUCCESS, masteryCheckToDelete);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());

@@ -2,7 +2,7 @@ package seedu.jarvis.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.jarvis.logic.commands.delete.DeleteCommand.MESSAGE_DELETE_USAGE;
+import static seedu.jarvis.logic.commands.delete.DeleteCommand.MESSAGE_USAGE;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_CONSULTATION;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_MASTERY_CHECK;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_TASK;
@@ -40,7 +40,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DELETE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
         // split the string trimmedArgs with regex of one or more whitespace characters.
@@ -48,11 +48,12 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         assert inputsAfterCommandType.length > 0 : "String array of the arguments is empty";
 
         Flag commandFlag;
+        String flagInput = inputsAfterCommandType[0];
         try {
-            commandFlag = ParserUtil.parseFlag(inputsAfterCommandType[0]);
+            commandFlag = ParserUtil.parseFlag(flagInput);
         } catch (ParseException ex) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DELETE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
         String editArgs = String.join(" ", Arrays.copyOfRange(inputsAfterCommandType, 1,
@@ -79,9 +80,10 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         case DELETE_CONSULTATION:
             logger.info("DeleteCommandParser attempts to parse user's delete Consultation input");
             Index consultationIndex;
+            String indexParamConsultation = split[0];
 
             try {
-                consultationIndex = ParserUtil.parseIndex(split[0]);
+                consultationIndex = ParserUtil.parseIndex(indexParamConsultation);
             } catch (ParseException pe) {
                 throw new ParseException(pe.getMessage());
             }
@@ -91,9 +93,10 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         case DELETE_MASTERY_CHECK:
             logger.info("DeleteCommandParser attempts to parse user's delete MasteryCheck input");
             Index masteryCheckIndex;
+            String indexParamMasteryCheck = split[0];
 
             try {
-                masteryCheckIndex = ParserUtil.parseIndex(split[0]);
+                masteryCheckIndex = ParserUtil.parseIndex(indexParamMasteryCheck);
             } catch (ParseException pe) {
                 throw new ParseException(pe.getMessage());
             }
@@ -101,7 +104,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             return new DeleteMasteryCheckCommand(masteryCheckIndex);
 
         default:
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DELETE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
     }
 

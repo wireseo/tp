@@ -12,7 +12,7 @@ public abstract class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_DELETE_USAGE =
+    public static final String MESSAGE_USAGE =
             COMMAND_WORD + ": Deletes a consultation, mastery check, or task (todo, event, deadline) from Jarvis.\n"
             + "delete -c CONSULTATION_ID: Delete consultation with CONSULTATION_ID\n"
             + "delete -mc MASTERYCHECK_ID: Delete mastery check with MASTERYCHECK_ID\n"

@@ -15,7 +15,7 @@ public class DeleteTaskCommand extends DeleteCommand {
             + ": Deletes the task identified by the task ID used in the task list.\n"
             + "Example: " + COMMAND_WORD + " -t T1\n"
             + "Type \"view -t\" to verify your task ID before deleting!";
-    public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+    public static final String MESSAGE_SUCCESS = "Deleted Task: %1$s";
 
     private final String taskId;
 
@@ -48,7 +48,7 @@ public class DeleteTaskCommand extends DeleteCommand {
         if (hasDeletedTask) {
             assert taskToDelete != null : "Upon successful task deletion, the task deleted cannot be null";
             model.deleteTask(taskToDelete);
-            return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete),
+            return new CommandResult(String.format(MESSAGE_SUCCESS, taskToDelete),
                     CommandTargetFeature.Tasks);
 
         } else {
