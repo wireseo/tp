@@ -241,8 +241,7 @@ User Interface.
 
 ![Sequence diagram of getting Summary Details](images/GetSummaryDetailsSequenceDiagram.png)
 
-A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty
-` of summary details being returned.
+A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty` of summary details being returned.
 
 Upon start up of Jarvis' Graphical User Interface, the first step of calling `LogicManager`'s `execute` method is
 skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
