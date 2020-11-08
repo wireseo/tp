@@ -12,6 +12,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 1. [Overview](#1-overview)
     - [1.1 Introduction](#11-introduction)
     - [1.2 Purpose](#12-purpose)
+    - [1.3 Design Considerations](#13-design-considerations)
 2. [About the User Guide](#2-about-the-user-guide)
 3. [Quick start](#3-quick-start)
 4. [Navigating Jarvis](#4-navigating-jarvis)
@@ -78,6 +79,16 @@ As an Avenger, not only do you have immense power but you are also burdened with
 Not to worry, Jarvis is here to empower you to manage your personal tasks while teaching others efficiently and
 effectively.
 
+### 1.3 Design Considerations
+Our design philosophy that has guided us through the development of Jarvis is to place the user experience at the core of all considerations.
+As such, you will find throughout the User Guide small features and language that we have deliberately chosen to enhance usability and improve the user-centered experience of our product.
+We have highlighted several features below that we feel are reflective of our design philosophy.
+
+1. You can toggle between your past and future commands entered by using the up and down arrows respectively.
+
+1. Everytime a command has been entered, Jarvis will switch to the relevant tab automatically.
+
+1. Important information such as `Student`, `Mission`, `Quest`, etc will not be deleted when the user keys in the wrong login information. We wish to give users the benefit of doubt and not delete their information as we do believe accidents can happen.
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. About the User Guide
