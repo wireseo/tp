@@ -102,6 +102,7 @@ We have highlighted several features below that we feel are reflective of our de
 1. Everytime a command has been entered, Jarvis will switch to the relevant tab automatically.
 
 1. Important information such as `Student`, `Mission`, `Quest`, etc will not be deleted when the user keys in the wrong login information. We wish to give users the benefit of doubt and not delete their information as we do believe accidents can happen.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. About the User Guide
