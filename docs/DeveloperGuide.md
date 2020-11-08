@@ -371,12 +371,12 @@ The sequence diagram for the Add Todo Command is shown below:
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
 
 > This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`.
-* The `AddCommand`'s`execute` method is first called with a model passed as an argument.
+* The `AddCommand`'s `execute` method is first called with a `Model` passed as an argument.
 * `execute` method then calls `AddCommandParser`'s `hasTodo` method to check if the task is already contained within the
-Model class.
-* If the task is already contained within the Model class, `AddCommand` will throw an Exception `CommandException`.
-* Else, `AddCommand` will add the new `Task` to the Model class and return a result `CommandResult` containing a
-`SUCCESS` message.
+`Model` class.
+* If the `Task` is already contained within the `Model` class, `AddCommand` will throw an Exception `CommandException`.
+* Else, `AddCommand` will add the new `Task` to the `Model` class and return a result `CommandResult` containing a
+`MESSAGE_SUCCESS` message.
 
 <div style="page-break-after: always"></div>
 
