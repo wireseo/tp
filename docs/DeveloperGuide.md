@@ -315,7 +315,7 @@ the different flags that `ViewCommand` can parse. We use the `Flag` class to che
 the flag and return the correct `ViewCommand` object.
 
 ### Path Execution of ViewMissionDeadlineCommand
-As there are many `ViewCommand` sub classes such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
+As there are many `ViewCommand` subclasses such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
 as an example for the `ViewCommand` path execution and interaction between the different objects.
 The diagram below demonstrates the expected path execution of `ViewMissionDeadlineCommand`.
@@ -416,7 +416,7 @@ the different flags that `DeleteCommand` can parse. We use the `Flag` class to c
 the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
 the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
 and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
-The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a String to store identifiers instead;
+The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a `String` to store identifiers instead;
 however, they are similar in how they operate and interact with the rest of the system.
 
 ### Path Execution of DeleteConsultationCommand
@@ -424,7 +424,7 @@ As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand`
 we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
 as an example for the `DeleteCommand` path execution and interaction between the different objects.
 The diagram below demonstrates the expected path execution of `DeleteConsultationCommand`.
-The other `DeleteCommand` sub classes will execute similarly.
+The other `DeleteCommand` subclasses will execute similarly.
 
 ![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
 
@@ -459,10 +459,10 @@ correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresp
 
 ![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
 
-There are 3 `EditCommand` sub classes - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
+There are 3 `EditCommand` subclasses - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
 We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
 The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
-The other `EditCommand` sub classes will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
+The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
 
 ### Sequence Diagram of EditLoginCommand
 
