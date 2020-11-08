@@ -94,6 +94,15 @@ We have highlighted several features below that we feel are reflective of our de
 ## 2. About the User Guide
 This section aims to remind you of the important parts to take note of while reading the user guide.
 
+### 2.1. Symbols
+When reading this user guide, various symbols may appear occasionally to draw your attention to important information.
+The meaning for each symbol is as follows:
+
+Symbol | Meaning 
+-------| ------------ 
+ ⚠️    | This symbol indicates that there is something important for you to take note of.
+ ✏️   | This symbol indicates that an example is provided.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## 3. Quick start
@@ -192,9 +201,10 @@ this box.
 
 <br>
 
-The core features of Jarvis are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and
- `Tasks`.
-Each core feature has a tab for the organisation of its information.
+ > ⚠️ The core features of Jarvis are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and
+ > `Tasks`.
+ >
+ > ⚠️ Each core feature has a tab for the organisation of its information.
 
 <div markdown="block" class="alert alert-info">
 
@@ -263,7 +273,7 @@ Shows a message explaining how to access the help page.
 
 Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
-<br>Examples:
+<br>✏️ Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
@@ -278,7 +288,7 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
-<br>Examples:
+<br>✏️ Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
@@ -295,7 +305,7 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 
 Adds your personal `Todo` with a `description`.
 <br>**Format: `add -t DESCRIPTION`**
-<br>Examples:
+<br>✏️ Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
@@ -305,7 +315,7 @@ Adds your personal `Todo` with a `description`.
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
-<br>Examples:
+<br>✏️ Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
 
@@ -320,7 +330,7 @@ An `Event` requires extra `date` and `time` specifications in order to create.
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
-<br>Examples:
+<br>✏️ Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
 
@@ -339,7 +349,7 @@ Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications
 
 You can use tags to specify the field to be edited.
 <br>**Format: `edit -l [u/LUMINUS_USERNAME] [p/LUMINUS_PASSWORD]`**
-<br>Examples:
+<br>✏️ Examples:
 * `edit -l u/nusstu\e1234567 p/testpassword`
 * `edit -l p/testpassword`
 
@@ -360,7 +370,7 @@ as we choose to give you the benefit of doubt of keying in the wrong login detai
 
 Edits the fields of a `Student`.
 <br>**Format: `edit -s INDEX [n/NAME] [t/TELEGRAM] [e/EMAIL]`**
-<br>Examples:
+<br>✏️ Examples:
 * `edit -s 1 e/koolguy@gmail.com t/handsome`
 * `edit -s 3 n/Timots`
 
@@ -370,7 +380,7 @@ At least one of the optional parameters must be provided.
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
-<br>Examples:
+<br>✏️ Examples:
 * `edit -mc 1 s/0`
 * `edit -mc 3 s/1`
 
@@ -385,7 +395,7 @@ Do note that the SCORE parameter can only be 0 or 1, according to the actual res
 
 Deletes a `Task` based on the `CONSULTATION_ID` you specify.
 <br>**Format: `delete -c CONSULTATION_ID`**
-<br>Examples:
+<br>✏️ Examples:
 * `delete -c 3`
 
 #### 6.5.3 Deleting `Mastery Checks` : `-mc`
@@ -393,14 +403,14 @@ Deletes a `Task` based on the `CONSULTATION_ID` you specify.
 Similar to the above process of deleting `Consultation`, deleting `Mastery Checks` first
 Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 <br>**Format: `delete -mc MASTERYCHECK_ID`**
-<br>Examples:
+<br>✏️ Examples:
 * `delete -mc 3`
 
 #### 6.5.1 Deleting `Tasks` : `-t`
 
 Deletes a `Task` based on the `TASK_ID` you specify.
 <br>**Format: `delete -t TASK_ID`**
-<br>Examples:
+<br>✏️ Examples:
 * `delete -t T3`
 * `delete -t D2`
 
@@ -424,7 +434,7 @@ You may also click on the `Student` tab to do so.
 Shows all `Students` that match (partial and full) the name entered after the command. The name is case-sensitive.
 An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 <br>**Format: `view -s [NAME]`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -s John Doe`
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
@@ -465,14 +475,14 @@ Shows the `Quests` that you have not yet graded.
 
 Shows all confirmed `Consultation` sessions, both past and upcoming.
 <br>**Format: `view -c`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -c`
 
 #### 6.6.8 Viewing past `Consultations` : `-cp`
 
 Shows all past `Consultation` sessions.
 <br>**Format: `view -cp`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -cp`
 
 <div markdown="block" class="alert alert-info">
@@ -483,7 +493,7 @@ When the `Consultation` time is the same as the local time (year, month, date, h
 
 Shows all upcoming `Consultation` sessions.
 <br>**Format: `view -cu`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -cu`
 
 <div markdown="block" class="alert alert-info">
@@ -495,14 +505,14 @@ Shows all upcoming `Consultation` sessions.
 
 Shows all confirmed `Mastery Check` sessions, both past and upcoming.
 <br>**Format: `view -mc`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -mc`
 
 #### 6.6.11 Viewing past `Mastery Checks` : `-mcp`
 
 Shows all past `Mastery Check` sessions.
 <br>**Format: `view -mcp`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -mcp`
 
 <div markdown="block" class="alert alert-info">
@@ -514,7 +524,7 @@ When the `Mastery Check` time is the same as the local time (year, month, date, 
 
 Shows all upcoming `Mastery Check` sessions.
 <br>**Format: `view -mcu`**
-<br>Examples:
+<br>✏️ Examples:
 * `view -mcu`
 
 <div markdown="block" class="alert alert-info">
