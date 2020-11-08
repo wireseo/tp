@@ -441,6 +441,7 @@ consultation from the list of consultations stored in Jarvis. When completed, th
 to the `LogicManager`, indicating that the command execution is a success.
 
 The other `DeleteCommand` subclasses work similarly to this as well.
+
 =======
 ## Edit Command
 ### What is Edit Command
@@ -461,7 +462,7 @@ correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresp
 
 There are 3 `EditCommand` subclasses - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
 We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
+The diagram below demonstrates the expected path execution of `EditLoginCommand`.
 The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
 
 ### Sequence Diagram of EditLoginCommand
