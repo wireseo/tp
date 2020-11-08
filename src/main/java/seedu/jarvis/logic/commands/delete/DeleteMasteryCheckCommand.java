@@ -15,9 +15,10 @@ import seedu.jarvis.model.masterycheck.MasteryCheck;
 public class DeleteMasteryCheckCommand extends DeleteCommand {
 
     public static final String MESSAGE_DELETE_MASTERY_CHECK_USAGE = COMMAND_WORD
-            + ": Deletes the mastery check identified by the mastery check ID used in the mastery check list.\n"
+            + ": Deletes the mastery check identified by the index number of the currently displayed "
+            + "mastery check list.\n"
             + "Example: " + COMMAND_WORD + " -mc 1\n"
-            + "Type \"view -mc\" to verify your task ID before deleting!";
+            + "Type \"view -mc\" (or any other mastery check viewing command) to verify your index before deleting!";
     public static final String MESSAGE_DELETE_MASTERY_CHECK_SUCCESS = "Deleted Mastery Check: %1$s";
 
     private final Index index;
