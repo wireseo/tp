@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.DESC_AMY;
@@ -17,12 +18,15 @@ import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
+import seedu.jarvis.logic.commands.edit.EditMasteryCheckCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand;
 import seedu.jarvis.logic.commands.edit.EditStudentCommand.EditPersonDescriptor;
+import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.student.Student;
+import seedu.jarvis.testutil.EditMasteryCheckDescriptorBuilder;
 import seedu.jarvis.testutil.EditStudentDescriptorBuilder;
 import seedu.jarvis.testutil.StudentBuilder;
 import seedu.jarvis.testutil.TypicalManagers;
@@ -172,6 +176,16 @@ public class EditStudentCommandTest {
 
         // different descriptor -> returns false
         assertFalse(standardCommand.equals(new EditStudentCommand(INDEX_FIRST, DESC_BOB)));
+    }
+
+    @Test
+    public void execute_filteredListSuccess_commandTargetFeatureAccurate() throws CommandException {
+        EditStudentCommand editStudentCommand = new EditStudentCommand(INDEX_FIRST,
+                new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB).build());
+        CommandResult commandResult = editStudentCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Students, commandTargetFeature);
     }
 
 }

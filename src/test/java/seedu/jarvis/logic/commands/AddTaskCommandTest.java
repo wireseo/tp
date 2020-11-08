@@ -10,17 +10,20 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ReadOnlyAddressBook;
+import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
 import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.testutil.DeadlineBuilder;
 import seedu.jarvis.testutil.EventBuilder;
+import seedu.jarvis.testutil.MasteryCheckBuilder;
 import seedu.jarvis.testutil.ModelStub;
 import seedu.jarvis.testutil.TodoBuilder;
 
@@ -99,6 +102,42 @@ public class AddTaskCommandTest {
         assertThrows(CommandException.class,
                 AddTaskCommand.MESSAGE_DUPLICATE_TASK, () -> addCommandDeadline.execute(modelStubDeadline));
 
+    }
+
+    @Test
+    public void execute_eventAcceptedByModel_commandTargetFeatureAccurate() throws CommandException {
+        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
+        Event event = new EventBuilder().withDescription("UniqueEvent").build();
+
+        CommandResult commandResult = new AddTaskCommand(event).execute(modelStub);
+
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Tasks, actualTargetTab);
+    }
+
+    @Test
+    public void execute_deadlineAcceptedByModel_commandTargetFeatureAccurate() throws CommandException {
+        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
+        Deadline deadline = new DeadlineBuilder().withDescription("UniqueDeadline").build();
+
+        CommandResult commandResult = new AddTaskCommand(deadline).execute(modelStub);
+
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Tasks, actualTargetTab);
+    }
+
+    @Test
+    public void execute_todoAcceptedByModel_commandTargetFeatureAccurate() throws CommandException {
+        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
+        Todo todo = new TodoBuilder().withDescription("UniqueTodo").build();
+
+        CommandResult commandResult = new AddTaskCommand(todo).execute(modelStub);
+
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Tasks, actualTargetTab);
     }
 
     /**

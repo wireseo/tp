@@ -13,6 +13,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.exceptions.CommandException;
+import seedu.jarvis.logic.commands.view.ViewUngradedMissionCommand;
 import seedu.jarvis.logic.commands.view.ViewUngradedQuestCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
@@ -53,6 +55,15 @@ public class ViewUngradedQuestCommandTest {
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(RUNIC_CARPETS, CARDIOID_ARREST, CURVACEOUS_WIZARDRY),
                 model.getFilteredQuestList());
+    }
+
+    @Test
+    public void execute_viewUngradedQuestCommand_commandTargetFeatureAccurate() throws CommandException {
+        ViewUngradedQuestCommand viewUngradedQuestCommand = new ViewUngradedQuestCommand();
+        CommandResult commandResult = viewUngradedQuestCommand.execute(model);
+        CommandTargetFeature actualCommandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Quest, actualCommandTargetFeature);
     }
 
 }

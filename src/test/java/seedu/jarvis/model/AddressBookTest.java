@@ -315,6 +315,8 @@ public class AddressBookTest {
         public StringProperty getGreeting() {
             return null;
         }
+
+
     }
 
 }

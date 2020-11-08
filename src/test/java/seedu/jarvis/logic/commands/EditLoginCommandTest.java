@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.DESC_PROF;
@@ -7,15 +8,19 @@ import static seedu.jarvis.logic.commands.CommandTestUtil.DESC_STUDENT;
 import static seedu.jarvis.logic.commands.CommandTestUtil.VALID_USERNAME_PROF;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
+import static seedu.jarvis.testutil.TypicalTasks.TEST_TODO_TWO;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.delete.DeleteTaskCommand;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand;
 import seedu.jarvis.logic.commands.edit.EditLoginCommand.EditLoginDescriptor;
+import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.UserLogin;
+import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.testutil.EditLoginDescriptorBuilder;
 import seedu.jarvis.testutil.LoginBuilder;
 import seedu.jarvis.testutil.TypicalManagers;
@@ -66,6 +71,41 @@ public class EditLoginCommandTest {
                 TypicalManagers.getUserLogin());
 
         assertCommandSuccess(editLoginCommand, model, expectedMessage, expectedModel);
+    }
+
+    // One for allFields specified, one for one field specified, so on.
+    @Test
+    public void execute_allFieldsSpecified_commandTargetFeatureNotAssigned() {
+        UserLogin editedUserLogin = new LoginBuilder().build();
+        EditLoginDescriptor descriptor = new EditLoginDescriptorBuilder(editedUserLogin).build();
+        EditLoginCommand editLoginCommand = new EditLoginCommand(descriptor);
+
+        CommandResult commandResult = editLoginCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, actualTargetTab);
+    }
+
+    @Test
+    public void execute_someFieldsSpecified_commandTargetFeatureNotAssigned() {
+        UserLogin editedUserLogin = new LoginBuilder().withUsername(VALID_USERNAME_PROF).build();
+        EditLoginDescriptor descriptor = new EditLoginDescriptorBuilder(editedUserLogin).build();
+        EditLoginCommand editLoginCommand = new EditLoginCommand(descriptor);
+
+        CommandResult commandResult = editLoginCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, actualTargetTab);
+    }
+
+    @Test
+    public void execute_noFieldsSpecified_commandTargetFeatureNotAssigned() {
+        EditLoginCommand editLoginCommand = new EditLoginCommand(new EditLoginDescriptor());
+
+        CommandResult commandResult = editLoginCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, actualTargetTab);
     }
 
     @Test

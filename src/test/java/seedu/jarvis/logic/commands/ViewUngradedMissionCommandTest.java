@@ -13,6 +13,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.exceptions.CommandException;
+import seedu.jarvis.logic.commands.view.ViewTaskListCommand;
 import seedu.jarvis.logic.commands.view.ViewUngradedMissionCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
@@ -54,5 +56,15 @@ public class ViewUngradedMissionCommandTest {
         assertEquals(Arrays.asList(FRACTAL_DIMENSIONS, STREAMS, STREAM_ANOMALY),
                 model.getFilteredMissionList());
     }
+
+    @Test
+    public void execute_viewUngradedMissionCommand_commandTargetFeatureAccurate() throws CommandException {
+        ViewUngradedMissionCommand viewUngradedMissionCommand = new ViewUngradedMissionCommand();
+        CommandResult commandResult = viewUngradedMissionCommand.execute(model);
+        CommandTargetFeature actualCommandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Missions, actualCommandTargetFeature);
+    }
+
 
 }

@@ -3,6 +3,7 @@ package seedu.jarvis.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -50,5 +51,48 @@ public class CommandResultTest {
 
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true).hashCode());
+    }
+
+    // Tests for the tab switching feature
+    @Test
+    public void getCommandTargetFeature_missions_correctTargetFeature() {
+        CommandResult commandResult = new CommandResult("success", CommandTargetFeature.Missions);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+        assertEquals(commandTargetFeature, CommandTargetFeature.Missions);
+    }
+
+    @Test
+    public void getCommandTargetFeature_quests_correctTargetFeature() {
+        CommandResult commandResult = new CommandResult("success", CommandTargetFeature.Quest);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+        assertEquals(commandTargetFeature, CommandTargetFeature.Quest);
+    }
+
+    @Test
+    public void getCommandTargetFeature_consultations_correctTargetFeature() {
+        CommandResult commandResult = new CommandResult("success", CommandTargetFeature.Consultations);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+        assertEquals(commandTargetFeature, CommandTargetFeature.Consultations);
+    }
+
+    @Test
+    public void getCommandTargetFeature_masteryChecks_correctTargetFeature() {
+        CommandResult commandResult = new CommandResult("success", CommandTargetFeature.MasteryCheck);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+        assertEquals(commandTargetFeature, CommandTargetFeature.MasteryCheck);
+    }
+
+    @Test
+    public void getCommandTargetFeature_tasks_correctTargetFeature() {
+        CommandResult commandResult = new CommandResult("success", CommandTargetFeature.Tasks);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+        assertEquals(commandTargetFeature, CommandTargetFeature.Tasks);
+    }
+
+    @Test
+    public void getCommandTargetFeature_noTargetFeature_notAssigned() {
+        CommandResult commandResult = new CommandResult("success");
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+        assertEquals(commandTargetFeature, CommandTargetFeature.NotAssigned);
     }
 }

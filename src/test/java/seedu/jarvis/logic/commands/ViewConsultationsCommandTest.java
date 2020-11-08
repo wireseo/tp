@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
@@ -7,6 +8,7 @@ import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.view.ViewAllStudentsCommand;
 import seedu.jarvis.logic.commands.view.ViewConsultationsCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
@@ -37,5 +39,14 @@ public class ViewConsultationsCommandTest {
         Model emptyModel = null;
         ViewConsultationsCommand viewConsultationsCommand = new ViewConsultationsCommand();
         assertThrows(NullPointerException.class, () -> viewConsultationsCommand.execute(emptyModel));
+    }
+
+    @Test
+    public void execute_consultationListNotFiltered_commandTargetFeatureAccurate() {
+        ViewConsultationsCommand viewConsultationsCommand = new ViewConsultationsCommand();
+        CommandResult commandResult = viewConsultationsCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Consultations, commandTargetFeature);
     }
 }

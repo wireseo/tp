@@ -408,6 +408,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         summary.setNumTasks(numT);
     }
 
+    @Override
     public StringProperty getSummary() {
         return summary.getSummaryDetails();
     }

@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.delete.DeleteConsultationCommand;
+import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.consultation.Consultation;
@@ -75,6 +77,16 @@ public class DeleteConsultationCommandTest {
         Index outOfBoundIndex = INDEX_SECOND;
         DeleteConsultationCommand deleteCommand = new DeleteConsultationCommand(outOfBoundIndex);
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_CONSULTATION_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_validIndexConsultationsList_commandTargetFeatureAccurate() throws CommandException {
+        model.addConsultation(TEST_CONSULTATION_ONE);
+        DeleteConsultationCommand deleteCommand = new DeleteConsultationCommand(INDEX_FIRST);
+        CommandResult commandResult = deleteCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Consultations, commandTargetFeature);
     }
 
     /**

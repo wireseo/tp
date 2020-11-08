@@ -14,6 +14,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.view.ViewPastMasteryChecksCommand;
 import seedu.jarvis.logic.commands.view.ViewQuestDeadlineCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
@@ -54,6 +55,15 @@ public class ViewQuestDeadlineCommandTest {
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(RUNIC_CARPETS, COLORFUL_CARPETS, FUNCTIONAL_EXPRESSIONISM, CARDIOID_ARREST),
                 model.getFilteredQuestList());
+    }
+
+    @Test
+    public void execute_viewQuestDeadlineCommand_commandTargetFeatureAccurate() {
+        ViewQuestDeadlineCommand viewQuestDeadlineCommand = new ViewQuestDeadlineCommand();
+        CommandResult commandResult = viewQuestDeadlineCommand.execute(model);
+        CommandTargetFeature actualCommandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Quest, actualCommandTargetFeature);
     }
 
 }

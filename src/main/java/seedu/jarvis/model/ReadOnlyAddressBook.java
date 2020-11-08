@@ -54,4 +54,10 @@ public interface ReadOnlyAddressBook {
      */
     StringProperty getGreeting();
 
+    /**
+     * Returns a string summary of the remaining tasks, upcoming consultations and mastery checks, as well as
+     * ungraded missions and quests
+     */
+    StringProperty getSummary();
+
 }

@@ -10,11 +10,14 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.ReadOnlyAddressBook;
+import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
+import seedu.jarvis.testutil.ConsultationBuilder;
 import seedu.jarvis.testutil.MasteryCheckBuilder;
 import seedu.jarvis.testutil.ModelStub;
 
@@ -46,6 +49,18 @@ public class AddMasteryCheckCommandTest {
 
         assertThrows(CommandException.class,
                 AddMasteryCheckCommand.MESSAGE_DUPLICATE_MASTERY_CHECK, () -> addCommand.execute(modelStub));
+    }
+
+    @Test
+    public void execute_masteryCheckAcceptedByModel_commandTargetFeatureAccurate() throws CommandException {
+        ModelStubAcceptingMasteryCheckAdded modelStub = new ModelStubAcceptingMasteryCheckAdded();
+        MasteryCheck validMasteryCheck = new MasteryCheckBuilder().build();
+
+        CommandResult commandResult = new AddMasteryCheckCommand(validMasteryCheck).execute(modelStub);
+
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.MasteryCheck, actualTargetTab);
     }
 
     /**
