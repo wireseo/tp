@@ -70,9 +70,9 @@ public class AddCommandParser implements Parser<AddCommand> {
                     AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
         }
 
-        boolean notPrefix = nameKeywords[1].length() >= 2 &&
-                (!nameKeywords[1].substring(0,2).equals(PREFIX_DATE)
-                        || !nameKeywords[1].substring(0,2).equals(PREFIX_TIME));
+        boolean notPrefix = nameKeywords[1].length() >= 2
+                && (!nameKeywords[1].substring(0, 2).equals(PREFIX_DATE)
+                        || !nameKeywords[1].substring(0, 2).equals(PREFIX_TIME));
         boolean hasActualDescription = length > 1 && (notPrefix || nameKeywords[1].length() == 1);
 
         // when description is invalid (e.g. goes straight to date and time)

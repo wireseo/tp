@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import seedu.jarvis.logic.commands.add.AddCommand;
-import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
@@ -52,7 +51,6 @@ public class ConsultationMasteryCheckCommandParser {
         } catch (ParseException pe) {
             throw pe;
         }
-        
         return new MasteryCheck(studentName, formattedDeadlineDateTime);
     }
 
