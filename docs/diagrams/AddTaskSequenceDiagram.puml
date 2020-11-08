@@ -52,23 +52,21 @@ deactivate AddressBookParser
 
 LogicManager -> AddTaskCommand : execute()
 
-AddTaskCommand -> ModelManager : hasTodo(Todo)
-activate ModelManager
-ModelManager --> AddTaskCommand : boolean
-deactivate ModelManager
+AddTaskCommand -> ModelManager : hasEvent(event)
 
-alt !boolean, duplicate object
+alt hasEvent(event) == true
 
     create CommandException
-    AddTaskCommand -> CommandException : new CommandException(MESSAGE)
+    AddTaskCommand -> CommandException : new CommandException(errorMsg)
     activate CommandException
     CommandException --> AddTaskCommand : commandException
     deactivate CommandException
 
-else boolean, unique object
+else hasEvent(event) == false
 
-    AddTaskCommand -> ModelManager : addTodo(Todo)
-    ModelManager -> AddressBook : addTodo(Todo)
+    AddTaskCommand -> ModelManager : addEvent(event)
+    ModelManager -> AddressBook : addEvent(event)
+    AddressBook -->] : add(event)
 
     create CommandResult
     AddTaskCommand -> CommandResult : new CommandResult(MESSAGE_SUCCESS)
