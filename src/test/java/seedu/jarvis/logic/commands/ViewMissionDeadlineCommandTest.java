@@ -57,4 +57,13 @@ public class ViewMissionDeadlineCommandTest {
                 model.getFilteredMissionList());
     }
 
+    @Test
+    public void execute_viewMissionDeadlineCommand_commandTargetFeatureAccurate() {
+        ViewMissionDeadlineCommand viewMissionDeadlineCommand = new ViewMissionDeadlineCommand();
+        CommandResult commandResult = viewMissionDeadlineCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Missions, commandTargetFeature);
+    }
+
 }

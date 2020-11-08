@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.testutil.Assert.assertThrows;
 import static seedu.jarvis.testutil.TypicalStudents.getTypicalAddressBook;
@@ -37,5 +38,14 @@ public class ViewUpcomingMasteryChecksCommandTest {
         Model emptyModel = null;
         ViewUpcomingMasteryChecksCommand viewUpcomingMasteryChecksCommand = new ViewUpcomingMasteryChecksCommand();
         assertThrows(NullPointerException.class, () -> viewUpcomingMasteryChecksCommand.execute(emptyModel));
+    }
+
+    @Test
+    public void execute_viewUpcomingMasteryChecksCommand_commandTargetFeatureAccurate() {
+        ViewUpcomingMasteryChecksCommand viewUpcomingMasteryChecksCommand = new ViewUpcomingMasteryChecksCommand();
+        CommandResult commandResult = viewUpcomingMasteryChecksCommand.execute(model);
+        CommandTargetFeature actualCommandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.MasteryCheck, actualCommandTargetFeature);
     }
 }

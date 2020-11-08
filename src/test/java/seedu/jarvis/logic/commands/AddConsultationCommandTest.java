@@ -47,6 +47,18 @@ public class AddConsultationCommandTest {
                 AddConsultationCommand.MESSAGE_DUPLICATE_CONSULTATION, () -> addCommand.execute(modelStub));
     }
 
+    @Test
+    public void execute_consultationAcceptedByModel_commandTargetFeatureAccurate() throws CommandException {
+        ModelStubAcceptingMasteryCheckAdded modelStub = new ModelStubAcceptingMasteryCheckAdded();
+        Consultation validConsultation = new ConsultationBuilder().build();
+
+        CommandResult commandResult = new AddConsultationCommand(validConsultation).execute(modelStub);
+
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Consultations, actualTargetTab);
+    }
+
     /**
      * A Model stub that contains a single consultation.
      */

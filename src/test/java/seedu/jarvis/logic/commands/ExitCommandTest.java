@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.logic.commands.ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT;
 
@@ -17,4 +18,15 @@ public class ExitCommandTest {
         CommandResult expectedCommandResult = new CommandResult(MESSAGE_EXIT_ACKNOWLEDGEMENT, false, true);
         assertCommandSuccess(new ExitCommand(), model, expectedCommandResult, expectedModel);
     }
+
+    @Test
+    public void execute_exit_commandTargetFeatureNotAssigned() {
+        ExitCommand exitCommand = new ExitCommand();
+
+        CommandResult commandResult = exitCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, commandTargetFeature);
+    }
+
 }

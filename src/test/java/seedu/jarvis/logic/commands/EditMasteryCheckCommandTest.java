@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.DESC_MC_ONE;
@@ -17,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.edit.EditMasteryCheckCommand;
+import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.AddressBook;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
@@ -106,5 +108,16 @@ public class EditMasteryCheckCommandTest {
 
         // different descriptor -> returns false
         assertFalse(standardCommand.equals(new EditMasteryCheckCommand(INDEX_FIRST, DESC_MC_TWO)));
+    }
+
+    @Test
+    public void execute_filteredListSuccess_commandTargetFeatureAccurate() throws CommandException {
+        model.addMasteryCheck(TEST_MASTERY_CHECK_ONE);
+        EditMasteryCheckCommand editMasteryCheckCommand = new EditMasteryCheckCommand(INDEX_FIRST,
+                new EditMasteryCheckDescriptorBuilder().withHasPassed(false).build());
+        CommandResult commandResult = editMasteryCheckCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.MasteryCheck, commandTargetFeature);
     }
 }

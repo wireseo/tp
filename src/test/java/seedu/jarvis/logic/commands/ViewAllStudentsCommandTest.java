@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.jarvis.logic.commands.CommandTestUtil.showStudentAtIndex;
 import static seedu.jarvis.testutil.Assert.assertThrows;
@@ -48,5 +49,14 @@ public class ViewAllStudentsCommandTest {
         Model emptyModel = null;
         ViewAllStudentsCommand viewAllStudentsCommand = new ViewAllStudentsCommand();
         assertThrows(NullPointerException.class, () -> viewAllStudentsCommand.execute(emptyModel));
+    }
+
+    @Test
+    public void execute_studentListNotFiltered_commandTargetFeatureAccurate() {
+        ViewAllStudentsCommand viewAllStudentsCommand = new ViewAllStudentsCommand();
+        CommandResult commandResult = viewAllStudentsCommand.execute(model);
+        CommandTargetFeature commandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Students, commandTargetFeature);
     }
 }

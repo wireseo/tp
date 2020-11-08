@@ -315,6 +315,11 @@ public class AddressBookTest {
         public StringProperty getGreeting() {
             return null;
         }
+
+        @Override
+        public StringProperty getSummary() {
+            return null;
+        }
     }
 
 }

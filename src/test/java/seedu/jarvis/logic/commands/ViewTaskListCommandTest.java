@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.jarvis.commons.core.Messages;
+import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.logic.commands.view.ViewTaskListCommand;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
@@ -113,6 +114,15 @@ public class ViewTaskListCommandTest {
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(TEST_DEADLINE_TWO, TEST_DEADLINE_FOUR),
                 TypicalTasks.getTypicalDeadlines());
+    }
+
+    @Test
+    public void execute_viewTaskCommand_commandTargetFeatureAccurate() throws CommandException {
+        ViewTaskListCommand viewTaskListCommand = new ViewTaskListCommand(deadlineType);
+        CommandResult commandResult = viewTaskListCommand.execute(model);
+        CommandTargetFeature actualCommandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Tasks, actualCommandTargetFeature);
     }
 
 }

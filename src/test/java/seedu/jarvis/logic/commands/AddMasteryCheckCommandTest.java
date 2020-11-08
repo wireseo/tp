@@ -48,6 +48,18 @@ public class AddMasteryCheckCommandTest {
                 AddMasteryCheckCommand.MESSAGE_DUPLICATE_MASTERY_CHECK, () -> addCommand.execute(modelStub));
     }
 
+    @Test
+    public void execute_masteryCheckAcceptedByModel_commandTargetFeatureAccurate() throws CommandException {
+        ModelStubAcceptingMasteryCheckAdded modelStub = new ModelStubAcceptingMasteryCheckAdded();
+        MasteryCheck validMasteryCheck = new MasteryCheckBuilder().build();
+
+        CommandResult commandResult = new AddMasteryCheckCommand(validMasteryCheck).execute(modelStub);
+
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.MasteryCheck, actualTargetTab);
+    }
+
     /**
      * A Model stub that contains a single mastery check.
      */

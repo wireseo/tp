@@ -56,4 +56,13 @@ public class ViewQuestDeadlineCommandTest {
                 model.getFilteredQuestList());
     }
 
+    @Test
+    public void execute_viewQuestDeadlineCommand_commandTargetFeatureAccurate() {
+        ViewQuestDeadlineCommand viewQuestDeadlineCommand = new ViewQuestDeadlineCommand();
+        CommandResult commandResult = viewQuestDeadlineCommand.execute(model);
+        CommandTargetFeature actualCommandTargetFeature = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.Quest, actualCommandTargetFeature);
+    }
+
 }

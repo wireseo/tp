@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.jarvis.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import seedu.jarvis.commons.core.Messages;
 import seedu.jarvis.commons.core.index.Index;
 import seedu.jarvis.logic.commands.delete.DeleteMasteryCheckCommand;
+import seedu.jarvis.logic.commands.exceptions.CommandException;
 import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
@@ -80,6 +82,16 @@ public class DeleteMasteryCheckCommandTest {
         DeleteMasteryCheckCommand deleteCommand = new DeleteMasteryCheckCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_MASTERY_CHECK_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_validIndexMasteryChecksList_commandTargetFeatureAccurate() throws CommandException {
+        model.addMasteryCheck(TEST_MASTERY_CHECK_ONE);
+        DeleteMasteryCheckCommand deleteCommand = new DeleteMasteryCheckCommand(INDEX_FIRST);
+        CommandResult commandResult = deleteCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.MasteryCheck, actualTargetTab);
     }
 
     /**

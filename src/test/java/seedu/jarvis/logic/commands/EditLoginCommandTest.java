@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.logic.commands.CommandTestUtil.DESC_PROF;
@@ -66,6 +67,41 @@ public class EditLoginCommandTest {
                 TypicalManagers.getUserLogin());
 
         assertCommandSuccess(editLoginCommand, model, expectedMessage, expectedModel);
+    }
+
+    // One for allFields specified, one for one field specified, so on.
+    @Test
+    public void execute_allFieldsSpecified_commandTargetFeatureNotAssigned() {
+        UserLogin editedUserLogin = new LoginBuilder().build();
+        EditLoginDescriptor descriptor = new EditLoginDescriptorBuilder(editedUserLogin).build();
+        EditLoginCommand editLoginCommand = new EditLoginCommand(descriptor);
+
+        CommandResult commandResult = editLoginCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, actualTargetTab);
+    }
+
+    @Test
+    public void execute_someFieldsSpecified_commandTargetFeatureNotAssigned() {
+        UserLogin editedUserLogin = new LoginBuilder().withUsername(VALID_USERNAME_PROF).build();
+        EditLoginDescriptor descriptor = new EditLoginDescriptorBuilder(editedUserLogin).build();
+        EditLoginCommand editLoginCommand = new EditLoginCommand(descriptor);
+
+        CommandResult commandResult = editLoginCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, actualTargetTab);
+    }
+
+    @Test
+    public void execute_noFieldsSpecified_commandTargetFeatureNotAssigned() {
+        EditLoginCommand editLoginCommand = new EditLoginCommand(new EditLoginDescriptor());
+
+        CommandResult commandResult = editLoginCommand.execute(model);
+        CommandTargetFeature actualTargetTab = commandResult.getCommandTargetFeature();
+
+        assertEquals(CommandTargetFeature.NotAssigned, actualTargetTab);
     }
 
     @Test
