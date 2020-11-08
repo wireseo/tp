@@ -61,7 +61,7 @@ The rest of Jarvis consists of five components.
 * [**`Logic`**](#logic-component): The command executor.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
-* [**`Scraper`**](#scraper-component): Scrapes https://sourceacademy.nus.edu.sg for course-info.
+* [**`Scraper`**](#scraper-component): Scrapes [https://sourceacademy.nus.edu.sg](https://sourceacademy.nus.edu.sg) for course-info.
 
 Each of the five components,
 
@@ -91,8 +91,7 @@ The sections below give more details of each component.
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-W11-2/tp/blob/master/src/main/java/seedu/jarvis/ui/Ui.java)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `XYZListPanel
-`, `StatusBarFooter` etc. All these including the `MainWindow
-`, inherit from the abstract `UiPart` class. 
+`, `StatusBarFooter` etc. All these including the `MainWindow`, inherit from the abstract `UiPart` class. 
 
 `XYZListPanel` refers to the various types of `{Feature Type}ListPanel`
  objects. These are namely `StudentListPanel`, `MissionListPanel`, `QuestListPanel`, `ConsultationListPanel`, `MasteryCheckListPanel` and `TaskListPanel`. 
@@ -119,9 +118,9 @@ The `UI` component,
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete -c 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete -c 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete -c 1` Command](images/DeleteConsultationSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -141,12 +140,6 @@ The `Model`,
 * stores the DATA_CLASS - `Mission`, `Quest`, `Task`, `MasterCheck`, `Consultation` - in the addressbook.
 * exposes unmodifiable `ObservableList<DATA_CLASS>` for each DATA_CLASS that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
-</div>
 
 <div style="page-break-after: always"></div>
 
@@ -190,7 +183,7 @@ In this section we will explain how the `Automatic Tab Switching Feature` featur
  
 #### What is Automatic Tab Switching
 `Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
-` `Missions` `Quests` `Consultations` `Mastery Checks` and `Tasks`, for the user's input command.
+` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
 
 #### Interaction between objects when Automatic Tab Switching happens
 The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
@@ -201,16 +194,12 @@ The following is a sequence diagram explaining the interaction between `MainWind
 On start up of the GUI the `fillInnerParts` method of `MainWindow` is called, creating a `CommandBox` object with
 a method reference to `MainWindow`'s `executeCommand` method passed as parameter to the constructor. 
 
-The `CommandBox
-` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
- `MainWindow`'s
- `executeCommand
-` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult
-` object and returns it to `MainWindow`.
+The `CommandBox` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
+`MainWindow`'s `executeCommand` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult` object and returns it to `MainWindow`.
 
 `MainWindow` class calls the `CommandResult` object's `getCommandTargetFeature` method, which then returns a
- `CommandTargetFeature` `Enum`
-corresponding to the feature that the user input command relates to. Based on that Enum, `MainWindow` then selects the
+ `CommandTargetFeature`, `Enum`
+corresponding to the feature that the user input command relates to. Based on that `Enum`, `MainWindow` then selects the
  corresponding tab using its local variable `tabSelector`. In this case `Missions` was returned and hence the
   `missionTab` was selected.
    
@@ -252,8 +241,7 @@ User Interface.
 
 ![Sequence diagram of getting Summary Details](images/GetSummaryDetailsSequenceDiagram.png)
 
-A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty
-` of summary details being returned.
+A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty` of summary details being returned.
 
 Upon start up of Jarvis' Graphical User Interface, the first step of calling `LogicManager`'s `execute` method is
 skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
@@ -280,6 +268,8 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 
 ![Path Diagram of login process](images/LoginPathDiagram.png)
 
+#### Sequence Diagram of login process
+
 ![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
 
 * The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
@@ -290,9 +280,9 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 <div style="page-break-after: always"></div>
 
 ## View Command
-In this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
-class, as well as the path diagram and sequence diagram of the ViewMissionDeadlineCommand to capture the interactions between
-the ViewMissionDeadlineCommand and other object classes.
+In this section, we will introduce the View Command. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
+class, as well as the path diagram and sequence diagram of the `ViewMissionDeadlineCommand` to capture the interactions between
+the `ViewMissionDeadlineCommand` and other object classes.
 
 ### What is ViewCommand
 `ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
@@ -325,7 +315,7 @@ the different flags that `ViewCommand` can parse. We use the `Flag` class to che
 the flag and return the correct `ViewCommand` object.
 
 ### Path Execution of ViewMissionDeadlineCommand
-As there are many `ViewCommand` sub classes such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
+As there are many `ViewCommand` subclasses such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
 as an example for the `ViewCommand` path execution and interaction between the different objects.
 The diagram below demonstrates the expected path execution of `ViewMissionDeadlineCommand`.
@@ -372,7 +362,7 @@ The following diagram shows the overview of `AddCommand` Class Diagram which has
 ### Add Task Feature
 In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
 `Todo`, `Event` and `Deadline`.
-* `Todo` is a basic simple tasks that is usually not constrained by time; `Event` is
+* `Todo` is a basic simple task that is usually not constrained by time; `Event` is
 a task that requires completion at a particular point in time; `Deadline` is a task that requires completion before a
 particular point in time.
 
@@ -381,12 +371,12 @@ The sequence diagram for the Add Todo Command is shown below:
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
 
 > This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`.
-* The `AddCommand`'s`execute` method is first called with a model passed as an argument.
+* The `AddCommand`'s `execute` method is first called with a `Model` passed as an argument.
 * `execute` method then calls `AddCommandParser`'s `hasTodo` method to check if the task is already contained within the
-Model class.
-* If the task is already contained within the Model class, `AddCommand` will throw an Exception `CommandException`.
-* Else, `AddCommand` will add the new `Task` to the Model class and return a result `CommandResult` containing a
-`SUCCESS` message.
+`Model` class.
+* If the `Task` is already contained within the `Model` class, `AddCommand` will throw an Exception `CommandException`.
+* Else, `AddCommand` will add the new `Task` to the `Model` class and return a result `CommandResult` containing a
+`MESSAGE_SUCCESS` message.
 
 <div style="page-break-after: always"></div>
 
@@ -426,7 +416,7 @@ the different flags that `DeleteCommand` can parse. We use the `Flag` class to c
 the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
 the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
 and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
-The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a String to store identifiers instead;
+The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a `String` to store identifiers instead;
 however, they are similar in how they operate and interact with the rest of the system.
 
 ### Path Execution of DeleteConsultationCommand
@@ -434,7 +424,7 @@ As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand`
 we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
 as an example for the `DeleteCommand` path execution and interaction between the different objects.
 The diagram below demonstrates the expected path execution of `DeleteConsultationCommand`.
-The other `DeleteCommand` sub classes will execute similarly.
+The other `DeleteCommand` subclasses will execute similarly.
 
 ![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
 
@@ -451,8 +441,12 @@ consultation from the list of consultations stored in Jarvis. When completed, th
 to the `LogicManager`, indicating that the command execution is a success.
 
 The other `DeleteCommand` subclasses work similarly to this as well.
+
 =======
 ## Edit Command
+In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the 
+`EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
+
 ### What is Edit Command
 The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
 
@@ -469,16 +463,16 @@ correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresp
 
 ![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
 
-There are 3 `EditCommand` sub classes - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
+There are 3 `EditCommand` subclasses - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
 We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
-The other `EditCommand` sub classes will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
+The diagram below demonstrates the expected path execution of `EditLoginCommand`.
+The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
 
 ### Sequence Diagram of EditLoginCommand
 
 ![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
 
-The sequence of method calls are highly similar to that for the `ViewCommand` above. What is of note is the additional call to `Scraper`.
+The sequence of method calls are highly similar to that for the `EditLoginCommand` above. What is of note is the additional call to `Scraper`.
 This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
 
 --------------------------------------------------------------------------------------------------------------------

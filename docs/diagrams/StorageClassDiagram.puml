@@ -23,5 +23,5 @@ JsonUserPrefsStorage .left.|> UserPrefsStorage
 JsonUserLoginStorage .left.|> UserLoginStorage
 JsonAddressBookStorage .left.|> AddressBookStorage
 JsonAddressBookStorage .down.> JsonSerializableAddressBookStorage
-JsonSerializableAddressBookStorage .right.> JsonSerializablePerson
+
 @enduml

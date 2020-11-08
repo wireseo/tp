@@ -8,9 +8,6 @@ package Logic {
 
 package Parser {
 
-package Flag{
-Class Flag
-}
 Interface Parser <<Interface>>
 Class AddressBookParser
 Class XYZCommandParser
@@ -51,8 +48,6 @@ XYZCommandParser ..> CliSyntax
 CliSyntax ..> Prefix
 XYZCommandParser ..> ParserUtil
 ParserUtil .down.> Prefix
-ParserUtil .down.> Flag
-Flag .up.> CliSyntax
 ArgumentTokenizer .down.> Prefix
 XYZCommand -up-|> Command
 LogicManager .left.> Command : executes >

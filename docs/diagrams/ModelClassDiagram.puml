@@ -82,6 +82,7 @@ Event -up-|> Task
 
 AddressBook *--> "1" MasteryCheckList
 MasteryCheckList o--> "*" MasteryCheck
+MasteryCheck -up-|> Consultation
 
 AddressBook *--> "1" ConsultationList
 ConsultationList o--> "*" Consultation

@@ -26,10 +26,10 @@ deactivate WebDriver
 ScraperManager -> WebDriver : findElements(By.xpath("//h4[@class='bp3-heading listing-title']"))
 activate WebDriver
 
-WebDriver -> ScraperManager : titles: List<WebElement>
+WebDriver --> ScraperManager : titles: List<WebElement>
 deactivate WebDriver
 
-ScraperManager -> Model : saveToStorage(mission)
+ScraperManager -> Model : saveToStorage(missions, quests, students, greeting)
 activate Model
 
 deactivate Model
