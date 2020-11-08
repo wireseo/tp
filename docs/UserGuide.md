@@ -122,8 +122,7 @@ please check that you have installed the correct driver:
 
 1. There are two options for launching Jarvis.
     1. Double-click the `jarvis.jar` file to start the app.
-    1. Launch Jarvis from the the Windows Command Prompt or MacOS
-    command line by navigating to the directory containing `jarvis.jar`,
+    1. Launch Jarvis from the Windows Command Prompt or MacOS command line by navigating to the directory containing `jarvis.jar`,
     then typing the command `java -jar jarvis.jar`
 
     A GUI similar to the screenshot below should appear in a few seconds.
