@@ -74,10 +74,10 @@ public class CommandTestUtil {
     public static final String INVALID_DATE_SEVEN = "2019-3-27"; // invalid month - wrong format
     public static final String INVALID_DATE_EIGHT = "2019-03-2"; // invalid date - wrong format
 
-    public static final String INVALID_TIME_ONE = " t/25:51"; // invalid hour - over 24
-    public static final String INVALID_TIME_TWO = " t/25:61"; // invalid minute - over 60
-    public static final String INVALID_TIME_THREE = " t/0:51"; // invalid hour - wrong format
-    public static final String INVALID_TIME_FOUR = " t/00:5"; // invalid minute - wrong format
+    public static final String INVALID_TIME_ONE = "25:51"; // invalid hour - over 24
+    public static final String INVALID_TIME_TWO = "25:61"; // invalid minute - over 60
+    public static final String INVALID_TIME_THREE = "0:51"; // invalid hour - wrong format
+    public static final String INVALID_TIME_FOUR = "00:5"; // invalid minute - wrong format
 
     public static final String INVALID_DATE_ONE_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_ONE;
     public static final String INVALID_DATE_TWO_WITH_PREFIX = " " + PREFIX_DATE + INVALID_DATE_TWO;

@@ -3,8 +3,6 @@ package seedu.jarvis.logic.parser;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.logic.parser.CliSyntax.CONSULTATION;
 import static seedu.jarvis.logic.parser.CliSyntax.MASTERY_CHECK;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.jarvis.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_DEADLINE;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_EVENT;
 import static seedu.jarvis.logic.parser.CliSyntax.TASK_TODO;
@@ -54,34 +52,13 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         int length = nameKeywords.length;
-        boolean hasDescription = length > 1;
+        boolean taskHasDescription = length > 1;
 
-        // when there is only flag
-        if (!hasDescription
+        if (!taskHasDescription
                 && (commandFlag.getFlag().equals(TASK_TODO) || commandFlag.getFlag().equals(TASK_EVENT)
                 || commandFlag.getFlag().equals(TASK_DEADLINE))) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
-        } else if ((!hasDescription) && commandFlag.getFlag().equals(CONSULTATION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
-        } else if ((!hasDescription) && commandFlag.getFlag().equals(MASTERY_CHECK)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
-        }
-
-        boolean notPrefix = nameKeywords[1].length() >= 2 &&
-                (!nameKeywords[1].substring(0,2).equals(PREFIX_DATE)
-                        || !nameKeywords[1].substring(0,2).equals(PREFIX_TIME));
-        boolean hasActualDescription = length > 1 && (notPrefix || nameKeywords[1].length() == 1);
-
-        // when description is invalid (e.g. goes straight to date and time)
-        if ((!hasActualDescription) && commandFlag.getFlag().equals(CONSULTATION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
-        } else if ((!hasActualDescription) && commandFlag.getFlag().equals(MASTERY_CHECK)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
         }
 
         // switch command to return the respective add commands
@@ -102,19 +79,11 @@ public class AddCommandParser implements Parser<AddCommand> {
             return new AddTaskCommand(deadline);
 
         case CONSULTATION:
-            if (nameKeywords.length < 4) { // missing at least one field
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
-            }
             logger.info("AddCommandParser attempts to parse user's newly added consultation");
             Consultation consultation = ConsultationMasteryCheckCommandParser.parseConsultation(nameKeywords, length);
             return new AddConsultationCommand(consultation);
 
         case MASTERY_CHECK:
-            if (nameKeywords.length < 4) { // missing at least one field
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
-            }
             logger.info("AddCommandParser attempts to parse user's newly added mastery check");
             MasteryCheck masteryCheck = ConsultationMasteryCheckCommandParser.parseMasteryCheck(nameKeywords, length);
             return new AddMasteryCheckCommand(masteryCheck);

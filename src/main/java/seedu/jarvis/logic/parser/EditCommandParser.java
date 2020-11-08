@@ -116,16 +116,11 @@ public class EditCommandParser implements Parser<EditCommand> {
 
             Index masteryCheckIndex;
 
-            if (split.length <= 1) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                                EditMasteryCheckCommand.ONE_OR_MORE_PARAMS_MISSING));
-            }
-
             try {
                 masteryCheckIndex = ParserUtil.parseIndex(split[0]);
             } catch (ParseException pe) {
-                throw new ParseException(pe.getMessage());
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditMasteryCheckCommand.MESSAGE_USAGE), pe);
             }
 
             EditMasteryCheckDescriptor editMasteryCheckDescriptor = new EditMasteryCheckDescriptor();
