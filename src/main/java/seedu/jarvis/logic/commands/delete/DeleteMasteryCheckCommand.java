@@ -19,7 +19,7 @@ public class DeleteMasteryCheckCommand extends DeleteCommand {
             + "mastery check list.\n"
             + "Example: " + COMMAND_WORD + " -mc 1\n"
             + "Type \"view -mc\" (or any other mastery check viewing command) to verify your index before deleting!";
-    public static final String MESSAGE_DELETE_MASTERY_CHECK_SUCCESS = "Deleted Mastery Check: %1$s";
+    public static final String MESSAGE_SUCCESS = "Deleted Mastery Check: %1$s";
 
     private final Index index;
 
@@ -41,7 +41,7 @@ public class DeleteMasteryCheckCommand extends DeleteCommand {
 
         MasteryCheck masteryCheckToDelete = lastShownList.get(index.getZeroBased());
         model.deleteMasteryCheck(masteryCheckToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_MASTERY_CHECK_SUCCESS, masteryCheckToDelete),
+        return new CommandResult(String.format(MESSAGE_SUCCESS, masteryCheckToDelete),
                 CommandTargetFeature.MasteryCheck);
 
     }

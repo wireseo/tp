@@ -2,7 +2,7 @@ package seedu.jarvis.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.jarvis.logic.commands.delete.DeleteCommand.MESSAGE_DELETE_USAGE;
+import static seedu.jarvis.logic.commands.delete.DeleteCommand.MESSAGE_USAGE;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_CONSULTATION;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_MASTERY_CHECK;
 import static seedu.jarvis.logic.parser.CliSyntax.DELETE_TASK;
@@ -40,7 +40,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DELETE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
         // split the string trimmedArgs with regex of one or more whitespace characters.
@@ -52,7 +52,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             commandFlag = ParserUtil.parseFlag(inputsAfterCommandType[0]);
         } catch (ParseException ex) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DELETE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
         String editArgs = String.join(" ", Arrays.copyOfRange(inputsAfterCommandType, 1,
@@ -101,7 +101,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             return new DeleteMasteryCheckCommand(masteryCheckIndex);
 
         default:
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DELETE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
     }
 
