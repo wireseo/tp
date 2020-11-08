@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #ffffff
+skinparam classAttributeIconSize 0
+hide circle
+
+class Scraper <<Interface>> {
+    + authenticate() : void
+    + getMissions() : void
+    + getQuests() : void
+    + getStudents() : void
+    + getUngradedMissionsAndQuests() : void
+    + shutDown() : void
+}
+
+class ReadOnlyUserLogin <<Interface>> {
+    + getUsername() : String
+    + getUserPassword() : String
+}
+
+class UserLogin implements ReadOnlyUserLogin {
+    /' Fields '/
+    - username : String
+    - password: String
+}
+
+class ScraperManager implements Scraper {
+    /' Fields '/
+    - driver : WebDriver
+    - userLogin : UserLogin
+    - model : Model
+    - isAuthenticated: boolean
+
+    /' Methods '/
+}
+
+ScraperManager o-> "1" UserLogin
+
+@enduml

@@ -162,8 +162,8 @@ The `Storage` component,
 
 The `Scraper` component,
 * reads user login information from the `UserLogin` object passed to it.
-* can scrape `Source Academy`(https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
-* can save the scraped information to `Model`
+* uses the _Chrome_Driver_ package to scrape [Source Academy](https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
+* can save the scraped information to `Model`.
 
 ### Common classes
 
