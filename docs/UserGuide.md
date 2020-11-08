@@ -100,8 +100,8 @@ This section aims to remind you of the important parts to take note of while rea
 When reading this user guide, various symbols may appear occasionally to draw your attention to important information.
 The meaning for each symbol is as follows:
 
-Symbol | Meaning 
--------| ------------ 
+Symbol | Meaning
+-------| ------------
  ⚠️    | This symbol indicates that there is something important for you to take note of.
  ✏️   | This symbol indicates that an example is provided.
 
@@ -239,7 +239,7 @@ An example of the command being inputted:
 ![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
 ### 5.3 Updated Details Summary
-Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered. 
+Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered.
 The username and password are covered with a red rectangle for this diagram only to protect the Avenger's account security.
 You will be able to see the login details you entered.
 
