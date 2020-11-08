@@ -40,7 +40,8 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
+The ***Architecture Diagram*** given above explains the high-level design of Jarvis. Given below is a quick overview
+ of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -54,13 +55,13 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
-The rest of the App consists of five components.
+The rest of Jarvis consists of five components.
 
 * [**`UI`**](#ui-component): The UI of the App.
 * [**`Logic`**](#logic-component): The command executor.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
-* [**`Scraper`**](#scraper-component): Scrapes Sourceacademy.com for course-info.
+* [**`Scraper`**](#scraper-component): Scrapes https://sourceacademy.nus.edu.sg for course-info.
 
 Each of the five components,
 
@@ -73,7 +74,8 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+ the command `delete -c 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -88,7 +90,12 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-W11-2/tp/blob/master/src/main/java/seedu/jarvis/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `XYZListPanel
+`, `StatusBarFooter` etc. All these including the `MainWindow
+`, inherit from the abstract `UiPart` class. 
+
+`XYZListPanel` refers to the various types of `{Feature Type}ListPanel`
+ objects. These are namely `StudentListPanel`, `MissionListPanel`, `QuestListPanel`, `ConsultationListPanel`, `MasteryCheckListPanel` and `TaskListPanel`. 
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-W11-2/tp/blob/master/src/main/java/seedu/jarvis/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-W11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -114,7 +121,7 @@ The `UI` component,
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete -c 1` Command](images/DeleteSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -176,6 +183,81 @@ Classes used by multiple components are in the `seedu.jarvis.commons` package.
 ## **Implementation**
 
 This section describes some noteworthy details on how certain key features have been implemented.
+
+### Automatic Tab Switching
+In this section we will explain how the `Automatic Tab Switching Feature` feature works. We will do so by going
+ through a sequence diagram.
+ 
+#### What is Automatic Tab Switching
+`Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
+` `Missions` `Quests` `Consultations` `Mastery Checks` and `Tasks`, for the user's input command.
+
+#### Interaction between objects when Automatic Tab Switching happens
+The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
+ `CommandResult` after the user keys in a command and presses the enter key in the Graphical User Interface.
+
+![Sequence Diagram of Automatic Tab Switching](images/AutomaticTabSwitchSequenceDiagram.png)
+
+On start up of the GUI the `fillInnerParts` method of `MainWindow` is called, creating a `CommandBox` object with
+a method reference to `MainWindow`'s `executeCommand` method passed as parameter to the constructor. 
+
+The `CommandBox
+` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
+ `MainWindow`'s
+ `executeCommand
+` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult
+` object and returns it to `MainWindow`.
+
+`MainWindow` class calls the `CommandResult` object's `getCommandTargetFeature` method, which then returns a
+ `CommandTargetFeature` `Enum`
+corresponding to the feature that the user input command relates to. Based on that Enum, `MainWindow` then selects the
+ corresponding tab using its local variable `tabSelector`. In this case `Missions` was returned and hence the
+  `missionTab` was selected.
+   
+As such, the corresponding tab is selected after a user command is inputted. 
+
+This feature works the same way for
+viewing `Students`, `Quests`, `Consultations`, `MasteryChecks` and `Tasks`. In each case, the
+corresponding `CommandTargetFeature` `Enum` is returned resulting in the corresponding tab selection.
+
+### Summary Feature
+In this section we will explain how the `Summary Feature` is implemented by going through a sequence diagram.
+
+#### What is the Summary Feature
+Summary feature refers to the summary string at the top right hand corner of the Jarvis Graphical User Interface. It
+summarises the ungraded missions and quests, upcoming consultations and mastery checks as well as outstanding tasks.
+
+It is always updated at any point in time of using Jarvis.
+
+#### Interaction between objects to enable the Summary Feature
+In order for the `Summary` string to be updated upon starting up the Jarvis Graphical User Interface and in sync with the
+changes in data after each command, Jarvis calls the `ModelManager` `updateAllSummaryDetails` method
+upon start up and after each command is executed. The following is a sequence diagram when a user command is
+entered.
+   
+![Sequence diagram of Summary feature](images/SummaryFeatureSequenceDiagram.png)
+
+Upon keying in the user command, `LogicManager`'s `execute` method is called. This leads to the calling of
+`ModelManager`'s `updateAllSummaryDetails` method, which thereby leads to a series of function calls to
+`ModelManager`'s own methods `updateUngradedMissionsSummaryDetail`, `updateUngradedQuestsSummaryDetail` and so
+ fourth. 
+
+Each of the methods obtains the
+length of the corresponding `FilteredList` to find the exact value of the summary detail such as "number of ungraded
+missions". The value is then set by calling the corresponding `AddressBook` setter methods, which then leads to the
+corresponding call of the `Summary` object's setter method call.
+
+The always updated `Summary` string is obtained through the `LogicManager` and displayed as a `Label` in the Graphical
+User Interface.
+
+![Sequence diagram of getting Summary Details](images/GetSummaryDetailsSequenceDiagram.png)
+
+A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty
+` of summary details being returned.
+
+Upon start up of Jarvis' Graphical User Interface, the first step of calling `LogicManager`'s `execute` method is
+skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
+similar syncing of summary details.
 
 ### Login
 In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
