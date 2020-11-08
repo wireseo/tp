@@ -18,6 +18,8 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
 4. [Navigating Jarvis](#4-navigating-jarvis)
     - [4.1 UI Layout](#41-ui-layout)
 5. [Logging into Jarvis](#5-logging-into-jarvis)
+    - [5.1 Command Entry](#51-command-entry)
+    - [5.2 Prompt](#52-prompt)
 6. [Features](#6-features)
     - [6.1 General notes about command format](#61-general-notes-about-command-format)
     - [6.2 Viewing help : `help`](#62-viewing-help--help)
@@ -221,6 +223,12 @@ this flexibility with you, the user in mind.
 The following is the prompt upon first login, you are prompted to key in your Source Academy username and password:
 
 ![NoLoginDetails](images/userguide/loginPrompt.png)
+
+### 5.1 Command Entry
+    * This is where you will key in your edit command.
+
+### 5.2 Prompt
+    * The prompt contains the format of the edit command to be keyed in. The format is reinstated below for clarity.
 
 To log in, simply edit your login details with the following command:
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
