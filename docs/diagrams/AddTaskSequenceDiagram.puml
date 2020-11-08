@@ -1,38 +1,85 @@
 @startuml
 !include style.puml
 
-participant ":AddCommand" as AddCommand SCRAPER_COLOR
-participant ":ModelManager" as ModelManager SCRAPER_COLOR
-participant ":AddressBook" as AddressBook SCRAPER_COLOR
-participant ":CommandException" as CommandException SCRAPER_COLOR
-participant ":CommandResult" as CommandResult SCRAPER_COLOR
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
+participant ":TaskCommandParser" as TaskCommandParser LOGIC_COLOR
+participant "a:AddTaskCommand" as AddTaskCommand LOGIC_COLOR
+participant ":CommandException" as CommandException LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
 
-[-> AddCommand : execute(model)
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+participant ":AddressBook" as AddressBook MODEL_COLOR
+end box
 
-AddCommand -> ModelManager : hasTodo(Todo)
-ModelManager --> AddCommand : boolean
+[-> LogicManager : execute("add -e...")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("add -e...")
+activate AddressBookParser
+
+create AddCommandParser
+AddressBookParser -> AddCommandParser
+activate AddCommandParser
+
+AddCommandParser --> AddressBookParser
+deactivate AddCommandParser
+
+AddressBookParser -> AddCommandParser : parse("-e...")
+activate AddCommandParser
+
+activate TaskCommandParser
+AddCommandParser -> TaskCommandParser : parse("-e...")
+TaskCommandParser --> AddCommandParser : Event event
+deactivate TaskCommandParser
+
+create AddTaskCommand
+AddCommandParser -> AddTaskCommand : new AddTaskCommand(event)
+activate AddTaskCommand
+
+AddTaskCommand --> AddCommandParser : a
+deactivate AddTaskCommand
+
+AddCommandParser --> AddressBookParser : a
+deactivate AddCommandParser
+
+AddressBookParser --> LogicManager : a
+deactivate AddressBookParser
+
+LogicManager -> AddTaskCommand : execute()
+
+AddTaskCommand -> ModelManager : hasTodo(Todo)
+activate ModelManager
+ModelManager --> AddTaskCommand : boolean
+deactivate ModelManager
 
 alt !boolean, duplicate object
 
     create CommandException
-    AddCommand -> CommandException : new CommandException(MESSAGE_DUPLICATE_TASK)
+    AddTaskCommand -> CommandException : new CommandException(MESSAGE)
     activate CommandException
-    CommandException --> AddCommand : commandException
+    CommandException --> AddTaskCommand : commandException
     deactivate CommandException
 
 else boolean, unique object
 
-    AddCommand -> ModelManager : addTodo(Todo)
+    AddTaskCommand -> ModelManager : addTodo(Todo)
     ModelManager -> AddressBook : addTodo(Todo)
 
     create CommandResult
-    AddCommand -> CommandResult : new CommandResult(MESSAGE_SUCCESS)
+    AddTaskCommand -> CommandResult : new CommandResult(MESSAGE_SUCCESS)
     activate CommandResult
-    CommandResult --> AddCommand : commandResult
+    CommandResult --> AddTaskCommand : commandResult
     deactivate CommandResult
 
 end
 
-[<-- AddCommand : result / exception
+LogicManager <-- AddTaskCommand : result / exception
+[<--LogicManager
+deactivate LogicManager
 
 @enduml
