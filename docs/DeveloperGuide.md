@@ -444,6 +444,9 @@ The other `DeleteCommand` subclasses work similarly to this as well.
 
 =======
 ## Edit Command
+In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the 
+`EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
+
 ### What is Edit Command
 The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
 
@@ -469,7 +472,7 @@ The other `EditCommand` subclasses will execute similarly, less the calls to `Sc
 
 ![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
 
-The sequence of method calls are highly similar to that for the `ViewCommand` above. What is of note is the additional call to `Scraper`.
+The sequence of method calls are highly similar to that for the `EditLoginCommand` above. What is of note is the additional call to `Scraper`.
 This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
 
 --------------------------------------------------------------------------------------------------------------------
