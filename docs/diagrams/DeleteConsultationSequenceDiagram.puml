@@ -32,13 +32,13 @@ AddressBookParser -> DeleteCommandParser : parse("-c 1")
 activate DeleteCommandParser
 
 create ParserUtil
-DeleteCommandParser -> ParserUtil : parseFlag("flagInput")
+DeleteCommandParser -> ParserUtil : parseFlag("-c")
 activate ParserUtil
 
 ParserUtil --> DeleteCommandParser : commandFlag
 deactivate ParserUtil
 
-DeleteCommandParser -> ParserUtil : parseIndex("indexParamConsultation")
+DeleteCommandParser -> ParserUtil : parseIndex("1")
 activate ParserUtil
 
 ParserUtil --> DeleteCommandParser : consultationIndex
@@ -46,7 +46,7 @@ ParserUtil --> DeleteCommandParser : consultationIndex
 deactivate ParserUtil
 
 create DeleteConsultationCommand
-DeleteCommandParser -> DeleteConsultationCommand : DeleteConsultationCommand("consultationIndex")
+DeleteCommandParser -> DeleteConsultationCommand : DeleteConsultationCommand(consultationIndex)
 activate DeleteConsultationCommand
 
 DeleteConsultationCommand --> DeleteCommandParser : d
@@ -64,13 +64,13 @@ deactivate AddressBookParser
 LogicManager -> DeleteConsultationCommand : execute()
 activate DeleteConsultationCommand
 
-DeleteConsultationCommand -> Model : deleteConsultation("consultationToDelete")
+DeleteConsultationCommand -> Model : deleteConsultation(consultationToDelete)
 activate Model
 
 deactivate Model
 
 create CommandResult
-DeleteConsultationCommand -> CommandResult : CommandResult("MESSAGE_SUCCESS", "consultationToDelete")
+DeleteConsultationCommand -> CommandResult : CommandResult(MESSAGE_SUCCESS, consultationToDelete)
 activate CommandResult
 
 CommandResult --> DeleteConsultationCommand : c
