@@ -29,7 +29,7 @@ public abstract class ViewCommand extends Command {
             + "view -t: View all tasks (todos, events, deadlines)\n"
             + "view -tt: View all todos only\n"
             + "view -te: View all events only\n"
-            + "view -td: View all deadlines only\n";
+            + "view -td: View all deadlines only";
 
     public abstract CommandResult execute(Model model) throws CommandException;
 
