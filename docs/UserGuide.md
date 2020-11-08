@@ -24,10 +24,9 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
         * [4.1.4 Information Panel](#414-information-panel)
         * [4.1.5 Tab Switcher](#415-tab-switcher)
 5. [Logging into Jarvis](#5-logging-into-jarvis)
-    - [5.1 Command Entry](#51-command-entry)
-    - [5.2 Prompt](#52-prompt)
-    - [5.3 Updated Details Summary](#53-updated-details-summary)
-    - [5.4 Updated Student Information](#54-updated-student-information)
+    - [5.1 Prompt](#51-prompt)
+    - [5.2 Updated Details Summary](#52-updated-details-summary)
+    - [5.3 Updated Student Information](#53-updated-student-information)
 6. [Features](#6-features)
     - [6.1 General Notes](#61-general-notes)
         * [6.1.1 Notes about Command Format](#611-notes-about-command-format)
@@ -235,11 +234,8 @@ The following is the prompt upon first login, you are prompted to key in your So
 
 ![NoLoginDetails](images/userguide/loginPrompt.png)
 
-### 5.1 Command Entry
-    * This is where you will key in your edit command.
-
-### 5.2 Prompt
-    * The prompt contains the format of the edit command to be keyed in. The format is reinstated below for clarity.
+### 5.1 Prompt
+   * The prompt contains the format of the edit command to be keyed in. The format is reinstated below for clarity.
 
 To log in, simply edit your login details with the following command:
 <br>**Format: `edit -l u/LUMINUS_USERNAME p/LUMINUS_PASSWORD`**
@@ -250,12 +246,12 @@ An example of the command being inputted:
 
 ![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
-### 5.3 Updated Details Summary
+### 5.2 Updated Details Summary
 Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered. 
 The username, password and student names are covered with a red rectangle for this diagram only to protect the Avenger's account security.
 You will be able to see the login details you entered.
 
-### 5.4 Updated Student Information
+### 5.3 Updated Student Information
 Upon success, all information from Source Academy will be visible to you. The student information tab will display you student information.
 The `Telegram` and `E-mail` fields are test values as these information are not available on Source Academy.
 You will have to edit them using the [Editing Student Information](#642-editing-student-information---s) command below.
