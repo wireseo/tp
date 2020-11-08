@@ -7,13 +7,11 @@ participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
 participant ":TaskCommandParser" as TaskCommandParser LOGIC_COLOR
 participant "a:AddTaskCommand" as AddTaskCommand LOGIC_COLOR
-participant ":CommandException" as CommandException LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":ModelManager" as ModelManager MODEL_COLOR
-participant ":AddressBook" as AddressBook MODEL_COLOR
+participant ":Model" as ModelManager MODEL_COLOR
 end box
 
 [-> LogicManager : execute("add -e...")
@@ -23,7 +21,7 @@ LogicManager -> AddressBookParser : parseCommand("add -e...")
 activate AddressBookParser
 
 create AddCommandParser
-AddressBookParser -> AddCommandParser
+AddressBookParser -> AddCommandParser : AddCommandParser()
 activate AddCommandParser
 
 AddCommandParser --> AddressBookParser
@@ -33,7 +31,7 @@ AddressBookParser -> AddCommandParser : parse("-e...")
 activate AddCommandParser
 
 activate TaskCommandParser
-AddCommandParser -> TaskCommandParser : parse("-e...")
+AddCommandParser -> TaskCommandParser : parseEvent("-e...")
 TaskCommandParser --> AddCommandParser : Event event
 deactivate TaskCommandParser
 
@@ -53,30 +51,18 @@ deactivate AddressBookParser
 LogicManager -> AddTaskCommand : execute()
 
 AddTaskCommand -> ModelManager : hasEvent(event)
-
-alt hasEvent(event) == true
-
-    create CommandException
-    AddTaskCommand -> CommandException : CommandException(errorMsg)
-    activate CommandException
-    CommandException --> AddTaskCommand : commandException
-    deactivate CommandException
-
-else hasEvent(event) == false
+ModelManager --> AddTaskCommand : boolean = false
 
     AddTaskCommand -> ModelManager : addEvent(event)
-    ModelManager -> AddressBook : addEvent(event)
-    AddressBook -->] : add(event)
+    ModelManager-->] : addEvent(event)
 
     create CommandResult
-    AddTaskCommand -> CommandResult : CommandResult(MESSAGE_SUCCESS)
+    AddTaskCommand -> CommandResult : MESSAGE_SUCCESS
     activate CommandResult
     CommandResult --> AddTaskCommand : commandResult
     deactivate CommandResult
 
-end
-
-LogicManager <-- AddTaskCommand : result / exception
+LogicManager <-- AddTaskCommand : CommandResult
 [<--LogicManager
 deactivate LogicManager
 

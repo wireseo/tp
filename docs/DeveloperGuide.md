@@ -338,45 +338,83 @@ The other `ViewCommand` subclasses work similarly to this as well.
 <div style="page-break-after: always"></div>
 
 ## Add Command
-### Structure of Add Command
+In this section, we will introduce the Add Command. It will show the structure of the `AddCommand` class and the `AddCommandParser`
+class, as well as the path diagram and sequence diagram of the `AddTaskCommand` to capture the interactions between
+the `AddTaskCommand` and other object classes.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The AddCommand overall structure is similar to that of the ViewCommand above.
+</div>
+
+### What is AddCommand
+`ViewCommand` is an abstract class encapsulating the different add commands for the following: `Consultation`,
+`Mastery Check` and `Task`.
+
+### Structure of AddCommand
 The following diagram shows the overview of the AddComand Class Diagram:
 
 ![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
 
-> This Add Command overall structure is similar to that of **View Command**.
 * Upon parsing user input to the correct `AddCommand` (ie. `AddXYZCommand`) which is done by the `AddCommandParser`, the
 correct `Model` object (eg. `Student`, `Task`) will be added to the corresponding list in `Model` class.
-* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
+* Then, updated lists of data will be observed by the `AddressBook`, and displayed on the GUI.
 
-### Add Task Feature
-The following diagram shows the overview of `AddCommand` Class Diagram which has a similar structure as other
-`Commands`:
+The abstract class `AddCommand` extends from the abstract class `Command`. In the `AddCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all view commands that extend from the `AddCommand` class will implement
+the `execute` method. Thus, all add command classes have a dependency on `Model`.
+
+In the `AddCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+view has to take in at least one argument. The message will guide the user on what parameters the `AddCommand` can take in.
+
+In all the add commands that extend from `AddCommand`, while there is a static message `MESSAGE_SUCCESS` for when the
+command has executed successfully, there is also a static message `MESSAGE_INVALID` that comes in different variants for
+when the command has not executed successfully due to an expected error from the user.
+
+### Structure of AddXYZCommand
+The following diagram shows the overview of `AddCommand` detailed Class Diagram which has a similar structure as other `Commands`:
 
 ![Class Diagram of Add Commands](images/AddXYZCommandClassDiagram.png)
 
-* The class `AddCommand` extends from the abstract class `Command`.
-* `AddCommand` class interacts with `Model` and `Task` related classes.
-* `Task` class objects will be added to `Model` class upon successful `Add Commands`.
-* `Todo`, `Event` and `Deadline` are classes that extend from from abstract class `Task`.
+* The class `AddCommand` contains 3 subclasses: `AddTaskCommand`, `AddConsultationCommand` and `AddMasteryCheckCommand`.
+* These `AddCommand` subclasses interacts with `Model` and the related class models each AddCommand is supposed to execute with.
+* Upon successful `AddCommand`, these subclasses communicates with `Model` to add `Task`, `Consultation` and `MasteryCheck` into `Model`.
 
-### Add Task Feature
-In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
-`Todo`, `Event` and `Deadline`.
-* `Todo` is a basic simple task that is usually not constrained by time; `Event` is
-a task that requires completion at a particular point in time; `Deadline` is a task that requires completion before a
-particular point in time.
+### Structure of AddCommandParser
+The following diagram shows the overview of the AddCommandParser Class Diagram:
 
-The sequence diagram for the Add Todo Command is shown below:
+![Class Diagram of ViewCommandParser](images/AddCommandParserClassDiagram.png)
+
+In the `AddCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
+the different flags that `AddCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
+the flag and return the correct `AddCommand` object.
+
+Due to Java `LocalDateTime` class used for our `Consultation`, `MasteryCheck` `Event` and `Deadline` objects, `ConsultationMasteryCheckCommandParser`
+and `TaskCommandParser` are employed to parse the objects added.
+
+### Path Execution of AddTaskCommand
+As there are many `AddCommand` subclasses such as `AddTaskCommand` and `AddConsultationCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `AddTaskCommand`
+as an example for the `AddCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `AddTaskCommand`.
+The other `AddCommand` subclasses will execute similarly.
+
+![Path Diagram of ViewMisionDeadlineCommand](images/AddCommandPathDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Reminder:** There are 3 `Task` types, namely, `Todo`, `Event` and `Deadline`.
+</div>
+
+### Interaction between objects when AddTaskCommand is executed
+The sequence diagram for the `AddTaskCommand` adding an `Event` is shown below:
 
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
 
-> This sequence diagram applies to other `Add` commands such as adding `Event` and `Deadline`.
-* The `AddCommand`'s `execute` method is first called with a `Model` passed as an argument.
-* `execute` method then calls `AddCommandParser`'s `hasTodo` method to check if the task is already contained within the
-`Model` class.
-* If the `Task` is already contained within the `Model` class, `AddCommand` will throw an Exception `CommandException`.
-* Else, `AddCommand` will add the new `Task` to the `Model` class and return a result `CommandResult` containing a
-`MESSAGE_SUCCESS` message.
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the newly created `AddCommandParser` object.
+The `AddCommandParser` will then call specific parse method, in this case, `parseEvent` method of `TaskCommandParser`. `TaskCommandParser` returns an `Event` object
+created to `AddCommandParser` so that it can return a new `AddTaskCommand` is created with the `Event` object.
+This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
+`AddTaskCommand` object. In this method, it will use the `Model` object to call the method : `hasEvent()`, which checks if there is a duplicated `Event` in the `Model`.
+Once successful, the `execute(model)` will return a `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
+
+The other `ViewCommand` subclasses work similarly to this as well.
 
 <div style="page-break-after: always"></div>
 
@@ -989,7 +1027,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream Desktop Operating System**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Mastery Check**: Type of special consultation that is recorded and graded in the CS1101S module.
+* **Mastery Check**: Type of special `Consultation` that is recorded and graded in the CS1101S module. It extends from `Consultation` class.
+* **Task**: An abstract class that encompasses 3 subclasses, `Todo`, `Event` and `Deadline`. `Todo` is a basic simple `Task` that is usually not constrained by time; `Event` is
+a `Task` that requires completion at a particular point in time; `Deadline` is a `Task` that requires completion before a particular point in time.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
