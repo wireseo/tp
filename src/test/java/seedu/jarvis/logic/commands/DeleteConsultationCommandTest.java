@@ -33,7 +33,7 @@ public class DeleteConsultationCommandTest {
         DeleteConsultationCommand deleteCommand = new DeleteConsultationCommand(INDEX_FIRST);
 
         String expectedMessage =
-                String.format(DeleteConsultationCommand.MESSAGE_DELETE_CONSULTATION_SUCCESS, consultationToDelete);
+                String.format(DeleteConsultationCommand.MESSAGE_SUCCESS, consultationToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());
@@ -60,7 +60,7 @@ public class DeleteConsultationCommandTest {
         DeleteConsultationCommand deleteCommand = new DeleteConsultationCommand(INDEX_FIRST);
 
         String expectedMessage =
-                String.format(DeleteConsultationCommand.MESSAGE_DELETE_CONSULTATION_SUCCESS, consultationToDelete);
+                String.format(DeleteConsultationCommand.MESSAGE_SUCCESS, consultationToDelete);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), TypicalManagers.getUserPrefs(),
                 TypicalManagers.getUserLogin());

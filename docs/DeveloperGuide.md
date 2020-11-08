@@ -130,8 +130,9 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores a `UserLogin` object that represents the user's Source Academy login details.
+* stores the DATA_CLASS - `Mission`, `Quest`, `Task`, `MasterCheck`, `Consultation` - in the addressbook.
+* exposes unmodifiable `ObservableList<DATA_CLASS>` for each DATA_CLASS that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
 
@@ -150,6 +151,7 @@ The `Model`,
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
+* can save `UserLogin` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
 ### Scraper component
@@ -160,8 +162,8 @@ The `Storage` component,
 
 The `Scraper` component,
 * reads user login information from the `UserLogin` object passed to it.
-* can scrape `Source Academy`(https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
-* can save the scraped information to `Model`
+* uses the _Chrome_Driver_ package to scrape [Source Academy](https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
+* can save the scraped information to `Model`.
 
 ### Common classes
 
@@ -173,38 +175,48 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 ## **Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
+This section describes some noteworthy details on how certain key features have been implemented.
 
-### Get Missions Feature
-In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
+### Login
+In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
 </div>
 
-![Path Diagram of Get Missions](images/GetMissionsPathDiagram.png)
+#### What is the login process
+Login is a series of method calls that any new user who uses Jarvis has to go through. It is carried out by `ScraperManager` and involves fetching information from Source Academy through the use of a headless browser, _Chrome_Driver_.
 
-![Sequence Diagram of Get Missions](images/GetMissionsSequenceDiagram.png)
+#### Structure of login process
+The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the login process.
 
-* The strange-looking string within the `XPath.by(...)` is a HTML descriptor for the HTML element that corresponds to each individual mission on SA.
-* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on SA that matches the HTML descriptor we passed in.
-* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could of size 0 if there are no active missions that day.
+![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
 
- <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
- </div>
+#### Path Diagram of login process
+The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
+The login process is kickstarted whenever Jarvis is launched or the login details are edited.
 
+![Path Diagram of login process](images/LoginPathDiagram.png)
+
+![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
+
+* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
+* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on Source Academy that matches the HTML descriptor we passed in.
+* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could be of size 0 if there are no active missions that day.
+* `startScraping()` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
+* In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
 <div style="page-break-after: always"></div>
 
-### View Command
-in this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
+## View Command
+In this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
 class, as well as the path diagram and sequence diagram of the ViewMissionDeadlineCommand to capture the interactions between
 the ViewMissionDeadlineCommand and other object classes.
 
-#### What is ViewCommand
+### What is ViewCommand
 `ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
 `Mission`, `Quest`, `Consultation`, `Mastery Check` and `Task`.
 
-#### Structure of ViewCommand
+### Structure of ViewCommand
 
 The following diagram shows the overview of the ViewCommand Class Diagram:
 
@@ -220,7 +232,7 @@ view has to take in at least one argument. The message will guide the user on wh
 In all the view commands that extend from `ViewCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
 has executed successfully. The message will be shown to the user to indicate success.
 
-#### Structure of ViewCommandParser
+### Structure of ViewCommandParser
 
 The following diagram shows the overview of the ViewCommandParser Class Diagram:
 
@@ -230,26 +242,26 @@ In the `ViewCommandParser` class, under the `parse()` method, we reference the `
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
 
-#### Path Execution of ViewMissionDeadlineCommand
+### Path Execution of ViewMissionDeadlineCommand
 As there are many `ViewCommand` sub classes such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
 as an example for the `ViewCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
-The other `ViewCommand` sub classes will execute similarly.
+The diagram below demonstrates the expected path execution of `ViewMissionDeadlineCommand`.
+The other `ViewCommand` subclasses will execute similarly.
 
 ![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
 
-#### Interaction between objects when ViewMissionDeadlineCommand is executed
+### Interaction between objects when ViewMissionDeadlineCommand is executed
 The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
 
 ![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
 
 The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `ViewCommandParser` object.
 The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
-`ViewMissionDeadlineCommand` object. In this method, it wil use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
+`ViewMissionDeadlineCommand` object. In this method, it will use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
 `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
 
-The other `ViewCommand` sub classes work similarly to this as well.
+The other `ViewCommand` subclasses work similarly to this as well.
 
 <div style="page-break-after: always"></div>
 
@@ -293,6 +305,99 @@ Model class.
 * If the task is already contained within the Model class, `AddCommand` will throw an Exception `CommandException`.
 * Else, `AddCommand` will add the new `Task` to the Model class and return a result `CommandResult` containing a
 `SUCCESS` message.
+
+<div style="page-break-after: always"></div>
+
+## Delete Command
+In this section, we will introduce the `Delete Command`. It will show the structure of the `DeleteCommand` class and the `DeleteCommandParser`
+class, as well as the path diagram and sequence diagram of the `DeleteConsultationCommand` to capture the interactions between
+the `DeleteConsultationCommand` and other object classes.
+
+### What is DeleteCommand
+`DeleteCommand` is an abstract class encapsulating the different delete commands for the `Consultations`,
+`Mastery Checks`, and `Tasks`.
+
+### Structure of DeleteCommand
+
+The following diagram shows the overview of the `DeleteCommand` Class Diagram:
+
+![Class Diagram of DeleteCommand](images/DeleteCommandClassDiagram.png)
+
+The abstract class `DeleteCommand` extends from the abstract class `Command`. In the `DeleteCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all delete commands that extend from the `DeleteCommand` class will implement
+the `execute` method. Thus, all delete command classes have a dependency on `Model`.
+
+In the `DeleteCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+delete has to take in at least one argument. The message will guide the user on what parameters the `DeleteCommand` can take in.
+
+In all the delete commands that extend from `DeleteCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
+has executed successfully. The message will be shown to the user to indicate success.
+
+### Structure of DeleteCommandParser
+
+The following diagram shows the overview of the DeleteCommandParser Class Diagram:
+
+![Class Diagram of DeleteCommandParser](images/DeleteCommandParserClassDiagram.png)
+
+In the `DeleteCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
+the different flags that `DeleteCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
+the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
+the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
+and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
+The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a String to store identifiers instead;
+however, they are similar in how they operate and interact with the rest of the system.
+
+### Path Execution of DeleteConsultationCommand
+As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
+as an example for the `DeleteCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `DeleteConsultationCommand`.
+The other `DeleteCommand` sub classes will execute similarly.
+
+![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
+
+### Interaction between objects when DeleteConsultationCommand is executed
+The sequence diagram for the `DeleteConsultationCommand` is shown below:
+
+![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
+
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the arguments to the `DeleteCommandParser` object.
+The `DeleteCommandParser`, after parsing the necessary arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
+This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the `DeleteConsultationCommand` object.
+In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified
+consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message
+to the `LogicManager`, indicating that the command execution is a success.
+
+The other `DeleteCommand` subclasses work similarly to this as well.
+=======
+## Edit Command
+### What is Edit Command
+The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
+
+### Structure of Edit Command
+The following diagram shows the overview of the EditCommand Class Diagram:
+
+![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
+
+* Upon parsing user input to the correct `EditCommand` (ie. `EditXYZCommand`) which is done by the `EditCommandParser`, the
+correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresponding list in `Model` class.
+* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
+
+### Path Diagram of EditLoginCommand
+
+![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
+
+There are 3 `EditCommand` sub classes - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
+We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
+The other `EditCommand` sub classes will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
+
+### Sequence Diagram of EditLoginCommand
+
+![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
+
+The sequence of method calls are highly similar to that for the `ViewCommand` above. What is of note is the additional call to `Scraper`.
+This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
