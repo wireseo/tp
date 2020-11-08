@@ -1,6 +1,9 @@
 @startuml
 start
-:Jarvis starts up or user edits login details;
+If () then ([user starts Jarvis])
+    else ([user edits login details])
+endif
+
 :Calls startScraping();
 : Calls authenticate();
 
@@ -17,7 +20,7 @@ If () then ([login information does not exist])
         endif
     :Fetches user's name on SA;
     :Navigates to Assessments page on SA;
-    :Fetches information of all open missions and quests;
+    :Fetches information of all open Missions and Quests;
     :Navigates to Student page on SA;
     :Fetches all student details;
     endif
