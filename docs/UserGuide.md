@@ -14,48 +14,59 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     - [1.2 Purpose](#12-purpose)
     - [1.3 Design Considerations](#13-design-considerations)
 2. [About the User Guide](#2-about-the-user-guide)
+    - [2.1 Symbols](#21-symbols)
 3. [Quick start](#3-quick-start)
 4. [Navigating Jarvis](#4-navigating-jarvis)
     - [4.1 UI Layout](#41-ui-layout)
+        * [4.1.1 Top Bar](#411-top-bar)
+        * [4.1.2 Command Box](#412-command-box)
+        * [4.1.3 Feedback Box](#413-feedback-box)
+        * [4.1.4 Information Panel](#414-information-panel)
+        * [4.1.5 Tab Switcher](#415-tab-switcher)
 5. [Logging into Jarvis](#5-logging-into-jarvis)
     - [5.1 Command Entry](#51-command-entry)
     - [5.2 Prompt](#52-prompt)
+    - [5.3 Updated Details Summary](#53-updated-details-summary)
+    - [5.4 Updated Student Information](#54-updated-student-information)
 6. [Features](#6-features)
-    - [6.1 General notes about command format](#61-general-notes-about-command-format)
+    - [6.1 General Notes](#61-general-notes)
+        * [6.1.1 Notes about Command Format](#611-notes-about-command-format)
+        * [6.1.2 Notes about Jarvis' relationship with Source Academy](#612-notes-about-jarvis-relationship-with-source-academy)
+        * [6.1.3 Notes about Tasks](#613-notes-about-tasks)
     - [6.2 Viewing help : `help`](#62-viewing-help--help)
     - [6.3 Adding Information : `add`](#63-adding-information--add)
-        * [6.3.1 Adding Todos : `add -t`](#631-adding-todos--t)
-        * [6.3.2 Adding Events : `add -e`](#632-adding-events---e)
-        * [6.3.3 Adding Deadlines : `add -d`](#633-adding-deadlines---d)
-        * [6.3.4 Adding Consultations : `add -c`](#634-adding-consultations---c)
-        * [6.3.5 Adding Mastery Checks : `add -mc`](#635-adding-mastery-checks---mc)
+        * [6.3.1 Adding Consultations : `add -c`](#631-adding-consultations---c)
+        * [6.3.2 Adding Mastery Checks : `add -mc`](#632-adding-mastery-checks---mc)
+        * [6.3.3 Adding Todos : `add -t`](#633-adding-todos--t)
+        * [6.3.4 Adding Events : `add -e`](#634-adding-events---e)
+        * [6.3.5 Adding Deadlines : `add -d`](#635-adding-deadlines---d)
     - [6.4 Editing Information : `edit`](#64-editing-information--edit)
         * [6.4.1 Editing Login information : `edit -l`](#641-editing-login-information---l)
         * [6.4.2 Editing Student information : `edit -s`](#642-editing-student-information---s)
         * [6.4.3 Editing Mastery Checks : `edit -mc`](#643-editing-mastery-checks---mc)
     - [6.5 Deleting Information : `delete`](#65-deleting-information--delete)
-        * [6.5.1 Deleting Tasks : `delete -t`](#651-deleting-tasks---t)
-        * [6.5.2 Deleting Consultations : `delete -c`](#652-deleting-consultations---c)
-        * [6.5.3 Deleting Mastery Checks : `delete -mc`](#653-deleting-mastery-checks---mc)
+        * [6.5.1 Deleting Consultations : `delete -c`](#651-deleting-consultations---c)
+        * [6.5.2 Deleting Mastery Checks : `delete -mc`](#652-deleting-mastery-checks---mc)
+        * [6.5.3 Deleting Tasks : `delete -t`](#653-deleting-tasks---t)
     - [6.6 Viewing Information : `view`](#66-viewing-information--view)
         * [6.6.1 Viewing a list of all Students : `view -s`](#661-viewing-a-list-of-all-students---s)
-        * [6.6.2 Viewing one Student : `view -s NAME`](#662-viewing-one-student---s-name)
-        * [6.6.3 Viewing all Consultations: `view -c`](#663-viewing-all-consultations---c)
-        * [6.6.4 Viewing past Consultations: `view -cp`](#664-viewing-past-consultations---cp)
-        * [6.6.5 Viewing upcoming Consultations: `view -cu`](#665-viewing-upcoming-consultations---cu)
-        * [6.6.6 Viewing all Mastery Checks: `view -mc`](#666-viewing-all-mastery-checks---mc)
-        * [6.6.7 Viewing past Mastery Checks: `view -mcp`](#667-viewing-past-mastery-checks--mcp)
-        * [6.6.8 Viewing upcoming Mastery Checks: `view -mcu`](#668-viewing-upcoming-mastery-checks--mcu)
-        * [6.6.9 Viewing deadline for Missions: `view -m`](#669-viewing-deadline-for-missions---m)
-        * [6.6.10 Viewing deadline for Quests: `view -q`](#6610-viewing-deadline-for-quests---q)
-        * [6.6.11 Viewing ungraded Missions: `view -um`](#6611-viewing-ungraded-missions---um)
-        * [6.6.12 Viewing ungraded Quests: `view -uq`](#6612-viewing-ungraded-quests---uq)
+        * [6.6.2 Viewing Student with keyword : `view -s NAME`](#662-viewing-student-with-keyword---s-name)
+        * [6.6.3 Viewing deadline for Missions: `view -m`](#663-viewing-deadline-for-missions---m)
+        * [6.6.4 Viewing ungraded Missions: `view -um`](#664-viewing-ungraded-missions---um)
+        * [6.6.5 Viewing deadline for Quests: `view -q`](#665-viewing-deadline-for-quests---q)
+        * [6.6.6 Viewing ungraded Quests: `view -uq`](#666-viewing-ungraded-quests---uq)
+        * [6.6.7 Viewing all Consultations: `view -c`](#667-viewing-all-consultations---c)
+        * [6.6.8 Viewing past Consultations: `view -cp`](#668-viewing-past-consultations---cp)
+        * [6.6.9 Viewing upcoming Consultations: `view -cu`](#669-viewing-upcoming-consultations--cu)
+        * [6.6.10 Viewing all Mastery Checks: `view -mc`](#6610-viewing-all-mastery-checks---mc)
+        * [6.6.11 Viewing past Mastery Checks: `view -mcp`](#6611-viewing-past-mastery-checks---mcp)
+        * [6.6.12 Viewing upcoming Mastery Checks: `view -mcu`](#6612-viewing-upcoming-mastery-checks--mcu)
         * [6.6.13 Viewing all Tasks: `view -t`](#6613-viewing-all-tasks---t)
         * [6.6.14 Viewing all Todos: `view -tt`](#6614-viewing-all-todos---tt)
         * [6.6.15 Viewing all Events: `view -te`](#6615-viewing-all-events---te)
         * [6.6.16 Viewing all Deadlines: `view -td`](#6616-viewing-all-deadlines---td)
     - [6.7 Exiting the program: `exit`](#67-exiting-the-program--exit)
-    - [6.8 Saving the data](#668-viewing-upcoming-mastery-check-sessions--mcu)
+    - [6.8 Saving the data](#68-saving-the-data)
 7. [Command Summary](#7-command-summary)
     - [7.1 Add Command Summary](#71-add-command-summary)
     - [7.2 Edit Command Summary](#72-edit-command-summary)
@@ -142,7 +153,7 @@ please check that you have installed the correct driver:
    * `add -t DESCRIPTION: Adds a Todo task with specified description.`
    * `edit -s STUDENT_ID: Edits Student's Name, Email, Telegram.`
    * `exit: Exits the app.`
-
+<br>
 1. Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -405,14 +416,14 @@ Do note that the SCORE parameter can only be 0 or 1, according to the actual res
 
 ### 6.5 Deleting Information : `delete`
 
-#### 6.5.2 Deleting `Consultations` : `-c`
+#### 6.5.1 Deleting `Consultations` : `-c`
 
 Deletes a `Task` based on the `CONSULTATION_ID` you specify.
 <br>**Format: `delete -c CONSULTATION_ID`**
 <br>✏️ Examples:
 * `delete -c 3`
 
-#### 6.5.3 Deleting `Mastery Checks` : `-mc`
+#### 6.5.2 Deleting `Mastery Checks` : `-mc`
 
 Similar to the above process of deleting `Consultation`, deleting `Mastery Checks` first
 Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
@@ -420,7 +431,7 @@ Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 <br>✏️ Examples:
 * `delete -mc 3`
 
-#### 6.5.1 Deleting `Tasks` : `-t`
+#### 6.5.3 Deleting `Tasks` : `-t`
 
 Deletes a `Task` based on the `TASK_ID` you specify.
 <br>**Format: `delete -t TASK_ID`**
@@ -443,7 +454,7 @@ You may also click on the `Student` tab to do so.
 
 ![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
 
-#### 6.6.2 View `Student` with keyword : `-s [NAME]`
+#### 6.6.2 Viewing `Student` with keyword : `-s [NAME]`
 
 Shows all `Students` that match (partial and full) the name entered after the command. The name is case-sensitive.
 An example of a partial match will be `view -s do` resulting in John Doe being displayed.
@@ -502,6 +513,7 @@ Shows all past `Consultation` sessions.
 <div markdown="block" class="alert alert-info">
 
 When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
+</div>
 
 #### 6.6.9 Viewing upcoming `Consultations`: `-cu`
 
@@ -623,11 +635,11 @@ are likely to change frequently and hence, will not need to be persisted.
 | View deadlines for `Quests` | -q | view -q |
 | View ungraded `Quests` | -uq | view -uq |
 | View all `Consultations` | -c | view -c |
-| View all Past `Consultations` | -cp | view -cp |
-| View all Upcoming `Consultations` | -cu | view -cu |
+| View past `Consultations` | -cp | view -cp |
+| View upcoming `Consultations` | -cu | view -cu |
 | View all `Mastery Checks` | -mc | view -mc |
-| View all Past `Mastery Checks` | -mcp | view -mcp |
-| View all Upcoming `Mastery Checks` | -mcu | view -mcu  |
+| View past `Mastery Checks` | -mcp | view -mcp |
+| View all upcoming `Mastery Checks` | -mcu | view -mcu  |
 | View all `Tasks` | -t | view -t |
 | View all `Todos` | -tt | view -tt |
 | View all `Events` | -te | view -te |
