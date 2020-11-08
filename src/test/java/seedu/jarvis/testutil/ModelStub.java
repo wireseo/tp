@@ -178,6 +178,16 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public void addTask(Task task) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public boolean hasTask(Task task) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public boolean hasTodo(Todo todo) {
         throw new AssertionError("This method should not be called.");
     }

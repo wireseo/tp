@@ -208,6 +208,12 @@ public interface Model {
     void addDeadline(Deadline deadline);
 
     /**
+     * Adds the given task.
+     * {@code task} must not already exist in the jarvis book.
+     */
+    void addTask(Task task);
+
+    /**
      * Returns true if a todo with the same identity as {@code todo} exists in the jarvis book.
      */
     boolean hasTodo(Todo todo);
@@ -221,6 +227,11 @@ public interface Model {
      * Returns true if a deadline with the same identity as {@code deadline} exists in the jarvis book.
      */
     boolean hasDeadline(Deadline deadline);
+
+    /**
+     * Returns true if a task with the same identity as {@code task} exists in the jarvis book.
+     */
+    boolean hasTask(Task task);
 
     /** Returns an unmodifiable view of the filtered mission list. */
     ObservableList<Task> getFilteredTaskList();

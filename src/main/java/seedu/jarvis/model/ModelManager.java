@@ -310,6 +310,18 @@ public class ModelManager implements Model {
 
     //============================== Task ====================================================================
     @Override
+    public boolean hasTask(Task task) {
+        requireNonNull(task);
+        return addressBook.hasTask(task);
+    }
+
+    @Override
+    public void addTask(Task task) {
+        requireNonNull(task);
+        addressBook.addTask(task);
+    }
+
+    @Override
     public boolean hasTodo(Todo todo) {
         requireNonNull(todo);
         return addressBook.hasTodo(todo);
