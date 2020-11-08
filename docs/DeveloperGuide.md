@@ -192,6 +192,7 @@ The following diagram shows the class relationship between the `ScraperManager` 
 
 ![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
 
+#### Path Diagram of login process
 The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
 The login process is kickstarted whenever Jarvis is launched or the login details are edited.
 
@@ -304,6 +305,37 @@ Model class.
 * If the task is already contained within the Model class, `AddCommand` will throw an Exception `CommandException`.
 * Else, `AddCommand` will add the new `Task` to the Model class and return a result `CommandResult` containing a
 `SUCCESS` message.
+
+<div style="page-break-after: always"></div>
+
+## Edit Command
+### What is Edit Command
+The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
+
+### Structure of Edit Command
+The following diagram shows the overview of the EditCommand Class Diagram:
+
+![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
+
+* Upon parsing user input to the correct `EditCommand` (ie. `EditXYZCommand`) which is done by the `EditCommandParser`, the
+correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresponding list in `Model` class.
+* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
+
+### Path Diagram of EditLoginCommand
+
+![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
+
+There are 3 `EditCommand` sub classes - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
+We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
+The other `EditCommand` sub classes will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
+
+### Sequence Diagram of EditLoginCommand
+
+![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
+
+The sequence of method calls are highly similar to that for the `ViewCommand` above. What is of note is the additional call to `Scraper`.
+This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
