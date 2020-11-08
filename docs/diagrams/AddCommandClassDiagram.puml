@@ -76,7 +76,7 @@ note as N2
     <size: 11>AddTaskCommand, etc
 end note
 
-N1 .right ModelManager
+N1 .right. ModelManager
 N2 .up. AddXYZCommand
 
 @enduml
