@@ -15,10 +15,11 @@ import seedu.jarvis.model.consultation.Consultation;
 public class DeleteConsultationCommand extends DeleteCommand {
 
     public static final String MESSAGE_DELETE_CONSULTATION_USAGE = COMMAND_WORD
-            + ": Deletes the consultation identified by the task ID used in the consultation list.\n"
+            + ": Deletes the consultation identified by the index number of the currently displayed "
+            + "consultation list.\n"
             + "Example: " + COMMAND_WORD + " -c 1\n"
-            + "Type \"view -c\" to verify your task ID before deleting!";
-    public static final String MESSAGE_DELETE_CONSULTATION_SUCCESS = "Deleted Consultation: %1$s";
+            + "Type \"view -c\" (or any consultation viewing command) to verify your index before deleting!";
+    public static final String MESSAGE_SUCCESS = "Deleted Consultation: %1$s";
 
     private final Index index;
 
@@ -40,8 +41,7 @@ public class DeleteConsultationCommand extends DeleteCommand {
 
         Consultation consultationToDelete = lastShownList.get(index.getZeroBased());
         model.deleteConsultation(consultationToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_CONSULTATION_SUCCESS, consultationToDelete),
+        return new CommandResult(String.format(MESSAGE_SUCCESS, consultationToDelete),
                 CommandTargetFeature.Consultations);
-
     }
 }

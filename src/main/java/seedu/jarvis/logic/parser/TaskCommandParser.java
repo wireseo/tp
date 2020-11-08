@@ -20,7 +20,7 @@ import seedu.jarvis.model.task.Todo;
 public class TaskCommandParser {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
-    public static final String MESSAGE_INVALID_ID = "Task ID provided is not correct.";
+
 
     /**
      * Takes in user input parameters and creates a Todo.
@@ -136,7 +136,7 @@ public class TaskCommandParser {
 
         if (datePrefixLocation > timePrefixLocation) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_WRONG_DATETIME_FORMAT));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DATETIME));
 
         } else if (!hasDatePrefix || !hasTimePrefix) {
             throw new ParseException(
@@ -185,20 +185,6 @@ public class TaskCommandParser {
         }
 
         return formattedTaskDateTime;
-    }
-
-    /**
-     * Takes in user input and returns a string representation of Task ID
-     * @param nameKeywords is the partitioned user input
-     * @return Task ID String
-     * @throws ParseException when input is incorrect
-     */
-    public static String parseDeleteTask(String[] nameKeywords) throws ParseException {
-        if (nameKeywords.length != 2) {
-            throw new ParseException(MESSAGE_INVALID_ID);
-        }
-
-        return nameKeywords[1];
     }
 
     /**
