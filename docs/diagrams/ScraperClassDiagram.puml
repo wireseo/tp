@@ -1,38 +1,20 @@
 @startuml
-skinparam backgroundColor #ffffff
-skinparam classAttributeIconSize 0
-hide circle
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor SCRAPER_COLOR
+skinparam classBackgroundColor SCRAPER_COLOR
 
-class Scraper <<Interface>> {
-    + authenticate() : void
-    + getMissions() : void
-    + getQuests() : void
-    + getStudents() : void
-    + getUngradedMissionsAndQuests() : void
-    + shutDown() : void
+class Scraper <<Interface>>
+class ReadOnlyUserLogin <<Interface>>
+class UserLogin implements ReadOnlyUserLogin
+
+package Chrome_Driver {
+class WebDriver
 }
 
-class ReadOnlyUserLogin <<Interface>> {
-    + getUsername() : String
-    + getUserPassword() : String
-}
-
-class UserLogin implements ReadOnlyUserLogin {
-    /' Fields '/
-    - username : String
-    - password: String
-}
-
-class ScraperManager implements Scraper {
-    /' Fields '/
-    - driver : WebDriver
-    - userLogin : UserLogin
-    - model : Model
-    - isAuthenticated: boolean
-
-    /' Methods '/
-}
+class ScraperManager implements Scraper
 
 ScraperManager o-> "1" UserLogin
+ScraperManager o--> "1" WebDriver
 
 @enduml
