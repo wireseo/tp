@@ -268,7 +268,7 @@ correct `Model` object (eg. `Student`, `Task`) will be added to the correspondin
 The following diagram shows the overview of `AddCommand` Class Diagram which has a similar structure as other
 `Commands`:
 
-![Class Diagram of Add Commands](images/AddTaskClassDiagram.png)
+![Class Diagram of Add Commands](images/AddXYZCommandClassDiagram.png)
 
 * The class `AddCommand` extends from the abstract class `Command`.
 * `AddCommand` class interacts with `Model` and `Task` related classes.
