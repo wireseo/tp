@@ -316,7 +316,10 @@ public class AddressBookTest {
             return null;
         }
 
-
+        @Override
+        public StringProperty getSummary(){
+            return null;
+        }
     }
 
 }
