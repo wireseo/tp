@@ -48,8 +48,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         assert inputsAfterCommandType.length > 0 : "String array of the arguments is empty";
 
         Flag commandFlag;
+        String flagInput = inputsAfterCommandType[0];
         try {
-            commandFlag = ParserUtil.parseFlag(inputsAfterCommandType[0]);
+            commandFlag = ParserUtil.parseFlag(flagInput);
         } catch (ParseException ex) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
@@ -79,9 +80,10 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         case DELETE_CONSULTATION:
             logger.info("DeleteCommandParser attempts to parse user's delete Consultation input");
             Index consultationIndex;
+            String indexParamConsultation = split[0];
 
             try {
-                consultationIndex = ParserUtil.parseIndex(split[0]);
+                consultationIndex = ParserUtil.parseIndex(indexParamConsultation);
             } catch (ParseException pe) {
                 throw new ParseException(pe.getMessage());
             }
@@ -91,9 +93,10 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         case DELETE_MASTERY_CHECK:
             logger.info("DeleteCommandParser attempts to parse user's delete MasteryCheck input");
             Index masteryCheckIndex;
+            String indexParamMasteryCheck = split[0];
 
             try {
-                masteryCheckIndex = ParserUtil.parseIndex(split[0]);
+                masteryCheckIndex = ParserUtil.parseIndex(indexParamMasteryCheck);
             } catch (ParseException pe) {
                 throw new ParseException(pe.getMessage());
             }

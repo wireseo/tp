@@ -43,6 +43,5 @@ public class DeleteConsultationCommand extends DeleteCommand {
         model.deleteConsultation(consultationToDelete);
         return new CommandResult(String.format(MESSAGE_SUCCESS, consultationToDelete),
                 CommandTargetFeature.Consultations);
-
     }
 }
