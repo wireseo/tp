@@ -4,7 +4,8 @@
 ## Introduction
 **Jarvis** is a personal butler for CS1101S Avengers.
 It is named Jarvis because it is the personal assistant to CS1101S tutors who are called Avengers, just like how Jarvis is the personal assistant to Iron Man in the movie Avengers.
-* The project simulates an ongoing software project for a desktop application (called _Jarvis_) used for managing missions and quests deadlines, students' information, consultation and mastery check timings for CS1101S tutors.
+
+The project simulates an ongoing software project for a desktop application (called _Jarvis_) used for managing missions and quests deadlines, students' information, consultation and mastery check timings for CS1101S tutors.
   * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 10 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
   * It comes with a **reasonable level of user and developer documentation**.
 
@@ -12,8 +13,8 @@ It is named Jarvis because it is the personal assistant to CS1101S tutors who ar
 ![Ui](docs/images/Ui.png)
 
 ## Useful Links
-* User Guide (https://ay2021s1-cs2103t-w11-2.github.io/tp/UserGuide.html)
-* Developer Guide (https://ay2021s1-cs2103t-w11-2.github.io/tp/DeveloperGuide.html)
+* [User Guide](https://ay2021s1-cs2103t-w11-2.github.io/tp/UserGuide.html)
+* [Developer Guide](https://ay2021s1-cs2103t-w11-2.github.io/tp/DeveloperGuide.html)
 
 ## Documentation
 * For the detailed documentation of this project, see the **[Jarvis Product Website](https://ay2021s1-cs2103t-w11-2.github.io/tp/)**.
