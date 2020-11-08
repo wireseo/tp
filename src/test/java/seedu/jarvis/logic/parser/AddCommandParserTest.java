@@ -30,6 +30,7 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.add.AddCommand;
 import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.model.consultation.Consultation;
@@ -39,6 +40,46 @@ public class AddCommandParserTest {
     private static final String PREAMBLE_NON_EMPTY = "asdfasdf";
 
     private AddCommandParser parser = new AddCommandParser();
+
+    /**
+     * Test for invalid empty string input
+     */
+    @Test
+    public void parse_emptyStringInput_throwsParseException() {
+        assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_ADD_USAGE));
+    }
+
+    @Test
+    public void parse_invalidCommandFormat_throwsParseException() {
+        assertParseFailure(parser, "-2", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_ADD_USAGE));
+    }
+
+    /*
+    @Test
+    public void parseTodo_allFieldsPresent_success() {
+        Todo expectedTodo = new Todo(VALID_DESCRIPTION);
+        String userInput = TODO_PREFIX + " " + VALID_DESCRIPTION;
+        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedTodo));
+    }
+
+    @Test
+    public void parseEvent_allFieldsPresent_success() {
+        Event expectedEvent = new Event(VALID_DESCRIPTION, VALID_DATE_TIME);
+        String userInput = TODO_PREFIX + " " + VALID_DESCRIPTION + " "
+                + VALID_USERINPUT_DATE + " " + VALID_USERINPUT_TIME;
+        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedEvent));
+    }
+
+    @Test
+    public void parseDeadline_allFieldsPresent_success() {
+        Deadline expectedDeadline = new Deadline(VALID_DESCRIPTION, VALID_DATE_TIME);
+        String userInput = DEADLINE_PREFIX + " " + VALID_DESCRIPTION + " "
+                + VALID_USERINPUT_DATE + " " + VALID_USERINPUT_TIME;
+        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedDeadline));
+    }
+    */
 
     @Test
     public void parseConsultation_allFieldsPresent_success() {
