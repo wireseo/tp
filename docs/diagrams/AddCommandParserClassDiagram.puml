@@ -9,7 +9,7 @@ interface Parser<T> <<interface>> {
 
 class TaskCommandParser {
     /' Attributes '/
-    + DATE_FORMAT : String
+    <u>+ DATE_FORMAT : String
 
     /' Methods '/
     + parseTodo(String[], int)  : Todo
@@ -19,7 +19,7 @@ class TaskCommandParser {
 
 class ConsultationMasteryCheckCommandParser {
     /' Attributes '/
-    + DATE_FORMAT : String
+   <u> + DATE_FORMAT : String
 
     /' Methods '/
     + parseConsultation(String[], int)  : Consultation

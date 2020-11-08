@@ -1056,31 +1056,89 @@ testers are expected to do more *exploratory* testing.
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+      Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+1. Saving login details
 
-### Deleting a student
+   1. Successfully Edit the correct `username` and `password` upon launching the program.
+      Expected: `login.json` file saves most recent correct `username` and `password`.
 
-1. Deleting a student while all students are being shown
+1. Shutdown
 
-   1. Prerequisites: List all students using the `list` command. Multiple students in the list.
+   1. Click the cross button at top right side of window for WindowsOS, and top left side of window for MacOS.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Type `exit` command in the Command Box in GUI.
+      Expected: Stops and closes the program.
 
-   1. Test case: `delete 0`<br>
-      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.
+### Deleting a Consultation
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+1. Deleting a `Consultation` while all `Consultation`s are being shown
+
+   1. Prerequisites: List all `Consultation`s using the `view -c` command. Multiple `Consultation`s in the list.
+
+   1. Test case: `delete -c 1`<br>
+      Expected: First `Consultation` is deleted from the list. Details of the deleted `Consultation` shown in the status message. GUI `Consultation` list is immediately updated.
+
+   1. Test case: `delete -c 0`<br>
+      Expected: No `Consultation` is deleted. Error details shown in the status message. GUI `Consultation` list under `Consultation` tab remains the same.
+
+   1. Other incorrect delete commands to try: `delete`, `delete -c x`, `...` (where x is larger than the list size or smaller than 1)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Adding a Deadline
 
+1. Adding a `Deadline`
+
+   1. Test case: `add -d example deadline d/2020-12-12 t/17:55`<br>
+      Expected: A new `Deadline` is added to the end of the list. Details of the newly added `Deadline` shown in the status message. GUI `Task` list under the `Task` tab is immediately updated.
+      
+   1. Test case: `add -d d/2020-12-12 t/17:55`<br>
+      Expected: No `Deadline` is added due to missing description. Error details shown in the status message. GUI `Task` list remains the same.
+      
+   1. Other incorrect add commands to try: `add -d example deadline d/ t/17:55`, `add -d example deadline d/2020-02-31 t/20:20`, `...`<br>
+      Expected: Similar to previous due to incorrect date and time or missing input.
+
+### Viewing a Student
+
+1. View a `Student` while all `Student`s are being shown
+
+   1. Prerequisites: At least have 1 `Student` under the `Student` tab in GUI.
+
+   1. Test case: `view -s peter pan`<br>
+      Expected: Success message of viewing 1 `Student` is shown in the status message. `Student` with name `peter pan` is filtered and shown in the `Student` list on the GUI.
+
+   1. Test case: `view -s invalid name`<br>
+      Expected: No `Student` of such name is found. GUI displays empty `Student` list, showing "No Student" text.
+   
+   1. Test case: `view -s`<br>
+      Expected: Success message of viewing all `Student`s is shown in the status message. All `Student`s displayed in the GUI under the `Student` tab.
+   
+### Edit Login Details
+
+1. Edit `Username` and / or `Password`
+
+   1. Prerequisites: A tutor of CS1101S, to be able to log into Source Academy.
+   
+   1. Test case: `edit -l u/username p/password`, `edit -l u/username` or `edit -l p/password`<br>
+      Expected: Success message of editing username and password is shown in the status message. `username` and `password` saved to `login.json` file. Welcome message reflected on GUI.
+
+   1. Test case: `edit -l`, `edit -l t/password`, `...`<br>
+      Expected: Error message shown in the status message. GUI welcome message remains unchanged. `login.json` file remains unchanged.
+   
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Data file, `jarvis.json` is edited incorrectly manually while the program is running.
+      Expected: No harm is caused. Once program shuts down or a new command is inputted in GUI, `jarvis.json` is rewritten as per what is correct previously.
 
-1. _{ more test cases …​ }_
+   1. No Internet Connection while using the program.
+      Expected: No harm is caused. Changes are made and saved locally after the program is launched and the GUI is up. New modifications through using the program is still saved in `jarvis.json`.
+
+1. Autosave per command and on shutdown
+
+   1. Successful command inputted in GUI
+      Expected: `jarvis.json` is saved automatically after every successful command. Does not matter if the command affects `jarvis.json` file data or not.
+   
+   1. Unsuccessful command inputted in GUI
+      Expected: `jarvis,json` does not update or save automatically. The incorrect command is ignored.

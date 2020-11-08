@@ -5,7 +5,7 @@ hide circle
 
 abstract class AddCommand {
     /' Attributes '/
-    + COMMAND_WORD : String = "add"
+    <u>+ COMMAND_WORD : String = "add"
 
     /' Methods '/
     + {abstract} execute(model : Model) : CommandResult
@@ -13,9 +13,9 @@ abstract class AddCommand {
 
 class AddTaskCommand extends AddCommand {
     /' Attributes '/
-    + MESSAGE_SUCCESS : String
-    + MESSAGE_INVALID : String
-    + MESSAGE_DUPLICATE : String
+    <u>+ MESSAGE_SUCCESS : String
+    <u>+ MESSAGE_INVALID : String
+    <u>+ MESSAGE_DUPLICATE : String
 
     /' Methods '/
     + execute(model : Model) : CommandResult
@@ -23,8 +23,8 @@ class AddTaskCommand extends AddCommand {
 
 class AddConsultationCommand extends AddCommand {
     /' Attributes '/
-    + MESSAGE_SUCCESS : String
-    + MESSAGE_DUPLICATE : String
+    <u>+ MESSAGE_SUCCESS : String
+    <u>+ MESSAGE_DUPLICATE : String
 
     /' Methods '/
     + execute(model : Model) : CommandResult
@@ -32,8 +32,8 @@ class AddConsultationCommand extends AddCommand {
 
 class AddMasteryCheckCommand extends AddCommand {
     /' Attributes '/
-    + MESSAGE_SUCCESS : String
-    + MESSAGE_DUPLICATE : String
+    <u>+ MESSAGE_SUCCESS : String
+    <u>+ MESSAGE_DUPLICATE : String
 
     /' Methods '/
     + execute(model : Model) : CommandResult
@@ -54,7 +54,7 @@ interface Model {
 }
 
 abstract class Task {
-    - <u>taskNum: int</u>
+    <u>- taskNum: int
     + generateTaskId() : String
 }
 

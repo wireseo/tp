@@ -5,8 +5,8 @@ hide circle
 
 class AddXYZCommand {
     /' Attributes '/
-    + MESSAGE_SUCCESS: String
-    + MESSAGE_INVALID: String
+    <u>+ MESSAGE_SUCCESS: String
+    <u>+ MESSAGE_INVALID: String
 
     /' Methods '/
     + execute(model : Model) : CommandResult
@@ -47,7 +47,7 @@ class ReadOnlyAddressBook <<Interface>> {
 
 abstract class "{abstract}\nAddCommand"{
     /' Attributes '/
-    + MESSAGE_SUCCESS: String
+    <u>+ MESSAGE_SUCCESS: String
     /' Methods '/
     + {abstract} execute(model : Model) : CommandResult
 }
