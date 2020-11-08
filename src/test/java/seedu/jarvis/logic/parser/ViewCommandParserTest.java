@@ -1,8 +1,10 @@
 package seedu.jarvis.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.jarvis.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -95,6 +97,27 @@ public class ViewCommandParserTest {
     }
 
     @Test
+    public void parse_viewTodoList_success() throws ParseException {
+        ViewCommandParser parser = new ViewCommandParser();
+        Command command = parser.parse("-tt");
+        assertTrue(command instanceof ViewTaskListCommand);
+    }
+
+    @Test
+    public void parse_viewEventList_success() throws ParseException {
+        ViewCommandParser parser = new ViewCommandParser();
+        Command command = parser.parse("-te");
+        assertTrue(command instanceof ViewTaskListCommand);
+    }
+
+    @Test
+    public void parse_viewDeadlineList_success() throws ParseException {
+        ViewCommandParser parser = new ViewCommandParser();
+        Command command = parser.parse("-td");
+        assertTrue(command instanceof ViewTaskListCommand);
+    }
+
+    @Test
     public void parse_viewConsultationList_success() throws ParseException {
         ViewCommandParser parser = new ViewCommandParser();
         Command command = parser.parse("-c");
@@ -134,5 +157,17 @@ public class ViewCommandParserTest {
         ViewCommandParser parser = new ViewCommandParser();
         Command command = parser.parse("-mcp");
         assertTrue(command instanceof ViewPastMasteryChecksCommand);
+    }
+
+    @Test
+    public void parse_viewInvalidCommand_failure() {
+        ViewCommandParser parser = new ViewCommandParser();
+        assertThrows(ParseException.class, () -> parser.parse("-randomTag"));
+
+        try {
+            parser.parse("-randomTag");
+        } catch (ParseException pe) {
+            assertEquals(pe.getMessage(), String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
+        }
     }
 }
