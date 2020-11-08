@@ -332,6 +332,8 @@ the different flags that `DeleteCommand` can parse. We use the `Flag` class to c
 the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
 the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
 and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
+The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a String to store identifiers instead;
+however, they are similar in how they operate and interact with the rest of the system.
 
 ### Path Execution of DeleteConsultationCommand
 As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
@@ -348,7 +350,7 @@ The sequence diagram for the `DeleteConsultationCommand` is shown below:
 ![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
 
 The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the arguments to the `DeleteCommandParser` object.
-The `DeleteCommandParser`, after parsing the arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
+The `DeleteCommandParser`, after parsing the necessary arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
 This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the `DeleteConsultationCommand` object.
 In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified
 consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message
