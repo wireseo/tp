@@ -13,12 +13,12 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
     - [1.1 Introduction](#11-introduction)
     - [1.2 Purpose](#12-purpose)
 2. [About the User Guide](#2-about-the-user-guide)
-3. [Quick Start](#3-quick-start)
+3. [Quick start](#3-quick-start)
 4. [Navigating Jarvis](#4-navigating-jarvis)
     - [4.1 UI Layout](#41-ui-layout)
 5. [Logging into Jarvis](#5-logging-into-jarvis)
 6. [Features](#6-features)
-    - [6.1 General Notes about Command Format](#61-general-notes-about-command-format)
+    - [6.1 General notes about command format](#61-general-notes-about-command-format)
     - [6.2 Viewing help : `help`](#62-viewing-help--help)
     - [6.3 Adding Information : `add`](#63-adding-information--add)
         * [6.3.1 Adding Todos : `add -t`](#631-adding-todos--t)
@@ -27,26 +27,26 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
         * [6.3.4 Adding Consultations : `add -c`](#634-adding-consultations---c)
         * [6.3.5 Adding Mastery Checks : `add -mc`](#635-adding-mastery-checks---mc)
     - [6.4 Editing Information : `edit`](#64-editing-information--edit)
-        * [6.4.1 Editing Login Information : `edit -l`](#641-editing-login-information---l)
-        * [6.4.2 Editing Student Information : `edit -s`](#642-editing-student-information---s)
+        * [6.4.1 Editing Login information : `edit -l`](#641-editing-login-information---l)
+        * [6.4.2 Editing Student information : `edit -s`](#642-editing-student-information---s)
         * [6.4.3 Editing Mastery Checks : `edit -mc`](#643-editing-mastery-checks---mc)
     - [6.5 Deleting Information : `delete`](#65-deleting-information--delete)
         * [6.5.1 Deleting Tasks : `delete -t`](#651-deleting-tasks---t)
         * [6.5.2 Deleting Consultations : `delete -c`](#652-deleting-consultations---c)
         * [6.5.3 Deleting Mastery Checks : `delete -mc`](#653-deleting-mastery-checks---mc)
     - [6.6 Viewing Information : `view`](#66-viewing-information--view)
-        * [6.6.1 Viewing a list of all students : `view -s`](#661-viewing-a-list-of-all-students---s)
-        * [6.6.2 Viewing one student : `view -s NAME`](#662-viewing-one-student---s-name)
-        * [6.6.3 Viewing all consultation sessions : `view -c`](#663-viewing-all-consultation-sessions---c)
-        * [6.6.4 Viewing past consultation sessions: `view -cp`](#664-viewing-past-consultation-sessions---cp)
-        * [6.6.5 Viewing upcoming consultation sessions: `view -cu`](#665-viewing-upcoming-consultation-sessions---cu)
-        * [6.6.6 Viewing all Mastery Check sessions: `view -mc`](#666-viewing-all-mastery-check-sessions---mc)
-        * [6.6.7 Viewing past Mastery Check sessions: `view -mcp`](#667-viewing-past-mastery-check-sessions--mcp)
-        * [6.6.8 Viewing upcoming Mastery Check sessions: `view -mcu`](#668-viewing-upcoming-mastery-check-sessions--mcu)
-        * [6.6.9 Viewing deadline for missions: `view -m`](#669-viewing-deadline-for-missions---m)
-        * [6.6.10 Viewing deadline for quests: `view -q`](#6610-viewing-deadline-for-quests---q)
-        * [6.6.11 Viewing ungraded missions: `view -um`](#6611-viewing-ungraded-missions---um)
-        * [6.6.12 Viewing ungraded quests: `view -uq`](#6612-viewing-ungraded-quests---uq)
+        * [6.6.1 Viewing a list of all Students : `view -s`](#661-viewing-a-list-of-all-students---s)
+        * [6.6.2 Viewing one Student : `view -s NAME`](#662-viewing-one-student---s-name)
+        * [6.6.3 Viewing all Consultations: `view -c`](#663-viewing-all-consultation-sessions---c)
+        * [6.6.4 Viewing past Consultations: `view -cp`](#664-viewing-past-consultation-sessions---cp)
+        * [6.6.5 Viewing upcoming Consultations: `view -cu`](#665-viewing-upcoming-consultation-sessions---cu)
+        * [6.6.6 Viewing all Mastery Checks: `view -mc`](#666-viewing-all-mastery-check-sessions---mc)
+        * [6.6.7 Viewing past Mastery Checks: `view -mcp`](#667-viewing-past-mastery-check-sessions--mcp)
+        * [6.6.8 Viewing upcoming Mastery Checks: `view -mcu`](#668-viewing-upcoming-mastery-check-sessions--mcu)
+        * [6.6.9 Viewing deadline for Missions: `view -m`](#669-viewing-deadline-for-missions---m)
+        * [6.6.10 Viewing deadline for Quests: `view -q`](#6610-viewing-deadline-for-quests---q)
+        * [6.6.11 Viewing ungraded Missions: `view -um`](#6611-viewing-ungraded-missions---um)
+        * [6.6.12 Viewing ungraded Quests: `view -uq`](#6612-viewing-ungraded-quests---uq)
         * [6.6.13 Viewing all Tasks: `view -t`](#6613-viewing-all-tasks---t)
         * [6.6.14 Viewing all Todos: `view -tt`](#6614-viewing-all-todos---tt)
         * [6.6.15 Viewing all Events: `view -te`](#6615-viewing-all-events---te)
@@ -145,12 +145,12 @@ this box.
 
 #### 4.1.1 Top Bar
    * The top bar includes the following components.
-        1. Summary information - A quick summary indicating the number of ungraded missions and quests, upcoming
-           consultations and mastery checks as well as outstanding tasks in Jarvis. Do note that graded missions and
-           quests, as well as past consultations and mastery checks will not be indicated.
+        1. Summary information - A quick summary indicating the number of ungraded `Missions` and `Quests`, upcoming
+           `Consultations` and `Mastery Checks` as well as outstanding `Tasks` in Jarvis. Do note that graded `Missions` and
+           `Quests`, as well as past `Consultations` and `Mastery Checks`, will not be indicated.
         1. Greeting message - A welcome message for you. If you are not logged in, this message will prompt you to do
          so.
-        1. Weekly topic and Today's date - The week count for the semester, together with the topic for the week and
+        1. Weekly topic and today's date - The week count for the semester, together with the topic for the week and
          today's date.
         1. Shortcut icons - These icons are positioned here for your convenience to quickly navigate to Source Academy
          with the blue diamond on the left, and Jarvis' user guide with the white book icon on the right.
@@ -162,7 +162,7 @@ this box.
 
    * A text input box for all user commands to be keyed in. You may refer to a detailed guide on the various commands
     available in Jarvis. Hit the enter key to execute the inputted command.
-     
+
 #### 4.1.3 Feedback Box
 
    * A box that shows the corresponding feedback to the user according to the commands keyed in. If the command is
@@ -170,16 +170,14 @@ this box.
 
 #### 4.1.4 Information Panel
    * A detailed list of information that corresponds to the tab selected in the Tab Switcher on the left of the
-    Graphical User Interface(GUI).
+    Graphical User Interface (GUI).
 
 #### 4.1.5 Tab Switcher
 
-   * The tab switcher contains clearly marked tabs: `Student`, `Mission`, `Quest
-   `, `Consultation`, `Mastery
-    Check`, `Task`.
+   * The tab switcher contains clearly marked tabs: `Student`, `Mission`, `Quest`, `Consultation`, `Mastery Check`, `Task`.
    * `Todo`, `Event` and `Deadline` are all variants of `Task`.
    * Clicking on each tab will give you the information you require for that field.
-   * The icons correspond respectively to the Sourceacademy and User Guide (this) websites.
+   * The icons correspond respectively to the Source Academy and User Guide (this) websites.
 
 <br>
 
@@ -234,7 +232,7 @@ Source Academy will be visible to you.
 
 #### 6.1.2 Notes about Jarvis' relationship with Source Academy
    * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
-   * Luminus username and passwords will be stored in plaintext.
+   * LumiNUS username and passwords will be stored in plaintext.
 
 #### 6.1.3 Notes about `Tasks`
    * Each `Task` you create, be it `Todo`, `Event` or `Deadline`, there will be an unique ID assigned to each of them, so
@@ -337,12 +335,12 @@ At least one of the optional parameters must be provided.
 <div markdown="block" class="alert alert-info">
 
 * Do note that it takes a load time of around ~5 seconds after entering this command for the changes from Source Academy to be reflected in the GUI.
-* After the students, missions and quests have loaded, take note that the `Telegram` and `Email` fields of the student are placeholder values.
-* This is because Source Academy does not contain these 2 fields of any student. Editing the student details will save the updated values.
+* After the `Students`, `Missions` and `Quests` have loaded, take note that the `Telegram` and `Email` fields of the `Student` are placeholder values.
+* This is because Source Academy does not contain these 2 fields of any `Student`. Editing the `Student` details will save the updated values.
 * After a TA account has been used to log in and fetch the information, logging in with a non-TA account will not change the information displayed
 as we choose to give you the benefit of doubt of keying in the wrong login details.
-* Whenever a TA account is used to log in, the information will always be updated to reflect the logged in TA's student,
-mission and quest information.
+* Whenever a TA account is used to log in, the information will always be updated to reflect the logged in TA's `Student`,
+`Mission` and `Quest` information.
 </div>
 
 #### 6.4.2 Editing `Student` Information : `-s`
@@ -387,7 +385,7 @@ Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
 
 #### 6.5.1 Deleting `Tasks` : `-t`
 
-Deletes a task based on the `TASK_ID` you specify.
+Deletes a `Task` based on the `TASK_ID` you specify.
 <br>**Format: `delete -t TASK_ID`**
 <br>Examples:
 * `delete -t T3`
@@ -399,7 +397,7 @@ Deletes a task based on the `TASK_ID` you specify.
 
 #### 6.6.1 Viewing a list of all `Students` : `-s`
 
-Shows a list of all students under the tutor in Jarvis.
+Shows a list of all `Students` under the tutor in Jarvis.
 Please take note of the command inputted into the command box to understand how the respective commands are inputted.
 
 <br>**Format: `view -s`**
@@ -410,7 +408,7 @@ You may also click on the `Student` tab to do so.
 
 #### 6.6.2 View `Student` with keyword : `-s [NAME]`
 
-Shows all students that match(partial and full) the student name entered after the command. The name is case-sensitive.
+Shows all `Students` that match (partial and full) the name entered after the command. The name is case-sensitive.
 An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 <br>**Format: `view -s [NAME]`**
 <br>Examples:
@@ -420,7 +418,7 @@ An example of a partial match will be `view -s do` resulting in John Doe being d
 
 #### 6.6.3 Viewing deadline for Missions : `-m`
 
-Shows the deadline for the current mission(s).
+Shows the deadline for the current `Missions`.
 <br>**Format: `view -m`**
 
 You may also click on the `Mission` tab to do so.
@@ -438,7 +436,7 @@ Shows the `Missions` that you have not yet graded.
 
 #### 6.6.5 Viewing deadline for `Quests` : `-q`
 
-Shows the deadline for the current `Quest`(s).
+Shows the deadline for the current `Quests`.
 <br>**Format: `view -q`**
 
 You may also click on the `Quest` tab to do so.
@@ -466,7 +464,7 @@ Shows all past `Consultation` sessions.
 <br>Examples:
 * `view -cp`
 
-When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
 
 #### 6.6.9 Viewing upcoming `Consultation` sessions : `-cu`
 
@@ -500,7 +498,7 @@ Shows all past `Mastery Check` sessions.
 
 <div markdown="block" class="alert alert-info">
 
-When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered as a past consultation.
+When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
 </div>
 
 #### 6.6.12 Viewing upcoming `Mastery Check` sessions : `mcu`
@@ -520,7 +518,7 @@ When you switch to another command, such as `view -mc` or `view -mcp`, and then 
 #### 6.6.13 Viewing all `Tasks` : `-t`
 
 Shows the list of all your current `Tasks`.
-This includes `Todo`, `Event` and `Deadline` are all considered tasks.
+This includes `Todo`, `Event` and `Deadline`, which are all considered `Tasks`.
 <br>**Format: `view -t`**
 
 You may also click on the `Task` tab to do so.
@@ -620,7 +618,7 @@ are likely to change frequently and hence, will not need to be persisted.
 
 ## 8. Glossary
 ### 8.1 Difference Between `Consultations` and `Mastery Checks`
-`Mastery Checks` are a specific type of `Consultations` that is mandatory and graded in CS1101S, unlike normal consultations, and thus are displayed in separate tabs in Jarvis.
+`Mastery Checks` are a specific type of `Consultations` that is mandatory and graded in CS1101S, unlike normal `Consultations`, and thus are displayed in separate tabs in Jarvis.
 
 
 ## 9. FAQ
