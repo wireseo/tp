@@ -274,7 +274,7 @@ You will have to edit them using the [Editing Student Information](#642-editing-
    <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
 
 #### 6.1.2 Notes about Jarvis' relationship with Source Academy
-   * Students’ names that are under the Avenger will be fetched automatically from sourceacademy.nus.edu.sg upon startup.
+   * Students’ names that are under the Avenger will be fetched automatically from [sourceacademy.nus.edu.sg](sourceacademy.nus.edu.sg) upon startup.
    * LumiNUS username and passwords will be stored in plaintext.
 
 #### 6.1.3 Notes about `Tasks`
