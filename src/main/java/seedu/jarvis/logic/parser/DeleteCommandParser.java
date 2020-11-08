@@ -54,7 +54,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             commandFlag = ParserUtil.parseFlag(flagInput);
         } catch (ParseException ex) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_INVALID_ID));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
         String editArgs = String.join(" ", Arrays.copyOfRange(inputsAfterCommandType, 1,
