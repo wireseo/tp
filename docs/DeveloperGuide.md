@@ -362,7 +362,7 @@ The following diagram shows the overview of `AddCommand` Class Diagram which has
 ### Add Task Feature
 In this section, we will introduce how the `Add Task Feature` works. We can add 3 different types of tasks, namely
 `Todo`, `Event` and `Deadline`.
-* `Todo` is a basic simple tasks that is usually not constrained by time; `Event` is
+* `Todo` is a basic simple task that is usually not constrained by time; `Event` is
 a task that requires completion at a particular point in time; `Deadline` is a task that requires completion before a
 particular point in time.
 
