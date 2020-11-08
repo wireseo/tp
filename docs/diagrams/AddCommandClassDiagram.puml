@@ -3,66 +3,80 @@ skinparam backgroundColor #ffffff
 skinparam classAttributeIconSize 0
 hide circle
 
-class AddXYZCommand
+class AddXYZCommand {
+    /' Attributes '/
+    + MESSAGE_SUCCESS: String
+    + MESSAGE_INVALID: String
+
+    /' Methods '/
+    + execute(model : Model) : CommandResult
+}
 
 abstract class "{abstract}\nCommand" {
     + {abstract} execute(model : Model) : CommandResult
 }
 
 class Model <<Interface>> {
+    /' Methods '/
+    + hasXYZ(xyz) : boolean
+    + addXYZ(xyz) : void
+}
+
+class ModelManager {
     /' Attributes '/
     - FilteredList<Student> filteredStudents
     - FilteredList<Mission> filteredMissions
     - FilteredList<Quest> filteredQuests
     - FilteredList<Task> filteredTasks
+    - FilteredList<Consultation> filteredConsultations
+    - FilteredList<MasteryCheck> filteredMasteryChecks
 
     /' Methods '/
-    + hasXYZ(xyz)
-    + addXYZ(xyz)
+    + hasXYZ(xyz) : boolean
+    + addXYZ(xyz) : void
 }
 
-class ReadOnlyAddressBook {
+class ReadOnlyAddressBook <<Interface>> {
     + getMissionList() : ObservableList<Mission>
     + getQuestList() : ObservableList<Quest>
     + getStudentList() : ObservableList<Student>
     + getTaskList() : ObservableList<Task>
+    + getConsultationList() : ObservableList<Consultation>
+    + getMasteryCheckList() : ObservableList<MasteryCheck>
 }
 
 abstract class "{abstract}\nAddCommand"{
+    /' Attributes '/
+    + MESSAGE_SUCCESS: String
     /' Methods '/
-    + execute(model : Model) : CommandResult
+    + {abstract} execute(model : Model) : CommandResult
 }
 
-class AddCommandParser implements Parser {
-    /' Methods '/
-    + parse(args : String) : AddCommand
-}
+"{abstract}\nAddCommand" -up-|> "{abstract}\nCommand"
 
-interface Parser<T> <<interface>> {
-    parse(userInput : String) : AddCommand
-}
-
-class Flag {
-    + getFlag(): String
-    + isValidFlag(): boolean
-}
-
-class AddXYZParser
-
-"{abstract}\nAddCommand" <..left AddCommandParser
-"{abstract}\nAddCommand" ..> Model
-Model ..> ReadOnlyAddressBook
-"{abstract}\nAddCommand" --up|> "{abstract}\nCommand"
-AddCommandParser ..> Flag
+"{abstract}\nAddCommand" .down.> Model
 
 AddXYZCommand -right-|> "{abstract}\nAddCommand"
-AddXYZParser -left-> AddCommandParser
+AddXYZCommand ..> Model
+
+ModelManager -up-|> Model
+ModelManager .down.> ReadOnlyAddressBook
 
 note as N1
-  <size: 11><u>examples:</u>
-  <size: 11>hasTodo(todo),</size>
-  <size: 11>addStudent(student)</size>
+  <size: 12><u>Note:</u>
+  <size: 11>ModelManager first checks if ReadOnlyAddressBook
+  <size: 11>has duplicate item using <u>hasXYZ(xyz)</u> before storing
+  <size: 11> storing the item to ReadOnlyAddressBook using
+  <size: 11> <u>addXYZ(xyz)</u>.
 end note
 
-N1 .right. Model
+note as N2
+    <size: 11><u>AddXYZCommand:</u>
+    <size: 11>AddConsultationCommand,
+    <size: 11>AddTaskCommand, etc
+end note
+
+N1 .right. ModelManager
+N2 .up. AddXYZCommand
+
 @enduml
