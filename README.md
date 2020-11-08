@@ -12,8 +12,8 @@ It is named Jarvis because it is the personal assistant to CS1101S tutors who ar
 ![Ui](docs/images/Ui.png)
 
 ## Useful Links
-* User Guide (docs/UserGuide.md)
-* Developer Guide (docs/DeveloperGuide.md)
+* User Guide (https://ay2021s1-cs2103t-w11-2.github.io/tp/UserGuide.html)
+* Developer Guide (https://ay2021s1-cs2103t-w11-2.github.io/tp/DeveloperGuide.html)
 
 ## Documentation
 * For the detailed documentation of this project, see the **[Jarvis Product Website](https://ay2021s1-cs2103t-w11-2.github.io/tp/)**.

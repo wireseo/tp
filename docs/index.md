@@ -12,8 +12,8 @@ title: Jarvis
 
 While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
-* If you are interested in using Jarvis, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing Jarvis, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+* If you are interested in using Jarvis, head over to the [_Quick Start_ section of the **User Guide**](https://ay2021s1-cs2103t-w11-2.github.io/tp/UserGuide.html#3-quick-start).
+* If you are interested about developing Jarvis, the [**Developer Guide**](https://ay2021s1-cs2103t-w11-2.github.io/tp/DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**
