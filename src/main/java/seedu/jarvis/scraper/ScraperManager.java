@@ -430,9 +430,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
                 return;
             }
             model.setGreeting(greeting);
-//            model.setMissions(missions);
-//            model.setQuests(quests);
-//            model.setStudents(students);
+            model.setMissions(missions);
+            model.setQuests(quests);
+            model.setStudents(students);
 
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException e) {
