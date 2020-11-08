@@ -239,8 +239,15 @@ An example of the command being inputted:
 
 ![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
-Within the green rectangle box, Jarvis will notify you if the login was successful. Upon success, all information from
-Source Academy will be visible to you.
+### 5.3 Updated Details Summary
+Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered. 
+The username and password are covered with a red rectangle for this diagram only to protect the Avenger's account security.
+You will be able to see the login details you entered.
+
+### 5.4 Updated Student Information
+Upon success, all information from Source Academy will be visible to you. The student information tab will display you student information.
+The `Telegram` and `E-mail` fields are test values as these information are not available on Source Academy.
+You will have to edit them using the [Editing Student Information](#642-editing-student-information---s) command below.
 
 --------------------------------------------------------------------------------------------------------------------
 

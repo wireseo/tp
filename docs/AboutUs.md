@@ -18,7 +18,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/peironggg.png" width="200px">
 
 [[github](http://github.com/peironggg)]
-[[portfolio](team/peironggg.md)]
+[[portfolio](team/[CS2103T-W11-2][WU PEIRONG]PPP.pdf.md)]
 
 * Role: Developer
 * Responsibilities: API + Student Features
