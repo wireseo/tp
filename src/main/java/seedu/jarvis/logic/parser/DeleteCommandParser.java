@@ -25,8 +25,9 @@ import seedu.jarvis.model.flag.Flag;
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
     private static final Logger logger = LogsCenter.getLogger(DeleteCommandParser.class);
-    private static final String EMPTY_DELETE_COMMAND = "Please enter an index number after the command. e.g. delete "
-            + "-mc 1";
+    private static final String EMPTY_DELETE_COMMAND = "Please enter an index or id after the command. e.g. delete "
+            + "-mc 1, delete -c 2, or delete -t T1";
+    private static final String VALID_INDEX_MSG = "Please enter a valid index or id after the command.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
@@ -82,9 +83,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             try {
                 consultationIndex = ParserUtil.parseIndex(split[0]);
             } catch (ParseException pe) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                                DeleteConsultationCommand.MESSAGE_DELETE_CONSULTATION_USAGE), pe);
+                throw new ParseException(pe.getMessage());
             }
 
             return new DeleteConsultationCommand(consultationIndex);
@@ -96,9 +95,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             try {
                 masteryCheckIndex = ParserUtil.parseIndex(split[0]);
             } catch (ParseException pe) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                                DeleteMasteryCheckCommand.MESSAGE_DELETE_MASTERY_CHECK_USAGE), pe);
+                throw new ParseException(pe.getMessage());
             }
 
             return new DeleteMasteryCheckCommand(masteryCheckIndex);
