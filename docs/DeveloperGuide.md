@@ -130,8 +130,9 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores a `UserLogin` object that represents the user's Source Academy login details.
+* stores the DATA_CLASS - `Mission`, `Quest`, `Task`, `MasterCheck`, `Consultation` - in the addressbook.
+* exposes unmodifiable `ObservableList<DATA_CLASS>` for each DATA_CLASS that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
 
@@ -150,6 +151,7 @@ The `Model`,
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
+* can save `UserLogin` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
 ### Scraper component
@@ -160,8 +162,8 @@ The `Storage` component,
 
 The `Scraper` component,
 * reads user login information from the `UserLogin` object passed to it.
-* can scrape `Source Academy`(https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
-* can save the scraped information to `Model`
+* uses the _Chrome_Driver_ package to scrape [Source Academy](https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
+* can save the scraped information to `Model`.
 
 ### Common classes
 
@@ -173,26 +175,36 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 ## **Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
+This section describes some noteworthy details on how certain key features have been implemented.
 
-### Get Missions Feature
-In this section, we will introduce how the `Get Missions Feature` works. We will do so through showing the expected path-execution
+### Login
+In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
 </div>
 
-![Path Diagram of Get Missions](images/GetMissionsPathDiagram.png)
+#### What is the login process
+Login is a series of method calls that any new user who uses Jarvis has to go through. It is carried out by `ScraperManager` and involves fetching information from Source Academy through the use of a headless browser, _Chrome_Driver_.
 
-![Sequence Diagram of Get Missions](images/GetMissionsSequenceDiagram.png)
+#### Structure of login process
+The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the login process.
 
-* The strange-looking string within the `XPath.by(...)` is a HTML descriptor for the HTML element that corresponds to each individual mission on SA.
-* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on SA that matches the HTML descriptor we passed in.
-* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could of size 0 if there are no active missions that day.
+![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
 
- <div markdown="span" class="alert alert-info">:information_source: **Note:** We discussed the workings of the getMissions() method here. In practice, the getStudents() and getQuests() methods work off a similar principle.
- </div>
+#### Path Diagram of login process
+The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
+The login process is kickstarted whenever Jarvis is launched or the login details are edited.
 
+![Path Diagram of login process](images/LoginPathDiagram.png)
+
+![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
+
+* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
+* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on Source Academy that matches the HTML descriptor we passed in.
+* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could be of size 0 if there are no active missions that day.
+* `startScraping()` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
+* In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
 <div style="page-break-after: always"></div>
 
 ## View Command
@@ -355,6 +367,35 @@ consultation from the list of consultations stored in Jarvis. When completed, th
 to the `LogicManager`, indicating that the command execution is a success.
 
 The other `DeleteCommand` subclasses work similarly to this as well.
+=======
+## Edit Command
+### What is Edit Command
+The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
+
+### Structure of Edit Command
+The following diagram shows the overview of the EditCommand Class Diagram:
+
+![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
+
+* Upon parsing user input to the correct `EditCommand` (ie. `EditXYZCommand`) which is done by the `EditCommandParser`, the
+correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresponding list in `Model` class.
+* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
+
+### Path Diagram of EditLoginCommand
+
+![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
+
+There are 3 `EditCommand` sub classes - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
+We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of 'ViewMissionDeadlineCommand'.
+The other `EditCommand` sub classes will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
+
+### Sequence Diagram of EditLoginCommand
+
+![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
+
+The sequence of method calls are highly similar to that for the `ViewCommand` above. What is of note is the additional call to `Scraper`.
+This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
