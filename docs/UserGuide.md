@@ -112,8 +112,8 @@ This section aims to remind you of the important parts to take note of while rea
 When reading this user guide, various symbols may appear occasionally to draw your attention to important information.
 The meaning for each symbol is as follows:
 
-Symbol | Meaning 
--------| ------------ 
+Symbol | Meaning
+-------| ------------
  ⚠️    | This symbol indicates that there is something important for you to take note of.
  ✏️   | This symbol indicates that an example is provided.
 

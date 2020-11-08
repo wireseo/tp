@@ -24,6 +24,7 @@ import seedu.jarvis.model.flag.Flag;
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
+    public static final String MESSAGE_INVALID_ID = "Task ID provided is not correct.";
     private static final Logger logger = LogsCenter.getLogger(DeleteCommandParser.class);
     private static final String EMPTY_DELETE_COMMAND = "Please enter an index or id after the command. e.g. delete "
             + "-mc 1, delete -c 2, or delete -t T1";
@@ -69,14 +70,15 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         switch(commandFlag.getFlag()) {
         case DELETE_TASK:
             logger.info("DeleteCommandParser attempts to parse user's delete Task input");
-            try {
-                String taskId = TaskCommandParser.parseDeleteTask(inputsAfterCommandType);
-                return new DeleteTaskCommand(taskId);
-
-            } catch (ParseException pe) {
+            if (inputsAfterCommandType.length != 2) {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_DELETE_TASK_USAGE), pe);
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_DELETE_TASK_USAGE));
+
+            } else {
+                String taskId = inputsAfterCommandType[1];
+                return new DeleteTaskCommand(taskId);
             }
+
         case DELETE_CONSULTATION:
             logger.info("DeleteCommandParser attempts to parse user's delete Consultation input");
             Index consultationIndex;
