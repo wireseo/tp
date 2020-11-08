@@ -472,16 +472,14 @@ Shows the deadline for the current `Missions`.
 
 You may also click on the `Mission` tab to do so.
 
-![FetchMission](images/userguide/viewMissions.png)
-
-![FetchQuest](images/userguide/viewQuests.png)
+![ViewMissionDeadline](images/userguide/viewMissionDeadline.png)
 
 #### 6.6.4 Viewing ungraded `Missions` : `-um`
 
 Shows the `Missions` that you have not yet graded.
 <br>**Format: `view -um`**
 
-![ViewUngradedMissions](images/userguide/viewUngradedMissions.png)
+![ViewUngradedMissions](images/userguide/viewUngradedMission.png)
 
 #### 6.6.5 Viewing deadline for `Quests` : `-q`
 

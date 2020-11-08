@@ -101,7 +101,7 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
         Platform.runLater(() -> {
             String greeting = "";
 
-            // Only fetch name if name in addressbook is empty
+            // Only fetch name if name if addressbook is empty
             if (!model.hasGreeting()) {
                 greeting = getGreeting();
             }
@@ -430,9 +430,9 @@ public class ScraperManager implements Scraper, PropertyChangeListener {
                 return;
             }
             model.setGreeting(greeting);
-            model.setMissions(missions);
-            model.setQuests(quests);
-            model.setStudents(students);
+//            model.setMissions(missions);
+//            model.setQuests(quests);
+//            model.setStudents(students);
 
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException e) {
