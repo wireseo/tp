@@ -61,7 +61,7 @@ The rest of Jarvis consists of five components.
 * [**`Logic`**](#logic-component): The command executor.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
-* [**`Scraper`**](#scraper-component): Scrapes https://sourceacademy.nus.edu.sg for course-info.
+* [**`Scraper`**](#scraper-component): Scrapes [https://sourceacademy.nus.edu.sg](https://sourceacademy.nus.edu.sg) for course-info.
 
 Each of the five components,
 
