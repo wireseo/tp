@@ -1,6 +1,8 @@
 package seedu.jarvis.model.consultation;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Objects;
 
 /**
@@ -26,6 +28,10 @@ public class Consultation {
 
     public LocalDateTime getDateAndTime() {
         return dateAndTime;
+    }
+
+    public String getFormattedDateTime() {
+        return dateAndTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
     }
 
     public String getIdentifier() {

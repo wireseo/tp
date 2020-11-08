@@ -28,7 +28,7 @@ public abstract class AddCommand extends Command {
     public static final String MESSAGE_WRONG_DATETIME_FORMAT = "The date time format is incorrect. Correct format: "
             + "d/YYYY-MM-DD t/HH:MM";
     public static final String MESSAGE_INVALID_DATETIME = "The provided date and time is incorrect.\nBe careful of "
-            + "leap years and the number of days in a specific month";
+            + "leap years, number of months in a year and the number of days in a specific month.";
 
     public abstract CommandResult execute(Model model) throws CommandException;
 
