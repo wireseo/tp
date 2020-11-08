@@ -30,6 +30,7 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.jarvis.logic.commands.add.AddCommand;
 import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.model.consultation.Consultation;
@@ -39,6 +40,21 @@ public class AddCommandParserTest {
     private static final String PREAMBLE_NON_EMPTY = "asdfasdf";
 
     private AddCommandParser parser = new AddCommandParser();
+
+    /**
+     * Test for invalid empty string input
+     */
+    @Test
+    public void parse_emptyStringInput_throwsParseException() {
+        assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_ADD_USAGE));
+    }
+
+    @Test
+    public void parse_invalidCommandFormat_throwsParseException() {
+        assertParseFailure(parser, "-2", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_ADD_USAGE));
+    }
 
     @Test
     public void parseConsultation_allFieldsPresent_success() {
