@@ -278,9 +278,9 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 <div style="page-break-after: always"></div>
 
 ## View Command
-In this section, we will introduce the View Command. It will show the structure of the ViewCommand class and the ViewCommandParser
-class, as well as the path diagram and sequence diagram of the ViewMissionDeadlineCommand to capture the interactions between
-the ViewMissionDeadlineCommand and other object classes.
+In this section, we will introduce the View Command. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
+class, as well as the path diagram and sequence diagram of the `ViewMissionDeadlineCommand` to capture the interactions between
+the `ViewMissionDeadlineCommand` and other object classes.
 
 ### What is ViewCommand
 `ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
