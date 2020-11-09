@@ -338,18 +338,19 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 Adds your personal `Todo` with a `description`.
 <br>**Format: `add -t DESCRIPTION`**
 
-![AddTodo](images/userguide/addTodo.png)
-
 <br>✏️ Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
+
+<div markdown="block" class="alert alert-info">
+
+The way to input is similar to the screenshot of adding `Mastery Check` above, only without the date and time.
+</div>
 
 #### 6.3.4 Adding `Events` : `-e`
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
-
-![AddEvent](images/userguide/addEvent.png)
 
 <br>✏️ Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
@@ -357,7 +358,7 @@ Adds your personal `Event` with a `description`, to attend at a specific `date` 
 
 <div markdown="block" class="alert alert-info">
 
-An `Event` requires extra `date` and `time` specifications in order to create.
+An `Event` requires extra `date` and `time` specifications in order to create. The way to input is similar to the screenshot of adding `Mastery Check` above.
 </div>
 
 #### 6.3.5 Adding `Deadlines` : `-d`
@@ -365,15 +366,13 @@ An `Event` requires extra `date` and `time` specifications in order to create.
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
 
-![AddDeadline](images/userguide/addDeadline.png)
-
 <br>✏️ Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
 
 <div markdown="block" class="alert alert-info">
 
-Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create.
+Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create. You can refer to the screenshot of adding `Mastery Check` above for a real-life example of how the command would look like.
 </div>
 
 
@@ -516,8 +515,6 @@ You may also click on the `Quest` tab to do so.
 #### 6.6.6 Viewing ungraded `Quests` : `-uq`
 
 Shows the `Quests` that you have not yet graded.
-
-![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
 
 <br>**Format: `view -uq`**
 
