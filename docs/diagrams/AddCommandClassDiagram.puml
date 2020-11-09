@@ -23,14 +23,6 @@ class Model <<Interface>> {
 }
 
 class ModelManager {
-    /' Attributes '/
-    - FilteredList<Student> filteredStudents
-    - FilteredList<Mission> filteredMissions
-    - FilteredList<Quest> filteredQuests
-    - FilteredList<Task> filteredTasks
-    - FilteredList<Consultation> filteredConsultations
-    - FilteredList<MasteryCheck> filteredMasteryChecks
-
     /' Methods '/
     + hasXYZ(xyz) : boolean
     + addXYZ(xyz) : void
