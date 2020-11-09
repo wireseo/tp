@@ -303,6 +303,8 @@ Shows a message explaining how to access the help page.
 Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
 
+![AddConsultations](images/userguide/addConsultation.png)
+
 <br>✏️ Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
@@ -313,12 +315,12 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit. However, it may not be left empty.
 * Because date and time is considered in order, the d/ prefix must come earlier than t/.
 
-![AddConsultations](images/userguide/addConsultation.png)
-
 #### 6.3.2 Adding `Mastery Checks` : `-mc`
 
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
+
+![AddMasteryChecks](images/userguide/addMasteryCheck.png)
 
 <br>✏️ Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
@@ -331,46 +333,46 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 * Because date and time is considered in order, the d/ prefix must come earlier than t/.
 * When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
 
-![AddMasteryChecks](images/userguide/addMasteryCheck.png)
-
 #### 6.3.3 Adding `Todos` : `-t`
 
 Adds your personal `Todo` with a `description`.
 <br>**Format: `add -t DESCRIPTION`**
+
 <br>✏️ Examples:
 * `add -t Clear the bin`
 * `add -t Return calculator to Mary`
 
-![AddTodo](images/userguide/addTodo.png)
+<div markdown="block" class="alert alert-info">
+
+The way to input is similar to the screenshot of adding `Mastery Check` above, only without the date and time.
+</div>
 
 #### 6.3.4 Adding `Events` : `-e`
 
 Adds your personal `Event` with a `description`, to attend at a specific `date` and `time`.
 <br>**Format: `add -e DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
+
 <br>✏️ Examples:
 * `add -e John’s birthday party d/2020-09-21 t/20:00`
 * `add -e CS2103T team meeting d/2020-09-27 t/10:30`
 
-![AddEvent](images/userguide/addEvent.png)
-
 <div markdown="block" class="alert alert-info">
 
-An `Event` requires extra `date` and `time` specifications in order to create.
+An `Event` requires extra `date` and `time` specifications in order to create. The way to input is similar to the screenshot of adding `Mastery Check` above.
 </div>
 
 #### 6.3.5 Adding `Deadlines` : `-d`
 
 Adds your personal `Deadline` with a `description`, to complete by a specific `date` and `time`.
 <br>**Format: `add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM`**
+
 <br>✏️ Examples:
 * `add -d CS2103T Week 5 ip tasks d/2020-09-08 t/23:59`
 * `add -d Research project report d/2020-10-05 t/10:30`
 
-![AddDeadline](images/userguide/addDeadline.png)
-
 <div markdown="block" class="alert alert-info">
 
-Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create.
+Similar to `Event`, a `Deadline` requires extra `date` and `time` specifications in order to create. You can refer to the screenshot of adding `Mastery Check` above for a real-life example of how the command would look like.
 </div>
 
 
@@ -412,6 +414,9 @@ At least one of the optional parameters must be provided.
 
 Edits the score of a `Mastery Check` session with a `Student`.
 <br>**Format: `edit -mc INDEX s/SCORE`**
+
+![EditMasteryCheck](images/userguide/editMasteryCheck.png)
+
 <br>✏️ Examples:
 * `edit -mc 1 s/0`
 * `edit -mc 3 s/1`
@@ -421,43 +426,44 @@ Edits the score of a `Mastery Check` session with a `Student`.
 * The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Mastery Check`.
 * Jarvis allows editing to the same value; even if no values are actually updated by the command, it will display a success message.
 
-![EditMasteryCheck](images/userguide/editMasteryCheck.png)
-
 ### 6.5 Deleting Information : `delete`
 
 #### 6.5.1 Deleting `Consultations` : `-c`
 
 Deletes a `Task` based on the `INDEX` you specify.
 <br>**Format: `delete -c INDEX`**
+
+![DeleteConsultation](images/userguide/deleteConsultation.png)
+
 <br>✏️ Examples:
 * `delete -c 3`
 
 <br>⚠️ Notes:
 * The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Consultation`.
 
-![DeleteConsultation](images/userguide/deleteConsultation.png)
-
 #### 6.5.2 Deleting `Mastery Checks` : `-mc`
 
 Deletes a `Mastery Check` based on the `INDEX` you specify.
 <br>**Format: `delete -mc INDEX`**
+
+![DeleteMasteryCheck](images/userguide/deleteMasteryCheck.png)
+
 <br>✏️ Examples:
 * `delete -mc 3`
 
 <br>⚠️ Notes:
 * The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Mastery Check`.
 
-![DeleteMasteryCheck](images/userguide/deleteMasteryCheck.png)
-
 #### 6.5.3 Deleting `Tasks` : `-t`
 
 Deletes a `Task` based on the `TASK_ID` you specify.
 <br>**Format: `delete -t TASK_ID`**
+
+![DeleteTask](images/userguide/deleteTask.png)
+
 <br>✏️ Examples:
 * `delete -t T3`
 * `delete -t D2`
-
-![DeleteTask](images/userguide/deleteTask.png)
 
 ### 6.6 Viewing Information : `view`
 
@@ -468,28 +474,29 @@ Please take note of the command inputted into the command box to understand how 
 
 <br>**Format: `view -s`**
 
-You may also click on the `Student` tab to do so.
-
 ![ViewAllStudentsCommand](images/userguide/viewAllStudents.png)
+
+You may also click on the `Student` tab to do so.
 
 #### 6.6.2 Viewing `Student` with keyword : `-s [NAME]`
 
 Shows all `Students` that match (partial and full) the name entered after the command. The name is case-sensitive.
 An example of a partial match will be `view -s do` resulting in John Doe being displayed.
 <br>**Format: `view -s [NAME]`**
-<br>✏️ Examples:
-* `view -s John Doe`
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
+
+<br>✏️ Examples:
+* `view -s John Doe`
 
 #### 6.6.3 Viewing deadline for `Missions` : `-m`
 
 Shows the deadline for the current `Missions`.
 <br>**Format: `view -m`**
 
-You may also click on the `Mission` tab to do so.
-
 ![ViewMissionDeadline](images/userguide/viewMissionDeadline.png)
+
+You may also click on the `Mission` tab to do so.
 
 #### 6.6.4 Viewing ungraded `Missions` : `-um`
 
@@ -508,9 +515,8 @@ You may also click on the `Quest` tab to do so.
 #### 6.6.6 Viewing ungraded `Quests` : `-uq`
 
 Shows the `Quests` that you have not yet graded.
-<br>**Format: `view -uq`**
 
-![ViewUngradedQuests](images/userguide/viewUngradedQuests.png)
+<br>**Format: `view -uq`**
 
 #### 6.6.7 Viewing all `Consultations` : `-c`
 
