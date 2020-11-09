@@ -30,6 +30,7 @@ Given below are my contributions to the project.
   * In charge of implementation of all Consultations and Mastery Check related features and tests
   * Oversaw the implementation and design of the GUI
   * Ensured that project deliverables are delivered on time
+  * Refactored and restructured classes to appropriate packages
 
 * **Enhancements to existing features**:
   * Designed the new and improved GUI for Jarvis: [\#12](https://github.com/AY2021S1-CS2103T-W11-2/tp/issues/12)
@@ -42,7 +43,8 @@ Given below are my contributions to the project.
   * Developer Guide:
     * Added implementation details of the `delete` feature, including a sequence diagram, two class diagrams, and a path diagram: [\#341](https://github.com/AY2021S1-CS2103T-W11-2/tp/issues/341)
     * Added relevant use cases and user stories in the Appendix: [\#342](https://github.com/AY2021S1-CS2103T-W11-2/tp/issues/342)
+    * Added the Effort Appendix: [\#387](https://github.com/AY2021S1-CS2103T-W11-2/tp/issues/387)
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#287](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/287#pullrequestreview-522475093), [\#290](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/290#pullrequestreview-522476413), [\#371](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/371)
+  * PRs reviewed (with non-trivial review comments): [\#371](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/371), [\#383](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/383#pullrequestreview-526100087), [\#290](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/290#pullrequestreview-522476413)
   * Reported bugs and suggestions for other teams in the class: [Dry Run PE](https://github.com/wireseo/ped/issues)
