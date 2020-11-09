@@ -22,11 +22,13 @@ import seedu.jarvis.model.Model;
 import seedu.jarvis.model.ModelManager;
 import seedu.jarvis.model.ReadOnlyAddressBook;
 import seedu.jarvis.model.UserPrefs;
+import seedu.jarvis.model.summary.Summary;
 import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.storage.JsonAddressBookStorage;
 import seedu.jarvis.storage.JsonUserLoginStorage;
 import seedu.jarvis.storage.JsonUserPrefsStorage;
 import seedu.jarvis.storage.StorageManager;
+import seedu.jarvis.testutil.TypicalAddressBook;
 import seedu.jarvis.testutil.TypicalManagers;
 
 public class LogicManagerTest {
@@ -36,7 +38,9 @@ public class LogicManagerTest {
     public Path temporaryFolder;
 
     private Model model = new ModelManager();
+    private Model typicalModelManager;
     private Logic logic;
+    private Logic typicalLogic;
 
     @BeforeEach
     public void setUp() {
@@ -46,6 +50,11 @@ public class LogicManagerTest {
         JsonUserLoginStorage userLoginStorage = new JsonUserLoginStorage(temporaryFolder.resolve("userLogin.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, userLoginStorage);
         logic = new LogicManager(model, storage);
+
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+        typicalLogic = new LogicManager(typicalModelManager, storage);
     }
 
     @Test
@@ -101,6 +110,34 @@ public class LogicManagerTest {
     public void getFilteredStudentList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredStudentList().remove(0));
     }
+
+    @Test
+    public void updateAllSummaryDetails_summaryDetailsAccurate() {
+
+        String summaryDetails = typicalLogic.getSummary().get();
+        int expectedMissions = 3;
+        int expectedQuests = 3;
+        int expectedConsultations = 3;
+        int expectedMasteryChecks = 3;
+        int expectedTasks = 6;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_REMAINING).append(" - ");
+        stringBuilder.append(Summary.MESSAGE_MISSIONS).append(": ").append(expectedMissions)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_QUESTS).append(": ").append(expectedQuests)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_CONSULTATIONS).append(": ").append(expectedConsultations)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_MASTERY_CHECKS).append(": ").append(expectedMasteryChecks)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_TASKS).append(": ").append(expectedTasks);
+        String stringExpected = stringBuilder.toString();
+
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+
 
     /**
      * Executes the command and confirms that
