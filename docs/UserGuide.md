@@ -220,7 +220,8 @@ this box.
 
 To navigate the features, there are 2 methods which could be used individually, or mixed. We have designed
 this flexibility with you, the user in mind.
- 1. Only inputting commands into the box annotated "Enter command here...".
+ 1. Only inputting commands into the box annotated "Enter command here...". Upon the successful execution of a
+  command, the tab is automatically switched to the corresponding tab for your convenience.
  1. Clicking on the tabs.
 </div>
 

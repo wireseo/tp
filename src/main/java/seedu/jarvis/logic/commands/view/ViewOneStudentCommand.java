@@ -42,8 +42,7 @@ public class ViewOneStudentCommand extends ViewCommand {
         requireNonNull(model);
         assert searchedName.fullName.length() > 0 : "The input search string is empty";
         model.updateFilteredPersonList(student ->
-                student.getName().fullName.contains(searchedName.toString())
-                || student.getName().fullName.toLowerCase().contains(searchedName.toString()));
+                student.getName().fullName.contains(searchedName.toString()));
         ObservableList<Student> filteredResult = model.getFilteredStudentList();
         if (filteredResult.size() == 0) {
             // reset the list to show all persons

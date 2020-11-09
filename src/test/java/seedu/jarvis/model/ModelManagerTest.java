@@ -25,12 +25,14 @@ import seedu.jarvis.model.masterycheck.MasteryCheck;
 import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.NameContainsKeywordsPredicate;
+import seedu.jarvis.model.summary.Summary;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Todo;
 import seedu.jarvis.testutil.AddressBookBuilder;
 import seedu.jarvis.testutil.MissionBuilder;
 import seedu.jarvis.testutil.QuestBuilder;
+import seedu.jarvis.testutil.TypicalAddressBook;
 import seedu.jarvis.testutil.TypicalManagers;
 
 public class ModelManagerTest {
@@ -347,5 +349,152 @@ public class ModelManagerTest {
         modelManager.addMasteryCheck(oldMasteryCheck);
         modelManager.setMasteryCheck(oldMasteryCheck, newMasteryCheck);
         assertTrue(modelManager.hasMasteryCheck(newMasteryCheck));
+    }
+
+    //========================= Summary Feature ================================================================
+    @Test
+    public void updateUngradedMissionsSummaryDetail_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+        int valueExpected = 3;
+        typicalModelManager.updateUngradedMissionsSummaryDetail();
+        String summaryDetails = typicalModelManager.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Remaining - ").append(Summary.MESSAGE_MISSIONS).append(": ").append(valueExpected);
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateUngradedQuestsSummaryDetail_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int valueExpected = 3;
+        typicalModelManager.updateUngradedQuestsSummaryDetail();
+        String summaryDetails = typicalModelManager.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Remaining - ").append(Summary.MESSAGE_QUESTS).append(": ").append(valueExpected);
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateUpcomingConsultationsSummaryDetail_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int valueExpected = 3;
+        typicalModelManager.updateUpcomingConsultationsSummaryDetail();
+        String summaryDetails = typicalModelManager.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Remaining - ").append(Summary.MESSAGE_CONSULTATIONS).append(": ").append(valueExpected);
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateUpcomingMasteryChecksSummaryDetail_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int valueExpected = 3;
+        typicalModelManager.updateUpcomingMasteryChecksSummaryDetail();
+        String summaryDetails = typicalModelManager.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Remaining - ").append(Summary.MESSAGE_MASTERY_CHECKS).append(": ").append(valueExpected);
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateOutstandingTasksSummaryDetail_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int valueExpected = 6;
+        typicalModelManager.updateTasksSummaryDetail();
+        String summaryDetails = typicalModelManager.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Remaining - ").append(Summary.MESSAGE_TASKS).append(": ").append(valueExpected);
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateAllSummaryDetails_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int expectedMissions = 3;
+        int expectedQuests = 3;
+        int expectedConsultations = 3;
+        int expectedMasteryChecks = 3;
+        int expectedTasks = 6;
+        typicalModelManager.updateAllSummaryDetails();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_REMAINING).append(" - ");
+        stringBuilder.append(Summary.MESSAGE_MISSIONS).append(": ").append(expectedMissions)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_QUESTS).append(": ").append(expectedQuests)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_CONSULTATIONS).append(": ").append(expectedConsultations)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_MASTERY_CHECKS).append(": ").append(expectedMasteryChecks)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_TASKS).append(": ").append(expectedTasks);
+        String summaryDetails = typicalModelManager.getSummary().get();
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateUngradedMissionsAndQuestsDetails_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int expectedMissions = 3;
+        int expectedQuests = 3;
+        typicalModelManager.updateUngradedMissionsSummaryDetail();
+        typicalModelManager.updateUngradedQuestsSummaryDetail();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_REMAINING).append(" - ");
+        stringBuilder.append(Summary.MESSAGE_MISSIONS).append(": ").append(expectedMissions)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_QUESTS).append(": ").append(expectedQuests);
+        // To ensure that there is no comma at the end of the generated string.
+        String summaryDetails = typicalModelManager.getSummary().get();
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
+    }
+
+    @Test
+    public void updateUpcomingConsultationsMcDetails_summaryDetailsAccurate() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBookWithAllValues();
+        ModelManager typicalModelManager = new ModelManager(addressBook, TypicalManagers.getUserPrefs(),
+                TypicalManagers.getUserLogin());
+
+        int expectedConsultations = 3;
+        int expectedMasteryChecks = 3;
+        typicalModelManager.updateUpcomingConsultationsSummaryDetail();
+        typicalModelManager.updateUpcomingMasteryChecksSummaryDetail();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_REMAINING).append(" - ");
+        stringBuilder.append(Summary.MESSAGE_CONSULTATIONS).append(": ").append(expectedConsultations)
+                .append(", ");
+        stringBuilder.append(Summary.MESSAGE_MASTERY_CHECKS).append(": ").append(expectedMasteryChecks);
+        String summaryDetails = typicalModelManager.getSummary().get();
+        String stringExpected = stringBuilder.toString();
+        assertEquals(stringExpected, summaryDetails);
     }
 }
