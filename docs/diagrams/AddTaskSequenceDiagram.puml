@@ -8,6 +8,7 @@ participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
 participant ":TaskCommandParser" as TaskCommandParser LOGIC_COLOR
 participant "a:AddTaskCommand" as AddTaskCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant ":ParserUtil" as ParserUtil LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -30,8 +31,16 @@ deactivate AddCommandParser
 AddressBookParser -> AddCommandParser : parse("-e...")
 activate AddCommandParser
 
+create ParserUtil
+AddCommandParser -> ParserUtil : parseFlag("-e")
+activate ParserUtil
+
+ParserUtil --> AddCommandParser : commandFlag
+deactivate ParserUtil
+
+AddCommandParser -> TaskCommandParser : parseEvent("...")
 activate TaskCommandParser
-AddCommandParser -> TaskCommandParser : parseEvent("-e...")
+
 TaskCommandParser --> AddCommandParser : Event event
 deactivate TaskCommandParser
 
@@ -62,7 +71,7 @@ ModelManager --> AddTaskCommand : boolean = false
     CommandResult --> AddTaskCommand : commandResult
     deactivate CommandResult
 
-LogicManager <-- AddTaskCommand : CommandResult
+LogicManager <-- AddTaskCommand : commandResult
 [<--LogicManager
 deactivate LogicManager
 

@@ -37,8 +37,6 @@ activate ParserUtil
 ParserUtil --> ViewCommandParser : commandFlag
 deactivate ParserUtil
 
-ViewCommandParser --> AddressBookParser
-
 create ViewMissionDeadlineCommand
 ViewCommandParser -> ViewMissionDeadlineCommand
 activate ViewMissionDeadlineCommand

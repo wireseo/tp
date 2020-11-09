@@ -14,7 +14,7 @@ If () then ([login information does not exist])
 
 
     If () then ([user is not authenticated])
-    :Authenticates through Luminus;
+    :Authenticates through LumiNUS;
 
     else ([user is authenticated])
         endif
