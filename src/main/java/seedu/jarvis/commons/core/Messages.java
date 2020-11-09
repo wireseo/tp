@@ -5,7 +5,9 @@ package seedu.jarvis.commons.core;
  */
 public class Messages {
 
-    public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
+    public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.\nJarvis currently only supports Add, Delete,"
+            + " Edit, Help, View, and Exit commands.\nFor more information, please type 'help' and press enter to visit"
+            + " our User Guide and find out more.";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The student index provided is invalid.";
     public static final String MESSAGE_INVALID_MASTERY_CHECK_DISPLAYED_INDEX =
