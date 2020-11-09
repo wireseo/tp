@@ -28,7 +28,7 @@ Given below are my contributions to the project.
   * Justification: This feature gives tutors ability to view their Tasks quickly based on different categories.
   * Highlights: I really appreciate the usefulness and flexibility of using an Observer pattern.
 
-* **New Feature**: Added a `history command` that allows Tutors to navigate to previous commands using up/down keys.
+* **New Feature**: Added a `History Command` that allows Tutors to navigate to previous commands using up/down keys.
   * What it does: Allows tutors to navigate through previous commands entered using up and down arrow keys.
   * Justification: Enhances the CLI nature of JARVIS which gives tutors ability to skim through previous commands, and
   they do not need to retype commands that are similar to what they have typed previously.
@@ -38,21 +38,23 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=asuraxsoul)
 
 * **Project management**:
-  * Managed milestones `v1.1 - v1.3` on GitHub
+  * Ensured that work handed to me that affects the whole project is done on time, eg Task related features.
+  * Ensured that project deliverables are delivered on time.
 
 * **Enhancements to existing features**:
-  * Add Task Section features.
-  * Update storage to store Tasks.
-  * Update GUI with "Todo", "Event", "Deadline" tags for user to easily see what type of Task is that.
-  * Add access to Command History using "Up" and "Down" arrow keys.
+  * Add Task Section features. [\#83](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/83), [\#161](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/161)
+  * Update storage to store and load Tasks. [\#115](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/115), [\#161](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/161)
+  * Update GUI with "Todo", "Event", "Deadline" tags for user to easily see what type of Task is that. [\#198](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/198)
+  * Add access to Command History using "Up" and "Down" arrow keys. [\#298](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/298)
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `add` and `delete`.
-    * Update list of content with navigable links to each sections of the UG.
+    * Update list of content with navigable links to each sections of the UG. [\#236](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/236)
+    * Added documentation for Task related features such as `add`, `delete` `view` Task commands. [\#63](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/63)
   * Developer Guide:
-    * Added implementation details of the `add` features for Tasks.
-    * Added implementation details of the `view` features for Tasks.
+    * Added implementation details of the `add` feature. [\#371](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/371)
+    * Added supporting UML diagrams under `add` feature. [\#364](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/364)
+    * Added Appendix manual testing cases. [\#371](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/371)
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#215](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/215),
