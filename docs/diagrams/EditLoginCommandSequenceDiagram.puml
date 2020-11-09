@@ -7,7 +7,7 @@ participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
 participant "v:EditLoginCommand" as EditLoginCommand LOGIC_COLOR
 participant ":ParserUtil" as ParserUtil LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "c:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -18,17 +18,16 @@ box Scraper SCRAPER_COLOR_T1
 participant ":Scraper" as Scraper SCRAPER_COLOR
 end box
 
-[-> LogicManager : execute("Edit -l")
+[-> LogicManager : execute("edit -l")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("Edit -l")
+LogicManager -> AddressBookParser : parseCommand("edit -l")
 activate AddressBookParser
 
 create EditCommandParser
 AddressBookParser -> EditCommandParser
 activate EditCommandParser
 
-create ParserUtil
 EditCommandParser -> ParserUtil : parseFlag("-l")
 activate ParserUtil
 
@@ -91,10 +90,10 @@ create CommandResult
 EditLoginCommand -> CommandResult : MESSAGE_SUCCESS
 activate CommandResult
 
-CommandResult --> EditLoginCommand : commandResult
+CommandResult --> EditLoginCommand : c
 deactivate CommandResult
 
-EditLoginCommand --> LogicManager : commandResult
+EditLoginCommand --> LogicManager : c
 deactivate EditLoginCommand
 
 [<--LogicManager
