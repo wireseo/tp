@@ -87,4 +87,20 @@ public class AddTaskCommand extends AddCommand {
             throw new CommandException(MESSAGE_INVALID_TO_ADD_TYPE);
         }
     }
+
+    /**
+     * Returns the Task object to be added.
+     * For testing purposes
+     */
+    public Task getTask() {
+        return this.toAdd;
+    }
+
+    /**
+     * Returns the Task type to be added.
+     * For testing purposes
+     */
+    public String getTaskType() {
+        return this.toAddType;
+    }
 }

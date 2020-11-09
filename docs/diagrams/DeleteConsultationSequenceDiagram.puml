@@ -31,7 +31,7 @@ deactivate DeleteCommandParser
 AddressBookParser -> DeleteCommandParser : parse("-c 1")
 activate DeleteCommandParser
 
-create ParserUtil
+
 DeleteCommandParser -> ParserUtil : parseFlag("-c")
 activate ParserUtil
 

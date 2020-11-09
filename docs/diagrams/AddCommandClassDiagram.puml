@@ -23,14 +23,6 @@ class Model <<Interface>> {
 }
 
 class ModelManager {
-    /' Attributes '/
-    - FilteredList<Student> filteredStudents
-    - FilteredList<Mission> filteredMissions
-    - FilteredList<Quest> filteredQuests
-    - FilteredList<Task> filteredTasks
-    - FilteredList<Consultation> filteredConsultations
-    - FilteredList<MasteryCheck> filteredMasteryChecks
-
     /' Methods '/
     + hasXYZ(xyz) : boolean
     + addXYZ(xyz) : void
@@ -76,7 +68,18 @@ note as N2
     <size: 11>AddTaskCommand, etc
 end note
 
+note as N3
+    <size: 11><u>hasXYZ(xyz):</u>
+    <size: 11>hasConsultation(Consultation),
+    <size: 11>hasTodo(Todo), etc
+    <size: 11>
+    <size: 11><u>addXYZ(xyz):</u>
+    <size: 11>addConsultation(Consultation),
+    <size: 11>addTodo(Todo), etc
+end note
+
 N1 .right. ModelManager
 N2 .up. AddXYZCommand
+N3 .left. ModelManager
 
 @enduml
