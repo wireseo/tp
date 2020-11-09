@@ -5,6 +5,9 @@ title: Developer Guide
 
 ## Developer Guide
 
+This is the Developer Guide for Jarvis, a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI).
+
 ## Table of Contents
 
 1. [1. Introduction](#1-introduction)
@@ -21,17 +24,55 @@ title: Developer Guide
     - [3.6 Scraper component](#36-scraper-component)
     - [3.7 Common classes](#37-common-classes)
 4. [4. Implementation](#4-implementation)
-    - [4.1 Automatic Tab Switching](#41-automatic-tab-switching)
-        * [4.1.1 What is Automatic Tab Switching](#411-what-is-automatic-tab-switching)
-        * [4.1.2 Interaction between objects when Automatic Tab Switching happens](#412-interaction-between-objects-when-automatic-tab-switching-happens)
-    - [4.2 Summary Feature](#42-summary-feature)
-        * [4.2.1 What is the Summary Feature](#421-what-is-the-summary-feature)
-        * [4.2.2 Interaction between objects to enable the Summary Feature](#422-interaction-between-objects-to-enable-the-summary-feature)
-    - [4.3 Login](#43-login)
-        * [4.3.1 What is the login process](#431-what-is-the-login-process)
-        * [4.3.2 Structure of login process](#432-structure-of-login-process)
-        * [4.3.3 Path Diagram of login process](#433-path-diagram-of-login-process)
-        * [4.3.4 Sequence Diagram of login process](#434-sequence-diagram-of-login-process)
+    - [4.1 Login](#41-login)
+        * [4.1.1 What is the login process](#411-what-is-the-login-process)
+        * [4.1.2 Structure of login process](#412-structure-of-login-process)
+        * [4.1.3 Path Diagram of login process](#413-path-diagram-of-login-process)
+        * [4.1.4 Sequence Diagram of login process](#414-sequence-diagram-of-login-process)
+    - [4.2 View Command](#42-view-command)
+        * [4.2.1 What is ViewCommand](#421-what-is-viewcommand)
+        * [4.2.2 Structure of ViewCommand](#422-structure-of-viewcommand)
+        * [4.2.3 Structure of ViewCommandParser](#423-structure-of-viewcommandparser)
+        * [4.2.4 Path Execution of ViewMissionDeadlineCommand](#424-path-execution-of-viewmissiondeadlinecommand)
+        * [4.2.5 Sequence Diagram of ViewMissionDeadlineCommand](#425-sequence-diagram-of-viewmissiondeadlinecommand)
+    - [4.3 Add Command](#43-add-command)
+        * [4.3.1 What is AddCommand](#431-what-is-addcommand)
+        * [4.3.2 Structure of AddCommand](#432-structure-of-addcommand)
+        * [4.3.3 Structure of AddXYZCommand](#433-structure-of-addxyzcommand)
+        * [4.3.4 Structure of AddCommandParser](#434-structure-of-addcommandparser)
+        * [4.3.5 Path Execution of AddTaskCommand](#435-path-execution-of-addtaskcommand)
+        * [4.3.6 Sequence Diagram of AddTaskCommand](#436-sequence-diagram-of-addtaskcommand)
+    - [4.4 Delete Command](#44-delete-command)
+        * [4.4.1 What is DeleteCommand](#441-what-is-deletecommand)
+        * [4.4.2 Structure of DeleteCommand](#442-structure-of-deletecommand)
+        * [4.4.3 Structure of DeleteCommandParser](#443-structure-of-deletecommandparser)
+        * [4.4.4 Path Execution of DeleteConsultationCommand](#444-path-execution-of-deleteconsultationcommand)
+        * [4.4.5 Sequence Diagram of DeleteConsultationCommand](#445-sequence-diagram-of-deleteconsultationcommand)
+    - [4.5 Edit Command](#45-edit-command)
+        * [4.5.1 What is EditCommand](#451-what-is-editcommand)
+        * [4.5.2 Structure of EditCommand](#452-structure-of-editcommand)
+        * [4.5.3 Path Diagram of EditLoginCommand](#453-path-diagram-of-editlogincommand)
+        * [4.5.4 Sequence Diagram of EditLoginCommad](#454-sequence-diagram-of-editlogincommand)
+    - [4.6 Automatic Tab Switching](#46-automatic-tab-switching)
+        * [4.6.1 What is Automatic Tab Switching](#461-what-is-automatic-tab-switching)
+        * [4.6.2 Sequence Diagram of the Automatic Tab Switching process](#462-sequence-diagram-of-the-automatic-tab-switching-process)
+    - [4.7 Summary Feature](#47-summary-feature)
+        * [4.7.1 What is the Summary Feature](#471-what-is-the-summary-feature)
+        * [4.7.2 Sequence Diagram of Summary Feature](#472-sequence-diagram-of-summary-feature)
+5. [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
+6. [6. Appendix: Requirements](#6-appendix-requirements)
+    - [6.1 Product scope](#61-product-scope)
+    - [6.2 User stories](#62-user-stories)
+    - [6.3 Use cases](#63-use-cases)
+    - [6.4 Non-Functional Requirements](#64-non-functional-requirements)
+    - [6.5 Glossary](#65-glossary)
+7. [7. Appendix: Instructions for manual testing](#7-appendix-instructions-for-manual-testing)
+    - [7.1 Launch and shutdown](#71-launch-and-shutdown)
+    - [7.2 Deleting a Consultation](#72-deleting-a-consultation)
+    - [7.3 Adding a Deadline](#73-adding-a-deadline)
+    - [7.4 Viewing a Student](#74-viewing-a-student)
+    - [7.5 Edit Login Details](#75-edit-login-details)
+    - [7.6 Saving data](#76-saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -239,7 +280,7 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 <div style="page-break-after: always"></div>
 
 ### 4.2 View Command
-In this section, we will introduce the `ViewCommand`. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
+In this section, we will introduce the `View Command`. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
 class, as well as the path diagram and sequence diagram of the `ViewMissionDeadlineCommand` to capture the interactions between
 the `ViewMissionDeadlineCommand` and other object classes.
 
@@ -282,7 +323,7 @@ The other `ViewCommand` subclasses will execute similarly.
 
 ![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
 
-#### 4.2.5 Interaction between objects when ViewMissionDeadlineCommand is executed
+#### 4.2.5 Sequence Diagram of ViewMissionDeadlineCommand
 The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
 
 ![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
@@ -297,7 +338,7 @@ The other `ViewCommand` subclasses work similarly to this as well.
 <div style="page-break-after: always"></div>
 
 ### 4.3 Add Command
-In this section, we will introduce the Add Command. It will show the structure of the `AddCommand` class and the `AddCommandParser`
+In this section, we will introduce the `Add Command`. It will show the structure of the `AddCommand` class and the `AddCommandParser`
 class, as well as the path diagram and sequence diagram of the `AddTaskCommand` to capture the interactions between
 the `AddTaskCommand` and other object classes.
 
@@ -305,7 +346,7 @@ the `AddTaskCommand` and other object classes.
 </div>
 
 #### 4.3.1 What is AddCommand
-`ViewCommand` is an abstract class encapsulating the different add commands for the following: `Consultation`,
+`AddCommand` is an abstract class encapsulating the different add commands for the following: `Consultation`,
 `Mastery Check` and `Task`.
 
 #### 4.3.2 Structure of AddCommand
@@ -361,7 +402,7 @@ The other `AddCommand` subclasses will execute similarly.
 <div markdown="span" class="alert alert-info">:information_source: **Reminder:** There are 3 `Task` types, namely, `Todo`, `Event` and `Deadline`.
 </div>
 
-#### 4.3.6 Interaction between objects when AddTaskCommand is executed
+#### 4.3.6 Sequence Diagram of AddTaskCommand
 The sequence diagram for the `AddTaskCommand` adding an `Event` is shown below:
 
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
@@ -428,7 +469,7 @@ The other `DeleteCommand` subclasses will execute similarly.
 
 ![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
 
-#### 4.4.5 Interaction between objects when DeleteConsultationCommand is executed
+#### 4.4.5 Sequence Diagram of DeleteConsultationCommand
 The sequence diagram for the `DeleteConsultationCommand` is shown below:
 
 ![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
@@ -447,10 +488,10 @@ The other `DeleteCommand` subclasses work similarly to this as well.
 In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the
 `EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
 
-#### 4.5.1 What is Edit Command
+#### 4.5.1 What is EditCommand
 The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
 
-#### 4.5.2 Structure of Edit Command
+#### 4.5.2 Structure of EditCommand
 The following diagram shows the overview of the EditCommand Class Diagram:
 
 ![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
@@ -483,7 +524,7 @@ In this section we will explain how the `Automatic Tab Switching Feature` featur
 `Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
 ` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
 
-#### 4.6.2 Interaction between objects when Automatic Tab Switching happens
+#### 4.6.2 Sequence Diagram of the Automatic Tab Switching process
 The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
  `CommandResult` after the user keys in a command and presses the enter key in the Graphical User Interface.
 
@@ -516,9 +557,9 @@ summarises the ungraded missions and quests, upcoming consultations and mastery 
 
 It is always updated at any point in time of using Jarvis.
 
-#### 4.7.2 Interaction between objects to enable the Summary Feature
+#### 4.7.2 Sequence Diagram of Summary Feature
 In order for the `Summary` string to be updated upon starting up the Jarvis Graphical User Interface and in sync with the
-changes in data after each command, Jarvis calls the `ModelManager` `updateAllSummaryDetails` method
+changes in data after each command, Jarvis calls the `ModelManager`'s `updateAllSummaryDetails` method
 upon start up and after each command is executed. The following is a sequence diagram when a user command is
 entered.
 
@@ -578,7 +619,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                      | I want to …​                            | So that I …​                                                 |
 | -------- | ------------------------------------------- | ------------------------------         | ----------------------------------------------------------- |
-| `* * *`  | tutor                                       | see usage instructions                 | can refer to instructions when I forget how to use the App. |
+| `* * *`  | tutor                                       | see usage instructions                 | can refer to instructions when I forget how to use the app. |
 | `* * *`  | tutor                                       | edit a student                         | can keep the contact details of all my students updated.    |
 | `* * *`  | tutor                                       | automatically view my students         | can know who to contact.                                    |
 | `* * *`  | tutor                                       | list all unmarked assignments          | will not miss out on marking any overdue missions or quests.|
@@ -953,7 +994,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. The user proceeds to close the program.
 
     Use case ends.
-
 
 
 ### 6.4 Non-Functional Requirements
