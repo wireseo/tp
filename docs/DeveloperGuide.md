@@ -205,15 +205,285 @@ Classes used by multiple components are in the `seedu.jarvis.commons` package.
 
 This section describes some noteworthy details on how certain key features have been implemented.
 
-### 4.1 Automatic Tab Switching
+### 4.1 Login
+
+In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
+and interaction of objects between the `ScraperManager` and `Chrome Driver`.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
+</div>
+
+#### 4.1.1 What is the login process
+Login is a series of method calls that any new user who uses Jarvis has to go through. It is carried out by `ScraperManager` and involves fetching information from Source Academy through the use of a headless browser, _Chrome_Driver_.
+
+#### 4.1.2 Structure of login process
+The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the login process.
+
+![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
+
+#### 4.1.3 Path Diagram of login process
+The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
+The login process is kickstarted whenever Jarvis is launched or the login details are edited.
+
+![Path Diagram of login process](images/LoginPathDiagram.png)
+
+#### 4.1.4 Sequence Diagram of login process
+
+![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
+
+* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
+* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on Source Academy that matches the HTML descriptor we passed in.
+* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could be of size 0 if there are no active missions that day.
+* `startScraping()` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
+* In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
+<div style="page-break-after: always"></div>
+
+### 4.2 View Command
+In this section, we will introduce the `ViewCommand`. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
+class, as well as the path diagram and sequence diagram of the `ViewMissionDeadlineCommand` to capture the interactions between
+the `ViewMissionDeadlineCommand` and other object classes.
+
+#### 4.2.1 What is ViewCommand
+`ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
+`Mission`, `Quest`, `Consultation`, `Mastery Check` and `Task`.
+
+#### 4.2.2 Structure of ViewCommand
+
+The following diagram shows the overview of the `ViewCommand` Class Diagram:
+
+![Class Diagram of ViewCommand](images/ViewCommandClassDiagram.png)
+
+The abstract class `ViewCommand` extends from the abstract class `Command`. In the `ViewCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all view commands that extend from the `ViewCommand` class will implement
+the `execute` method. Thus, all view command classes have a dependency on `Model`.
+
+In the `ViewCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+view has to take in at least one argument. The message will guide the user on what parameters the `ViewCommand` can take in.
+
+In all the view commands that extend from `ViewCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
+has executed successfully. The message will be shown to the user to indicate success.
+
+#### 4.2.3 Structure of ViewCommandParser
+
+The following diagram shows the overview of the `ViewCommandParser` Class Diagram:
+
+![Class Diagram of ViewCommandParser](images/ViewCommandParserClassDiagram.png)
+
+In the `ViewCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
+the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
+the flag and return the correct `ViewCommand` object.
+
+#### 4.2.4 Path Execution of ViewMissionDeadlineCommand
+As there are many `ViewCommand` subclasses such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
+as an example for the `ViewCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `ViewMissionDeadlineCommand`.
+The other `ViewCommand` subclasses will execute similarly.
+
+![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
+
+#### 4.2.5 Interaction between objects when ViewMissionDeadlineCommand is executed
+The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
+
+![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
+
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `ViewCommandParser` object.
+The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
+`ViewMissionDeadlineCommand` object. In this method, it will use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
+`CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
+
+The other `ViewCommand` subclasses work similarly to this as well.
+
+<div style="page-break-after: always"></div>
+
+### 4.3 Add Command
+In this section, we will introduce the Add Command. It will show the structure of the `AddCommand` class and the `AddCommandParser`
+class, as well as the path diagram and sequence diagram of the `AddTaskCommand` to capture the interactions between
+the `AddTaskCommand` and other object classes.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The AddCommand overall structure is similar to that of the ViewCommand above.
+</div>
+
+#### 4.3.1 What is AddCommand
+`ViewCommand` is an abstract class encapsulating the different add commands for the following: `Consultation`,
+`Mastery Check` and `Task`.
+
+#### 4.3.2 Structure of AddCommand
+The following diagram shows the overview of the AddComand Class Diagram:
+
+![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
+
+* Upon parsing user input to the correct `AddCommand` (ie. `AddXYZCommand`) which is done by the `AddCommandParser`, the
+correct `Model` object (eg. `Student`, `Task`) will be added to the corresponding list in `Model` class.
+* Then, updated lists of data will be observed by the `AddressBook`, and displayed on the GUI.
+
+The abstract class `AddCommand` extends from the abstract class `Command`. In the `AddCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all view commands that extend from the `AddCommand` class will implement
+the `execute` method. Thus, all add command classes have a dependency on `Model`.
+
+In the `AddCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+view has to take in at least one argument. The message will guide the user on what parameters the `AddCommand` can take in.
+
+In all the add commands that extend from `AddCommand`, while there is a static message `MESSAGE_SUCCESS` for when the
+command has executed successfully, there is also a static message `MESSAGE_INVALID` that comes in different variants for
+when the command has not executed successfully due to an expected error from the user.
+
+#### 4.3.3 Structure of AddXYZCommand
+The following diagram shows the overview of `AddCommand` detailed Class Diagram which has a similar structure as other `Commands`:
+
+![Class Diagram of Add Commands](images/AddXYZCommandClassDiagram.png)
+
+* The class `AddCommand` contains 3 subclasses: `AddTaskCommand`, `AddConsultationCommand` and `AddMasteryCheckCommand`.
+* These `AddCommand` subclasses interacts with `Model` and the related class models each AddCommand is supposed to execute with.
+* Upon successful `AddCommand`, these subclasses communicates with `Model` to add `Task`, `Consultation` and `MasteryCheck` into `Model`.
+
+#### 4.3.4 Structure of AddCommandParser
+The following diagram shows the overview of the AddCommandParser Class Diagram:
+
+![Class Diagram of ViewCommandParser](images/AddCommandParserClassDiagram.png)
+
+In the `AddCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
+the different flags that `AddCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
+the flag and return the correct `AddCommand` object.
+
+Due to Java `LocalDateTime` class used for our `Consultation`, `MasteryCheck` `Event` and `Deadline` objects, `ConsultationMasteryCheckCommandParser`
+and `TaskCommandParser` are employed to parse the objects added.
+
+#### 4.3.5 Path Execution of AddTaskCommand
+As there are many `AddCommand` subclasses such as `AddTaskCommand` and `AddConsultationCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `AddTaskCommand`
+as an example for the `AddCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `AddTaskCommand`.
+The other `AddCommand` subclasses will execute similarly.
+
+![Path Diagram of ViewMisionDeadlineCommand](images/AddCommandPathDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Reminder:** There are 3 `Task` types, namely, `Todo`, `Event` and `Deadline`.
+</div>
+
+#### 4.3.6 Interaction between objects when AddTaskCommand is executed
+The sequence diagram for the `AddTaskCommand` adding an `Event` is shown below:
+
+![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
+
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the newly created `AddCommandParser` object.
+The `AddCommandParser` will then call specific parse method, in this case, `parseEvent` method of `TaskCommandParser`. `TaskCommandParser` returns an `Event` object
+created to `AddCommandParser` so that it can return a new `AddTaskCommand` is created with the `Event` object.
+This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
+`AddTaskCommand` object. In this method, it will use the `Model` object to call the method : `hasEvent()`, which checks if there is a duplicated `Event` in the `Model`.
+Once successful, the `execute(model)` will return a `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
+
+The other `ViewCommand` subclasses work similarly to this as well.
+
+<div style="page-break-after: always"></div>
+
+### 4.4 Delete Command
+In this section, we will introduce the `Delete Command`. It will show the structure of the `DeleteCommand` class and the `DeleteCommandParser`
+class, as well as the path diagram and sequence diagram of the `DeleteConsultationCommand` to capture the interactions between
+the `DeleteConsultationCommand` and other object classes.
+
+#### 4.4.1 What is DeleteCommand
+`DeleteCommand` is an abstract class encapsulating the different delete commands for the `Consultations`,
+`Mastery Checks`, and `Tasks`.
+
+#### 4.4.2 Structure of DeleteCommand
+
+The following diagram shows the overview of the `DeleteCommand` Class Diagram:
+
+![Class Diagram of DeleteCommand](images/DeleteCommandClassDiagram.png)
+
+The abstract class `DeleteCommand` extends from the abstract class `Command`. In the `DeleteCommand` class, the abstract
+method `execute` takes in a `Model` object. As such, all delete commands that extend from the `DeleteCommand` class will implement
+the `execute` method. Thus, all delete command classes have a dependency on `Model`.
+
+In the `DeleteCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
+delete has to take in at least one argument. The message will guide the user on what parameters the `DeleteCommand` can take in.
+
+In all the delete commands that extend from `DeleteCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
+has executed successfully. The message will be shown to the user to indicate success.
+
+#### 4.4.3 Structure of DeleteCommandParser
+
+The following diagram shows the overview of the DeleteCommandParser Class Diagram:
+
+![Class Diagram of DeleteCommandParser](images/DeleteCommandParserClassDiagram.png)
+
+In the `DeleteCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
+the different flags that `DeleteCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
+the flag and return the correct `DeleteCommand` object.
+
+Additionally, under the same method, we reference the `Index` class which encapsulates
+the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
+and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
+
+The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a `String` to store identifiers instead;
+however, they are similar in how they operate and interact with the rest of the system.
+
+#### 4.4.4 Path Execution of DeleteConsultationCommand
+As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
+we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
+as an example for the `DeleteCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `DeleteConsultationCommand`.
+The other `DeleteCommand` subclasses will execute similarly.
+
+![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
+
+#### 4.4.5 Interaction between objects when DeleteConsultationCommand is executed
+The sequence diagram for the `DeleteConsultationCommand` is shown below:
+
+![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
+
+The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the arguments to the `DeleteCommandParser` object.
+The `DeleteCommandParser`, after parsing the necessary arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
+This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the `DeleteConsultationCommand` object.
+In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified
+consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message
+to the `LogicManager`, indicating that the command execution is a success.
+
+The other `DeleteCommand` subclasses work similarly to this as well.
+
+### 4.5 Edit Command
+
+In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the
+`EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
+
+#### 4.5.1 What is Edit Command
+The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
+
+#### 4.5.2 Structure of Edit Command
+The following diagram shows the overview of the EditCommand Class Diagram:
+
+![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
+
+* Upon parsing user input to the correct `EditCommand` (ie. `EditXYZCommand`) which is done by the `EditCommandParser`, the
+correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresponding list in `Model` class.
+* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
+
+#### 4.5.3 Path Diagram of EditLoginCommand
+
+![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
+
+There are 3 `EditCommand` subclasses - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
+We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
+The diagram below demonstrates the expected path execution of `EditLoginCommand`.
+The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
+
+#### 4.5.4 Sequence Diagram of EditLoginCommand
+
+![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
+
+The sequence of method calls are highly similar to that for the `EditLoginCommand` above. What is of note is the additional call to `Scraper`.
+This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
+
+### 4.6 Automatic Tab Switching
 In this section we will explain how the `Automatic Tab Switching Feature` feature works. We will do so by going
  through a sequence diagram.
 
-#### 4.1.1 What is Automatic Tab Switching
+#### 4.6.1 What is Automatic Tab Switching
 `Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
 ` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
 
-#### 4.1.2 Interaction between objects when Automatic Tab Switching happens
+#### 4.6.2 Interaction between objects when Automatic Tab Switching happens
 The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
  `CommandResult` after the user keys in a command and presses the enter key in the Graphical User Interface.
 
@@ -237,16 +507,16 @@ This feature works the same way for
 viewing `Students`, `Quests`, `Consultations`, `MasteryChecks` and `Tasks`. In each case, the
 corresponding `CommandTargetFeature` `Enum` is returned resulting in the corresponding tab selection.
 
-### 4.2 Summary Feature
+### 4.7 Summary Feature
 In this section we will explain how the `Summary Feature` is implemented by going through a sequence diagram.
 
-#### 4.2.1 What is the Summary Feature
-Summary feature refers to the summary string at the top right hand corner of the Jarvis Graphical User Interface. It
+#### 4.7.1 What is the Summary Feature
+Summary feature refers to the summary string at the top right-hand corner of the Jarvis Graphical User Interface. It
 summarises the ungraded missions and quests, upcoming consultations and mastery checks as well as outstanding tasks.
 
 It is always updated at any point in time of using Jarvis.
 
-#### 4.2.2 Interaction between objects to enable the Summary Feature
+#### 4.7.2 Interaction between objects to enable the Summary Feature
 In order for the `Summary` string to be updated upon starting up the Jarvis Graphical User Interface and in sync with the
 changes in data after each command, Jarvis calls the `ModelManager` `updateAllSummaryDetails` method
 upon start up and after each command is executed. The following is a sequence diagram when a user command is
@@ -274,272 +544,6 @@ A `LogicManager` `getSummary` method call will lead to a sequence of method call
 Upon start up of Jarvis' Graphical User Interface, the first step of calling `LogicManager`'s `execute` method is
 skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
 similar syncing of summary details.
-
-### 4.3 Login
-In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
-and interaction of objects between the `ScraperManager` and `Chrome Driver`.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
-</div>
-
-#### 4.3.1 What is the login process
-Login is a series of method calls that any new user who uses Jarvis has to go through. It is carried out by `ScraperManager` and involves fetching information from Source Academy through the use of a headless browser, _Chrome_Driver_.
-
-#### 4.3.2 Structure of login process
-The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the login process.
-
-![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
-
-#### 4.3.3 Path Diagram of login process
-The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
-The login process is kickstarted whenever Jarvis is launched or the login details are edited.
-
-![Path Diagram of login process](images/LoginPathDiagram.png)
-
-#### 4.3.4 Sequence Diagram of login process
-
-![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
-
-* The descriptor within the `XPath.by(...)` is the HTML descriptor for the HTML element that corresponds to each individual assessment title on Source Academy.
-* The `Chrome Driver`, which is of type `WebDriver`, will look for all HTML elements on Source Academy that matches the HTML descriptor we passed in.
-* `WebDriver` will return a `List<WebElement>`, with each element in the list corresponding to a single CS1101S mission. This list could be of size 0 if there are no active missions that day.
-* `startScraping()` runs on a background thread, separate from the main thread. This ensures that the time-consuming task of fetching missions do not delay the updating of the GUI.
-* In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
-<div style="page-break-after: always"></div>
-
-### 4.4 View Command
-In this section, we will introduce the `ViewCommand`. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
-class, as well as the path diagram and sequence diagram of the `ViewMissionDeadlineCommand` to capture the interactions between
-the `ViewMissionDeadlineCommand` and other object classes.
-
-#### 4.4.1 What is ViewCommand
-`ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
-`Mission`, `Quest`, `Consultation`, `Mastery Check` and `Task`.
-
-#### 4.4.2 Structure of ViewCommand
-
-The following diagram shows the overview of the `ViewCommand` Class Diagram:
-
-![Class Diagram of ViewCommand](images/ViewCommandClassDiagram.png)
-
-The abstract class `ViewCommand` extends from the abstract class `Command`. In the `ViewCommand` class, the abstract
-method `execute` takes in a `Model` object. As such, all view commands that extend from the `ViewCommand` class will implement
-the `execute` method. Thus, all view command classes have a dependency on `Model`.
-
-In the `ViewCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
-view has to take in at least one argument. The message will guide the user on what parameters the `ViewCommand` can take in.
-
-In all the view commands that extend from `ViewCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
-has executed successfully. The message will be shown to the user to indicate success.
-
-#### 4.4.3 Structure of ViewCommandParser
-
-The following diagram shows the overview of the `ViewCommandParser` Class Diagram:
-
-![Class Diagram of ViewCommandParser](images/ViewCommandParserClassDiagram.png)
-
-In the `ViewCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
-the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
-the flag and return the correct `ViewCommand` object.
-
-#### 4.4.4 Path Execution of ViewMissionDeadlineCommand
-As there are many `ViewCommand` subclasses such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
-we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
-as an example for the `ViewCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of `ViewMissionDeadlineCommand`.
-The other `ViewCommand` subclasses will execute similarly.
-
-![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
-
-#### 4.4.5 Interaction between objects when ViewMissionDeadlineCommand is executed
-The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
-
-![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
-
-The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the `ViewCommandParser` object.
-The `ViewCommandParser` will return a `ViewMissionDeadlineCommand` object. This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
-`ViewMissionDeadlineCommand` object. In this method, it will use the `Model` object to call the method : `updateMissionList()`, with parameter `PREDICATE_SHOW_ALL_MISSIONS` which will show all the missions. When completed, the `execute(model)` will return a
-`CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
-
-The other `ViewCommand` subclasses work similarly to this as well.
-
-<div style="page-break-after: always"></div>
-
-### 4.5 Add Command
-In this section, we will introduce the Add Command. It will show the structure of the `AddCommand` class and the `AddCommandParser`
-class, as well as the path diagram and sequence diagram of the `AddTaskCommand` to capture the interactions between
-the `AddTaskCommand` and other object classes.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The AddCommand overall structure is similar to that of the ViewCommand above.
-</div>
-
-#### 4.5.1 What is AddCommand
-`ViewCommand` is an abstract class encapsulating the different add commands for the following: `Consultation`,
-`Mastery Check` and `Task`.
-
-#### 4.5.2 Structure of AddCommand
-The following diagram shows the overview of the AddComand Class Diagram:
-
-![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
-
-* Upon parsing user input to the correct `AddCommand` (ie. `AddXYZCommand`) which is done by the `AddCommandParser`, the
-correct `Model` object (eg. `Student`, `Task`) will be added to the corresponding list in `Model` class.
-* Then, updated lists of data will be observed by the `AddressBook`, and displayed on the GUI.
-
-The abstract class `AddCommand` extends from the abstract class `Command`. In the `AddCommand` class, the abstract
-method `execute` takes in a `Model` object. As such, all view commands that extend from the `AddCommand` class will implement
-the `execute` method. Thus, all add command classes have a dependency on `Model`.
-
-In the `AddCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
-view has to take in at least one argument. The message will guide the user on what parameters the `AddCommand` can take in.
-
-In all the add commands that extend from `AddCommand`, while there is a static message `MESSAGE_SUCCESS` for when the
-command has executed successfully, there is also a static message `MESSAGE_INVALID` that comes in different variants for
-when the command has not executed successfully due to an expected error from the user.
-
-#### 4.5.3 Structure of AddXYZCommand
-The following diagram shows the overview of `AddCommand` detailed Class Diagram which has a similar structure as other `Commands`:
-
-![Class Diagram of Add Commands](images/AddXYZCommandClassDiagram.png)
-
-* The class `AddCommand` contains 3 subclasses: `AddTaskCommand`, `AddConsultationCommand` and `AddMasteryCheckCommand`.
-* These `AddCommand` subclasses interacts with `Model` and the related class models each AddCommand is supposed to execute with.
-* Upon successful `AddCommand`, these subclasses communicates with `Model` to add `Task`, `Consultation` and `MasteryCheck` into `Model`.
-
-#### 4.5.4 Structure of AddCommandParser
-The following diagram shows the overview of the AddCommandParser Class Diagram:
-
-![Class Diagram of ViewCommandParser](images/AddCommandParserClassDiagram.png)
-
-In the `AddCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
-the different flags that `AddCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
-the flag and return the correct `AddCommand` object.
-
-Due to Java `LocalDateTime` class used for our `Consultation`, `MasteryCheck` `Event` and `Deadline` objects, `ConsultationMasteryCheckCommandParser`
-and `TaskCommandParser` are employed to parse the objects added.
-
-#### 4.5.5 Path Execution of AddTaskCommand
-As there are many `AddCommand` subclasses such as `AddTaskCommand` and `AddConsultationCommand`,
-we will only bring in one of them. In this and the following section, we will be using the `AddTaskCommand`
-as an example for the `AddCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of `AddTaskCommand`.
-The other `AddCommand` subclasses will execute similarly.
-
-![Path Diagram of ViewMisionDeadlineCommand](images/AddCommandPathDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Reminder:** There are 3 `Task` types, namely, `Todo`, `Event` and `Deadline`.
-</div>
-
-#### 4.5.6 Interaction between objects when AddTaskCommand is executed
-The sequence diagram for the `AddTaskCommand` adding an `Event` is shown below:
-
-![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
-
-The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the second argument to the newly created `AddCommandParser` object.
-The `AddCommandParser` will then call specific parse method, in this case, `parseEvent` method of `TaskCommandParser`. `TaskCommandParser` returns an `Event` object
-created to `AddCommandParser` so that it can return a new `AddTaskCommand` is created with the `Event` object.
-This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the
-`AddTaskCommand` object. In this method, it will use the `Model` object to call the method : `hasEvent()`, which checks if there is a duplicated `Event` in the `Model`.
-Once successful, the `execute(model)` will return a `CommandResult` object with the success message to the `LogicManager`, indicating that the command execution is a success.
-
-The other `ViewCommand` subclasses work similarly to this as well.
-
-<div style="page-break-after: always"></div>
-
-### 4.6 Delete Command
-In this section, we will introduce the `Delete Command`. It will show the structure of the `DeleteCommand` class and the `DeleteCommandParser`
-class, as well as the path diagram and sequence diagram of the `DeleteConsultationCommand` to capture the interactions between
-the `DeleteConsultationCommand` and other object classes.
-
-#### 4.6.1 What is DeleteCommand
-`DeleteCommand` is an abstract class encapsulating the different delete commands for the `Consultations`,
-`Mastery Checks`, and `Tasks`.
-
-#### 4.6.2 Structure of DeleteCommand
-
-The following diagram shows the overview of the `DeleteCommand` Class Diagram:
-
-![Class Diagram of DeleteCommand](images/DeleteCommandClassDiagram.png)
-
-The abstract class `DeleteCommand` extends from the abstract class `Command`. In the `DeleteCommand` class, the abstract
-method `execute` takes in a `Model` object. As such, all delete commands that extend from the `DeleteCommand` class will implement
-the `execute` method. Thus, all delete command classes have a dependency on `Model`.
-
-In the `DeleteCommand` class, there is a static message `MESSAGE_USAGE` for when user does not include a second argument since
-delete has to take in at least one argument. The message will guide the user on what parameters the `DeleteCommand` can take in.
-
-In all the delete commands that extend from `DeleteCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
-has executed successfully. The message will be shown to the user to indicate success.
-
-#### 4.6.3 Structure of DeleteCommandParser
-
-The following diagram shows the overview of the DeleteCommandParser Class Diagram:
-
-![Class Diagram of DeleteCommandParser](images/DeleteCommandParserClassDiagram.png)
-
-In the `DeleteCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
-the different flags that `DeleteCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
-the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
-the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
-and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
-The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a `String` to store identifiers instead;
-however, they are similar in how they operate and interact with the rest of the system.
-
-#### 4.6.4 Path Execution of DeleteConsultationCommand
-As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
-we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
-as an example for the `DeleteCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of `DeleteConsultationCommand`.
-The other `DeleteCommand` subclasses will execute similarly.
-
-![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
-
-#### 4.6.5 Interaction between objects when DeleteConsultationCommand is executed
-The sequence diagram for the `DeleteConsultationCommand` is shown below:
-
-![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
-
-The `LogicManager` will call the `parseCommand` method of `AddressBookParser`, which then passes the arguments to the `DeleteCommandParser` object.
-The `DeleteCommandParser`, after parsing the necessary arguments through static methods of the `ParserUtil` class, will return a `DeleteConsultationCommand` object.
-This object will then be returned to the `LogicManager`. Next, the `LogicManager` will call the `execute(model)` method using the `DeleteConsultationCommand` object.
-In this method, it will use the `Model` object to call the method `deleteConsultation()` with parameter `consultationToDelete` which will delete the specified
-consultation from the list of consultations stored in Jarvis. When completed, the `execute(model)` will return a `CommandResult` object with the success message
-to the `LogicManager`, indicating that the command execution is a success.
-
-The other `DeleteCommand` subclasses work similarly to this as well.
-
-=======
-### 4.7 Edit Command
-In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the
-`EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
-
-#### 4.7.1 What is Edit Command
-The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
-
-#### 4.7.2 Structure of Edit Command
-The following diagram shows the overview of the EditCommand Class Diagram:
-
-![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
-
-* Upon parsing user input to the correct `EditCommand` (ie. `EditXYZCommand`) which is done by the `EditCommandParser`, the
-correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresponding list in `Model` class.
-* Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
-
-#### 4.7.3 Path Diagram of EditLoginCommand
-
-![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
-
-There are 3 `EditCommand` subclasses - `EditStudentCommand`, `EditLoginCommand` and `EditMasteryCheckCommand`.
-We will only use the `EditLoginCommand` as an example for the `EditCommand` path execution and interaction between the different objects.
-The diagram below demonstrates the expected path execution of `EditLoginCommand`.
-The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
-
-#### 4.7.4 Sequence Diagram of EditLoginCommand
-
-![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
-
-The sequence of method calls are highly similar to that for the `EditLoginCommand` above. What is of note is the additional call to `Scraper`.
-This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -617,7 +621,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC2 - View Mastery Checks**
@@ -639,7 +643,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC3 - Delete a Consultation**
@@ -673,7 +677,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1d. The list is empty.
 
-        Use case ends.
+    Use case ends.
 
 
 
@@ -708,7 +712,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1d. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC5 - Add a Consultation**
@@ -808,7 +812,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1e. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC8 - Add a Todo**
@@ -914,7 +918,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. The given index is invalid.
 
@@ -1033,10 +1037,10 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `add -d example deadline d/2020-12-12 t/17:55`<br>
       Expected: A new `Deadline` is added to the end of the list. Details of the newly added `Deadline` shown in the status message. GUI `Task` list under the `Task` tab is immediately updated.
-      
+
    1. Test case: `add -d d/2020-12-12 t/17:55`<br>
       Expected: No `Deadline` is added due to missing description. Error details shown in the status message. GUI `Task` list remains the same.
-      
+
    1. Other incorrect add commands to try: `add -d example deadline d/ t/17:55`, `add -d example deadline d/2020-02-31 t/20:20`, `...`<br>
       Expected: Similar to previous due to incorrect date and time or missing input.
 
@@ -1051,7 +1055,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `view -s invalid name`<br>
       Expected: No `Student` of such name is found. GUI displays empty `Student` list, showing "No Student" text.
-   
+
    1. Test case: `view -s`<br>
       Expected: Success message of viewing all `Student`s is shown in the status message. All `Student`s displayed in the GUI under the `Student` tab.
    
@@ -1060,7 +1064,7 @@ testers are expected to do more *exploratory* testing.
 1. Edit `Username` and / or `Password`
 
    1. Prerequisites: A tutor of CS1101S, to be able to log into Source Academy.
-   
+
    1. Test case: `edit -l u/username p/password`, `edit -l u/username` or `edit -l p/password`<br>
       Expected: Success message of editing username and password is shown in the status message. `username` and `password` saved to `login.json` file. Welcome message reflected on GUI.
 
@@ -1081,6 +1085,6 @@ testers are expected to do more *exploratory* testing.
 
    1. Successful command inputted in GUI
       Expected: `jarvis.json` is saved automatically after every successful command. Does not matter if the command affects `jarvis.json` file data or not.
-   
+
    1. Unsuccessful command inputted in GUI
       Expected: `jarvis,json` does not update or save automatically. The incorrect command is ignored.

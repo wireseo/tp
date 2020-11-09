@@ -25,43 +25,58 @@ activate AddressBook
 AddressBook -> Summary : setNumUngradedMissions(numUm)
 activate Summary
 Summary --> AddressBook
+deactivate Summary
 AddressBook --> ModelManager
+deactivate AddressBook
 deactivate ModelManager
 
 ModelManager -> ModelManager : updateUngradedQuestsSummaryDetail()
 activate ModelManager
 ModelManager -> AddressBook : setNumUngradedQuests(numUq)
+activate AddressBook
 AddressBook -> Summary : setNumUngradedQuests(numUq)
+activate Summary
 Summary --> AddressBook
+deactivate Summary
 AddressBook --> ModelManager
+deactivate AddressBook
 deactivate ModelManager
 
 ModelManager -> ModelManager : updateUpcomingConsultationsSummaryDetail()
 activate ModelManager
 ModelManager -> AddressBook : setNumUpcomingConsultations(numConsult)
+activate AddressBook
 AddressBook -> Summary : setNumUpcomingConsultations(numConsult)
+activate Summary
 Summary --> AddressBook
+deactivate Summary
 AddressBook --> ModelManager
+deactivate AddressBook
 deactivate ModelManager
 
 ModelManager -> ModelManager : updateUpcomingMasteryChecksSummaryDetail()
 activate ModelManager
 ModelManager -> AddressBook : setNumUpcomingMasteryChecks(numMC)
+activate AddressBook
 AddressBook -> Summary : setNumUpcomingMasteryChecks(numMC)
+activate Summary
 Summary --> AddressBook
+deactivate Summary
 AddressBook --> ModelManager
+deactivate AddressBook
 deactivate ModelManager
 
 ModelManager -> ModelManager : updateTasksSummaryDetail()
 activate ModelManager
 ModelManager -> AddressBook : setNumTasks(numTasks)
+activate AddressBook
 AddressBook -> Summary : setNumTasks(numTasks)
+activate Summary
 Summary --> AddressBook
 deactivate Summary
 AddressBook --> ModelManager
-deactivate ModelManager
-
 deactivate AddressBook
+deactivate ModelManager
 
 ModelManager --> LogicManager
 deactivate ModelManager
