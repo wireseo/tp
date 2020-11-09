@@ -48,11 +48,11 @@ Given below are my contributions to the project.
 * **Documentation**:
   * User Guide:
     * Created the first copy of the UserGuide in markdown format. [\#18](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/18)
-    * Added documentation for the features `view students`
+    * Added documentation for the features `View Students`
     * Added documentation for the UI Overview [\#327](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/327)
   * Developer Guide:
     * Updated existing UML diagrams under Architecture section, to fit the modified implementation.
-    * Added implementation details of the `view one student` and `view all students` features.
+    * Added implementation details of the `View One Student` and `View All Students` features.
     * Added implementation details of `Automatic Tab Switch` and `Summary` feature [\#367](https://github.com/AY2021S1-CS2103T-W11-2/tp/pull/367)
 
 * **Community**:
@@ -62,5 +62,4 @@ Given below are my contributions to the project.
 
 * **Tools**:
   * Used JavaFX libraries and CSS to create portions of the Graphic User Interface.
-  * 
 
