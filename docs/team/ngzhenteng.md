@@ -3,9 +3,11 @@ layout: page
 title: Ng Zhen Teng's Project Portfolio Page
 ---
 
-## Project: JARVIS
+## Project: Jarvis
 
-JARVIS is a desktop app for CS1101S Teaching Assistants (Avengers) to help Avengers keep track of their grading duties and consultations. The user interacts with it using CLI and it has a GUI created with JavaFX. It is written in Java and has more than 10kLoC.
+Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers) to help Avengers keep track of their grading duties and consultations.
+The user interacts with it using CLI and it has a GUI created with JavaFX. It is written in Java and has more than 10kLoC.
+
 Given below are my contributions to the project.
 
 * **New Feature**: Added the ability to automatically switch to relevant tabs in the GUI when any command is inputted.
@@ -45,4 +47,3 @@ Given below are my contributions to the project.
 
 * **Tools**:
   * Used JavaFX libraries and CSS to create portions of the Graphic User Interface.
-
