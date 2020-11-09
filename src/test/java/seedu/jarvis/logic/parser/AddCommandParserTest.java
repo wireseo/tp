@@ -83,9 +83,9 @@ public class AddCommandParserTest {
         assertParseFailure(parser, "-t", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddCommand.MESSAGE_MISSING_DESCRIPTION));
         assertParseFailure(parser, "-e", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                AddCommand.MESSAGE_MISSING_DESCRIPTION));
+                AddCommand.MESSAGE_MISSING_INFO_TASK));
         assertParseFailure(parser, "-d", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                AddCommand.MESSAGE_MISSING_DESCRIPTION));
+                AddCommand.MESSAGE_MISSING_INFO_TASK));
         assertParseFailure(parser, "-c", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
         assertParseFailure(parser, "-mc", String.format(MESSAGE_INVALID_COMMAND_FORMAT,

@@ -22,6 +22,9 @@ public abstract class AddCommand extends Command {
             + "add -d DESCRIPTION d/YYYY-MM-DD t/HH:MM: Add deadline with DESCRIPTION at specified date and time";
 
     public static final String MESSAGE_MISSING_DESCRIPTION = "Please include the DESCRIPTION";
+    public static final String MESSAGE_MISSING_INFO_TASK = "When adding an Event or Deadline, please make sure to "
+            + "include all of DESCRIPTION, DATE, and TIME in the correct order as listed here: DESCRIPTION "
+            + "d/YYYY-MM-DD t/HH:MM";
     public static final String MESSAGE_MISSING_DATE = "Please make sure to include DATE and TIME: d/YYYY-MM-DD t/HH:MM";
     public static final String MESSAGE_MISSING_INFO = "please make sure to include all of NAME, DATE, and TIME in the "
             + "correct order as listed here: NAME d/YYYY-MM-DD t/HH:MM";
