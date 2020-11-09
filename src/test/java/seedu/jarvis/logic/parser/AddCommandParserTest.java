@@ -1,5 +1,6 @@
 package seedu.jarvis.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.jarvis.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.jarvis.logic.commands.CommandTestUtil.CONSULTATION_PREFIX;
 import static seedu.jarvis.logic.commands.CommandTestUtil.DATE_DESC_AMY_CONSULTATION;
@@ -37,8 +38,10 @@ import seedu.jarvis.logic.commands.add.AddCommand;
 import seedu.jarvis.logic.commands.add.AddConsultationCommand;
 import seedu.jarvis.logic.commands.add.AddMasteryCheckCommand;
 import seedu.jarvis.logic.commands.add.AddTaskCommand;
+import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
+import seedu.jarvis.model.task.Task;
 import seedu.jarvis.model.task.Todo;
 
 public class AddCommandParserTest {
@@ -62,10 +65,19 @@ public class AddCommandParserTest {
     }
 
     @Test
-    public void parseTodo_allFieldsPresent_success() {
+    public void parseTodo_allFieldsPresent_success() throws ParseException {
         Todo expectedTodo = new Todo(VALID_DESCRIPTION);
+        AddTaskCommand newAddTaskCommand = new AddTaskCommand(expectedTodo);
         String userInput = TODO_PREFIX + " " + VALID_DESCRIPTION;
-        assertParseSuccess(parser, userInput, new AddTaskCommand(expectedTodo));
+        AddCommand expectedAddCommand = parser.parse(userInput);
+        AddTaskCommand typeCastExpectedAddCommand = (AddTaskCommand) expectedAddCommand;
+        assertEquals(newAddTaskCommand.getTaskType(), typeCastExpectedAddCommand.getTaskType());
+
+        Todo actualTask = (Todo) newAddTaskCommand.getTask();
+        Todo expectedTask = (Todo) typeCastExpectedAddCommand.getTask();
+        assertEquals(expectedTodo, actualTask);
+        assertEquals(actualTask.getDescription(), VALID_DESCRIPTION);
+        assertEquals(actualTask.getDescription(), expectedTask.getDescription());
     }
 
     /*
