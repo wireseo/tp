@@ -20,8 +20,8 @@ class Flag {
 class Index {
     + getZeroBased(): int
     + getOneBased(): int
-    <u>+ fromZeroBased(): Index
-    <u>+ fromOneBased(): Index
+    <u>+fromZeroBased(): Index
+    <u>+fromOneBased(): Index
 }
 
 DeleteCommandParser ..> Flag
