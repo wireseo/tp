@@ -1,7 +1,5 @@
 package seedu.jarvis.testutil;
 
-import static seedu.jarvis.testutil.TypicalMissions.getTypicalMissions;
-
 import java.util.List;
 
 import seedu.jarvis.model.AddressBook;
@@ -14,7 +12,7 @@ import seedu.jarvis.model.task.Task;
 public class TypicalAddressBook {
 
     public static AddressBook getTypicalAddressBookWithAllValues() {
-        List<Mission> typicalMissions = getTypicalMissions();
+        List<Mission> typicalMissions = TypicalMissions.getTypicalMissions();
         List<Quest> typicalQuests = TypicalQuests.getTypicalQuests();
         List<Consultation> typicalConsultations = TypicalConsultations.getTypicalConsultations();
         List<MasteryCheck> typicalMasteryChecks = TypicalMasteryChecks.getTypicalMasteryChecks();
