@@ -7,7 +7,7 @@ participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR
 participant ":ParserUtil" as ParserUtil LOGIC_COLOR
 participant "v:ViewMissionDeadlineCommand" as ViewMissionDeadlineCommand LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "c:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -30,7 +30,6 @@ deactivate ViewCommandParser
 AddressBookParser -> ViewCommandParser : parse("-m")
 activate ViewCommandParser
 
-create ParserUtil
 ViewCommandParser -> ParserUtil : parseFlag("-m")
 activate ParserUtil
 
@@ -59,17 +58,16 @@ activate ViewMissionDeadlineCommand
 ViewMissionDeadlineCommand -> Model : updateMissionsList(PREDICATE_SHOW_ALL_MISSIONS)
 activate Model
 
-Model -[hidden]-> ViewMissionDeadlineCommand
 deactivate Model
 
 create CommandResult
 ViewMissionDeadlineCommand -> CommandResult : MESSAGE_SUCCESS
 activate CommandResult
 
-CommandResult --> ViewMissionDeadlineCommand : commandResult
+CommandResult --> ViewMissionDeadlineCommand : c
 deactivate CommandResult
 
-ViewMissionDeadlineCommand --> LogicManager : commandResult
+ViewMissionDeadlineCommand --> LogicManager : c
 deactivate ViewMissionDeadlineCommand
 
 [<--LogicManager
