@@ -21,7 +21,6 @@ public class TaskCommandParser {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
-
     /**
      * Takes in user input parameters and creates a Todo.
      * Returns a todo task.
@@ -134,7 +133,7 @@ public class TaskCommandParser {
             }
         }
 
-        if (datePrefixLocation > timePrefixLocation) {
+        if (hasTimePrefix && datePrefixLocation > timePrefixLocation) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_INVALID_DATETIME));
 

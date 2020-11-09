@@ -50,12 +50,17 @@ public class CommandTestUtil {
     public static final String TODO_PREFIX = "-t";
     public static final String EVENT_PREFIX = "-e";
     public static final String DEADLINE_PREFIX = "-d";
+    public static final String DATE_PREFIX = "d/";
+    public static final String TIME_PREFIX = "t/";
     public static final String VALID_DESCRIPTION = "CS2103T project tp submission 1";
     public static final String VALID_DATE_TASK = "2020-10-15";
     public static final String VALID_USERINPUT_DATE = "d/" + VALID_DATE_TASK;
     public static final String VALID_TIME_TASK = "18:18";
     public static final String VALID_USERINPUT_TIME = "t/" + VALID_TIME_TASK;
     public static final String VALID_DATE_TIME = VALID_DATE_TASK + " " + VALID_TIME_TASK;
+    public static final String INVALID_DATE_EXPLICIT = "2020-13-13";
+    public static final String INVALID_DATE_IMPLICIT = "2020-02-30";
+    public static final String INVALID_TIME = "23:60";
 
     public static final String VALID_USERNAME_STUDENT = "nusstu\\e1234567";
     public static final String VALID_USERNAME_PROF = "nusstf\\e1234567";

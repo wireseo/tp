@@ -64,6 +64,11 @@ public class Deadline extends Task {
         return dateTime.toString();
     }
 
+    //For testing purposes
+    public LocalDateTime getLocalDateTime() {
+        return dateTime;
+    }
+
     // -------------------------------------------------------------------------------------------------------
 
     /**
