@@ -307,13 +307,12 @@ Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
 * Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c`.
 * NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit. However, it may not be left empty.
 * Because date and time is considered in order, the d/ prefix must come earlier than t/.
-</div>
+
 ![AddConsultations](images/userguide/addConsultation.png)
 
 #### 6.3.2 Adding `Mastery Checks` : `-mc`
@@ -325,14 +324,13 @@ Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
 * Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc`.
 * NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit. However, it may not be left empty.
 * Because date and time is considered in order, the d/ prefix must come earlier than t/.
 * When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
-</div>
+
 ![AddMasteryChecks](images/userguide/addMasteryCheck.png)
 
 #### 6.3.3 Adding `Todos` : `-t`
@@ -418,12 +416,11 @@ Edits the score of a `Mastery Check` session with a `Student`.
 * `edit -mc 1 s/0`
 * `edit -mc 3 s/1`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * Do note that the `SCORE` parameter can only be 0 or 1, according to the actual restrictions of `Mastery Check` pass/fail in CS1101S.
 * The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Mastery Check`.
 * Jarvis allows editing to the same value; even if no values are actually updated by the command, it will display a success message.
-</div>
+
 ![EditMasteryCheck](images/userguide/editMasteryCheck.png)
 
 ### 6.5 Deleting Information : `delete`
@@ -435,10 +432,9 @@ Deletes a `Task` based on the `INDEX` you specify.
 <br>✏️ Examples:
 * `delete -c 3`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Consultation`.
-</div>
+
 ![DeleteConsultation](images/userguide/deleteConsultation.png)
 
 #### 6.5.2 Deleting `Mastery Checks` : `-mc`
@@ -448,10 +444,9 @@ Deletes a `Mastery Check` based on the `INDEX` you specify.
 <br>✏️ Examples:
 * `delete -mc 3`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Mastery Check`.
-</div>
+
 ![DeleteMasteryCheck](images/userguide/deleteMasteryCheck.png)
 
 #### 6.5.3 Deleting `Tasks` : `-t`
@@ -531,10 +526,8 @@ Shows all past `Consultation` sessions.
 <br>✏️ Examples:
 * `view -cp`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
-</div>
 
 #### 6.6.9 Viewing upcoming `Consultations`: `-cu`
 
@@ -543,10 +536,8 @@ Shows all upcoming `Consultation` sessions.
 <br>✏️ Examples:
 * `view -cu`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * When the time of the `Consultation` displayed by `view -cu` is earlier than the local time (to year, month, date, hour, and minute) and then caught up eventually, it is still considered as an upcoming `Consultation` when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the `Consultation` session. When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated filtered `Consultation` list with the current local time as the standard.
-</div>
 
 #### 6.6.10 Viewing all `Mastery Checks` : `-mc`
 
@@ -562,10 +553,8 @@ Shows all past `Mastery Check` sessions.
 <br>✏️ Examples:
 * `view -mcp`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
-</div>
 
 #### 6.6.12 Viewing upcoming `Mastery Checks` : `mcu`
 
@@ -574,10 +563,8 @@ Shows all upcoming `Mastery Check` sessions.
 <br>✏️ Examples:
 * `view -mcu`
 
-<div markdown="block" class="alert alert-info">
 <br>⚠️ Notes:
 * When the time of the `Mastery Check` displayed by `view -mcu` is earlier than the local time (to year, month, date, hour, and minute) and then caught up eventually, it is still considered as an upcoming `Mastery Check` when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the `Mastery Check` session. When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated filtered `Mastery Check` list with the current local time as the standard.
-</div>
 
 #### 6.6.13 Viewing all `Tasks` : `-t`
 
