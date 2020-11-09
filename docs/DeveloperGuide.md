@@ -451,9 +451,12 @@ The following diagram shows the overview of the DeleteCommandParser Class Diagra
 
 In the `DeleteCommandParser` class, under the `parse()` method, we reference the `Flag` class which is a class that encapsulates
 the different flags that `DeleteCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
-the flag and return the correct `DeleteCommand` object. Additionally, under the same method, we reference the `Index` class which encapsulates
+the flag and return the correct `DeleteCommand` object.
+
+Additionally, under the same method, we reference the `Index` class which encapsulates
 the numerical indexes that `DeleteCommand` can parse. We use the `Index` class to check for whether the input is a non-zero unsigned integer
 and go on to parse the index and provide the parameter necessary to instantiate the aforementioned `DeleteCommand` object.
+
 The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a `String` to store identifiers instead;
 however, they are similar in how they operate and interact with the rest of the system.
 
@@ -480,7 +483,7 @@ to the `LogicManager`, indicating that the command execution is a success.
 
 The other `DeleteCommand` subclasses work similarly to this as well.
 
-=======
+
 ## Edit Command
 In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the
 `EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
@@ -589,7 +592,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC2 - View Mastery Checks**
@@ -611,7 +614,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC3 - Delete a Consultation**
@@ -645,7 +648,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1d. The list is empty.
 
-        Use case ends.
+    Use case ends.
 
 
 
@@ -680,7 +683,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1d. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC5 - Add a Consultation**
@@ -780,7 +783,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1e. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 
 <br>**Use case: UC8 - Add a Todo**
@@ -886,7 +889,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. The list is empty.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. The given index is invalid.
 
@@ -1005,10 +1008,10 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `add -d example deadline d/2020-12-12 t/17:55`<br>
       Expected: A new `Deadline` is added to the end of the list. Details of the newly added `Deadline` shown in the status message. GUI `Task` list under the `Task` tab is immediately updated.
-      
+
    1. Test case: `add -d d/2020-12-12 t/17:55`<br>
       Expected: No `Deadline` is added due to missing description. Error details shown in the status message. GUI `Task` list remains the same.
-      
+
    1. Other incorrect add commands to try: `add -d example deadline d/ t/17:55`, `add -d example deadline d/2020-02-31 t/20:20`, `...`<br>
       Expected: Similar to previous due to incorrect date and time or missing input.
 
@@ -1023,22 +1026,22 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `view -s invalid name`<br>
       Expected: No `Student` of such name is found. GUI displays empty `Student` list, showing "No Student" text.
-   
+
    1. Test case: `view -s`<br>
       Expected: Success message of viewing all `Student`s is shown in the status message. All `Student`s displayed in the GUI under the `Student` tab.
-   
+
 ### Edit Login Details
 
 1. Edit `Username` and / or `Password`
 
    1. Prerequisites: A tutor of CS1101S, to be able to log into Source Academy.
-   
+
    1. Test case: `edit -l u/username p/password`, `edit -l u/username` or `edit -l p/password`<br>
       Expected: Success message of editing username and password is shown in the status message. `username` and `password` saved to `login.json` file. Welcome message reflected on GUI.
 
    1. Test case: `edit -l`, `edit -l t/password`, `...`<br>
       Expected: Error message shown in the status message. GUI welcome message remains unchanged. `login.json` file remains unchanged.
-   
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
@@ -1053,6 +1056,6 @@ testers are expected to do more *exploratory* testing.
 
    1. Successful command inputted in GUI
       Expected: `jarvis.json` is saved automatically after every successful command. Does not matter if the command affects `jarvis.json` file data or not.
-   
+
    1. Unsuccessful command inputted in GUI
       Expected: `jarvis,json` does not update or save automatically. The incorrect command is ignored.
