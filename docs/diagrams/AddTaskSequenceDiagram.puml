@@ -41,7 +41,7 @@ deactivate ParserUtil
 AddCommandParser -> TaskCommandParser : parseEvent("...")
 activate TaskCommandParser
 
-TaskCommandParser --> AddCommandParser : Event event
+TaskCommandParser --> AddCommandParser : event
 deactivate TaskCommandParser
 
 create AddTaskCommand
