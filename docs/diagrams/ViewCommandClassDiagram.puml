@@ -18,15 +18,6 @@ class Model <<Interface>> {
 }
 
 class ModelManager {
-    /' Attributes '/
-    - addressBook: AddressBook
-    - filteredStudents: FilteredList<Student>
-    - filteredMissions: FilteredList<Mission>
-    - filteredQuests: FilteredList<Quest>
-    - filteredConsultations: FilteredList<Consultation>
-    - filteredMasteryChecks: FilteredList<MasteryCheck>
-    - filteredTasks: FilteredList<Task>
-
     /' Methods '/
     + updateFilteredPersonList(Predicate<Student> predicate) : void
     + updateMissionsList(Predicate<Mission> predicate) : void
