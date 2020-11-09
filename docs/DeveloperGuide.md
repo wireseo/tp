@@ -177,76 +177,6 @@ Classes used by multiple components are in the `seedu.jarvis.commons` package.
 
 This section describes some noteworthy details on how certain key features have been implemented.
 
-### Automatic Tab Switching
-In this section we will explain how the `Automatic Tab Switching Feature` feature works. We will do so by going
- through a sequence diagram.
-
-#### What is Automatic Tab Switching
-`Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
-` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
-
-#### Interaction between objects when Automatic Tab Switching happens
-The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
- `CommandResult` after the user keys in a command and presses the enter key in the Graphical User Interface.
-
-![Sequence Diagram of Automatic Tab Switching](images/AutomaticTabSwitchSequenceDiagram.png)
-
-On start up of the GUI the `fillInnerParts` method of `MainWindow` is called, creating a `CommandBox` object with
-a method reference to `MainWindow`'s `executeCommand` method passed as parameter to the constructor.
-
-The `CommandBox` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
-`MainWindow`'s `executeCommand` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult` object and returns it to `MainWindow`.
-
-`MainWindow` class calls the `CommandResult` object's `getCommandTargetFeature` method, which then returns a
- `CommandTargetFeature`, `Enum`
-corresponding to the feature that the user input command relates to. Based on that `Enum`, `MainWindow` then selects the
- corresponding tab using its local variable `tabSelector`. In this case `Missions` was returned and hence the
-  `missionTab` was selected.
-
-As such, the corresponding tab is selected after a user command is inputted.
-
-This feature works the same way for
-viewing `Students`, `Quests`, `Consultations`, `MasteryChecks` and `Tasks`. In each case, the
-corresponding `CommandTargetFeature` `Enum` is returned resulting in the corresponding tab selection.
-
-### Summary Feature
-In this section we will explain how the `Summary Feature` is implemented by going through a sequence diagram.
-
-#### What is the Summary Feature
-Summary feature refers to the summary string at the top right hand corner of the Jarvis Graphical User Interface. It
-summarises the ungraded missions and quests, upcoming consultations and mastery checks as well as outstanding tasks.
-
-It is always updated at any point in time of using Jarvis.
-
-#### Interaction between objects to enable the Summary Feature
-In order for the `Summary` string to be updated upon starting up the Jarvis Graphical User Interface and in sync with the
-changes in data after each command, Jarvis calls the `ModelManager` `updateAllSummaryDetails` method
-upon start up and after each command is executed. The following is a sequence diagram when a user command is
-entered.
-
-![Sequence diagram of Summary feature](images/SummaryFeatureSequenceDiagram.png)
-
-Upon keying in the user command, `LogicManager`'s `execute` method is called. This leads to the calling of
-`ModelManager`'s `updateAllSummaryDetails` method, which thereby leads to a series of function calls to
-`ModelManager`'s own methods `updateUngradedMissionsSummaryDetail`, `updateUngradedQuestsSummaryDetail` and so
- fourth.
-
-Each of the methods obtains the
-length of the corresponding `FilteredList` to find the exact value of the summary detail such as "number of ungraded
-missions". The value is then set by calling the corresponding `AddressBook` setter methods, which then leads to the
-corresponding call of the `Summary` object's setter method call.
-
-The always updated `Summary` string is obtained through the `LogicManager` and displayed as a `Label` in the Graphical
-User Interface.
-
-![Sequence diagram of getting Summary Details](images/GetSummaryDetailsSequenceDiagram.png)
-
-A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty` of summary details being returned.
-
-Upon start up of Jarvis' Graphical User Interface, the first step of calling `LogicManager`'s `execute` method is
-skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
-similar syncing of summary details.
-
 ### Login
 In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
@@ -506,12 +436,82 @@ We will only use the `EditLoginCommand` as an example for the `EditCommand` path
 The diagram below demonstrates the expected path execution of `EditLoginCommand`.
 The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
 
-### Sequence Diagram of EditLoginCommand
+### Interaction between objects when EditLoginCommand is executed.
 
 ![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
 
 The sequence of method calls are highly similar to that for the `EditLoginCommand` above. What is of note is the additional call to `Scraper`.
 This is executed to allow Jarvis to refresh the GUI with updated information relevant to the new user that has logged in.
+
+### Automatic Tab Switching
+In this section we will explain how the `Automatic Tab Switching Feature` feature works. We will do so by going
+ through a sequence diagram.
+
+#### What is Automatic Tab Switching
+`Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
+` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
+
+#### Interaction between objects when Automatic Tab Switching happens
+The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
+ `CommandResult` after the user keys in a command and presses the enter key in the Graphical User Interface.
+
+![Sequence Diagram of Automatic Tab Switching](images/AutomaticTabSwitchSequenceDiagram.png)
+
+On start up of the GUI the `fillInnerParts` method of `MainWindow` is called, creating a `CommandBox` object with
+a method reference to `MainWindow`'s `executeCommand` method passed as parameter to the constructor.
+
+The `CommandBox` object will take the command keyed into the commandBox Ui component, in this case `"view -m"`, as parameters to
+`MainWindow`'s `executeCommand` method, thereby invoking a call to the `LogicManager`'s `execute` method. `LogicManager` creates a `CommandResult` object and returns it to `MainWindow`.
+
+`MainWindow` class calls the `CommandResult` object's `getCommandTargetFeature` method, which then returns a
+ `CommandTargetFeature`, `Enum`
+corresponding to the feature that the user input command relates to. Based on that `Enum`, `MainWindow` then selects the
+ corresponding tab using its local variable `tabSelector`. In this case `Missions` was returned and hence the
+  `missionTab` was selected.
+
+As such, the corresponding tab is selected after a user command is inputted.
+
+This feature works the same way for
+viewing `Students`, `Quests`, `Consultations`, `MasteryChecks` and `Tasks`. In each case, the
+corresponding `CommandTargetFeature` `Enum` is returned resulting in the corresponding tab selection.
+
+### Summary Feature
+In this section we will explain how the `Summary Feature` is implemented by going through a sequence diagram.
+
+#### What is the Summary Feature
+Summary feature refers to the summary string at the top right hand corner of the Jarvis Graphical User Interface. It
+summarises the ungraded missions and quests, upcoming consultations and mastery checks as well as outstanding tasks.
+
+It is always updated at any point in time of using Jarvis.
+
+#### Interaction between objects to enable the Summary Feature
+In order for the `Summary` string to be updated upon starting up the Jarvis Graphical User Interface and in sync with the
+changes in data after each command, Jarvis calls the `ModelManager` `updateAllSummaryDetails` method
+upon start up and after each command is executed. The following is a sequence diagram when a user command is
+entered.
+
+![Sequence diagram of Summary feature](images/SummaryFeatureSequenceDiagram.png)
+
+Upon keying in the user command, `LogicManager`'s `execute` method is called. This leads to the calling of
+`ModelManager`'s `updateAllSummaryDetails` method, which thereby leads to a series of function calls to
+`ModelManager`'s own methods `updateUngradedMissionsSummaryDetail`, `updateUngradedQuestsSummaryDetail` and so
+ fourth.
+
+Each of the methods obtains the
+length of the corresponding `FilteredList` to find the exact value of the summary detail such as "number of ungraded
+missions". The value is then set by calling the corresponding `AddressBook` setter methods, which then leads to the
+corresponding call of the `Summary` object's setter method call.
+
+The always updated `Summary` string is obtained through the `LogicManager` and displayed as a `Label` in the Graphical
+User Interface.
+
+![Sequence diagram of getting Summary Details](images/GetSummaryDetailsSequenceDiagram.png)
+
+A `LogicManager` `getSummary` method call will lead to a sequence of method calls, which results in a `StringProperty` of summary details being returned.
+
+Upon start up of Jarvis' Graphical User Interface, the first step of calling `LogicManager`'s `execute` method is
+skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
+similar syncing of summary details.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
