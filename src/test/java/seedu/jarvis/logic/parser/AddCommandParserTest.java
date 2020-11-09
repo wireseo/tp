@@ -41,7 +41,6 @@ import seedu.jarvis.logic.commands.add.AddTaskCommand;
 import seedu.jarvis.logic.parser.exceptions.ParseException;
 import seedu.jarvis.model.consultation.Consultation;
 import seedu.jarvis.model.masterycheck.MasteryCheck;
-import seedu.jarvis.model.task.Task;
 import seedu.jarvis.model.task.Todo;
 
 public class AddCommandParserTest {
