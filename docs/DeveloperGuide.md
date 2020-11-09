@@ -8,12 +8,12 @@ while still having the benefits of a Graphical User Interface (GUI).
 
 ## Table of Contents
 
-1. [1. Introduction](#1-introduction)
+1. [Introduction](#1-introduction)
     - [1.1 Purpose](#11-purpose)
     - [1.2 Audience](#12-audience)
     - [1.3 Jarvis Overview](#13-jarvis-overview)
-2. [2. Setting up, getting started](#2-setting-up-getting-started)
-3. [3. Design](#3-design)
+2. [Setting up, getting started](#2-setting-up-getting-started)
+3. [Design](#3-design)
     - [3.1 Architecture](#31-architecture)
     - [3.2 UI component](#32-ui-component)
     - [3.3 Logic component](#33-logic-component)
@@ -21,7 +21,7 @@ while still having the benefits of a Graphical User Interface (GUI).
     - [3.5 Storage component](#35-storage-component)
     - [3.6 Scraper component](#36-scraper-component)
     - [3.7 Common classes](#37-common-classes)
-4. [4. Implementation](#4-implementation)
+4. [Implementation](#4-implementation)
     - [4.1 Login](#41-login)
         * [4.1.1 What is the login process](#411-what-is-the-login-process)
         * [4.1.2 Structure of login process](#412-structure-of-login-process)
@@ -57,14 +57,14 @@ while still having the benefits of a Graphical User Interface (GUI).
     - [4.7 Summary Feature](#47-summary-feature)
         * [4.7.1 What is the Summary Feature](#471-what-is-the-summary-feature)
         * [4.7.2 Sequence Diagram of Summary Feature](#472-sequence-diagram-of-summary-feature)
-5. [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
-6. [6. Appendix: Requirements](#6-appendix-requirements)
+5. [Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
+6. [Appendix: Requirements](#6-appendix-requirements)
     - [6.1 Product scope](#61-product-scope)
     - [6.2 User stories](#62-user-stories)
     - [6.3 Use cases](#63-use-cases)
     - [6.4 Non-Functional Requirements](#64-non-functional-requirements)
     - [6.5 Glossary](#65-glossary)
-7. [7. Appendix: Instructions for manual testing](#7-appendix-instructions-for-manual-testing)
+7. [Appendix: Instructions for manual testing](#7-appendix-instructions-for-manual-testing)
     - [7.1 Launch and shutdown](#71-launch-and-shutdown)
     - [7.2 Deleting a Consultation](#72-deleting-a-consultation)
     - [7.3 Adding a Deadline](#73-adding-a-deadline)
@@ -625,8 +625,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | tutor                                       | see usage instructions                 | can refer to instructions when I forget how to use the app. |
 | `* * *`  | tutor                                       | edit a student                         | can keep the contact details of all my students updated.    |
 | `* * *`  | tutor                                       | automatically view my students         | can know who to contact.                                    |
-| `* * *`  | tutor                                       | list all unmarked assignments          | will not miss out on marking any overdue missions or quests.|
 | `* * *`  | tutor                                       | view deadlines of missions/quests      | know when I can start marking them.                         |
+| `* * *`  | tutor                                       | list all unmarked assignments          | will not miss out on marking any overdue missions or quests.|
 | `* * *`  | tutor                                       | add consultations                      | keep track of my consultation schedule easily.              |
 | `* * *`  | tutor                                       | list consultations                     | be reminded of my consultation schedule.                    |
 | `* *`    | tutor                                       | list only past consultations           | look through my past consultation schedule.                 |
@@ -637,9 +637,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | tutor                                       | list only past mastery checks          | look through my past mastery check schedule.                |
 | `* *`    | tutor                                       | list only upcoming mastery checks      | be reminded of upcoming mastery checks easily.              |
 | `* * *`  | tutor                                       | delete a mastery check                 | can reflect cancellations or rescheduling.                  |
-| `* * *`  | tutor                                       | add my own tasks                       | can be consolidate all TA and non-TA scheduling into Jarvis.|
+| `* * *`  | tutor                                       | add my own tasks                       | can consolidate all TA and non-TA scheduling into Jarvis.   |
 | `* * *`  | tutor                                       | list my own tasks                      | can have an overview of all my tasks.                       |
-| `* * *`  | tutor                                       | delete tasks                           | can keep track of complete/unnecessary and incomplete tasks.|
+| `* * *`  | tutor                                       | delete tasks                           | can keep track of completed and incompleted tasks.           |
 
 
 ### 6.3 Use cases
@@ -863,8 +863,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a personal todo task.
-2. Jarvis adds a personal todo task with description.
+1. User requests to add a personal Todo task.
+2. Jarvis adds a personal Todo task with description.
 
     Use case ends.
 
@@ -887,8 +887,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a personal event task at the specified time and date.
-2. Jarvis adds a personal event task at the specified time and date.
+1. User requests to add a personal Event task at the specified time and date.
+2. Jarvis adds a personal Event task at the specified time and date.
 
     Use case ends.
 
@@ -917,8 +917,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a personal deadline task at the specified time and date.
-2. Jarvis adds a personal deadline task at the specified time and date.
+1. User requests to add a personal Deadline task at the specified time and date.
+2. Jarvis adds a personal Deadline task at the specified time and date.
 
     Use case ends.
 
@@ -947,8 +947,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to delete a personal task in the current list of tasks with its id number.
-2. Jarvis deletes the task.
+1. User requests to delete a personal task in the current list of Tasks with its id number.
+2. Jarvis deletes the Task.
 
     Use case ends.
 
@@ -975,8 +975,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view their personal tasks.
-2.  Jarvis shows a list of tasks.
+1.  User requests to view their personal Tasks.
+2.  Jarvis shows a list of Tasks.
 
     Use case ends.
 
@@ -1001,15 +1001,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### 6.4 Non-Functional Requirements
 
-1.  Should work on _mainstream Operating System_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1. Should work on _mainstream Operating System_ as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The system should be backward compatible with data produced by earlier versions of the system.
 5. The system should work on both 32-bit and 64-bit environments.
 6. The system should respond within one second.
 7. For now, the product is not required to handle the printing of reports.
-8. The application should not use copyrighted images anywhere in the UI.
-9.  Should be easy for the user to migrate all information in Jarvis onto a separate computer.
+8. Should be easy for the user to migrate all information in Jarvis onto a separate computer.
 
 
 ### 6.5 Glossary
@@ -1038,7 +1037,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file
+      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -1049,7 +1049,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Saving login details
 
-   1. Successfully Edit the correct `username` and `password` upon launching the program.
+   1. Successfully edit the correct `username` and `password` upon launching the program.
       Expected: `login.json` file saves most recent correct `username` and `password`.
 
 1. Shutdown
@@ -1061,17 +1061,17 @@ testers are expected to do more *exploratory* testing.
 
 ### 7.2 Deleting a Consultation
 
-1. Deleting a `Consultation` while all `Consultation`s are being shown
+1. Deleting a `Consultation` while all `Consultations` are being shown
 
-   1. Prerequisites: List all `Consultation`s using the `view -c` command. Multiple `Consultation`s in the list.
+   1. Prerequisites: List all `Consultations` using the `view -c` command. Multiple `Consultations` in the list.
 
    1. Test case: `delete -c 1`<br>
-      Expected: First `Consultation` is deleted from the list. Details of the deleted `Consultation` shown in the status message. GUI `Consultation` list is immediately updated.
+      Expected: First `Consultation` is deleted from the list. Details of the deleted `Consultation` shown in the status message. GUI's `Consultation` list is immediately updated.
 
    1. Test case: `delete -c 0`<br>
-      Expected: No `Consultation` is deleted. Error details shown in the status message. GUI `Consultation` list under `Consultation` tab remains the same.
+      Expected: No `Consultation` is deleted. Error details shown in the status message. GUI's `Consultation` list under `Consultation` tab remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete -c x`, `...` (where x is larger than the list size or smaller than 1)<br>
+   1. Other incorrect delete commands to try: `delete`, `delete -c x` (where x is larger than the list size or smaller than 1), `...`<br>
       Expected: Similar to previous.
 
 ### 7.3 Adding a Deadline
@@ -1079,17 +1079,17 @@ testers are expected to do more *exploratory* testing.
 1. Adding a `Deadline`
 
    1. Test case: `add -d example deadline d/2020-12-12 t/17:55`<br>
-      Expected: A new `Deadline` is added to the end of the list. Details of the newly added `Deadline` shown in the status message. GUI `Task` list under the `Task` tab is immediately updated.
+      Expected: A new `Deadline` is added to the end of the list. Details of the newly added `Deadline` shown in the status message. GUI's `Task` list under the `Task` tab is immediately updated.
 
    1. Test case: `add -d d/2020-12-12 t/17:55`<br>
-      Expected: No `Deadline` is added due to missing description. Error details shown in the status message. GUI `Task` list remains the same.
+      Expected: No `Deadline` is added due to missing description. Error details shown in the status message. GUI's `Task` list remains the same.
 
    1. Other incorrect add commands to try: `add -d example deadline d/ t/17:55`, `add -d example deadline d/2020-02-31 t/20:20`, `...`<br>
       Expected: Similar to previous due to incorrect date and time or missing input.
 
 ### 7.4 Viewing a Student
 
-1. View a `Student` while all `Student`s are being shown
+1. View a `Student` while all `Students` are being shown
 
    1. Prerequisites: At least have 1 `Student` under the `Student` tab in GUI.
 
@@ -1100,7 +1100,7 @@ testers are expected to do more *exploratory* testing.
       Expected: No `Student` of such name is found. GUI displays empty `Student` list, showing "No Student" text.
 
    1. Test case: `view -s`<br>
-      Expected: Success message of viewing all `Student`s is shown in the status message. All `Student`s displayed in the GUI under the `Student` tab.
+      Expected: Success message of viewing all `Students` is shown in the status message. All `Students` displayed in the GUI under the `Student` tab.
    
 ### 7.5 Edit Login Details
 
@@ -1118,16 +1118,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. Data file, `jarvis.json` is edited incorrectly manually while the program is running.
+   1. Data file, `jarvis.json` is edited incorrectly manually while the program is running.<br>
       Expected: No harm is caused. Once program shuts down or a new command is inputted in GUI, `jarvis.json` is rewritten as per what is correct previously.
 
-   1. No Internet Connection while using the program.
+   1. No Internet Connection while using the program.<br>
       Expected: No harm is caused. Changes are made and saved locally after the program is launched and the GUI is up. New modifications through using the program is still saved in `jarvis.json`.
 
 1. Autosave per command and on shutdown
 
-   1. Successful command inputted in GUI
+   1. Successful command inputted in GUI<br>
       Expected: `jarvis.json` is saved automatically after every successful command. Does not matter if the command affects `jarvis.json` file data or not.
 
-   1. Unsuccessful command inputted in GUI
-      Expected: `jarvis,json` does not update or save automatically. The incorrect command is ignored.
+   1. Unsuccessful command inputted in GUI<br>
+      Expected: `jarvis.json` does not update or save automatically. The incorrect command is ignored.
