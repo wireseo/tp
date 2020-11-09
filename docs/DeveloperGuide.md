@@ -2,41 +2,69 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
-{:toc}
+
+## Developer Guide
+
+## Table of Contents
+
+1. [1. Introduction](#1-introduction)
+    - [1.1 Purpose](#11-purpose)
+    - [1.2 Audience](#12-audience)
+    - [1.3 Jarvis Overview](#13-jarvis-overview)
+2. [2. Setting up, getting started](#2-setting-up-getting-started)
+3. [3. Design](#3-design)
+    - [3.1 Architecture](#31-architecture)
+    - [3.2 UI component](#32-ui-component)
+    - [3.3 Logic component](#33-logic-component)
+    - [3.4 Model component](#34-model-component)
+    - [3.5 Storage component](#35-storage-component)
+    - [3.6 Scraper component](#36-scraper-component)
+    - [3.7 Common classes](#37-common-classes)
+4. [4. Implementation](#4-implementation)
+    - [4.1 Automatic Tab Switching](#41-automatic-tab-switching)
+        * [4.1.1 What is Automatic Tab Switching](#411-what-is-automatic-tab-switching)
+        * [4.1.2 Interaction between objects when Automatic Tab Switching happens](#412-interaction-between-objects-when-automatic-tab-switching-happens)
+    - [4.2 Summary Feature](#42-summary-feature)
+        * [4.2.1 What is the Summary Feature](#421-what-is-the-summary-feature)
+        * [4.2.2 Interaction between objects to enable the Summary Feature](#422-interaction-between-objects-to-enable-the-summary-feature)
+    - [4.3 Login](#43-login)
+        * [4.3.1 What is the login process](#431-what-is-the-login-process)
+        * [4.3.2 Structure of login process](#432-structure-of-login-process)
+        * [4.3.3 Path Diagram of login process](#433-path-diagram-of-login-process)
+        * [4.3.4 Sequence Diagram of login process](#434-sequence-diagram-of-login-process)
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
-## **Introduction**
+## 1. Introduction
 
-### Purpose
+### 1.1 Purpose
 The purpose of this document is to cover the multi-level design architecture of Jarvis, so that the intended audience
 of this document can understand the relationship between components that make up Jarvis.
 
-### Audience
+### 1.2 Audience
 This developer guide is for anyone who wants to understand the internal software architecture of Jarvis.
 The following groups of people are the intended audience:
 * Jarvis developers: anyone who wish to upgrade Jarvis to support more functions.
 * CS1101S Avengers: tutors of CS1101S who wants to improve their efficiency and productivity.
 
-### Jarvis Overview
+### 1.3 Jarvis Overview
 Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI). Jarvis in general helps to organise and simplify
 CS1101S tutors' administrative tasks.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## 2. Setting up, getting started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
-## **Design**
+## 3. Design
 
-### Architecture
+### 3.1 Architecture
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
@@ -83,7 +111,7 @@ The sections below give more details of each component.
 
 <div style="page-break-after: always"></div>
 
-### UI component
+### 3.2 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -105,7 +133,7 @@ The `UI` component,
 
 <div style="page-break-after: always"></div>
 
-### Logic component
+### 3.3 Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -127,7 +155,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <div style="page-break-after: always"></div>
 
-### Model component
+### 3.4 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -143,7 +171,7 @@ The `Model`,
 
 <div style="page-break-after: always"></div>
 
-### Storage component
+### 3.5 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -154,7 +182,7 @@ The `Storage` component,
 * can save `UserLogin` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
-### Scraper component
+### 3.6 Scraper component
 
 ![Structure of the Scraper Component](images/ScraperClassDiagram.png)
 
@@ -165,7 +193,7 @@ The `Scraper` component,
 * uses the _Chrome_Driver_ package to scrape [Source Academy](https://sourceacademy.nus.edu.sg) for course-info such as missions, quests, student names.
 * can save the scraped information to `Model`.
 
-### Common classes
+### 3.7 Common classes
 
 Classes used by multiple components are in the `seedu.jarvis.commons` package.
 
@@ -173,19 +201,19 @@ Classes used by multiple components are in the `seedu.jarvis.commons` package.
 
 <div style="page-break-after: always"></div>
 
-## **Implementation**
+## 4. Implementation
 
 This section describes some noteworthy details on how certain key features have been implemented.
 
-### Automatic Tab Switching
+### 4.1 Automatic Tab Switching
 In this section we will explain how the `Automatic Tab Switching Feature` feature works. We will do so by going
  through a sequence diagram.
 
-#### What is Automatic Tab Switching
+#### 4.1.1 What is Automatic Tab Switching
 `Automatic Tab Switching` is a feature where the displayed tab automatically changes to the relevant tab: `Student
 ` `Missions`, `Quests`, `Consultations`, `Mastery Checks` and `Tasks`, for the user's input command.
 
-#### Interaction between objects when Automatic Tab Switching happens
+#### 4.1.2 Interaction between objects when Automatic Tab Switching happens
 The following is a sequence diagram explaining the interaction between `MainWindow`, `LogicManager` and
  `CommandResult` after the user keys in a command and presses the enter key in the Graphical User Interface.
 
@@ -209,16 +237,16 @@ This feature works the same way for
 viewing `Students`, `Quests`, `Consultations`, `MasteryChecks` and `Tasks`. In each case, the
 corresponding `CommandTargetFeature` `Enum` is returned resulting in the corresponding tab selection.
 
-### Summary Feature
+### 4.2 Summary Feature
 In this section we will explain how the `Summary Feature` is implemented by going through a sequence diagram.
 
-#### What is the Summary Feature
+#### 4.2.1 What is the Summary Feature
 Summary feature refers to the summary string at the top right hand corner of the Jarvis Graphical User Interface. It
 summarises the ungraded missions and quests, upcoming consultations and mastery checks as well as outstanding tasks.
 
 It is always updated at any point in time of using Jarvis.
 
-#### Interaction between objects to enable the Summary Feature
+#### 4.2.2 Interaction between objects to enable the Summary Feature
 In order for the `Summary` string to be updated upon starting up the Jarvis Graphical User Interface and in sync with the
 changes in data after each command, Jarvis calls the `ModelManager` `updateAllSummaryDetails` method
 upon start up and after each command is executed. The following is a sequence diagram when a user command is
@@ -247,28 +275,28 @@ Upon start up of Jarvis' Graphical User Interface, the first step of calling `Lo
 skipped, going straight to calling the `updateUngradedMissionsSummaryDetail` method of `ModelManager` to do the
 similar syncing of summary details.
 
-### Login
+### 4.3 Login
 In this section, we will introduce how the login process works. We will do so through showing the expected path-execution
 and interaction of objects between the `ScraperManager` and `Chrome Driver`.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Chrome Driver is a web scraper software provided by Google Chrome. It comes packaged with your download of Jarvis.
 </div>
 
-#### What is the login process
+#### 4.3.1 What is the login process
 Login is a series of method calls that any new user who uses Jarvis has to go through. It is carried out by `ScraperManager` and involves fetching information from Source Academy through the use of a headless browser, _Chrome_Driver_.
 
-#### Structure of login process
+#### 4.3.2 Structure of login process
 The following diagram shows the class relationship between the `ScraperManager` and other related classes. This will help in helping you understand the login process.
 
 ![Detailed Class Diagram of Scraper Manager](images/DetailedScraperClassDiagram.png)
 
-#### Path Diagram of login process
+#### 4.3.3 Path Diagram of login process
 The following diagram shows the path diagram from the user's perspective when he or she logs in into Jarvis.
 The login process is kickstarted whenever Jarvis is launched or the login details are edited.
 
 ![Path Diagram of login process](images/LoginPathDiagram.png)
 
-#### Sequence Diagram of login process
+#### 4.3.4 Sequence Diagram of login process
 
 ![Sequence Diagram of startScraping()](images/LoginSequenceDiagram.png)
 
@@ -279,16 +307,16 @@ The login process is kickstarted whenever Jarvis is launched or the login detail
 * In the event the login details are incorrect, Jarvis will resolve the problem by starting up with saved data (if it exists) or mock data (if it does not exist).
 <div style="page-break-after: always"></div>
 
-## View Command
+### 4.4 View Command
 In this section, we will introduce the `ViewCommand`. It will show the structure of the `ViewCommand` class and the `ViewCommandParser`
 class, as well as the path diagram and sequence diagram of the `ViewMissionDeadlineCommand` to capture the interactions between
 the `ViewMissionDeadlineCommand` and other object classes.
 
-### What is ViewCommand
+#### 4.4.1 What is ViewCommand
 `ViewCommand` is an abstract class encapsulating the different view commands for the following: `Student`,
 `Mission`, `Quest`, `Consultation`, `Mastery Check` and `Task`.
 
-### Structure of ViewCommand
+#### 4.4.2 Structure of ViewCommand
 
 The following diagram shows the overview of the `ViewCommand` Class Diagram:
 
@@ -304,7 +332,7 @@ view has to take in at least one argument. The message will guide the user on wh
 In all the view commands that extend from `ViewCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
 has executed successfully. The message will be shown to the user to indicate success.
 
-### Structure of ViewCommandParser
+#### 4.4.3 Structure of ViewCommandParser
 
 The following diagram shows the overview of the `ViewCommandParser` Class Diagram:
 
@@ -314,7 +342,7 @@ In the `ViewCommandParser` class, under the `parse()` method, we reference the `
 the different flags that `ViewCommand` can parse. We use the `Flag` class to check for whether an input is valid and go on to parse
 the flag and return the correct `ViewCommand` object.
 
-### Path Execution of ViewMissionDeadlineCommand
+#### 4.4.4 Path Execution of ViewMissionDeadlineCommand
 As there are many `ViewCommand` subclasses such as `ViewAllStudentsCommand` and `ViewConsultationsCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `ViewMissionDeadlineCommand`
 as an example for the `ViewCommand` path execution and interaction between the different objects.
@@ -323,7 +351,7 @@ The other `ViewCommand` subclasses will execute similarly.
 
 ![Path Diagram of ViewMisionDeadlineCommand](images/ViewMissionDeadlinePathDiagram.png)
 
-### Interaction between objects when ViewMissionDeadlineCommand is executed
+#### 4.4.5 Interaction between objects when ViewMissionDeadlineCommand is executed
 The sequence diagram for the `ViewMissionDeadlineCommand` is shown below:
 
 ![Sequence Diagram of ViewMissionDeadlineCommand](images/ViewMissionDeadlineSequenceDiagram.png)
@@ -337,7 +365,7 @@ The other `ViewCommand` subclasses work similarly to this as well.
 
 <div style="page-break-after: always"></div>
 
-## Add Command
+### 4.5 Add Command
 In this section, we will introduce the Add Command. It will show the structure of the `AddCommand` class and the `AddCommandParser`
 class, as well as the path diagram and sequence diagram of the `AddTaskCommand` to capture the interactions between
 the `AddTaskCommand` and other object classes.
@@ -345,11 +373,11 @@ the `AddTaskCommand` and other object classes.
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The AddCommand overall structure is similar to that of the ViewCommand above.
 </div>
 
-### What is AddCommand
+#### 4.5.1 What is AddCommand
 `ViewCommand` is an abstract class encapsulating the different add commands for the following: `Consultation`,
 `Mastery Check` and `Task`.
 
-### Structure of AddCommand
+#### 4.5.2 Structure of AddCommand
 The following diagram shows the overview of the AddComand Class Diagram:
 
 ![Sequence Diagram of Add Commands](images/AddCommandClassDiagram.png)
@@ -369,7 +397,7 @@ In all the add commands that extend from `AddCommand`, while there is a static m
 command has executed successfully, there is also a static message `MESSAGE_INVALID` that comes in different variants for
 when the command has not executed successfully due to an expected error from the user.
 
-### Structure of AddXYZCommand
+#### 4.5.3 Structure of AddXYZCommand
 The following diagram shows the overview of `AddCommand` detailed Class Diagram which has a similar structure as other `Commands`:
 
 ![Class Diagram of Add Commands](images/AddXYZCommandClassDiagram.png)
@@ -378,7 +406,7 @@ The following diagram shows the overview of `AddCommand` detailed Class Diagram 
 * These `AddCommand` subclasses interacts with `Model` and the related class models each AddCommand is supposed to execute with.
 * Upon successful `AddCommand`, these subclasses communicates with `Model` to add `Task`, `Consultation` and `MasteryCheck` into `Model`.
 
-### Structure of AddCommandParser
+#### 4.5.4 Structure of AddCommandParser
 The following diagram shows the overview of the AddCommandParser Class Diagram:
 
 ![Class Diagram of ViewCommandParser](images/AddCommandParserClassDiagram.png)
@@ -390,7 +418,7 @@ the flag and return the correct `AddCommand` object.
 Due to Java `LocalDateTime` class used for our `Consultation`, `MasteryCheck` `Event` and `Deadline` objects, `ConsultationMasteryCheckCommandParser`
 and `TaskCommandParser` are employed to parse the objects added.
 
-### Path Execution of AddTaskCommand
+#### 4.5.5 Path Execution of AddTaskCommand
 As there are many `AddCommand` subclasses such as `AddTaskCommand` and `AddConsultationCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `AddTaskCommand`
 as an example for the `AddCommand` path execution and interaction between the different objects.
@@ -402,7 +430,7 @@ The other `AddCommand` subclasses will execute similarly.
 <div markdown="span" class="alert alert-info">:information_source: **Reminder:** There are 3 `Task` types, namely, `Todo`, `Event` and `Deadline`.
 </div>
 
-### Interaction between objects when AddTaskCommand is executed
+#### 4.5.6 Interaction between objects when AddTaskCommand is executed
 The sequence diagram for the `AddTaskCommand` adding an `Event` is shown below:
 
 ![Sequence Diagram of Add Task](images/AddTaskSequenceDiagram.png)
@@ -418,16 +446,16 @@ The other `ViewCommand` subclasses work similarly to this as well.
 
 <div style="page-break-after: always"></div>
 
-## Delete Command
+### 4.6 Delete Command
 In this section, we will introduce the `Delete Command`. It will show the structure of the `DeleteCommand` class and the `DeleteCommandParser`
 class, as well as the path diagram and sequence diagram of the `DeleteConsultationCommand` to capture the interactions between
 the `DeleteConsultationCommand` and other object classes.
 
-### What is DeleteCommand
+#### 4.6.1 What is DeleteCommand
 `DeleteCommand` is an abstract class encapsulating the different delete commands for the `Consultations`,
 `Mastery Checks`, and `Tasks`.
 
-### Structure of DeleteCommand
+#### 4.6.2 Structure of DeleteCommand
 
 The following diagram shows the overview of the `DeleteCommand` Class Diagram:
 
@@ -443,7 +471,7 @@ delete has to take in at least one argument. The message will guide the user on 
 In all the delete commands that extend from `DeleteCommand`, there is a static message `MESSAGE_SUCCESS` for when the command
 has executed successfully. The message will be shown to the user to indicate success.
 
-### Structure of DeleteCommandParser
+#### 4.6.3 Structure of DeleteCommandParser
 
 The following diagram shows the overview of the DeleteCommandParser Class Diagram:
 
@@ -457,7 +485,7 @@ and go on to parse the index and provide the parameter necessary to instantiate 
 The `Index` only applies for `DeleteConsultationCommand` and `DeleteMasteryCheckCommand` as `DeleteTaskCommand` utilizes a `String` to store identifiers instead;
 however, they are similar in how they operate and interact with the rest of the system.
 
-### Path Execution of DeleteConsultationCommand
+#### 4.6.4 Path Execution of DeleteConsultationCommand
 As there are many `DeleteCommand` subclasses such as `DeleteMasteryCheckCommand` and `DeleteTaskCommand`,
 we will only bring in one of them. In this and the following section, we will be using the `DeleteConsultationCommand`
 as an example for the `DeleteCommand` path execution and interaction between the different objects.
@@ -466,7 +494,7 @@ The other `DeleteCommand` subclasses will execute similarly.
 
 ![Path Diagram of DeleteConsultationCommand](images/DeleteConsultationPathDiagram.png)
 
-### Interaction between objects when DeleteConsultationCommand is executed
+#### 4.6.5 Interaction between objects when DeleteConsultationCommand is executed
 The sequence diagram for the `DeleteConsultationCommand` is shown below:
 
 ![Sequence Diagram of DeleteConsultationCommand](images/DeleteConsultationSequenceDiagram.png)
@@ -481,14 +509,14 @@ to the `LogicManager`, indicating that the command execution is a success.
 The other `DeleteCommand` subclasses work similarly to this as well.
 
 =======
-## Edit Command
+### 4.7 Edit Command
 In this section, we will introduce the `Edit Command`. It will show the structure of the `EditCommand` class as well as the path diagram and sequence diagram of the
 `EditLoginCommand` to capture the interactions between the `EditLoginCommand` and other object classes.
 
-### What is Edit Command
+#### 4.7.1 What is Edit Command
 The `EditCommand` is an abstract class encapsulating the different implementations to edit `Student`, `UserLogin` and `MasterCheck`.
 
-### Structure of Edit Command
+#### 4.7.2 Structure of Edit Command
 The following diagram shows the overview of the EditCommand Class Diagram:
 
 ![Class Diagram of Edit Commands](images/EditCommandClassDiagram.png)
@@ -497,7 +525,7 @@ The following diagram shows the overview of the EditCommand Class Diagram:
 correct `Model` object (eg. `Student`, `UserLogin`) will be added to the corresponding list in `Model` class.
 * Then, updated lists of data will be written to the `AddressBook`, and displayed on the GUI.
 
-### Path Diagram of EditLoginCommand
+#### 4.7.3 Path Diagram of EditLoginCommand
 
 ![Path Diagram of EditLoginCommand](images/EditLoginCommandPathDiagram.png)
 
@@ -506,7 +534,7 @@ We will only use the `EditLoginCommand` as an example for the `EditCommand` path
 The diagram below demonstrates the expected path execution of `EditLoginCommand`.
 The other `EditCommand` subclasses will execute similarly, less the calls to `ScraperManager` to re-scrape Source Academy.
 
-### Sequence Diagram of EditLoginCommand
+#### 4.7.4 Sequence Diagram of EditLoginCommand
 
 ![Sequence Diagram of EditLoginCommand](images/EditLoginCommandSequenceDiagram.png)
 
@@ -516,7 +544,7 @@ This is executed to allow Jarvis to refresh the GUI with updated information rel
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## 5. Documentation, logging, testing, configuration, dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -526,9 +554,9 @@ This is executed to allow Jarvis to refresh the GUI with updated information rel
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## 6. Appendix: Requirements
 
-### Product scope
+### 6.1 Product scope
 
 **Target user profile**:
 
@@ -540,7 +568,7 @@ This is executed to allow Jarvis to refresh the GUI with updated information rel
 **Value proposition**: the only tool to keep tutor todos and responsibilities in check
 
 
-### User stories
+### 6.2 User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -566,7 +594,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | tutor                                       | delete tasks                           | can keep track of complete/unnecessary and incomplete tasks.|
 
 
-### Use cases
+### 6.3 Use cases
 
 (For all use cases below, the **System** is `Jarvis` and the **Actor** is the `CS1101S tutor`, unless specified otherwise)
 
@@ -924,7 +952,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-### Non-Functional Requirements
+### 6.4 Non-Functional Requirements
 
 1.  Should work on _mainstream Operating System_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
@@ -937,7 +965,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 9.  Should be easy for the user to migrate all information in Jarvis onto a separate computer.
 
 
-### Glossary
+### 6.5 Glossary
 
 * **Mainstream Desktop Operating System**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
@@ -948,7 +976,7 @@ a `Task` that requires completion at a particular point in time; `Deadline` is a
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
-## **Appendix: Instructions for manual testing**
+## 7. Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
@@ -957,7 +985,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+### 7.1 Launch and shutdown
 
 1. Initial launch
 
@@ -984,7 +1012,7 @@ testers are expected to do more *exploratory* testing.
    1. Type `exit` command in the Command Box in GUI.
       Expected: Stops and closes the program.
 
-### Deleting a Consultation
+### 7.2 Deleting a Consultation
 
 1. Deleting a `Consultation` while all `Consultation`s are being shown
 
@@ -999,7 +1027,7 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete -c x`, `...` (where x is larger than the list size or smaller than 1)<br>
       Expected: Similar to previous.
 
-### Adding a Deadline
+### 7.3 Adding a Deadline
 
 1. Adding a `Deadline`
 
@@ -1012,7 +1040,7 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect add commands to try: `add -d example deadline d/ t/17:55`, `add -d example deadline d/2020-02-31 t/20:20`, `...`<br>
       Expected: Similar to previous due to incorrect date and time or missing input.
 
-### Viewing a Student
+### 7.4 Viewing a Student
 
 1. View a `Student` while all `Student`s are being shown
 
@@ -1027,7 +1055,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `view -s`<br>
       Expected: Success message of viewing all `Student`s is shown in the status message. All `Student`s displayed in the GUI under the `Student` tab.
    
-### Edit Login Details
+### 7.5 Edit Login Details
 
 1. Edit `Username` and / or `Password`
 
@@ -1039,7 +1067,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `edit -l`, `edit -l t/password`, `...`<br>
       Expected: Error message shown in the status message. GUI welcome message remains unchanged. `login.json` file remains unchanged.
    
-### Saving data
+### 7.6 Saving data
 
 1. Dealing with missing/corrupted data files
 
