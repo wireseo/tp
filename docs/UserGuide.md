@@ -32,6 +32,7 @@ Jarvis is a desktop app for CS1101S Teaching Assistants (Avengers), optimized fo
         * [6.1.1 Notes about Command Format](#611-notes-about-command-format)
         * [6.1.2 Notes about Jarvis' relationship with Source Academy](#612-notes-about-jarvis-relationship-with-source-academy)
         * [6.1.3 Notes about Tasks](#613-notes-about-tasks)
+        * [6.1.4 Notes about truncation](#614-notes-about-truncation)
     - [6.2 Viewing help : `help`](#62-viewing-help--help)
     - [6.3 Adding Information : `add`](#63-adding-information--add)
         * [6.3.1 Adding Consultations : `add -c`](#631-adding-consultations---c)
@@ -113,7 +114,7 @@ The meaning for each symbol is as follows:
 
 Symbol | Meaning
 -------| ------------
- ⚠️    | This symbol indicates that there is something important for you to take note of.
+ ⚠️   | This symbol indicates that there is something important for you to take note of.
  ✏️   | This symbol indicates that an example is provided.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -128,7 +129,7 @@ please check that you have installed the correct driver:
     1. Windows: chromedriver.exe
     1. MacOS: chromedriver_mac
     1. Linux: chromedriver_linux
-<br>
+
 1. Copy both files to the folder you want to use as the _home folder_ for your Jarvis.
 
 1. There are two options for launching Jarvis.
@@ -153,7 +154,7 @@ please check that you have installed the correct driver:
    * `add -t DESCRIPTION: Adds a Todo task with specified description.`
    * `edit -s STUDENT_ID: Edits Student's Name, Email, Telegram.`
    * `exit: Exits the app.`
-<br>
+
 1. Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -212,7 +213,6 @@ this box.
    * The icons correspond respectively to the Source Academy and User Guide (this) websites.
 
 <br>
-
  > ⚠️ The core features of Jarvis are based on `Students`, `Missions`, `Quests`, `Consultations`, `Mastery Checks` and
  > `Tasks`.
  >
@@ -222,7 +222,7 @@ this box.
 
 To navigate the features, there are 2 methods which could be used individually, or mixed. We have designed
 this flexibility with you, the user in mind.
- 1. Only inputting commands into the box annotated "Enter command here..".
+ 1. Only inputting commands into the box annotated "Enter command here...".
  1. Clicking on the tabs.
 </div>
 
@@ -247,7 +247,7 @@ An example of the command being inputted:
 ![LoginUsernamePasswordInput](images/userguide/editLoginDetails.png)
 
 ### 5.2 Updated Details Summary
-Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered. 
+Within the red rectangle box, Jarvis will notify you if the login was successful and the login information entered.
 The username, password and student names are covered with a red rectangle for this diagram only to protect the Avenger's account security.
 You will be able to see the login details you entered.
 
@@ -270,8 +270,11 @@ You will have to edit them using the [Editing Student Information](#642-editing-
    * Items in square brackets are optional.
    <br> e.g `view -s [NAME]`, name is an optional parameter. It can be used as `view -s` or as `view -s [John]`.
 
-   * Parameters can be in any order.
+   * Parameters can be in any order, unless specified otherwise.
    <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL`, `e/EMAIL t/TELEGRAM` is also acceptable.
+
+   * When there are repeated parameters, Jarvis only recognizes the data given by the last repeated parameter.
+   <br> e.g. if the command specifies `t/TELEGRAM e/EMAIL` and the user enters `t/TELEGRAM t/TELEGRAM2 e/EMAIL e/EMAIL2 e/EMAIL3`, Jarvis recognizes the input as `t/TELEGRAM2 e/EMAIL3`.
 
 #### 6.1.2 Notes about Jarvis' relationship with Source Academy
    * Students’ names that are under the Avenger will be fetched automatically from [sourceacademy.nus.edu.sg](sourceacademy.nus.edu.sg) upon startup.
@@ -284,6 +287,10 @@ You will have to edit them using the [Editing Student Information](#642-editing-
    * The first alphabet "T", "E" and "D" refers to `Todo`, `Event`, and `Deadline` respectively, and the number followed
    after the alphabet is the index of the `Task` you created with respect to all the `Tasks` you ever created.
 
+#### 6.1.4 Notes about truncation
+   * If the user input is too long, it is automatically truncated when displayed.
+   <br> e.g. if the user enters a `NAME` parameter that is 150 characters long, Jarvis will automatically truncate it to fit the given screen size.
+
 ### 6.2 Viewing help : `help`
 
 Shows a message explaining how to access the help page.
@@ -295,33 +302,38 @@ Shows a message explaining how to access the help page.
 
 Adds a `Consultation` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -c NAME d/YYYY-MM-DD t/HH:MM`**
+
 <br>✏️ Examples:
 * `add -c John Doe d/2020-09-20 t/13:30`
 * `add -c Mary Jane d/2021-01-02 t/09:15`
 
 <div markdown="block" class="alert alert-info">
-
+<br>⚠️ Notes:
 * When you add a `Consultation` for a future date while displaying only past `Consultations`, make sure to enter `view -c` to view the complete list to check if the `Consultation` has been added correctly.
 * Similarly, when you add a `Consultation` for a past date while displaying only future `Consultations`, make sure to enter `view -c`.
-* NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit.
+* NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit. However, it may not be left empty.
+* Because date and time is considered in order, the d/ prefix must come earlier than t/.
 </div>
+![AddConsultations](images/userguide/addConsultation.png)
 
 #### 6.3.2 Adding `Mastery Checks` : `-mc`
 
 Adds a `Mastery Check` session with a `Student` at a specific `date` and `time`.
 <br>**Format: `add -mc NAME d/YYYY-MM-DD t/HH:MM`**
+
 <br>✏️ Examples:
 * `add -mc John Doe d/2020-09-20 t/13:30`
 * `add -mc Mary Jane d/2021-01-02 t/09:15`
 
 <div markdown="block" class="alert alert-info">
-
+<br>⚠️ Notes:
 * When you add a `Mastery Check` for a future date while displaying only past `Mastery Checks`, make sure to enter `view -mc` to view the complete list to check if the `Mastery Check` has been added correctly.
 * Similarly, when you add a `Mastery Check` for a past date while displaying only future `Mastery Check`, make sure to enter `view -mc`.
-* NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit.
+* NAME does not have to correspond to an existing student; this is so that the tutor may freely use any nicknames or other identifiers as they see fit. However, it may not be left empty.
+* Because date and time is considered in order, the d/ prefix must come earlier than t/.
 * When a `Mastery Check` is first added, a `FAIL` default value will be assigned.
-
 </div>
+![AddMasteryChecks](images/userguide/addMasteryCheck.png)
 
 #### 6.3.3 Adding `Todos` : `-t`
 
@@ -407,26 +419,40 @@ Edits the score of a `Mastery Check` session with a `Student`.
 * `edit -mc 3 s/1`
 
 <div markdown="block" class="alert alert-info">
-
-Do note that the SCORE parameter can only be 0 or 1, according to the actual restrictions of Mastery Check pass/fail in CS1101S.
+<br>⚠️ Notes:
+* Do note that the `SCORE` parameter can only be 0 or 1, according to the actual restrictions of `Mastery Check` pass/fail in CS1101S.
+* The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Mastery Check`.
+* Jarvis allows editing to the same value; even if no values are actually updated by the command, it will display a success message.
 </div>
+![EditMasteryCheck](images/userguide/editMasteryCheck.png)
 
 ### 6.5 Deleting Information : `delete`
 
 #### 6.5.1 Deleting `Consultations` : `-c`
 
-Deletes a `Task` based on the `CONSULTATION_ID` you specify.
-<br>**Format: `delete -c CONSULTATION_ID`**
+Deletes a `Task` based on the `INDEX` you specify.
+<br>**Format: `delete -c INDEX`**
 <br>✏️ Examples:
 * `delete -c 3`
 
+<div markdown="block" class="alert alert-info">
+<br>⚠️ Notes:
+* The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Consultation`.
+</div>
+![DeleteConsultation](images/userguide/deleteConsultation.png)
+
 #### 6.5.2 Deleting `Mastery Checks` : `-mc`
 
-Similar to the above process of deleting `Consultation`, deleting `Mastery Checks` first
-Deletes a `Mastery Check` based on the `MASTERYCHECK_ID` you specify.
-<br>**Format: `delete -mc MASTERYCHECK_ID`**
+Deletes a `Mastery Check` based on the `INDEX` you specify.
+<br>**Format: `delete -mc INDEX`**
 <br>✏️ Examples:
 * `delete -mc 3`
+
+<div markdown="block" class="alert alert-info">
+<br>⚠️ Notes:
+* The `INDEX` parameter should be a non-zero unsigned integer that is a valid index currently displayed along with the target `Mastery Check`.
+</div>
+![DeleteMasteryCheck](images/userguide/deleteMasteryCheck.png)
 
 #### 6.5.3 Deleting `Tasks` : `-t`
 
@@ -506,8 +532,8 @@ Shows all past `Consultation` sessions.
 * `view -cp`
 
 <div markdown="block" class="alert alert-info">
-
-When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
+<br>⚠️ Notes:
+* When the `Consultation` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
 </div>
 
 #### 6.6.9 Viewing upcoming `Consultations`: `-cu`
@@ -518,7 +544,7 @@ Shows all upcoming `Consultation` sessions.
 * `view -cu`
 
 <div markdown="block" class="alert alert-info">
-
+<br>⚠️ Notes:
 * When the time of the `Consultation` displayed by `view -cu` is earlier than the local time (to year, month, date, hour, and minute) and then caught up eventually, it is still considered as an upcoming `Consultation` when you enter `view -cu`. This is to encourage the tutors to have this screen open while holding the `Consultation` session. When you switch to another command, such as `view -c` or `view -cp`, and then come back, you may see the updated filtered `Consultation` list with the current local time as the standard.
 </div>
 
@@ -537,8 +563,8 @@ Shows all past `Mastery Check` sessions.
 * `view -mcp`
 
 <div markdown="block" class="alert alert-info">
-
-When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
+<br>⚠️ Notes:
+* When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
 </div>
 
 #### 6.6.12 Viewing upcoming `Mastery Checks` : `mcu`
@@ -549,8 +575,8 @@ Shows all upcoming `Mastery Check` sessions.
 * `view -mcu`
 
 <div markdown="block" class="alert alert-info">
-
-* When the time of the `Mastery Check` displayed by `view -cu` is earlier than the local time (to year, month, date, hour, and minute) and then caught up eventually, it is still considered as an upcoming `Mastery Check` when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the `Mastery Check` session. When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated filtered `Mastery Check` list with the current local time as the standard.
+<br>⚠️ Notes:
+* When the time of the `Mastery Check` displayed by `view -mcu` is earlier than the local time (to year, month, date, hour, and minute) and then caught up eventually, it is still considered as an upcoming `Mastery Check` when you enter `view -mcu`. This is to encourage the tutors to have this screen open while holding the `Mastery Check` session. When you switch to another command, such as `view -mc` or `view -mcp`, and then come back, you may see the updated filtered `Mastery Check` list with the current local time as the standard.
 </div>
 
 #### 6.6.13 Viewing all `Tasks` : `-t`
