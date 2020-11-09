@@ -27,6 +27,7 @@ import seedu.jarvis.model.mission.Mission;
 import seedu.jarvis.model.quest.Quest;
 import seedu.jarvis.model.student.Student;
 import seedu.jarvis.model.student.exceptions.DuplicateStudentException;
+import seedu.jarvis.model.summary.Summary;
 import seedu.jarvis.model.task.Deadline;
 import seedu.jarvis.model.task.Event;
 import seedu.jarvis.model.task.Task;
@@ -270,6 +271,141 @@ public class AddressBookTest {
         addressBook.setMasteryCheck(oldMasteryCheck, newMasteryCheck);
         assertTrue(addressBook.hasMasteryCheck(newMasteryCheck));
     }
+
+    @Test
+    public void setNumUngradedMissions_negativeValue_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> addressBook.setNumUngradedMissions(-2));
+    }
+
+    @Test
+    public void setNumUngradedQuests_negativeValue_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> addressBook.setNumUngradedQuests(-2));
+    }
+    @Test
+    public void setNumUpcomingConsultations_negativeValue_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> addressBook.setNumUpcomingConsultations(-2));
+    }
+
+    @Test
+    public void setNumUpcomingMasteryChecks_negativeValue_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> addressBook.setNumUpcomingMasteryChecks(-2));
+    }
+    @Test
+    public void setNumTasks_negativeValue_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> addressBook.setNumTasks(-2));
+    }
+
+
+    @Test
+    public void setNumUngradedMissions_twenty_success() {
+        int valueToSet = 20;
+        addressBook.setNumUngradedMissions(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_MISSIONS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertTrue(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUngradedQuests_twenty_success() {
+        int valueToSet = 20;
+        addressBook.setNumUngradedQuests(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_QUESTS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertTrue(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUpcomingConsultations_twenty_success() {
+        int valueToSet = 20;
+        addressBook.setNumUpcomingConsultations(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_CONSULTATIONS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertTrue(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUpcomingMasteryChecks_twenty_success() {
+        int valueToSet = 20;
+        addressBook.setNumUpcomingMasteryChecks(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_MASTERY_CHECKS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertTrue(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumTasks_twenty_success() {
+        int valueToSet = 20;
+        addressBook.setNumTasks(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_TASKS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertTrue(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUngradedMissions_zero_notIncludedInSummaryString() {
+        int valueToSet = 0;
+        addressBook.setNumUngradedMissions(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_MISSIONS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertFalse(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUngradedQuests_zero_notIncludedInSummaryString() {
+        int valueToSet = 0;
+        addressBook.setNumUngradedQuests(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_QUESTS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertFalse(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUpcomingConsultations_zero_notIncludedInSummaryString() {
+        int valueToSet = 0;
+        addressBook.setNumUpcomingConsultations(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_CONSULTATIONS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertFalse(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumUpcomingMasteryChecks_zero_notIncludedInSummaryString() {
+        int valueToSet = 0;
+        addressBook.setNumUpcomingMasteryChecks(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_MASTERY_CHECKS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertFalse(summaryDetails.contains(stringToBeContain));
+    }
+
+    @Test
+    public void setNumTasks_zero_notIncludedInSummaryString() {
+        int valueToSet = 0;
+        addressBook.setNumTasks(valueToSet);
+        String summaryDetails = addressBook.getSummary().get();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Summary.MESSAGE_TASKS).append(": ").append(valueToSet);
+        String stringToBeContain = stringBuilder.toString();
+        assertFalse(summaryDetails.contains(stringToBeContain));
+    }
+
 
     /**
      * A stub ReadOnlyAddressBook whose students list can violate interface constraints.

@@ -3,6 +3,9 @@ package seedu.jarvis.testutil;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import seedu.jarvis.model.consultation.Consultation;
 
@@ -47,4 +50,9 @@ public class TypicalConsultations {
             TEST_CONSULTATION_DATETIME_FOURTH);
     public static final Consultation TEST_CONSULTATION_FIVE = new Consultation(TEST_CONSULTATION_NAME_FIFTH,
             TEST_CONSULTATION_DATETIME_FIFTH);
+
+    public static List<Consultation> getTypicalConsultations() {
+        return new ArrayList<>(Arrays.asList(TEST_CONSULTATION_ONE, TEST_CONSULTATION_TWO, TEST_CONSULTATION_THREE,
+                TEST_CONSULTATION_FOUR, TEST_CONSULTATION_FIVE));
+    }
 }

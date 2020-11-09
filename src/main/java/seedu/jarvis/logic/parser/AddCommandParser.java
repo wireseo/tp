@@ -57,14 +57,19 @@ public class AddCommandParser implements Parser<AddCommand> {
         boolean hasDescription = length > 1;
 
         // when there is only flag
-        if (!hasDescription
-                && (commandFlag.getFlag().equals(TASK_TODO) || commandFlag.getFlag().equals(TASK_EVENT)
-                || commandFlag.getFlag().equals(TASK_DEADLINE))) {
+        if (!hasDescription && commandFlag.getFlag().equals(TASK_TODO)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_DESCRIPTION));
+
+        } else if (!hasDescription && (commandFlag.getFlag().equals(TASK_EVENT)
+                || commandFlag.getFlag().equals(TASK_DEADLINE))) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_MISSING_INFO_TASK));
+
         } else if ((!hasDescription) && commandFlag.getFlag().equals(CONSULTATION)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));
+
         } else if ((!hasDescription) && commandFlag.getFlag().equals(MASTERY_CHECK)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddCommand.MESSAGE_MISSING_INFO_CONSULTATION));

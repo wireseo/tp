@@ -133,7 +133,7 @@ public class Summary {
                     .append(numUngradedQuests);
         } else if (numUngradedMissions > 0) {
             missionsQuestSb.append(MESSAGE_MISSIONS).append(": ")
-                    .append(numUngradedMissions).append(", ");
+                    .append(numUngradedMissions);
         } else if (numUngradedQuests > 0) {
             missionsQuestSb.append(MESSAGE_QUESTS).append(": ")
                     .append(numUngradedQuests);
@@ -161,8 +161,8 @@ public class Summary {
             consultationsMcSb.append(MESSAGE_MASTERY_CHECKS)
                     .append(": ").append(numUpcomingMasteryChecks);
         } else if (numUpcomingConsultations > 0) {
-            consultationsMcSb.append(MESSAGE_CONSULTATIONS).append(": ")
-                    .append(numUpcomingConsultations).append(", ");
+            consultationsMcSb.append(MESSAGE_CONSULTATIONS)
+                    .append(": ").append(numUpcomingConsultations);
         } else if (numUpcomingMasteryChecks > 0) {
             consultationsMcSb.append(MESSAGE_MASTERY_CHECKS)
                     .append(": ").append(numUpcomingMasteryChecks);

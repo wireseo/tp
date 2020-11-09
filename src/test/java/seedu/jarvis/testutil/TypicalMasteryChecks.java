@@ -3,6 +3,9 @@ package seedu.jarvis.testutil;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import seedu.jarvis.model.masterycheck.MasteryCheck;
 
@@ -47,4 +50,9 @@ public class TypicalMasteryChecks {
             TEST_MASTERY_CHECK_DATETIME_FOURTH);
     public static final MasteryCheck TEST_MASTERY_CHECK_FIVE = new MasteryCheck(TEST_MASTERY_CHECK_NAME_FIFTH,
             TEST_MASTERY_CHECK_DATETIME_FIFTH);
+
+    public static List<MasteryCheck> getTypicalMasteryChecks() {
+        return new ArrayList<>(Arrays.asList(TEST_MASTERY_CHECK_ONE, TEST_MASTERY_CHECK_TWO, TEST_MASTERY_CHECK_THREE,
+                TEST_MASTERY_CHECK_FOUR, TEST_MASTERY_CHECK_FIVE));
+    }
 }

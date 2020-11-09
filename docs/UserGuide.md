@@ -153,7 +153,9 @@ please check that you have installed the correct driver:
    * `edit -s STUDENT_ID: Edits Student's Name, Email, Telegram.`
    * `exit: Exits the app.`
 
-1. Refer to the Features below for details of each command.
+1. Refer to the [Features](#6-features) below for details of each command.
+
+1. Do note that the sample data displayed on initial startup of Jarvis will not be saved. This means that subsequent launches of Jarvis will only contain user-inputted data.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -177,8 +179,12 @@ this box.
 #### 4.1.1 Top Bar
    * The top bar includes the following components.
         1. Summary information - A quick summary indicating the number of ungraded `Missions` and `Quests`, upcoming
-           `Consultations` and `Mastery Checks` as well as outstanding `Tasks` in Jarvis. Do note that graded `Missions` and
+           `Consultations` and `Mastery Checks` as well as all `Tasks` in Jarvis. Do note that graded `Missions` and
            `Quests`, as well as past `Consultations` and `Mastery Checks`, will not be indicated.
+           
+           We refer to this summary as the `Summary` feature. The summary is presented as a sentence containing the
+           count of the fields stated in the previous paragraph, in the image above, it is the sentence "Remaining - Nothing!". The values are updated when Jarvis starts up and after a user command is entered.
+             
         1. Greeting message - A welcome message for you. If you are not logged in, this message will prompt you to do
          so.
         1. Weekly topic and today's date - The week count for the semester, together with the topic for the week and
@@ -220,7 +226,8 @@ this box.
 
 To navigate the features, there are 2 methods which could be used individually, or mixed. We have designed
 this flexibility with you, the user in mind.
- 1. Only inputting commands into the box annotated "Enter command here...".
+ 1. Only inputting commands into the box annotated "Enter command here...". Upon the successful execution of a
+  command, the tab is automatically switched to the corresponding tab for your convenience.
  1. Clicking on the tabs.
 </div>
 
@@ -288,6 +295,17 @@ You will have to edit them using the [Editing Student Information](#642-editing-
 #### 6.1.4 Notes about truncation
    * If the user input is too long, it is automatically truncated when displayed.
    <br> e.g. if the user enters a `NAME` parameter that is 150 characters long, Jarvis will automatically truncate it to fit the given screen size.
+   
+#### 6.1.5 Notes about Summary feature
+   * As mentioned above under the section explaining the top bar, the `Summary` feature is updated when Jarvis is
+   launched and after a user command is successfully executed. As such, the values in the `Summary
+   ` will remain the same, even if
+   the current time has passed the date and time of a `Consultation` or `Mastery Check`. Also, if a `Mission` or
+   `Quest` is graded while Jarvis is open, the number of ungraded `Mission` and `Quests` will remain the same.
+   * To get the updated values, simply re-start Jarvis or type in a command and hit the enter key on your keyboard.
+   * The `Summary` feature will display all `Task`s stored in Jarvis, regardless of a `Deadline` or `Event`'s date and
+    time. This is in contrast to `Consultations` and `Mastery Checks` where only the upcoming ones are included in
+    the count.
 
 ### 6.2 Viewing help : `help`
 
@@ -478,8 +496,11 @@ You may also click on the `Student` tab to do so.
 
 #### 6.6.2 Viewing `Student` with keyword : `-s [NAME]`
 
-Shows all `Students` that match (partial and full) the name entered after the command. The name is case-sensitive.
-An example of a partial match will be `view -s do` resulting in John Doe being displayed.
+Shows all `Students` that match (partial and full) the name entered after the command. The name is case-sensitive
+and partial name matches will work, the following is an example. If you would like to look for your student Tommy
+Hilfiger, you can simply type in `view -s Tom` and the student will be displayed. A full match on the other hand would be as such: key in the command `view -s John Doe` and John
+Doe will be displayed.
+
 <br>**Format: `view -s [NAME]`**
 
 ![ViewOneStudentCommand](images/userguide/viewOneStudent.png)
@@ -560,7 +581,7 @@ Shows all past `Mastery Check` sessions.
 <br>⚠️ Notes:
 * When the `Mastery Check` time is the same as the local time (year, month, date, hour, and minute all equal), it is considered to have occurred in the past.
 
-#### 6.6.12 Viewing upcoming `Mastery Checks` : `mcu`
+#### 6.6.12 Viewing upcoming `Mastery Checks` : `-mcu`
 
 Shows all upcoming `Mastery Check` sessions.
 <br>**Format: `view -mcu`**
